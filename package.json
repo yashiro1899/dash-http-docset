@@ -1,0 +1,29 @@
+{
+  "name": "dash-http-docset",
+  "version": "1.0.0",
+  "description": "MDN HTTP Documentation to Dash docset",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashiro1899/dash-http-docset.git"
+  },
+  "keywords": [
+    "dash",
+    "http",
+    "mdn"
+  ],
+  "author": "Ice White",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yashiro1899/dash-http-docset/issues"
+  },
+  "homepage": "https://github.com/yashiro1899/dash-http-docset#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "sequelize": "^3.27.0",
+    "sqlite3": "^3.1.8"
+  }
+}
