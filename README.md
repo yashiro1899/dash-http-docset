@@ -6,7 +6,7 @@ HTTP docset for [Dash](http://kapeli.com/dash/).
 
 * [httrack](https://www.httrack.com/)
 
-## Usage
+### Usage
 
 1. `git clone https://github.com/yashiro1899/dash-http-docset.git && cd dash-http-docset`
 2. `npm i`
