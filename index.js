@@ -32,10 +32,12 @@ items.each(function (ignore, el) {
     return null;
   }
 
-  $('ol', el).remove();
+  const len = $('ol', el).remove().length;
   caption = el.text().trim();
-  if (TYPES[caption]) {
-    type = TYPES[caption];
+  if (len > 0) {
+    if (TYPES[caption]) {
+      type = TYPES[caption];
+    }
     return null;
   }
 
