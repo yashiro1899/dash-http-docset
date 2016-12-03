@@ -43,6 +43,10 @@ items.each(function (ignore, el) {
 
   if (type) {
     const href = $('a', el).attr('href');
+    if (/^http/.test(href)) {
+      return null;
+    }
+
     const location = path.join('developer.mozilla.org/en-US/docs/Web', href);
     result.push({
       name: caption,
