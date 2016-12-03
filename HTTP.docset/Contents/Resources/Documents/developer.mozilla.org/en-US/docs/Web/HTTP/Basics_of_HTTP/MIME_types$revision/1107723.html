@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types$revision/1107723 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:54:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1107723 | MIME types | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FBasics_of_HTTP%2FMIME_types%24revision%2F1107723" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types%24revision/1107723">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1107723 of <a href="../MIME_types-2.html">MIME types</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Basics_of_HTTP/MIME_types</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>MIME types</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1107723</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-08-20T13:15:50-07:00">Aug 20, 2016, 1:15:50 PM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>DJ-Leith</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>Try to improve English, asking for an Editorial review as I have not updated MDN before.</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p>The <strong>MIME type</strong> is the mechanism to tell the client the kind of document transmitted: the extension of a file name has no meaning on the web. It is, therefore, important that the server is correctly set up, so that the correct MIME type is transmitted with each document. Browsers often use the MIME-type to determine what default action to do when a resource is fetched.</p>
+
+<p>There are many kind of documents and so there are many MIME types. In this article, we will list the most important ones for Web development, but you can find the one fitting a specific kind of document in this dedicated article: <a href="../MIME_types/Complete_list_of_MIME_types.html">Complete list of MIME types</a>.</p>
+
+<p>MIME types are not the only way to convey the document type information:</p>
+
+<ul>
+ <li>Name suffixes are sometimes used, especially on Microsoft Windows systems. Not all operating systems consider these suffixes meaningful (this is not the case on Linux or OS X), and like for an external MIME type, there is no guarantee they are correct.</li>
+ <li>Magic numbers. The syntax of the different kind of files often allow to determine the type by looking at the structure. E.g. each GIF files starts with the 47 49 46 38 hexadecimal value [GIF89] or PNG files with 89 50 4E 47 [.PNG]. Not all types of files have magic numbers, so this is not a 100% reliable system either.</li>
+</ul>
+
+<p>On the Web, only the MIME type is relevant and has therefore to be set carefully. Browsers and servers often used heuristics based on suffixes or magic numbers to define the MIME type, to check for coherence, or to find the correct MIME type when only a generic type has been provided.</p>
+
+<h2 id="Syntax">Syntax</h2>
+
+<h3 id="General_structure">General structure</h3>
+
+<pre class="syntaxbox">type/subtype</pre>
+
+<p>The structure of a MIME type is very simple; it consists of a type and a subtype, two strings, separated by a <code>'/'</code>. No space is allowed. The <em>type</em> represents the category and can be a <em>discrete</em> or a <em>multipart</em> type. The <em>subtype</em> is specific to each type.</p>
+
+<p>A MIME type is insensitive to the case, but traditionally is written all in lower case.</p>
+
+<h3 id="Discrete_types">Discrete types</h3>
+
+<pre class="syntaxbox">text/plain
+text/html
+image/jpeg
+image/png
+audio/mpeg
+audio/ogg
+audio/*
+video/mp4
+application/octet-stream
+…</pre>
+
+<p><em>Discrete</em> types indicates the category of the document, it can be one of the following:</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Type</th>
+   <th scope="col">Description</th>
+   <th scope="col">Example of typical subtypes</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>text</code></td>
+   <td>Represents any document that contains text and is theoretically human readable</td>
+   <td><code>text/plain</code>, <code>text/html</code>, <code>text/css, text/javascript</code></td>
+  </tr>
+  <tr>
+   <td><code>image</code></td>
+   <td>Represents any kind of images. Videos are not included, though animated images (like animated gif) are describes with an image type.</td>
+   <td><code>image/gif</code>, <code>image/png</code>, <code>image/jpeg</code>, <code>image/bmp</code>, <code>image/webp</code></td>
+  </tr>
+  <tr>
+   <td><code>audio</code></td>
+   <td>Represents any kind of audio files</td>
+   <td><code>audio/midi</code>, <code>audio/mpeg, audio/webm, audio/ogg, audio/wav</code></td>
+  </tr>
+  <tr>
+   <td><code>video</code></td>
+   <td>Represents any kind of video files</td>
+   <td><code>video/webm</code>, <code>video/ogg</code></td>
+  </tr>
+  <tr>
+   <td><code>application</code></td>
+   <td>Represents any kind of binary data.</td>
+   <td><code>application/octet-stream</code>, <code>application/pkcs12</code>, <code>application/vnd.mspowerpoint</code>, <code>application/xhtml+xml</code>, <code>application/xml</code>,  <code>application/pdf</code></td>
+  </tr>
+ </tbody>
+</table>
+
+<p>For text documents without specific subtype, <code>text/plain</code> should be used. Similarly for binary documents without specific or known subtype, <code>application/octet-stream</code> should be used.</p>
+
+<h3 id="Multipart_types">Multipart types</h3>
+
+<pre class="syntaxbox">multipart/form-data
+multipart/byteranges</pre>
+
+<p id="sect1"><em>Multipart</em> types indicates a category of document that are broken in distinct parts, often with different MIME types. It is a way to represent <em>composite</em> document. With the exception of <code>multipart/form-data</code>, that are used in relation of <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">HTML Forms</a> and {{HTTPMethod("POST")}} method, and <code>multipart/byteranges</code> that are used in conjunction with {{HTTPStatus("206")}} <code>Partial Content</code> status message to send only a subset of a whole document, HTTP doesn't handle in a specific way multipart documents: the message is simply transmitted to the browser (that will likely propose a Save As window as it doesn't know how display it inline.)</p>
+
+<h2 id="Important_MIME_types_for_Web_developers">Important MIME types for Web developers</h2>
+
+<h3 id="applicationoctet-stream"><code>application/octet-stream</code></h3>
+
+<p>This is the default value for a binary files. As it really means <em>unknown binary </em> file, browsers usually don't automatically execute it, or even ask if it should be execute. They treat it as if the {{HTTPHeader("Content-Disposition")}} header was set with the value <code>attachment</code> and propose a 'Save As' file.</p>
+
+<h3 id="textplain"><code>text/plain</code></h3>
+
+<p>This is the default value for textual files. Even if it really means <em>unknown textual</em> file, browsers assume they can display it.</p>
+
+<div class="note">
+<p>Note that <code>text/plain</code> doesn't means <em>any kind of textual data</em>. if they expect a specific kind of textual data, they will likely not consider it a match. Specifically if they download a <code>text/plain</code> file from a {{HTMLElement("link")}} element declaring a CSS files, they will not recognize it as a valid CSS files if presented with <code>text/plain</code>. The CSS mime type <code>text/css</code> must be used.</p>
+</div>
+
+<h3 id="textcss"><code>text/css</code></h3>
+
+<p>Any CSS files that have to be interpreted as such in a Web page<strong> must</strong> be of the <code>text/css</code> files. Often servers doesn't recognized files with the <code>.css</code> suffix as CSS files and send them with <code>text/plain</code> or <code>application/octet-stream</code> MIME type: in these cases, they won't be recognized as CSS files by most browsers and will be silently ignored. A special attention has to be paid to serve CSS files with the right type.</p>
+
+<h3 id="texthtml"><code>text/html</code></h3>
+
+<p>Any HTML content should be served with this content. Alternative MIME types for XHTML, like <code>application/xml+html</code>, are mostly useless nowadays (HTML5 unified these format long ago).</p>
+
+<h3 id="Images_types">Images types</h3>
+
+<p>Only a handful of image types are widely recognized and are considered Web safe, that is can be used in a Web page:</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">MIME type</th>
+   <th scope="col">Image type</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>image/gif</code></td>
+   <td>GIF images (lossless compression, superseded by PNG)</td>
+  </tr>
+  <tr>
+   <td><code>image/jpeg</code></td>
+   <td>JPEG images</td>
+  </tr>
+  <tr>
+   <td><code>image/png</code></td>
+   <td>PNG images</td>
+  </tr>
+  <tr>
+   <td><code>image/svg+xml</code></td>
+   <td>SVG images (vector images)</td>
+  </tr>
+ </tbody>
+</table>
+
+<p>There are discussion to add WebP (<code>image/webp</code>) but as each new type of images increase the size of the codebase, it may introduce new security problems, so browser vendors are very cautious before accepting it.</p>
+
+<p>Other kinds of images can be found in Web documents. For example, a lot of browsers support icon image types for favicons or similar. In particular ICO images are supported in this context, with the <code>image/x-icon </code>MIME type.</p>
+
+<h3 id="Audio_and_video_types">Audio and video types</h3>
+
+<p>Like for images, HTML doesn't defines a set of supported types to use with the {{HTMLElement("audio")}} and{{HTMLElement("video")}} elements, so only a small group of them can be used on the Web. The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats">Media formats supported by the HTML audio and video elements</a> explains both the codecs and container formats that can be used.</p>
+
+<p>The MIME type of such files mostly represent the container formats and the most common ones in a Web context are:</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">MIME type</th>
+   <th scope="col">Audio or video type</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>audio/wave</code><br>
+    <code>audio/wav</code><br>
+    <code>audio/x-wav</code><br>
+    <code>audio/x-pn-wav</code></td>
+   <td>An audio file in the WAVE container format. The PCM audio codec (WAVE codec "1") is often supported, but other codecs have much more limited support (if none).</td>
+  </tr>
+  <tr>
+   <td><code>audio/webm</code></td>
+   <td>An audio file in the WebM container format. Vorbis and Opus the most common audio codecs.</td>
+  </tr>
+  <tr>
+   <td><code>video/webm</code></td>
+   <td>A video file, possibly with audio, in the WebM container format. VP8 and VP9 are the most common video codecs used in it; Vorbis and Opus the most common audio codecs.</td>
+  </tr>
+  <tr>
+   <td><code>audio/ogg</code></td>
+   <td>An audio file in the OGG container format. Vorbis is the most common audio codec used in such container.</td>
+  </tr>
+  <tr>
+   <td><code>video/ogg</code></td>
+   <td>A video file, possibly with audio, in the OGG container format. Theora is the usual video codec used in it; Vorbis is the usual audio codec.</td>
+  </tr>
+  <tr>
+   <td><code>application/ogg</code></td>
+   <td>An audio or a video file using the OGG container format. Theora is the usual video codec used in it; Vorbis is the usual audio codec.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h3 id="multipartform-data"><code>multipart/form-data</code></h3>
+
+<p>The <code>multipart/form-data</code><em> </em>is one of the type of document that can be used when transmitted the content of an <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">HTML Form</a> from the browser to the server. As a multipart document formal, it consist of different part delimited by a boundary (a string starting with a double dash <code>'--'</code>). Each part is an entity by itself and can have its own HTTP headers, {{HTTPHeader("Content-Disposition")}}, and {{HTTPHeader("Content-Type")}} for file uploading fields, being the most common one ({{HTTPHeader("Content-Length")}} is ignored as the boundary line is used as delimiter).</p>
+
+<pre class="syntaxbox">Content-Type: multipart/form-data; boundary=aBoundaryString
+(other headers associated with the multipart document as a whole)
+
+--aBoundaryString
+Content-Disposition: form-data; name="myFile"; filename="img.jpg"
+Content-Type: image/jpeg
+
+(data)
+--aBoundaryString
+Content-Disposition: form-data; name="myField"
+
+(data)
+--aBoundaryString
+(more subparts)
+--aBoundaryString--
+
+</pre>
+
+<p>The following form:</p>
+
+<pre class="brush: html">&lt;form action="http://localhost:8000/" method="post" enctype="multipart/form-data"&gt;
+  &lt;input type="text" name="myTextField"&gt;
+  &lt;input type="checkbox" name="myCheckBox"&gt;Check&lt;/input&gt;
+  &lt;input type="file" name="myFile"&gt;
+  &lt;button&gt;Send the file&lt;/button&gt;
+&lt;/form&gt;</pre>
+
+<p>send this message:</p>
+
+<pre>POST / HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Content-Type: multipart/form-data; boundary=---------------------------8721656041911415653955004498
+Content-Length: 465
+
+-----------------------------8721656041911415653955004498
+Content-Disposition: form-data; name="myTextField"
+
+Test
+-----------------------------8721656041911415653955004498
+Content-Disposition: form-data; name="myCheckBox"
+
+on
+-----------------------------8721656041911415653955004498
+Content-Disposition: form-data; name="myFile"; filename="test.txt"
+Content-Type: text/plain
+
+Simple file.
+-----------------------------8721656041911415653955004498--
+
+</pre>
+
+<h3 id="multipartbyteranges"><code>multipart/byteranges</code></h3>
+
+<p>The <code>multipart/byteranges</code> is used in the context of sending partial responses back to the browser. When the {{HTTPStatus("206")}}<code> Partial Content</code> status code is send, this MIME type is used to indicate that the document is composed of several parts, one for each of the requested range. Like for other multipart types, the {{HTTPHeader("Content-Type")}} uses the <code>boundary</code> directive to define the boundary string. Each of the different parts have a {{HTTPHeader("Content-Type")}} header with the actual type of the document and a {{HTTPHeader("Content-Range")}} with the range they represent.</p>
+
+<pre><code>HTTP/1.1 206 Partial Content
+Accept-Ranges: bytes
+Content-Type: multipart/byteranges; boundary=3d6b6a416f9b5
+Content-Length: 385
+
+--3d6b6a416f9b5
+Content-Type: text/html
+Content-Range: bytes 100-200/1270
+
+eta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;
+    &lt;meta name="vieport" content
+--3d6b6a416f9b5
+Content-Type: text/html
+Content-Range: bytes 300-400/1270
+
+-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", "Helvetica
+--3d6b6a416f9b5--</code></pre>
+
+<h2 id="Importance_of_setting_the_correct_MIME_type">Importance of setting the correct MIME type</h2>
+
+<p>Most web servers send unknown-type resources using the default <code>application/octet-stream</code> MIME type; for security reasons, most browsers do not allow setting a custom default action for such resources and force the user to store it to disk to use it. Some common cases of often incorrectly configured servers happens for the following file types:</p>
+
+<ul>
+ <li>
+  <p>RAR-encoded files. The ideal would be to be able to set the real type of the encoded files; this often is not possible (as it may not be known to the server and these files may contain several resources of different types). In that case, configure the server to send the <code>application/x-rar-compressed</code> MIME type or users will not be able to define a useful default action for them.</p>
+ </li>
+ <li>
+  <p>Audio and video files. Only resources with the proper MIME Type will be recognized and played in {{ HTMLElement("video") }} or {{ HTMLElement("audio") }} elements. Be sure to <a href="https://developer.mozilla.org/En/Media_formats_supported_by_the_audio_and_video_elements">use the correct type for audio and video</a>.</p>
+ </li>
+ <li>
+  <p>Proprietary file types. Pay special attention when serving a proprietary file type. Avoid using <code>application/octet-stream</code> when possible as special handling will not be possible: most browsers doesn't allow to define a default behavior (like "Opening in Word") for this generic MIME type.</p>
+ </li>
+</ul>
+
+<h2 id="MIME_sniffing">MIME sniffing</h2>
+
+<p>In the absence of a MIME type, or in some other cases where a client believes they are set wrongly, browsers may conduct MIME sniffing, that is guessing the correct MIME type by looking at the resource. Each browser does this differently and in different circumstances. There are some security concerns about this practice, as some MIME types represent executable content and others do not. Servers can block this MIME sniffing by sending the {{HTTPHeader("X-Content-Type-Options")}} along the {{HTTPHeader("Content-Type")}}.</p>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Securing_your_site/Configuring_server_MIME_types">Properly configuring server MIME types</a></li>
+ <li>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats">Media formats supported by the HTML audio and video elements</a></p>
+ </li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p&gt;The &lt;strong&gt;MIME type&lt;/strong&gt; is the mechanism to tell the client the kind of document transmitted: the extension of a file name has no meaning on the web. It is, therefore, important that the server is correctly set up, so that the correct MIME type is transmitted with each document. Browsers often use the MIME-type to determine what default action to do when a resource is fetched.&lt;/p&gt;
+
+&lt;p&gt;There are many kind of documents and so there are many MIME types. In this article, we will list the most important ones for Web development, but you can find the one fitting a specific kind of document in this dedicated article: &lt;a href=&#34;/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types&#34;&gt;Complete list of MIME types&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;MIME types are not the only way to convey the document type information:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Name suffixes are sometimes used, especially on Microsoft Windows systems. Not all operating systems consider these suffixes meaningful (this is not the case on Linux or OS X), and like for an external MIME type, there is no guarantee they are correct.&lt;/li&gt;
+ &lt;li&gt;Magic numbers. The syntax of the different kind of files often allow to determine the type by looking at the structure. E.g. each GIF files starts with the 47 49 46 38 hexadecimal value [GIF89] or PNG files with&amp;nbsp;89 50 4E 47 [.PNG]. Not all types of files have magic numbers, so this is not a 100% reliable system either.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;On the Web, only the MIME type is relevant and has therefore to be set carefully. Browsers and servers often used heuristics based on suffixes or magic numbers to define the MIME type, to check for coherence, or to find the correct MIME type when only a generic type has been provided.&lt;/p&gt;
+
+&lt;h2 id=&#34;Syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;h3 id=&#34;General_structure&#34;&gt;General structure&lt;/h3&gt;
+
+&lt;pre class=&#34;syntaxbox&#34;&gt;
+type/subtype&lt;/pre&gt;
+
+&lt;p&gt;The structure of a MIME type is very simple; it consists of a type and a subtype, two strings, separated by a &lt;code&gt;&#39;/&#39;&lt;/code&gt;. No space is allowed. The &lt;em&gt;type&lt;/em&gt; represents the category and can be a &lt;em&gt;discrete&lt;/em&gt; or a &lt;em&gt;multipart&lt;/em&gt; type. The &lt;em&gt;subtype&lt;/em&gt; is specific to each type.&lt;/p&gt;
+
+&lt;p&gt;A MIME type is insensitive to the case, but traditionally is written all in lower case.&lt;/p&gt;
+
+&lt;h3 id=&#34;Discrete_types&#34;&gt;Discrete types&lt;/h3&gt;
+
+&lt;pre class=&#34;syntaxbox&#34;&gt;
+text/plain
+text/html
+image/jpeg
+image/png
+audio/mpeg
+audio/ogg
+audio/*
+video/mp4
+application/octet-stream
+…&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Discrete&lt;/em&gt; types indicates the category of the document, it can be one of the following:&lt;/p&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Type&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Description&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Example of typical subtypes&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;text&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Represents any document that contains text and is theoretically human readable&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;text/plain&lt;/code&gt;, &lt;code&gt;text/html&lt;/code&gt;, &lt;code&gt;text/css, text/javascript&lt;/code&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;image&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Represents any kind of images. Videos are not included, though animated images (like animated gif) are describes with an image type.&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;image/gif&lt;/code&gt;, &lt;code&gt;image/png&lt;/code&gt;, &lt;code&gt;image/jpeg&lt;/code&gt;, &lt;code&gt;image/bmp&lt;/code&gt;, &lt;code&gt;image/webp&lt;/code&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;audio&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Represents any kind of audio files&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;audio/midi&lt;/code&gt;, &lt;code&gt;audio/mpeg, audio/webm, audio/ogg, audio/wav&lt;/code&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;video&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Represents any kind of video files&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;video/webm&lt;/code&gt;, &lt;code&gt;video/ogg&lt;/code&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;application&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Represents any kind of binary data.&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;application/octet-stream&lt;/code&gt;, &lt;code&gt;application/pkcs12&lt;/code&gt;, &lt;code&gt;application/vnd.mspowerpoint&lt;/code&gt;, &lt;code&gt;application/xhtml+xml&lt;/code&gt;, &lt;code&gt;application/xml&lt;/code&gt;,&amp;nbsp; &lt;code&gt;application/pdf&lt;/code&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;For text documents without specific subtype, &lt;code&gt;text/plain&lt;/code&gt; should be used. Similarly for binary documents without specific or known subtype, &lt;code&gt;application/octet-stream&lt;/code&gt; should be used.&lt;/p&gt;
+
+&lt;h3 id=&#34;Multipart_types&#34;&gt;Multipart types&lt;/h3&gt;
+
+&lt;pre class=&#34;syntaxbox&#34;&gt;
+multipart/form-data
+multipart/byteranges&lt;/pre&gt;
+
+&lt;p id=&#34;sect1&#34;&gt;&lt;em&gt;Multipart&lt;/em&gt; types indicates a category of document that are broken in distinct parts, often with different MIME types. It is a way to represent &lt;em&gt;composite&lt;/em&gt; document. With the exception of &lt;code&gt;multipart/form-data&lt;/code&gt;, that are used in relation of &lt;a href=&#34;/en-US/docs/Web/Guide/HTML/Forms&#34;&gt;HTML Forms&lt;/a&gt; and {{HTTPMethod(&#34;POST&#34;)}} method, and &lt;code&gt;multipart/byteranges&lt;/code&gt; that are used in conjunction with {{HTTPStatus(&#34;206&#34;)}} &lt;code&gt;Partial Content&lt;/code&gt; status message to send only a subset of a whole document, HTTP doesn&#39;t handle in a specific way multipart documents: the message is simply transmitted to the browser (that will likely propose a Save As window as it doesn&#39;t know how display it inline.)&lt;/p&gt;
+
+&lt;h2 id=&#34;Important_MIME_types_for_Web_developers&#34;&gt;Important MIME types for Web developers&lt;/h2&gt;
+
+&lt;h3 id=&#34;applicationoctet-stream&#34;&gt;&lt;code&gt;application/octet-stream&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;This is the default value for a binary files. As it really means &lt;em&gt;unknown binary &lt;/em&gt; file, browsers usually don&#39;t automatically execute it, or even ask if it should be execute. They treat it as if the {{HTTPHeader(&#34;Content-Disposition&#34;)}} header was set with the value &lt;code&gt;attachment&lt;/code&gt; and propose a &#39;Save As&#39; file.&lt;/p&gt;
+
+&lt;h3 id=&#34;textplain&#34;&gt;&lt;code&gt;text/plain&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;This is the default value for textual files. Even if it really means &lt;em&gt;unknown textual&lt;/em&gt; file, browsers assume they can display it.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;Note that &lt;code&gt;text/plain&lt;/code&gt; doesn&#39;t means &lt;em&gt;any kind of textual data&lt;/em&gt;. if they expect a specific kind of textual data, they will likely not consider it a match. Specifically if they download a &lt;code&gt;text/plain&lt;/code&gt; file from a {{HTMLElement(&#34;link&#34;)}} element declaring a CSS files, they will not recognize it as a valid CSS files if presented with &lt;code&gt;text/plain&lt;/code&gt;. The CSS mime type &lt;code&gt;text/css&lt;/code&gt; must be used.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;textcss&#34;&gt;&lt;code&gt;text/css&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Any CSS files that have to be interpreted as such in a Web page&lt;strong&gt; must&lt;/strong&gt; be of the &lt;code&gt;text/css&lt;/code&gt; files. Often servers doesn&#39;t recognized files with the &lt;code&gt;.css&lt;/code&gt; suffix as CSS files and send them with &lt;code&gt;text/plain&lt;/code&gt; or &lt;code&gt;application/octet-stream&lt;/code&gt; MIME type: in these cases, they won&#39;t be recognized as CSS files by most browsers and will be silently ignored. A special attention has to be paid to serve CSS files with the right type.&lt;/p&gt;
+
+&lt;h3 id=&#34;texthtml&#34;&gt;&lt;code&gt;text/html&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;Any HTML content should be served with this content. Alternative MIME types for XHTML, like &lt;code&gt;application/xml+html&lt;/code&gt;, are mostly useless nowadays (HTML5 unified these format long ago).&lt;/p&gt;
+
+&lt;h3 id=&#34;Images_types&#34;&gt;Images types&lt;/h3&gt;
+
+&lt;p&gt;Only a handful of image types are widely recognized and are considered Web safe, that is can be used in a Web page:&lt;/p&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;MIME type&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Image type&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;image/gif&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;GIF images (lossless compression, superseded by PNG)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;image/jpeg&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;JPEG images&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;image/png&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;PNG images&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;image/svg+xml&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;SVG images (vector images)&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;There are discussion to add WebP (&lt;code&gt;image/webp&lt;/code&gt;) but as each new type of images increase the size of the codebase, it may introduce new security problems, so browser vendors are very cautious before accepting it.&lt;/p&gt;
+
+&lt;p&gt;Other kinds of images can be found in Web documents. For example, a lot of browsers support icon image types for favicons or similar. In particular ICO images are supported in this context, with the &lt;code&gt;image/x-icon &lt;/code&gt;MIME type.&lt;/p&gt;
+
+&lt;h3 id=&#34;Audio_and_video_types&#34;&gt;Audio and video types&lt;/h3&gt;
+
+&lt;p&gt;Like for images, HTML doesn&#39;t defines a set of supported types to use with the {{HTMLElement(&#34;audio&#34;)}} and{{HTMLElement(&#34;video&#34;)}} elements, so only a small group of them can be used on the Web. The &lt;a href=&#34;/en-US/docs/Web/HTML/Supported_media_formats&#34;&gt;Media formats supported by the HTML audio and video elements&lt;/a&gt; explains both the codecs and container formats that can be used.&lt;/p&gt;
+
+&lt;p&gt;The MIME type of such files mostly represent the container formats and the most common ones in a Web context are:&lt;/p&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;MIME type&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Audio or video type&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;audio/wave&lt;/code&gt;&lt;br /&gt;
+    &lt;code&gt;audio/wav&lt;/code&gt;&lt;br /&gt;
+    &lt;code&gt;audio/x-wav&lt;/code&gt;&lt;br /&gt;
+    &lt;code&gt;audio/x-pn-wav&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;An audio file in the WAVE container format. The PCM audio codec (WAVE codec &#34;1&#34;) is often supported, but other codecs have much more limited support (if none).&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;audio/webm&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;An audio file in the WebM container format. Vorbis and Opus the most common audio codecs.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;video/webm&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;A video file, possibly with audio, in the WebM container format. VP8 and VP9 are the most common video codecs used in it; Vorbis and Opus the most common audio codecs.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;audio/ogg&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;An audio file in the OGG container format. Vorbis is the most common audio codec used in such container.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;video/ogg&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;A video file, possibly with audio, in the OGG container format. Theora is the usual video codec used in it; Vorbis is the usual audio codec.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;application/ogg&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;An audio or a video file using the OGG container format. Theora is the usual video codec used in it; Vorbis is the usual audio codec.&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;multipartform-data&#34;&gt;&lt;code&gt;multipart/form-data&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;multipart/form-data&lt;/code&gt;&lt;em&gt; &lt;/em&gt;is one of the type of document that can be used when transmitted the content of an &lt;a href=&#34;/en-US/docs/Web/Guide/HTML/Forms&#34;&gt;HTML Form&lt;/a&gt; from the browser to the server. As a multipart document formal, it consist of different part delimited by a boundary (a string starting with a double dash &lt;code&gt;&#39;--&#39;&lt;/code&gt;). Each part is an entity by itself and can have its own HTTP headers, {{HTTPHeader(&#34;Content-Disposition&#34;)}}, and {{HTTPHeader(&#34;Content-Type&#34;)}} for file uploading fields, being the most common one ({{HTTPHeader(&#34;Content-Length&#34;)}} is ignored as the boundary line is used as delimiter).&lt;/p&gt;
+
+&lt;pre class=&#34;syntaxbox&#34;&gt;
+Content-Type: multipart/form-data; boundary=aBoundaryString
+(other headers associated with the multipart document as a whole)
+
+--aBoundaryString
+Content-Disposition: form-data; name=&#34;myFile&#34;; filename=&#34;img.jpg&#34;
+Content-Type: image/jpeg
+
+(data)
+--aBoundaryString
+Content-Disposition: form-data; name=&#34;myField&#34;
+
+(data)
+--aBoundaryString
+(more subparts)
+--aBoundaryString--
+
+&lt;/pre&gt;
+
+&lt;p&gt;The following form:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: html&#34;&gt;
+&amp;lt;form action=&#34;http://localhost:8000/&#34; method=&#34;post&#34; enctype=&#34;multipart/form-data&#34;&amp;gt;
+  &amp;lt;input type=&#34;text&#34; name=&#34;myTextField&#34;&amp;gt;
+  &amp;lt;input type=&#34;checkbox&#34; name=&#34;myCheckBox&#34;&amp;gt;Check&amp;lt;/input&amp;gt;
+  &amp;lt;input type=&#34;file&#34; name=&#34;myFile&#34;&amp;gt;
+  &amp;lt;button&amp;gt;Send the file&amp;lt;/button&amp;gt;
+&amp;lt;/form&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;send this message:&lt;/p&gt;
+
+&lt;pre&gt;
+POST / HTTP/1.1
+Host: localhost:8000
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Content-Type: multipart/form-data; boundary=---------------------------8721656041911415653955004498
+Content-Length: 465
+
+-----------------------------8721656041911415653955004498
+Content-Disposition: form-data; name=&#34;myTextField&#34;
+
+Test
+-----------------------------8721656041911415653955004498
+Content-Disposition: form-data; name=&#34;myCheckBox&#34;
+
+on
+-----------------------------8721656041911415653955004498
+Content-Disposition: form-data; name=&#34;myFile&#34;; filename=&#34;test.txt&#34;
+Content-Type: text/plain
+
+Simple file.
+-----------------------------8721656041911415653955004498--
+
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;multipartbyteranges&#34;&gt;&lt;code&gt;multipart/byteranges&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;multipart/byteranges&lt;/code&gt; is used in the context of sending partial responses back to the browser. When the {{HTTPStatus(&#34;206&#34;)}}&lt;code&gt; Partial Content&lt;/code&gt; status code is send, this MIME type is used to indicate that the document is composed of several parts, one for each of the requested range. Like for other multipart types, the {{HTTPHeader(&#34;Content-Type&#34;)}} uses the &lt;code&gt;boundary&lt;/code&gt; directive to define the boundary string. Each of the different parts have a {{HTTPHeader(&#34;Content-Type&#34;)}} header with the actual type of the document and a {{HTTPHeader(&#34;Content-Range&#34;)}} with the range they represent.&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;HTTP/1.1 206 Partial Content
+Accept-Ranges: bytes
+Content-Type: multipart/byteranges; boundary=3d6b6a416f9b5
+Content-Length: 385
+
+--3d6b6a416f9b5
+Content-Type: text/html
+Content-Range: bytes 100-200/1270
+
+eta http-equiv=&#34;Content-type&#34; content=&#34;text/html; charset=utf-8&#34; /&amp;gt;
+    &amp;lt;meta name=&#34;vieport&#34; content
+--3d6b6a416f9b5
+Content-Type: text/html
+Content-Range: bytes 300-400/1270
+
+-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: &#34;Open Sans&#34;, &#34;Helvetica
+--3d6b6a416f9b5--&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;Importance_of_setting_the_correct_MIME_type&#34;&gt;Importance of setting the correct MIME type&lt;/h2&gt;
+
+&lt;p&gt;Most web servers send unknown-type resources using the default &lt;code&gt;application/octet-stream&lt;/code&gt; MIME type; for security reasons, most browsers do not allow setting a custom default action for such resources and force the user to store it to disk to use it. Some common cases of often incorrectly configured servers happens for the following file types:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;
+  &lt;p&gt;RAR-encoded files. The ideal would be to be able to set the real type of the encoded files; this often is not possible (as it may not be known to the server and these files may contain several resources of different types). In that case, configure the server to send the &lt;code&gt;application/x-rar-compressed&lt;/code&gt; MIME type or users will not be able to define a useful default action for them.&lt;/p&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;Audio and video files. Only resources with the proper MIME Type will be recognized and played in {{ HTMLElement(&#34;video&#34;) }} or {{ HTMLElement(&#34;audio&#34;) }} elements. Be sure to &lt;a href=&#34;/En/Media_formats_supported_by_the_audio_and_video_elements&#34;&gt;use the correct type for audio and video&lt;/a&gt;.&lt;/p&gt;
+ &lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;Proprietary file types. Pay special attention when serving a proprietary file type. Avoid using &lt;code&gt;application/octet-stream&lt;/code&gt; when possible as special handling will not be possible: most browsers doesn&#39;t allow to define a default behavior (like &#34;Opening in Word&#34;) for this generic MIME type.&lt;/p&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;MIME_sniffing&#34;&gt;MIME sniffing&lt;/h2&gt;
+
+&lt;p&gt;In the absence of a MIME type, or in some other cases where a client believes they are set wrongly, browsers may conduct MIME sniffing, that is guessing the correct MIME type by looking at the resource. Each browser does this differently and in different circumstances. There are some security concerns about this practice, as some MIME types represent executable content and others do not. Servers can block this MIME sniffing by sending the {{HTTPHeader(&#34;X-Content-Type-Options&#34;)}} along the {{HTTPHeader(&#34;Content-Type&#34;)}}.&lt;/p&gt;
+
+&lt;h2 id=&#34;See_also&#34;&gt;See also&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&#34;/en-US/docs/Web/Security/Securing_your_site/Configuring_server_MIME_types&#34;&gt;Properly configuring server MIME types&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;a href=&#34;/en-US/docs/Web/HTML/Supported_media_formats&#34;&gt;Media formats supported by the HTML audio and video elements&lt;/a&gt;&lt;/p&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types%24revert/1107723" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types$revision/1107723 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:54:40 GMT -->
+</html>

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Redirections by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:32:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Redirections in HTTP - HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+  <link rel="alternate" type="application/json" href="Redirections%24json.json">
+  <link rel="canonical" href="Redirections.html" >
+
+  
+    
+      <link rel="alternate" hreflang="ja" href="https://developer.mozilla.org/ja/docs/Web/HTTP/Redirections" title="HTTP のリダイレクション">
+    
+      <link rel="alternate" hreflang="ko" href="https://developer.mozilla.org/ko/docs/Web/HTTP/Redirections" title="Redirections in HTTP">
+    
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="Redirections in HTTP">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections">
+  <meta name="twitter:title" content="Redirections in HTTP">
+  
+  <meta property="og:description" content="URL redirection, or URL forwarding, is a technique to keep links alive while the actual resource, being a page, a form or a whole Web application, is located at a different URL. HTTP provides a special kind of responses, HTTP redirects, to perform this operation used for numerous goals: temporary redirection while site maintenance is ongoing, permanent redirection to keep external links working after a change of the site&#39;s architecture, progress pages when uploading a file, and many more …">
+  <meta name="description" content="URL redirection, or URL forwarding, is a technique to keep links alive while the actual resource, being a page, a form or a whole Web application, is located at a different URL. HTTP provides a special kind of responses, HTTP redirects, to perform this operation used for numerous goals: temporary redirection while site maintenance is ongoing, permanent redirection to keep external links working after a change of the site&#39;s architecture, progress pages when uploading a file, and many more …">
+  <meta name="twitter:description" content="URL redirection, or URL forwarding, is a technique to keep links alive while the actual resource, being a page, a form or a whole Web application, is located at a different URL. HTTP provides a special kind of responses, HTTP redirects, to perform this operation used for numerous goals: temporary redirection while site maintenance is ongoing, permanent redirection to keep external links working after a change of the site&#39;s architecture, progress pages when uploading a file, and many more …">
+  
+
+  
+  <script type="text/javascript">
+    
+      var document_saved = 0;
+    
+  </script>
+
+
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+        // dimension12 == 'Page Revision"
+        ga('set', 'dimension12', '1108391');
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body data-slug="Web/HTTP/Redirections" contextmenu="edit-history-menu" data-search-url="" class="document  ">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#document-main" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FRedirections" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Redirections">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+   <!-- end is_zone -->
+
+
+    <div class="wiki-main-content" id="document-main"><div class="center">
+      
+      <div class="article-meta">
+        <!-- action buttons -->
+        
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  <ul class="page-buttons" data-sticky="false">
+      
+      <li><button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false"><span>Languages</span><i aria-hidden="true" class="icon-language"></i></button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+              
+                
+                
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/ja/docs/Web/HTTP/Redirections" title="Japanese">日本語 (ja)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/ko/docs/Web/HTTP/Redirections" title="Korean">한국어 (ko)</a></bdi></li>
+                
+              
+
+              
+                <li><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Redirections%24locales" rel="nofollow, noindex" id="translations-add">Add a translation</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      
+      <li class="page-buttons-edit"><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Redirections%24edit" class="button" data-optimizely-hook="button-edit-doc" id="edit-button">Edit<i aria-hidden="true" class="icon-pencil"></i></a></li>
+      
+
+        
+
+        <li><button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false"><span>Advanced</span><i aria-hidden="true" class="icon-cog"></i></button>
+        <div class="submenu js-submenu" id="advanced-menu-submenu">
+          <!-- this page -->
+          <div class="submenu-column">
+            <div class="title">Advanced</div>
+            <ul>
+                <li><a href="Redirections%24history.html" rel="nofollow, noindex">History</a></li>
+                
+                
+                
+
+
+                
+
+                
+                
+                
+                <li class="page-print"><a href="#" onclick="return window.print();">Print this article</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+
+        <!-- crumbs -->
+        
+  <nav class="crumbs" role="navigation"><ol xmlns:v="http://rdf.data-vocabulary.org/#" aria-label="breadcrumbs">
+    <li typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US" rel="v:url" property="v:title">MDN</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US/docs/Web" rel="v:url" property="v:title">Web technology for developers</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="../HTTP.html" rel="v:url" property="v:title">HTTP</a></li>
+    
+    <li class="crumb" typeof="v:Breadcrumb" property="v:title">Redirections in HTTP</li>
+  </ol></nav>
+      </div>
+
+      <!-- heading -->
+      <div id="wiki-document-head" class="document-head">
+          <span class="from-search-previous-box">
+            <a class="button from-search-previous only-icon disabled" title="Previous Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-left"></i></a>
+          </span>
+          <span class="from-search-navigate-wrap">
+            <a href="#" class="from-search-navigate"><span class="from-search-navigate-up"><i aria-hidden="true" class="icon-double-angle-up"></i></span><span class="from-search-navigate-down"><i aria-hidden="true" class="icon-double-angle-down"></i></span></a>
+          </span>
+          <div class="from-search-toc submenu">
+            <span class="title">Your Search Results</span>
+            <ol></ol>
+          </div>
+          <span class="from-search-next-box">
+            <a class="button from-search-next only-icon disabled" title="Next Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-right"></i></a>
+          </span>
+
+        
+        <div class="contributor-avatars" data-all-text="see all contributors" data-alternate-message="hide contributors" >
+            <ul>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/fscholz" title="View profile: fscholz">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="fscholz" data-src="../../../../../secure.gravatar.com/avatar/e24391c9174352988d819a9b9ea77c9e6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">fscholz</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/teoli" title="View profile: teoli">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="teoli" data-src="../../../../../secure.gravatar.com/avatar/d0d90148e08e3b64ccf75c46f31442c56c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">teoli</noscript></a>
+                </li>
+            
+            </ul>
+        </div>
+        
+
+        <h1>Redirections in HTTP</h1>
+
+      </div>
+      
+
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-right-present wiki-left-present">
+
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+            
+              <!-- TOC, approvals, etc -->
+              <div class="column-strip wiki-column" id="wiki-right">
+              
+              <!-- table of contents -->
+              <div id="toc" class="toc toggleable">
+                <a href="#toc" class="title toggler" data-open-icon="icon-plus" data-closed-icon="icon-minus">In This Article<i></i></a>
+                <ol class="toggle-container">
+                  <li><a href="#Principle" rel="internal">Principle</a><ol><li><a href="#Permanent_redirections" rel="internal">Permanent redirections</a><li><a href="#Temporary_redirections" rel="internal">Temporary redirections</a><li><a href="#Special_redirections" rel="internal">Special redirections</a></ol></li><li><a href="#Alternative_way_of_specifying_redirections" rel="internal">Alternative way of specifying redirections</a><ol><li><a href="#HTML_redirections" rel="internal">HTML redirections</a><li><a href="#JavaScript_redirections" rel="internal">JavaScript redirections</a><li><a href="#Order_of_precedence" rel="internal">Order of precedence</a></ol></li><li><a href="#Use_cases" rel="internal">Use cases</a><ol><li><a href="#Domain_aliasing" rel="internal">Domain aliasing</a><li><a href="#Keeping_links_alive" rel="internal">Keeping links alive</a><li><a href="#Temporary_responses_to_unsafe_requests" rel="internal">Temporary responses to unsafe requests</a><li><a href="#Temporary_responses_for_long_requests" rel="internal">Temporary responses for long requests</a></ol></li><li><a href="#Configuring_redirects_in_common_servers" rel="internal">Configuring redirects in common servers</a><ol><li><a href="#Apache" rel="internal">Apache</a><li><a href="#Nginx" rel="internal">Nginx</a><li><a href="#IIS" rel="internal">IIS</a></ol></li><li><a href="#Redirection_loops" rel="internal">Redirection loops</a>
+                </ol>
+              </div>
+              
+              </div>
+            
+
+            
+            
+              
+            
+
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-half wiki-column text-content">
+
+              
+
+              
+
+              
+                
+                
+                
+              
+              
+
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                
+                  
+                    <div><section id="Quick_Links" class="Quick_links"><!-- --></section></div>
+
+<p class="summary">URL redirection, or URL forwarding, is a technique to keep links alive while the actual resource, being a page, a form or a whole Web application, is located at a different URL. HTTP provides a special kind of responses, <em><strong>HTTP redirects</strong></em>, to perform this operation used for numerous goals: temporary redirection while site maintenance is ongoing, permanent redirection to keep external links working after a change of the site's architecture, progress pages when uploading a file, and many more …</p>
+
+<h2 id="Principle">Principle</h2>
+
+<p>In HTTP, a redirection is triggered by the server by sending special responses to a request: <em>redirects</em>. HTTP redirects are responses with a status code of <code>3xx</code>. A browser, when receiving a redirect response, uses the new URL provided and immediately loads it: most of the time, the redirection is transparent to the user, besides a small performance hit.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13785/HTTPRedirect.png" alt=""></p>
+
+<p>They are several types of redirects and they fall in three categories: permanent, temporary and special redirections.</p>
+
+<h3 id="Permanent_redirections">Permanent redirections</h3>
+
+<p>These redirections are meant to last forever. They imply that the original URL should not be used anymore and that the new one is preferred. Search engine robots trigger an update of the associated URL for the resource in their indexes.</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Code</th>
+   <th scope="col">Text</th>
+   <th scope="col">Method handling</th>
+   <th scope="col">Typical use case</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>301</code></td>
+   <td><code>Moved Permanently</code></td>
+   <td><a href="Methods/GET.html" title="The GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a> methods unchanged.<br>
+    Others may or may not be changed to <a href="Methods/GET.html" title="The GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a>.<sup><a href="#attr1">[1]</a></sup></td>
+   <td>Reorganization of a Web site.</td>
+  </tr>
+  <tr>
+   <td><code>308</code></td>
+   <td><code>Permanent Redirect</code></td>
+   <td>Method and body not changed.</td>
+   <td>Reorganization of a Web site, with non-GET links/operations.</td>
+  </tr>
+ </tbody>
+</table>
+
+<p><a name="attr1" id="attr1"></a>[1] The specification had no intent to allow method changes, but practically there are user agents out there doing this. <code>308</code> has been created to remove the ambiguity of the behavior when using non-<code>GET</code> methods.</p>
+
+<h3 id="Temporary_redirections">Temporary redirections</h3>
+
+<p>Sometimes the requested resource cannot be accessed from its canonical location, but it can be accessed from another place. In this case a temporary redirect can be used. Search engine robots don't memorize the new, temporary link. Temporary redirections are also used when creating, updating and deleting resources to present temporary progress pages.</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Code</th>
+   <th scope="col">Text</th>
+   <th scope="col">Method handling</th>
+   <th scope="col">Typical use case</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>302</code></td>
+   <td><code>Found</code></td>
+   <td><a href="Methods/GET.html" title="The GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a> methods unchanged.<br>
+    Others may or may not be changed to <a href="Methods/GET.html" title="The GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a>.<sup><a href="#attr2">[2]</a></sup></td>
+   <td>The Web page is temporary not available for reasons that have not been unforeseen. That way, search engines doesn't update their links.</td>
+  </tr>
+  <tr>
+   <td><code>303</code></td>
+   <td><code>See Other</code></td>
+   <td><a href="Methods/GET.html" title="The GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a> methods unchanged.<br>
+    Others <em>changed</em> to <code>GET</code> (body lost).</td>
+   <td>Used to redirect after a <a href="Methods/PUT.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>PUT</code></a> or a <a href="Methods/POST.html" title="The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header. A POST request is typically send via an HTML form and results in a change on the server. In this case, the content type is selected by putting the adequate string in the enctype attribute of the &lt;form> element or the formenctype attribute of the &lt;input> or &lt;button> elements:"><code>POST</code></a> to prevent a refresh of the page that would re-trigger the operation.</td>
+  </tr>
+  <tr>
+   <td><code>307</code></td>
+   <td><code>Temporary Redirect</code></td>
+   <td>Method and body not changed</td>
+   <td>The Web page is temporary not available for reasons that have not been unforeseen. That way, search engines doesn't update their links. Better than <code>302</code> when non-GET links/operations are on available on the site.</td>
+  </tr>
+ </tbody>
+</table>
+
+<p><a name="attr2" id="attr2"></a>[2] The specification had no intent to allow method changes, but practically there are user agents out there doing this. <code>307</code> has been created to remove the ambiguity of the behavior when using non-<code>GET</code> methods.</p>
+
+<h3 id="Special_redirections">Special redirections</h3>
+
+<p>In addition to these usual redirections, there are two specific redirections. The <a href="Status/304.html" title="The HTTP 304 Not Modified client redirection response code indicates that there is no need to retransmit the requested resources. It is an implicit redirection to a cached resource. This happens when the request method is safe, like a GET or a HEAD request, or when the request is conditional and uses a If-None-Match or a If-Modified-Since header."><code>304</code></a> (Not Modified) redirects a page to the locally cached copy (that was stale), and <a href="Status/300.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>300</code></a> (Multiple Choice) is a manual redirection: the body, presented by the browser as a Web page, lists the possible redirections and the user clicks on one to select it.</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Code</th>
+   <th scope="col">Text</th>
+   <th scope="col">Typical use case</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>300</code></td>
+   <td><code>Multiple Choice</code></td>
+   <td>Not many: the choices are listed in an HTML page in the body. Could be served with a <a href="Status/200.html" title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default."><code>200</code></a> <code>OK</code> status.</td>
+  </tr>
+  <tr>
+   <td><code>304</code></td>
+   <td><code>Not Modified</code></td>
+   <td>Cache refresh: this indicates that the cache value is still fresh an can be used.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Alternative_way_of_specifying_redirections">Alternative way of specifying redirections</h2>
+
+<p>HTTP redirects aren't the only way to defining redirections. There are two other methods: HTML redirections using the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta" title="The HTML &lt;meta> element represents any metadata information that cannot be represented by one of the other HTML meta-related elements (&lt;base>, &lt;link>, &lt;script>, &lt;style> or &lt;title>)."><code>&lt;meta&gt;</code></a> element, and JavaScript redirections using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM</a>.</p>
+
+<h3 id="HTML_redirections">HTML redirections</h3>
+
+<p>HTTP redirects aren't the preferred way to create redirections, but sometimes the Web developer doesn't have the control over the server or cannot configure it. For these specific cases, the Web developers can craft an HTML page with a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta" title="The HTML &lt;meta> element represents any metadata information that cannot be represented by one of the other HTML meta-related elements (&lt;base>, &lt;link>, &lt;script>, &lt;style> or &lt;title>)."><code>&lt;meta&gt;</code></a> element and the <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv">http-equiv</a></code> attribute set to <code>refresh</code> in the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head" title="The HTML &lt;head> element provides general information (metadata) about the document, including its title and links to its scripts and style sheets."><code>&lt;head&gt;</code></a> of the page. When displaying the page, the browser will find this element and will go to the indicated page.</p>
+
+<pre class="brush: html">&lt;head&gt; 
+  &lt;meta http-equiv="refresh" content="0;URL='http://www.example.com/'" /&gt;
+&lt;/head&gt;
+</pre>
+
+<p>The <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes#attr-content">content</a></code> attribute starts with a number indicating how many seconds the browser should wait before redirecting to the given URL. Always set it to <code>0</code>, for better accessibility.</p>
+
+<p>Obviously, this method only works with HTML pages (or similar) and cannot be used for images or any other type of content.</p>
+
+<div class="note">
+<p>Note that these redirections break the back button in browser: you can go back to a page with this header but it instantaneously moves forward again.</p>
+</div>
+
+<h3 id="JavaScript_redirections">JavaScript redirections</h3>
+
+<p>Redirections in JavaScript are created by setting a value to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/location" title="The Window.location read-only property returns a Location object with information about the current location of the document."><code>window.location</code></a> property and the new page is loaded.</p>
+
+<pre class="brush: js">window.location = "http://www.example.com/";</pre>
+
+<p>Like HTML redirections, this can't work on all resources, and obviously this will only work on clients that execute JavaScript. On the other side, there are more possibilities as you can trigger the redirection only if some conditions are met, for example.</p>
+
+<h3 id="Order_of_precedence">Order of precedence</h3>
+
+<p>With three possibilities for URL redirections, several methods can be specified at the same time, but which one is applied first? The order of precedence is the following:</p>
+
+<ol>
+ <li>HTTP redirects are always executed first when there is not even a page transmitted, and of course not even read.</li>
+ <li>HTML redirects (<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta" title="The HTML &lt;meta> element represents any metadata information that cannot be represented by one of the other HTML meta-related elements (&lt;base>, &lt;link>, &lt;script>, &lt;style> or &lt;title>)."><code>&lt;meta&gt;</code></a>) are executed if there weren't any HTTP redirects.</li>
+ <li>JavaScript redirects are used as the last resort, and only if JavaScript is enabled on the client side.</li>
+</ol>
+
+<p>When possible, always try to use HTTP redirects, and don't use a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta" title="The HTML &lt;meta> element represents any metadata information that cannot be represented by one of the other HTML meta-related elements (&lt;base>, &lt;link>, &lt;script>, &lt;style> or &lt;title>)."><code>&lt;meta&gt;</code></a> element. If a developer changes the HTTP redirects and forgets the HTML redirects, redirects are no more identical, or end up in an infinite loop, or other nightmares happen.</p>
+
+<h2 id="Use_cases">Use cases</h2>
+
+<p>There are numerous use cases for redirects, but as performance is impacted with every redirect, their use should be kept at a minimum.</p>
+
+<h3 id="Domain_aliasing">Domain aliasing</h3>
+
+<p>Ideally, there is one location, and therefore one URL, for one resource. But there are reasons for wanting to have alternative names for a resource (several domains, like with and without the www prefix or shorter and easy to remember URLs, …). In these cases, rather than duplicating the resource, it is useful to use a redirect to the one true (canonical) URL.</p>
+
+<p>Domain aliasing can be done for several reasons:</p>
+
+<ul>
+ <li>Expanding the reach of your site. A common case is when your site resides under the <code>www.example.com</code> domain and accessing your pages from <code>example.com</code> should be possible, too. Redirections for <code>example.com</code> pages to <code>www.example.com</code> are set up in this case. You might also provide commonly used synonym names, or frequent typos of your domain names.</li>
+ <li>Moving to a different domain. For example, your company has been renamed and you when searching for the old name, you want people used to the old company Web site still find you under the new name.</li>
+ <li>Forcing HTTPS. Request to the HTTP version of your site will be redirected to the HTTPS version of your site.</li>
+</ul>
+
+<h3 id="Keeping_links_alive">Keeping links alive</h3>
+
+<p>When you restructure Web sites, URLs of resources change. Even if you can update the internal links of your Web site to match the new naming scheme, you have no control over the URLs used by external resources. You don't want to break this link as they bring you valuable users (and help your SEO), so you set up redirects from the old URLs to the new ones.</p>
+
+<div class="note">
+<p>Even if this technique also works for internal links, you should try to avoid having internal redirects. A redirect has a significant performance cost (as an extra HTTP request is done) and if you can avoid it by correcting internal links, you should fix these links.</p>
+</div>
+
+<h3 id="Temporary_responses_to_unsafe_requests">Temporary responses to unsafe requests</h3>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/safe" class="glossaryLink" title="Unsafe: An HTTP method is safe if it doesn't alter the state of the server. In other words, a method is safe if it leads to a read-only operation. Several common HTTP methods are safe: GET, HEAD, or OPTIONS. All safe methods are also idempotent as well as some, but not all, unsafe methods like PUT, or DELETE.">Unsafe</a> requests modify the state of the server and the user shouldn't to replay them inadvertently. Typically, you don't want your users to resent <a href="Methods/PUT.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>PUT</code></a>, <a href="Methods/POST.html" title="The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header. A POST request is typically send via an HTML form and results in a change on the server. In this case, the content type is selected by putting the adequate string in the enctype attribute of the &lt;form> element or the formenctype attribute of the &lt;input> or &lt;button> elements:"><code>POST</code></a> or <a href="Methods/DELETE.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>DELETE</code></a> requests. If you just serve the response as the result of this request, a simple press of the reload button will (possibly after a confirmation message), resend the request.</p>
+
+<p>In this case, the server can send back a <a href="Status/303.html" title="The HTTP 303 See Other redirect status response code, usually sent back as a result of a PUT or POST operation, indicates that the redirects don't link to the newly uploaded resources but to another page, like a confirmation page or an upload progress page. The method used to display this redirected page is always GET."><code>303</code></a> (See Other) request that will contain the right information, but if the reload button is pressed, only this page is redisplayed, without replaying the unsafe requests.</p>
+
+<h3 id="Temporary_responses_for_long_requests">Temporary responses for long requests</h3>
+
+<p>Some requests may need more time on the server, like sometimes <a href="Headers/DELETE.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>DELETE</code></a> requests that are scheduled for later processing. In this of case, the response is a <a href="Status/303.html" title="The HTTP 303 See Other redirect status response code, usually sent back as a result of a PUT or POST operation, indicates that the redirects don't link to the newly uploaded resources but to another page, like a confirmation page or an upload progress page. The method used to display this redirected page is always GET."><code>303</code></a> (See Other) redirect that links to a page indicating that the action has been scheduled, and eventually informs about the progress, or allows to cancel it.</p>
+
+<h2 id="Configuring_redirects_in_common_servers">Configuring redirects in common servers</h2>
+
+<h3 id="Apache">Apache</h3>
+
+<p>Redirects can be set either in the server config file, either in the <code>.htaccess</code> of each directory.</p>
+
+<p>The <a href="https://httpd.apache.org/docs/current/mod/mod_alias.html" class="external">mod_alias</a> module has <code>Redirect</code> and <code>Redirect_Match</code> directives that set up a <a href="Status/302.html" title="The HTTP 302 Found redirect status response code indicates that the resource requested has been temporarily moved to the URL given by the Location headers. A browser redirects to this page, but search engines don't update their links to the resource (In SEO-speak, it is said that the link-juice is not sent to the new URL)."><code>302</code></a> response (by default):</p>
+
+<pre>&lt;VirtualHost *:80&gt;
+	ServerName example.com
+	Redirect / http://www.example.com
+&lt;/VirtualHost&gt;
+</pre>
+
+<p>The URL <code>http://example.com/</code> will be redirected to <code>http://www.example.com/</code> (but not <code>http://example.com/other.html</code> )</p>
+
+<p><code>Redirect_Match</code> does the same but takes a regular expression to define a collection of URLs that are affected:</p>
+
+<pre>RedirectMatch ^/images/(.*)$ http://images.example.com/$1</pre>
+
+<p>All documents in the <code>images/</code> folder will be redirected to a different domain.</p>
+
+<p>If you don't want to set up a temporary redirect, an extra parameter (either the HTTP status code to use or the <code>permanent</code> keyword can be used to set up a different redirect:</p>
+
+<pre>Redirect permanent / http://www.example.com
+Redirect 301 / http://www.example.com
+</pre>
+
+<p>The <a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html" class="external">mod_rewrite</a> module can also be used to create redirects. It is more flexible, but a bit more complex to use.</p>
+
+<h3 id="Nginx">Nginx</h3>
+
+<p>In Nginx, you create a specific server block for the content you want to redirect:</p>
+
+<pre>server {
+	listen 80;
+	server_name example.com;
+	return 301 $scheme://www.example.com$request_uri;
+}</pre>
+
+<p>For having a redirect applying to a folder or a subset of the pages only, use the <code>rewrite</code> directive:</p>
+
+<pre>rewrite ^/images/(.*)$ http://images.example.com/$1 redirect;
+rewrite ^/images/(.*)$ http://images.example.com/$1 permanent;
+</pre>
+
+<h3 id="IIS">IIS</h3>
+
+<p>In IIS, you use the <code><a href="https://www.iis.net/configreference/system.webserver/httpredirect" class="external">&lt;httpRedirect&gt;</a></code> element to configure redirections.</p>
+
+<h2 id="Redirection_loops">Redirection loops</h2>
+
+<p>Redirection loops happen when successive redirections follow the one that has already been followed. In other words, there is a loop that will never be finished and no page will be found ultimately.</p>
+
+<p>Most of the time this is a server problem and if the server cannot detect it, it will send back a <a href="Status/500.html" title="The HTTP 500 Internal Server Error server error response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request."><code>500</code></a> <code>Internal Server Error</code>. If you encounter such an error soon after modifying a server configuration, this is likely a redirection loop.</p>
+
+<p>Sometimes, the server won't detect it: a redirection loop can spread over several servers which each don't have the full picture. In this case, browsers will detect it and  post an error message. Firefox will display:</p>
+
+<pre id="comment_text_0" class="bz_comment_text">Firefox has detected that the server is redirecting the request for this address in a way that will never complete.</pre>
+
+<p>while Chrome will display:</p>
+
+<pre>This Webpage has a redirect loop</pre>
+
+<p>In both cases, the user can't do much (unless a corruption is happening on their side, like a mismatch of cache or cookies).</p>
+
+<p>It is important to avoid redirection loops as they completely break the user experience.</p>
+                  
+                
+              </article>
+
+              
+
+                <!-- contributors -->
+                <div class="wiki-block contributors">
+                  <h2 class="offscreen">Document Tags and Contributors</h2>
+                  
+                  
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/redirects">redirects</a></li>
+      
+    </ul>
+  </div>
+
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-group icon-fw"></i>&nbsp;<strong>Contributors to this page:</strong> 
+        <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/teoli">teoli</a>
+    
+                    </div>
+                  
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-clock-o icon-fw"></i>&nbsp;<strong>Last updated by:</strong>
+                      <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>,
+                      <time datetime="2016-08-23T03:04:39-07:00">Aug 23, 2016, 3:04:39 AM</time>
+                    </div>
+                  
+                </div>
+              
+
+              
+                  <div class="newsletter-box">
+                    <div class="newsletter">
+    <form id="newsletterForm" name="newsletter-form" class="nodisable" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+        <h2 class="newsletter-teaser">Learn the best of web development</h2>
+        <p class="newsletter-description">Sign up for our newsletter:</p>
+        <input type="hidden" id="fmt" name="fmt" value="H">
+        <input type="hidden" id="newsletterNewslettersInput" name="newsletters" value="app-dev" />
+
+        <div id="newsletterErrors" class="newsletter-errors"></div>
+
+        <div id="newsletterEmail" class="form-group">
+            <label for="newsletterEmailInput" class="form-label offscreen">E-mail</label>
+            <input type="email" id="newsletterEmailInput" name="email" class="form-input newsletter-input-email" required placeholder="you@example.com" size="30">
+        </div>
+
+        <div id="newsletterPrivacy" class="form-group form-group-agree hidden">
+            <input type="checkbox" id="newsletterPrivacyInput" name="privacy" required>
+            <label for="newsletterPrivacyInput">
+            I'm okay with Mozilla handling my info as explained in this <a href="https://www.mozilla.org/privacy/">Privacy Policy</a>.
+            </label>
+        </div>
+        <div id="newsletterSubmit">
+            <button id="newsletter-submit" type="submit" class="button positive">Sign up now</button>
+        </div>
+        
+    </form>
+    <div id="newsletterThanks" class="newsletter-thanks hidden">
+        <h2>Thanks! Please check your inbox to confirm your subscription.</h2>
+        <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.
+        </p>
+    </div>
+    <button id="newsletterHide" type="button" class="only-icon newsletter-hide hidden"><span>Hide Newsletter Sign-up</span><i aria-hidden="true" class="icon-times"></i></button>
+</div>
+                  </div>
+              
+            </div>
+
+            
+              <!-- quick links and zone subnav strip -->
+              <div id="wiki-left" class="column-strip wiki-column">
+
+              
+
+                
+
+                
+                  <!-- quick links -->
+                  
+  <div class="quick-links" id="quick-links">
+    <div class="title see-also">See also</div>
+     
+  <ol> 
+    <li><a href="../HTTP.html"><strong><em>HTTP</em></strong></a></li> 
+    <li><strong>Guides:</strong></li> 
+    <li><a href="Basics_of_HTTP/Resources_and_URIs.html">Resources and URIs</a> 
+    <ol> 
+        <li><a href="Basics_of_HTTP/Identifying_resources_on_the_Web.html">Identifying resources on the Web</a> 
+        </li><li><a href="Basics_of_HTTP/Data_URIs.html">Data URIs</a> 
+        </li><li><a href="Basics_of_HTTP/MIME_Types.html">Introduction to MIME Types</a> 
+        </li><li><a href="Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types.html">Complete list of MIME Types</a> 
+        </li><li><a href="Basics_of_HTTP/Choosing_between_www_and_non-www_URLs.html">Choosing between www and non-www URLs</a> 
+    </li></ol></li> 
+    <li><a href="Basics_of_HTTP.html">Basics of HTTP</a> 
+    <ol> 
+        <li><a href="Overview.html">Overview of HTTP</a> 
+        </li><li><a href="Basics_of_HTTP/Evolution_of_HTTP.html">Evolution of HTTP</a> 
+        </li><li><a href="Messages.html">HTTP Messages</a> 
+        </li><li><a href="Session.html">A typical HTTP session</a></li> 
+        <li><a href="Connection_management_in_HTTP_1.html">Connection management in HTTP/1.x</a></li> 
+ 
+    </ol> 
+    </li> 
+    <li><a href="Access_control_CORS.html">HTTP access control (CORS)</a></li> 
+    <li><a href="Caching.html">HTTP caching</a></li> 
+    <li><a href="Conditional_requests.html">HTTP conditional requests</a></li> 
+    <li><a href="Content_negotiation.html">HTTP content negotiation</a></li>   
+    <li><a href="Cookies.html">HTTP cookies</a></li> 
+    <li><a href="Redirections.html">HTTP redirects</a></li> 
+    <li><a href="Resources_and_specifications.html">Resources and specifications</a></li> 
+    <li><strong>References:</strong></li> 
+    <li data-default-state="closed"><a href="Headers.html">HTTP headers</a> 
+      <ol><li><a href="Headers/Accept.html" title="The Accept request HTTP header advertises which content types, expressed as MIME types, the client is able to understand. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice with the Content-Type response header. Browsers set adequate values for this header depending of the context where the request is done: when fetching a CSS stylesheet a different value is set for the request than when they fetching an image, a video or a script."><code>Accept</code></a></li><li><a href="Headers/Accept-Charset.html" title="The Accept-Charset request HTTP header advertises which character set the client is able to understand. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice within the Content-Type response header. Browsers usually don't set this header as the default value for each content type is usually correct and transmitting it would allow easier fingerprinting."><code>Accept-Charset</code></a></li><li><a href="Headers/Accept-Encoding.html" title="The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand. Using content negotiation, the server selects one of the proposals, uses it and informs the client of its choice with the Content-Encoding response header."><code>Accept-Encoding</code></a></li><li><a href="Headers/Accept-Language.html" title="The Accept-Language request HTTP header advertises which languages the client is able to understand, and which locale variant is preferred. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice with the Content-Language response header. Browsers set adequate values for this header according their user interface language and even if a user can change it, this happens rarely (and is frown upon as it leads to fingerprinting)."><code>Accept-Language</code></a></li><li><a href="Headers/Accept-Ranges.html" title="The Accept-Ranges response HTTP header is a marker used by the server to advertise its support of partial request. The value of this field indicates the unit that can be used to define the range."><code>Accept-Ranges</code></a></li><li><a href="Headers/Age.html" title="The Age header contains the time in seconds the object has been in a proxy cache."><code>Age</code></a></li><li><a href="Headers/Cache-Control.html" title="The Cache-Control general-header field is used to specify directives for caching mechanisms in both, requests and responses. Caching directives are unidirectional, meaning that a given directive in a request is not implying that the same directive is to be given in the response."><code>Cache-Control</code></a></li><li><a href="Headers/Connection.html" title="The Connection general header controls whether or not the network connection stays open after the current transaction finishes. If the value sent is keep-alive, the connection is persistent and not closed, allowing for subsequent requests to the same server to be done."><code>Connection</code></a></li><li><a href="Headers/Content-Disposition.html" title="In a multipart/form-data body, the HTTP Content-Disposition general header is a header that can be used on the subpart of a multipart body to give information about the field it applies to. The subpart is delimited by the boundary defined in the Content-Type header. Used on the body itself, Content-Disposition has no effect."><code>Content-Disposition</code></a></li><li><a href="Headers/Content-Encoding.html" title="The Content-Encoding entity header is used to compress the media-type. When present, its value indicates what additional content encoding has been applied to the entity-body. It lets the client know, how to decode in order to obtain the media-type referenced by the Content-Type header."><code>Content-Encoding</code></a></li><li><a href="Headers/Content-Language.html" title="The Content-Language entity header is used to describe the language(s) intended for the audience, so that it allows a user to differentiate according to the users' own preferred language."><code>Content-Language</code></a></li><li><a href="Headers/Content-Length.html" title="The Content-Length entity header is indicating the size of the entity-body, in decimal number of octets, sent to the recipient."><code>Content-Length</code></a></li><li><a href="Headers/Content-Location.html" title="The Content-Location header indicates an alternate location for the returned data. The principal use case is to indicate the URL of the resource transmitted as the result of content negotiation."><code>Content-Location</code></a></li><li><a href="Headers/Content-Security-Policy.html" title="The Content-Security-Policy header fields allows web site administrators to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifiying server origins and script endpoints. This helps guard against cross-site scripting attacks."><code>Content-Security-Policy</code></a></li><li><a href="Headers/Content-Type.html" title="The Content-Type entity header is used to indicate the media type of the resource."><code>Content-Type</code></a></li><li><a href="Headers/Date.html" title="The Date general HTTP header contains the date and time at which the message was originated."><code>Date</code></a></li><li><a href="Headers/ETag.html" title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, if the content has changed, etags are useful to help prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").'><code>ETag</code></a></li><li><a href="Headers/Expires.html" title="The Expires header contains the date/time after which the response is considered stale."><code>Expires</code></a></li><li><a href="Headers/From.html" title="The From request header contains an Internet email address for a human user who controls the requesting user agent."><code>From</code></a></li><li><a href="Headers/Host.html" title="The Host request header specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening."><code>Host</code></a></li><li><a href="Headers/If-Match.html" title="The If-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the resource in this case."><code>If-Match</code></a></li><li><a href="Headers/If-Modified-Since.html" title="The If-Modified-Since request HTTP header makes the request conditional: the server will send back the requested resource, with a 200 status, only if it has been last modified after the given date. If the request has not been modified since, the response will be a 304 without any body; the Last-Modified header will contain the date of last modification. Unlike If-Unmodified-Since, If-Modified-Since can only be used with a GET or HEAD."><code>If-Modified-Since</code></a></li><li><a href="Headers/If-None-Match.html" title="The If-None-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource, with a 200 status, only if doesn't have a ETag matching the given one. For other methods, the request will be processed only if the eventually existing resource's ETag doesn't match any of the values listed."><code>If-None-Match</code></a></li><li><a href="Headers/If-Range.html" title="The If-Range request HTTP header makes the range request conditional: if the condition is fulfilled, the range request will be and the server send back a 206 Partial Content answer with the appropriate body. If the condition is not fulfilled, the full resource is sent back, with a 200 OK status."><code>If-Range</code></a></li><li><a href="Headers/If-Unmodified-Since.html" title="The If-Unmodified-Since request HTTP header makes the request conditional: the server will send back the requested resource, or accept it in the case of a POST or another non-safe method, only if it has not been last modified after the given date. If the request has been modified after the given date, the response will be a 412 (Precondition Failed) error."><code>If-Unmodified-Since</code></a></li><li><a href="Headers/Keep-Alive.html" title="The Keep-Alive general header allows the sender to hint about how the connection and may be used to set a timeout and a maximum amount of requests."><code>Keep-Alive</code></a></li><li><a href="Headers/Last-Modified.html" title="The Last-Modified response HTTP header contains the date and time at which the origin server believes the resource was last modified. It is used as a validator to determine if a resource received or stored is the same. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field."><code>Last-Modified</code></a></li><li><a href="Headers/Location.html" title="The Location response header indicates the URL to redirect a page to. It only provides a meaning when served with a 3xx status response."><code>Location</code></a></li><li><span class="sidebar-icon"><span title="This deprecated API should no longer be used, but will probably still work."><i class="icon-thumbs-down-alt"> </i></span></span><a href="Headers/Pragma.html" title="The Pragma HTTP/1.0 general header is an implementation-specific header that may have various effects along the request-response chain. It is used for backwards compatibility with HTTP/1.0 caches where the Cache-Control HTTP/1.1 header is not yet present."><code>Pragma</code></a></li><li><a href="Headers/Referer.html" title="The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example."><code>Referer</code></a></li><li><a href="Headers/Retry-After.html" title="The Retry-After response HTTP header indicates how long the user agent should wait before making a follow-up request. There are two main cases this header is used:"><code>Retry-After</code></a></li><li><a href="Headers/Server.html" title="The Server header contains information about the software used by the origin server to handle the request."><code>Server</code></a></li><li><a href="Headers/TE.html" title="The TE request header specifies the transfer encodings the user agent is willing to accept. (you could informally call it Accept-Transfer-Encoding, which would be more intuitive)."><code>TE</code></a></li><li><a href="Headers/Trailer.html" title="The Trailer request header allows the sender to include additional fields at the end of chunked messages in order to supply metadata that might be dynamically generated while the message body is sent, such as a message integrity check, digital signature, or post-processing status."><code>Trailer</code></a></li><li><a href="Headers/Transfer-Encoding.html" title="The Transfer-Encoding header specifies the form of encoding used to safely transfer the entity to the user."><code>Transfer-Encoding</code></a></li><li><a href="Headers/User-Agent.html" title="The User-Agent request header contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent."><code>User-Agent</code></a></li><li><a href="Headers/Vary.html" title="The Vary HTTP response header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server. It is used by the server to indicate which headers it used when selecting a representation of a resource in a content negotiation algorithm."><code>Vary</code></a></li><li><a href="Headers/Via.html" title="The Via general header is added by proxies, both forward and reverse proxies, and can appear in the request headers and the response headers. It is used for tracking message forwards, avoiding request loops, and identifying the protocol capabilities of senders along the request/response chain."><code>Via</code></a></li><li><a href="Headers/Warning.html" title="The Warning general HTTP header contains information about possible problems with the status of the message. More than one Warning header may appear in a response."><code>Warning</code></a></li><li><a href="Headers/X-Content-Type-Options.html" title="The X-Content-Type-Options response HTTP header is a marker used by the server to indicate that the MIME types advertized in the Content-Type headers should not be changed and be followed. This allows to opt out of MIME sniffing, or, in other words, it is a way to say that the webmasters knew what they were doing."><code>X-Content-Type-Options</code></a></li><li><a href="Headers/X-Frame-Options.html" title="The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a &lt;frame>, &lt;iframe> or &lt;object> . Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites."><code>X-Frame-Options</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="Methods.html">HTTP request methods</a> 
+      <ol><li><a href="Methods/GET.html" title="The GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a></li><li><a href="Methods/HEAD.html" title="The HTTP HEAD method requests the headers that are returned if the specified resource would be requested with an HTTP GET method. Such a request can be done before deciding to download a large resource to save bandwidth, for example."><code>HEAD</code></a></li><li><a href="Methods/POST.html" title="The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header. A POST request is typically send via an HTML form and results in a change on the server. In this case, the content type is selected by putting the adequate string in the enctype attribute of the &lt;form> element or the formenctype attribute of the &lt;input> or &lt;button> elements:"><code>POST</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="Status.html">HTTP response status codes</a> 
+      <ol><li><a href="Status/100.html" title="The HTTP 100 Continue informational status response code indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished."><code>100 Continue</code></a></li><li><a href="Status/200.html" title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default."><code>200 OK</code></a></li><li><a href="Status/201.html" title="The HTTP 201 Created success status response code indicates that the request has succeeded and has led to the creation of a resource. The new resource is effectively created before this response is sent back. and the new resource is returned in the body of the message, its location being either the URL of the request, or the content of the Location header."><code>201 Created</code></a></li><li><a href="Status/204.html" title="The HTTP 204 No Content success status response code indicates that the request has succeded, but that the client doesn't need to go away from its current page . A 204 response is cacheable by default. An ETag header is included in such a response."><code>204 No Content</code></a></li><li><a href="Status/206.html" title="The HTTP 206 Partial Content success status response code indicates that the request has succeeded and has the body contains the requested ranges of data, as described in the Range header of the request."><code>206 Partial Content</code></a></li><li><a href="Status/301.html" title="The HTTP 301 Moved Permanently redirect status response code indicates that the resource requested has been definitively moved to the URL given by the Location headers. A browser redirects to this page, and search engines update their links to the resource (In SEO-speak, it is said that the link-juice is sent to the new URL)."><code>301 Moved Permanently</code></a></li><li><a href="Status/302.html" title="The HTTP 302 Found redirect status response code indicates that the resource requested has been temporarily moved to the URL given by the Location headers. A browser redirects to this page, but search engines don't update their links to the resource (In SEO-speak, it is said that the link-juice is not sent to the new URL)."><code>302 Found</code></a></li><li><a href="Status/303.html" title="The HTTP 303 See Other redirect status response code, usually sent back as a result of a PUT or POST operation, indicates that the redirects don't link to the newly uploaded resources but to another page, like a confirmation page or an upload progress page. The method used to display this redirected page is always GET."><code>303 See Other</code></a></li><li><a href="Status/304.html" title="The HTTP 304 Not Modified client redirection response code indicates that there is no need to retransmit the requested resources. It is an implicit redirection to a cached resource. This happens when the request method is safe, like a GET or a HEAD request, or when the request is conditional and uses a If-None-Match or a If-Modified-Since header."><code>304 Not Modified</code></a></li><li><a href="Status/307.html" title='The method and the body of the original request are reused to perform the redirected request. In the cases where you want the method used to be changed to GET, use 303 See Also instead. This is useful when you want to give an answer to a PUT method that is not the uploaded resources, but a confirmation message (like "You successfully uploaded XYZ").'><code>307 Temporary Redirect</code></a></li><li><a href="Status/308.html" title="The request method and the body will not be altered, whereas 301 may incorrectly sometimes be changed to a GET method."><code>308 Permanent Redirect</code></a></li><li><a href="Status/404.html" title="The HTTP 404 Not Found client error response code indicates that a server can not find the requested resource. This response code probably is most famous one due to its frequency to occur in the web. These are often called broken or dead links and lead to link rot."><code>404 Not Found</code></a></li><li><a href="Status/406.html" title="The HTTP 406 Not Acceptable client error response code indicates that a response matching the list of acceptable values defined in Accept-Charset and Accept-Language cannot be served."><code>406 Not Acceptable</code></a></li><li><a href="Status/410.html" title="The HTTP 410 Gone client error response code indicates that access to the target resource is no longer available at the origin server and that this condition is likely to be permanent."><code>410 Gone</code></a></li><li><a href="Status/412.html" title="The HTTP 412 Precondition Failed client error response code indicates that access to the target resource has been denied. This happens with conditional requests on methods other than GET or HEAD when the condition defined by the If-Unmodified-Since or If-None-Match headers is not fulfilled. In that case, the request, usually an upload or a modification of a resource, cannot be made and this error response is sent back."><code>412 Precondition Failed</code></a></li><li><a href="Status/451.html" title="The HTTP 451 Unavailable For Legal Reasons client error response code indicates that the user requests an illegal resource, such as a web page for which a legal action has been issued."><code>451 Unavailable For Legal Reasons</code></a></li><li><a href="Status/500.html" title="The HTTP 500 Internal Server Error server error response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request."><code>500 Internal Server Error</code></a></li><li><a href="Status/501.html" title="The HTTP 501 Not Implemented server error response code indicates that the request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD."><code>501 Not Implemented</code></a></li><li><a href="Status/502.html" title="The HTTP 502 Bad Gateway server error response code indicates that the server, while acting as a gateway or proxy, received an invalid response from the upstream server."><code>502 Bad Gateway</code></a></li><li><a href="Status/503.html" title="The HTTP 503 Service Unavailable server error response code indicates that the server is not ready to handle the request."><code>503 Service Unavailable</code></a></li><li><a href="Status/504.html" title="The HTTP 504 Gateway Timeout server error response code indicates that the server, while acting as a gateway or proxy, cannot get a response in time."><code>504 Gateway Timeout</code></a></li></ol> 
+    </li> 
+  </ol> 
+
+  </div>
+                
+
+                <!-- approvals -->
+                
+
+              
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/en-US/docs/Web/HTTP/Redirections$edit" label="Edit page"></menuitem>
+    <menuitem data-action="/en-US/docs/Web/HTTP/Redirections$history" label="View page history"></menuitem>
+  </menu>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+  
+    <form class="languages go" method="get" action="https://developer.mozilla.org/en-US/docs/Web">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option title="English (US)" value="/en-US/docs/Web/HTTP/Redirections" selected>
+          English (US) (en-US)
+        </option>
+        
+          <option title="Japanese" value="/ja/docs/Web/HTTP/Redirections">
+            日本語 (ja)
+          </option>
+          <option title="Korean" value="/ko/docs/Web/HTTP/Redirections">
+            한국어 (ko)
+          </option>
+      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  
+
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+
+  
+
+  
+
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/newsletter.7cd3274169f2.js" charset="utf-8"></script>
+  
+
+
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Redirections by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:32:58 GMT -->
+</html>

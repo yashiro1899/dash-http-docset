@@ -1,0 +1,9 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+developer.mozilla.org	TRUE	/	FALSE	1999999999	csrftoken	KUDxGSMRr3Wy0ak43AOHXuoPF4JLxuw0
+mdn.mozillademos.org	TRUE	/	FALSE	1999999999	dwf_section_edit	False
+mdn.mozillademos.org	TRUE	/	FALSE	1999999999	dwf_sg_task_completion	False
+developer.mozilla.org	TRUE	/	FALSE	1999999999	messages	75d99ceb1942c60cc3e74257bbb53b6e4d37fa80$[[\"__json_message\"\0541\05430\054\"Redirected from https://developer.mozilla.org/en-US/docs/Web/HTTP/Evolution_of_HTTP\"\054\"wiki_redirect\"]]"
+developer.mozilla.org	TRUE	/	FALSE	1999999999	dwf_section_edit	False
+developer.mozilla.org	TRUE	/	FALSE	1999999999	dwf_sg_task_completion	False
+

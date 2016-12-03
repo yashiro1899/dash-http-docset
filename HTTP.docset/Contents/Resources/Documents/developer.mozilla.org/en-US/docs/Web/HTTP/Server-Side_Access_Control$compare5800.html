@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Server-Side_Access_Control$compare?to=53958&from=53957 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:23:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Compare Revisions | Server-Side Access Control (CORS) | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FServer-Side_Access_Control%24compare%3Fto%3D53958%26from%3D53957" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Server-Side_Access_Control%24compare%3Fto%3D53958%26from%3D53957">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article id="compare-revisions">
+
+    <h1>Compare Revisions</h1>
+    <h2><a href="Server-Side_Access_Control.html">Server-Side Access Control (CORS)</a></h2>
+
+    
+    <section class="revision-diff">
+      <a href="Server-Side_Access_Control%24history00fd.html?locale=en-US&amp;origin=translate">Change Revisions</a>
+      <header>
+        <div class="rev-from">
+            <h3>
+            
+              <a href="Server-Side_Access_Control%24revision/53957.html" rel="nofollow, noindex">
+                Revision 53957:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 53957 by <a href="https://developer.mozilla.org/en-US/profiles/aruner">aruner</a> on <time datetime="2008-12-02T03:13:01-08:00">December 2, 2008 at 3:13:01 AM PST</time>
+          </p>
+        </div>
+        <div class="rev-to">
+          <h3>
+            
+              <a href="Server-Side_Access_Control%24revision/53958.html" rel="nofollow, noindex">
+                Revision 53958:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 53958 by <a href="https://developer.mozilla.org/en-US/profiles/aruner">aruner</a> on <time datetime="2008-12-02T19:45:45-08:00">December 2, 2008 at 7:45:45 PM PST</time>
+          </p>
+        </div>
+      </header>
+
+      <dl>
+        <dt>Title:</dt>
+        <dd class="rev-from">Server-Side Access Control</dd>
+        <dd class="rev-to">Server-Side Access Control</dd>
+
+        <dt>Slug:</dt>
+        <dd class="rev-from">Server-Side_Access_Control</dd>
+        <dd class="rev-to">Server-Side_Access_Control</dd>
+
+        
+
+        
+        <dt>Comment:</dt>
+        <dd class="rev-from"> 40 words added</dd>
+        <dd class="rev-to"> 53 words added, 4 words removed</dd>
+        
+
+        <dt>Content:</dt>
+        
+        <dd>
+    <table class="diff" id="difflib_chg_to36__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 53957</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 53958</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to36__0"><a href="#difflib_chg_to36__1">n</a></td><td class="diff_header" id="from36_8">8</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firefox&nbsp;3.1&nbsp;implements&nbsp;the&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http:/</td><td class="diff_next"><a href="#difflib_chg_to36__1">n</a></td><td class="diff_header" id="to36_8">8</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Firefox&nbsp;3.1&nbsp;implements&nbsp;the&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http:/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">/dev.w3.org/2006/waf/access-control/"&nbsp;title="http://dev.w3.org/20</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">/dev.w3.org/2006/waf/access-control/"&nbsp;title="http://dev.w3.org/20</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">06/waf/access-control/"&gt;W3C&nbsp;Access&nbsp;Control&nbsp;specification&lt;/a&gt;.&amp;nbs</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">06/waf/access-control/"&gt;W3C&nbsp;Access&nbsp;Control&nbsp;specification&lt;/a&gt;.&amp;nbs</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">p;&nbsp;As&nbsp;a&nbsp;result,&nbsp;Firefox&nbsp;3.1&nbsp;sends&nbsp;specific&nbsp;HTTP&amp;nbsp;headers&nbsp;for&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">p;&nbsp;As&nbsp;a&nbsp;result,&nbsp;Firefox&nbsp;3.1&nbsp;sends&nbsp;specific&nbsp;HTTP&amp;nbsp;headers&nbsp;for&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">cross-site&nbsp;requests&nbsp;initiated&nbsp;from&nbsp;within&nbsp;&lt;code&gt;&lt;a&nbsp;class="interna</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">cross-site&nbsp;requests&nbsp;initiated&nbsp;from&nbsp;within&nbsp;&lt;code&gt;&lt;a&nbsp;class="interna</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">l"&nbsp;href="/en/XMLHttpRequest"&nbsp;title="En/XMLHttpRequest"&gt;XMLHttpReq</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">l"&nbsp;href="/en/XMLHttpRequest"&nbsp;title="En/XMLHttpRequest"&gt;XMLHttpReq</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">uest&lt;/a&gt;&lt;/code&gt;&nbsp;(which&nbsp;in&nbsp;Firefox&nbsp;3.1&nbsp;and&nbsp;beyond&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;i</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">uest&lt;/a&gt;&lt;/code&gt;&nbsp;(which&nbsp;in&nbsp;Firefox&nbsp;3.1&nbsp;and&nbsp;beyond&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;i</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nvoke&nbsp;different&nbsp;domains)&nbsp;and&nbsp;for&nbsp;cross-site&nbsp;&lt;a&nbsp;class="external"&nbsp;h</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nvoke&nbsp;different&nbsp;domains)&nbsp;and&nbsp;for&nbsp;cross-site&nbsp;&lt;a&nbsp;class="external"&nbsp;h</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ref="http://www.webfonts.info/wiki/index.php?title=%40font-face_s</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ref="http://www.webfonts.info/wiki/index.php?title=%40font-face_s</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">upport_in_Firefox"&nbsp;title="http://www.webfonts.info/wiki/index.php</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">upport_in_Firefox"&nbsp;title="http://www.webfonts.info/wiki/index.php</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">?title=@font-face_support_in_Firefox"&gt;font&nbsp;downloads&lt;/a&gt;.&amp;nbsp;&nbsp;I</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">?title=@font-face_support_in_Firefox"&gt;font&nbsp;downloads&lt;/a&gt;.&amp;nbsp;&nbsp;I</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">t&nbsp;also&nbsp;expects&nbsp;to&nbsp;see&nbsp;specific&nbsp;HTTP&nbsp;headers&nbsp;sent&nbsp;back&nbsp;with&nbsp;cross-</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">t&nbsp;also&nbsp;expects&nbsp;to&nbsp;see&nbsp;specific&nbsp;HTTP&nbsp;headers&nbsp;sent&nbsp;back&nbsp;with&nbsp;cross-</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">site&nbsp;responses.&amp;nbsp;&nbsp;An&nbsp;overview&nbsp;of&nbsp;these&nbsp;headers,&nbsp;including&nbsp;sam</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">site&nbsp;responses.&amp;nbsp;&nbsp;An&nbsp;overview&nbsp;of&nbsp;these&nbsp;headers,&nbsp;including&nbsp;sam</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ple&nbsp;JavaScript&nbsp;code&nbsp;that&nbsp;initiates<span class="diff_sub">&nbsp;and&nbsp;processes</span>&nbsp;requests,&nbsp;as&nbsp;wel</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ple&nbsp;JavaScript&nbsp;code&nbsp;that&nbsp;initiates&nbsp;requests<span class="diff_add">&nbsp;and&nbsp;processes&nbsp;respons</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">l&nbsp;as&nbsp;a&nbsp;discussion&nbsp;of&nbsp;each&nbsp;header,&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/H</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">es&nbsp;from&nbsp;the&nbsp;server</span>,&nbsp;as&nbsp;well&nbsp;as&nbsp;a&nbsp;discussion&nbsp;of&nbsp;each&nbsp;header,&nbsp;&lt;a&nbsp;cl</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">TTP_access_control"&nbsp;title="En/HTTP&nbsp;Access&nbsp;Control"&gt;can&nbsp;be&nbsp;found&nbsp;h</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ass="internal"&nbsp;href="/En/HTTP_access_control"&nbsp;title="En/HTTP&nbsp;Acce</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ere&nbsp;(HTTP&amp;nbsp;Access&nbsp;Control).&lt;/a&gt;&amp;nbsp;&nbsp;The&nbsp;&lt;a&nbsp;class="internal"</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ss&nbsp;Control"&gt;can&nbsp;be&nbsp;found&nbsp;here&nbsp;(HTTP&amp;nbsp;Access&nbsp;Control).&lt;/a&gt;&amp;nbs</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;href="/En/HTTP_access_control"&nbsp;title="En/HTTP&nbsp;access&nbsp;control"&gt;HT</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">p;&nbsp;The&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/HTTP_access_control"&nbsp;title="</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">TP&nbsp;Access&nbsp;Control&lt;/a&gt;&nbsp;article&nbsp;should&nbsp;be&nbsp;read&nbsp;as&nbsp;a&nbsp;companion&nbsp;artic</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">En/HTTP&nbsp;access&nbsp;control"&gt;HTTP&nbsp;Access&nbsp;Control&lt;/a&gt;&nbsp;article&nbsp;should&nbsp;be</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">le&nbsp;to&nbsp;this&nbsp;one.&amp;nbsp;&nbsp;This&nbsp;article&nbsp;covers&nbsp;processing&nbsp;&lt;strong&gt;Acce</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;read&nbsp;as&nbsp;a&nbsp;companion&nbsp;article&nbsp;to&nbsp;this&nbsp;one.&amp;nbsp;&nbsp;This&nbsp;article&nbsp;cove</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ss&nbsp;Control&nbsp;Requests&lt;/strong&gt;&nbsp;and&nbsp;formulating&nbsp;&lt;strong&gt;Access&nbsp;Contr</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">rs&nbsp;processing&nbsp;&lt;strong&gt;Access&nbsp;Control&nbsp;Requests&lt;/strong&gt;&nbsp;and&nbsp;formul</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ol&nbsp;Responses&lt;/strong&gt;&nbsp;in&nbsp;PHP.&amp;nbsp;&nbsp;The&nbsp;target&nbsp;audience&nbsp;<span class="diff_chg">is&nbsp;thus</span>&nbsp;s</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ating&nbsp;&lt;strong&gt;Access&nbsp;Control&nbsp;Responses&lt;/strong&gt;&nbsp;in&nbsp;PHP.&amp;nbsp;&nbsp;The</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">erver&nbsp;programmers&nbsp;or&nbsp;administrators.&amp;nbsp;&nbsp;Although&nbsp;the&nbsp;code&nbsp;samp</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;target&nbsp;audience&nbsp;<span class="diff_chg">for&nbsp;this&nbsp;article&nbsp;are</span>&nbsp;server&nbsp;programmers&nbsp;or&nbsp;admin</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">les&nbsp;shown&nbsp;here&nbsp;are&nbsp;PHP,&nbsp;similar&nbsp;concepts&nbsp;apply&nbsp;for&nbsp;ASP.net,&nbsp;Perl,</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">istrators.&amp;nbsp;&nbsp;Although&nbsp;the&nbsp;code&nbsp;samples&nbsp;shown&nbsp;here&nbsp;are<span class="diff_add">&nbsp;in</span>&nbsp;PHP,</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;Python,&nbsp;Java,&nbsp;etc.;&nbsp;in&nbsp;general,&nbsp;any&nbsp;server-side&nbsp;programming&nbsp;envi</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;similar&nbsp;concepts&nbsp;apply&nbsp;for&nbsp;ASP.net,&nbsp;Perl,&nbsp;Python,&nbsp;Java,&nbsp;etc.;&nbsp;in</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ronment&nbsp;that&nbsp;processes&nbsp;HTTP&amp;nbsp;requests&nbsp;and&nbsp;dynamically&nbsp;formula</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;general,&nbsp;<span class="diff_add">these&nbsp;concepts&nbsp;can&nbsp;be&nbsp;applied&nbsp;to&nbsp;</span>any&nbsp;server-side&nbsp;progra</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tes&nbsp;HTTP&nbsp;responses.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mming&nbsp;environment&nbsp;that&nbsp;processes&nbsp;HTTP&amp;nbsp;requests&nbsp;and&nbsp;dynamical</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ly&nbsp;formulates&nbsp;HTTP&nbsp;responses.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to36__1"><a href="#difflib_chg_to36__2">n</a></td><td class="diff_header" id="from36_75">75</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;A&nbsp;method&nbsp;other&nbsp;than&nbsp;&lt;code&gt;GET&lt;/code&gt;&nbsp;or&nbsp;&lt;code&gt;POST&lt;/cod</td><td class="diff_next"><a href="#difflib_chg_to36__2">n</a></td><td class="diff_header" id="to36_75">75</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;A&nbsp;method&nbsp;other&nbsp;than&nbsp;&lt;code&gt;GET&lt;/code&gt;&nbsp;or&nbsp;&lt;code&gt;POST&lt;/cod</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&gt;&nbsp;is&nbsp;used,&nbsp;or&nbsp;if&nbsp;&lt;code&gt;POST&lt;/code&gt;&nbsp;is&nbsp;used&nbsp;with&nbsp;a&nbsp;&lt;code&gt;Content-</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&gt;&nbsp;is&nbsp;used,&nbsp;or&nbsp;if&nbsp;&lt;code&gt;POST&lt;/code&gt;&nbsp;is&nbsp;used&nbsp;with&nbsp;a&nbsp;&lt;code&gt;Content-</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">Type&lt;/code&gt;&nbsp;<span class="diff_chg">other&nbsp;than&nbsp;one&nbsp;of</span>&nbsp;&lt;code&gt;application/x-www-form-urlenc</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">Type&lt;/code&gt;&nbsp;<span class="diff_chg">&lt;strong&gt;other&nbsp;than&lt;/strong&gt;&nbsp;one&nbsp;of</span>&nbsp;&lt;code&gt;application/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">oded&lt;/code&gt;,&nbsp;&lt;code&gt;multipart/form-data&lt;/code&gt;,&nbsp;or&nbsp;&lt;code&gt;text/plai</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">x-www-form-urlencoded&lt;/code&gt;,&nbsp;&lt;code&gt;multipart/form-data&lt;/code&gt;,&nbsp;o</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n.&amp;nbsp;&lt;/code&gt;&nbsp;For&nbsp;instance,&nbsp;if&nbsp;the&nbsp;&lt;code&gt;Content-Type&lt;/code&gt;&nbsp;of</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;&lt;code&gt;text/plain.&amp;nbsp;&lt;/code&gt;&nbsp;For&nbsp;instance,&nbsp;if&nbsp;the&nbsp;&lt;code&gt;Conte</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;the&nbsp;&lt;code&gt;POST&lt;/code&gt;&nbsp;body&nbsp;is&nbsp;&lt;code&gt;application/xml&lt;/code&gt;,&nbsp;a&nbsp;re</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nt-Type&lt;/code&gt;&nbsp;of&nbsp;the&nbsp;&lt;code&gt;POST&lt;/code&gt;&nbsp;body&nbsp;is&nbsp;&lt;code&gt;application</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">quest&nbsp;is&nbsp;preflighted.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">/xml&lt;/code&gt;,&nbsp;a&nbsp;request&nbsp;is&nbsp;preflighted.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to36__2"><a href="#difflib_chg_to36__3">n</a></td><td class="diff_header" id="from36_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here&nbsp;is&nbsp;an&nbsp;example&nbsp;in&nbsp;PHP&nbsp;of&nbsp;handling&nbsp;a&nbsp;&lt;a&nbsp;class="internal"</td><td class="diff_next"><a href="#difflib_chg_to36__3">n</a></td><td class="diff_header" id="to36_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here&nbsp;is&nbsp;an&nbsp;example&nbsp;in&nbsp;PHP&nbsp;of&nbsp;handling&nbsp;a&nbsp;&lt;a&nbsp;class="internal"</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;href="/En/HTTP<span class="diff_chg">%20access%20</span>control#Preflighted_Requests"&nbsp;title="E</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;href="/En/HTTP<span class="diff_chg">_access_</span>control#Preflighted_Requests"&nbsp;title="En/HT</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n/HTTP&nbsp;access&nbsp;control#Preflighted&nbsp;Requests"&gt;preflighted&nbsp;request&lt;/</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">TP&nbsp;access&nbsp;control#Preflighted&nbsp;Requests"&gt;preflighted&nbsp;request&lt;/a&gt;:&lt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a&gt;:&lt;code&gt;&lt;br&gt;&lt;/code&gt;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">code&gt;&lt;br&gt;&lt;/code&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to36__3"><a href="#difflib_chg_to36__4">n</a></td><td class="diff_header" id="from36_156">156</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/HTTP<span class="diff_chg">%20access%20</span>control#Reque</td><td class="diff_next"><a href="#difflib_chg_to36__4">n</a></td><td class="diff_header" id="to36_156">156</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/HTTP<span class="diff_chg">_access_</span>control#Requests%</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">sts%20with%20Credentials"&nbsp;title="En/HTTP&nbsp;access&nbsp;control#Requests&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">20with%20Credentials"&nbsp;title="En/HTTP&nbsp;access&nbsp;control#Requests&nbsp;with</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">with&nbsp;Credentials"&gt;Credentialed&nbsp;Access&nbsp;Control&amp;nbsp;Requests&lt;/a&gt;&nbsp;-</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;Credentials"&gt;Credentialed&nbsp;Access&nbsp;Control&amp;nbsp;Requests&lt;/a&gt;&nbsp;--&nbsp;th</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">-&nbsp;that&nbsp;is,&nbsp;requests&nbsp;that&nbsp;are&nbsp;accompanied&nbsp;by&nbsp;Cookies&nbsp;or&nbsp;HTTP&nbsp;Authe</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">at&nbsp;is,&nbsp;requests&nbsp;that&nbsp;are&nbsp;accompanied&nbsp;by&nbsp;Cookies&nbsp;or&nbsp;HTTP&nbsp;Authentic</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ntication&nbsp;information&nbsp;(and&nbsp;which&nbsp;expect&nbsp;Cookies&nbsp;to&nbsp;be&nbsp;sent&nbsp;with&nbsp;r</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ation&nbsp;information&nbsp;(and&nbsp;which&nbsp;expect&nbsp;Cookies&nbsp;to&nbsp;be&nbsp;sent&nbsp;with&nbsp;respo</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">esponses)&nbsp;--&nbsp;can&nbsp;be&nbsp;either&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/HTTP<span class="diff_chg">%20a</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nses)&nbsp;--&nbsp;can&nbsp;be&nbsp;either&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/HTTP<span class="diff_chg">_access_</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">ccess%20</span>control#Simple%20Requests"&nbsp;title="En/HTTP&nbsp;access&nbsp;control#</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg"></span>control#Simple%20Requests"&nbsp;title="En/HTTP&nbsp;access&nbsp;control#Simple&nbsp;R</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">Simple&nbsp;Requests"&gt;Simple&lt;/a&gt;&nbsp;or&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/HTTP</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">equests"&gt;Simple&lt;/a&gt;&nbsp;or&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/HTTP<span class="diff_chg">_access_</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">%20access%20</span>control#Preflighted%20Requests"&nbsp;title="En/HTTP&nbsp;access</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg"></span>control#Preflighted%20Requests"&nbsp;title="En/HTTP&nbsp;access&nbsp;control#Pre</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;control#Preflighted&nbsp;Requests"&gt;Preflighted&lt;/a&gt;,&nbsp;depending&nbsp;on&nbsp;the&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">flighted&nbsp;Requests"&gt;Preflighted&lt;/a&gt;,&nbsp;depending&nbsp;on&nbsp;the&nbsp;request&nbsp;meth</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">request&nbsp;methods&nbsp;used.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ods&nbsp;used.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to36__4"><a href="#difflib_chg_to36__5">n</a></td><td class="diff_header" id="from36_226">226</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;nbsp;This&nbsp;example&nbsp;can&nbsp;be&nbsp;seen&nbsp;&lt;a&nbsp;class="external"&nbsp;href="ht</span></td><td class="diff_next"><a href="#difflib_chg_to36__5">n</a></td><td class="diff_header" id="to36_226">226</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;nbsp;Note&nbsp;that&nbsp;in&nbsp;the&nbsp;case&nbsp;of&nbsp;credentialed&nbsp;requests,&nbsp;the&nbsp;&lt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">tp://arunranga.com/examples/access-control/"&nbsp;title="http://arunra</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">code&gt;Access-Control-Allow-Origin:&lt;/code&gt;&nbsp;header&nbsp;&lt;strong&gt;must&nbsp;not&lt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nga.com/examples/access-control/"&gt;running&nbsp;here&lt;/a&gt;&nbsp;if&nbsp;you&nbsp;have&nbsp;a&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">/strong&gt;&nbsp;have&nbsp;a&nbsp;wildcard&nbsp;value&nbsp;of&nbsp;"*".&amp;nbsp;&amp;nbsp;&nbsp;It&nbsp;&lt;strong&gt;mus</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">browser&nbsp;that&nbsp;implements&nbsp;Access&nbsp;Control&nbsp;(such&nbsp;as&nbsp;Firefox&nbsp;3.1).</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">t&lt;/strong&gt;&nbsp;mention&nbsp;a&nbsp;valid&nbsp;origin&nbsp;domain.&amp;nbsp;&nbsp;The&nbsp;example&nbsp;above</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;can&nbsp;be&nbsp;seen&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http://arunranga.com/examp</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">les/access-control/"&nbsp;title="http://arunranga.com/examples/access-</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">control/"&gt;running&nbsp;here&lt;/a&gt;&nbsp;if&nbsp;you&nbsp;have&nbsp;a&nbsp;browser&nbsp;that&nbsp;implements&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">Access&nbsp;Control&nbsp;(such&nbsp;as&nbsp;Firefox&nbsp;3.1).</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to36__5"><a href="#difflib_chg_to36__top">t</a></td><td class="diff_header" id="from36_236">236</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/HTTP_<span class="diff_chg">A</span>ccess_<span class="diff_chg">C</span>ontrol"&nbsp;title=</td><td class="diff_next"><a href="#difflib_chg_to36__top">t</a></td><td class="diff_header" id="to36_236">236</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/En/HTTP_<span class="diff_chg">a</span>ccess_<span class="diff_chg">c</span>ontrol"&nbsp;title=</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">"En/HTTP&nbsp;Access&nbsp;Control"&gt;HTTP&nbsp;Access&nbsp;Control&nbsp;covering&nbsp;the&nbsp;HTTP&nbsp;He</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">"En/HTTP&nbsp;Access&nbsp;Control"&gt;HTTP&nbsp;Access&nbsp;Control&nbsp;covering&nbsp;the&nbsp;HTTP&nbsp;He</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">aders&lt;/a&gt;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">aders&lt;/a&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from36_237">237</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from36_238">238</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;</td><td class="diff_next"></td><td class="diff_header" id="to36_237">237</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>li&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to36_238">238</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from36_239">239</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/<span class="diff_chg">E</span>n/XMLHttpRequest"&nbsp;title="En/X</td><td class="diff_next"></td><td class="diff_header" id="to36_239">239</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="internal"&nbsp;href="/<span class="diff_chg">e</span>n/XMLHttpRequest"&nbsp;title="En/X</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">MLHttpRequest"&gt;XMLHttpRequest&lt;/a&gt;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">MLHttpRequest"&gt;XMLHttpRequest&lt;/a&gt;</td></tr>
+        </tbody>
+    </table></dd>
+        
+      </dl>
+    </section>
+  
+
+    <p><a href="Server-Side_Access_Control%24history.html" rel="nofollow, noindex">Back to History</a></p>
+
+  </article>
+
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+    
+    <input type="hidden" name="to" value="53958">
+    
+  
+    
+    <input type="hidden" name="from" value="53957">
+    
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Server-Side_Access_Control$compare?to=53958&from=53957 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:23:02 GMT -->
+</html>

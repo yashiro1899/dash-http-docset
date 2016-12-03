@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Status$revision/1072138 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:52:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1072138 | HTTP response status codes | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FStatus%24revision%2F1072138" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Status%24revision/1072138">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1072138 of <a href="../Status.html">HTTP response status codes</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Response_codes</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>HTTP response codes</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1072138</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-06-16T11:17:45-07:00">Jun 16, 2016, 11:17:45 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>arulnithi</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>Consistency between &#34;and later&#34; and &#34;and newer&#34;</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Status codes">Status codes</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p>{{ HTTPSidebar }}</p>
+
+<p>HTTP Response Codes indicate whether a specific <a href="https://developer.mozilla.org/en/HTTP" title="en/HTTP">HTTP</a> requests has been successfully completed. Responses are grouped in five classes: informational responses, successful responses, redirections, client errors, and servers errors.</p>
+
+<p>The following table lists them all, with their respective meanings:</p>
+
+<table class="standard-table" style="width: 100%;">
+ <thead>
+  <tr>
+   <th scope="col">Status code</th>
+   <th scope="col">Status text</th>
+   <th scope="col">Description</th>
+   <th scope="col">HTTP version</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <th colspan="4"><em>Informational responses</em></th>
+  </tr>
+  <tr>
+   <td id="100">100</td>
+   <td>Continue</td>
+   <td>This interim response indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="101">101</td>
+   <td>Switching Protocol</td>
+   <td>This code is sent in response to an <code>Upgrade:</code> request header by the client, and indicates that the protocol the server is switching too. It was introduced to allow migration to an incompatible protocol version, and is not in common use.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <th colspan="4"><em>Successful responses</em></th>
+  </tr>
+  <tr>
+   <td id="200">200</td>
+   <td>
+    <p>OK</p>
+   </td>
+   <td>The request has succeeded. The meaning of a success varies depending on the HTTP method:
+    <ul>
+     <li>GET: The resource has been fetched and is transmitted in the message body.</li>
+     <li>HEAD: The entity headers are in the message body.</li>
+     <li>POST: The resource describing the result of the action is transmitted in the message body.</li>
+     <li>TRACE: The message body contains the request message as received by the server</li>
+    </ul>
+   </td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="201">201</td>
+   <td>Created</td>
+   <td>The request has succeeded and a new resource has been created as a result of it. This is typically the response sent after a PUT request.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="202">202</td>
+   <td>Accepted</td>
+   <td>The request has been received but not yet acted upon. It is non-committal, meaning that there is no way in HTTP to later send an asynchronous response indicating the outcome of processing the request. It is intended for cases where another process or server handles the request, or for batch processing.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="203">203</td>
+   <td>Non-Authoritative Information</td>
+   <td>This response code means returned meta-information set is not exact set as available from the origin server, but collected from a local or a third party copy. Except this condition, 200 OK response should be preferred instead of this response.</td>
+   <td>HTTP/0.9 and 1.1</td>
+  </tr>
+  <tr>
+   <td id="204">204</td>
+   <td>No Content</td>
+   <td>There is no content to send for this request, but the headers may be useful. The user-agent may update its cached headers for this resource with the new ones.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="205">205</td>
+   <td>Reset Content</td>
+   <td>This response code is sent after accomplishing request to tell user agent reset document view which sent this request.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="206">206</td>
+   <td>Partial Content</td>
+   <td>This response code is used because of range header sent by the client to separate download into multiple streams.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <th colspan="4"><em>Redirection messages</em></th>
+  </tr>
+  <tr>
+   <td id="300">300</td>
+   <td>Multiple Choice</td>
+   <td>The request has more than one possible responses. User-agent or user should choose one of them. There is no standardized way to choose one of the responses.</td>
+   <td>HTTP/1.0 and later</td>
+  </tr>
+  <tr>
+   <td id="301">301</td>
+   <td>Moved Permanently</td>
+   <td>This response code means that URI of requested resource has been changed. Probably, new URI would be given in the response.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="302">302</td>
+   <td>Found</td>
+   <td>This response code means that URI of requested resource has been changed <em>temporarily</em>. New changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="303">303</td>
+   <td>See Other</td>
+   <td>Server sent this response to directing client to get requested resource to another URI with an GET request.</td>
+   <td>HTTP/0.9 and 1.1</td>
+  </tr>
+  <tr>
+   <td id="304">304</td>
+   <td>Not Modified</td>
+   <td>This is used for caching purposes. It is telling to client that response has not been modified. So, client can continue to use same cached version of response.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="305">305</td>
+   <td>Use Proxy</td>
+   <td>This means requested response must be accessed by a proxy. This response code is not largely supported because security reasons.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="306">306</td>
+   <td><em>unused</em></td>
+   <td>This response code is no longer used, it is just reserved currently. It was used in a previous version of the HTTP 1.1 specification.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="307">307</td>
+   <td>Temporary Redirect</td>
+   <td>Server sent this response to directing client to get requested resource to another URI with same method that used prior request. This has the same semantic than the <code>302 Found</code> HTTP response code, with the exception that the user agent <em>must not</em> change the HTTP method used: if a <code>POST</code> was used in the first request, a <code>POST</code> must be used in the second request.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="308">308</td>
+   <td>Permanent Redirect</td>
+   <td>
+    <p>This means that the resource is now permanently located at another URI, specified by the <code>Location:</code> HTTP Response header. This has the same semantics as the <code>301 Moved Permanently</code> HTTP response code, with the exception that the user agent <em>must not</em> change the HTTP method used: if a <code>POST</code> was used in the first request, a <code>POST</code> must be used in the second request.</p>
+
+    <div class="note"><strong>Note:</strong> This is an experimental response code whose <a class="external" href="http://greenbytes.de/tech/webdav/#draft-reschke-http-status-308" title="http://greenbytes.de/tech/webdav/#draft-reschke-http-status-308">specification</a> is currently in draft form.</div>
+   </td>
+   <td><a class="external" href="http://greenbytes.de/tech/webdav/draft-reschke-http-status-308-07.html" title="http://greenbytes.de/tech/webdav/draft-reschke-http-status-308-07.html">draft-reschke-http-status-308</a></td>
+  </tr>
+  <tr>
+   <th colspan="4"><em>Client error responses</em></th>
+  </tr>
+  <tr>
+   <td id="400">400</td>
+   <td>Bad Request</td>
+   <td>This response means that server could not understand the request due to invalid syntax.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="401">401</td>
+   <td>Unauthorized</td>
+   <td>Authentication is needed to get requested response. This is similar to 403, but in this case, authentication is possible.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="402">402</td>
+   <td>Payment Required</td>
+   <td>This response code is reserved for future use. Initial aim for creating this code was using it for digital payment systems however this is not used currently.</td>
+   <td>HTTP/0.9 and 1.1</td>
+  </tr>
+  <tr>
+   <td id="403">403</td>
+   <td>Forbidden</td>
+   <td>Client does not have access rights to the content so server is rejecting to give proper response.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="404">404</td>
+   <td>Not Found</td>
+   <td>Server can not find requested resource. This response code probably is most famous one due to its frequency to occur in web.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="405">405</td>
+   <td>Method Not Allowed</td>
+   <td>The request method is known by the server but has been disabled and cannot be used. The two mandatory methods, <code>GET</code> and <code>HEAD</code>, must never be disabled and should not return this error code.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="406">406</td>
+   <td>Not Acceptable</td>
+   <td>This response is sent when the web server, after performing <a href="https://developer.mozilla.org/en/HTTP/Content_negotiation#Server-driven_negotiation" title="https://developer.mozilla.org/en/HTTP/Content_negotiation#Server-driven_negotiation">server-driven content negotiation</a>, doesn't find any content following the criteria given by the user agent.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="407">407</td>
+   <td>Proxy Authentication Required</td>
+   <td>This is similar to 401 but authentication is needed to be done by a proxy.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="408">408</td>
+   <td>Request Timeout</td>
+   <td>This response is sent on an idle connection by some servers, even without any previous request by the client. It means that the server would like to shut down this unused connection. This response is used much more since some browsers, like Chrome or IE9, use <a class="external" href="http://www.belshe.com/2011/02/10/the-era-of-browser-preconnect/" title="http://www.belshe.com/2011/02/10/the-era-of-browser-preconnect/">HTTP preconnection mechanisms</a> to speed up surfing (see {{ bug(634278) }}, which tracks the future implementation of such a mechanism in Firefox). Also note that some servers merely shut down the connection without sending this message.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="409">409</td>
+   <td>Conflict</td>
+   <td>This response would be sent when a request conflict with current state of server.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="410">410</td>
+   <td>Gone</td>
+   <td>This response would be sent when requested content has been deleted from server.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="411">411</td>
+   <td>Length Required</td>
+   <td>Server rejected the request because the <code>Content-Length</code> header field is not defined and the server requires it.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="412">412</td>
+   <td>Precondition Failed</td>
+   <td>The client has indicated preconditions in its headers which the server does not meet.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="413">413</td>
+   <td>Payload Too Large</td>
+   <td>Request entity is larger than limits defined by server; the server might close the connection or return an <code>Retry-After</code> header field.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="414">414</td>
+   <td>URI Too Long</td>
+   <td>The URI requested by the client is longer than the server is willing to interpret.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="415">415</td>
+   <td>Unsupported Media Type</td>
+   <td>The media format of the requested data is not supported by the server, so the server is rejecting the request.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="416">416</td>
+   <td>Requested Range Not Satisfiable</td>
+   <td>The range specified by the <code>Range</code> header field in the request can't be fulfilled; it's possible that the range is outside the size of the target URI's data.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="417">417</td>
+   <td>Expectation Failed</td>
+   <td>This response code means the expectation indicated by the <code>Expect</code> request header field can't be met by the server.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="418">418</td>
+   <td>I'm a teapot</td>
+   <td>Any attempt to brew coffee with a teapot should result in the error code "418 I'm a teapot". The resulting entity body MAY be short and stout.</td>
+   <td>HTCPCP/1.0</td>
+  </tr>
+  <tr>
+   <td id="421">421</td>
+   <td>Misdirected Request</td>
+   <td>The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.</td>
+   <td>HTTP/2.0</td>
+  </tr>
+  <tr>
+   <td id="426">426</td>
+   <td>Upgrade Required</td>
+   <td>The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol. The server MUST send an Upgrade header field in a 426 response to indicate the required protocol(s) (<a href="https://tools.ietf.org/html/rfc7230#section-6.7">Section 6.7 of [RFC7230]</a>).</td>
+   <td>HTTP/1.1 and later</td>
+  </tr>
+  <tr>
+   <td id="428">428</td>
+   <td>Precondition Required</td>
+   <td>The origin server requires the request to be conditional. Intended to prevent "the 'lost update' problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict."</td>
+   <td>HTTP/1.1 and later</td>
+  </tr>
+  <tr>
+   <td id="429">429</td>
+   <td>Too Many Requests</td>
+   <td>The user has sent too many requests in a given amount of time ("rate limiting").</td>
+   <td>HTTP/1.1 and later</td>
+  </tr>
+  <tr>
+   <td id="431">431</td>
+   <td>Request Header Fields Too Large</td>
+   <td>The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.</td>
+   <td>HTTP/1.1 and later</td>
+  </tr>
+  <tr>
+   <th colspan="4"><em>Server error responses</em></th>
+  </tr>
+  <tr>
+   <td id="500">500</td>
+   <td>Internal Server Error</td>
+   <td>The server has encountered a situation it doesn't know how to handle.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="501">501</td>
+   <td>Not Implemented</td>
+   <td>The request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are <code>GET</code> and <code>HEAD</code>.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="502">502</td>
+   <td>Bad Gateway</td>
+   <td>This error response means that the server, while working as a gateway to get a response needed to handle the request, got an invalid response.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="503">503</td>
+   <td>Service Unavailable</td>
+   <td>The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded. Note that together with this response, a user-friendly page explaining the problem should be sent. This responses should be used for temporary conditions and the <code>Retry-After:</code> HTTP header should, if possible, contain the estimated time before the recovery of the service. The webmaster must also take care about the caching-related headers that are sent along with this response, as these temporary condition responses should usually not be cached.</td>
+   <td>HTTP/0.9 and later</td>
+  </tr>
+  <tr>
+   <td id="504">504</td>
+   <td>Gateway Timeout</td>
+   <td>This error response is given when the server is acting as a gateway and cannot get a response in time.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="505">505</td>
+   <td>HTTP Version Not Supported</td>
+   <td>The HTTP version used in the request is not supported by the server.</td>
+   <td>HTTP/1.1 only</td>
+  </tr>
+  <tr>
+   <td id="506">506</td>
+   <td>Variant Also Negotiates</td>
+   <td>The server has an internal configuration error: transparent content negotiation for the request results in a circular reference.</td>
+   <td>HTTP/1.1</td>
+  </tr>
+  <tr>
+   <td id="507">507</td>
+   <td>Variant Also Negotiates</td>
+   <td>The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.</td>
+   <td>HTTP/1.1</td>
+  </tr>
+  <tr>
+   <td id="511">511</td>
+   <td>Network Authentication Required</td>
+   <td>The 511 status code indicates that the client needs to authenticate to gain network access.</td>
+   <td>HTTP/1.1</td>
+  </tr>
+ </tbody>
+</table>
+
+<p> </p>
+
+<p>{{ languages( { "zh-cn": "zh-cn/HTTP/HTTP_response_codes", "ja": "ja/HTTP/HTTP_response_codes"} ) }}</p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p&gt;{{ HTTPSidebar }}&lt;/p&gt;
+
+&lt;p&gt;HTTP&amp;nbsp;Response Codes indicate whether a specific &lt;a href=&#34;/en/HTTP&#34; title=&#34;en/HTTP&#34;&gt;HTTP&lt;/a&gt; requests has been successfully completed. Responses are grouped in five classes: informational responses, successful responses, redirections, client errors, and servers errors.&lt;/p&gt;
+
+&lt;p&gt;The following table lists them all, with their respective meanings:&lt;/p&gt;
+
+&lt;table class=&#34;standard-table&#34; style=&#34;width:100%&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Status code&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Status text&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Description&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;HTTP version&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th colspan=&#34;4&#34;&gt;&lt;em&gt;Informational responses&lt;/em&gt;&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;100&#34;&gt;100&lt;/td&gt;
+   &lt;td&gt;Continue&lt;/td&gt;
+   &lt;td&gt;This interim response indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;101&#34;&gt;101&lt;/td&gt;
+   &lt;td&gt;Switching Protocol&lt;/td&gt;
+   &lt;td&gt;This code is sent in response to an &lt;code&gt;Upgrade:&lt;/code&gt; request header by the client, and indicates that the protocol the server is switching too. It was introduced to allow migration to an incompatible protocol version, and is not in common use.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th colspan=&#34;4&#34;&gt;&lt;em&gt;Successful responses&lt;/em&gt;&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;200&#34;&gt;200&lt;/td&gt;
+   &lt;td&gt;
+    &lt;p&gt;OK&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td&gt;The request has succeeded. The meaning of a success varies depending on the HTTP method:
+    &lt;ul&gt;
+     &lt;li&gt;GET: The resource has been fetched and is transmitted in the message body.&lt;/li&gt;
+     &lt;li&gt;HEAD: The entity headers are in the message body.&lt;/li&gt;
+     &lt;li&gt;POST: The resource describing the result of the action is transmitted in the message body.&lt;/li&gt;
+     &lt;li&gt;TRACE: The message body contains the request message as received by the server&lt;/li&gt;
+    &lt;/ul&gt;
+   &lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;201&#34;&gt;201&lt;/td&gt;
+   &lt;td&gt;Created&lt;/td&gt;
+   &lt;td&gt;The request has succeeded and a new resource has been created as a result of it. This is typically the response sent after a PUT&amp;nbsp;request.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;202&#34;&gt;202&lt;/td&gt;
+   &lt;td&gt;Accepted&lt;/td&gt;
+   &lt;td&gt;The request has been received but not yet acted upon. It is non-committal, meaning that there is no way in HTTP to later send an asynchronous response indicating the outcome of processing the request. It is intended for cases where another process or server handles the request, or for batch processing.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;203&#34;&gt;203&lt;/td&gt;
+   &lt;td&gt;Non-Authoritative Information&lt;/td&gt;
+   &lt;td&gt;This response code means returned meta-information set is not exact set as available from the origin server, but collected from a local or a third party copy. Except this condition, 200 OK response should be preferred instead of this response.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and 1.1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;204&#34;&gt;204&lt;/td&gt;
+   &lt;td&gt;No Content&lt;/td&gt;
+   &lt;td&gt;There is no content to send for this request, but the headers may be useful. The user-agent may update its cached headers for this resource with the new ones.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;205&#34;&gt;205&lt;/td&gt;
+   &lt;td&gt;Reset Content&lt;/td&gt;
+   &lt;td&gt;This response code is sent after accomplishing request to tell user agent reset document view which sent this request.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;206&#34;&gt;206&lt;/td&gt;
+   &lt;td&gt;Partial Content&lt;/td&gt;
+   &lt;td&gt;This response code is used because of range header sent by the client to separate download into multiple streams.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th colspan=&#34;4&#34;&gt;&lt;em&gt;Redirection messages&lt;/em&gt;&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;300&#34;&gt;300&lt;/td&gt;
+   &lt;td&gt;Multiple Choice&lt;/td&gt;
+   &lt;td&gt;The request has more than one possible responses. User-agent or user should choose one of them. There is no standardized way to choose one of the responses.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.0 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;301&#34;&gt;301&lt;/td&gt;
+   &lt;td&gt;Moved Permanently&lt;/td&gt;
+   &lt;td&gt;This response code means that URI of requested resource has been changed. Probably, new URI would be given in the response.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;302&#34;&gt;302&lt;/td&gt;
+   &lt;td&gt;Found&lt;/td&gt;
+   &lt;td&gt;This response code means that URI of requested resource has been changed &lt;em&gt;temporarily&lt;/em&gt;. New changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;303&#34;&gt;303&lt;/td&gt;
+   &lt;td&gt;See Other&lt;/td&gt;
+   &lt;td&gt;Server sent this response to directing client to get requested resource to another URI with an GET request.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and 1.1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;304&#34;&gt;304&lt;/td&gt;
+   &lt;td&gt;Not Modified&lt;/td&gt;
+   &lt;td&gt;This is used for caching purposes. It is telling to client that response has not been modified. So, client can continue to use same cached version of response.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;305&#34;&gt;305&lt;/td&gt;
+   &lt;td&gt;Use Proxy&lt;/td&gt;
+   &lt;td&gt;This means requested response must be accessed by a proxy. This response code is not largely supported because security reasons.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;306&#34;&gt;306&lt;/td&gt;
+   &lt;td&gt;&lt;em&gt;unused&lt;/em&gt;&lt;/td&gt;
+   &lt;td&gt;This response code is no longer used, it is just reserved currently. It was used in a previous version of the HTTP 1.1 specification.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;307&#34;&gt;307&lt;/td&gt;
+   &lt;td&gt;Temporary Redirect&lt;/td&gt;
+   &lt;td&gt;Server sent this response to directing client to get requested resource to another URI with same method that used prior request. This has the same semantic than the &lt;code&gt;302 Found&lt;/code&gt; HTTP response code, with the exception that the user agent &lt;em&gt;must not&lt;/em&gt; change the HTTP method used: if a &lt;code&gt;POST&lt;/code&gt; was used in the first request, a &lt;code&gt;POST&lt;/code&gt; must be used in the second request.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;308&#34;&gt;308&lt;/td&gt;
+   &lt;td&gt;Permanent Redirect&lt;/td&gt;
+   &lt;td&gt;
+    &lt;p&gt;This means that the resource is now permanently located at another URI, specified by the &lt;code&gt;Location:&lt;/code&gt; HTTP Response header. This has the same semantics as the &lt;code&gt;301 Moved Permanently&lt;/code&gt; HTTP response code, with the exception that the user agent &lt;em&gt;must not&lt;/em&gt; change the HTTP method used: if a &lt;code&gt;POST&lt;/code&gt; was used in the first request, a &lt;code&gt;POST&lt;/code&gt; must be used in the second request.&lt;/p&gt;
+
+    &lt;div class=&#34;note&#34;&gt;&lt;strong&gt;Note:&lt;/strong&gt; This is an experimental response code whose &lt;a class=&#34;external&#34; href=&#34;http://greenbytes.de/tech/webdav/#draft-reschke-http-status-308&#34; title=&#34;http://greenbytes.de/tech/webdav/#draft-reschke-http-status-308&#34;&gt;specification&lt;/a&gt; is currently in draft form.&lt;/div&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;a class=&#34;external&#34; href=&#34;http://greenbytes.de/tech/webdav/draft-reschke-http-status-308-07.html&#34; title=&#34;http://greenbytes.de/tech/webdav/draft-reschke-http-status-308-07.html&#34;&gt;draft-reschke-http-status-308&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th colspan=&#34;4&#34;&gt;&lt;em&gt;Client error responses&lt;/em&gt;&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;400&#34;&gt;400&lt;/td&gt;
+   &lt;td&gt;Bad Request&lt;/td&gt;
+   &lt;td&gt;This response means that server could not understand the request due to invalid syntax.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;401&#34;&gt;401&lt;/td&gt;
+   &lt;td&gt;Unauthorized&lt;/td&gt;
+   &lt;td&gt;Authentication is needed to get requested response. This is similar to 403, but in this case, authentication is possible.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;402&#34;&gt;402&lt;/td&gt;
+   &lt;td&gt;Payment Required&lt;/td&gt;
+   &lt;td&gt;This response code is reserved for future use. Initial aim for creating this code was using it for digital payment systems however this is not used currently.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and 1.1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;403&#34;&gt;403&lt;/td&gt;
+   &lt;td&gt;Forbidden&lt;/td&gt;
+   &lt;td&gt;Client does not have access rights to the content so server is rejecting to give proper response.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;404&#34;&gt;404&lt;/td&gt;
+   &lt;td&gt;Not Found&lt;/td&gt;
+   &lt;td&gt;Server can not find requested resource. This response code probably is most famous one due to its frequency to occur in web.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;405&#34;&gt;405&lt;/td&gt;
+   &lt;td&gt;Method Not Allowed&lt;/td&gt;
+   &lt;td&gt;The request method is known by the server but has been disabled and cannot be used. The two mandatory methods,&amp;nbsp;&lt;code&gt;GET&lt;/code&gt; and &lt;code&gt;HEAD&lt;/code&gt;, must never be disabled and should not return this error code.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;406&#34;&gt;406&lt;/td&gt;
+   &lt;td&gt;Not Acceptable&lt;/td&gt;
+   &lt;td&gt;This response is sent when the web server, after performing &lt;a href=&#34;/en/HTTP/Content_negotiation#Server-driven_negotiation&#34; title=&#34;https://developer.mozilla.org/en/HTTP/Content_negotiation#Server-driven_negotiation&#34;&gt;server-driven content negotiation&lt;/a&gt;, doesn&#39;t find any content following the criteria given by the user agent.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;407&#34;&gt;407&lt;/td&gt;
+   &lt;td&gt;Proxy Authentication Required&lt;/td&gt;
+   &lt;td&gt;This is similar to 401 but authentication is needed to be done by a proxy.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;408&#34;&gt;408&lt;/td&gt;
+   &lt;td&gt;Request Timeout&lt;/td&gt;
+   &lt;td&gt;This response is sent on an idle connection by some servers, even without any previous request by the client. It means that the server would like to shut down this unused connection. This response is used much more since some browsers, like Chrome or IE9, use &lt;a class=&#34;external&#34; href=&#34;http://www.belshe.com/2011/02/10/the-era-of-browser-preconnect/&#34; title=&#34;http://www.belshe.com/2011/02/10/the-era-of-browser-preconnect/&#34;&gt;HTTP preconnection mechanisms&lt;/a&gt; to speed up surfing (see {{ bug(634278) }}, which tracks the future implementation of such a mechanism in Firefox). Also note that some servers merely shut down the connection without sending this message.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;409&#34;&gt;409&lt;/td&gt;
+   &lt;td&gt;Conflict&lt;/td&gt;
+   &lt;td&gt;This response would be sent when a request conflict with current state of server.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;410&#34;&gt;410&lt;/td&gt;
+   &lt;td&gt;Gone&lt;/td&gt;
+   &lt;td&gt;This response would be sent when requested content has been deleted from server.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;411&#34;&gt;411&lt;/td&gt;
+   &lt;td&gt;Length Required&lt;/td&gt;
+   &lt;td&gt;Server rejected the request because the &lt;code&gt;Content-Length&lt;/code&gt; header field is not defined and the server requires it.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;412&#34;&gt;412&lt;/td&gt;
+   &lt;td&gt;Precondition Failed&lt;/td&gt;
+   &lt;td&gt;The client has indicated preconditions in its headers which the server does not meet.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;413&#34;&gt;413&lt;/td&gt;
+   &lt;td&gt;Payload Too Large&lt;/td&gt;
+   &lt;td&gt;Request entity is larger than limits defined by server; the server might close the connection or return an &lt;code&gt;Retry-After&lt;/code&gt; header field.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;414&#34;&gt;414&lt;/td&gt;
+   &lt;td&gt;URI Too Long&lt;/td&gt;
+   &lt;td&gt;The URI requested by the client is longer than the server is willing to interpret.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;415&#34;&gt;415&lt;/td&gt;
+   &lt;td&gt;Unsupported Media Type&lt;/td&gt;
+   &lt;td&gt;The media format of the requested data is not supported by the server, so the server is rejecting the request.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;416&#34;&gt;416&lt;/td&gt;
+   &lt;td&gt;Requested Range Not Satisfiable&lt;/td&gt;
+   &lt;td&gt;The range specified by the &lt;code&gt;Range&lt;/code&gt; header field in the request can&#39;t be fulfilled; it&#39;s possible that the range is outside the size of the target URI&#39;s data.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;417&#34;&gt;417&lt;/td&gt;
+   &lt;td&gt;Expectation Failed&lt;/td&gt;
+   &lt;td&gt;This response code means the expectation indicated by the &lt;code&gt;Expect&lt;/code&gt; request header field can&#39;t be met by the server.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;418&#34;&gt;418&lt;/td&gt;
+   &lt;td&gt;I&#39;m a teapot&lt;/td&gt;
+   &lt;td&gt;Any attempt to brew coffee with a teapot should result in the error code &#34;418 I&#39;m a teapot&#34;. The resulting entity body MAY be short and stout.&lt;/td&gt;
+   &lt;td&gt;HTCPCP/1.0&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;421&#34;&gt;421&lt;/td&gt;
+   &lt;td&gt;Misdirected Request&lt;/td&gt;
+   &lt;td&gt;The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.&lt;/td&gt;
+   &lt;td&gt;HTTP/2.0&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;426&#34;&gt;426&lt;/td&gt;
+   &lt;td&gt;Upgrade Required&lt;/td&gt;
+   &lt;td&gt;The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol. The server MUST send an Upgrade header field in a 426 response to indicate the required protocol(s) (&lt;a href=&#34;https://tools.ietf.org/html/rfc7230#section-6.7&#34;&gt;Section 6.7 of [RFC7230]&lt;/a&gt;).&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;428&#34;&gt;428&lt;/td&gt;
+   &lt;td&gt;Precondition Required&lt;/td&gt;
+   &lt;td&gt;The origin server requires the request to be conditional. Intended to prevent &#34;the &#39;lost update&#39; problem, where a client GETs a resource&#39;s state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict.&#34;&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;429&#34;&gt;429&lt;/td&gt;
+   &lt;td&gt;Too Many Requests&lt;/td&gt;
+   &lt;td&gt;The user has sent too many requests in a given amount of time (&#34;rate limiting&#34;).&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;431&#34;&gt;431&lt;/td&gt;
+   &lt;td&gt;Request Header Fields Too Large&lt;/td&gt;
+   &lt;td&gt;The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th colspan=&#34;4&#34;&gt;&lt;em&gt;Server error responses&lt;/em&gt;&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;500&#34;&gt;500&lt;/td&gt;
+   &lt;td&gt;Internal Server Error&lt;/td&gt;
+   &lt;td&gt;The server has encountered a situation it doesn&#39;t know how to handle.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;501&#34;&gt;501&lt;/td&gt;
+   &lt;td&gt;Not Implemented&lt;/td&gt;
+   &lt;td&gt;The request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are &lt;code&gt;GET&lt;/code&gt;&amp;nbsp;and &lt;code&gt;HEAD&lt;/code&gt;.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;502&#34;&gt;502&lt;/td&gt;
+   &lt;td&gt;Bad Gateway&lt;/td&gt;
+   &lt;td&gt;This error response means that the server, while working as a gateway to get a response needed to handle the request, got an invalid response.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;503&#34;&gt;503&lt;/td&gt;
+   &lt;td&gt;Service Unavailable&lt;/td&gt;
+   &lt;td&gt;The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded. Note that together with this response, a user-friendly page explaining the problem should be sent. This responses should be used for temporary conditions and the &lt;code&gt;Retry-After:&lt;/code&gt; HTTP&amp;nbsp;header should, if possible, contain the estimated time before the recovery of the service. The webmaster must also take care about the caching-related headers that are sent along with this response, as these temporary condition responses should usually not be cached.&lt;/td&gt;
+   &lt;td&gt;HTTP/0.9 and later&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;504&#34;&gt;504&lt;/td&gt;
+   &lt;td&gt;Gateway Timeout&lt;/td&gt;
+   &lt;td&gt;This error response is given when the server is acting as a gateway and cannot get a response in time.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;505&#34;&gt;505&lt;/td&gt;
+   &lt;td&gt;HTTP Version Not Supported&lt;/td&gt;
+   &lt;td&gt;The HTTP version used in the request is not supported by the server.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1 only&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;506&#34;&gt;506&lt;/td&gt;
+   &lt;td&gt;Variant Also Negotiates&lt;/td&gt;
+   &lt;td&gt;The server has an internal configuration error: transparent content negotiation for the request results in a circular reference.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;507&#34;&gt;507&lt;/td&gt;
+   &lt;td&gt;Variant Also Negotiates&lt;/td&gt;
+   &lt;td&gt;The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td id=&#34;511&#34;&gt;511&lt;/td&gt;
+   &lt;td&gt;Network Authentication Required&lt;/td&gt;
+   &lt;td&gt;The 511 status code indicates that the client needs to authenticate to gain network access.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;{{ languages( { &#34;zh-cn&#34;: &#34;zh-cn/HTTP/HTTP_response_codes&#34;, &#34;ja&#34;: &#34;ja/HTTP/HTTP_response_codes&#34;} ) }}&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Status%24revert/1072138" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Status$revision/1072138 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:52:41 GMT -->
+</html>

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox$revision/8197 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:28:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 8197 | Firefox user agent string reference | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FHeaders%2FUser-Agent%2FFirefox%24revision%2F8197" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox%24revision/8197">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 8197 of <a href="../Firefox.html">Firefox user agent string reference</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Gecko_user_agent_string_reference</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Gecko user agent string reference</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>8197</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2011-01-06T00:54:24-08:00">Jan 6, 2011, 12:54:24 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>Dwitte</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>one or more formatting changes</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Compatibility">Compatibility</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Firefox">Firefox</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Firefox 4">Firefox 4</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Gecko">Gecko</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Gecko 2.0">Gecko 2.0</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          
+<p>{{ gecko_minversion_header("2.0") }}</p>
+<p>This document describes the user agent string used in Firefox 4 and applications based on Gecko 2.0. For a breakdown of changes to the string in Gecko 2.0, see <a class=" external" href="http://hacks.mozilla.org/2010/09/final-user-agent-string-for-firefox-4/" title="Final User Agent string for Firefox 4">Final User Agent string for Firefox 4</a> (blog post). For a list of User Agent strings suitable for testing purposes, including versions prior to Gecko 2.0 and probable strings for future major Gecko versions, see <a class=" external" href="https://developer.mozilla.org/@api/deki/files/4882/=ua.txt" title="UA reference">this text file.</a></p>
+<h2><span id="proposal">General form</span></h2>
+<p>The UA string of Firefox itself is broken down into four components:</p>
+<p style="margin-left: 40px;"><span style="font-size: medium;"><strong>Mozilla/5.0 (<em>platform</em>; rv:<em>geckoversion</em>) Gecko/<em>yyyymmdd</em> Firefox/<em>appversion</em></strong></span></p>
+<ul> <li><em><strong>Mozilla/5.0</strong></em> is the general token that says the browser is Mozilla compatible, and is common to almost every browser today.</li> <li><strong><em>platform</em></strong> describes the native platform the browser is running on (e.g. Windows, Mac, or Linux). See below for further details and examples.</li> <li><strong>rv:<em>geckoversion</em></strong> indicates the release version of Gecko (such as <em>"2.0.1"</em>). For prerelease versions, it may look something like "<em>2.0b5pre</em>" or "<em>2.0.2pre</em>".</li> <li><strong><em>Gecko/yyyymmdd</em></strong> indicates that the browser is based on Gecko. <strong><em>yyyymmdd</em></strong> is always "<em>20100101</em>" in release builds and does <strong>not</strong> represent the actual build date of the browser. (The recommended way of sniffing for a particular release of Gecko or Firefox is the version number.) For development (prerelease) builds, the build id presently indicates the build date of the browser, but this will very likely be removed in future.</li> <li> <p><em><strong>Firefox/appversion</strong></em> indicates the browser is Firefox, and provides the version (such as "<em>4.0.1"</em>). Note that this token will be different for other products based on Gecko — see below for details.</p> </li>
+</ul>
+<p><strong>Note:</strong> the <strong><em>Gecko/build</em></strong> token will be replaced by "<em>Gecko/</em>" in the next major release. Do <strong>not</strong> rely on the presence of the "<em>yyyymmdd</em>" string! The recommended way of sniffing for Gecko-based browsers is by the presence of the "<em>Gecko</em>" and "<em>rv:</em>" strings, since some other browsers include a "<em>like Gecko</em>" token.</p>
+<p>For other products based on Gecko, the string can take one of two forms, where the tokens have the same meaning except those noted below:</p>
+<p style="margin-left: 40px;"><span style="font-size: medium;"><strong>Mozilla/5.0 (<em>platform</em>; rv:<em>geckoversion</em>) Gecko/<em>yyyymmdd </em></strong></span><span style="font-size: medium;"><strong><em>appname</em>/<em>appversion<br>
+</em></strong><strong>M</strong></span><span style="font-size: medium;"><strong>ozilla/5.0 (<em>platform</em>; rv:<em>geckoversion</em>) Gecko/<em>yyyymmdd</em></strong></span><span style="font-size: medium;"><strong> Firefox/<em>firefoxversion</em></strong></span><span style="font-size: medium;"><strong> <em>appname</em>/<em>appversion</em></strong></span></p>
+<ul> <li><strong><em>appname/appversion</em></strong> indicates the application name and version. For instance, this could be "<em>Fennec/2.0.1</em>", "<em>Camino/2.1.1</em>", or "<em>SeaMonkey/2.1.1</em>".</li> <li> <p><em><strong>Firefox/firefoxversion</strong></em> is an optional compatibility token that some Gecko-based browsers may choose to incorporate, to achieve maximum compatibility with websites that expect Firefox.  <em><strong>firefoxversion</strong></em> will generally represent the equivalent Firefox release corresponding to the given Gecko version. Some Gecko-based browsers may not opt into using this token; for this reason, sniffers should be looking for Gecko — not Firefox! Whether this token appears is controlled by the <em>"general.useragent.compatMode.firefox"</em> boolean pref.</p> </li>
+</ul>
+<h2>Windows</h2>
+<p>Windows user agents have the following variations, where <em>x.y</em> is the Windows NT or Windows CE version (for instance, Windows NT 6.1).</p>
+<table class="standard-table"> <thead> <tr> <th scope="col">Windows version</th> <th scope="col">Gecko user agent string</th> </tr> </thead> <tbody> <tr> <td>Windows NT on x86</td> <td>Mozilla/5.0 (Windows NT <em>x</em>.<em>y</em>; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td> </tr> <tr> <td>Windows NT, Win64 on x64</td> <td>Mozilla/5.0 (Windows NT <em>x</em>.<em>y</em>; Win64; x64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td> </tr> <tr> <td>Windows NT, WOW64</td> <td>Mozilla/5.0 (Windows NT <em>x</em>.<em>y</em>; WOW64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td> </tr> <tr> <td>Windows CE</td> <td>Mozilla/5.0 (WindowsCE <em>x</em>.<em>y</em>; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td> </tr> </tbody>
+</table>
+<h2>Macintosh</h2>
+<p>Here, <em>x.y</em> is the version of Mac OS X (for instance, Mac OS X 10.6).</p>
+<table class="standard-table"> <thead> <tr> <th scope="col">Mac OS X version</th> <th scope="col">Gecko user agent string</th> </tr> </thead> <tbody> <tr> <td>Mac OS X on Intel x86 or x86_64</td> <td>Mozilla/5.0 (Macintosh; Intel Mac OS X <em>x.y</em>; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td> </tr> <tr> <td>Mac OS X on PowerPC</td> <td>Mozilla/5.0 (Macintosh; PPC Mac OS X <em>x.y</em>; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td> </tr> </tbody>
+</table>
+<h2>Linux</h2>
+<p>Linux is a more diverse platform. A few common examples are given below.</p>
+<table class="standard-table"> <thead> <tr> <th scope="col">Linux version</th> <th scope="col">Gecko user agent string</th> </tr> </thead> <tbody> <tr> <td>Linux desktop, i686</td> <td>Mozilla/5.0 (X11; Linux i686; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td> </tr> <tr> <td>Linux desktop, x86_64</td> <td>Mozilla/5.0 (X11; Linux x86_64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td> </tr> <tr> <td>Linux desktop, i686 running on x86_64</td> <td>Mozilla/5.0 (X11; Linux i686 on x86_64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1</td> </tr> <tr> <td>Android Linux mobile, on the Fennec browser</td> <td>Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1</td> </tr> <tr> <td>Nokia N900 Linux mobile, on the Fennec browser</td> <td>Mozilla/5.0 (Maemo; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1</td> </tr> </tbody>
+</table>
+<h2>Other Gecko-based browsers</h2>
+<p>These are some sample UA strings from other Gecko-based browsers on various platforms. Note that many of these have not yet been released on Gecko 2.0!</p>
+<table class="standard-table"> <thead> <tr> <th scope="col">Browser</th> <th scope="col">Gecko user agent string</th> </tr> </thead> <tbody> <tr> <td>Fennec mobile on Android</td> <td>Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1</td> </tr> <tr> <td>Fennec mobile on Maemo/Meego (e.g. Nokia N900)</td> <td>Mozilla/5.0 (Maemo; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1</td> </tr> <tr> <td>Fennec on an ARM-based desktop</td> <td>Mozilla/5.0 (X11; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1</td> </tr> <tr> <td>Fennec on an i686 desktop</td> <td>Mozilla/5.0 (X11; Linux i686; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1</td> </tr> <tr> <td>Camino on Mac</td> <td>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.5; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Camino/2.2.1</td> </tr> <tr> <td>SeaMonkey on Windows</td> <td>Mozilla/5.0 (Windows NT 5.2; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 SeaMonkey/2.1.1</td> </tr> <tr> <td>SeaMonkey on Mac</td> <td>Mozilla/5.0 (Macintosh; Intel Mac OS X 10.5; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 SeaMonkey/2.1.1</td> </tr> <tr> <td>SeaMonkey on Linux</td> <td>Mozilla/5.0 (X11; Linux i686; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 SeaMonkey/2.1.1</td> </tr> </tbody>
+</table>
+<h2>See Also</h2>
+<ul> <li><a class=" external" href="http://hacks.mozilla.org/2010/09/final-user-agent-string-for-firefox-4/" title="Final User Agent string for Firefox 4">Final User Agent string for Firefox 4</a> (blog post)</li> <li>Recommendations on <a href="https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support" title="en/Browser_Detection_and_Cross_Browser_Support">sniffing the UA string for cross-browser support</a>.</li>
+</ul>
+<hr>
+<p>Comments to <a class="link-news" href="news://news.mozilla.org/netscape.public.mozilla.netlib">mozilla.dev.platform</a> or <a class="link-mailto" href="mailto:dbaron@dbaron.org">dwitte@mozilla.com</a></p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">
+&lt;p&gt;{{ gecko_minversion_header(&#34;2.0&#34;) }}&lt;/p&gt;
+&lt;p&gt;This document describes the user agent string used in Firefox 4 and applications based on Gecko 2.0. For a breakdown of changes to the string in Gecko 2.0, see &lt;a class=&#34; external&#34; href=&#34;http://hacks.mozilla.org/2010/09/final-user-agent-string-for-firefox-4/&#34; title=&#34;Final User Agent string for Firefox 4&#34;&gt;Final User Agent string for Firefox 4&lt;/a&gt; (blog post). For a list of User Agent strings suitable for testing purposes, including versions prior to Gecko 2.0 and probable strings for future major Gecko versions, see &lt;a class=&#34; external&#34; href=&#34;/@api/deki/files/4882/=ua.txt&#34; title=&#34;UA reference&#34;&gt;this text file.&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;span id=&#34;proposal&#34;&gt;General form&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;The UA string of Firefox itself is broken down into four components:&lt;/p&gt;
+&lt;p style=&#34;margin-left: 40px;&#34;&gt;&lt;span style=&#34;font-size: medium;&#34;&gt;&lt;strong&gt;Mozilla/5.0 (&lt;em&gt;platform&lt;/em&gt;; rv:&lt;em&gt;geckoversion&lt;/em&gt;) Gecko/&lt;em&gt;yyyymmdd&lt;/em&gt; Firefox/&lt;em&gt;appversion&lt;/em&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt; &lt;li&gt;&lt;em&gt;&lt;strong&gt;Mozilla/5.0&lt;/strong&gt;&lt;/em&gt; is the general token that says the browser is Mozilla compatible, and is common to almost every browser today.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;&lt;em&gt;platform&lt;/em&gt;&lt;/strong&gt; describes the native platform the browser is running on (e.g. Windows, Mac, or Linux). See below for further details and examples.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;rv:&lt;em&gt;geckoversion&lt;/em&gt;&lt;/strong&gt; indicates the release version of Gecko (such as &lt;em&gt;&#34;2.0.1&#34;&lt;/em&gt;). For prerelease versions, it may look something like &#34;&lt;em&gt;2.0b5pre&lt;/em&gt;&#34; or &#34;&lt;em&gt;2.0.2pre&lt;/em&gt;&#34;.&lt;/li&gt; &lt;li&gt;&lt;strong&gt;&lt;em&gt;Gecko/yyyymmdd&lt;/em&gt;&lt;/strong&gt; indicates that the browser is based on Gecko. &lt;strong&gt;&lt;em&gt;yyyymmdd&lt;/em&gt;&lt;/strong&gt; is always &#34;&lt;em&gt;20100101&lt;/em&gt;&#34; in release builds and does &lt;strong&gt;not&lt;/strong&gt; represent the actual build date of the browser. (The recommended way of sniffing for a particular release of Gecko or Firefox is the version number.) For development (prerelease) builds, the build id presently indicates the build date of the browser, but this will very likely be removed in future.&lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;em&gt;&lt;strong&gt;Firefox/appversion&lt;/strong&gt;&lt;/em&gt; indicates the browser is Firefox, and provides the version (such as &#34;&lt;em&gt;4.0.1&#34;&lt;/em&gt;). Note that this token will be different for other products based on Gecko — see below for details.&lt;/p&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; the &lt;strong&gt;&lt;em&gt;Gecko/build&lt;/em&gt;&lt;/strong&gt; token will be replaced by &#34;&lt;em&gt;Gecko/&lt;/em&gt;&#34; in the next major release. Do &lt;strong&gt;not&lt;/strong&gt; rely on the presence of the &#34;&lt;em&gt;yyyymmdd&lt;/em&gt;&#34; string! The recommended way of sniffing for Gecko-based browsers is by the presence of the &#34;&lt;em&gt;Gecko&lt;/em&gt;&#34; and &#34;&lt;em&gt;rv:&lt;/em&gt;&#34; strings, since some other browsers include a &#34;&lt;em&gt;like Gecko&lt;/em&gt;&#34; token.&lt;/p&gt;
+&lt;p&gt;For other products based on Gecko, the string can take one of two forms, where the tokens have the same meaning except those noted below:&lt;/p&gt;
+&lt;p style=&#34;margin-left: 40px;&#34;&gt;&lt;span style=&#34;font-size: medium;&#34;&gt;&lt;strong&gt;Mozilla/5.0 (&lt;em&gt;platform&lt;/em&gt;; rv:&lt;em&gt;geckoversion&lt;/em&gt;) Gecko/&lt;em&gt;yyyymmdd &lt;/em&gt;&lt;/strong&gt;&lt;/span&gt;&lt;span style=&#34;font-size: medium;&#34;&gt;&lt;strong&gt;&lt;em&gt;appname&lt;/em&gt;/&lt;em&gt;appversion&lt;br&gt;
+&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt;M&lt;/strong&gt;&lt;/span&gt;&lt;span style=&#34;font-size: medium;&#34;&gt;&lt;strong&gt;ozilla/5.0 (&lt;em&gt;platform&lt;/em&gt;; rv:&lt;em&gt;geckoversion&lt;/em&gt;) Gecko/&lt;em&gt;yyyymmdd&lt;/em&gt;&lt;/strong&gt;&lt;/span&gt;&lt;span style=&#34;font-size: medium;&#34;&gt;&lt;strong&gt; Firefox/&lt;em&gt;firefoxversion&lt;/em&gt;&lt;/strong&gt;&lt;/span&gt;&lt;span style=&#34;font-size: medium;&#34;&gt;&lt;strong&gt; &lt;em&gt;appname&lt;/em&gt;/&lt;em&gt;appversion&lt;/em&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt; &lt;li&gt;&lt;strong&gt;&lt;em&gt;appname/appversion&lt;/em&gt;&lt;/strong&gt; indicates the application name and version. For instance, this could be &#34;&lt;em&gt;Fennec/2.0.1&lt;/em&gt;&#34;, &#34;&lt;em&gt;Camino/2.1.1&lt;/em&gt;&#34;, or &#34;&lt;em&gt;SeaMonkey/2.1.1&lt;/em&gt;&#34;.&lt;/li&gt; &lt;li&gt; &lt;p&gt;&lt;em&gt;&lt;strong&gt;Firefox/firefoxversion&lt;/strong&gt;&lt;/em&gt; is an optional compatibility token that some Gecko-based browsers may choose to incorporate, to achieve maximum compatibility with websites that expect Firefox.  &lt;em&gt;&lt;strong&gt;firefoxversion&lt;/strong&gt;&lt;/em&gt; will generally represent the equivalent Firefox release corresponding to the given Gecko version. Some Gecko-based browsers may not opt into using this token; for this reason, sniffers should be looking for Gecko — not Firefox! Whether this token appears is controlled by the &lt;em&gt;&#34;general.useragent.compatMode.firefox&#34;&lt;/em&gt; boolean pref.&lt;/p&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Windows&lt;/h2&gt;
+&lt;p&gt;Windows user agents have the following variations, where &lt;em&gt;x.y&lt;/em&gt; is the Windows NT or Windows CE version (for instance, Windows NT 6.1).&lt;/p&gt;
+&lt;table class=&#34;standard-table&#34;&gt; &lt;thead&gt; &lt;tr&gt; &lt;th scope=&#34;col&#34;&gt;Windows version&lt;/th&gt; &lt;th scope=&#34;col&#34;&gt;Gecko user agent string&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;Windows NT on x86&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Windows NT &lt;em&gt;x&lt;/em&gt;.&lt;em&gt;y&lt;/em&gt;; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Windows NT, Win64 on x64&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Windows NT &lt;em&gt;x&lt;/em&gt;.&lt;em&gt;y&lt;/em&gt;; Win64; x64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Windows NT, WOW64&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Windows NT &lt;em&gt;x&lt;/em&gt;.&lt;em&gt;y&lt;/em&gt;; WOW64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Windows CE&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (WindowsCE &lt;em&gt;x&lt;/em&gt;.&lt;em&gt;y&lt;/em&gt;; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Macintosh&lt;/h2&gt;
+&lt;p&gt;Here, &lt;em&gt;x.y&lt;/em&gt; is the version of Mac OS X (for instance, Mac OS X 10.6).&lt;/p&gt;
+&lt;table class=&#34;standard-table&#34;&gt; &lt;thead&gt; &lt;tr&gt; &lt;th scope=&#34;col&#34;&gt;Mac OS X version&lt;/th&gt; &lt;th scope=&#34;col&#34;&gt;Gecko user agent string&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;Mac OS X on Intel x86 or x86_64&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Macintosh; Intel Mac OS X &lt;em&gt;x.y&lt;/em&gt;; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Mac OS X on PowerPC&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Macintosh; PPC Mac OS X &lt;em&gt;x.y&lt;/em&gt;; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Linux&lt;/h2&gt;
+&lt;p&gt;Linux is a more diverse platform. A few common examples are given below.&lt;/p&gt;
+&lt;table class=&#34;standard-table&#34;&gt; &lt;thead&gt; &lt;tr&gt; &lt;th scope=&#34;col&#34;&gt;Linux version&lt;/th&gt; &lt;th scope=&#34;col&#34;&gt;Gecko user agent string&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;Linux desktop, i686&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (X11; Linux i686; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Linux desktop, x86_64&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (X11; Linux x86_64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Linux desktop, i686 running on x86_64&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (X11; Linux i686 on x86_64; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Android Linux mobile, on the Fennec browser&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Nokia N900 Linux mobile, on the Fennec browser&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Maemo; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Other Gecko-based browsers&lt;/h2&gt;
+&lt;p&gt;These are some sample UA strings from other Gecko-based browsers on various platforms. Note that many of these have not yet been released on Gecko 2.0!&lt;/p&gt;
+&lt;table class=&#34;standard-table&#34;&gt; &lt;thead&gt; &lt;tr&gt; &lt;th scope=&#34;col&#34;&gt;Browser&lt;/th&gt; &lt;th scope=&#34;col&#34;&gt;Gecko user agent string&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;Fennec mobile on Android&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Android; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Fennec mobile on Maemo/Meego (e.g. Nokia N900)&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Maemo; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Fennec on an ARM-based desktop&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (X11; Linux armv7l; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Fennec on an i686 desktop&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (X11; Linux i686; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Fennec/2.0.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Camino on Mac&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.5; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 Camino/2.2.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;SeaMonkey on Windows&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Windows NT 5.2; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 SeaMonkey/2.1.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;SeaMonkey on Mac&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.5; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 SeaMonkey/2.1.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;SeaMonkey on Linux&lt;/td&gt; &lt;td&gt;Mozilla/5.0 (X11; Linux i686; rv:2.0.1) Gecko/20100101 Firefox/4.0.1 SeaMonkey/2.1.1&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt; &lt;li&gt;&lt;a class=&#34; external&#34; href=&#34;http://hacks.mozilla.org/2010/09/final-user-agent-string-for-firefox-4/&#34; title=&#34;Final User Agent string for Firefox 4&#34;&gt;Final User Agent string for Firefox 4&lt;/a&gt; (blog post)&lt;/li&gt; &lt;li&gt;Recommendations on &lt;a href=&#34;/en/Browser_Detection_and_Cross_Browser_Support&#34; title=&#34;en/Browser_Detection_and_Cross_Browser_Support&#34;&gt;sniffing the UA string for cross-browser support&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;Comments to &lt;a class=&#34;link-news&#34; href=&#34;news://news.mozilla.org/netscape.public.mozilla.netlib&#34;&gt;mozilla.dev.platform&lt;/a&gt; or &lt;a class=&#34;link-mailto&#34; href=&#34;mailto:dbaron@dbaron.org&#34;&gt;dwitte@mozilla.com&lt;/a&gt;&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox%24revert/8197" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox$revision/8197 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:28:19 GMT -->
+</html>

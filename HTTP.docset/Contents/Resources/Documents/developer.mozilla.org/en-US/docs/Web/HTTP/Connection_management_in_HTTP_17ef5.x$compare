@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x$compare?to=1104417&from=1104395 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:23:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Compare Revisions | Connection management in HTTP/1.x | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FConnection_management_in_HTTP_1.x%24compare%3Fto%3D1104417%26from%3D1104395" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x%24compare%3Fto%3D1104417%26from%3D1104395">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article id="compare-revisions">
+
+    <h1>Compare Revisions</h1>
+    <h2><a href="Connection_management_in_HTTP_1.html">Connection management in HTTP/1.x</a></h2>
+
+    
+    <section class="revision-diff">
+      <a href="Connection_management_in_HTTP_100fd.html?locale=en-US&amp;origin=translate">Change Revisions</a>
+      <header>
+        <div class="rev-from">
+            <h3>
+            
+              <a href="Connection_management_in_HTTP_1.x%24revision/1104395.html" rel="nofollow, noindex">
+                Revision 1104395:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1104395 by <a href="https://developer.mozilla.org/en-US/profiles/teoli">teoli</a> on <time datetime="2016-08-12T01:12:21-07:00">August 12, 2016 at 1:12:21 AM PDT</time>
+          </p>
+        </div>
+        <div class="rev-to">
+          <h3>
+            
+              <a href="Connection_management_in_HTTP_1.x%24revision/1104417.html" rel="nofollow, noindex">
+                Revision 1104417:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1104417 by <a href="https://developer.mozilla.org/en-US/profiles/teoli">teoli</a> on <time datetime="2016-08-12T03:22:48-07:00">August 12, 2016 at 3:22:48 AM PDT</time>
+          </p>
+        </div>
+      </header>
+
+      <dl>
+        <dt>Title:</dt>
+        <dd class="rev-from">Connection management in HTTP/1.x</dd>
+        <dd class="rev-to">Connection management in HTTP/1.x</dd>
+
+        <dt>Slug:</dt>
+        <dd class="rev-from">Web/HTTP/Connection_management_in_HTTP_1.x</dd>
+        <dd class="rev-to">Web/HTTP/Connection_management_in_HTTP_1.x</dd>
+
+        
+        <dt>Tags:</dt>
+        <dd class="rev-from"> &#34;Guide&#34; &#34;HTTP&#34; &#34;Performance&#34; &#34;WebMechanics&#34; &#34;Performance&#34;</dd>
+        <dd class="rev-to"> &#34;Guide&#34; &#34;HTTP&#34; &#34;Performance&#34; &#34;WebMechanics&#34; &#34;Performance&#34;</dd>
+        
+
+        
+
+        <dt>Content:</dt>
+        
+        <dd>
+    <table class="diff" id="difflib_chg_to41__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1104395</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1104417</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__0"><a href="#difflib_chg_to41__1">n</a></td><td class="diff_header" id="from41_54">54</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Short-lived&nbsp;connection&nbsp;have&nbsp;two&nbsp;major&nbsp;drawbacks:&nbsp;the&nbsp;time&nbsp;t</td><td class="diff_next"><a href="#difflib_chg_to41__1">n</a></td><td class="diff_header" id="to41_54">54</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Short-lived&nbsp;connection<span class="diff_add">s</span>&nbsp;have&nbsp;two&nbsp;major&nbsp;drawbacks:&nbsp;the&nbsp;time&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">o&nbsp;establish&nbsp;a&nbsp;new&nbsp;connection&nbsp;is&nbsp;significant,&nbsp;and&nbsp;the&nbsp;performance&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">to&nbsp;establish&nbsp;a&nbsp;new&nbsp;connection&nbsp;is&nbsp;significant,&nbsp;and&nbsp;the&nbsp;performance</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">of&nbsp;the&nbsp;underlying&nbsp;TCP&nbsp;connection&nbsp;gets&nbsp;better&nbsp;when&nbsp;this&nbsp;connection</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;of&nbsp;the&nbsp;underlying&nbsp;TCP&nbsp;connection&nbsp;gets&nbsp;better<span class="diff_add">&nbsp;only</span>&nbsp;when&nbsp;this&nbsp;conn</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;has&nbsp;been&nbsp;in&nbsp;use&nbsp;for&nbsp;some&nbsp;time&nbsp;(warm&nbsp;connection).&nbsp;<span class="diff_chg">E</span>ven&nbsp;before&nbsp;HTT</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ection&nbsp;has&nbsp;been&nbsp;in&nbsp;use&nbsp;for&nbsp;some&nbsp;time&nbsp;(warm&nbsp;connection).&nbsp;<span class="diff_chg">To&nbsp;mitiga</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">P/1.1,&nbsp;the&nbsp;<span class="diff_chg">notion&nbsp;of&nbsp;a</span>&nbsp;&lt;em&gt;persistent&nbsp;connection&lt;/em&gt;&nbsp;has&nbsp;been&nbsp;cr</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">te&nbsp;this&nbsp;problem,&nbsp;e</span>ven&nbsp;before&nbsp;HTTP/1.1,&nbsp;the&nbsp;<span class="diff_chg">concept&nbsp;of&nbsp;a</span>&nbsp;&lt;em&gt;persi</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">afted,&nbsp;sometimes&nbsp;called&nbsp;a&nbsp;&lt;em&gt;keep-alive&nbsp;connection&lt;/em&gt;.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">stent&nbsp;connection&lt;/em&gt;&nbsp;has&nbsp;been&nbsp;crafted,&nbsp;sometimes&nbsp;called&nbsp;a&nbsp;&lt;em&gt;ke</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ep-alive&nbsp;connection&lt;/em&gt;.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__1"><a href="#difflib_chg_to41__2">n</a></td><td class="diff_header" id="from41_57">57</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;persistent&nbsp;connection&nbsp;is&nbsp;a&nbsp;connection&nbsp;that&nbsp;stays&nbsp;open&nbsp;for</span></td><td class="diff_next"><a href="#difflib_chg_to41__2">n</a></td><td class="diff_header" id="to41_57">57</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;persistent&nbsp;connection&nbsp;is&nbsp;a&nbsp;connection&nbsp;that&nbsp;stays&nbsp;open&nbsp;for</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;a&nbsp;long&nbsp;time&nbsp;and&nbsp;that&nbsp;can&nbsp;be&nbsp;reused&nbsp;for&nbsp;several&nbsp;requests,&nbsp;sparrin</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;some&nbsp;time&nbsp;and&nbsp;that&nbsp;can&nbsp;be&nbsp;reused&nbsp;for&nbsp;several&nbsp;requests,&nbsp;sparring&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">g&nbsp;the&nbsp;TCP&nbsp;handshake&nbsp;and&nbsp;making&nbsp;better&nbsp;use&nbsp;of&nbsp;the&nbsp;TCP&nbsp;performance&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">the&nbsp;TCP&nbsp;handshake&nbsp;and&nbsp;making&nbsp;better&nbsp;use&nbsp;of&nbsp;the&nbsp;TCP&nbsp;performance&nbsp;ca</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">features.&nbsp;The&nbsp;connection&nbsp;will&nbsp;not&nbsp;stay&nbsp;forever:&nbsp;idle&nbsp;connection&nbsp;a</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">pabilities.&nbsp;The&nbsp;connection&nbsp;will&nbsp;not&nbsp;stay&nbsp;open&nbsp;forever:&nbsp;idle&nbsp;conne</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">re&nbsp;closed&nbsp;after&nbsp;some&nbsp;times&nbsp;(a&nbsp;server&nbsp;may&nbsp;use&nbsp;the&nbsp;{{HTTPHeader("Ke</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ctions&nbsp;are&nbsp;closed&nbsp;after&nbsp;some&nbsp;time&nbsp;(a&nbsp;server&nbsp;may&nbsp;use&nbsp;the&nbsp;{{HTTPHea</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ep-Alive")}}&nbsp;header&nbsp;to&nbsp;give&nbsp;a&nbsp;minimum&nbsp;amount&nbsp;of&nbsp;time&nbsp;they&nbsp;should&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">der("Keep-Alive")}}&nbsp;header&nbsp;to&nbsp;give&nbsp;a&nbsp;minimum&nbsp;amount&nbsp;of&nbsp;time&nbsp;they&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">be&nbsp;kept&nbsp;open.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">should&nbsp;be&nbsp;kept&nbsp;open).</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__2"><a href="#difflib_chg_to41__3">n</a></td><td class="diff_header" id="from41_60">60</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Persistent&nbsp;connections&nbsp;also&nbsp;have&nbsp;drawbacks,&nbsp;even&nbsp;idle&nbsp;they&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to41__3">n</a></td><td class="diff_header" id="to41_60">60</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Persistent&nbsp;connections&nbsp;also&nbsp;have&nbsp;drawbacks;&nbsp;even&nbsp;idle&nbsp;they&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">take&nbsp;some&nbsp;resources&nbsp;on&nbsp;the&nbsp;server&nbsp;and&nbsp;under&nbsp;heavy&nbsp;load,&nbsp;DOS&nbsp;can&nbsp;h</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">consume&nbsp;some&nbsp;server&nbsp;resources&nbsp;and&nbsp;under&nbsp;heavy&nbsp;load,&nbsp;{{glossary("D</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">appen.&nbsp;In&nbsp;these&nbsp;cases,&nbsp;having&nbsp;a&nbsp;non-persistent&nbsp;connections,&nbsp;close</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">oS&nbsp;attack",&nbsp;"DoS&nbsp;attacks")}}&nbsp;can&nbsp;be&nbsp;conducted.&nbsp;In&nbsp;these&nbsp;cases,&nbsp;us</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">d&nbsp;as&nbsp;soon&nbsp;as&nbsp;they&nbsp;are&nbsp;idle,&nbsp;improve&nbsp;performance.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ing&nbsp;non-persistent&nbsp;connections,&nbsp;closed&nbsp;as&nbsp;soon&nbsp;as&nbsp;they&nbsp;are&nbsp;idle,&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">brings&nbsp;better&nbsp;performance.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__3"><a href="#difflib_chg_to41__4">n</a></td><td class="diff_header" id="from41_63">63</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP/1.0&nbsp;connection&nbsp;are&nbsp;not&nbsp;persistent&nbsp;by&nbsp;default.&nbsp;Setting&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to41__4">n</a></td><td class="diff_header" id="to41_63">63</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP/1.0&nbsp;connections&nbsp;are&nbsp;not&nbsp;persistent&nbsp;by&nbsp;default.&nbsp;Setting</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">{{HTTPHeader("Connection")}}&nbsp;to&nbsp;anything&nbsp;other&nbsp;than&nbsp;&lt;code&gt;close&lt;/</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;{{HTTPHeader("Connection")}}&nbsp;to&nbsp;anything&nbsp;other&nbsp;than&nbsp;&lt;code&gt;close&lt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">code&gt;,&nbsp;usually&nbsp;&lt;code&gt;retry-after&lt;/code&gt;&nbsp;will&nbsp;make&nbsp;them&nbsp;by&nbsp;default</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">/code&gt;,&nbsp;usually&nbsp;&lt;code&gt;retry-after&lt;/code&gt;&nbsp;will&nbsp;make&nbsp;them&nbsp;by&nbsp;defaul</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">.&nbsp;On&nbsp;HTTP/1.1,&nbsp;they&nbsp;are&nbsp;persistent&nbsp;by&nbsp;default&nbsp;and&nbsp;the&nbsp;header&nbsp;is&nbsp;n</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">t.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ot&nbsp;needed&nbsp;(but&nbsp;often&nbsp;added&nbsp;so&nbsp;that&nbsp;it&nbsp;is&nbsp;taken&nbsp;into&nbsp;account&nbsp;in&nbsp;ca</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">se&nbsp;of&nbsp;a&nbsp;fallback&nbsp;to&nbsp;HTTP/1.0).</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to41_64">64</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to41_65">65</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to41_66">66</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On&nbsp;the&nbsp;other&nbsp;hand,&nbsp;on&nbsp;HTTP/1.1,&nbsp;they&nbsp;are&nbsp;persistent&nbsp;by&nbsp;defa</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ult&nbsp;and&nbsp;the&nbsp;header&nbsp;is&nbsp;not&nbsp;needed&nbsp;(but&nbsp;often&nbsp;added&nbsp;so&nbsp;that&nbsp;it&nbsp;is&nbsp;t</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">aken&nbsp;into&nbsp;account&nbsp;in&nbsp;case&nbsp;of&nbsp;a&nbsp;fallback&nbsp;to&nbsp;HTTP/1.0).</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__4"><a href="#difflib_chg_to41__5">n</a></td><td class="diff_header" id="from41_70">70</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;Pipelining&nbsp;is&nbsp;not&nbsp;activated&nbsp;by&nbsp;default&nbsp;in<span class="diff_sub">&nbsp;any</span>&nbsp;modern</td><td class="diff_next"><a href="#difflib_chg_to41__5">n</a></td><td class="diff_header" id="to41_73">73</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;Pipelining&nbsp;is&nbsp;not&nbsp;activated&nbsp;by&nbsp;default&nbsp;in&nbsp;modern&nbsp;bro</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;browser<span class="diff_sub">&nbsp;for&nbsp;several&nbsp;reason</span>s:</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">wsers:</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__5"><a href="#difflib_chg_to41__6">n</a></td><td class="diff_header" id="from41_73">73</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Buggy&nbsp;proxies&nbsp;are&nbsp;still&nbsp;common&nbsp;and&nbsp;these&nbsp;lead&nbsp;to&nbsp;stra</td><td class="diff_next"><a href="#difflib_chg_to41__6">n</a></td><td class="diff_header" id="to41_76">76</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Buggy&nbsp;<span class="diff_add">&lt;a&nbsp;href="https://en.wikipedia.org/wiki/Proxy_se</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nge&nbsp;and&nbsp;erratic&nbsp;behaviors&nbsp;that&nbsp;Web&nbsp;devs&nbsp;cannot&nbsp;foresee&nbsp;and&nbsp;diagno</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">rver"&gt;</span>proxies<span class="diff_add">&lt;/a&gt;</span>&nbsp;are&nbsp;still&nbsp;common&nbsp;and&nbsp;these&nbsp;lead&nbsp;to&nbsp;strange&nbsp;and&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">se&nbsp;easily</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">erratic&nbsp;behaviors&nbsp;that&nbsp;Web&nbsp;devs&nbsp;cannot&nbsp;foresee&nbsp;and&nbsp;diagnose&nbsp;easil</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">y<span class="diff_add">.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__6"><a href="#difflib_chg_to41__7">n</a></td><td class="diff_header" id="from41_75">75</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Pipelining&nbsp;is&nbsp;complex&nbsp;to&nbsp;implement&nbsp;correctly:&nbsp;the&nbsp;siz</span></td><td class="diff_next"><a href="#difflib_chg_to41__7">n</a></td><td class="diff_header" id="to41_78">78</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Pipelining&nbsp;is&nbsp;complex&nbsp;to&nbsp;implement&nbsp;correctly:&nbsp;the&nbsp;siz</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">e&nbsp;of&nbsp;the&nbsp;object&nbsp;being&nbsp;transferred,&nbsp;the&nbsp;effective&nbsp;RTT&nbsp;that&nbsp;will&nbsp;be</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">e&nbsp;of&nbsp;the&nbsp;resource&nbsp;being&nbsp;transferred,&nbsp;the&nbsp;effective&nbsp;&lt;a&nbsp;href="https</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;used,&nbsp;as&nbsp;well&nbsp;as&nbsp;the&nbsp;effective&nbsp;bandwith&nbsp;of&nbsp;the&nbsp;pipe&nbsp;have&nbsp;a&nbsp;direc</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">://en.wikipedia.org/wiki/Round-trip_delay_time"&gt;RTT&lt;/a&gt;&nbsp;that&nbsp;will</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">t&nbsp;incidence&nbsp;on&nbsp;the&nbsp;improvement&nbsp;given&nbsp;by&nbsp;pipelining.&nbsp;Without&nbsp;knowi</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;be&nbsp;used,&nbsp;as&nbsp;well&nbsp;as&nbsp;the&nbsp;effective&nbsp;bandwidth,&nbsp;have&nbsp;a&nbsp;direct&nbsp;incid</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ng&nbsp;these,&nbsp;important&nbsp;things&nbsp;may&nbsp;be&nbsp;delayed&nbsp;behing&nbsp;unimportant&nbsp;thin</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ence&nbsp;on&nbsp;the&nbsp;improvement&nbsp;provided&nbsp;by&nbsp;the&nbsp;pipeline.&nbsp;Without&nbsp;knowing</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">gs&nbsp;and&nbsp;the&nbsp;notion&nbsp;of&nbsp;important&nbsp;evolves&nbsp;during&nbsp;page&nbsp;layout.&nbsp;That&nbsp;m</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;these,&nbsp;important&nbsp;messages&nbsp;may&nbsp;be&nbsp;delayed&nbsp;behind&nbsp;unimportant&nbsp;ones</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">akes&nbsp;HTTP&nbsp;pipelining&nbsp;only&nbsp;a&nbsp;marginal&nbsp;improvement&nbsp;in&nbsp;most&nbsp;cases.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">.&nbsp;The&nbsp;notion&nbsp;of&nbsp;important&nbsp;even&nbsp;evolves&nbsp;during&nbsp;page&nbsp;layout!&nbsp;HTTP&nbsp;p</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ipelining&nbsp;therefore&nbsp;brings&nbsp;only&nbsp;a&nbsp;marginal&nbsp;improvement&nbsp;in&nbsp;most&nbsp;ca</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ses.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__7"><a href="#difflib_chg_to41__8">n</a></td><td class="diff_header" id="from41_77">77</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Pipelining&nbsp;is&nbsp;subject&nbsp;to&nbsp;the&nbsp;HOL&nbsp;problem.</span></td><td class="diff_next"><a href="#difflib_chg_to41__8">n</a></td><td class="diff_header" id="to41_80">80</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Pipelining&nbsp;is&nbsp;subject&nbsp;to&nbsp;the&nbsp;&lt;a&nbsp;href="https://en.wiki</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">pedia.org/wiki/Head-of-line_blocking"&gt;HOL&lt;/a&gt;&nbsp;problem.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__8"><a href="#difflib_chg_to41__9">n</a></td><td class="diff_header" id="from41_81">81</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pipelining&nbsp;has&nbsp;been&nbsp;replaced&nbsp;by&nbsp;a&nbsp;better&nbsp;algorithm,&nbsp;multi</span></td><td class="diff_next"><a href="#difflib_chg_to41__9">n</a></td><td class="diff_header" id="to41_84">84</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;these&nbsp;reasons,&nbsp;pipelining&nbsp;got&nbsp;been&nbsp;superseded&nbsp;by&nbsp;a&nbsp;be</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">plexing,&nbsp;that&nbsp;is&nbsp;used&nbsp;by&nbsp;HTTP/2.&nbsp;Use&nbsp;it&nbsp;instead.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">tter&nbsp;algorithm,&nbsp;&lt;em&gt;multiplexing&lt;/em&gt;,&nbsp;that&nbsp;is&nbsp;used&nbsp;by&nbsp;HTTP/2.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__9"><a href="#difflib_chg_to41__10">n</a></td><td class="diff_header" id="from41_85">85</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">Normally</span>,&nbsp;&lt;a&nbsp;href="/en/HTTP"&nbsp;title="en/HTTP"&gt;HTTP&lt;/a&gt;&nbsp;reque</td><td class="diff_next"><a href="#difflib_chg_to41__10">n</a></td><td class="diff_header" id="to41_88">88</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">By&nbsp;default</span>,&nbsp;&lt;a&nbsp;href="/en/HTTP"&nbsp;title="en/HTTP"&gt;HTTP&lt;/a&gt;&nbsp;req</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">sts&nbsp;are&nbsp;issued&nbsp;sequentially,&nbsp;with&nbsp;the&nbsp;next&nbsp;request&nbsp;being&nbsp;issued&nbsp;o</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">uests&nbsp;are&nbsp;issued&nbsp;sequentially,&nbsp;with&nbsp;the&nbsp;next&nbsp;request&nbsp;being&nbsp;issued</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nly&nbsp;after&nbsp;the&nbsp;response&nbsp;to&nbsp;the&nbsp;current&nbsp;request&nbsp;has&nbsp;been&nbsp;completely</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;only&nbsp;after&nbsp;the&nbsp;response&nbsp;to&nbsp;the&nbsp;current&nbsp;request&nbsp;has&nbsp;been&nbsp;complete</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;received.&nbsp;Depending&nbsp;on&nbsp;network&nbsp;latencies&nbsp;and&nbsp;bandwidth&nbsp;limitatio</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ly&nbsp;received.&nbsp;Depending&nbsp;on&nbsp;network&nbsp;latencies&nbsp;and&nbsp;bandwidth&nbsp;limitat</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ns,&nbsp;this&nbsp;can&nbsp;result&nbsp;in&nbsp;a&nbsp;significant&nbsp;delay&nbsp;before&nbsp;the&nbsp;next&nbsp;reques</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ions,&nbsp;this&nbsp;can&nbsp;result&nbsp;in&nbsp;a&nbsp;significant&nbsp;delay&nbsp;before&nbsp;the&nbsp;next&nbsp;requ</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">t&nbsp;is&nbsp;&lt;em&gt;seen&lt;/em&gt;&nbsp;by&nbsp;the&nbsp;server.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">est&nbsp;is&nbsp;&lt;em&gt;seen&lt;/em&gt;&nbsp;by&nbsp;the&nbsp;server.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__10"><a href="#difflib_chg_to41__11">n</a></td><td class="diff_header" id="from41_88">88</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pipelining&nbsp;is&nbsp;the&nbsp;functionality&nbsp;to&nbsp;send&nbsp;several&nbsp;requests&nbsp;su</span></td><td class="diff_next"><a href="#difflib_chg_to41__11">n</a></td><td class="diff_header" id="to41_91">91</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pipelining&nbsp;is&nbsp;the&nbsp;functionality&nbsp;to&nbsp;send&nbsp;several&nbsp;requests&nbsp;su</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ccessively&nbsp;over&nbsp;the&nbsp;same&nbsp;persistent&nbsp;connection&nbsp;without&nbsp;waiting&nbsp;fo</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ccessively&nbsp;over&nbsp;the&nbsp;same&nbsp;persistent&nbsp;connection&nbsp;without&nbsp;waiting&nbsp;fo</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">r&nbsp;the&nbsp;answer.&nbsp;That&nbsp;way&nbsp;the&nbsp;latency&nbsp;of&nbsp;the&nbsp;connection&nbsp;is&nbsp;avoided.&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">r&nbsp;the&nbsp;answer.&nbsp;That&nbsp;way&nbsp;the&nbsp;latency&nbsp;of&nbsp;the&nbsp;connection&nbsp;is&nbsp;avoided.&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">Theoretically,&nbsp;performance&nbsp;could&nbsp;also&nbsp;be&nbsp;improved&nbsp;if&nbsp;2&nbsp;HTTP&nbsp;reque</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">Theoretically,&nbsp;performance&nbsp;could&nbsp;also&nbsp;be&nbsp;improved&nbsp;if&nbsp;two&nbsp;HTTP&nbsp;req</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">sts&nbsp;could&nbsp;be&nbsp;packed&nbsp;into&nbsp;the&nbsp;same&nbsp;TCP&nbsp;packet.&nbsp;The&nbsp;typical&nbsp;MSS,&nbsp;Ma</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">uests&nbsp;could&nbsp;be&nbsp;packed&nbsp;into&nbsp;the&nbsp;same&nbsp;TCP&nbsp;message.&nbsp;The&nbsp;typical&nbsp;&lt;a&nbsp;h</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ximum&nbsp;Segment&nbsp;Size,&nbsp;being&nbsp;enough&nbsp;nowadays&nbsp;to&nbsp;contain&nbsp;several&nbsp;simp</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ref="https://en.wikipedia.org/wiki/Maximum_segment_size"&gt;MSS&lt;/a&gt;&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">le&nbsp;requests.&nbsp;Nevertheless&nbsp;the&nbsp;size&nbsp;of&nbsp;HTTP&nbsp;requests&nbsp;grew&nbsp;over&nbsp;the</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">(Maximum&nbsp;Segment&nbsp;Siz),&nbsp;is&nbsp;big&nbsp;enough&nbsp;to&nbsp;contain&nbsp;several&nbsp;simple&nbsp;re</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;years.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">quests,&nbsp;although&nbsp;the&nbsp;size&nbsp;of&nbsp;HTTP&nbsp;requests&nbsp;grow&nbsp;over&nbsp;the&nbsp;years.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__11"><a href="#difflib_chg_to41__12">n</a></td><td class="diff_header" id="from41_91">91</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Not&nbsp;all&nbsp;kind&nbsp;of&nbsp;HTTP&nbsp;requests&nbsp;can&nbsp;be&nbsp;pipelined:&nbsp;only&nbsp;{{glos</span></td><td class="diff_next"><a href="#difflib_chg_to41__12">n</a></td><td class="diff_header" id="to41_94">94</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Not&nbsp;all&nbsp;kinds&nbsp;of&nbsp;HTTP&nbsp;requests&nbsp;can&nbsp;be&nbsp;pipelined:&nbsp;only&nbsp;{{glo</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">sary("idempotent")}}&nbsp;methods,&nbsp;that&nbsp;is&nbsp;{{HTTPMethod("GET")}},&nbsp;{{HT</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ssary("idempotent")}}&nbsp;methods,&nbsp;that&nbsp;is&nbsp;{{HTTPMethod("GET")}},&nbsp;{{H</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">TPMethod("HEAD")}},&nbsp;{{HTTPMethod("PUT")}}&nbsp;and&nbsp;{{HTTPMethod("DELET</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">TTPMethod("HEAD")}},&nbsp;{{HTTPMethod("PUT")}}&nbsp;and&nbsp;{{HTTPMethod("DELE</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">E")}},&nbsp;can&nbsp;be&nbsp;pipelined.&nbsp;As&nbsp;these&nbsp;methods&nbsp;are&nbsp;idempotent,&nbsp;they&nbsp;ca</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">TE")}},&nbsp;can&nbsp;be&nbsp;replayed&nbsp;safely:&nbsp;when&nbsp;a&nbsp;failure&nbsp;happens,&nbsp;the&nbsp;pipel</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">n&nbsp;be&nbsp;replayed:&nbsp;that&nbsp;way&nbsp;in&nbsp;case&nbsp;of&nbsp;a&nbsp;failure,&nbsp;the&nbsp;pipeline&nbsp;may&nbsp;be</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ine&nbsp;content&nbsp;can&nbsp;just&nbsp;be&nbsp;replayed.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;just&nbsp;replayed.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__12"><a href="#difflib_chg_to41__13">n</a></td><td class="diff_header" id="from41_94">94</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">Every</span>&nbsp;HTTP/1.1-compliant&nbsp;proxy&nbsp;and&nbsp;server&nbsp;should&nbsp;support&nbsp;pi</td><td class="diff_next"><a href="#difflib_chg_to41__13">n</a></td><td class="diff_header" id="to41_97">97</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">These&nbsp;days,&nbsp;very</span>&nbsp;HTTP/1.1-compliant&nbsp;proxy&nbsp;and&nbsp;server&nbsp;should</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">pelining,&nbsp;but&nbsp;in&nbsp;practice,&nbsp;a&nbsp;lot&nbsp;of&nbsp;them&nbsp;have&nbsp;limitations:&nbsp;that&nbsp;i</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;support&nbsp;pipelining,&nbsp;but&nbsp;in&nbsp;practice,&nbsp;a&nbsp;lot&nbsp;of&nbsp;them&nbsp;have&nbsp;limitati</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">s&nbsp;one&nbsp;reason&nbsp;that&nbsp;no&nbsp;modern&nbsp;browser&nbsp;activate&nbsp;this&nbsp;feature&nbsp;by&nbsp;defa</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ons:&nbsp;that&nbsp;is&nbsp;one&nbsp;reason&nbsp;that&nbsp;no&nbsp;modern&nbsp;browser&nbsp;activate&nbsp;this&nbsp;feat</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ult.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ure&nbsp;by&nbsp;default.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to41__13"><a href="#difflib_chg_to41__top">t</a></td><td class="diff_header" id="from41_100">100</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Better&nbsp;connection&nbsp;management&nbsp;allowed&nbsp;to&nbsp;considerably&nbsp;improv</span></td><td class="diff_next"><a href="#difflib_chg_to41__top">t</a></td><td class="diff_header" id="to41_103">103</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Better&nbsp;connection&nbsp;management&nbsp;allowed&nbsp;to&nbsp;considerably&nbsp;improv</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">es&nbsp;performance&nbsp;of&nbsp;HTTP.&nbsp;When&nbsp;using&nbsp;HTTP/1.1&nbsp;using&nbsp;a&nbsp;persistent&nbsp;co</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">es&nbsp;performance&nbsp;of&nbsp;HTTP.&nbsp;With&nbsp;HTTP/1.1&nbsp;or&nbsp;HTTP/1.0,&nbsp;using&nbsp;a&nbsp;persis</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nnection,&nbsp;at&nbsp;least&nbsp;until&nbsp;it&nbsp;gets&nbsp;idle,&nbsp;leads&nbsp;to&nbsp;the&nbsp;best&nbsp;performa</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">tent&nbsp;connection&nbsp;–&nbsp;at&nbsp;least&nbsp;until&nbsp;it&nbsp;gets&nbsp;idle&nbsp;–&nbsp;leads&nbsp;to&nbsp;the&nbsp;best</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nce.&nbsp;Over&nbsp;the&nbsp;years,&nbsp;with&nbsp;the&nbsp;failure&nbsp;of&nbsp;pipelining,&nbsp;better&nbsp;conne</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;performance.&nbsp;But,&nbsp;over&nbsp;the&nbsp;years&nbsp;with&nbsp;the&nbsp;failure&nbsp;of&nbsp;pipelining,</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ctions&nbsp;managements&nbsp;have&nbsp;been&nbsp;designed&nbsp;and&nbsp;incorporated&nbsp;into&nbsp;HTTP/</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;better&nbsp;connections&nbsp;management&nbsp;models&nbsp;have&nbsp;been&nbsp;designed&nbsp;and&nbsp;inco</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">2.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">rporated&nbsp;into&nbsp;HTTP/2.</span></td></tr>
+        </tbody>
+    </table></dd>
+        
+      </dl>
+    </section>
+  
+
+    <p><a href="Connection_management_in_HTTP_1-2.html" rel="nofollow, noindex">Back to History</a></p>
+
+  </article>
+
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+    
+    <input type="hidden" name="to" value="1104417">
+    
+  
+    
+    <input type="hidden" name="from" value="1104395">
+    
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x$compare?to=1104417&from=1104395 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:23:27 GMT -->
+</html>

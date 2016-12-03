@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security$history?page=3 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:57:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision History | Strict-Transport-Security | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki-revisions.d9b75a25e4f4.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FHeaders%2FStrict-Transport-Security%24history%3Fpage%3D3" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security%24history%3Fpage%3D3">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+
+    <h1>History of <a href="Strict-Transport-Security.html">Strict-Transport-Security</a></h1>
+
+    <div class="revision-list-head">
+      Revision history for:
+      <ul>
+        
+        <li>
+          <span>English (US)</span>
+        </li>
+      </ul>
+    </div>
+    <div class="revision-list-contain">
+      
+      
+      
+        
+          
+        
+        <form action="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security$compare" method="get" class="nodisable">
+          <input type="hidden" name="locale" value="en-US">
+          
+            <div class="revision-list-controls revision-list-controls-top">
+              <input type="submit" class="link-btn" value="Compare Selected Revisions" />
+            </div>
+          
+          
+            <ul class="revision-list">
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="807557"  />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="to" value="807557" checked="checked" />
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24compare6e41.html?to=807557&amp;from=807555" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/807557.html" rel="nofollow, noindex"><time datetime="2015-05-26T15:07:45-07:00">May 26, 2015, 3:07:45 PM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/coffeina">coffeina</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                
+              </div>
+              
+            </li>
+            
+          
+            
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="807555" checked="checked" />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="to" value="807555"  />
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24compare64a0.html?to=807555&amp;from=798717" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/807555.html" rel="nofollow, noindex"><time datetime="2015-05-26T15:07:38-07:00">May 26, 2015, 3:07:38 PM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/coffeina">coffeina</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                
+              </div>
+              
+            </li>
+            
+          
+            
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="798717"  />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="to" value="798717"  />
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24comparef9d8?to=798717&amp;from=798713" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/798717.html" rel="nofollow, noindex"><time datetime="2015-05-06T20:26:56-07:00">May 6, 2015, 8:26:56 PM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/wbamberg">wbamberg</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                
+              </div>
+              
+            </li>
+            
+          
+            
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="798713"  />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="to" value="798713"  />
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24compare1f93?to=798713&amp;from=798711" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/798713.html" rel="nofollow, noindex"><time datetime="2015-05-06T19:29:44-07:00">May 6, 2015, 7:29:44 PM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/dbaxa">dbaxa</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                
+              </div>
+              
+            </li>
+            
+          
+            
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="798711"  />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="to" value="798711"  />
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24comparea21f?to=798711&amp;from=798709" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/798711.html" rel="nofollow, noindex"><time datetime="2015-05-06T19:29:15-07:00">May 6, 2015, 7:29:15 PM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/dbaxa">dbaxa</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                
+              </div>
+              
+            </li>
+            
+          
+            
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="798709"  />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="to" value="798709"  />
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24compare050a.html?to=798709&amp;from=740373" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/798709.html" rel="nofollow, noindex"><time datetime="2015-05-06T19:28:44-07:00">May 6, 2015, 7:28:44 PM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/dbaxa">dbaxa</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                The RFC specifies it to be &#39;includeSubDomains&#39; not &#39;includeSubdomains&#39;.
+              </div>
+              
+            </li>
+            
+          
+            
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="740373"  />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="to" value="740373"  />
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24compare7eb3?to=740373&amp;from=740185" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/740373.html" rel="nofollow, noindex"><time datetime="2015-02-19T23:29:00-08:00">Feb 19, 2015, 11:29:00 PM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/Annevk">Annevk</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                
+              </div>
+              
+            </li>
+            
+          
+            
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="740185"  />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="to" value="740185"  />
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24compared427.html?to=740185&amp;from=740183" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/740185.html" rel="nofollow, noindex"><time datetime="2015-02-19T11:01:58-08:00">Feb 19, 2015, 11:01:58 AM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/Annevk">Annevk</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                
+              </div>
+              
+            </li>
+            
+          
+            
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="740183"  />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="to" value="740183"  />
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24compare3306.html?to=740183&amp;from=733363" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/740183.html" rel="nofollow, noindex"><time datetime="2015-02-19T11:00:42-08:00">Feb 19, 2015, 11:00:42 AM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/Annevk">Annevk</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                
+              </div>
+              
+            </li>
+            
+          
+            
+            <li>
+              <div class="revision-list-cell revision-list-radio">
+                <input type="radio" name="from" value="733363"  />
+              </div>
+              <div class="revision-list-cell revision-list-radio">
+                
+              </div>
+               <div class="revision-list-cell revision-list-prev">
+              
+                <a href="Strict-Transport-Security%24comparea6b0.html?to=733363&amp;from=707265" rel="nofollow, noindex">Previous</a>
+              
+              </div>
+              <div class="revision-list-cell revision-list-date">
+                <a href="Strict-Transport-Security%24revision/733363.html" rel="nofollow, noindex"><time datetime="2015-02-01T18:09:30-08:00">Feb 1, 2015, 6:09:30 PM</time></a>
+              </div>
+              <div class="revision-list-cell revision-list-creator">
+                <a href="https://developer.mozilla.org/en-US/profiles/konklone">konklone</a>
+              </div>
+              <div class="revision-list-cell revision-list-comment">
+                Adds the &#34;preload&#34; flag to the HSTS description and links to the HSTS preload submission page that Chrome manages (and Firefox uses).
+              </div>
+              
+            </li>
+            </ul>
+          
+        </form>
+      
+    </div>
+  </article>
+
+  
+    
+  <ol class="pagination">
+  
+    <li class="prev">
+      <a href="Strict-Transport-Security%24history4658.html?page=2">
+        Previous
+      </a>
+    </li>
+  
+  
+  
+    <li>
+      <a href="Strict-Transport-Security%24history2679.html?page=1">1</a>
+    </li>
+  
+    <li>
+      <a href="Strict-Transport-Security%24history4658.html?page=2">2</a>
+    </li>
+  
+    <li class="selected">
+      <a href="Strict-Transport-Security%24history9ba9.html?page=3">3</a>
+    </li>
+  
+    <li>
+      <a href="Strict-Transport-Security%24historyfdb0.html?page=4">4</a>
+    </li>
+  
+    <li>
+      <a href="Strict-Transport-Security%24historyaf4d.html?page=5">5</a>
+    </li>
+  
+    <li>
+      <a href="Strict-Transport-Security%24historyc575.html?page=6">6</a>
+    </li>
+  
+  
+  
+    <li class="next">
+      <a href="Strict-Transport-Security%24historyfdb0.html?page=4">
+        Next
+      </a>
+    </li>
+  
+  </ol>
+
+
+
+  
+
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+    
+    <input type="hidden" name="page" value="3">
+    
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+  <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/framebuster.3a78f1ca560e.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var $pagination = $('.pagination');
+      var $next = $pagination.find('.next');
+
+      
+
+      if($next.length) {
+      $pagination.append('<li title="Sign in to view all history"><a href="?limit=all" id="pagination-all" class="hidden" rel="nofollow, noindex">' + gettext('View All') + '</a></li>');
+      }
+    });
+  </script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security$history?page=3 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:57:18 GMT -->
+</html>

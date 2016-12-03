@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS$revision/1135379 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:47:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1135379 | HTTP access control (CORS) | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FAccess_control_CORS%24revision%2F1135379" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS%24revision/1135379">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1135379 of <a href="../Access_control_CORS.html">HTTP access control (CORS)</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Access_control_CORS</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>HTTP access control (CORS)</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1135379</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-10-28T06:28:22-07:00">Oct 28, 2016, 6:28:22 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/AJAX">AJAX</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Same-origin policy">Same-origin policy</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Security">Security</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/XMLHttpRequest">XMLHttpRequest</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p>A resource makes a <strong>cross-origin HTTP request</strong> when it requests a resource from a different domain than the one which the first resource itself serves. For example, an HTML page served from http://domain-a.com makes an <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Img#Attributes">&lt;img&gt; src</a></code> request for http://domain-b.com/image.jpg. Many pages on the web today load resources like CSS stylesheets, images and scripts from separate domains.</p>
+
+<p>For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts. For example, {{domxref("XMLHttpRequest")}} and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> follow the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">same-origin policy</a>. So, a web application using {{domxref("XMLHttpRequest")}} or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> <em>could only</em> make HTTP requests to its own domain. To improve web applications, developers asked browser vendors to allow cross-domain requests.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/14295/CORS_principle.png" style="height: 305px; width: 440px;"></p>
+
+<p>The Cross-Origin Resource Sharing ({{Glossary("CORS")}}) mechanism gives web servers cross-domain access controls, which enable secure cross-domain data transfers. Modern browsers use CORS in an API container - such as {{domxref("XMLHttpRequest")}} or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> - to mitigate risks of cross-origin HTTP requests.</p>
+
+<p>This article is for web administrators, server developers and front-end developers. Modern browsers handle the client-side components of cross-origin sharing, including headers and policy enforcement. But this new standard means servers have to handle new request and response headers. Another article for server developers discussing <a href="../Server-Side_Access_Control.html">cross-origin sharing from a server perspective (with PHP code snippets)</a> is supplementary reading.</p>
+
+<p>This <a class="external" href="https://fetch.spec.whatwg.org/#http-cors-protocol">cross-origin sharing standard</a> is used to enable cross-site HTTP requests for:</p>
+
+<ul>
+ <li>Invocations of the {{domxref("XMLHttpRequest")}} or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> APIs in a cross-site manner, as discussed above.</li>
+ <li>Web Fonts (for cross-domain font usage in <code>@font-face</code> within CSS), <a class="external" href="https://www.w3.org/TR/css-fonts-3/#font-fetching-requirements">so that servers can deploy TrueType fonts that can only be cross-site loaded and used by web sites that are permitted to do so.</a></li>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL">WebGL textures</a>.</li>
+ <li>Images/video frames drawn to a canvas using <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage">drawImage</a></code>.</li>
+ <li>Stylesheets (for <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSSOM_View">CSSOM</a> access).</li>
+ <li>Scripts (for unmuted exceptions).</li>
+</ul>
+
+<p>This article is a general discussion of Cross-Origin Resource Sharing, and includes a discussion of the necessary HTTP headers.</p>
+
+<h2 id="Overview">Overview</h2>
+
+<p>The Cross-Origin Resource Sharing standard works by adding new <a href="../Headers.html">HTTP headers</a> that allow servers to describe the set of origins that are permitted to read that information using a web browser.  Additionally, for HTTP request methods that can cause side-effects on user data (in particular, for HTTP methods other than {{HTTPMethod("GET")}}, or for {{HTTPMethod("POST")}} usage with certain <a href="../Basics_of_HTTP/MIME_types-2.html">MIME types</a>), the specification mandates that browsers "preflight" the request, soliciting supported methods from the server with an HTTP {{HTTPMethod("OPTIONS")}} request method, and then, upon "approval" from the server, sending the actual request with the actual HTTP request method. Servers can also notify clients whether "credentials" (including <a href="../Cookies.html">Cookies</a> and HTTP Authentication data) should be sent with requests.</p>
+
+<p>Subsequent sections discuss scenarios, as well as provide a breakdown of the HTTP headers used. </p>
+
+<h2 id="Examples_of_access_control_scenarios">Examples of access control scenarios</h2>
+
+<p>Here, we present three scenarios that illustrate how Cross-Origin Resource Sharing works. All of these examples use the {{domxref("XMLHttpRequest")}} object, which can be used to make cross-site invocations in any supporting browser.</p>
+
+<p>The JavaScript snippets included in these sections (and running instances of the server-code that correctly handles these cross-site requests) <a class="external" href="http://arunranga.com/examples/access-control/">can be found "in action" here</a>, and will work in browsers that support cross-site {{domxref("XMLHttpRequest")}}. A discussion of Cross-Origin Resource Sharing from a <a class="internal" href="../Server-Side_Access_Control.html">server perspective (including PHP code snippets) can be found here</a>.</p>
+
+<h3 id="Simple_requests">Simple requests</h3>
+
+<p>A simple cross-site request is one that meets all the following conditions:</p>
+
+<ul>
+ <li>The only allowed methods are:
+  <ul>
+   <li>{{HTTPMethod("GET")}}</li>
+   <li>{{HTTPMethod("HEAD")}}</li>
+   <li>{{HTTPMethod("POST")}}</li>
+  </ul>
+ </li>
+ <li>Apart from the headers set automatically by the user agent (e.g. {{HTTPHeader("Connection")}}, {{HTTPHeader("User-Agent")}}, etc.), the only headers which are allowed to be manually set are:
+  <ul>
+   <li>{{HTTPHeader("Accept")}}</li>
+   <li>{{HTTPHeader("Accept-Language")}}</li>
+   <li>{{HTTPHeader("Content-Language")}}</li>
+   <li>{{HTTPHeader("Content-Type")}}</li>
+  </ul>
+ </li>
+ <li>The only allowed values for the <code>Content-Type</code> header are:
+  <ul>
+   <li><code>application/x-www-form-urlencoded</code></li>
+   <li><code>multipart/form-data</code></li>
+   <li><code>text/plain</code></li>
+  </ul>
+ </li>
+</ul>
+
+<div class="note"><strong>Note:</strong> These are the same kinds of cross-site requests that web content can already issue, and no response data is released to the requester unless the server sends an appropriate header. Therefore, sites that prevent cross-site request forgery have nothing new to fear from HTTP access control.</div>
+
+<p>For example, suppose web content on domain <code class="plain">http://foo.example</code> wishes to invoke content on domain <code class="plain">http://bar.other</code>. Code of this sort might be used within JavaScript deployed on foo.example:</p>
+
+<pre class="brush: js" id="line1">var invocation = new XMLHttpRequest();
+var url = 'http://bar.other/resources/public-data/';
+   
+function callOtherDomain() {
+  if(invocation) {    
+    invocation.open('GET', url, true);
+    invocation.onreadystatechange = handler;
+    invocation.send(); 
+  }
+}
+</pre>
+
+<p>This will lead to a simple exchange between the client and the server, using CORS headers to handle the privileges:</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/14293/simple_req.png" style="height: 224px; width: 521px;"></p>
+
+<p>Let us look at what the browser will send the server in this case, and let's see how the server responds:</p>
+
+<pre class="brush: shell;highlight:[10,16]">GET /resources/public-data/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+Referer: http://foo.example/examples/access-control/simpleXSInvocation.html
+Origin: http://foo.example
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 00:23:53 GMT
+Server: Apache/2.0.61 
+Access-Control-Allow-Origin: *
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: application/xml
+
+[XML Data]
+</pre>
+
+<p>Lines 1 - 10 are headers sent. Note that the main HTTP request header of note here is the {{HTTPHeader("Origin")}} header on line 10 above, which shows that the invocation is coming from content on the the domain <code class="plain">http://foo.example</code>.</p>
+
+<p>Lines 13 - 22 show the HTTP response from the server on domain <code class="plain">http://bar.other</code>. In response, the server sends back an {{HTTPHeader("Access-Control-Allow-Origin")}} header, shown above in line 16. The use of the {{HTTPHeader("Origin")}} header and of {{HTTPHeader("Access-Control-Allow-Origin")}} show the access control protocol in its simplest use. In this case, the server responds with a <code>Access-Control-Allow-Origin: *</code> which means that the resource can be accessed by <strong>any</strong> domain in a cross-site manner. If the resource owners at <code class="plain">http://bar.other</code> wished to restrict access to the resource to be only from <code class="plain">http://foo.example</code>, they would send back:</p>
+
+<p><code class="plain">Access-Control-Allow-Origin: http://foo.example</code></p>
+
+<p>Note that now, no domain other than <code class="plain">http://foo.example</code> (identified by the ORIGIN: header in the request, as in line 10 above) can access the resource  in a cross-site manner.  The <code>Access-Control-Allow-Origin</code> header should contain the value that was sent in the request's <code>Origin</code> header. </p>
+
+<h3 id="Preflighted_requests">Preflighted requests</h3>
+
+<p>Unlike simple requests (discussed above), "preflighted" requests first send an HTTP request by the {{HTTPMethod("OPTIONS")}} method to the resource on the other domain, in order to determine whether the actual request is safe to send. Cross-site requests are preflighted like this since they may have implications to user data. In particular, a request is preflighted if:</p>
+
+<ul>
+ <li>It uses methods <strong>other</strong> than <code>GET</code>, <code>HEAD</code> or <code>POST</code>. Also, if <code>POST</code> is used to send request data with a Content-Type <strong>other</strong> than <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, or <code>text/plain</code>, e.g. if the <code>POST</code> request sends an XML payload to the server using <code>application/xml</code> or <code>text/xml</code>, then the request <strong>is</strong> preflighted.</li>
+ <li>It sets custom headers in the request (e.g. the request uses a header such as <code>X-PINGOTHER</code>)</li>
+</ul>
+
+<p>An example of this kind of invocation might be:</p>
+
+<pre class="brush: js" id="line1">var invocation = new XMLHttpRequest();
+var url = 'http://bar.other/resources/post-here/';
+var body = '&lt;?xml version="1.0"?&gt;&lt;person&gt;&lt;name&gt;Arun&lt;/name&gt;&lt;/person&gt;';
+    
+function callOtherDomain(){
+  if(invocation)
+    {
+      invocation.open('POST', url, true);
+      invocation.setRequestHeader('X-PINGOTHER', 'pingpong');
+      invocation.setRequestHeader('Content-Type', 'application/xml');
+      invocation.onreadystatechange = handler;
+      invocation.send(body); 
+    }
+}
+
+......
+</pre>
+
+<p>In the example above, line 3 creates an XML body to send with the <code>POST</code> request in line 8.  Also, on line 9, a "customized" (non-standard) HTTP request header is set (<code>X-PINGOTHER: pingpong</code>).  Such headers are not part of the HTTP/1.1 protocol, but are generally useful to web applications.  Since the request (<code>POST</code>) uses a Content-Type of <code>application/xml</code>, and since a custom header is set, this request is preflighted.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/14289/prelight.png"></p>
+
+<p>Let's take a look at the full exchange between client and server. The first exchange is the <em>preflight request/response</em>:</p>
+
+<pre class="brush: shell;highlight:[10,11,17,18,19,20]">OPTIONS /resources/post-here/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+Origin: http://foo.example
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: X-PINGOTHER, Content-Type
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 01:15:39 GMT
+Server: Apache/2.0.61 (Unix)
+Access-Control-Allow-Origin: http://foo.example
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+Access-Control-Max-Age: 86400
+Vary: Accept-Encoding, Origin
+Content-Encoding: gzip
+Content-Length: 0
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+Content-Type: text/plain
+</pre>
+
+<p>Once the preflight request is complete, the real request is sent:</p>
+
+<pre class="brush:shell;highlight:[13,23]">POST /resources/post-here/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+X-PINGOTHER: pingpong
+Content-Type: text/xml; charset=UTF-8
+Referer: http://foo.example/examples/preflightInvocation.html
+Content-Length: 55
+Origin: http://foo.example
+Pragma: no-cache
+Cache-Control: no-cache
+
+&lt;?xml version="1.0"?&gt;&lt;person&gt;&lt;name&gt;Arun&lt;/name&gt;&lt;/person&gt;
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 01:15:40 GMT
+Server: Apache/2.0.61 (Unix)
+Access-Control-Allow-Origin: http://foo.example
+Vary: Accept-Encoding, Origin
+Content-Encoding: gzip
+Content-Length: 235
+Keep-Alive: timeout=2, max=99
+Connection: Keep-Alive
+Content-Type: text/plain
+
+[Some GZIP'd payload]
+</pre>
+
+<p>Lines 1 - 12 above represent the preflight request with the {{HTTPMethod("OPTIONS")}} method. The browser determines that it needs to send this based on the request parameters that the JavaScript code snippet above was using, so that the server can respond whether it is acceptable to send the request with the actual request parameters. OPTIONS is an HTTP/1.1 method that is used to determine further information from servers, and is an <strong>idempotent</strong> method, meaning that it can't be used to change the resource. Note that along with the OPTIONS request, two other request headers are sent (lines 10 and 11 respectively):</p>
+
+<pre>Access-Control-Request-Method: POST
+Access-Control-Request-Headers: X-PINGOTHER, Content-Type
+</pre>
+
+<p>The {{HTTPHeader("Access-Control-Request-Method")}} header notifies the server as part of a preflight request that when the actual request is sent, it will be sent with a <code>POST</code> request method. The {{HTTPHeader("Access-Control-Request-Headers")}} header notifies the server that when the actual request is sent, it will be sent with a <code>X-PINGOTHER</code> and Content-Type custom headers. The server now has an opportunity to determine whether it wishes to accept a request under these circumstances.</p>
+
+<p>Lines 14 - 26 above are the response that the server sends back indicating that the request method (<code>POST</code>) and request headers (<code>X-PINGOTHER</code>) are acceptable. In particular, let's look at lines 17-20:</p>
+
+<pre>Access-Control-Allow-Origin: http://foo.example
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+Access-Control-Max-Age: 86400</pre>
+
+<p>The server responds with <code>Access-Control-Allow-Methods</code> and says that <code>POST</code>, <code>GET</code>, and <code>OPTIONS</code> are viable methods to query the resource in question. Note that this header is similar to the {{HTTPHeader("Allow")}} response header, but used strictly within the context of access control.</p>
+
+<p>The server also sends <code>Access-Control-Allow-Headers</code> with a value of "<code>X-PINGOTHER, Content-Type</code>", confirming that these are permitted headers to be used with the actual request. Like <code>Access-Control-Allow-Methods</code>, <code>Access-Control-Allow-Headers</code> is a comma separated list of acceptable headers.</p>
+
+<p>Finally, {{HTTPHeader("Access-Control-Max-Age")}} gives the value in seconds for how long the response to the preflight request can be cached for without sending another preflight request. In this case, 86400 seconds is 24 hours. Note that each browser has a<a href="../Headers/Access-Control-Max-Age.html"> maximum internal value</a> that takes precedence when the <code>Access-Control-Max-Age</code> is greater.</p>
+
+<h3 id="Requests_with_credentials">Requests with credentials</h3>
+
+<p>The most interesting capability exposed by both {{domxref("XMLHttpRequest")}} or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> and CORS is the ability to make "credentialed" requests that are aware of <a href="../Cookies.html">HTTP cookies</a> and HTTP Authentication information. By default, in cross-site {{domxref("XMLHttpRequest")}} or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> invocations, browsers will <strong>not</strong> send credentials. A specific flag has to be set on the {{domxref("XMLHttpRequest")}} object or the {{domxref("Request")}} constructor when it is invoked.</p>
+
+<p>In this example, content originally loaded from <code class="plain">http://foo.example</code> makes a simple GET request to a resource on <code class="plain">http://bar.other</code> which sets Cookies. Content on foo.example might contain JavaScript like this:</p>
+
+<pre class="brush: js" id="line1">var invocation = new XMLHttpRequest();
+var url = 'http://bar.other/resources/credentialed-content/';
+    
+function callOtherDomain(){
+  if(invocation) {
+    invocation.open('GET', url, true);
+    invocation.withCredentials = true;
+    invocation.onreadystatechange = handler;
+    invocation.send(); 
+  }
+}</pre>
+
+<p>Line 7 shows the flag on {{domxref("XMLHttpRequest")}} that has to be set in order to make the invocation with Cookies, namely the <code>withCredentials</code> boolean value. By default, the invocation is made without Cookies. Since this is a simple <code>GET</code> request, it is not preflighted, but the browser will <strong>reject</strong> any response that does not have the {{HTTPHeader("Access-Control-Allow-Credentials")}}<code>: true</code> header, and <strong>not</strong> make the response available to the invoking web content.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/14291/cred-req.png" style="height: 223px; width: 521px;"></p>
+
+<p>Here is a sample exchange between client and server:</p>
+
+<pre class="brush: shell">GET /resources/access-control-with-credentials/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+Referer: http://foo.example/examples/credential.html
+Origin: http://foo.example
+Cookie: pageAccess=2
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 01:34:52 GMT
+Server: Apache/2.0.61 (Unix) PHP/4.4.7 mod_ssl/2.0.61 OpenSSL/0.9.7e mod_fastcgi/2.4.2 DAV/2 SVN/1.4.2
+X-Powered-By: PHP/5.2.6
+Access-Control-Allow-Origin: http://foo.example
+Access-Control-Allow-Credentials: true
+Cache-Control: no-cache
+Pragma: no-cache
+Set-Cookie: pageAccess=3; expires=Wed, 31-Dec-2008 01:34:53 GMT
+Vary: Accept-Encoding, Origin
+Content-Encoding: gzip
+Content-Length: 106
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+Content-Type: text/plain
+
+
+[text/plain payload]
+</pre>
+
+<p>Although line 11 contains the Cookie destined for the content on <code class="plain">http://bar.other</code>, if bar.other did not respond with an {{HTTPHeader("Access-Control-Allow-Credentials")}}<code>: true</code> (line 19) the response would be ignored and not made available to web content.</p>
+
+<p><strong>Important note:</strong> when responding to a credentialed request,  server <strong>must </strong>specify a domain, and cannot use wild carding. The above example would fail if the header was wildcarded as: <code>Access-Control-Allow-Origin: *</code>.  Since the <code>Access-Control-Allow-Origin</code> explicitly mentions <code class="plain">http://foo.example</code>, the credential-cognizant content is returned to the invoking web content. Note that in line 22, a further cookie is set. In case of failure, an exception, depending on the API used, is raised.</p>
+
+<p>All of these examples can be <a class="external" href="http://arunranga.com/examples/access-control/">seen working here</a>. The next section deals with the actual HTTP headers.</p>
+
+<h2 id="The_HTTP_response_headers">The HTTP response headers</h2>
+
+<p>This section lists the HTTP response headers that servers send back for access control requests as defined by the Cross-Origin Resource Sharing specification. The previous section gives an overview of these in action.</p>
+
+<h3 id="Access-Control-Allow-Origin">Access-Control-Allow-Origin</h3>
+
+<p>A returned resource may have one {{HTTPHeader("Access-Control-Allow-Origin")}} header, with the following syntax:</p>
+
+<pre>Access-Control-Allow-Origin: &lt;origin&gt; | *
+</pre>
+
+<p>The <code>origin</code> parameter specifies a URI that may access the resource. The browser must enforce this. For requests <strong>without</strong> credentials, the server may specify "*" as a wildcard, thereby allowing any origin to access the resource.</p>
+
+<p>For example, to allow http://mozilla.org to access the resource, you can specify:</p>
+
+<pre>Access-Control-Allow-Origin: http://mozilla.org</pre>
+
+<p>If the server specifies an origin host rather than "*", then it must also include Origin in the Vary response header to indicate to clients that server responses will differ based on the value of the Origin request header.</p>
+
+<h3 id="Access-Control-Expose-Headers">Access-Control-Expose-Headers</h3>
+
+<p>The {{HTTPHeader("Access-Control-Expose-Headers")}} header lets a server whitelist headers that browsers are allowed to access. For example:</p>
+
+<pre>Access-Control-Expose-Headers: X-My-Custom-Header, X-Another-Custom-Header
+</pre>
+
+<p>This allows the <code>X-My-Custom-Header</code> and <code>X-Another-Custom-Header</code> headers to be exposed to the browser.</p>
+
+<h3 id="Access-Control-Max-Age">Access-Control-Max-Age</h3>
+
+<p>The  {{HTTPHeader("Access-Control-Max-Age")}} header indicates how long the results of a preflight request can be cached. For an example of a preflight request, see the above examples.</p>
+
+<pre>Access-Control-Max-Age: &lt;delta-seconds&gt;
+</pre>
+
+<p>The <code>delta-seconds</code> parameter indicates the number of seconds the results can be cached.</p>
+
+<h3 id="Access-Control-Allow-Credentials">Access-Control-Allow-Credentials</h3>
+
+<p>The {{HTTPHeader("Access-Control-Allow-Credentials")}} header Indicates whether or not the response to the request can be exposed when the <code>credentials</code> flag is true.  When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials. Note that simple <code>GET</code> requests are not preflighted, and so if a request is made for a resource with credentials, if this header is not returned with the resource, the response is ignored by the browser and not returned to web content.</p>
+
+<pre>Access-Control-Allow-Credentials: true
+</pre>
+
+<p><a class="internal" href="#Requests_with_credentials">Credentialed requests</a> are discussed above.</p>
+
+<h3 id="Access-Control-Allow-Methods">Access-Control-Allow-Methods</h3>
+
+<p>The {{HTTPHeader("Access-Control-Allow-Methods")}} header specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request. The conditions under which a request is preflighted are discussed above.</p>
+
+<pre>Access-Control-Allow-Methods: &lt;method&gt;[, &lt;method&gt;]*
+</pre>
+
+<p>An example of a <a class="internal" href="#Preflighted_requests">preflight request is given above</a>, including an example which sends this header to the browser.</p>
+
+<h3 id="Access-Control-Allow-Headers">Access-Control-Allow-Headers</h3>
+
+<p>The {{HTTPHeader("Access-Control-Allow-Headers")}} header is used in response to a <a class="internal" href="#Preflighted_requests">preflight request</a> to indicate which HTTP headers can be used when making the actual request.</p>
+
+<pre>Access-Control-Allow-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*
+</pre>
+
+<h2 id="The_HTTP_request_headers">The HTTP request headers</h2>
+
+<p>This section lists headers that clients may use when issuing HTTP requests in order to make use of the cross-origin sharing feature. Note that these headers are set for you when making invocations to servers. Developers using cross-site {{domxref("XMLHttpRequest")}} capability do not have to set any cross-origing sharing request headers programmatically.</p>
+
+<h3 id="Origin">Origin</h3>
+
+<p>The {{HTTPHeader("Origin")}} header indicates the origin of the cross-site access request or preflight request.</p>
+
+<pre>Origin: &lt;origin&gt;
+</pre>
+
+<p>The origin is a URI indicating the server from which the request initiated.  It does not include any path information, but only the server name.</p>
+
+<div class="note"><strong>Note:</strong> The <code>origin</code> can be the empty string; this is useful, for example, if the source is a <code>data</code> URL.</div>
+
+<p>Note that in any access control request, the {{HTTPHeader("Origin")}} header is <strong>always</strong> sent.</p>
+
+<h3 id="Access-Control-Request-Method">Access-Control-Request-Method</h3>
+
+<p>The {{HTTPHeader("Access-Control-Request-Method")}} is used when issuing a preflight request to let the server know what HTTP method will be used when the actual request is made.</p>
+
+<pre>Access-Control-Request-Method: &lt;method&gt;
+</pre>
+
+<p>Examples of this usage can be <a class="internal" href="#Preflighted_requests">found above.</a></p>
+
+<h3 id="Access-Control-Request-Headers">Access-Control-Request-Headers</h3>
+
+<p>The {{HTTPHeader("Access-Control-Request-Headers")}} header is used when issuing a preflight request to let the server know what HTTP headers will be used when the actual request is made.</p>
+
+<pre>Access-Control-Request-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*
+</pre>
+
+<p>Examples of this usage can be <a class="internal" href="#Preflighted_requests">found above</a>.</p>
+
+<h2 id="Specifications">Specifications</h2>
+
+<table class="standard-table">
+ <tbody>
+  <tr>
+   <th scope="col">Specification</th>
+   <th scope="col">Status</th>
+   <th scope="col">Comment</th>
+  </tr>
+  <tr>
+   <td>{{SpecName('Fetch', '#cors-protocol', 'CORS')}}</td>
+   <td>{{Spec2('Fetch')}}</td>
+   <td>New definition; supplants CORS specification.</td>
+  </tr>
+  <tr>
+   <td>{{SpecName('CORS')}}</td>
+   <td>{{Spec2('CORS')}}</td>
+   <td>Initial definition.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+
+<p>{{CompatibilityTable}}</p>
+
+<div id="compat-desktop">
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>Feature</th>
+   <th>Chrome</th>
+   <th>Firefox (Gecko)</th>
+   <th>Internet Explorer</th>
+   <th>Opera</th>
+   <th>Safari</th>
+  </tr>
+  <tr>
+   <td>Basic support</td>
+   <td>4</td>
+   <td>3.5</td>
+   <td>8 (via XDomainRequest)<br>
+    10</td>
+   <td>12</td>
+   <td>4</td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+<div id="compat-mobile">
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>Feature</th>
+   <th>Android</th>
+   <th>Chrome for Android</th>
+   <th>Firefox Mobile (Gecko)</th>
+   <th>IE Mobile</th>
+   <th>Opera Mobile</th>
+   <th>Safari Mobile</th>
+  </tr>
+  <tr>
+   <td>Basic support</td>
+   <td>2.1</td>
+   <td>yes</td>
+   <td>yes</td>
+   <td>{{CompatUnknown}}</td>
+   <td>12</td>
+   <td>3.2</td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+<h3 id="Compatibility_notes">Compatibility notes</h3>
+
+<ul>
+ <li>Internet Explorer 8 and 9 expose CORS via the <code>XDomainRequest</code> object, but have a full implementation in IE 10. </li>
+ <li>While Firefox 3.5 introduced support for cross-site XMLHttpRequests and Web Fonts, certain requests were limited until later versions. Specifically, Firefox 7 introduced the ability for cross-site HTTP requests for WebGL Textures, and Firefox 9 added support for Images drawn on a canvas using <code>drawImage</code>.</li>
+</ul>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li><a class="external" href="http://arunranga.com/examples/access-control/">Code Samples Showing <code>XMLHttpRequest</code> and Cross-Origin Resource Sharing</a></li>
+ <li><a class="internal" href="../Server-Side_Access_Control.html">Cross-Origin Resource Sharing From a Server-Side Perspective (PHP, etc.)</a></li>
+ <li><a class="external" href="http://www.w3.org/TR/cors/">Cross-Origin Resource Sharing specification</a></li>
+ <li>{{domxref("XMLHttpRequest")}}</li>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a></li>
+ <li><a class="external" href="http://www.kendoui.com/blogs/teamblog/posts/11-10-03/using_cors_with_all_modern_browsers.aspx">Using CORS with All (Modern) Browsers</a></li>
+ <li><a href="http://www.html5rocks.com/en/tutorials/cors/">Using CORS - HTML5 Rocks</a></li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p&gt;A resource makes a &lt;strong&gt;cross-origin HTTP request&lt;/strong&gt; when it requests a resource from a different domain than the one which the first resource itself serves. For example, an HTML page served from http://domain-a.com makes an &lt;code&gt;&lt;a href=&#34;/en-US/docs/Web/HTML/Element/Img#Attributes&#34;&gt;&amp;lt;img&amp;gt; src&lt;/a&gt;&lt;/code&gt; request for http://domain-b.com/image.jpg. Many pages on the web today load resources like CSS&amp;nbsp;stylesheets, images and scripts from separate domains.&lt;/p&gt;
+
+&lt;p&gt;For security reasons, browsers restrict cross-origin HTTP&amp;nbsp;requests initiated from within scripts. For example, {{domxref(&#34;XMLHttpRequest&#34;)}} and &lt;a href=&#34;/en-US/docs/Web/API/Fetch_API&#34;&gt;Fetch&lt;/a&gt; follow the &lt;a href=&#34;/en-US/docs/Web/Security/Same-origin_policy&#34;&gt;same-origin policy&lt;/a&gt;. So, a web application using {{domxref(&#34;XMLHttpRequest&#34;)}} or &lt;a href=&#34;/en-US/docs/Web/API/Fetch_API&#34;&gt;Fetch&lt;/a&gt; &lt;em&gt;could only&lt;/em&gt; make HTTP requests to its own domain. To improve web applications, developers asked browser vendors to allow cross-domain requests.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/14295/CORS_principle.png&#34; style=&#34;height:305px; width:440px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The Cross-Origin Resource Sharing ({{Glossary(&#34;CORS&#34;)}}) mechanism gives web servers cross-domain access controls, which enable secure cross-domain data transfers. Modern browsers use CORS in an API container - such as {{domxref(&#34;XMLHttpRequest&#34;)}} or &lt;a href=&#34;/en-US/docs/Web/API/Fetch_API&#34;&gt;Fetch&lt;/a&gt; - to mitigate risks of cross-origin HTTP requests.&lt;/p&gt;
+
+&lt;p&gt;This article is for web administrators, server developers and front-end developers. Modern browsers handle the client-side components of cross-origin sharing, including headers and policy enforcement. But this new standard means servers have to handle new request and response headers. Another article for server developers discussing &lt;a href=&#34;/en-US/docs/Web/HTTP/Server-Side_Access_Control&#34;&gt;cross-origin sharing from a server perspective (with PHP code snippets)&lt;/a&gt; is supplementary reading.&lt;/p&gt;
+
+&lt;p&gt;This &lt;a class=&#34;external&#34; href=&#34;https://fetch.spec.whatwg.org/#http-cors-protocol&#34;&gt;cross-origin sharing standard&lt;/a&gt; is used to enable cross-site HTTP requests for:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Invocations of the {{domxref(&#34;XMLHttpRequest&#34;)}} or &lt;a href=&#34;/en-US/docs/Web/API/Fetch_API&#34;&gt;Fetch&lt;/a&gt; APIs in a cross-site manner, as discussed above.&lt;/li&gt;
+ &lt;li&gt;Web Fonts (for cross-domain font usage in &lt;code&gt;@font-face&lt;/code&gt; within CSS), &lt;a class=&#34;external&#34; href=&#34;https://www.w3.org/TR/css-fonts-3/#font-fetching-requirements&#34;&gt;so that servers can deploy TrueType fonts that can only be cross-site loaded and used by web sites that are permitted to do so.&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;/en-US/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL&#34;&gt;WebGL textures&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Images/video frames drawn to a canvas using &lt;code&gt;&lt;a href=&#34;/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage&#34;&gt;drawImage&lt;/a&gt;&lt;/code&gt;.&lt;/li&gt;
+ &lt;li&gt;Stylesheets (for &lt;a href=&#34;/en-US/docs/Web/CSS/CSSOM_View&#34;&gt;CSSOM&lt;/a&gt; access).&lt;/li&gt;
+ &lt;li&gt;Scripts (for unmuted exceptions).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This article is a general discussion of Cross-Origin Resource Sharing, and includes a discussion of the necessary HTTP headers.&lt;/p&gt;
+
+&lt;h2 id=&#34;Overview&#34;&gt;Overview&lt;/h2&gt;
+
+&lt;p&gt;The Cross-Origin Resource Sharing standard works by adding new &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers&#34;&gt;HTTP headers&lt;/a&gt; that allow servers to describe the set of origins that are permitted to read that information using a web browser.&amp;nbsp; Additionally, for HTTP request methods that can cause side-effects on user data (in particular, for HTTP&amp;nbsp;methods other than {{HTTPMethod(&#34;GET&#34;)}}, or for {{HTTPMethod(&#34;POST&#34;)}} usage with certain &lt;a href=&#34;/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types&#34;&gt;MIME types&lt;/a&gt;), the specification mandates that browsers &#34;preflight&#34; the request, soliciting supported methods from the server with an HTTP {{HTTPMethod(&#34;OPTIONS&#34;)}} request method, and then, upon &#34;approval&#34; from the server, sending the actual request with the actual HTTP request method. Servers can also notify clients whether &#34;credentials&#34; (including &lt;a href=&#34;/en-US/docs/Web/HTTP/Cookies&#34;&gt;Cookies&lt;/a&gt; and HTTP Authentication data) should be sent with requests.&lt;/p&gt;
+
+&lt;p&gt;Subsequent sections discuss scenarios, as well as provide a breakdown of the HTTP headers used.&amp;nbsp;&lt;/p&gt;
+
+&lt;h2 id=&#34;Examples_of_access_control_scenarios&#34;&gt;Examples of access control scenarios&lt;/h2&gt;
+
+&lt;p&gt;Here, we present three scenarios that illustrate how Cross-Origin Resource Sharing works. All of these examples use the {{domxref(&#34;XMLHttpRequest&#34;)}} object, which can be used to make cross-site invocations in any supporting browser.&lt;/p&gt;
+
+&lt;p&gt;The JavaScript snippets included in these sections (and running instances of the server-code that correctly handles these cross-site requests) &lt;a class=&#34;external&#34; href=&#34;http://arunranga.com/examples/access-control/&#34;&gt;can be found &#34;in action&#34; here&lt;/a&gt;, and will work in browsers that support cross-site {{domxref(&#34;XMLHttpRequest&#34;)}}. A discussion of Cross-Origin Resource Sharing from a &lt;a class=&#34;internal&#34; href=&#34;/en-US/docs/Web/HTTP/Server-Side_Access_Control&#34;&gt;server perspective (including PHP code snippets) can be found here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;Simple_requests&#34;&gt;Simple requests&lt;/h3&gt;
+
+&lt;p&gt;A simple cross-site request is one that meets all the following conditions:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;The only allowed methods are:
+  &lt;ul&gt;
+   &lt;li&gt;{{HTTPMethod(&#34;GET&#34;)}}&lt;/li&gt;
+   &lt;li&gt;{{HTTPMethod(&#34;HEAD&#34;)}}&lt;/li&gt;
+   &lt;li&gt;{{HTTPMethod(&#34;POST&#34;)}}&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;li&gt;Apart from the headers set automatically by the user agent (e.g. {{HTTPHeader(&#34;Connection&#34;)}}, {{HTTPHeader(&#34;User-Agent&#34;)}}, etc.), the only headers which are allowed to be manually set are:
+  &lt;ul&gt;
+   &lt;li&gt;{{HTTPHeader(&#34;Accept&#34;)}}&lt;/li&gt;
+   &lt;li&gt;{{HTTPHeader(&#34;Accept-Language&#34;)}}&lt;/li&gt;
+   &lt;li&gt;{{HTTPHeader(&#34;Content-Language&#34;)}}&lt;/li&gt;
+   &lt;li&gt;{{HTTPHeader(&#34;Content-Type&#34;)}}&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;li&gt;The only allowed values for the &lt;code&gt;Content-Type&lt;/code&gt; header are:
+  &lt;ul&gt;
+   &lt;li&gt;&lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;code&gt;multipart/form-data&lt;/code&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;code&gt;text/plain&lt;/code&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;note&#34;&gt;&lt;strong&gt;Note:&lt;/strong&gt; These are the same kinds of cross-site requests that web content can already issue, and no response data is released to the requester unless the server sends an appropriate header. Therefore, sites that prevent cross-site request forgery have nothing new to fear from HTTP access control.&lt;/div&gt;
+
+&lt;p&gt;For example, suppose web content on domain &lt;code class=&#34;plain&#34;&gt;http://foo.example&lt;/code&gt; wishes to invoke content on domain &lt;code class=&#34;plain&#34;&gt;http://bar.other&lt;/code&gt;. Code of this sort might be used within JavaScript deployed on foo.example:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: js&#34; id=&#34;line1&#34;&gt;
+var invocation = new XMLHttpRequest();
+var url = &#39;http://bar.other/resources/public-data/&#39;;
+   
+function callOtherDomain() {
+  if(invocation) {    
+    invocation.open(&#39;GET&#39;, url, true);
+    invocation.onreadystatechange = handler;
+    invocation.send(); 
+  }
+}
+&lt;/pre&gt;
+
+&lt;p&gt;This will lead to a simple exchange between the client and the server, using CORS headers to handle the privileges:&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/14293/simple_req.png&#34; style=&#34;height:224px; width:521px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let us look at what the browser will send the server in this case, and let&#39;s see how the server responds:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: shell;highlight:[10,16]&#34;&gt;
+GET /resources/public-data/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+Referer: http://foo.example/examples/access-control/simpleXSInvocation.html
+Origin: http://foo.example
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 00:23:53 GMT
+Server: Apache/2.0.61 
+Access-Control-Allow-Origin: *
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: application/xml
+
+[XML Data]
+&lt;/pre&gt;
+
+&lt;p&gt;Lines 1 - 10 are headers sent. Note that the main HTTP&amp;nbsp;request header of note here is the {{HTTPHeader(&#34;Origin&#34;)}} header on line 10 above, which shows that the invocation is coming from content on the the domain &lt;code class=&#34;plain&#34;&gt;http://foo.example&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Lines 13 - 22 show the HTTP response from the server on domain &lt;code class=&#34;plain&#34;&gt;http://bar.other&lt;/code&gt;. In response, the server sends back an {{HTTPHeader(&#34;Access-Control-Allow-Origin&#34;)}} header, shown above in line 16. The use of the {{HTTPHeader(&#34;Origin&#34;)}} header and of {{HTTPHeader(&#34;Access-Control-Allow-Origin&#34;)}} show the access control protocol in its simplest use. In this case, the server responds with a &lt;code&gt;Access-Control-Allow-Origin: *&lt;/code&gt; which means that the resource can be accessed by &lt;strong&gt;any&lt;/strong&gt; domain in a cross-site manner. If the resource owners at &lt;code class=&#34;plain&#34;&gt;http://bar.other&lt;/code&gt; wished to restrict access to the resource to be only from &lt;code class=&#34;plain&#34;&gt;http://foo.example&lt;/code&gt;, they would send back:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&#34;plain&#34;&gt;Access-Control-Allow-Origin: http://foo.example&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that now, no domain other than &lt;code class=&#34;plain&#34;&gt;http://foo.example&lt;/code&gt; (identified by the ORIGIN:&amp;nbsp;header in the request, as in line 10 above) can access the resource&amp;nbsp; in a cross-site manner.&amp;nbsp; The &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header should contain the value that was sent in the request&#39;s &lt;code&gt;Origin&lt;/code&gt; header.&amp;nbsp;&lt;/p&gt;
+
+&lt;h3 id=&#34;Preflighted_requests&#34;&gt;Preflighted requests&lt;/h3&gt;
+
+&lt;p&gt;Unlike simple requests&amp;nbsp;(discussed above), &#34;preflighted&#34; requests first send an HTTP request by the {{HTTPMethod(&#34;OPTIONS&#34;)}} method to the resource on the other domain, in order to determine whether the actual request is safe to send. Cross-site requests are preflighted like this since they may have implications to user data. In particular, a request is preflighted if:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;It uses methods &lt;strong&gt;other&lt;/strong&gt; than &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt; or &lt;code&gt;POST&lt;/code&gt;. Also, if &lt;code&gt;POST&lt;/code&gt; is used to send request data with a Content-Type &lt;strong&gt;other&lt;/strong&gt; than &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code&gt;multipart/form-data&lt;/code&gt;, or &lt;code&gt;text/plain&lt;/code&gt;, e.g. if the &lt;code&gt;POST&lt;/code&gt; request sends an XML payload to the server using &lt;code&gt;application/xml&lt;/code&gt; or &lt;code&gt;text/xml&lt;/code&gt;, then the request &lt;strong&gt;is&lt;/strong&gt; preflighted.&lt;/li&gt;
+ &lt;li&gt;It sets custom headers in the request (e.g. the request uses a header such as &lt;code&gt;X-PINGOTHER&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;An example of this kind of invocation might be:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: js&#34; id=&#34;line1&#34;&gt;
+var invocation = new XMLHttpRequest();
+var url = &#39;http://bar.other/resources/post-here/&#39;;
+var body = &#39;&amp;lt;?xml version=&#34;1.0&#34;?&amp;gt;&amp;lt;person&amp;gt;&amp;lt;name&amp;gt;Arun&amp;lt;/name&amp;gt;&amp;lt;/person&amp;gt;&#39;;
+    
+function callOtherDomain(){
+  if(invocation)
+    {
+      invocation.open(&#39;POST&#39;, url, true);
+      invocation.setRequestHeader(&#39;X-PINGOTHER&#39;, &#39;pingpong&#39;);
+      invocation.setRequestHeader(&#39;Content-Type&#39;, &#39;application/xml&#39;);
+      invocation.onreadystatechange = handler;
+      invocation.send(body); 
+    }
+}
+
+......
+&lt;/pre&gt;
+
+&lt;p&gt;In the example above, line 3 creates an XML body to send with the &lt;code&gt;POST&lt;/code&gt; request in line 8.&amp;nbsp; Also, on line 9, a &#34;customized&#34; (non-standard) HTTP request header is set (&lt;code&gt;X-PINGOTHER: pingpong&lt;/code&gt;).&amp;nbsp; Such headers are not part of the HTTP/1.1 protocol, but are generally useful to web applications.&amp;nbsp; Since the request (&lt;code&gt;POST&lt;/code&gt;) uses a Content-Type of &lt;code&gt;application/xml&lt;/code&gt;, and since a custom header is set, this request is preflighted.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/14289/prelight.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&#39;s take a look at the full exchange between client and server. The first exchange is the &lt;em&gt;preflight request/response&lt;/em&gt;:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: shell;highlight:[10,11,17,18,19,20]&#34;&gt;
+OPTIONS /resources/post-here/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+Origin: http://foo.example
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: X-PINGOTHER, Content-Type
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 01:15:39 GMT
+Server: Apache/2.0.61 (Unix)
+Access-Control-Allow-Origin: http://foo.example
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+Access-Control-Max-Age: 86400
+Vary: Accept-Encoding, Origin
+Content-Encoding: gzip
+Content-Length: 0
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+Content-Type: text/plain
+&lt;/pre&gt;
+
+&lt;p&gt;Once the preflight request is complete, the real request is sent:&lt;/p&gt;
+
+&lt;pre class=&#34;brush:shell;highlight:[13,23]&#34;&gt;
+POST /resources/post-here/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+X-PINGOTHER: pingpong
+Content-Type: text/xml; charset=UTF-8
+Referer: http://foo.example/examples/preflightInvocation.html
+Content-Length: 55
+Origin: http://foo.example
+Pragma: no-cache
+Cache-Control: no-cache
+
+&amp;lt;?xml version=&#34;1.0&#34;?&amp;gt;&amp;lt;person&amp;gt;&amp;lt;name&amp;gt;Arun&amp;lt;/name&amp;gt;&amp;lt;/person&amp;gt;
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 01:15:40 GMT
+Server: Apache/2.0.61 (Unix)
+Access-Control-Allow-Origin: http://foo.example
+Vary: Accept-Encoding, Origin
+Content-Encoding: gzip
+Content-Length: 235
+Keep-Alive: timeout=2, max=99
+Connection: Keep-Alive
+Content-Type: text/plain
+
+[Some GZIP&#39;d payload]
+&lt;/pre&gt;
+
+&lt;p&gt;Lines 1 - 12 above represent the preflight request with the {{HTTPMethod(&#34;OPTIONS&#34;)}} method. The browser determines that it needs to send this based on the request parameters that the JavaScript code snippet above was using, so that the server can respond whether it is acceptable to send the request with the actual request parameters. OPTIONS is an HTTP/1.1 method that is used to determine further information from servers, and is an &lt;strong&gt;idempotent&lt;/strong&gt; method, meaning that it can&#39;t be used to change the resource. Note that along with the OPTIONS request, two other request headers are sent (lines 10&amp;nbsp;and 11&amp;nbsp;respectively):&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: X-PINGOTHER, Content-Type
+&lt;/pre&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Access-Control-Request-Method&#34;)}} header notifies the server as part of a preflight request that when the actual request is sent, it will be sent with a &lt;code&gt;POST&lt;/code&gt; request method. The {{HTTPHeader(&#34;Access-Control-Request-Headers&#34;)}} header notifies the server that when the actual request is sent, it will be sent with a&amp;nbsp;&lt;code&gt;X-PINGOTHER&lt;/code&gt;&amp;nbsp;and Content-Type custom headers. The server now has an opportunity to determine whether it wishes to accept a request under these circumstances.&lt;/p&gt;
+
+&lt;p&gt;Lines 14&amp;nbsp;- 26&amp;nbsp;above are the response that the server sends back indicating that the request method (&lt;code&gt;POST&lt;/code&gt;) and request headers (&lt;code&gt;X-PINGOTHER&lt;/code&gt;) are acceptable. In particular, let&#39;s look at lines 17-20:&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Allow-Origin: http://foo.example
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+Access-Control-Max-Age: 86400&lt;/pre&gt;
+
+&lt;p&gt;The server responds with &lt;code&gt;Access-Control-Allow-Methods&lt;/code&gt; and says that &lt;code&gt;POST&lt;/code&gt;, &lt;code&gt;GET&lt;/code&gt;, and &lt;code&gt;OPTIONS&lt;/code&gt; are viable methods to query the resource in question. Note that this header is similar to the {{HTTPHeader(&#34;Allow&#34;)}} response header, but used strictly within the context of access control.&lt;/p&gt;
+
+&lt;p&gt;The server also sends &lt;code&gt;Access-Control-Allow-Headers&lt;/code&gt; with a value of &#34;&lt;code&gt;X-PINGOTHER, Content-Type&lt;/code&gt;&#34;, confirming that these are&amp;nbsp;permitted headers to be used with the actual request. Like &lt;code&gt;Access-Control-Allow-Methods&lt;/code&gt;, &lt;code&gt;Access-Control-Allow-Headers&lt;/code&gt; is a comma separated list of acceptable headers.&lt;/p&gt;
+
+&lt;p&gt;Finally, {{HTTPHeader(&#34;Access-Control-Max-Age&#34;)}} gives the value in seconds for how long the response to the preflight request can be cached for without sending another preflight request. In this case, 86400 seconds is 24 hours. Note that each browser has&amp;nbsp;a&lt;a href=&#34;/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age&#34;&gt; maximum internal value&lt;/a&gt; that takes precedence when the&amp;nbsp;&lt;code&gt;Access-Control-Max-Age&lt;/code&gt;&amp;nbsp;is greater.&lt;/p&gt;
+
+&lt;h3 id=&#34;Requests_with_credentials&#34;&gt;Requests with credentials&lt;/h3&gt;
+
+&lt;p&gt;The most interesting capability exposed by both {{domxref(&#34;XMLHttpRequest&#34;)}} or &lt;a href=&#34;/en-US/docs/Web/API/Fetch_API&#34;&gt;Fetch&lt;/a&gt; and CORS is the ability to make &#34;credentialed&#34;&amp;nbsp;requests that are aware of &lt;a href=&#34;/en-US/docs/Web/HTTP/Cookies&#34;&gt;HTTP cookies&lt;/a&gt; and HTTP&amp;nbsp;Authentication information. By default, in cross-site {{domxref(&#34;XMLHttpRequest&#34;)}} or &lt;a href=&#34;/en-US/docs/Web/API/Fetch_API&#34;&gt;Fetch&lt;/a&gt; invocations, browsers will &lt;strong&gt;not&lt;/strong&gt; send credentials. A specific flag has to be set on the {{domxref(&#34;XMLHttpRequest&#34;)}} object or the {{domxref(&#34;Request&#34;)}} constructor when it is invoked.&lt;/p&gt;
+
+&lt;p&gt;In this example, content originally loaded from &lt;code class=&#34;plain&#34;&gt;http://foo.example&lt;/code&gt; makes a simple GET request to a resource on &lt;code class=&#34;plain&#34;&gt;http://bar.other&lt;/code&gt; which sets Cookies. Content on foo.example might contain JavaScript like this:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: js&#34; id=&#34;line1&#34;&gt;
+var invocation = new XMLHttpRequest();
+var url = &#39;http://bar.other/resources/credentialed-content/&#39;;
+    
+function callOtherDomain(){
+  if(invocation) {
+    invocation.open(&#39;GET&#39;, url, true);
+    invocation.withCredentials = true;
+    invocation.onreadystatechange = handler;
+    invocation.send(); 
+  }
+}&lt;/pre&gt;
+
+&lt;p&gt;Line 7 shows the flag on {{domxref(&#34;XMLHttpRequest&#34;)}} that has to be set in order to make the invocation with Cookies, namely the &lt;code&gt;withCredentials&lt;/code&gt; boolean value. By default, the invocation is made without Cookies. Since this is a simple &lt;code&gt;GET&lt;/code&gt; request, it is not preflighted, but the browser will &lt;strong&gt;reject&lt;/strong&gt; any response that does not have the {{HTTPHeader(&#34;Access-Control-Allow-Credentials&#34;)}}&lt;code&gt;: true&lt;/code&gt; header, and &lt;strong&gt;not&lt;/strong&gt; make the response available to the invoking web content.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/14291/cred-req.png&#34; style=&#34;height:223px; width:521px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is a sample exchange between client and server:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: shell&#34;&gt;
+GET /resources/access-control-with-credentials/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+Referer: http://foo.example/examples/credential.html
+Origin: http://foo.example
+Cookie: pageAccess=2
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 01:34:52 GMT
+Server: Apache/2.0.61 (Unix) PHP/4.4.7 mod_ssl/2.0.61 OpenSSL/0.9.7e mod_fastcgi/2.4.2 DAV/2 SVN/1.4.2
+X-Powered-By: PHP/5.2.6
+Access-Control-Allow-Origin: http://foo.example
+Access-Control-Allow-Credentials: true
+Cache-Control: no-cache
+Pragma: no-cache
+Set-Cookie: pageAccess=3; expires=Wed, 31-Dec-2008 01:34:53 GMT
+Vary: Accept-Encoding, Origin
+Content-Encoding: gzip
+Content-Length: 106
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+Content-Type: text/plain
+
+
+[text/plain payload]
+&lt;/pre&gt;
+
+&lt;p&gt;Although line 11 contains the Cookie destined for the content on &lt;code class=&#34;plain&#34;&gt;http://bar.other&lt;/code&gt;, if bar.other did not respond with an {{HTTPHeader(&#34;Access-Control-Allow-Credentials&#34;)}}&lt;code&gt;: true&lt;/code&gt; (line 19) the response would be ignored and not made available to web content.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Important note:&lt;/strong&gt; when responding to a credentialed request,&amp;nbsp; server &lt;strong&gt;must &lt;/strong&gt;specify a domain, and cannot use wild carding. The above example would fail if the header was wildcarded as: &lt;code&gt;Access-Control-Allow-Origin: *&lt;/code&gt;.&amp;nbsp; Since the &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; explicitly mentions &lt;code class=&#34;plain&#34;&gt;http://foo.example&lt;/code&gt;, the credential-cognizant content is returned to the invoking web content. Note that in line 22, a further cookie is set. In case of failure, an exception, depending on the API used, is raised.&lt;/p&gt;
+
+&lt;p&gt;All of these examples can be &lt;a class=&#34;external&#34; href=&#34;http://arunranga.com/examples/access-control/&#34;&gt;seen working here&lt;/a&gt;. The next section deals with the actual HTTP headers.&lt;/p&gt;
+
+&lt;h2 id=&#34;The_HTTP_response_headers&#34;&gt;The HTTP response headers&lt;/h2&gt;
+
+&lt;p&gt;This section lists the HTTP response headers that servers send back for access control requests as defined by the Cross-Origin Resource Sharing specification. The previous section gives an overview of these in action.&lt;/p&gt;
+
+&lt;h3 id=&#34;Access-Control-Allow-Origin&#34;&gt;Access-Control-Allow-Origin&lt;/h3&gt;
+
+&lt;p&gt;A returned resource may have one {{HTTPHeader(&#34;Access-Control-Allow-Origin&#34;)}} header, with the following syntax:&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Allow-Origin: &amp;lt;origin&amp;gt; |&amp;nbsp;*
+&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;origin&lt;/code&gt; parameter specifies a URI that may access the resource. The browser must enforce this. For requests &lt;strong&gt;without&lt;/strong&gt; credentials, the server may specify &#34;*&#34; as a wildcard, thereby allowing any origin to access the resource.&lt;/p&gt;
+
+&lt;p&gt;For example, to allow http://mozilla.org to access the resource, you can specify:&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Allow-Origin: http://mozilla.org&lt;/pre&gt;
+
+&lt;p&gt;If the server specifies an origin host rather than &#34;*&#34;, then it must also include Origin in the Vary response header to indicate to clients that server responses will differ based on the value of the Origin request header.&lt;/p&gt;
+
+&lt;h3 id=&#34;Access-Control-Expose-Headers&#34;&gt;Access-Control-Expose-Headers&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Access-Control-Expose-Headers&#34;)}} header lets a server whitelist headers that browsers are allowed to access. For example:&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Expose-Headers: X-My-Custom-Header, X-Another-Custom-Header
+&lt;/pre&gt;
+
+&lt;p&gt;This allows the &lt;code&gt;X-My-Custom-Header&lt;/code&gt; and &lt;code&gt;X-Another-Custom-Header&lt;/code&gt; headers to be exposed to the browser.&lt;/p&gt;
+
+&lt;h3 id=&#34;Access-Control-Max-Age&#34;&gt;Access-Control-Max-Age&lt;/h3&gt;
+
+&lt;p&gt;The&amp;nbsp; {{HTTPHeader(&#34;Access-Control-Max-Age&#34;)}} header indicates how long the results of a preflight request can be cached. For an example of a preflight request, see the above examples.&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Max-Age: &amp;lt;delta-seconds&amp;gt;
+&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;delta-seconds&lt;/code&gt; parameter indicates the number of seconds the results can be cached.&lt;/p&gt;
+
+&lt;h3 id=&#34;Access-Control-Allow-Credentials&#34;&gt;Access-Control-Allow-Credentials&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Access-Control-Allow-Credentials&#34;)}} header Indicates whether or not the response to the request can be exposed when the &lt;code&gt;credentials&lt;/code&gt; flag is true.&amp;nbsp; When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials. Note that simple &lt;code&gt;GET&lt;/code&gt; requests are not preflighted, and so if a request is made for a resource with credentials, if this header is not returned with the resource, the response is ignored by the browser and not returned to web content.&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Allow-Credentials: true
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;a class=&#34;internal&#34; href=&#34;#Requests_with_credentials&#34;&gt;Credentialed requests&lt;/a&gt; are discussed above.&lt;/p&gt;
+
+&lt;h3 id=&#34;Access-Control-Allow-Methods&#34;&gt;Access-Control-Allow-Methods&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Access-Control-Allow-Methods&#34;)}} header specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request. The conditions under which a request is preflighted are discussed above.&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Allow-Methods: &amp;lt;method&amp;gt;[, &amp;lt;method&amp;gt;]*
+&lt;/pre&gt;
+
+&lt;p&gt;An example of a &lt;a class=&#34;internal&#34; href=&#34;#Preflighted_requests&#34;&gt;preflight request is given above&lt;/a&gt;, including an example which sends this header to the browser.&lt;/p&gt;
+
+&lt;h3 id=&#34;Access-Control-Allow-Headers&#34;&gt;Access-Control-Allow-Headers&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Access-Control-Allow-Headers&#34;)}} header is used in response to a &lt;a class=&#34;internal&#34; href=&#34;#Preflighted_requests&#34;&gt;preflight request&lt;/a&gt; to indicate which HTTP&amp;nbsp;headers can be used when making the actual request.&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Allow-Headers:&amp;nbsp;&amp;lt;field-name&amp;gt;[, &amp;lt;field-name&amp;gt;]*
+&lt;/pre&gt;
+
+&lt;h2 id=&#34;The_HTTP_request_headers&#34;&gt;The HTTP request headers&lt;/h2&gt;
+
+&lt;p&gt;This section lists headers that clients may use when issuing HTTP&amp;nbsp;requests in order to make use of the cross-origin sharing feature. Note that these headers are set for you when making invocations to servers. Developers using cross-site {{domxref(&#34;XMLHttpRequest&#34;)}} capability do not have to set any cross-origing sharing request headers programmatically.&lt;/p&gt;
+
+&lt;h3 id=&#34;Origin&#34;&gt;Origin&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Origin&#34;)}} header indicates the origin of the cross-site access request or preflight request.&lt;/p&gt;
+
+&lt;pre&gt;
+Origin: &amp;lt;origin&amp;gt;
+&lt;/pre&gt;
+
+&lt;p&gt;The origin is a URI&amp;nbsp;indicating the server from which the request initiated.&amp;nbsp; It does not include any path information, but only the server name.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;origin&lt;/code&gt; can be the empty string; this is useful, for example, if the source is a &lt;code&gt;data&lt;/code&gt; URL.&lt;/div&gt;
+
+&lt;p&gt;Note that in any access control request, the {{HTTPHeader(&#34;Origin&#34;)}} header is &lt;strong&gt;always&lt;/strong&gt; sent.&lt;/p&gt;
+
+&lt;h3 id=&#34;Access-Control-Request-Method&#34;&gt;Access-Control-Request-Method&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Access-Control-Request-Method&#34;)}} is used when issuing a preflight request to let the server know what HTTP&amp;nbsp;method will be used when the actual request is made.&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Request-Method:&amp;nbsp;&amp;lt;method&amp;gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Examples of this usage can be &lt;a class=&#34;internal&#34; href=&#34;#Preflighted_requests&#34;&gt;found above.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;Access-Control-Request-Headers&#34;&gt;Access-Control-Request-Headers&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Access-Control-Request-Headers&#34;)}} header is used when issuing a preflight request to let the server know what HTTP&amp;nbsp;headers will be used when the actual request is made.&lt;/p&gt;
+
+&lt;pre&gt;
+Access-Control-Request-Headers:&amp;nbsp;&amp;lt;field-name&amp;gt;[, &amp;lt;field-name&amp;gt;]*
+&lt;/pre&gt;
+
+&lt;p&gt;Examples of this usage can be &lt;a class=&#34;internal&#34; href=&#34;#Preflighted_requests&#34;&gt;found above&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;Specifications&#34;&gt;Specifications&lt;/h2&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Specification&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Status&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Comment&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{SpecName(&#39;Fetch&#39;, &#39;#cors-protocol&#39;, &#39;CORS&#39;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;Fetch&#39;)}}&lt;/td&gt;
+   &lt;td&gt;New definition; supplants CORS specification.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{SpecName(&#39;CORS&#39;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;CORS&#39;)}}&lt;/td&gt;
+   &lt;td&gt;Initial definition.&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;Browser_compatibility&#34;&gt;Browser compatibility&lt;/h2&gt;
+
+&lt;p&gt;{{CompatibilityTable}}&lt;/p&gt;
+
+&lt;div id=&#34;compat-desktop&#34;&gt;
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;Feature&lt;/th&gt;
+   &lt;th&gt;Chrome&lt;/th&gt;
+   &lt;th&gt;Firefox (Gecko)&lt;/th&gt;
+   &lt;th&gt;Internet Explorer&lt;/th&gt;
+   &lt;th&gt;Opera&lt;/th&gt;
+   &lt;th&gt;Safari&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Basic support&lt;/td&gt;
+   &lt;td&gt;4&lt;/td&gt;
+   &lt;td&gt;3.5&lt;/td&gt;
+   &lt;td&gt;8 (via XDomainRequest)&lt;br /&gt;
+    10&lt;/td&gt;
+   &lt;td&gt;12&lt;/td&gt;
+   &lt;td&gt;4&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;compat-mobile&#34;&gt;
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;Feature&lt;/th&gt;
+   &lt;th&gt;Android&lt;/th&gt;
+   &lt;th&gt;Chrome for Android&lt;/th&gt;
+   &lt;th&gt;Firefox Mobile (Gecko)&lt;/th&gt;
+   &lt;th&gt;IE Mobile&lt;/th&gt;
+   &lt;th&gt;Opera Mobile&lt;/th&gt;
+   &lt;th&gt;Safari Mobile&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Basic support&lt;/td&gt;
+   &lt;td&gt;2.1&lt;/td&gt;
+   &lt;td&gt;yes&lt;/td&gt;
+   &lt;td&gt;yes&lt;/td&gt;
+   &lt;td&gt;{{CompatUnknown}}&lt;/td&gt;
+   &lt;td&gt;12&lt;/td&gt;
+   &lt;td&gt;3.2&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;Compatibility_notes&#34;&gt;Compatibility notes&lt;/h3&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Internet Explorer 8 and 9 expose CORS via the &lt;code&gt;XDomainRequest&lt;/code&gt; object, but have a full implementation in IE 10.&amp;nbsp;&lt;/li&gt;
+ &lt;li&gt;While Firefox 3.5 introduced support for cross-site XMLHttpRequests and Web Fonts, certain requests were limited until later versions. Specifically, Firefox 7 introduced the ability for cross-site HTTP requests for WebGL Textures, and Firefox 9 added support for Images drawn on a canvas using &lt;code&gt;drawImage&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;See_also&#34;&gt;See also&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;http://arunranga.com/examples/access-control/&#34;&gt;Code Samples Showing &lt;code&gt;XMLHttpRequest&lt;/code&gt; and Cross-Origin Resource Sharing&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a class=&#34;internal&#34; href=&#34;/en-US/docs/Web/HTTP/Server-Side_Access_Control&#34;&gt;Cross-Origin&amp;nbsp;Resource Sharing From a Server-Side Perspective (PHP, etc.)&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/TR/cors/&#34;&gt;Cross-Origin Resource Sharing specification&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;{{domxref(&#34;XMLHttpRequest&#34;)}}&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;/en-US/docs/Web/API/Fetch_API&#34;&gt;Fetch API&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;http://www.kendoui.com/blogs/teamblog/posts/11-10-03/using_cors_with_all_modern_browsers.aspx&#34;&gt;Using CORS with All (Modern) Browsers&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;http://www.html5rocks.com/en/tutorials/cors/&#34;&gt;Using CORS - HTML5 Rocks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Access_control_CORS%24revert/1135379" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS$revision/1135379 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:47:58 GMT -->
+</html>

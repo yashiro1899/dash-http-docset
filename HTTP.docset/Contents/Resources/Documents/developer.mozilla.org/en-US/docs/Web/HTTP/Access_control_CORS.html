@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:31:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>HTTP access control (CORS) - HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+  <link rel="alternate" type="application/json" href="Access_control_CORS%24json.json">
+  <link rel="canonical" href="Access_control_CORS.html" >
+
+  
+    
+      <link rel="alternate" hreflang="es" href="https://developer.mozilla.org/es/docs/Web/HTTP/Access_control_CORS" title="Control de acceso HTTP (CORS)">
+    
+      <link rel="alternate" hreflang="fr" href="https://developer.mozilla.org/fr/docs/HTTP/Access_control_CORS" title="Contrôle d&#39;accès HTTP">
+    
+      <link rel="alternate" hreflang="ja" href="https://developer.mozilla.org/ja/docs/Web/HTTP/HTTP_access_control" title="HTTP アクセス制御 (CORS)">
+    
+      <link rel="alternate" hreflang="ko" href="https://developer.mozilla.org/ko/docs/Web/HTTP/Access_control_CORS" title="HTTP 접근 제어 (CORS)">
+    
+      <link rel="alternate" hreflang="zh-CN" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" title="HTTP访问控制(CORS)">
+    
+      <link rel="alternate" hreflang="zh-TW" href="https://developer.mozilla.org/zh-TW/docs/HTTP/Access_control_CORS" title="HTTP access control (CORS)">
+    
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="HTTP access control (CORS)">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">
+  <meta name="twitter:title" content="HTTP access control (CORS)">
+  
+  <meta property="og:description" content="A resource makes a cross-origin HTTP request when it requests a resource from a different domain than the one which the first resource itself serves. For example, an HTML page served from http://domain-a.com makes an img src request for http://domain-b.com/image.jpg. Many pages on the web today load resources like CSS stylesheets, images and scripts from separate domains.">
+  <meta name="description" content="A resource makes a cross-origin HTTP request when it requests a resource from a different domain than the one which the first resource itself serves. For example, an HTML page served from http://domain-a.com makes an img src request for http://domain-b.com/image.jpg. Many pages on the web today load resources like CSS stylesheets, images and scripts from separate domains.">
+  <meta name="twitter:description" content="A resource makes a cross-origin HTTP request when it requests a resource from a different domain than the one which the first resource itself serves. For example, an HTML page served from http://domain-a.com makes an img src request for http://domain-b.com/image.jpg. Many pages on the web today load resources like CSS stylesheets, images and scripts from separate domains.">
+  
+
+  
+  <script type="text/javascript">
+    
+      var document_saved = 0;
+    
+  </script>
+
+
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+        // dimension12 == 'Page Revision"
+        ga('set', 'dimension12', '1145746');
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body data-slug="Web/HTTP/Access_control_CORS" contextmenu="edit-history-menu" data-search-url="" class="document  ">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#document-main" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FAccess_control_CORS" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+   <!-- end is_zone -->
+
+
+    <div class="wiki-main-content" id="document-main"><div class="center">
+      
+      <div class="article-meta">
+        <!-- action buttons -->
+        
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  <ul class="page-buttons" data-sticky="false">
+      
+      <li><button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false"><span>Languages</span><i aria-hidden="true" class="icon-language"></i></button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+              
+                
+                
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/es/docs/Web/HTTP/Access_control_CORS" title="Spanish">Español (es)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/fr/docs/HTTP/Access_control_CORS" title="French">Français (fr)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/ja/docs/Web/HTTP/HTTP_access_control" title="Japanese">日本語 (ja)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/ko/docs/Web/HTTP/Access_control_CORS" title="Korean">한국어 (ko)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" title="Chinese (Simplified)">中文 (简体) (zh-CN)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/zh-TW/docs/HTTP/Access_control_CORS" title="Chinese (Traditional)">正體中文 (繁體) (zh-TW)</a></bdi></li>
+                
+              
+
+              
+                <li><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Access_control_CORS%24locales" rel="nofollow, noindex" id="translations-add">Add a translation</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      
+      <li class="page-buttons-edit"><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Access_control_CORS%24edit" class="button" data-optimizely-hook="button-edit-doc" id="edit-button">Edit<i aria-hidden="true" class="icon-pencil"></i></a></li>
+      
+
+        
+
+        <li><button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false"><span>Advanced</span><i aria-hidden="true" class="icon-cog"></i></button>
+        <div class="submenu js-submenu" id="advanced-menu-submenu">
+          <!-- this page -->
+          <div class="submenu-column">
+            <div class="title">Advanced</div>
+            <ul>
+                <li><a href="Access_control_CORS%24history.html" rel="nofollow, noindex">History</a></li>
+                
+                
+                
+
+
+                
+
+                
+                
+                
+                <li class="page-print"><a href="#" onclick="return window.print();">Print this article</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+
+        <!-- crumbs -->
+        
+  <nav class="crumbs" role="navigation"><ol xmlns:v="http://rdf.data-vocabulary.org/#" aria-label="breadcrumbs">
+    <li typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US" rel="v:url" property="v:title">MDN</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US/docs/Web" rel="v:url" property="v:title">Web technology for developers</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="../HTTP.html" rel="v:url" property="v:title">HTTP</a></li>
+    
+    <li class="crumb" typeof="v:Breadcrumb" property="v:title">HTTP access control (CORS)</li>
+  </ol></nav>
+      </div>
+
+      <!-- heading -->
+      <div id="wiki-document-head" class="document-head">
+          <span class="from-search-previous-box">
+            <a class="button from-search-previous only-icon disabled" title="Previous Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-left"></i></a>
+          </span>
+          <span class="from-search-navigate-wrap">
+            <a href="#" class="from-search-navigate"><span class="from-search-navigate-up"><i aria-hidden="true" class="icon-double-angle-up"></i></span><span class="from-search-navigate-down"><i aria-hidden="true" class="icon-double-angle-down"></i></span></a>
+          </span>
+          <div class="from-search-toc submenu">
+            <span class="title">Your Search Results</span>
+            <ol></ol>
+          </div>
+          <span class="from-search-next-box">
+            <a class="button from-search-next only-icon disabled" title="Next Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-right"></i></a>
+          </span>
+
+        
+        <div class="contributor-avatars" data-all-text="see all contributors" data-alternate-message="hide contributors" data-has-hidden="1">
+            <ul>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/felipeochoa" title="View profile: felipeochoa">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="felipeochoa" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">felipeochoa</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/Zambonifofex" title="View profile: Zambonifofex">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Zambonifofex" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Zambonifofex</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/teoli" title="View profile: teoli">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="teoli" data-src="../../../../../secure.gravatar.com/avatar/d0d90148e08e3b64ccf75c46f31442c56c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">teoli</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/markg" title="View profile: markg">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="markg" data-src="../../../../../secure.gravatar.com/avatar/a6bdd84b4732a2c3c7ecadd886b3c64a6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">markg</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/fscholz" title="View profile: fscholz">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="fscholz" data-src="../../../../../secure.gravatar.com/avatar/e24391c9174352988d819a9b9ea77c9e6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">fscholz</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/marcbachmann" title="View profile: marcbachmann">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="marcbachmann" data-src="../../../../../secure.gravatar.com/avatar/66ef6167c0caf0f4a0759735340c93fd6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">marcbachmann</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/terinjokes" title="View profile: terinjokes">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="terinjokes" data-src="../../../../../secure.gravatar.com/avatar/98cecc32a5d18ccad187ef2f3c0e277d6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">terinjokes</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/indolering" title="View profile: indolering">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="indolering" data-src="../../../../../secure.gravatar.com/avatar/29074f4b551f6a2d97d644e4cb5843ee6c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">indolering</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/gnomex" title="View profile: gnomex">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="gnomex" data-src="../../../../../secure.gravatar.com/avatar/98eefd59f3b80287c8217745dc25238a6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">gnomex</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/GilDawson" title="View profile: GilDawson">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="GilDawson" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">GilDawson</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/jsx" title="View profile: jsx">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="jsx" data-src="../../../../../secure.gravatar.com/avatar/8cc61d4e2dc63e75976a334348d473bc6c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">jsx</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/michaelhogg" title="View profile: michaelhogg">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="michaelhogg" data-src="../../../../../secure.gravatar.com/avatar/18d64fb18d241aa32e82dd46bbb55e3e6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">michaelhogg</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Jonathan_Watt" title="View profile: Jonathan_Watt">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Jonathan_Watt" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Jonathan_Watt</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/groovecoder" title="View profile: groovecoder">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="groovecoder" data-src="../../../../../secure.gravatar.com/avatar/ec25d046746de3be33779256f6957d8f6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">groovecoder</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/argiesuva" title="View profile: argiesuva">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="argiesuva" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">argiesuva</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Gogetfucked" title="View profile: Gogetfucked">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Gogetfucked" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Gogetfucked</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/joeltine" title="View profile: joeltine">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="joeltine" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">joeltine</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/bluesmoon" title="View profile: bluesmoon">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="bluesmoon" data-src="../../../../../secure.gravatar.com/avatar/a96c9331b6ebb3aa112aa7b5e9dad9126c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">bluesmoon</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/mockturtl" title="View profile: mockturtl">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="mockturtl" data-src="../../../../../secure.gravatar.com/avatar/5bdf009704d1585ea463a245058081da6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">mockturtl</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/jswisher" title="View profile: jswisher">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="jswisher" data-src="../../../../../secure.gravatar.com/avatar/38185c2812cbcae186ebbe4a829106616c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">jswisher</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/psiegman" title="View profile: psiegman">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="psiegman" data-src="../../../../../secure.gravatar.com/avatar/775bf7128767e4cdb927fa1bb7d9fbca6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">psiegman</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/XingxianLI" title="View profile: XingxianLI">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="XingxianLI" data-src="../../../../../secure.gravatar.com/avatar/e9010b8adc834a51c7a1cd48438568a16c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">XingxianLI</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/kayellpeee" title="View profile: kayellpeee">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="kayellpeee" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">kayellpeee</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Porinmatti1" title="View profile: Porinmatti1">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Porinmatti1" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Porinmatti1</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Sleavely" title="View profile: Sleavely">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Sleavely" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Sleavely</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/chrisdavidmills" title="View profile: chrisdavidmills">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="chrisdavidmills" data-src="../../../../../secure.gravatar.com/avatar/deeea0ba82390bd5acc539703c4b0cfb6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">chrisdavidmills</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/yashksagar" title="View profile: yashksagar">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="yashksagar" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">yashksagar</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/salimafghan" title="View profile: salimafghan">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="salimafghan" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">salimafghan</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/tfm" title="View profile: tfm">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="tfm" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">tfm</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Sheppy" title="View profile: Sheppy">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Sheppy" data-src="../../../../../secure.gravatar.com/avatar/945076feb88f2d7003891ffbf06f32bf6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Sheppy</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/UkuleleFury" title="View profile: UkuleleFury">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="UkuleleFury" data-src="../../../../../secure.gravatar.com/avatar/974fd374e9d636d2672451104746129b6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">UkuleleFury</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/maybe" title="View profile: maybe">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="maybe" data-src="../../../../../secure.gravatar.com/avatar/042d8ebd24bf86bd98a76a8233f275e96c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">maybe</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/edlahoz" title="View profile: edlahoz">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="edlahoz" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">edlahoz</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/kscarfone" title="View profile: kscarfone">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="kscarfone" data-src="../../../../../secure.gravatar.com/avatar/89c1e54a9703125168e40d22316d2b496c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">kscarfone</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/daveoflynn" title="View profile: daveoflynn">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="daveoflynn" data-src="../../../../../secure.gravatar.com/avatar/39707d2322c854eabe42cefc3acc85e56c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">daveoflynn</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/foxbrush" title="View profile: foxbrush">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="foxbrush" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">foxbrush</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/rsternagel" title="View profile: rsternagel">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="rsternagel" data-src="../../../../../secure.gravatar.com/avatar/b0e4462bc738105acfda77955c28e8f86c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">rsternagel</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/code_monk" title="View profile: code_monk">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="code_monk" data-src="../../../../../secure.gravatar.com/avatar/dc4601e327175e65f3a95c6e67dea6a96c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">code_monk</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/justinpitts@gmail.com" title="View profile: justinpitts@gmail.com">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="justinpitts@gmail.com" data-src="../../../../../secure.gravatar.com/avatar/b9317f38a0066d66b71041b3b045e76b6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">justinpitts@gmail.com</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/jamesspencer" title="View profile: jamesspencer">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="jamesspencer" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">jamesspencer</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Dikrib" title="View profile: Dikrib">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Dikrib" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Dikrib</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Psz" title="View profile: Psz">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Psz" data-src="../../../../../secure.gravatar.com/avatar/a4c74e4d053faacb8d8b30b7e4497c446c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Psz</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/bcombee" title="View profile: bcombee">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="bcombee" data-src="../../../../../secure.gravatar.com/avatar/d58ac41c5962f5caca60793591a589d26c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">bcombee</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/cgack" title="View profile: cgack">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="cgack" data-src="../../../../../secure.gravatar.com/avatar/691460b4005b0c16bcb96dcdf1f0e02d6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">cgack</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/brunoais" title="View profile: brunoais">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="brunoais" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">brunoais</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/yyss" title="View profile: yyss">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="yyss" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">yyss</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/igstan" title="View profile: igstan">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="igstan" data-src="../../../../../secure.gravatar.com/avatar/7cefc64f7b1b53513625bf3487ecd16d6c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">igstan</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/evilpie" title="View profile: evilpie">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="evilpie" data-src="../../../../../secure.gravatar.com/avatar/6bb31f7207fc068158047b9c8ad4592d6c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">evilpie</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/bgirard" title="View profile: bgirard">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="bgirard" data-src="../../../../../secure.gravatar.com/avatar/fa429e37f86d80fa9524958f787d2c7b6c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">bgirard</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/paul.irish" title="View profile: paul.irish">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="paul.irish" data-src="../../../../../secure.gravatar.com/avatar/ffe68d6f71b225f7661d33f2a89082816c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">paul.irish</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Bzbarsky" title="View profile: Bzbarsky">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Bzbarsky" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Bzbarsky</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/louisremi" title="View profile: louisremi">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="louisremi" data-src="../../../../../secure.gravatar.com/avatar/1d924ae6b834d2c43d313a94137ac6fe6c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">louisremi</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Ehsan" title="View profile: Ehsan">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Ehsan" data-src="../../../../../secure.gravatar.com/avatar/5aef682fbfd7590b9d85d6e8dbab10eb6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Ehsan</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/mattmccutchen" title="View profile: mattmccutchen">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="mattmccutchen" data-src="../../../../../secure.gravatar.com/avatar/a09c08e1ae93a83e9102b6715fc75b4c6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">mattmccutchen</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/k0001" title="View profile: k0001">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="k0001" data-src="../../../../../secure.gravatar.com/avatar/c6ff9af7ba0b0d971231d09bd76d99eb6c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">k0001</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Cbuckley" title="View profile: Cbuckley">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Cbuckley" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Cbuckley</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/mnoorenberghe" title="View profile: mnoorenberghe">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="mnoorenberghe" data-src="../../../../../secure.gravatar.com/avatar/b7e928b14ef7e22c266206f5852cc6b66c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">mnoorenberghe</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Hsivonen" title="View profile: Hsivonen">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Hsivonen" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Hsivonen</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/DivineGod" title="View profile: DivineGod">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="DivineGod" data-src="../../../../../secure.gravatar.com/avatar/52e492b4b9601337ccb174f808bb08a16c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">DivineGod</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/tanob" title="View profile: tanob">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="tanob" data-src="../../../../../secure.gravatar.com/avatar/9801a6a11415b967e739c13a2b276bc96c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">tanob</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/akaustav" title="View profile: akaustav">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="akaustav" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">akaustav</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Chris Chittleborough" title="View profile: Chris Chittleborough">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Chris Chittleborough" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Chris Chittleborough</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Waldo" title="View profile: Waldo">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Waldo" data-src="../../../../../secure.gravatar.com/avatar/d26a0ca7ae1134e0e1dbdddf82e289296c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Waldo</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/aruner" title="View profile: aruner">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="aruner" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">aruner</noscript></a>
+                </li>
+            
+            </ul>
+        </div>
+        
+
+        <h1>HTTP access control (CORS)</h1>
+
+      </div>
+      
+
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-right-present wiki-left-present">
+
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+            
+              <!-- TOC, approvals, etc -->
+              <div class="column-strip wiki-column" id="wiki-right">
+              
+              <!-- table of contents -->
+              <div id="toc" class="toc toggleable">
+                <a href="#toc" class="title toggler" data-open-icon="icon-plus" data-closed-icon="icon-minus">In This Article<i></i></a>
+                <ol class="toggle-container">
+                  <li><a href="#Overview" rel="internal">Overview</a><li><a href="#Examples_of_access_control_scenarios" rel="internal">Examples of access control scenarios</a><ol><li><a href="#Simple_requests" rel="internal">Simple requests</a><li><a href="#Preflighted_requests" rel="internal">Preflighted requests</a><li><a href="#Requests_with_credentials" rel="internal">Requests with credentials</a></ol></li><li><a href="#The_HTTP_response_headers" rel="internal">The HTTP response headers</a><ol><li><a href="#Access-Control-Allow-Origin" rel="internal">Access-Control-Allow-Origin</a><li><a href="#Access-Control-Expose-Headers" rel="internal">Access-Control-Expose-Headers</a><li><a href="#Access-Control-Max-Age" rel="internal">Access-Control-Max-Age</a><li><a href="#Access-Control-Allow-Credentials" rel="internal">Access-Control-Allow-Credentials</a><li><a href="#Access-Control-Allow-Methods" rel="internal">Access-Control-Allow-Methods</a><li><a href="#Access-Control-Allow-Headers" rel="internal">Access-Control-Allow-Headers</a></ol></li><li><a href="#The_HTTP_request_headers" rel="internal">The HTTP request headers</a><ol><li><a href="#Origin" rel="internal">Origin</a><li><a href="#Access-Control-Request-Method" rel="internal">Access-Control-Request-Method</a><li><a href="#Access-Control-Request-Headers" rel="internal">Access-Control-Request-Headers</a></ol></li><li><a href="#Specifications" rel="internal">Specifications</a><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><ol><li><a href="#Compatibility_notes" rel="internal">Compatibility notes</a></ol></li><li><a href="#See_also" rel="internal">See also</a>
+                </ol>
+              </div>
+              
+              </div>
+            
+
+            
+            
+              
+            
+
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-half wiki-column text-content">
+
+              
+
+              
+
+              
+                
+                  <div class="warning warning-review">
+                    <p>
+                      This article needs a technical review. <a href="https://developer.mozilla.org/docs/MDN/Contribute/HowTo/Do_a_technical_review">How you can help.</a>
+                    </p>
+                  </div>
+                
+                
+                
+              
+              
+
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                
+                  
+                    <div><section id="Quick_Links" class="Quick_links"><!-- --></section></div>
+
+<p>A resource makes a <strong>cross-origin HTTP request</strong> when it requests a resource from a different domain than the one which the first resource itself serves. For example, an HTML page served from http://domain-a.com makes an <code><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Img#Attributes">&lt;img&gt; src</a></code> request for http://domain-b.com/image.jpg. Many pages on the web today load resources like CSS stylesheets, images and scripts from separate domains.</p>
+
+<p>For security reasons, browsers restrict cross-origin HTTP requests initiated from within scripts. For example, <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> follow the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy">same-origin policy</a>. So, a web application using <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> <em>could only</em> make HTTP requests to its own domain. To improve web applications, developers asked browser vendors to allow cross-domain requests.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/14295/CORS_principle.png" style="height: 305px; width: 440px;" alt=""></p>
+
+<p>The Cross-Origin Resource Sharing (<a href="https://developer.mozilla.org/en-US/docs/Glossary/CORS" class="glossaryLink" title="CORS: Editorial review completed.">CORS</a>) mechanism gives web servers cross-domain access controls, which enable secure cross-domain data transfers. Modern browsers use CORS in an API container - such as <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> - to mitigate risks of cross-origin HTTP requests.</p>
+
+<p>This article is for web administrators, server developers, and front-end developers. Modern browsers handle the client-side components of cross-origin sharing, including headers and policy enforcement. But this new standard means servers have to handle new request and response headers. Another article for server developers discussing <a href="Server-Side_Access_Control.html">cross-origin sharing from a server perspective (with PHP code snippets)</a> is supplementary reading.</p>
+
+<p>This <a href="https://fetch.spec.whatwg.org/#http-cors-protocol" class="external">cross-origin sharing standard</a> is used to enable cross-site HTTP requests for:</p>
+
+<ul>
+ <li>Invocations of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> APIs in a cross-site manner, as discussed above.</li>
+ <li>Web Fonts (for cross-domain font usage in <code>@font-face</code> within CSS), <a href="https://www.w3.org/TR/css-fonts-3/#font-fetching-requirements" class="external">so that servers can deploy TrueType fonts that can only be cross-site loaded and used by web sites that are permitted to do so.</a></li>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL">WebGL textures</a>.</li>
+ <li>Images/video frames drawn to a canvas using <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage">drawImage</a></code>.</li>
+ <li>Stylesheets (for <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSSOM_View">CSSOM</a> access).</li>
+ <li>Scripts (for unmuted exceptions).</li>
+</ul>
+
+<p>This article is a general discussion of Cross-Origin Resource Sharing and includes a discussion of the necessary HTTP headers.</p>
+
+<h2 id="Overview">Overview</h2>
+
+<p>The Cross-Origin Resource Sharing standard works by adding new <a href="Headers.html">HTTP headers</a> that allow servers to describe the set of origins that are permitted to read that information using a web browser.  Additionally, for HTTP request methods that can cause side-effects on user data (in particular, for HTTP methods other than <a href="Methods/GET.html" title="The HTTP GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a>, or for <a href="Methods/POST.html" title="The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header."><code>POST</code></a> usage with certain <a href="Basics_of_HTTP/MIME_types-2.html">MIME types</a>), the specification mandates that browsers "preflight" the request, soliciting supported methods from the server with an HTTP <a href="Methods/OPTIONS.html" title="The HTTP OPTIONS method is used to describe the communication options for the target resource. The client can specify a specific URL for the OPTIONS method, or an asterisk (*) to refer to the entire server."><code>OPTIONS</code></a> request method, and then, upon "approval" from the server, sending the actual request with the actual HTTP request method. Servers can also notify clients whether "credentials" (including <a href="Cookies.html">Cookies</a> and HTTP Authentication data) should be sent with requests.</p>
+
+<p>Subsequent sections discuss scenarios, as well as provide a breakdown of the HTTP headers used. </p>
+
+<h2 id="Examples_of_access_control_scenarios">Examples of access control scenarios</h2>
+
+<p>Here, we present three scenarios that illustrate how Cross-Origin Resource Sharing works. All of these examples use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> object, which can be used to make cross-site invocations in any supporting browser.</p>
+
+<p>The JavaScript snippets included in these sections (and running instances of the server-code that correctly handles these cross-site requests) <a href="http://arunranga.com/examples/access-control/" class="external">can be found "in action" here</a>, and will work in browsers that support cross-site <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a>. A discussion of Cross-Origin Resource Sharing from a <a href="Server-Side_Access_Control.html" class="internal">server perspective (including PHP code snippets) can be found here</a>.</p>
+
+<h3 id="Simple_requests">Simple requests</h3>
+
+<p>A simple cross-site request is one that meets all the following conditions:</p>
+
+<ul>
+ <li>The only allowed methods are:
+  <ul>
+   <li><a href="Methods/GET.html" title="The HTTP GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a></li>
+   <li><a href="Methods/HEAD.html" title="The HTTP HEAD method requests the headers that are returned if the specified resource would be requested with an HTTP GET method. Such a request can be done before deciding to download a large resource to save bandwidth, for example."><code>HEAD</code></a></li>
+   <li><a href="Methods/POST.html" title="The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header."><code>POST</code></a></li>
+  </ul>
+ </li>
+ <li>Apart from the headers set automatically by the user agent (e.g. <a href="Headers/Connection.html" title="The Connection general header controls whether or not the network connection stays open after the current transaction finishes. If the value sent is keep-alive, the connection is persistent and not closed, allowing for subsequent requests to the same server to be done."><code>Connection</code></a>, <a href="Headers/User-Agent.html" title="The User-Agent request header contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent."><code>User-Agent</code></a>, etc.), the only headers which are allowed to be manually set are:
+  <ul>
+   <li><a href="Headers/Accept.html" title="The Accept request HTTP header advertises which content types, expressed as MIME types, the client is able to understand. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice with the Content-Type response header. Browsers set adequate values for this header depending of the context where the request is done: when fetching a CSS stylesheet a different value is set for the request than when fetching an image, video or a script."><code>Accept</code></a></li>
+   <li><a href="Headers/Accept-Language.html" title="The Accept-Language request HTTP header advertises which languages the client is able to understand, and which locale variant is preferred. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice with the Content-Language response header. Browsers set adequate values for this header according their user interface language and even if a user can change it, this happens rarely (and is frown upon as it leads to fingerprinting)."><code>Accept-Language</code></a></li>
+   <li><a href="Headers/Content-Language.html" title="The Content-Language entity header is used to describe the language(s) intended for the audience, so that it allows a user to differentiate according to the users' own preferred language."><code>Content-Language</code></a></li>
+   <li><a href="Headers/Content-Type.html" title="The Content-Type entity header is used to indicate the media type of the resource."><code>Content-Type</code></a></li>
+  </ul>
+ </li>
+ <li>The only allowed values for the <code>Content-Type</code> header are:
+  <ul>
+   <li><code>application/x-www-form-urlencoded</code></li>
+   <li><code>multipart/form-data</code></li>
+   <li><code>text/plain</code></li>
+  </ul>
+ </li>
+</ul>
+
+<div class="note"><strong>Note:</strong> These are the same kinds of cross-site requests that web content can already issue, and no response data is released to the requester unless the server sends an appropriate header. Therefore, sites that prevent cross-site request forgery have nothing new to fear from HTTP access control.</div>
+
+<p>For example, suppose web content on domain <code class="plain">http://foo.example</code> wishes to invoke content on domain <code class="plain">http://bar.other</code>. Code of this sort might be used within JavaScript deployed on foo.example:</p>
+
+<pre id="line1" class="brush: js">var invocation = new XMLHttpRequest();
+var url = 'http://bar.other/resources/public-data/';
+   
+function callOtherDomain() {
+  if(invocation) {    
+    invocation.open('GET', url, true);
+    invocation.onreadystatechange = handler;
+    invocation.send(); 
+  }
+}
+</pre>
+
+<p>This will lead to a simple exchange between the client and the server, using CORS headers to handle the privileges:</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/14293/simple_req.png" style="height: 224px; width: 521px;" alt=""></p>
+
+<p>Let us look at what the browser will send the server in this case, and let's see how the server responds:</p>
+
+<pre class="brush: shell;highlight:[10,16]">GET /resources/public-data/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+Referer: http://foo.example/examples/access-control/simpleXSInvocation.html
+Origin: http://foo.example
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 00:23:53 GMT
+Server: Apache/2.0.61 
+Access-Control-Allow-Origin: *
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: application/xml
+
+[XML Data]
+</pre>
+
+<p>Lines 1 - 10 are headers sent. Note that the main HTTP request header of note here is the <a href="Headers/Origin.html" title="The Origin request header indicates where a fetch originates from. It doesn't include any path information, but only the server name. It is sent with CORS requests, as well as with POST requests. It is similar to the Referer header, but, unlike this header, it doesn't disclose the whole path."><code>Origin</code></a> header on line 10 above, which shows that the invocation is coming from content on the the domain <code class="plain">http://foo.example</code>.</p>
+
+<p>Lines 13 - 22 show the HTTP response from the server on domain <code class="plain">http://bar.other</code>. In response, the server sends back an <a href="Headers/Access-Control-Allow-Origin.html" title="The Access-Control-Allow-Origin response header indicates whether the response can be shared with resources with the given origin."><code>Access-Control-Allow-Origin</code></a> header, shown above in line 16. The use of the <a href="Headers/Origin.html" title="The Origin request header indicates where a fetch originates from. It doesn't include any path information, but only the server name. It is sent with CORS requests, as well as with POST requests. It is similar to the Referer header, but, unlike this header, it doesn't disclose the whole path."><code>Origin</code></a> header and of <a href="Headers/Access-Control-Allow-Origin.html" title="The Access-Control-Allow-Origin response header indicates whether the response can be shared with resources with the given origin."><code>Access-Control-Allow-Origin</code></a> show the access control protocol in its simplest use. In this case, the server responds with a <code>Access-Control-Allow-Origin: *</code> which means that the resource can be accessed by <strong>any</strong> domain in a cross-site manner. If the resource owners at <code class="plain">http://bar.other</code> wished to restrict access to the resource to be only from <code class="plain">http://foo.example</code>, they would send back:</p>
+
+<p><code class="plain">Access-Control-Allow-Origin: http://foo.example</code></p>
+
+<p>Note that now, no domain other than <code class="plain">http://foo.example</code> (identified by the ORIGIN: header in the request, as in line 10 above) can access the resource  in a cross-site manner.  The <code>Access-Control-Allow-Origin</code> header should contain the value that was sent in the request's <code>Origin</code> header. </p>
+
+<h3 id="Preflighted_requests">Preflighted requests</h3>
+
+<p>Unlike simple requests (discussed above), "preflighted" requests first send an HTTP request by the <a href="Methods/OPTIONS.html" title="The HTTP OPTIONS method is used to describe the communication options for the target resource. The client can specify a specific URL for the OPTIONS method, or an asterisk (*) to refer to the entire server."><code>OPTIONS</code></a> method to the resource on the other domain, in order to determine whether the actual request is safe to send. Cross-site requests are preflighted like this since they may have implications to user data. In particular, a request is preflighted if:</p>
+
+<ul>
+ <li>It uses methods <strong>other</strong> than <code>GET</code>, <code>HEAD</code> or <code>POST</code>. Also, if <code>POST</code> is used to send request data with a Content-Type <strong>other</strong> than <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, or <code>text/plain</code>, e.g. if the <code>POST</code> request sends an XML payload to the server using <code>application/xml</code> or <code>text/xml</code>, then the request <strong>is</strong> preflighted.</li>
+ <li>It sets custom headers in the request (e.g. the request uses a header such as <code>X-PINGOTHER</code>)</li>
+</ul>
+
+<p>An example of this kind of invocation might be:</p>
+
+<pre id="line1" class="brush: js">var invocation = new XMLHttpRequest();
+var url = 'http://bar.other/resources/post-here/';
+var body = '&lt;?xml version="1.0"?&gt;&lt;person&gt;&lt;name&gt;Arun&lt;/name&gt;&lt;/person&gt;';
+    
+function callOtherDomain(){
+  if(invocation)
+    {
+      invocation.open('POST', url, true);
+      invocation.setRequestHeader('X-PINGOTHER', 'pingpong');
+      invocation.setRequestHeader('Content-Type', 'application/xml');
+      invocation.onreadystatechange = handler;
+      invocation.send(body); 
+    }
+}
+
+......
+</pre>
+
+<p>In the example above, line 3 creates an XML body to send with the <code>POST</code> request in line 8.  Also, on line 9, a "customized" (non-standard) HTTP request header is set (<code>X-PINGOTHER: pingpong</code>).  Such headers are not part of the HTTP/1.1 protocol, but are generally useful to web applications.  Since the request (<code>POST</code>) uses a Content-Type of <code>application/xml</code>, and since a custom header is set, this request is preflighted.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/14289/prelight.png" alt=""></p>
+
+<p>Let's take a look at the full exchange between client and server. The first exchange is the <em>preflight request/response</em>:</p>
+
+<pre class="brush: shell;highlight:[10,11,17,18,19,20]">OPTIONS /resources/post-here/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+Origin: http://foo.example
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: X-PINGOTHER, Content-Type
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 01:15:39 GMT
+Server: Apache/2.0.61 (Unix)
+Access-Control-Allow-Origin: http://foo.example
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+Access-Control-Max-Age: 86400
+Vary: Accept-Encoding, Origin
+Content-Encoding: gzip
+Content-Length: 0
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+Content-Type: text/plain
+</pre>
+
+<p>Once the preflight request is complete, the real request is sent:</p>
+
+<pre class="brush:shell;highlight:[13,23]">POST /resources/post-here/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+X-PINGOTHER: pingpong
+Content-Type: text/xml; charset=UTF-8
+Referer: http://foo.example/examples/preflightInvocation.html
+Content-Length: 55
+Origin: http://foo.example
+Pragma: no-cache
+Cache-Control: no-cache
+
+&lt;?xml version="1.0"?&gt;&lt;person&gt;&lt;name&gt;Arun&lt;/name&gt;&lt;/person&gt;
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 01:15:40 GMT
+Server: Apache/2.0.61 (Unix)
+Access-Control-Allow-Origin: http://foo.example
+Vary: Accept-Encoding, Origin
+Content-Encoding: gzip
+Content-Length: 235
+Keep-Alive: timeout=2, max=99
+Connection: Keep-Alive
+Content-Type: text/plain
+
+[Some GZIP'd payload]
+</pre>
+
+<p>Lines 1 - 12 above represent the preflight request with the <a href="Methods/OPTIONS.html" title="The HTTP OPTIONS method is used to describe the communication options for the target resource. The client can specify a specific URL for the OPTIONS method, or an asterisk (*) to refer to the entire server."><code>OPTIONS</code></a> method. The browser determines that it needs to send this based on the request parameters that the JavaScript code snippet above was using, so that the server can respond whether it is acceptable to send the request with the actual request parameters. OPTIONS is an HTTP/1.1 method that is used to determine further information from servers, and is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/safe" class="glossaryLink" title="safe: An HTTP method is safe if it doesn't alter the state of the server. In other words, a method is safe if it leads to a read-only operation. Several common HTTP methods are safe: GET, HEAD, or OPTIONS. All safe methods are also idempotent as well as some, but not all, unsafe methods like PUT, or DELETE.">safe</a> method, meaning that it can't be used to change the resource. Note that along with the OPTIONS request, two other request headers are sent (lines 10 and 11 respectively):</p>
+
+<pre>Access-Control-Request-Method: POST
+Access-Control-Request-Headers: X-PINGOTHER, Content-Type
+</pre>
+
+<p>The <a href="Headers/Access-Control-Request-Method.html" title="The Access-Control-Request-Method request header is used when issuing a preflight request to let the server know which HTTP method will be used when the actual request is made. This header is necessary as the preflight request is always an OPTIONS and doesn't use the same method as the actual request."><code>Access-Control-Request-Method</code></a> header notifies the server as part of a preflight request that when the actual request is sent, it will be sent with a <code>POST</code> request method. The <a href="Headers/Access-Control-Request-Headers.html" title="The Access-Control-Request-Headers request header is used when issuing a preflight request to let the server know which HTTP headers will be used when the actual request is made."><code>Access-Control-Request-Headers</code></a> header notifies the server that when the actual request is sent, it will be sent with a <code>X-PINGOTHER</code> and Content-Type custom headers. The server now has an opportunity to determine whether it wishes to accept a request under these circumstances.</p>
+
+<p>Lines 14 - 26 above are the response that the server sends back indicating that the request method (<code>POST</code>) and request headers (<code>X-PINGOTHER</code>) are acceptable. In particular, let's look at lines 17-20:</p>
+
+<pre>Access-Control-Allow-Origin: http://foo.example
+Access-Control-Allow-Methods: POST, GET, OPTIONS
+Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
+Access-Control-Max-Age: 86400</pre>
+
+<p>The server responds with <code>Access-Control-Allow-Methods</code> and says that <code>POST</code>, <code>GET</code>, and <code>OPTIONS</code> are viable methods to query the resource in question. Note that this header is similar to the <a href="Headers/Allow.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>Allow</code></a> response header, but used strictly within the context of access control.</p>
+
+<p>The server also sends <code>Access-Control-Allow-Headers</code> with a value of "<code>X-PINGOTHER, Content-Type</code>", confirming that these are permitted headers to be used with the actual request. Like <code>Access-Control-Allow-Methods</code>, <code>Access-Control-Allow-Headers</code> is a comma separated list of acceptable headers.</p>
+
+<p>Finally, <a href="Headers/Access-Control-Max-Age.html" title="The Access-Control-Max-Age response header indicates how long the results of a preflight request (that is the information contained in the Access-Control-Allow-Methods and Access-Control-Allow-Headers headers) can be cached."><code>Access-Control-Max-Age</code></a> gives the value in seconds for how long the response to the preflight request can be cached for without sending another preflight request. In this case, 86400 seconds is 24 hours. Note that each browser has a<a href="Headers/Access-Control-Max-Age.html"> maximum internal value</a> that takes precedence when the <code>Access-Control-Max-Age</code> is greater.</p>
+
+<h3 id="Requests_with_credentials">Requests with credentials</h3>
+
+<p>The most interesting capability exposed by both <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> and CORS is the ability to make "credentialed" requests that are aware of <a href="Cookies.html">HTTP cookies</a> and HTTP Authentication information. By default, in cross-site <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch</a> invocations, browsers will <strong>not</strong> send credentials. A specific flag has to be set on the <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> object or the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" title="The Request interface of the Fetch API represents a resource request."><code>Request</code></a> constructor when it is invoked.</p>
+
+<p>In this example, content originally loaded from <code class="plain">http://foo.example</code> makes a simple GET request to a resource on <code class="plain">http://bar.other</code> which sets Cookies. Content on foo.example might contain JavaScript like this:</p>
+
+<pre id="line1" class="brush: js">var invocation = new XMLHttpRequest();
+var url = 'http://bar.other/resources/credentialed-content/';
+    
+function callOtherDomain(){
+  if(invocation) {
+    invocation.open('GET', url, true);
+    invocation.withCredentials = true;
+    invocation.onreadystatechange = handler;
+    invocation.send(); 
+  }
+}</pre>
+
+<p>Line 7 shows the flag on <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> that has to be set in order to make the invocation with Cookies, namely the <code>withCredentials</code> boolean value. By default, the invocation is made without Cookies. Since this is a simple <code>GET</code> request, it is not preflighted, but the browser will <strong>reject</strong> any response that does not have the <a href="Headers/Access-Control-Allow-Credentials.html" title="The Access-Control-Allow-Credentials response header indicates whether or not the response to the request can be exposed to the page. It can be exposed when the true value is returned; it can't in other cases."><code>Access-Control-Allow-Credentials</code></a><code>: true</code> header, and <strong>not</strong> make the response available to the invoking web content.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/14291/cred-req.png" style="height: 223px; width: 521px;" alt=""></p>
+
+<p>Here is a sample exchange between client and server:</p>
+
+<pre class="brush: shell">GET /resources/access-control-with-credentials/ HTTP/1.1
+Host: bar.other
+User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-us,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Connection: keep-alive
+Referer: http://foo.example/examples/credential.html
+Origin: http://foo.example
+Cookie: pageAccess=2
+
+
+HTTP/1.1 200 OK
+Date: Mon, 01 Dec 2008 01:34:52 GMT
+Server: Apache/2.0.61 (Unix) PHP/4.4.7 mod_ssl/2.0.61 OpenSSL/0.9.7e mod_fastcgi/2.4.2 DAV/2 SVN/1.4.2
+X-Powered-By: PHP/5.2.6
+Access-Control-Allow-Origin: http://foo.example
+Access-Control-Allow-Credentials: true
+Cache-Control: no-cache
+Pragma: no-cache
+Set-Cookie: pageAccess=3; expires=Wed, 31-Dec-2008 01:34:53 GMT
+Vary: Accept-Encoding, Origin
+Content-Encoding: gzip
+Content-Length: 106
+Keep-Alive: timeout=2, max=100
+Connection: Keep-Alive
+Content-Type: text/plain
+
+
+[text/plain payload]
+</pre>
+
+<p>Although line 11 contains the Cookie destined for the content on <code class="plain">http://bar.other</code>, if bar.other did not respond with an <a href="Headers/Access-Control-Allow-Credentials.html" title="The Access-Control-Allow-Credentials response header indicates whether or not the response to the request can be exposed to the page. It can be exposed when the true value is returned; it can't in other cases."><code>Access-Control-Allow-Credentials</code></a><code>: true</code> (line 19) the response would be ignored and not made available to web content.</p>
+
+<p><strong>Important note:</strong> when responding to a credentialed request,  server <strong>must </strong>specify a domain, and cannot use wild carding. The above example would fail if the header was wildcarded as: <code>Access-Control-Allow-Origin: *</code>.  Since the <code>Access-Control-Allow-Origin</code> explicitly mentions <code class="plain">http://foo.example</code>, the credential-cognizant content is returned to the invoking web content. Note that in line 22, a further cookie is set. In case of failure, an exception, depending on the API used, is raised.</p>
+
+<p>All of these examples can be <a href="http://arunranga.com/examples/access-control/" class="external">seen working here</a>. The next section deals with the actual HTTP headers.</p>
+
+<h2 id="The_HTTP_response_headers">The HTTP response headers</h2>
+
+<p>This section lists the HTTP response headers that servers send back for access control requests as defined by the Cross-Origin Resource Sharing specification. The previous section gives an overview of these in action.</p>
+
+<h3 id="Access-Control-Allow-Origin">Access-Control-Allow-Origin</h3>
+
+<p>A returned resource may have one <a href="Headers/Access-Control-Allow-Origin.html" title="The Access-Control-Allow-Origin response header indicates whether the response can be shared with resources with the given origin."><code>Access-Control-Allow-Origin</code></a> header, with the following syntax:</p>
+
+<pre>Access-Control-Allow-Origin: &lt;origin&gt; | *
+</pre>
+
+<p>The <code>origin</code> parameter specifies a URI that may access the resource. The browser must enforce this. For requests <strong>without</strong> credentials, the server may specify "*" as a wildcard, thereby allowing any origin to access the resource.</p>
+
+<p>For example, to allow http://mozilla.org to access the resource, you can specify:</p>
+
+<pre>Access-Control-Allow-Origin: http://mozilla.org</pre>
+
+<p>If the server specifies an origin host rather than "*", then it must also include Origin in the Vary response header to indicate to clients that server responses will differ based on the value of the Origin request header.</p>
+
+<h3 id="Access-Control-Expose-Headers">Access-Control-Expose-Headers</h3>
+
+<p>The <a href="Headers/Access-Control-Expose-Headers.html" title="The Access-Control-Expose-Headers response header indicates which headers can be exposed as part of the response by listing their names."><code>Access-Control-Expose-Headers</code></a> header lets a server whitelist headers that browsers are allowed to access. For example:</p>
+
+<pre>Access-Control-Expose-Headers: X-My-Custom-Header, X-Another-Custom-Header
+</pre>
+
+<p>This allows the <code>X-My-Custom-Header</code> and <code>X-Another-Custom-Header</code> headers to be exposed to the browser.</p>
+
+<h3 id="Access-Control-Max-Age">Access-Control-Max-Age</h3>
+
+<p>The  <a href="Headers/Access-Control-Max-Age.html" title="The Access-Control-Max-Age response header indicates how long the results of a preflight request (that is the information contained in the Access-Control-Allow-Methods and Access-Control-Allow-Headers headers) can be cached."><code>Access-Control-Max-Age</code></a> header indicates how long the results of a preflight request can be cached. For an example of a preflight request, see the above examples.</p>
+
+<pre>Access-Control-Max-Age: &lt;delta-seconds&gt;
+</pre>
+
+<p>The <code>delta-seconds</code> parameter indicates the number of seconds the results can be cached.</p>
+
+<h3 id="Access-Control-Allow-Credentials">Access-Control-Allow-Credentials</h3>
+
+<p>The <a href="Headers/Access-Control-Allow-Credentials.html" title="The Access-Control-Allow-Credentials response header indicates whether or not the response to the request can be exposed to the page. It can be exposed when the true value is returned; it can't in other cases."><code>Access-Control-Allow-Credentials</code></a> header Indicates whether or not the response to the request can be exposed when the <code>credentials</code> flag is true.  When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials. Note that simple <code>GET</code> requests are not preflighted, and so if a request is made for a resource with credentials, if this header is not returned with the resource, the response is ignored by the browser and not returned to web content.</p>
+
+<pre>Access-Control-Allow-Credentials: true
+</pre>
+
+<p><a href="#Requests_with_credentials" class="internal">Credentialed requests</a> are discussed above.</p>
+
+<h3 id="Access-Control-Allow-Methods">Access-Control-Allow-Methods</h3>
+
+<p>The <a href="Headers/Access-Control-Allow-Methods.html" title="The Access-Control-Allow-Methods response header specifies the method or methods allowed when accessing the resource in response to a preflight request."><code>Access-Control-Allow-Methods</code></a> header specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request. The conditions under which a request is preflighted are discussed above.</p>
+
+<pre>Access-Control-Allow-Methods: &lt;method&gt;[, &lt;method&gt;]*
+</pre>
+
+<p>An example of a <a href="#Preflighted_requests" class="internal">preflight request is given above</a>, including an example which sends this header to the browser.</p>
+
+<h3 id="Access-Control-Allow-Headers">Access-Control-Allow-Headers</h3>
+
+<p>The <a href="Headers/Access-Control-Allow-Headers.html" title="The Access-Control-Allow-Headers response header is used in response to a preflight request to indicate which HTTP headers will be available via Access-Control-Expose-Headers when making the actual request."><code>Access-Control-Allow-Headers</code></a> header is used in response to a <a href="#Preflighted_requests" class="internal">preflight request</a> to indicate which HTTP headers can be used when making the actual request.</p>
+
+<pre>Access-Control-Allow-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*
+</pre>
+
+<h2 id="The_HTTP_request_headers">The HTTP request headers</h2>
+
+<p>This section lists headers that clients may use when issuing HTTP requests in order to make use of the cross-origin sharing feature. Note that these headers are set for you when making invocations to servers. Developers using cross-site <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a> capability do not have to set any cross-origin sharing request headers programmatically.</p>
+
+<h3 id="Origin">Origin</h3>
+
+<p>The <a href="Headers/Origin.html" title="The Origin request header indicates where a fetch originates from. It doesn't include any path information, but only the server name. It is sent with CORS requests, as well as with POST requests. It is similar to the Referer header, but, unlike this header, it doesn't disclose the whole path."><code>Origin</code></a> header indicates the origin of the cross-site access request or preflight request.</p>
+
+<pre>Origin: &lt;origin&gt;
+</pre>
+
+<p>The origin is a URI indicating the server from which the request initiated.  It does not include any path information, but only the server name.</p>
+
+<div class="note"><strong>Note:</strong> The <code>origin</code> can be the empty string; this is useful, for example, if the source is a <code>data</code> URL.</div>
+
+<p>Note that in any access control request, the <a href="Headers/Origin.html" title="The Origin request header indicates where a fetch originates from. It doesn't include any path information, but only the server name. It is sent with CORS requests, as well as with POST requests. It is similar to the Referer header, but, unlike this header, it doesn't disclose the whole path."><code>Origin</code></a> header is <strong>always</strong> sent.</p>
+
+<h3 id="Access-Control-Request-Method">Access-Control-Request-Method</h3>
+
+<p>The <a href="Headers/Access-Control-Request-Method.html" title="The Access-Control-Request-Method request header is used when issuing a preflight request to let the server know which HTTP method will be used when the actual request is made. This header is necessary as the preflight request is always an OPTIONS and doesn't use the same method as the actual request."><code>Access-Control-Request-Method</code></a> is used when issuing a preflight request to let the server know what HTTP method will be used when the actual request is made.</p>
+
+<pre>Access-Control-Request-Method: &lt;method&gt;
+</pre>
+
+<p>Examples of this usage can be <a href="#Preflighted_requests" class="internal">found above.</a></p>
+
+<h3 id="Access-Control-Request-Headers">Access-Control-Request-Headers</h3>
+
+<p>The <a href="Headers/Access-Control-Request-Headers.html" title="The Access-Control-Request-Headers request header is used when issuing a preflight request to let the server know which HTTP headers will be used when the actual request is made."><code>Access-Control-Request-Headers</code></a> header is used when issuing a preflight request to let the server know what HTTP headers will be used when the actual request is made.</p>
+
+<pre>Access-Control-Request-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*
+</pre>
+
+<p>Examples of this usage can be <a href="#Preflighted_requests" class="internal">found above</a>.</p>
+
+<h2 id="Specifications">Specifications</h2>
+
+<table class="standard-table">
+ <tbody>
+  <tr>
+   <th scope="col">Specification</th>
+   <th scope="col">Status</th>
+   <th scope="col">Comment</th>
+  </tr>
+  <tr>
+   <td><a href="https://fetch.spec.whatwg.org/#cors-protocol" class="external" lang="en" hreflang="en">Fetch<br><small lang="en-US">The definition of 'CORS' in that specification.</small></a></td>
+   <td><span class="spec-Living">Living Standard</span></td>
+   <td>New definition; supplants CORS specification.</td>
+  </tr>
+  <tr>
+   <td><a href="http://www.w3.org/TR/cors/" class="external" lang="en" title="The 'CORS' specification" hreflang="en">CORS</a></td>
+   <td><span class="spec-REC">Recommendation</span></td>
+   <td>Initial definition.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+
+<p></p><div class="htab"> 
+    <a name="AutoCompatibilityTable" id="AutoCompatibilityTable"></a> 
+    <ul> 
+        <li class="selected"><a>Desktop</a></li> 
+        <li><a>Mobile</a></li> 
+    </ul> 
+</div><p></p>
+
+<div id="compat-desktop">
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>Feature</th>
+   <th>Chrome</th>
+   <th>Firefox (Gecko)</th>
+   <th>Internet Explorer</th>
+   <th>Opera</th>
+   <th>Safari</th>
+  </tr>
+  <tr>
+   <td>Basic support</td>
+   <td>4</td>
+   <td>3.5</td>
+   <td>8 (via XDomainRequest)<br>
+    10</td>
+   <td>12</td>
+   <td>4</td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+<div id="compat-mobile">
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>Feature</th>
+   <th>Android</th>
+   <th>Chrome for Android</th>
+   <th>Firefox Mobile (Gecko)</th>
+   <th>IE Mobile</th>
+   <th>Opera Mobile</th>
+   <th>Safari Mobile</th>
+  </tr>
+  <tr>
+   <td>Basic support</td>
+   <td>2.1</td>
+   <td>yes</td>
+   <td>yes</td>
+   <td><span title="Compatibility unknown; please update this." style="color: rgb(255, 153, 0);">?</span></td>
+   <td>12</td>
+   <td>3.2</td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+<h3 id="Compatibility_notes">Compatibility notes</h3>
+
+<ul>
+ <li>Internet Explorer 8 and 9 expose CORS via the <code>XDomainRequest</code> object, but have a full implementation in IE 10. </li>
+ <li>While Firefox 3.5 introduced support for cross-site XMLHttpRequests and Web Fonts, certain requests were limited until later versions. Specifically, Firefox 7 introduced the ability for cross-site HTTP requests for WebGL Textures, and Firefox 9 added support for Images drawn on a canvas using <code>drawImage</code>.</li>
+</ul>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li><a href="http://arunranga.com/examples/access-control/" class="external">Code Samples Showing <code>XMLHttpRequest</code> and Cross-Origin Resource Sharing</a></li>
+ <li><a href="Server-Side_Access_Control.html" class="internal">Cross-Origin Resource Sharing From a Server-Side Perspective (PHP, etc.)</a></li>
+ <li><a href="http://www.w3.org/TR/cors/" class="external">Cross-Origin Resource Sharing specification</a></li>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="XMLHttpRequest is an API that provides client functionality for transferring data between a client and a server. It provides an easy way to retrieve data from a URL without having to do a full page refresh. This enables a Web page to update just a part of the page without disrupting what the user is doing."><code>XMLHttpRequest</code></a></li>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">Fetch API</a></li>
+ <li><a href="http://www.kendoui.com/blogs/teamblog/posts/11-10-03/using_cors_with_all_modern_browsers.aspx" class="external">Using CORS with All (Modern) Browsers</a></li>
+ <li><a href="http://www.html5rocks.com/en/tutorials/cors/" class="external">Using CORS - HTML5 Rocks</a></li>
+</ul>
+                  
+                
+              </article>
+
+              
+
+                <!-- contributors -->
+                <div class="wiki-block contributors">
+                  <h2 class="offscreen">Document Tags and Contributors</h2>
+                  
+                  
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/AJAX">AJAX</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Same-origin policy">Same-origin policy</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Security">Security</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/XMLHttpRequest">XMLHttpRequest</a></li>
+      
+    </ul>
+  </div>
+
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-group icon-fw"></i>&nbsp;<strong>Contributors to this page:</strong> 
+        <a href="https://developer.mozilla.org/en-US/profiles/felipeochoa">felipeochoa</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Zambonifofex">Zambonifofex</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/teoli">teoli</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/markg">markg</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/marcbachmann">marcbachmann</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/terinjokes">terinjokes</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/indolering">indolering</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/gnomex">gnomex</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/GilDawson">GilDawson</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/jsx">jsx</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/michaelhogg">michaelhogg</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Jonathan_Watt">Jonathan_Watt</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/groovecoder">groovecoder</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/argiesuva">argiesuva</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Gogetfucked">Gogetfucked</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/joeltine">joeltine</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/bluesmoon">bluesmoon</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/mockturtl">mockturtl</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/jswisher">jswisher</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/psiegman">psiegman</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/XingxianLI">XingxianLI</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/kayellpeee">kayellpeee</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Porinmatti1">Porinmatti1</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Sleavely">Sleavely</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/chrisdavidmills">chrisdavidmills</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/yashksagar">yashksagar</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/salimafghan">salimafghan</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/tfm">tfm</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Sheppy">Sheppy</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/UkuleleFury">UkuleleFury</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/maybe">maybe</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/edlahoz">edlahoz</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/kscarfone">kscarfone</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/daveoflynn">daveoflynn</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/foxbrush">foxbrush</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/rsternagel">rsternagel</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/code_monk">code_monk</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/justinpitts@gmail.com">justinpitts@gmail.com</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/jamesspencer">jamesspencer</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Dikrib">Dikrib</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Psz">Psz</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/bcombee">bcombee</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/cgack">cgack</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/brunoais">brunoais</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/yyss">yyss</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/igstan">igstan</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/evilpie">evilpie</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/bgirard">bgirard</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/paul.irish">paul.irish</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Bzbarsky">Bzbarsky</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/louisremi">louisremi</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Ehsan">Ehsan</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/mattmccutchen">mattmccutchen</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/k0001">k0001</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Cbuckley">Cbuckley</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/mnoorenberghe">mnoorenberghe</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Hsivonen">Hsivonen</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/DivineGod">DivineGod</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/tanob">tanob</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/akaustav">akaustav</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Chris Chittleborough">Chris Chittleborough</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Waldo">Waldo</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/aruner">aruner</a>
+    
+                    </div>
+                  
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-clock-o icon-fw"></i>&nbsp;<strong>Last updated by:</strong>
+                      <a href="https://developer.mozilla.org/en-US/profiles/felipeochoa">felipeochoa</a>,
+                      <time datetime="2016-11-22T00:14:25-08:00">Nov 22, 2016, 12:14:25 AM</time>
+                    </div>
+                  
+                </div>
+              
+
+              
+                  <div class="newsletter-box">
+                    <div class="newsletter">
+    <form id="newsletterForm" name="newsletter-form" class="nodisable" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+        <h2 class="newsletter-teaser">Learn the best of web development</h2>
+        <p class="newsletter-description">Sign up for our newsletter:</p>
+        <input type="hidden" id="fmt" name="fmt" value="H">
+        <input type="hidden" id="newsletterNewslettersInput" name="newsletters" value="app-dev" />
+
+        <div id="newsletterErrors" class="newsletter-errors"></div>
+
+        <div id="newsletterEmail" class="form-group">
+            <label for="newsletterEmailInput" class="form-label offscreen">E-mail</label>
+            <input type="email" id="newsletterEmailInput" name="email" class="form-input newsletter-input-email" required placeholder="you@example.com" size="30">
+        </div>
+
+        <div id="newsletterPrivacy" class="form-group form-group-agree hidden">
+            <input type="checkbox" id="newsletterPrivacyInput" name="privacy" required>
+            <label for="newsletterPrivacyInput">
+            I'm okay with Mozilla handling my info as explained in this <a href="https://www.mozilla.org/privacy/">Privacy Policy</a>.
+            </label>
+        </div>
+        <div id="newsletterSubmit">
+            <button id="newsletter-submit" type="submit" class="button positive">Sign up now</button>
+        </div>
+        
+    </form>
+    <div id="newsletterThanks" class="newsletter-thanks hidden">
+        <h2>Thanks! Please check your inbox to confirm your subscription.</h2>
+        <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.
+        </p>
+    </div>
+    <button id="newsletterHide" type="button" class="only-icon newsletter-hide hidden"><span>Hide Newsletter Sign-up</span><i aria-hidden="true" class="icon-times"></i></button>
+</div>
+                  </div>
+              
+            </div>
+
+            
+              <!-- quick links and zone subnav strip -->
+              <div id="wiki-left" class="column-strip wiki-column">
+
+              
+
+                
+
+                
+                  <!-- quick links -->
+                  
+  <div class="quick-links" id="quick-links">
+    <div class="title see-also">See also</div>
+     
+  <ol> 
+    <li><a href="../HTTP.html"><strong><em>HTTP</em></strong></a></li> 
+    <li><strong>Guides:</strong></li> 
+    <li><a href="Basics_of_HTTP/Resources_and_URIs.html">Resources and URIs</a> 
+    <ol> 
+        <li><a href="Basics_of_HTTP/Identifying_resources_on_the_Web.html">Identifying resources on the Web</a> 
+        </li><li><a href="Basics_of_HTTP/Data_URIs.html">Data URIs</a> 
+        </li><li><a href="Basics_of_HTTP/MIME_Types.html">Introduction to MIME Types</a> 
+        </li><li><a href="Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types.html">Complete list of MIME Types</a> 
+        </li><li><a href="Basics_of_HTTP/Choosing_between_www_and_non-www_URLs.html">Choosing between www and non-www URLs</a> 
+    </li></ol></li> 
+    <li><a href="Basics_of_HTTP.html">Basics of HTTP</a> 
+    <ol> 
+        <li><a href="Overview.html">Overview of HTTP</a> 
+        </li><li><a href="Basics_of_HTTP/Evolution_of_HTTP.html">Evolution of HTTP</a> 
+        </li><li><a href="Messages.html">HTTP Messages</a> 
+        </li><li><a href="Session.html">A typical HTTP session</a></li> 
+        <li><a href="Connection_management_in_HTTP_1.html">Connection management in HTTP/1.x</a></li> 
+ 
+    </ol> 
+    </li> 
+    <li><a href="Access_control_CORS.html">HTTP access control (CORS)</a></li> 
+    <li><a href="Caching.html">HTTP caching</a></li> 
+    <li><a href="Compression.html">HTTP compression</a></li> 
+    <li><a href="Conditional_requests.html">HTTP conditional requests</a></li> 
+    <li><a href="Content_negotiation.html">HTTP content negotiation</a></li>   
+    <li><a href="Cookies.html">HTTP cookies</a></li> 
+    <li><a href="Redirections.html">HTTP redirects</a></li> 
+    <li><a href="Resources_and_specifications.html">HTTP specifications</a></li> 
+    <li><strong>References:</strong></li> 
+    <li data-default-state="closed"><a href="Headers.html">HTTP headers</a> 
+      <ol><li><a href="Headers/Accept.html" title="The Accept request HTTP header advertises which content types, expressed as MIME types, the client is able to understand. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice with the Content-Type response header. Browsers set adequate values for this header depending of the context where the request is done: when fetching a CSS stylesheet a different value is set for the request than when fetching an image, video or a script."><code>Accept</code></a></li><li><a href="Headers/Accept-Charset.html" title="The Accept-Charset request HTTP header advertises which character set the client is able to understand. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice within the Content-Type response header. Browsers usually don't set this header as the default value for each content type is usually correct and transmitting it would allow easier fingerprinting."><code>Accept-Charset</code></a></li><li><a href="Headers/Accept-Encoding.html" title="The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand. Using content negotiation, the server selects one of the proposals, uses it and informs the client of its choice with the Content-Encoding response header."><code>Accept-Encoding</code></a></li><li><a href="Headers/Accept-Language.html" title="The Accept-Language request HTTP header advertises which languages the client is able to understand, and which locale variant is preferred. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice with the Content-Language response header. Browsers set adequate values for this header according their user interface language and even if a user can change it, this happens rarely (and is frown upon as it leads to fingerprinting)."><code>Accept-Language</code></a></li><li><a href="Headers/Accept-Ranges.html" title="The Accept-Ranges response HTTP header is a marker used by the server to advertise its support of partial request. The value of this field indicates the unit that can be used to define the range."><code>Accept-Ranges</code></a></li><li><a href="Headers/Access-Control-Allow-Credentials.html" title="The Access-Control-Allow-Credentials response header indicates whether or not the response to the request can be exposed to the page. It can be exposed when the true value is returned; it can't in other cases."><code>Access-Control-Allow-Credentials</code></a></li><li><a href="Headers/Access-Control-Allow-Headers.html" title="The Access-Control-Allow-Headers response header is used in response to a preflight request to indicate which HTTP headers will be available via Access-Control-Expose-Headers when making the actual request."><code>Access-Control-Allow-Headers</code></a></li><li><a href="Headers/Access-Control-Allow-Methods.html" title="The Access-Control-Allow-Methods response header specifies the method or methods allowed when accessing the resource in response to a preflight request."><code>Access-Control-Allow-Methods</code></a></li><li><a href="Headers/Access-Control-Allow-Origin.html" title="The Access-Control-Allow-Origin response header indicates whether the response can be shared with resources with the given origin."><code>Access-Control-Allow-Origin</code></a></li><li><a href="Headers/Access-Control-Expose-Headers.html" title="The Access-Control-Expose-Headers response header indicates which headers can be exposed as part of the response by listing their names."><code>Access-Control-Expose-Headers</code></a></li><li><a href="Headers/Access-Control-Max-Age.html" title="The Access-Control-Max-Age response header indicates how long the results of a preflight request (that is the information contained in the Access-Control-Allow-Methods and Access-Control-Allow-Headers headers) can be cached."><code>Access-Control-Max-Age</code></a></li><li><a href="Headers/Access-Control-Request-Headers.html" title="The Access-Control-Request-Headers request header is used when issuing a preflight request to let the server know which HTTP headers will be used when the actual request is made."><code>Access-Control-Request-Headers</code></a></li><li><a href="Headers/Access-Control-Request-Method.html" title="The Access-Control-Request-Method request header is used when issuing a preflight request to let the server know which HTTP method will be used when the actual request is made. This header is necessary as the preflight request is always an OPTIONS and doesn't use the same method as the actual request."><code>Access-Control-Request-Method</code></a></li><li><a href="Headers/Age.html" title="The Age header contains the time in seconds the object has been in a proxy cache."><code>Age</code></a></li><li><a href="Headers/Cache-Control.html" title="The Cache-Control general-header field is used to specify directives for caching mechanisms in both, requests and responses. Caching directives are unidirectional, meaning that a given directive in a request is not implying that the same directive is to be given in the response."><code>Cache-Control</code></a></li><li><a href="Headers/Connection.html" title="The Connection general header controls whether or not the network connection stays open after the current transaction finishes. If the value sent is keep-alive, the connection is persistent and not closed, allowing for subsequent requests to the same server to be done."><code>Connection</code></a></li><li><a href="Headers/Content-Disposition.html" title="In a multipart/form-data body, the HTTP Content-Disposition general header is a header that can be used on the subpart of a multipart body to give information about the field it applies to. The subpart is delimited by the boundary defined in the Content-Type header. Used on the body itself, Content-Disposition has no effect."><code>Content-Disposition</code></a></li><li><a href="Headers/Content-Encoding.html" title="The Content-Encoding entity header is used to compress the media-type. When present, its value indicates what additional content encoding has been applied to the entity-body. It lets the client know, how to decode in order to obtain the media-type referenced by the Content-Type header."><code>Content-Encoding</code></a></li><li><a href="Headers/Content-Language.html" title="The Content-Language entity header is used to describe the language(s) intended for the audience, so that it allows a user to differentiate according to the users' own preferred language."><code>Content-Language</code></a></li><li><a href="Headers/Content-Length.html" title="The Content-Length entity header is indicating the size of the entity-body, in decimal number of octets, sent to the recipient."><code>Content-Length</code></a></li><li><a href="Headers/Content-Location.html" title="The Content-Location header indicates an alternate location for the returned data. The principal use case is to indicate the URL of the resource transmitted as the result of content negotiation."><code>Content-Location</code></a></li><li><a href="Headers/Content-Security-Policy.html" title="The HTTP Content-Security-Policy response header allows web site administrators to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks (XSS)."><code>Content-Security-Policy</code></a></li><li><a href="Headers/Content-Security-Policy-Report-Only.html" title="The HTTP Content-Security-Policy-Report-Only response header allows web developers to experiment with policies by monitoring (but not enforcing) their effects. These violation reports consist of JSON documents sent via an HTTP POST request to the specified URI."><code>Content-Security-Policy-Report-Only</code></a></li><li><a href="Headers/Content-Type.html" title="The Content-Type entity header is used to indicate the media type of the resource."><code>Content-Type</code></a></li><li><a href="Headers/Cookie.html" title="The Cookie HTTP request header contains stored HTTP cookies previously sent by the server with the Set-Cookie header."><code>Cookie</code></a></li><li><span class="sidebar-icon"><span title="This is an obsolete API and is no longer guaranteed to work."><i class="icon-trash"> </i></span></span><a href="Headers/Cookie2.html" title='The obsolete Cookie2 HTTP request header used to advise the server that the user agent understands "new-style" cookies, but nowadays user agents will use the Cookie header instead, not this one.'><code>Cookie2</code></a></li><li><a href="Headers/DNT.html" title="The DNT (Do Not Track) request header indicates the user's tracking preference. It lets users indicate whether would prefer privacy rather than personalized content."><code>DNT</code></a></li><li><a href="Headers/Date.html" title="The Date general HTTP header contains the date and time at which the message was originated."><code>Date</code></a></li><li><a href="Headers/ETag.html" title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, if the content has changed, etags are useful to help prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").'><code>ETag</code></a></li><li><a href="Headers/Expires.html" title="The Expires header contains the date/time after which the response is considered stale."><code>Expires</code></a></li><li><a href="Headers/From.html" title="The From request header contains an Internet email address for a human user who controls the requesting user agent."><code>From</code></a></li><li><a href="Headers/Host.html" title="The Host request header specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening."><code>Host</code></a></li><li><a href="Headers/If-Match.html" title="The If-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the resource in this case."><code>If-Match</code></a></li><li><a href="Headers/If-Modified-Since.html" title="The If-Modified-Since request HTTP header makes the request conditional: the server will send back the requested resource, with a 200 status, only if it has been last modified after the given date. If the request has not been modified since, the response will be a 304 without any body; the Last-Modified header will contain the date of last modification. Unlike If-Unmodified-Since, If-Modified-Since can only be used with a GET or HEAD."><code>If-Modified-Since</code></a></li><li><a href="Headers/If-None-Match.html" title="The If-None-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource, with a 200 status, only if doesn't have a ETag matching the given one. For other methods, the request will be processed only if the eventually existing resource's ETag doesn't match any of the values listed."><code>If-None-Match</code></a></li><li><a href="Headers/If-Range.html" title="The If-Range request HTTP header makes the range request conditional: if the condition is fulfilled, the range request will be and the server send back a 206 Partial Content answer with the appropriate body. If the condition is not fulfilled, the full resource is sent back, with a 200 OK status."><code>If-Range</code></a></li><li><a href="Headers/If-Unmodified-Since.html" title="The If-Unmodified-Since request HTTP header makes the request conditional: the server will send back the requested resource, or accept it in the case of a POST or another non-safe method, only if it has not been last modified after the given date. If the request has been modified after the given date, the response will be a 412 (Precondition Failed) error."><code>If-Unmodified-Since</code></a></li><li><a href="Headers/Keep-Alive.html" title="The Keep-Alive general header allows the sender to hint about how the connection and may be used to set a timeout and a maximum amount of requests."><code>Keep-Alive</code></a></li><li><a href="Headers/Last-Modified.html" title="The Last-Modified response HTTP header contains the date and time at which the origin server believes the resource was last modified. It is used as a validator to determine if a resource received or stored is the same. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field."><code>Last-Modified</code></a></li><li><a href="Headers/Location.html" title="The Location response header indicates the URL to redirect a page to. It only provides a meaning when served with a 3xx status response."><code>Location</code></a></li><li><a href="Headers/Origin.html" title="The Origin request header indicates where a fetch originates from. It doesn't include any path information, but only the server name. It is sent with CORS requests, as well as with POST requests. It is similar to the Referer header, but, unlike this header, it doesn't disclose the whole path."><code>Origin</code></a></li><li><span class="sidebar-icon"><span title="This deprecated API should no longer be used, but will probably still work."><i class="icon-thumbs-down-alt"> </i></span></span><a href="Headers/Pragma.html" title="The Pragma HTTP/1.0 general header is an implementation-specific header that may have various effects along the request-response chain. It is used for backwards compatibility with HTTP/1.0 caches where the Cache-Control HTTP/1.1 header is not yet present."><code>Pragma</code></a></li><li><a href="Headers/Public-Key-Pins.html" title="The HTTP Public-Key-Pins response header associates a specific cryptographic public key with a certain web server to prevent MITM attacks with forged certificates."><code>Public-Key-Pins</code></a></li><li><a href="Headers/Referer.html" title="The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example."><code>Referer</code></a></li><li><a href="Headers/Referrer-Policy.html" title="The Referrer-Policy HTTP header governs which referrer information, sent in the Referer header, should be included with requests made."><code>Referrer-Policy</code></a></li><li><a href="Headers/Retry-After.html" title="The Retry-After response HTTP header indicates how long the user agent should wait before making a follow-up request. There are two main cases this header is used:"><code>Retry-After</code></a></li><li><a href="Headers/Server.html" title="The Server header contains information about the software used by the origin server to handle the request."><code>Server</code></a></li><li><a href="Headers/Set-Cookie.html" title="The Set-Cookie HTTP response header is used to send cookies from the server to the user agent."><code>Set-Cookie</code></a></li><li><span class="sidebar-icon"><span title="This is an obsolete API and is no longer guaranteed to work."><i class="icon-trash"> </i></span></span><a href="Headers/Set-Cookie2.html" title="The obsolete Set-Cookie2 HTTP response header used to send cookies from the server to the user agent, but has been deprecated by the specification. Use Set-Cookie instead."><code>Set-Cookie2</code></a></li><li><a href="Headers/Strict-Transport-Security.html" title="The HTTP Strict-Transport-Security response header (often abbreviated as HSTS) is a security feature that lets a web site tell browsers that it should only be communicated with using HTTPS, instead of using HTTP."><code>Strict-Transport-Security</code></a></li><li><a href="Headers/TE.html" title="The TE request header specifies the transfer encodings the user agent is willing to accept. (you could informally call it Accept-Transfer-Encoding, which would be more intuitive)."><code>TE</code></a></li><li><a href="Headers/Tk.html" title="The Tk response header indicates the tracking status that applied to the corresponding request."><code>Tk</code></a></li><li><a href="Headers/Trailer.html" title="The Trailer request header allows the sender to include additional fields at the end of chunked messages in order to supply metadata that might be dynamically generated while the message body is sent, such as a message integrity check, digital signature, or post-processing status."><code>Trailer</code></a></li><li><a href="Headers/Transfer-Encoding.html" title="The Transfer-Encoding header specifies the form of encoding used to safely transfer the entity to the user."><code>Transfer-Encoding</code></a></li><li><a href="Headers/Upgrade-Insecure-Requests.html" title="The HTTP Upgrade-Insecure-Requests request header sends a signal to the server expressing the client’s preference for an encrypted and authenticated response, and that it can successfully handle the upgrade-insecure-requests CSP directive."><code>Upgrade-Insecure-Requests</code></a></li><li><a href="Headers/User-Agent.html" title="The User-Agent request header contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent."><code>User-Agent</code></a></li><li><a href="Headers/Vary.html" title="The Vary HTTP response header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server. It is used by the server to indicate which headers it used when selecting a representation of a resource in a content negotiation algorithm."><code>Vary</code></a></li><li><a href="Headers/Via.html" title="The Via general header is added by proxies, both forward and reverse proxies, and can appear in the request headers and the response headers. It is used for tracking message forwards, avoiding request loops, and identifying the protocol capabilities of senders along the request/response chain."><code>Via</code></a></li><li><a href="Headers/Warning.html" title="The Warning general HTTP header contains information about possible problems with the status of the message. More than one Warning header may appear in a response."><code>Warning</code></a></li><li><a href="Headers/X-Content-Type-Options.html" title="The X-Content-Type-Options response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should not be changed and be followed. This allows to opt-out of MIME type sniffing, or, in other words, it is a way to say that the webmasters knew what they were doing."><code>X-Content-Type-Options</code></a></li><li><a href="Headers/X-DNS-Prefetch-Control.html" title="The X-DNS-Prefetch-Control HTTP response header controls DNS prefetching, a feature by which browsers proactively perform domain name resolution on both links that the user may choose to follow as well as URLs for items referenced by the document, including images, CSS, JavaScript, and so forth."><code>X-DNS-Prefetch-Control</code></a></li><li><a href="Headers/X-Frame-Options.html" title="The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a &lt;frame>, &lt;iframe> or &lt;object> . Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites."><code>X-Frame-Options</code></a></li><li><a href="Headers/X-XSS-Protection.html" title="The HTTP X-XSS-Protection response header is a feature of Internet Explorer, Chrome and Safari that stops pages from loading when they detect reflected cross-site scripting (XSS) attacks. Although these protections are largely unnecessary in modern browsers when sites implement a strong Content-Security-Policy that disables the use of inline JavaScript ('unsafe-inline'), they can still provide protections for users of older web browsers that don't yet support CSP."><code>X-XSS-Protection</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="Methods.html">HTTP request methods</a> 
+      <ol><li><a href="Methods/GET.html" title="The HTTP GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a></li><li><a href="Methods/HEAD.html" title="The HTTP HEAD method requests the headers that are returned if the specified resource would be requested with an HTTP GET method. Such a request can be done before deciding to download a large resource to save bandwidth, for example."><code>HEAD</code></a></li><li><a href="Methods/OPTIONS.html" title="The HTTP OPTIONS method is used to describe the communication options for the target resource. The client can specify a specific URL for the OPTIONS method, or an asterisk (*) to refer to the entire server."><code>OPTIONS</code></a></li><li><a href="Methods/POST.html" title="The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header."><code>POST</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="Status.html">HTTP response status codes</a> 
+      <ol><li><a href="Status/100.html" title="The HTTP 100 Continue informational status response code indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished."><code>100 Continue</code></a></li><li><a href="Status/200.html" title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default."><code>200 OK</code></a></li><li><a href="Status/201.html" title="The HTTP 201 Created success status response code indicates that the request has succeeded and has led to the creation of a resource. The new resource is effectively created before this response is sent back. and the new resource is returned in the body of the message, its location being either the URL of the request, or the content of the Location header."><code>201 Created</code></a></li><li><a href="Status/204.html" title="The HTTP 204 No Content success status response code indicates that the request has succeed, but that the client doesn't need to go away from its current page. A 204 response is cacheable by default. An ETag header is included in such a response."><code>204 No Content</code></a></li><li><a href="Status/206.html" title="The HTTP 206 Partial Content success status response code indicates that the request has succeeded and has the body contains the requested ranges of data, as described in the Range header of the request."><code>206 Partial Content</code></a></li><li><a href="Status/301.html" title="The HTTP 301 Moved Permanently redirect status response code indicates that the resource requested has been definitively moved to the URL given by the Location headers. A browser redirects to this page, and search engines update their links to the resource (In SEO-speak, it is said that the link-juice is sent to the new URL)."><code>301 Moved Permanently</code></a></li><li><a href="Status/302.html" title="The HTTP 302 Found redirect status response code indicates that the resource requested has been temporarily moved to the URL given by the Location headers. A browser redirects to this page, but search engines don't update their links to the resource (In SEO-speak, it is said that the link-juice is not sent to the new URL)."><code>302 Found</code></a></li><li><a href="Status/303.html" title="The HTTP 303 See Other redirect status response code, usually sent back as a result of a PUT or POST operation, indicates that the redirects don't link to the newly uploaded resources but to another page, like a confirmation page or an upload progress page. The method used to display this redirected page is always GET."><code>303 See Other</code></a></li><li><a href="Status/304.html" title="The HTTP 304 Not Modified client redirection response code indicates that there is no need to retransmit the requested resources. It is an implicit redirection to a cached resource. This happens when the request method is safe, like a GET or a HEAD request, or when the request is conditional and uses a If-None-Match or a If-Modified-Since header."><code>304 Not Modified</code></a></li><li><a href="Status/307.html" title='The method and the body of the original request are reused to perform the redirected request. In the cases where you want the method used to be changed to GET, use 303 See Also instead. This is useful when you want to give an answer to a PUT method that is not the uploaded resources, but a confirmation message (like "You successfully uploaded XYZ").'><code>307 Temporary Redirect</code></a></li><li><a href="Status/308.html" title="The request method and the body will not be altered, whereas 301 may incorrectly sometimes be changed to a GET method."><code>308 Permanent Redirect</code></a></li><li><a href="Status/404.html" title="The HTTP 404 Not Found client error response code indicates that a server can not find the requested resource. This response code probably is most famous one due to its frequency to occur in the web. These are often called broken or dead links and lead to link rot."><code>404 Not Found</code></a></li><li><a href="Status/406.html" title="The HTTP 406 Not Acceptable client error response code indicates that a response matching the list of acceptable values defined in Accept-Charset and Accept-Language cannot be served."><code>406 Not Acceptable</code></a></li><li><a href="Status/410.html" title="The HTTP 410 Gone client error response code indicates that access to the target resource is no longer available at the origin server and that this condition is likely to be permanent."><code>410 Gone</code></a></li><li><a href="Status/412.html" title="The HTTP 412 Precondition Failed client error response code indicates that access to the target resource has been denied. This happens with conditional requests on methods other than GET or HEAD when the condition defined by the If-Unmodified-Since or If-None-Match headers is not fulfilled. In that case, the request, usually an upload or a modification of a resource, cannot be made and this error response is sent back."><code>412 Precondition Failed</code></a></li><li><a href="Status/451.html" title="The HTTP 451 Unavailable For Legal Reasons client error response code indicates that the user requested a resource which is not available due to legal reasons, such as a web page for which a legal action has been issued."><code>451 Unavailable For Legal Reasons</code></a></li><li><a href="Status/500.html" title="The HTTP 500 Internal Server Error server error response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request."><code>500 Internal Server Error</code></a></li><li><a href="Status/501.html" title="The HTTP 501 Not Implemented server error response code indicates that the request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD."><code>501 Not Implemented</code></a></li><li><a href="Status/502.html" title="The HTTP 502 Bad Gateway server error response code indicates that the server, while acting as a gateway or proxy, received an invalid response from the upstream server."><code>502 Bad Gateway</code></a></li><li><a href="Status/503.html" title="The HTTP 503 Service Unavailable server error response code indicates that the server is not ready to handle the request."><code>503 Service Unavailable</code></a></li><li><a href="Status/504.html" title="The HTTP 504 Gateway Timeout server error response code indicates that the server, while acting as a gateway or proxy, cannot get a response in time."><code>504 Gateway Timeout</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="Headers/Content-Security-Policy.html">CSP directives</a> 
+      <ol><li><a href="Headers/Content-Security-Policy/base-uri.html" title="The HTTP Content-Security-Policy base-uri directive restricts the URLs which can be used in a document's &lt;base> element. If this value is absent, then any URI is allowed. If this directive is absent, the user agent will use the value in the &lt;base> element."><code>CSP: base-uri</code></a></li><li><a href="Headers/Content-Security-Policy/block-all-mixed-content.html" title="The HTTP Content-Security-Policy (CSP) block-all-mixed-content directive prevents loading any assets using HTTP when the page is loaded using HTTPS."><code>CSP: block-all-mixed-content</code></a></li><li><a href="Headers/Content-Security-Policy/child-src.html" title="The HTTP Content-Security-Policy (CSP) child-src directive defines the valid sources for web workers and nested browsing contexts loaded using elements such as &lt;frame> and &lt;iframe>. For workers, non-compliant requests are treated as fatal network errors by the user agent."><code>CSP: child-src</code></a></li><li><a href="Headers/Content-Security-Policy/connect-src.html" title="The HTTP Content-Security-Policy (CSP) connect-src directive restricts the URLs which can be loaded using script interfaces. The APIs that are restricted are:"><code>CSP: connect-src</code></a></li><li><a href="Headers/Content-Security-Policy/default-src.html" title="The HTTP Content-Security-Policy (CSP) default-src directive serves as a fallback for the other CSP fetch directives. For each of the following directives that are absent, the user agent will look for the default-src directive and will use this value for it:"><code>CSP: default-src</code></a></li><li><a href="Headers/Content-Security-Policy/font-src.html" title="The HTTP Content-Security-Policy (CSP) font-src directive specifies valid sources for fonts loaded using @font-face."><code>CSP: font-src</code></a></li><li><a href="Headers/Content-Security-Policy/form-action.html" title="The HTTP Content-Security-Policy (CSP) form-action directive restricts the URLs which can be used as the target of a form submissions from a given context."><code>CSP: form-action</code></a></li><li><a href="Headers/Content-Security-Policy/frame-ancestors.html" title="The HTTP Content-Security-Policy (CSP) frame-ancestors directive specifies valid parents that may embed a page using &lt;frame>, &lt;iframe>, &lt;object>, &lt;embed>, or &lt;applet>."><code>CSP: frame-ancestors</code></a></li><li><a href="Headers/Content-Security-Policy/frame-src.html" title="The HTTP Content-Security-Policy (CSP) frame-src directive specifies valid sources for nested browsing contexts loading using elements such as &lt;frame> and &lt;iframe>."><code>CSP: frame-src</code></a></li><li><a href="Headers/Content-Security-Policy/img-src.html" title="The HTTP Content-Security-Policy: img-src directive specifies valid sources of images and favicons."><code>CSP: img-src</code></a></li><li><a href="Headers/Content-Security-Policy/manifest-src.html" title="The HTTP Content-Security-Policy: manifest-src directive specifies which manifest can be applied to the resource."><code>CSP: manifest-src</code></a></li><li><a href="Headers/Content-Security-Policy/media-src.html" title="The HTTP Content-Security-Policy (CSP) media-src directive specifies valid sources for loading media using the &lt;audio> and &lt;video> elements."><code>CSP: media-src</code></a></li><li><a href="Headers/Content-Security-Policy/object-src.html" title="The HTTP Content-Security-Policy object-src directive specifies valid sources for the &lt;object>, &lt;embed>, and &lt;applet> elements."><code>CSP: object-src</code></a></li><li><a href="Headers/Content-Security-Policy/plugin-types.html" title="The HTTP Content-Security-Policy (CSP) plugin-types directive restricts the set of plugins that can be embedded into a document by limiting the types of resources which can be loaded."><code>CSP: plugin-types</code></a></li><li><a href="Headers/Content-Security-Policy/referrer.html" title="The HTTP Content-Security-Policy (CSP) referrer directive used to specify information in the Referer header (with a single r as this was a typo in the orignal spec) for links away from a page. This API is deprecated and removed from browsers."><code>CSP: referrer</code></a></li><li><a href="Headers/Content-Security-Policy/report-uri.html" title="The HTTP Content-Security-Policy (CSP) report-uri directive instructs the user agent to report attempts to violate the Content Security Policy. These violation reports consist of JSON documents sent via an HTTP POST request to the specified URI."><code>CSP: report-uri</code></a></li><li><a href="Headers/Content-Security-Policy/require-sri-for.html" title="The HTTP Content-Security-Policy require-sri-for directive instructis the client to require the use of Subresource Integrity for scripts or styles on the page."><code>CSP: require-sri-for</code></a></li><li><a href="Headers/Content-Security-Policy/sandbox.html" title="The HTTP Content-Security-Policy (CSP) sandbox directive enables a sandbox for the requested resource similar to the &lt;iframe> sandbox attribute. It applies restrictions to a page's actions including preventing popups, preventing the execution of plugins and scripts, and enforcing a same-origin policy."><code>CSP: sandbox</code></a></li><li><a href="Headers/Content-Security-Policy/script-src.html" title="The HTTP Content-Security-Policy (CSP) script-src directive specifies valid sources for sources for JavaScript. This includes not only URLs loaded directly into &lt;script> elements, but also things like inline script event handlers (onclick) and XSLT stylesheets which can trigger script execution."><code>CSP: script-src</code></a></li><li><a href="Headers/Content-Security-Policy/style-src.html" title="The HTTP Content-Security-Policy (CSP) style-src directive specifies valid sources for sources for stylesheets."><code>CSP: style-src</code></a></li><li><a href="Headers/Content-Security-Policy/upgrade-insecure-requests.html" title="The HTTP Content-Security-Policy (CSP) upgrade-insecure-requests directive instructs user agents to treat all of a site's insecure URLs (those served over HTTP) as though they have been replaced with secure URLs (those served over HTTPS). This directive is intended for web sites with large numbers of insecure legacy URLs that need to be rewritten."><code>CSP: upgrade-insecure-requests</code></a></li><li><a href="Headers/Content-Security-Policy/worker-src.html" title="The HTTP Content-Security-Policy (CSP) worker-src directive specifies valid sources for Worker, SharedWorker, or ServiceWorker scripts."><code>CSP: worker-src</code></a></li></ol> 
+    </li> 
+  </ol> 
+
+  </div>
+                
+
+                <!-- approvals -->
+                
+
+              
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/en-US/docs/Web/HTTP/Access_control_CORS$edit" label="Edit page"></menuitem>
+    <menuitem data-action="/en-US/docs/Web/HTTP/Access_control_CORS$history" label="View page history"></menuitem>
+  </menu>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+  
+    <form class="languages go" method="get" action="https://developer.mozilla.org/en-US/docs/Web">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option title="English (US)" value="/en-US/docs/Web/HTTP/Access_control_CORS" selected>
+          English (US) (en-US)
+        </option>
+        
+          <option title="Spanish" value="/es/docs/Web/HTTP/Access_control_CORS">
+            Español (es)
+          </option>
+          <option title="French" value="/fr/docs/HTTP/Access_control_CORS">
+            Français (fr)
+          </option>
+          <option title="Japanese" value="/ja/docs/Web/HTTP/HTTP_access_control">
+            日本語 (ja)
+          </option>
+          <option title="Korean" value="/ko/docs/Web/HTTP/Access_control_CORS">
+            한국어 (ko)
+          </option>
+          <option title="Chinese (Simplified)" value="/zh-CN/docs/Web/HTTP/Access_control_CORS">
+            中文 (简体) (zh-CN)
+          </option>
+          <option title="Chinese (Traditional)" value="/zh-TW/docs/HTTP/Access_control_CORS">
+            正體中文 (繁體) (zh-TW)
+          </option>
+      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  
+
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+
+  
+
+  
+
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/newsletter.7cd3274169f2.js" charset="utf-8"></script>
+  
+
+
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:31:30 GMT -->
+</html>

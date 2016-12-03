@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Status by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:31:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>HTTP response status codes - HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+  <link rel="alternate" type="application/json" href="Status%24json.json">
+  <link rel="canonical" href="Status.html" >
+
+  
+    
+      <link rel="alternate" hreflang="de" href="https://developer.mozilla.org/de/docs/Web/HTTP/Status" title="HTTP response status codes">
+    
+      <link rel="alternate" hreflang="id" href="https://developer.mozilla.org/id/docs/Web/HTTP/Status" title="HTTP response status codes">
+    
+      <link rel="alternate" hreflang="ja" href="https://developer.mozilla.org/ja/docs/Web/HTTP/Response_codes" title="HTTP レスポンスコード">
+    
+      <link rel="alternate" hreflang="ko" href="https://developer.mozilla.org/ko/docs/Web/HTTP/상태_코드" title="HTTP 상태 코드">
+    
+      <link rel="alternate" hreflang="ru" href="https://developer.mozilla.org/ru/docs/Web/HTTP/Response_codes" title="Коды ответа HTTP">
+    
+      <link rel="alternate" hreflang="zh-CN" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Response_codes" title="HTTP response codes">
+    
+      <link rel="alternate" hreflang="zh-TW" href="https://developer.mozilla.org/zh-TW/docs/HTTP/Response_codes" title="HTTP 狀態碼">
+    
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="HTTP response status codes">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">
+  <meta name="twitter:title" content="HTTP response status codes">
+  
+  <meta property="og:description" content="HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes: informational responses, successful responses, redirects, client errors, and servers errors.">
+  <meta name="description" content="HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes: informational responses, successful responses, redirects, client errors, and servers errors.">
+  <meta name="twitter:description" content="HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes: informational responses, successful responses, redirects, client errors, and servers errors.">
+  
+
+  
+  <script type="text/javascript">
+    
+      var document_saved = 0;
+    
+  </script>
+
+
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+        // dimension12 == 'Page Revision"
+        ga('set', 'dimension12', '1095963');
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body data-slug="Web/HTTP/Status" contextmenu="edit-history-menu" data-search-url="" class="document  ">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#document-main" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FStatus" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Status">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+   <!-- end is_zone -->
+
+
+    <div class="wiki-main-content" id="document-main"><div class="center">
+      
+      <div class="article-meta">
+        <!-- action buttons -->
+        
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  <ul class="page-buttons" data-sticky="false">
+      
+      <li><button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false"><span>Languages</span><i aria-hidden="true" class="icon-language"></i></button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+              
+                
+                
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/de/docs/Web/HTTP/Status" title="German">Deutsch (de)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/id/docs/Web/HTTP/Status" title="Indonesian">Bahasa Indonesia (id)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/ja/docs/Web/HTTP/Response_codes" title="Japanese">日本語 (ja)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/ko/docs/Web/HTTP/상태_코드" title="Korean">한국어 (ko)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/ru/docs/Web/HTTP/Response_codes" title="Russian">Русский (ru)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Response_codes" title="Chinese (Simplified)">中文 (简体) (zh-CN)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/zh-TW/docs/HTTP/Response_codes" title="Chinese (Traditional)">正體中文 (繁體) (zh-TW)</a></bdi></li>
+                
+              
+
+              
+                <li><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Status%24locales" rel="nofollow, noindex" id="translations-add">Add a translation</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      
+      <li class="page-buttons-edit"><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Status%24edit" class="button" data-optimizely-hook="button-edit-doc" id="edit-button">Edit<i aria-hidden="true" class="icon-pencil"></i></a></li>
+      
+
+        
+
+        <li><button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false"><span>Advanced</span><i aria-hidden="true" class="icon-cog"></i></button>
+        <div class="submenu js-submenu" id="advanced-menu-submenu">
+          <!-- this page -->
+          <div class="submenu-column">
+            <div class="title">Advanced</div>
+            <ul>
+                <li><a href="Status%24history.html" rel="nofollow, noindex">History</a></li>
+                
+                
+                
+
+
+                
+
+                
+                
+                
+                <li class="page-print"><a href="#" onclick="return window.print();">Print this article</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+
+        <!-- crumbs -->
+        
+  <nav class="crumbs" role="navigation"><ol xmlns:v="http://rdf.data-vocabulary.org/#" aria-label="breadcrumbs">
+    <li typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US" rel="v:url" property="v:title">MDN</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US/docs/Web" rel="v:url" property="v:title">Web technology for developers</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="../HTTP.html" rel="v:url" property="v:title">HTTP</a></li>
+    
+    <li class="crumb" typeof="v:Breadcrumb" property="v:title">HTTP response status codes</li>
+  </ol></nav>
+      </div>
+
+      <!-- heading -->
+      <div id="wiki-document-head" class="document-head">
+          <span class="from-search-previous-box">
+            <a class="button from-search-previous only-icon disabled" title="Previous Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-left"></i></a>
+          </span>
+          <span class="from-search-navigate-wrap">
+            <a href="#" class="from-search-navigate"><span class="from-search-navigate-up"><i aria-hidden="true" class="icon-double-angle-up"></i></span><span class="from-search-navigate-down"><i aria-hidden="true" class="icon-double-angle-down"></i></span></a>
+          </span>
+          <div class="from-search-toc submenu">
+            <span class="title">Your Search Results</span>
+            <ol></ol>
+          </div>
+          <span class="from-search-next-box">
+            <a class="button from-search-next only-icon disabled" title="Next Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-right"></i></a>
+          </span>
+
+        
+        <div class="contributor-avatars" data-all-text="see all contributors" data-alternate-message="hide contributors" data-has-hidden="1">
+            <ul>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/fscholz" title="View profile: fscholz">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="fscholz" data-src="../../../../../secure.gravatar.com/avatar/e24391c9174352988d819a9b9ea77c9e6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">fscholz</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/sivasain" title="View profile: sivasain">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="sivasain" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">sivasain</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/arulnithi" title="View profile: arulnithi">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="arulnithi" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">arulnithi</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/rctgamer3" title="View profile: rctgamer3">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="rctgamer3" data-src="../../../../../secure.gravatar.com/avatar/f7289dd77258d4546225ff27336004326c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">rctgamer3</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/groovecoder" title="View profile: groovecoder">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="groovecoder" data-src="../../../../../secure.gravatar.com/avatar/ec25d046746de3be33779256f6957d8f6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">groovecoder</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/dovgart" title="View profile: dovgart">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="dovgart" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">dovgart</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/Sheppy" title="View profile: Sheppy">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="Sheppy" data-src="../../../../../secure.gravatar.com/avatar/945076feb88f2d7003891ffbf06f32bf6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">Sheppy</noscript></a>
+                </li>
+            
+                <li class="hidden">
+                <a href="https://developer.mozilla.org/en-US/profiles/fusionchess" title="View profile: fusionchess">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="fusionchess" data-src="../../../../../i2.wp.com/developer.cdn.mozilla.net/media/img/avatareb45.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">fusionchess</noscript></a>
+                </li>
+            
+            </ul>
+        </div>
+        
+
+        <h1>HTTP response status codes</h1>
+
+      </div>
+      
+
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-right-present wiki-left-present">
+
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+            
+              <!-- TOC, approvals, etc -->
+              <div class="column-strip wiki-column" id="wiki-right">
+              
+              <!-- table of contents -->
+              <div id="toc" class="toc toggleable">
+                <a href="#toc" class="title toggler" data-open-icon="icon-plus" data-closed-icon="icon-minus">In This Article<i></i></a>
+                <ol class="toggle-container">
+                  <li><a href="#Information_responses" rel="internal">Information responses</a><li><a href="#Successful_responses" rel="internal">Successful responses</a><li><a href="#Redirection_messages" rel="internal">Redirection messages</a><li><a href="#Client_error_responses" rel="internal">Client error responses</a><li><a href="#Server_error_responses" rel="internal">Server error responses</a>
+                </ol>
+              </div>
+              
+              </div>
+            
+
+            
+            
+              
+            
+
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-half wiki-column text-content">
+
+              
+
+              
+
+              
+                
+                
+                
+              
+              
+
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                
+                  
+                    <div><section class="Quick_links" id="Quick_Links"><!-- --></section></div>
+
+<p>HTTP response status codes indicate whether a specific <a href="../HTTP.html">HTTP</a> request has been successfully completed. Responses are grouped in five classes: informational responses, successful responses, redirects, client errors, and servers errors.</p>
+
+<h2 id="Information_responses">Information responses</h2>
+
+<dl>
+ <dt><a title="The HTTP 100 Continue informational status response code indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished." href="Status/100.html"><code>100 Continue</code></a></dt>
+ <dd>This interim response indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/101.html" class="new"><code>101 Switching Protocol</code></a></dt>
+ <dd>This code is sent in response to an <code>Upgrade:</code> request header by the client, and indicates that the protocol the server is switching too. It was introduced to allow migration to an incompatible protocol version, and is not in common use.</dd>
+</dl>
+
+<h2 id="Successful_responses">Successful responses</h2>
+
+<dl>
+ <dt><a title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default." href="Status/200.html"><code>200 OK</code></a></dt>
+ <dd>The request has succeeded. The meaning of a success varies depending on the HTTP method:<br>
+ GET: The resource has been fetched and is transmitted in the message body.<br>
+ HEAD: The entity headers are in the message body.<br>
+ POST: The resource describing the result of the action is transmitted in the message body.<br>
+ TRACE: The message body contains the request message as received by the server</dd>
+ <dt><a title="The HTTP 201 Created success status response code indicates that the request has succeeded and has led to the creation of a resource. The new resource is effectively created before this response is sent back. and the new resource is returned in the body of the message, its location being either the URL of the request, or the content of the Location header." href="Status/201.html"><code>201 Created</code></a></dt>
+ <dd>The request has succeeded and a new resource has been created as a result of it. This is typically the response sent after a PUT request.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/202.html" class="new"><code>202 Accepted</code></a></dt>
+ <dd>The request has been received but not yet acted upon. It is non-committal, meaning that there is no way in HTTP to later send an asynchronous response indicating the outcome of processing the request. It is intended for cases where another process or server handles the request, or for batch processing.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/203.html" class="new"><code>203 Non-Authoritative Information</code></a></dt>
+ <dd>This response code means returned meta-information set is not exact set as available from the origin server, but collected from a local or a third party copy. Except this condition, 200 OK response should be preferred instead of this response.</dd>
+ <dt><a title="The HTTP 204 No Content success status response code indicates that the request has succeded, but that the client doesn't need to go away from its current page . A 204 response is cacheable by default. An ETag header is included in such a response." href="Status/204.html"><code>204 No Content</code></a></dt>
+ <dd>There is no content to send for this request, but the headers may be useful. The user-agent may update its cached headers for this resource with the new ones.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/205.html" class="new"><code>205 Reset Content</code></a></dt>
+ <dd>This response code is sent after accomplishing request to tell user agent reset document view which sent this request.</dd>
+ <dt><a title="The HTTP 206 Partial Content success status response code indicates that the request has succeeded and has the body contains the requested ranges of data, as described in the Range header of the request." href="Status/206.html"><code>206 Partial Content</code></a></dt>
+ <dd>This response code is used because of range header sent by the client to separate download into multiple streams.</dd>
+</dl>
+
+<h2 id="Redirection_messages">Redirection messages</h2>
+
+<dl>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/300.html" class="new"><code>300 Multiple Choice</code></a></dt>
+ <dd>The request has more than one possible responses. User-agent or user should choose one of them. There is no standardized way to choose one of the responses.</dd>
+ <dt><a title="The HTTP 301 Moved Permanently redirect status response code indicates that the resource requested has been definitively moved to the URL given by the Location headers. Browser redirects to this page, and search engines updates their link to the resource (In SEO-speak, it is said that the link-juice is sent to the new URL)." href="Status/301.html"><code>301 Moved Permanently</code></a></dt>
+ <dd>This response code means that URI of requested resource has been changed. Probably, new URI would be given in the response.</dd>
+ <dt><a title="The HTTP 302 Found redirect status response code indicates that the resource requested has been temporarily moved to the URL given by the Location headers. Browser redirects to this page, but search engines updates their link to the resource (In SEO-speak, it is said that the link-juice is not sent to the new URL)." href="Status/302.html"><code>302 Found</code></a></dt>
+ <dd>This response code means that URI of requested resource has been changed <em>temporarily</em>. New changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests.</dd>
+ <dt><a title="The HTTP 303 See Other redirect status response code, usually sent back as a result of PUT or POST indicates that the redirects doesn't link to the newly uploaded resources but to another page, like a confirmation page or an upload progress page. The method used to display this redirected page is always GET." href="Status/303.html"><code>303 See Other</code></a></dt>
+ <dd>Server sent this response to directing client to get requested resource to another URI with an GET request.</dd>
+ <dt><a title="The HTTP 304 Not Modified client redirection response code indicates that their is no need to retransmit the requests resources. It is an implicit redirection to a cached resources. This happens when the request method is safe, like a GET or a Head and the request is conditional and use a If-None-Match or a If-Modified-Since headers." href="Status/304.html"><code>304 Not Modified</code></a></dt>
+ <dd>This is used for caching purposes. It is telling to client that response has not been modified. So, client can continue to use same cached version of response.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/305.html" class="new"><code>305 Use Proxy</code></a></dt>
+ <dd>This means requested response must be accessed by a proxy. This response code is not largely supported because security reasons.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/306.html" class="new"><code>306 unused</code></a></dt>
+ <dd>This response code is no longer used, it is just reserved currently. It was used in a previous version of the HTTP 1.1 specification.</dd>
+ <dt><a title='The method and the body of the original request are reused to perform the redirected request. In the cases where you want the method used to be changed to GET, use 303 See Also instead. This is useful when you want to give an answer to a PUT method that is not the uploaded resources, but a confirmation message (like "You successfully uploaded XYZ").' href="Status/307.html"><code>307 Temporary Redirect</code></a></dt>
+ <dd>Server sent this response to directing client to get requested resource to another URI with same method that used prior request. This has the same semantic than the <code>302 Found</code> HTTP response code, with the exception that the user agent <em>must not</em> change the HTTP method used: if a <code>POST</code> was used in the first request, a <code>POST</code> must be used in the second request.</dd>
+ <dt><a title="The request method and the body will not be altered, whereas 301 may incorrectly sometimes be changed to a GET method." href="Status/308.html"><code>308 Permanent Redirect</code></a></dt>
+ <dd>This means that the resource is now permanently located at another URI, specified by the <code>Location:</code> HTTP Response header. This has the same semantics as the <code>301 Moved Permanently</code> HTTP response code, with the exception that the user agent <em>must not</em> change the HTTP method used: if a <code>POST</code> was used in the first request, a <code>POST</code> must be used in the second request.</dd>
+</dl>
+
+<h2 id="Client_error_responses">Client error responses</h2>
+
+<dl>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/400.html" class="new"><code>400 Bad Request</code></a></dt>
+ <dd>This response means that server could not understand the request due to invalid syntax.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/401.html" class="new"><code>401 Unauthorized</code></a></dt>
+ <dd>Authentication is needed to get requested response. This is similar to 403, but in this case, authentication is possible.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/402.html" class="new"><code>402 Payment Required</code></a></dt>
+ <dd>This response code is reserved for future use. Initial aim for creating this code was using it for digital payment systems however this is not used currently.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/403.html" class="new"><code>403 Forbidden</code></a></dt>
+ <dd>Client does not have access rights to the content so server is rejecting to give proper response.</dd>
+ <dt><a title="The HTTP 404 Not Found client error response code indicates that a server can not find the requested resource. This response code probably is most famous one due to its frequency to occur in the web. These are often called broken or dead links and lead to link rot." href="Status/404.html"><code>404 Not Found</code></a></dt>
+ <dd>Server can not find requested resource. This response code probably is most famous one due to its frequency to occur in web.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/405.html" class="new"><code>405 Method Not Allowed</code></a></dt>
+ <dd>The request method is known by the server but has been disabled and cannot be used. The two mandatory methods, <code>GET</code> and <code>HEAD</code>, must never be disabled and should not return this error code.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/406.html" class="new"><code>406 Not Acceptable</code></a></dt>
+ <dd>This response is sent when the web server, after performing <a href="https://developer.mozilla.org/en-US/docs/HTTP/Content_negotiation#Server-driven_negotiation">server-driven content negotiation</a>, doesn't find any content following the criteria given by the user agent.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/407.html" class="new"><code>407 Proxy Authentication Required</code></a></dt>
+ <dd>This is similar to 401 but authentication is needed to be done by a proxy.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/408.html" class="new"><code>408 Request Timeout</code></a></dt>
+ <dd>This response is sent on an idle connection by some servers, even without any previous request by the client. It means that the server would like to shut down this unused connection. This response is used much more since some browsers, like Chrome or IE9, use <a title="http://www.belshe.com/2011/02/10/the-era-of-browser-preconnect/" href="http://www.belshe.com/2011/02/10/the-era-of-browser-preconnect/" class="external">HTTP preconnection mechanisms</a> to speed up surfing (see <a title="FIXED: add interface for predictive actions" href="https://bugzilla.mozilla.org/show_bug.cgi?id=881804" class="external">bug 881804</a>, which tracks the future implementation of such a mechanism in Firefox). Also note that some servers merely shut down the connection without sending this message.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/409.html" class="new"><code>409 Conflict</code></a></dt>
+ <dd>This response would be sent when a request conflict with current state of server.</dd>
+ <dt><a title="The HTTP 410 Gone client error response code indicates that access to the target resource is no longer available at the origin server and that this condition is likely to be permanent." href="Status/410.html"><code>410 Gone</code></a></dt>
+ <dd>This response would be sent when requested content has been deleted from server.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/411.html" class="new"><code>411 Length Required</code></a></dt>
+ <dd>Server rejected the request because the <code>Content-Length</code> header field is not defined and the server requires it.</dd>
+ <dt><a title="The HTTP 412 Precondition Failed client error response code indicates that access to the target resource has been denied. This happened with conditional requests on methods other than GET or HEAD when the conditin defined by If-Unmodified-Since or If-None-Match is not fulfilled; in that case the request, usually an upload or the modification of a resource cannot be made and this error response is sent back." href="Status/412.html"><code>412 Precondition Failed</code></a></dt>
+ <dd>The client has indicated preconditions in its headers which the server does not meet.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/413.html" class="new"><code>413 Payload Too Large</code></a></dt>
+ <dd>Request entity is larger than limits defined by server; the server might close the connection or return an <code>Retry-After</code> header field.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/414.html" class="new"><code>414 URI Too Long</code></a></dt>
+ <dd>The URI requested by the client is longer than the server is willing to interpret.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/415.html" class="new"><code>415 Unsupported Media Type</code></a></dt>
+ <dd>The media format of the requested data is not supported by the server, so the server is rejecting the request.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/416.html" class="new"><code>416 Requested Range Not Satisfiable</code></a></dt>
+ <dd>The range specified by the <code>Range</code> header field in the request can't be fulfilled; it's possible that the range is outside the size of the target URI's data.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/417.html" class="new"><code>417 Expectation Failed</code></a></dt>
+ <dd>This response code means the expectation indicated by the <code>Expect</code> request header field can't be met by the server.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/421.html" class="new"><code>421 Misdirected Request</code></a></dt>
+ <dd>The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/426.html" class="new"><code>426 Upgrade Required</code></a></dt>
+ <dd>The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol. The server MUST send an Upgrade header field in a 426 response to indicate the required protocol(s) (<a href="https://tools.ietf.org/html/rfc7230#section-6.7" class="external">Section 6.7 of [RFC7230]</a>).</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/428.html" class="new"><code>428 Precondition Required</code></a></dt>
+ <dd>The origin server requires the request to be conditional. Intended to prevent "the 'lost update' problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/429.html" class="new"><code>429 Too Many Requests</code></a></dt>
+ <dd>The user has sent too many requests in a given amount of time ("rate limiting").</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/431.html" class="new"><code>431 Request Header Fields Too Large</code></a></dt>
+ <dd>The server is unwilling to process the request because its header fields are too large. The request MAY be resubmitted after reducing the size of the request header fields.</dd>
+ <dt><a title="The HTTP 451 Unavailable For Legal Reasons client error response code indicates that the user requests an illegal resource, such as a web page for which a legal action has been issued." href="Status/451.html"><code>451 Unavailable For Legal Reasons</code></a></dt>
+ <dd>The user requests an illegal resource, such as a web page censored by a government.</dd>
+</dl>
+
+<h2 id="Server_error_responses">Server error responses</h2>
+
+<dl>
+ <dt><a title="The HTTP 500 Internal Server Error server error response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request." href="Status/500.html"><code>500 Internal Server Error</code></a></dt>
+ <dd>The server has encountered a situation it doesn't know how to handle.</dd>
+ <dt><a title="The HTTP 501 Not Implemented server error response code indicates that the request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD." href="Status/501.html"><code>501 Not Implemented</code></a></dt>
+ <dd>The request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are <code>GET</code> and <code>HEAD</code>.</dd>
+ <dt><a title="The HTTP 502 Bad Gateway server error response code indicates that the server, while acting as a gateway or proxy, received an invalid response from the upstream server." href="Status/502.html"><code>502 Bad Gateway</code></a></dt>
+ <dd>This error response means that the server, while working as a gateway to get a response needed to handle the request, got an invalid response.</dd>
+ <dt><a title="The HTTP 503 Service Unavailable server error response code indicates that the server is not ready to handle the request." href="Status/503.html"><code>503 Service Unavailable</code></a></dt>
+ <dd>The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded. Note that together with this response, a user-friendly page explaining the problem should be sent. This responses should be used for temporary conditions and the <code>Retry-After:</code> HTTP header should, if possible, contain the estimated time before the recovery of the service. The webmaster must also take care about the caching-related headers that are sent along with this response, as these temporary condition responses should usually not be cached.</dd>
+ <dt><a title="The HTTP 504 Gateway Timeout server error response code indicates that the server, while acting as a gateway or proxy, cannot get a response in time." href="Status/504.html"><code>504 Gateway Timeout</code></a></dt>
+ <dd>This error response is given when the server is acting as a gateway and cannot get a response in time.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/505.html" class="new"><code>505 HTTP Version Not Supported</code></a></dt>
+ <dd>The HTTP version used in the request is not supported by the server.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/506.html" class="new"><code>506 Variant Also Negotiates</code></a></dt>
+ <dd>The server has an internal configuration error: transparent content negotiation for the request results in a circular reference.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/507.html" class="new"><code>507 Variant Also Negotiates</code></a></dt>
+ <dd>The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process.</dd>
+ <dt><a title="The documentation about this has not yet been written; please consider contributing!" href="Status/511.html" class="new"><code>511 Network Authentication Required</code></a></dt>
+ <dd>The 511 status code indicates that the client needs to authenticate to gain network access.</dd>
+</dl>
+                  
+                
+              </article>
+
+              
+
+                <!-- contributors -->
+                <div class="wiki-block contributors">
+                  <h2 class="offscreen">Document Tags and Contributors</h2>
+                  
+                  
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Status codes">Status codes</a></li>
+      
+    </ul>
+  </div>
+
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-group icon-fw"></i>&nbsp;<strong>Contributors to this page:</strong> 
+        <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/sivasain">sivasain</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/arulnithi">arulnithi</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/rctgamer3">rctgamer3</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/groovecoder">groovecoder</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/dovgart">dovgart</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/Sheppy">Sheppy</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/fusionchess">fusionchess</a>
+    
+                    </div>
+                  
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-clock-o icon-fw"></i>&nbsp;<strong>Last updated by:</strong>
+                      <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>,
+                      <time datetime="2016-07-28T06:30:22-07:00">Jul 28, 2016, 6:30:22 AM</time>
+                    </div>
+                  
+                </div>
+              
+
+              
+                  <div class="newsletter-box">
+                    <div class="newsletter">
+    <form id="newsletterForm" name="newsletter-form" class="nodisable" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+        <h2 class="newsletter-teaser">Learn the best of web development</h2>
+        <p class="newsletter-description">Sign up for our newsletter:</p>
+        <input type="hidden" id="fmt" name="fmt" value="H">
+        <input type="hidden" id="newsletterNewslettersInput" name="newsletters" value="app-dev" />
+
+        <div id="newsletterErrors" class="newsletter-errors"></div>
+
+        <div id="newsletterEmail" class="form-group">
+            <label for="newsletterEmailInput" class="form-label offscreen">E-mail</label>
+            <input type="email" id="newsletterEmailInput" name="email" class="form-input newsletter-input-email" required placeholder="you@example.com" size="30">
+        </div>
+
+        <div id="newsletterPrivacy" class="form-group form-group-agree hidden">
+            <input type="checkbox" id="newsletterPrivacyInput" name="privacy" required>
+            <label for="newsletterPrivacyInput">
+            I'm okay with Mozilla handling my info as explained in this <a href="https://www.mozilla.org/privacy/">Privacy Policy</a>.
+            </label>
+        </div>
+        <div id="newsletterSubmit">
+            <button id="newsletter-submit" type="submit" class="button positive">Sign up now</button>
+        </div>
+        
+    </form>
+    <div id="newsletterThanks" class="newsletter-thanks hidden">
+        <h2>Thanks! Please check your inbox to confirm your subscription.</h2>
+        <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.
+        </p>
+    </div>
+    <button id="newsletterHide" type="button" class="only-icon newsletter-hide hidden"><span>Hide Newsletter Sign-up</span><i aria-hidden="true" class="icon-times"></i></button>
+</div>
+                  </div>
+              
+            </div>
+
+            
+              <!-- quick links and zone subnav strip -->
+              <div id="wiki-left" class="column-strip wiki-column">
+
+              
+
+                
+
+                
+                  <!-- quick links -->
+                  
+  <div class="quick-links" id="quick-links">
+    <div class="title see-also">See also</div>
+     
+  <ol> 
+    <li><a href="../HTTP.html"><strong><em>HTTP</em></strong></a></li> 
+    <li><strong>Guides:</strong></li> 
+    <li><a href="Basics_of_HTTP/Resources_and_URIs.html">Resources and URIs</a> 
+    <ol> 
+        <li><a href="Basics_of_HTTP/Identifying_resources_on_the_Web.html">Identifying resources on the Web</a> 
+        </li><li><a href="Basics_of_HTTP/Data_URIs.html">Data URIs</a> 
+        </li><li><a href="Basics_of_HTTP/MIME_Types.html">Introduction to MIME Types</a> 
+        </li><li><a href="Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types.html">Complete list of MIME Types</a> 
+        </li><li><a href="Basics_of_HTTP/Choosing_between_www_and_non-www_URLs.html">Choosing between www and non-www URLs</a> 
+    </li></ol></li> 
+    <li><a href="Basics_of_HTTP.html">Basics of HTTP</a> 
+    <ol> 
+        <li><a href="Overview.html">Overview of HTTP</a> 
+        </li><li><a href="Basics_of_HTTP/Evolution_of_HTTP.html">Evolution of HTTP</a> 
+        </li><li><a href="Messages.html">HTTP Messages</a> 
+        </li><li><a href="Session.html">A typical HTTP session</a></li> 
+        <li><a href="Connection_management_in_HTTP_1.html">Connection management in HTTP/1.x</a></li> 
+ 
+    </ol> 
+    </li> 
+    <li><a href="Redirections.html">Redirections in HTTP</a></li> 
+    <li><a href="Conditional_requests.html">Conditional requests</a></li> 
+    <li><a href="Content_negotiation.html">Content negotiation</a></li>   
+    <li><a href="Cookies.html">HTTP cookies</a></li>   
+    <li><a href="Access_control_CORS.html">HTTP access control (CORS)</a></li> 
+    <li><a href="Resources_and_specifications.html">Resources and specifications</a></li> 
+    <li><strong>References:</strong></li> 
+    <li data-default-state="closed"><a href="Headers.html">HTTP headers</a> 
+      <ol><li><a title="The Accept-Ranges response HTTP header is a marker used by the server to advertise its support of partial request. The value of this field indicates the unit that can be used to define the range." href="Headers/Accept-Ranges.html"><code>Accept-Ranges</code></a></li><li><a title="The Age header contains the time in seconds the object has been in a proxy cache." href="Headers/Age.html"><code>Age</code></a></li><li><a title="The Cache-Control general-header field is used to specify directives for caching mechanisms in both, requests and responses. Caching directives are unidirectional, meaning that a given directive in a request is not implying that the same directive is to be given in the response." href="Headers/Cache-Control.html"><code>Cache-Control</code></a></li><li><a title="The Connection general header controls whether or not the network connection stays open after the current transaction finishes. If the value sent is keep-alive, the connection is persistent and not closed, allowing for subsequent requests to the same server to be done." href="Headers/Connection.html"><code>Connection</code></a></li><li><a title="In a multipart/form-data body, the HTTP Content-Disposition general header is a header that can be used on the subpart of a multipart body to give information about the field it applies to. The subpart is delimited by the boundary defined in the Content-Type header. Used on the body itself, Content-Disposition has no effect." href="Headers/Content-Disposition.html"><code>Content-Disposition</code></a></li><li><a title="The Content-Encoding entity header is used compress the media-type. When present, its value indicates what additional content encoding has been applied to the entity-body. It lets the client know, how to decode in order to obtain the media-type referenced by the Content-Type header." href="Headers/Content-Encoding.html"><code>Content-Encoding</code></a></li><li><a title="The Content-Language entity header is used to describe the language(s) intended for the audience, so that it allows a user to differentiate according to the users' own preferred language." href="Headers/Content-Language.html"><code>Content-Language</code></a></li><li><a title="The Content-Length entity header is indicating the size of the entity-body, in decimal number of octets, sent to the recipient." href="Headers/Content-Length.html"><code>Content-Length</code></a></li><li><a title="The Content-Location header indicates an alternate location for the returned data. The principal use case is to indicate the URL of the resource transmitted as the result of content negotiation." href="Headers/Content-Location.html"><code>Content-Location</code></a></li><li><a title="The Content-Security-Policy header fields allows web site administrators to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifiying server origins and script endpoints. This helps guard against cross-site scripting attacks." href="Headers/Content-Security-Policy.html"><code>Content-Security-Policy</code></a></li><li><a title="The Content-Type entity header is used to indicate the media type of the resource." href="Headers/Content-Type.html"><code>Content-Type</code></a></li><li><a title="The Date general HTTP header contains the date and time at which the message was originated." href="Headers/Date.html"><code>Date</code></a></li><li><a title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, If the content has changed, Etags can be useful to prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").' href="Headers/ETag.html"><code>ETag</code></a></li><li><a title="The Expires header contains the date/time after which the response is considered stale." href="Headers/Expires.html"><code>Expires</code></a></li><li><a title="The From request header contains an Internet email address for a human user who controls the requesting user agent." href="Headers/From.html"><code>From</code></a></li><li><a title="The Host request header specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening." href="Headers/Host.html"><code>Host</code></a></li><li><a title="The If-Match request HTTP header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the methods in this case." href="Headers/If-Match.html"><code>If-Match</code></a></li><li><a title="The If-Modified-Since request HTTP header makes the request conditional: the server will send back the requested resource, with a 200 status, only if it has been last modified after the date given. If the request has not been modified since, the response will be a 304 without any body; the Last-Modified header will contain the date of last modification. Unlike If-Unmodified-Since, If-Modified-Since can only be used with a GET or HEAD." href="Headers/If-Modified-Since.html"><code>If-Modified-Since</code></a></li><li><a title="The If-None-Match request HTTP header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource, with a 200 status, only if doesn't have a ETag matching the one given. For other methods, the request will be processed only if the eventually existing resource's ETag doesn't match any of the value listed." href="Headers/If-None-Match.html"><code>If-None-Match</code></a></li><li><a title="The If-Range request HTTP header makes the range request conditional: if the condition is fulfilled, the range request will be and the server send back a 206 Partial Content answer with the appropriate body. If the condition is not fulfilled, the full resource is sent back, with a 200 OK status." href="Headers/If-Range.html"><code>If-Range</code></a></li><li><a title="The If-Unmodified-Since request HTTP header makes the request conditional: the server will send back the requested resource, or accept it in the case of a POST or another non-safe method, only if it has not been last modified after the date given. If the request has been modified after the given date, the response will be a 412 Precondition Failed error." href="Headers/If-Unmodified-Since.html"><code>If-Unmodified-Since</code></a></li><li><a title="The Keep-Alive general header allows the sender to hint about how the connection and may be used to set a timeout and a maximum amount of requests." href="Headers/Keep-Alive.html"><code>Keep-Alive</code></a></li><li><a title="The Last-Modified response HTTP header is a validator. It is used as a marker to determine if a resource received or stored is the same. Less accurate than an ETag header, it is its fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since makes use of this field." href="Headers/Last-Modified.html"><code>Last-Modified</code></a></li><li><a title="The Location response header indicates what is the URL to redirect a page too. It has only a meaning when serverd in a 3xx answer." href="Headers/Location.html"><code>Location</code></a></li><li><a title="The Pragma HTTP/1.0 general header is an implementation-specific header that may have various effects along the request-response chain. It is used for backwards compatibility with HTTP/1.0 caches where the Cache-Control HTTP/1.1 header is not yet present." href="Headers/Pragma.html"><code>Pragma</code></a></li><li><a title="The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example." href="Headers/Referer.html"><code>Referer</code></a></li><li><a title="The Retry-After response HTTP header indicates how long the user agent should wait before making a follow-up request. There are two main cases this header is used:" href="Headers/Retry-After.html"><code>Retry-After</code></a></li><li><a title="The Server header contains information about the software used by the origin server to handle the request." href="Headers/Server.html"><code>Server</code></a></li><li><a title="The TE request header specifies the transfer encodings the user agent is willing to accept. (you could informally call it Accept-Transfer-Encoding, which would be more intuitive)." href="Headers/TE.html"><code>TE</code></a></li><li><a title="The Trailer request header allows the sender to include additional fields at the end of chunked messages in order to supply metadata that might be dynamically generated while the message body is sent, such as a message integrity check, digital signature, or post-processing status." href="Headers/Trailer.html"><code>Trailer</code></a></li><li><a title="The Transfer-Encoding header specifies the form of encoding used to safely transfer the entity to the user." href="Headers/Transfer-Encoding.html"><code>Transfer-Encoding</code></a></li><li><a title="The User-Agent request header contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent." href="Headers/User-Agent.html"><code>User-Agent</code></a></li><li><a title="The Vary HTTP response header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server." href="Headers/Vary.html"><code>Vary</code></a></li><li><a title="The Via general header is added by proxies, both forward and reverse proxies, and can appear in the request headers and the response headers. It is used for tracking message forwards, avoiding request loops, and identifying the protocol capabilities of senders along the request/response chain." href="Headers/Via.html"><code>Via</code></a></li><li><a title="The Warning general HTTP header contains information about possible problems with the status of the message. More than one Warning header may appear in a response." href="Headers/Warning.html"><code>Warning</code></a></li><li><a title="The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a &lt;frame>, &lt;iframe> or &lt;object> . Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites." href="/en-US/docs/Web/HTTP/Headers/X-Frame-Options"><code>X-Frame-Options</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="Methods.html">HTTP request methods</a> 
+      <ol><li><a title="The GET method requests a representation of the specified resource. Requests using GET should only retrieve data." href="Methods/GET.html"><code>GET</code></a></li><li><a title="The HTTP HEAD method requests the headers that are returned if the specified resource would be requested with an HTTP GET method. Such a request can be done before deciding to download a large resource to save bandwidth, for example." href="Methods/HEAD.html"><code>HEAD</code></a></li><li><a title="The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header. A POST request is typically send via an HTML form and results in a change on the server. In this case, the content type is selected by putting the adequate string in the enctype attribute of the &lt;form> element or the formenctype attribute of the &lt;input> or &lt;button> elements:" href="/en-US/docs/Web/HTTP/Methods/POST"><code>POST</code></a></li></ol> 
+    </li> 
+    <li data-default-state="open"><a href="Status.html">HTTP response status codes</a> 
+      <ol><li><a title="The HTTP 100 Continue informational status response code indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished." href="Status/100.html"><code>100 Continue</code></a></li><li><a title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default." href="Status/200.html"><code>200 OK</code></a></li><li><a title="The HTTP 201 Created success status response code indicates that the request has succeeded and has led to the creation of a resource. The new resource is effectively created before this response is sent back. and the new resource is returned in the body of the message, its location being either the URL of the request, or the content of the Location header." href="Status/201.html"><code>201 Created</code></a></li><li><a title="The HTTP 204 No Content success status response code indicates that the request has succeded, but that the client doesn't need to go away from its current page . A 204 response is cacheable by default. An ETag header is included in such a response." href="Status/204.html"><code>204 No Content</code></a></li><li><a title="The HTTP 206 Partial Content success status response code indicates that the request has succeeded and has the body contains the requested ranges of data, as described in the Range header of the request." href="Status/206.html"><code>206 Partial Content</code></a></li><li><a title="The HTTP 301 Moved Permanently redirect status response code indicates that the resource requested has been definitively moved to the URL given by the Location headers. Browser redirects to this page, and search engines updates their link to the resource (In SEO-speak, it is said that the link-juice is sent to the new URL)." href="Status/301.html"><code>301 Moved Permanently</code></a></li><li><a title="The HTTP 302 Found redirect status response code indicates that the resource requested has been temporarily moved to the URL given by the Location headers. Browser redirects to this page, but search engines updates their link to the resource (In SEO-speak, it is said that the link-juice is not sent to the new URL)." href="Status/302.html"><code>302 Found</code></a></li><li><a title="The HTTP 303 See Other redirect status response code, usually sent back as a result of PUT or POST indicates that the redirects doesn't link to the newly uploaded resources but to another page, like a confirmation page or an upload progress page. The method used to display this redirected page is always GET." href="Status/303.html"><code>303 See Other</code></a></li><li><a title="The HTTP 304 Not Modified client redirection response code indicates that their is no need to retransmit the requests resources. It is an implicit redirection to a cached resources. This happens when the request method is safe, like a GET or a Head and the request is conditional and use a If-None-Match or a If-Modified-Since headers." href="Status/304.html"><code>304 Not Modified</code></a></li><li><a title='The method and the body of the original request are reused to perform the redirected request. In the cases where you want the method used to be changed to GET, use 303 See Also instead. This is useful when you want to give an answer to a PUT method that is not the uploaded resources, but a confirmation message (like "You successfully uploaded XYZ").' href="Status/307.html"><code>307 Temporary Redirect</code></a></li><li><a title="The request method and the body will not be altered, whereas 301 may incorrectly sometimes be changed to a GET method." href="Status/308.html"><code>308 Permanent Redirect</code></a></li><li><a title="The HTTP 404 Not Found client error response code indicates that a server can not find the requested resource. This response code probably is most famous one due to its frequency to occur in the web. These are often called broken or dead links and lead to link rot." href="Status/404.html"><code>404 Not Found</code></a></li><li><a title="The HTTP 410 Gone client error response code indicates that access to the target resource is no longer available at the origin server and that this condition is likely to be permanent." href="Status/410.html"><code>410 Gone</code></a></li><li><a title="The HTTP 412 Precondition Failed client error response code indicates that access to the target resource has been denied. This happened with conditional requests on methods other than GET or HEAD when the conditin defined by If-Unmodified-Since or If-None-Match is not fulfilled; in that case the request, usually an upload or the modification of a resource cannot be made and this error response is sent back." href="Status/412.html"><code>412 Precondition Failed</code></a></li><li><a title="The HTTP 451 Unavailable For Legal Reasons client error response code indicates that the user requests an illegal resource, such as a web page for which a legal action has been issued." href="Status/451.html"><code>451 Unavailable For Legal Reasons</code></a></li><li><a title="The HTTP 500 Internal Server Error server error response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request." href="Status/500.html"><code>500 Internal Server Error</code></a></li><li><a title="The HTTP 501 Not Implemented server error response code indicates that the request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD." href="Status/501.html"><code>501 Not Implemented</code></a></li><li><a title="The HTTP 502 Bad Gateway server error response code indicates that the server, while acting as a gateway or proxy, received an invalid response from the upstream server." href="Status/502.html"><code>502 Bad Gateway</code></a></li><li><a title="The HTTP 503 Service Unavailable server error response code indicates that the server is not ready to handle the request." href="Status/503.html"><code>503 Service Unavailable</code></a></li><li><a title="The HTTP 504 Gateway Timeout server error response code indicates that the server, while acting as a gateway or proxy, cannot get a response in time." href="Status/504.html"><code>504 Gateway Timeout</code></a></li></ol> 
+    </li> 
+  </ol> 
+
+  </div>
+                
+
+                <!-- approvals -->
+                
+
+              
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/en-US/docs/Web/HTTP/Status$edit" label="Edit page"></menuitem>
+    <menuitem data-action="/en-US/docs/Web/HTTP/Status$history" label="View page history"></menuitem>
+  </menu>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+  
+    <form class="languages go" method="get" action="https://developer.mozilla.org/en-US/docs/Web">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option title="English (US)" value="/en-US/docs/Web/HTTP/Status" selected>
+          English (US) (en-US)
+        </option>
+        
+          <option title="German" value="/de/docs/Web/HTTP/Status">
+            Deutsch (de)
+          </option>
+          <option title="Indonesian" value="/id/docs/Web/HTTP/Status">
+            Bahasa Indonesia (id)
+          </option>
+          <option title="Japanese" value="/ja/docs/Web/HTTP/Response_codes">
+            日本語 (ja)
+          </option>
+          <option title="Korean" value="/ko/docs/Web/HTTP/%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C">
+            한국어 (ko)
+          </option>
+          <option title="Russian" value="/ru/docs/Web/HTTP/Response_codes">
+            Русский (ru)
+          </option>
+          <option title="Chinese (Simplified)" value="/zh-CN/docs/Web/HTTP/Response_codes">
+            中文 (简体) (zh-CN)
+          </option>
+          <option title="Chinese (Traditional)" value="/zh-TW/docs/HTTP/Response_codes">
+            正體中文 (繁體) (zh-TW)
+          </option>
+      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  
+
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+
+  
+
+  
+
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/newsletter.7cd3274169f2.js" charset="utf-8"></script>
+  
+
+
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Status by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:32:04 GMT -->
+</html>

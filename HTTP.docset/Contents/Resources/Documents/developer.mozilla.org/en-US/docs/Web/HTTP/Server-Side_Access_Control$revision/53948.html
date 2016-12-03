@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Server-Side_Access_Control$revision/53948 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:23:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 53948 | Server-Side Access Control (CORS) | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FServer-Side_Access_Control%24revision%2F53948" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Server-Side_Access_Control%24revision/53948">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 53948 of <a href="../Server-Side_Access_Control.html">Server-Side Access Control (CORS)</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Server-Side_Access_Control</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Server-Side Access Control</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>53948</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2008-12-02T01:31:07-08:00">Dec 2, 2008, 1:31:07 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>aruner</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>no wording changes</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/CORS">CORS</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/PHP">PHP</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          
+<p>Firefox 3.1 implements the <a class="external" href="http://dev.w3.org/2006/waf/access-control/" title="http://dev.w3.org/2006/waf/access-control/">W3C Access Control specification</a>.  As a result, Firefox 3.1 sends specific HTTP headers for cross-site requests initiated from within <code><a class="internal" href="https://developer.mozilla.org/en/XMLHttpRequest" title="En/XMLHttpRequest">XMLHttpRequest</a></code> (which in Firefox 3.1 and beyond can be used to invoke different domains) and for cross-site <a class="external" href="http://www.webfonts.info/wiki/index.php?title=%40font-face_support_in_Firefox" title="http://www.webfonts.info/wiki/index.php?title=@font-face_support_in_Firefox">font downloads</a>.  It also expects to see specific HTTP headers sent back with cross-site responses.  An overview of these headers, including sample JavaScript code that initiates and processes requests, as well as a discussion of each header, <a class="internal" href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP Access Control">can be found here (HTTP Access Control).</a>  The <a class="internal" href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> article should be read as a companion article to this one.  This article covers processing <strong>Access Control Requests</strong> and formulating <strong>Access Control Responses</strong> in PHP.  The target audience is thus server programmers or administrators.  Although the code samples shown here are PHP, similar concepts apply for ASP.net, Perl, Python, Java, etc.; in general, any server-side programming environment that processes HTTP requests and dynamically formulates HTTP responses.</p>
+<h3>Simple Cross-Site Requests</h3>
+<p><a class="internal" href="https://developer.mozilla.org/En/HTTP_access_control#Simple_Requests" title="En/HTTP access control#Simple Requests">Simple Access Control Requests</a> are initiated when:</p>
+<ul> <li>An HTTP/1.1 <code>GET</code> or a <code>POST</code> is used as request method.  In the case of a POST, the Content-Type of the request body is one of <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, or <code>text/plain.</code></li> <li>No custom headers are sent with the HTTP Request (such as <code>X-Modified</code>, etc.)</li>
+</ul>
+<p>In this case, responses can be sent back based on some considerations.</p>
+<ul> <li>If the resource in question is meant to be widely accessed (just like any HTTP resource accessed by GET), than sending back the <code>Access-Control-Origin: *</code> header will be sufficient, <strong>unless</strong> the resource needs credentials such as Cookies and HTTP Authentication information.</li> <li>If the resource should be kept restricted based on requester domain, <strong>OR</strong> if the resource needs to be accessed with credentials (or sets credentials), then filtering by the request's <code>ORIGIN</code> header may be necessary, or at least echoing back the requester's <code>ORIGIN</code> (e.g. <code>Access-Control-Origin: <a class=" external" href="http://arunranga.com/" rel="freelink">http://arunranga.com</a></code>).  Additionally, the <code>Access-Control-Allow-Credentials: true</code> header will have to be sent.  This is discussed in a <a class="internal" href="https://developer.mozilla.org/#Credentialed_Request" title="#Credentialed Request">subsequent section</a>.</li>
+</ul>
+<p>The section on <a class="internal" href="https://developer.mozilla.org/En/HTTP_access_control#Simple_Requests" title="En/HTTP access control#Simple Requests">Simple Access Control Requests</a> shows you the header exchanges between client and server.  Here is a PHP code segment that handles a Simple Request:</p>
+<pre class="brush: php">&lt;?php
+
+// We'll be granting access to only the arunranga.com domain which we think is safe to access this resource as application/xml
+
+if($_SERVER['HTTP_ORIGIN'] == "http://arunranga.com")
+{
+ 
+    header('Access-Control-Allow-Origin: http://arunranga.com');
+    header('Content-type: application/xml');
+    readfile('arunerDotNetResource.xml');
+}
+else
+{    
+header('Content-Type: text/html');
+echo "&lt;html&gt;";
+echo "&lt;head&gt;";
+echo "   &lt;title&gt;Another Resource&lt;/title&gt;";
+echo "&lt;/head&gt;";
+echo" &lt;body&gt;
+    &lt;p&gt;This resource behaves two-fold:";
+echo "&lt;ul&gt;
+        &lt;li&gt;If accessed from &lt;code&gt;http://arunranga.com&lt;/code&gt; it returns an XML document&lt;/li&gt;";
+echo  " &lt;li&gt;If accessed from any other origin including from simply typing in the URL into the browser's address bar,";
+echo "you get this HTML document"&lt;/li&gt;", 
+    "&lt;/ul&gt;",
+"&lt;/body&gt;",
+"&lt;/html&gt;";
+}
+?&gt;
+</pre>
+<p> The above checks to see if the<code> ORIGIN</code> header sent by the browser (obtained through $_SERVER['HTTP_ORIGIN']) matches '<a class=" external" href="http://arunranga.com/" rel="freelink">http://arunranga.com</a>'.  If yes, it returns <code>Access-Control-Allow-Origin: <a class=" external" href="http://arunranga.com/" rel="freelink">http://arunranga.com</a> .<br>
+</code></p>
+<h3>Preflighted Requests</h3>
+<p><a class="internal" href="https://developer.mozilla.org/En/HTTP_access_control#Preflighted%20Requests" title="En/HTTP Access Control/#Preflighted Requests">Preflighted Access Control Requests</a> occur when:</p>
+<ul> <li> <p>A method other than <code>GET</code> or <code>POST</code> is used, or if <code>POST</code> is used with a <code>Content-Type</code> other than one of <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, or <code>text/plain.  </code> For instance, if the <code>Content-Type</code> of the <code>POST</code> body is <code>application/xml</code>, a request is preflighted.</p> </li> <li> <p>A custom header is (such as <code>X-PINGARUNER</code>) is sent with the request.</p> </li>
+</ul>
+<p>The section on <a class="internal" href="https://developer.mozilla.org/En/HTTP_access_control#Preflighted_Requests" title="En/HTTP Access Control/#Preflighted Requests">Preflighted Access Control Requests</a> shows a header exchange between client and server.  A server resource responding to a preflight requests needs to be able to make the following determinations:</p>
+<ul> <li>Filtration based on <code>ORIGIN</code>, if any at all</li> <li>Response to an <code>OPTIONS</code> request (which is the preflight request), including sending necessary values with <code>Access-Control-Allow-Methods</code>, <code>Access-Control-Allow-Headers</code> (if any additional headers are needed in order for the application to work), and, if credentials are necessary for this resource, <code>Access-Control-Allow-Credentials</code></li> <li>Response to the actual request, including handling POST data, etc.</li>
+</ul>
+<p>Here is an example in PHP of handling a preflighted request:<code><br>
+</code></p>
+<pre class="brush: php"><code>// Begin by processing the REQUEST       </code>if($_SERVER['REQUEST_METHOD'] == "GET")
+{
+    header('Content-Type: text/plain');
+    echo "This HTTP resource is designed to handle POSTed XML input from arunranga.com and not be retrieved with GET";
+   
+}
+elseif($_SERVER['REQUEST_METHOD'] == "OPTIONS")
+{
+    // Tell the Client we support invocations from arunranga.com and that this preflight holds good for only 20 days
+    if($_SERVER['HTTP_ORIGIN'] == "http://arunranga.com")
+    {
+    header('Access-Control-Allow-Origin: http://arunranga.com');
+    header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+    header('Access-Control-Allow-Headers: X-PINGARUNER');
+    header('Access-Control-Max-Age: 1728000');
+    header("Content-Length: 0");
+    header("Content-Type: text/plain");
+    //exit(0);
+    }
+    else
+    {
+    header("HTTP/1.1 403 Access Forbidden");
+    header("Content-Type: text/plain");
+    echo "You cannot repeat this request";
+   
+    }
+}
+elseif($_SERVER['REQUEST_METHOD'] == "POST")
+{
+    /* Handle POST by first getting the XML POST blob, and then doing something to it, and then sending results to the client
+    */
+    if($_SERVER['HTTP_ORIGIN'] == "http://arunranga.com")
+    {
+            $postData = file_get_contents('php://input');
+            $document = simplexml_load_string($postData);
+            
+            // do something with POST data
+
+            $ping = $_SERVER['HTTP_X_PINGARUNER'];
+           
+                       
+            header('Access-Control-Allow-Origin: http://arunranga.com');
+            header('Content-Type: text/plain');
+            echo // some string response after processing
+    }
+    else
+        die("POSTing Only Allowed from arunranga.com");
+}
+else
+    die("No Other Methods Allowed");
+
+?&gt;
+</pre>
+<p>Note the appropriate headers being sent back in response to the <code>OPTIONS</code> preflight.</p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">
+&lt;p&gt;Firefox 3.1 implements the &lt;a class=&#34;external&#34; href=&#34;http://dev.w3.org/2006/waf/access-control/&#34; title=&#34;http://dev.w3.org/2006/waf/access-control/&#34;&gt;W3C Access Control specification&lt;/a&gt;.  As a result, Firefox 3.1 sends specific HTTP headers for cross-site requests initiated from within &lt;code&gt;&lt;a class=&#34;internal&#34; href=&#34;/en/XMLHttpRequest&#34; title=&#34;En/XMLHttpRequest&#34;&gt;XMLHttpRequest&lt;/a&gt;&lt;/code&gt; (which in Firefox 3.1 and beyond can be used to invoke different domains) and for cross-site &lt;a class=&#34;external&#34; href=&#34;http://www.webfonts.info/wiki/index.php?title=%40font-face_support_in_Firefox&#34; title=&#34;http://www.webfonts.info/wiki/index.php?title=@font-face_support_in_Firefox&#34;&gt;font downloads&lt;/a&gt;.  It also expects to see specific HTTP headers sent back with cross-site responses.  An overview of these headers, including sample JavaScript code that initiates and processes requests, as well as a discussion of each header, &lt;a class=&#34;internal&#34; href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP Access Control&#34;&gt;can be found here (HTTP Access Control).&lt;/a&gt;  The &lt;a class=&#34;internal&#34; href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; article should be read as a companion article to this one.  This article covers processing &lt;strong&gt;Access Control Requests&lt;/strong&gt; and formulating &lt;strong&gt;Access Control Responses&lt;/strong&gt; in PHP.  The target audience is thus server programmers or administrators.  Although the code samples shown here are PHP, similar concepts apply for ASP.net, Perl, Python, Java, etc.; in general, any server-side programming environment that processes HTTP requests and dynamically formulates HTTP responses.&lt;/p&gt;
+&lt;h3&gt;Simple Cross-Site Requests&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;internal&#34; href=&#34;/En/HTTP_access_control#Simple_Requests&#34; title=&#34;En/HTTP access control#Simple Requests&#34;&gt;Simple Access Control Requests&lt;/a&gt; are initiated when:&lt;/p&gt;
+&lt;ul&gt; &lt;li&gt;An HTTP/1.1 &lt;code&gt;GET&lt;/code&gt; or a &lt;code&gt;POST&lt;/code&gt; is used as request method.  In the case of a POST, the Content-Type of the request body is one of &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code&gt;multipart/form-data&lt;/code&gt;, or &lt;code&gt;text/plain.&lt;/code&gt;&lt;/li&gt; &lt;li&gt;No custom headers are sent with the HTTP Request (such as &lt;code&gt;X-Modified&lt;/code&gt;, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In this case, responses can be sent back based on some considerations.&lt;/p&gt;
+&lt;ul&gt; &lt;li&gt;If the resource in question is meant to be widely accessed (just like any HTTP resource accessed by GET), than sending back the &lt;code&gt;Access-Control-Origin: *&lt;/code&gt; header will be sufficient, &lt;strong&gt;unless&lt;/strong&gt; the resource needs credentials such as Cookies and HTTP Authentication information.&lt;/li&gt; &lt;li&gt;If the resource should be kept restricted based on requester domain, &lt;strong&gt;OR&lt;/strong&gt; if the resource needs to be accessed with credentials (or sets credentials), then filtering by the request&#39;s &lt;code&gt;ORIGIN&lt;/code&gt; header may be necessary, or at least echoing back the requester&#39;s &lt;code&gt;ORIGIN&lt;/code&gt; (e.g. &lt;code&gt;Access-Control-Origin: &lt;a class=&#34; external&#34; href=&#34;http://arunranga.com&#34; rel=&#34;freelink&#34;&gt;http://arunranga.com&lt;/a&gt;&lt;/code&gt;).  Additionally, the &lt;code&gt;Access-Control-Allow-Credentials: true&lt;/code&gt; header will have to be sent.  This is discussed in a &lt;a class=&#34;internal&#34; href=&#34;/#Credentialed_Request&#34; title=&#34;#Credentialed Request&#34;&gt;subsequent section&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The section on &lt;a class=&#34;internal&#34; href=&#34;/En/HTTP_access_control#Simple_Requests&#34; title=&#34;En/HTTP access control#Simple Requests&#34;&gt;Simple Access Control Requests&lt;/a&gt; shows you the header exchanges between client and server.  Here is a PHP code segment that handles a Simple Request:&lt;/p&gt;
+&lt;pre class=&#34;brush: php&#34;&gt;&amp;lt;?php
+
+// We&#39;ll be granting access to only the arunranga.com domain which we think is safe to access this resource as application/xml
+
+if($_SERVER[&#39;HTTP_ORIGIN&#39;] == &#34;http://arunranga.com&#34;)
+{
+ 
+    header(&#39;Access-Control-Allow-Origin: http://arunranga.com&#39;);
+    header(&#39;Content-type: application/xml&#39;);
+    readfile(&#39;arunerDotNetResource.xml&#39;);
+}
+else
+{    
+header(&#39;Content-Type: text/html&#39;);
+echo &#34;&amp;lt;html&amp;gt;&#34;;
+echo &#34;&amp;lt;head&amp;gt;&#34;;
+echo &#34;   &amp;lt;title&amp;gt;Another Resource&amp;lt;/title&amp;gt;&#34;;
+echo &#34;&amp;lt;/head&amp;gt;&#34;;
+echo&#34; &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;This resource behaves two-fold:&#34;;
+echo &#34;&amp;lt;ul&amp;gt;
+        &amp;lt;li&amp;gt;If accessed from &amp;lt;code&amp;gt;http://arunranga.com&amp;lt;/code&amp;gt; it returns an XML document&amp;lt;/li&amp;gt;&#34;;
+echo  &#34; &amp;lt;li&amp;gt;If accessed from any other origin including from simply typing in the URL into the browser&#39;s address bar,&#34;;
+echo &#34;you get this HTML document&#34;&amp;lt;/li&amp;gt;&#34;, 
+    &#34;&amp;lt;/ul&amp;gt;&#34;,
+&#34;&amp;lt;/body&amp;gt;&#34;,
+&#34;&amp;lt;/html&amp;gt;&#34;;
+}
+?&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt; The above checks to see if the&lt;code&gt; ORIGIN&lt;/code&gt; header sent by the browser (obtained through $_SERVER[&#39;HTTP_ORIGIN&#39;]) matches &#39;&lt;a class=&#34; external&#34; href=&#34;http://arunranga.com&#34; rel=&#34;freelink&#34;&gt;http://arunranga.com&lt;/a&gt;&#39;.  If yes, it returns &lt;code&gt;Access-Control-Allow-Origin: &lt;a class=&#34; external&#34; href=&#34;http://arunranga.com&#34; rel=&#34;freelink&#34;&gt;http://arunranga.com&lt;/a&gt; .&lt;br&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Preflighted Requests&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;internal&#34; href=&#34;/En/HTTP_access_control#Preflighted%20Requests&#34; title=&#34;En/HTTP Access Control/#Preflighted Requests&#34;&gt;Preflighted Access Control Requests&lt;/a&gt; occur when:&lt;/p&gt;
+&lt;ul&gt; &lt;li&gt; &lt;p&gt;A method other than &lt;code&gt;GET&lt;/code&gt; or &lt;code&gt;POST&lt;/code&gt; is used, or if &lt;code&gt;POST&lt;/code&gt; is used with a &lt;code&gt;Content-Type&lt;/code&gt; other than one of &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code&gt;multipart/form-data&lt;/code&gt;, or &lt;code&gt;text/plain.  &lt;/code&gt; For instance, if the &lt;code&gt;Content-Type&lt;/code&gt; of the &lt;code&gt;POST&lt;/code&gt; body is &lt;code&gt;application/xml&lt;/code&gt;, a request is preflighted.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;A custom header is (such as &lt;code&gt;X-PINGARUNER&lt;/code&gt;) is sent with the request.&lt;/p&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The section on &lt;a class=&#34;internal&#34; href=&#34;/En/HTTP_access_control#Preflighted_Requests&#34; title=&#34;En/HTTP Access Control/#Preflighted Requests&#34;&gt;Preflighted Access Control Requests&lt;/a&gt; shows a header exchange between client and server.  A server resource responding to a preflight requests needs to be able to make the following determinations:&lt;/p&gt;
+&lt;ul&gt; &lt;li&gt;Filtration based on &lt;code&gt;ORIGIN&lt;/code&gt;, if any at all&lt;/li&gt; &lt;li&gt;Response to an &lt;code&gt;OPTIONS&lt;/code&gt; request (which is the preflight request), including sending necessary values with &lt;code&gt;Access-Control-Allow-Methods&lt;/code&gt;, &lt;code&gt;Access-Control-Allow-Headers&lt;/code&gt; (if any additional headers are needed in order for the application to work), and, if credentials are necessary for this resource, &lt;code&gt;Access-Control-Allow-Credentials&lt;/code&gt;&lt;/li&gt; &lt;li&gt;Response to the actual request, including handling POST data, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here is an example in PHP of handling a preflighted request:&lt;code&gt;&lt;br&gt;
+&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&#34;brush: php&#34;&gt;&lt;code&gt;// Begin by processing the REQUEST       &lt;/code&gt;if($_SERVER[&#39;REQUEST_METHOD&#39;] == &#34;GET&#34;)
+{
+    header(&#39;Content-Type: text/plain&#39;);
+    echo &#34;This HTTP resource is designed to handle POSTed XML input from arunranga.com and not be retrieved with GET&#34;;
+   
+}
+elseif($_SERVER[&#39;REQUEST_METHOD&#39;] == &#34;OPTIONS&#34;)
+{
+    // Tell the Client we support invocations from arunranga.com and that this preflight holds good for only 20 days
+    if($_SERVER[&#39;HTTP_ORIGIN&#39;] == &#34;http://arunranga.com&#34;)
+    {
+    header(&#39;Access-Control-Allow-Origin: http://arunranga.com&#39;);
+    header(&#39;Access-Control-Allow-Methods: POST, GET, OPTIONS&#39;);
+    header(&#39;Access-Control-Allow-Headers: X-PINGARUNER&#39;);
+    header(&#39;Access-Control-Max-Age: 1728000&#39;);
+    header(&#34;Content-Length: 0&#34;);
+    header(&#34;Content-Type: text/plain&#34;);
+    //exit(0);
+    }
+    else
+    {
+    header(&#34;HTTP/1.1 403 Access Forbidden&#34;);
+    header(&#34;Content-Type: text/plain&#34;);
+    echo &#34;You cannot repeat this request&#34;;
+   
+    }
+}
+elseif($_SERVER[&#39;REQUEST_METHOD&#39;] == &#34;POST&#34;)
+{
+    /* Handle POST by first getting the XML POST blob, and then doing something to it, and then sending results to the client
+    */
+    if($_SERVER[&#39;HTTP_ORIGIN&#39;] == &#34;http://arunranga.com&#34;)
+    {
+            $postData = file_get_contents(&#39;php://input&#39;);
+            $document = simplexml_load_string($postData);
+            
+            // do something with POST data
+
+            $ping = $_SERVER[&#39;HTTP_X_PINGARUNER&#39;];
+           
+                       
+            header(&#39;Access-Control-Allow-Origin: http://arunranga.com&#39;);
+            header(&#39;Content-Type: text/plain&#39;);
+            echo // some string response after processing
+    }
+    else
+        die(&#34;POSTing Only Allowed from arunranga.com&#34;);
+}
+else
+    die(&#34;No Other Methods Allowed&#34;);
+
+?&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;Note the appropriate headers being sent back in response to the &lt;code&gt;OPTIONS&lt;/code&gt; preflight.&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Server-Side_Access_Control%24revert/53948" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Server-Side_Access_Control$revision/53948 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:23:06 GMT -->
+</html>

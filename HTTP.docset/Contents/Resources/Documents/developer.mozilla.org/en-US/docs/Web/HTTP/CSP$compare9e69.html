@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/CSP$compare?to=1147458&from=1147392 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:55:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Compare Revisions | Content Security Policy (CSP) | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FCSP%24compare%3Fto%3D1147458%26from%3D1147392" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/CSP%24compare%3Fto%3D1147458%26from%3D1147392">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article id="compare-revisions">
+
+    <h1>Compare Revisions</h1>
+    <h2><a href="CSP.html">Content Security Policy (CSP)</a></h2>
+
+    
+    <section class="revision-diff">
+      <a href="CSP%24history00fd.html?locale=en-US&amp;origin=translate">Change Revisions</a>
+      <header>
+        <div class="rev-from">
+            <h3>
+            
+              <a href="CSP%24revision/1147392.html" rel="nofollow, noindex">
+                Revision 1147392:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1147392 by <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a> on <time datetime="2016-11-24T03:56:00-08:00">November 24, 2016 at 3:56:00 AM PST</time>
+          </p>
+        </div>
+        <div class="rev-to">
+          <h3>
+            
+              <a href="CSP%24revision/1147458.html" rel="nofollow, noindex">
+                Revision 1147458:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1147458 by <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a> on <time datetime="2016-11-24T04:58:14-08:00">November 24, 2016 at 4:58:14 AM PST</time>
+          </p>
+        </div>
+      </header>
+
+      <dl>
+        <dt>Title:</dt>
+        <dd class="rev-from">Content Security Policy (CSP)</dd>
+        <dd class="rev-to">Content Security Policy (CSP)</dd>
+
+        <dt>Slug:</dt>
+        <dd class="rev-from">Web/HTTP/CSP</dd>
+        <dd class="rev-to">Web/HTTP/CSP</dd>
+
+        
+        <dt>Tags:</dt>
+        <dd class="rev-from"> &#34;Content Security Policy&#34; &#34;Security&#34;</dd>
+        <dd class="rev-to"> &#34;Content Security Policy&#34; &#34;Security&#34;</dd>
+        
+
+        
+
+        <dt>Content:</dt>
+        
+        <dd>
+    <table class="diff" id="difflib_chg_to21__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1147392</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1147458</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to21__0"><a href="#difflib_chg_to21__1">n</a></td><td class="diff_header" id="from21_22">22</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to21__1">n</a></td><td class="diff_header" id="to21_22">22</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;id="Threats"&gt;</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to21__1"><a href="#difflib_chg_to21__2">n</a></td><td class="diff_header" id="from21_65">65</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;policy&nbsp;is&nbsp;described&nbsp;using&nbsp;a&nbsp;series&nbsp;of&nbsp;policy&nbsp;directives,&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to21__2">n</a></td><td class="diff_header" id="to21_65">65</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;policy&nbsp;is&nbsp;described&nbsp;using&nbsp;a&nbsp;series&nbsp;of&nbsp;policy&nbsp;directives,&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">each&nbsp;of&nbsp;which&nbsp;describes&nbsp;the&nbsp;policy&nbsp;for&nbsp;a&nbsp;certain&nbsp;resource&nbsp;type&nbsp;or</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">each&nbsp;of&nbsp;which&nbsp;describes&nbsp;the&nbsp;policy&nbsp;for&nbsp;a&nbsp;certain&nbsp;resource&nbsp;type&nbsp;or</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;policy&nbsp;area.&nbsp;Your&nbsp;policy&nbsp;should&nbsp;include&nbsp;a&amp;nbsp;&lt;code&gt;default-src</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;policy&nbsp;area.&nbsp;Your&nbsp;policy&nbsp;should&nbsp;include&nbsp;a&nbsp;{{CSP("default-src")}}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&lt;/code&gt;&amp;nbsp;policy&nbsp;directive,&nbsp;which&nbsp;is&nbsp;a&nbsp;fallback&nbsp;for&nbsp;other&nbsp;reso</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;policy&nbsp;directive,&nbsp;which&nbsp;is&nbsp;a&nbsp;fallback&nbsp;for&nbsp;other&nbsp;resource&nbsp;types&nbsp;w</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">urce&nbsp;types&nbsp;when&nbsp;they&nbsp;don't&nbsp;have&nbsp;policies&nbsp;of&nbsp;their&nbsp;own&nbsp;(for&nbsp;a&nbsp;comp</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">hen&nbsp;they&nbsp;don't&nbsp;have&nbsp;policies&nbsp;of&nbsp;their&nbsp;own&nbsp;(for&nbsp;a&nbsp;complete&nbsp;list,&nbsp;s</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">lete&nbsp;list,&nbsp;see&nbsp;the&nbsp;description&nbsp;of&nbsp;the&nbsp;{{CSP("default-src")}}&nbsp;dire</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ee&nbsp;the&nbsp;description&nbsp;of&nbsp;the&nbsp;{{CSP("default-src")}}&nbsp;directive).&nbsp;A&nbsp;po</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ctive).&nbsp;A&nbsp;policy&nbsp;needs&nbsp;to&nbsp;include&nbsp;a&nbsp;{{CSP("default-src")}}&nbsp;or&nbsp;{{C</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">licy&nbsp;needs&nbsp;to&nbsp;include&nbsp;a&nbsp;{{CSP("default-src")}}&nbsp;or&nbsp;{{CSP("script-s</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">SP("script-src")}}&nbsp;directive&nbsp;to&nbsp;prevent&amp;nbsp;inline&nbsp;scripts&nbsp;from&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">rc")}}&nbsp;directive&nbsp;to&nbsp;prevent&amp;nbsp;inline&nbsp;scripts&nbsp;from&nbsp;running,&nbsp;as&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">running,&nbsp;as&nbsp;well&nbsp;as&nbsp;blocking&nbsp;the&nbsp;use&nbsp;of&nbsp;&lt;code&gt;eval()&lt;/code&gt;.&nbsp;A&nbsp;po</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">well&nbsp;as&nbsp;blocking&nbsp;the&nbsp;use&nbsp;of&nbsp;&lt;code&gt;eval()&lt;/code&gt;.&nbsp;A&nbsp;policy&nbsp;needs&nbsp;t</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">licy&nbsp;needs&nbsp;to&nbsp;include&nbsp;a&nbsp;{{CSP("default-src")}}&nbsp;or&nbsp;{{CSP("style-sr</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">o&nbsp;include&nbsp;a&nbsp;{{CSP("default-src")}}&nbsp;or&nbsp;{{CSP("style-src")}}&nbsp;direct</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">c")}}&nbsp;directive&nbsp;to&nbsp;restrict&nbsp;inline&nbsp;styles&nbsp;from&nbsp;being&nbsp;applied&nbsp;from</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ive&nbsp;to&nbsp;restrict&nbsp;inline&nbsp;styles&nbsp;from&nbsp;being&nbsp;applied&nbsp;from&nbsp;a&nbsp;{{HTMLEle</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;a&nbsp;&lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt;&nbsp;element&nbsp;or&nbsp;a&nbsp;&lt;code&gt;.style&nbsp;attribute</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ment("style")}}&nbsp;element&nbsp;or&nbsp;a&nbsp;&lt;code&gt;style&lt;/code&gt;&nbsp;attribute.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&lt;/code&gt;.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to21__2"><a href="#difflib_chg_to21__3">n</a></td><td class="diff_header" id="from21_148">148</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;both&nbsp;a&nbsp;&lt;code&gt;Content-Security-Policy-Report-Only&lt;/code&gt;&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to21__3">n</a></td><td class="diff_header" id="to21_148">148</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;both&nbsp;a&nbsp;{{HTTPHeader("Content-Security-Policy-Report-Only</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">header&nbsp;and&nbsp;a&nbsp;&lt;code&gt;Content-Security-Policy&lt;/code&gt;&nbsp;header&nbsp;are&nbsp;pres</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">")}}&nbsp;header&nbsp;and&nbsp;a&nbsp;{{HTTPHeader("Content-Security-Policy")}}&nbsp;heade</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ent&nbsp;in&nbsp;the&nbsp;same&nbsp;response,&nbsp;both&nbsp;policies&nbsp;are&nbsp;honored.&nbsp;The&nbsp;policy&nbsp;s</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">r&nbsp;are&nbsp;present&nbsp;in&nbsp;the&nbsp;same&nbsp;response,&nbsp;both&nbsp;policies&nbsp;are&nbsp;honored.&nbsp;Th</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">pecified&nbsp;in&nbsp;&lt;code&gt;Content-Security-Policy&lt;/code&gt;&nbsp;headers&nbsp;is&nbsp;enfor</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">e&nbsp;policy&nbsp;specified&nbsp;in&nbsp;&lt;code&gt;Content-Security-Policy&lt;/code&gt;&nbsp;header</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ced&nbsp;while&nbsp;the&nbsp;&lt;code&gt;Content-Security-Policy-Report-Only&lt;/code&gt;&nbsp;po</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">s&nbsp;is&nbsp;enforced&nbsp;while&nbsp;the&nbsp;&lt;code&gt;Content-Security-Policy-Report-Only</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">licy&nbsp;generates&nbsp;reports&nbsp;but&nbsp;is&nbsp;not&nbsp;enforced.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&lt;/code&gt;&nbsp;policy&nbsp;generates&nbsp;reports&nbsp;but&nbsp;is&nbsp;not&nbsp;enforced.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_149">149</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to21_149">149</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_151">151</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note&nbsp;that&nbsp;the&nbsp;&lt;code&gt;X-Content-Security-Policy-Report-Only&lt;/</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">code&gt;&nbsp;header&nbsp;was&nbsp;used&nbsp;before&nbsp;Firefox&nbsp;23.&nbsp;If&nbsp;both&nbsp;the&nbsp;&lt;code&gt;X-Cont</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ent-Security-Policy-Report-Only&lt;/code&gt;&nbsp;and&nbsp;&lt;code&gt;Content-Security</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">-Policy-Report-Only&lt;/code&gt;&nbsp;are&nbsp;sent,&nbsp;the&nbsp;&lt;code&gt;Content-Security-P</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">olicy-Report-Only&lt;/code&gt;&nbsp;will&nbsp;be&nbsp;used&nbsp;and&nbsp;the&nbsp;&lt;code&gt;X-Content-Sec</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">urity-Policy-Report-Only&lt;/code&gt;&nbsp;will&nbsp;be&nbsp;ignored.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_152">152</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_sub">/</span>p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to21_150">150</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_153">153</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td><td class="diff_next"></td><td class="diff_header" id="to21_151">151</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Browsers&nbsp;that&nbsp;support&nbsp;CSP&nbsp;always&nbsp;send&nbsp;a&nbsp;violation&nbsp;report&nbsp;fo</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">r&nbsp;each&nbsp;attempt&nbsp;to&nbsp;violate&nbsp;the&nbsp;policy&nbsp;you&nbsp;have&nbsp;established&nbsp;if&nbsp;the&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">policy&nbsp;contains&nbsp;a&nbsp;valid&nbsp;{{CSP("report-uri")}}&nbsp;directive.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_154">154</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;&lt;a&nbsp;href="https://addons.mozilla.org/en-us/firefox/addon</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">/newusercspdesign/"&gt;UserCSP&nbsp;Addon&lt;/a&gt;&nbsp;also&nbsp;helps&nbsp;test&nbsp;and&nbsp;develop</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;Content&nbsp;Security&nbsp;Policies&nbsp;for&nbsp;a&nbsp;site.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_155">155</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_156">156</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_157">157</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One&nbsp;powerful&nbsp;feature&nbsp;of&nbsp;Content&nbsp;Security&nbsp;Policy&nbsp;for&nbsp;web&nbsp;sit</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">e&nbsp;administrators&nbsp;is&nbsp;the&nbsp;support&nbsp;it&nbsp;offers&nbsp;for&nbsp;generating&nbsp;and&nbsp;deli</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">vering&nbsp;reports&nbsp;describing&nbsp;attempts&nbsp;to&nbsp;attack&nbsp;your&nbsp;site.&nbsp;These&nbsp;rep</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">orts&nbsp;are&nbsp;delivered&nbsp;by&nbsp;HTTP&amp;nbsp;POST&nbsp;requests&nbsp;to&nbsp;one&nbsp;or&nbsp;more&nbsp;serv</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ers&nbsp;you&nbsp;specify&nbsp;using&nbsp;the&nbsp;&lt;a&nbsp;href="/en/Security/CSP/CSP_policy_di</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">rectives#report-uri"&nbsp;title="en/Security/CSP/CSP&nbsp;policy&nbsp;directives</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">#report-uri"&gt;&lt;code&gt;report-uri&lt;/code&gt;&lt;/a&gt;&nbsp;policy&nbsp;directive.&nbsp;The&nbsp;re</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ports&nbsp;are&nbsp;in&nbsp;JSON&amp;nbsp;format,&nbsp;using&nbsp;the&nbsp;default&nbsp;JSON&nbsp;UTF-8&nbsp;encod</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ing&nbsp;for&nbsp;non-ASCII&nbsp;characters.&nbsp;This&nbsp;article&nbsp;shows&nbsp;you&nbsp;how&nbsp;to&nbsp;confi</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">gure&nbsp;your&nbsp;site&nbsp;to&nbsp;use&nbsp;the&nbsp;reporting&nbsp;feature,&nbsp;as&nbsp;well&nbsp;as&nbsp;the&nbsp;forma</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">t&nbsp;of&nbsp;the&nbsp;reports.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_158">158</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_159">159</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_160">160</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Browsers&nbsp;that&nbsp;support&nbsp;CSP&nbsp;always&nbsp;send&nbsp;a&nbsp;violation&nbsp;report&nbsp;fo</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">r&nbsp;each&nbsp;attempt&nbsp;to&nbsp;violate&nbsp;the&nbsp;policy&nbsp;you&nbsp;have&nbsp;established&nbsp;if&nbsp;the&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">policy&nbsp;contains&nbsp;a&nbsp;valid&amp;nbsp;&lt;a&nbsp;href="/en/Security/CSP/CSP_policy</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">_directives#report-uri"&nbsp;title="en/Security/CSP/CSP&nbsp;policy&nbsp;directi</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ves#report-uri"&gt;&lt;code&nbsp;style="font-size:&nbsp;14px;"&gt;report-uri&lt;/code&gt;&lt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">/a&gt;&amp;nbsp;directive.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to21__3"><a href="#difflib_chg_to21__4">n</a></td><td class="diff_header" id="from21_166">166</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By&nbsp;default,&nbsp;violation&nbsp;reports&nbsp;aren't&nbsp;sent.&nbsp;To&nbsp;enable&nbsp;violat</span></td><td class="diff_next"><a href="#difflib_chg_to21__4">n</a></td><td class="diff_header" id="to21_157">157</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By&nbsp;default,&nbsp;violation&nbsp;reports&nbsp;aren't&nbsp;sent.&nbsp;To&nbsp;enable&nbsp;violat</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ion&nbsp;reporting,&nbsp;you&nbsp;need&nbsp;to&nbsp;specify&nbsp;the&nbsp;&lt;a&nbsp;href="/en/Security/CSP/</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ion&nbsp;reporting,&nbsp;you&nbsp;need&nbsp;to&nbsp;specify&nbsp;the&nbsp;{{CSP("report-uri")}}&nbsp;poli</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">CSP_policy_directives#report-uri"&nbsp;title="en/Security/CSP/CSP&nbsp;poli</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">cy&nbsp;directive,&nbsp;providing&nbsp;at&nbsp;least&nbsp;one&nbsp;URI&amp;nbsp;to&nbsp;which&nbsp;to&nbsp;deliver</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">cy&nbsp;directives#report-uri"&gt;&lt;code&gt;report-uri&lt;/code&gt;&lt;/a&gt;&nbsp;policy&nbsp;dire</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;the&nbsp;reports:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ctive,&nbsp;providing&nbsp;at&nbsp;least&nbsp;one&nbsp;URI&amp;nbsp;to&nbsp;which&nbsp;to&nbsp;deliver&nbsp;the&nbsp;re</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ports:</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to21__4"><a href="#difflib_chg_to21__5">n</a></td><td class="diff_header" id="from21_173">173</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to21__5">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_174">174</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_175">175</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Note:&nbsp;prior&nbsp;to&nbsp;Firefox&nbsp;23,&nbsp;the&nbsp;X-Content-Security-Policy&nbsp;he</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ader&nbsp;was&nbsp;used.&nbsp;This&nbsp;header&nbsp;will&nbsp;be&nbsp;deprecated&nbsp;in&nbsp;the&nbsp;future.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to21__5"><a href="#difflib_chg_to21__6">n</a></td><td class="diff_header" id="from21_218">218</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to21__6">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_219">219</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;the&nbsp;CSP&nbsp;specification,&nbsp;an&amp;nbsp;&lt;a&nbsp;href="http://www.w3.or</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">g/TR/CSP/#example-violation-report"&gt;example&lt;/a&gt;&amp;nbsp;regarding&nbsp;vi</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">olation&nbsp;reports&nbsp;is&nbsp;given.&nbsp;Another&nbsp;sample&nbsp;will&nbsp;be&nbsp;presented&nbsp;and&nbsp;ex</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">plained&nbsp;here.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_220">220</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to21__6"><a href="#difflib_chg_to21__7">n</a></td><td class="diff_header" id="from21_245">245</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can&nbsp;you&nbsp;spot&nbsp;the&nbsp;mistake?&nbsp;Stylesheets&nbsp;are&nbsp;only&nbsp;allowed&nbsp;to&nbsp;b</td><td class="diff_next"><a href="#difflib_chg_to21__7">n</a></td><td class="diff_header" id="to21_230">230</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Can&nbsp;you&nbsp;spot&nbsp;the&nbsp;mistake?&nbsp;Stylesheets&nbsp;are&nbsp;only&nbsp;allowed&nbsp;to&nbsp;b</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;loaded&nbsp;from&nbsp;&lt;code&gt;cdn.example.com&lt;/code&gt;,&nbsp;yet&nbsp;the&nbsp;website&nbsp;tries</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;loaded&nbsp;from&nbsp;&lt;code&gt;cdn.example.com&lt;/code&gt;,&nbsp;yet&nbsp;the&nbsp;website&nbsp;tries</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;to&nbsp;load&nbsp;one&nbsp;from&nbsp;its&nbsp;own&nbsp;origin&nbsp;(&lt;code&gt;http://example.com&lt;/code&gt;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;to&nbsp;load&nbsp;one&nbsp;from&nbsp;its&nbsp;own&nbsp;origin&nbsp;(&lt;code&gt;http://example.com&lt;/code&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">).&nbsp;A&nbsp;browser&nbsp;capable&nbsp;of&nbsp;enforcing&nbsp;CSP&nbsp;will&nbsp;send&nbsp;the&nbsp;following&nbsp;vio</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">).&nbsp;A&nbsp;browser&nbsp;capable&nbsp;of&nbsp;enforcing&nbsp;CSP&nbsp;will&nbsp;send&nbsp;the&nbsp;following&nbsp;vio</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">lation&nbsp;report&nbsp;as&nbsp;a&nbsp;POST&nbsp;request&nbsp;to&amp;nbsp;&lt;code&gt;&lt;a&nbsp;href="http://exa</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">lation&nbsp;report&nbsp;as&nbsp;a&nbsp;POST&nbsp;request&nbsp;to&amp;nbsp;&lt;code&gt;&lt;a&nbsp;href="http://exa</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mple.com/_/csp-reports"&nbsp;rel="freelink"&gt;http://example.com/_/csp-r</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mple.com/_/csp-reports"&nbsp;rel="freelink"&gt;http://example.com/_/csp-r</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">eports&lt;/a&gt;&lt;/code&gt;,&nbsp;when&amp;nbsp;the&nbsp;document&nbsp;is&nbsp;visited<span class="diff_sub">&lt;span&nbsp;style="</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">eports&lt;/a&gt;&lt;/code&gt;,&nbsp;when&amp;nbsp;the&nbsp;document&nbsp;is&nbsp;visited:</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">line-height</span>:<span class="diff_sub">1.572"&gt;:&lt;/span&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to21__7"><a href="#difflib_chg_to21__top">t</a></td><td class="diff_header" id="from21_259">259</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As&nbsp;you&nbsp;can&nbsp;see,&nbsp;the&nbsp;report&nbsp;includes&nbsp;the&nbsp;full&nbsp;path&nbsp;to&nbsp;the&nbsp;vi</td><td class="diff_next"><a href="#difflib_chg_to21__top">t</a></td><td class="diff_header" id="to21_244">244</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As&nbsp;you&nbsp;can&nbsp;see,&nbsp;the&nbsp;report&nbsp;includes&nbsp;the&nbsp;full&nbsp;path&nbsp;to&nbsp;the&nbsp;vi</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">olating&nbsp;resource&nbsp;in&nbsp;&lt;code&gt;blocked-uri&lt;/code&gt;.&nbsp;This&nbsp;is&nbsp;not&nbsp;always&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">olating&nbsp;resource&nbsp;in&nbsp;&lt;code&gt;blocked-uri&lt;/code&gt;.&nbsp;This&nbsp;is&nbsp;not&nbsp;always&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">the&nbsp;case.&nbsp;For&nbsp;example,&nbsp;when&nbsp;the&nbsp;&lt;code&gt;signup.html&lt;/code&gt;&nbsp;would&nbsp;at</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">the&nbsp;case.&nbsp;For&nbsp;example,&nbsp;when&nbsp;the&nbsp;&lt;code&gt;signup.html&lt;/code&gt;&nbsp;would&nbsp;at</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tempt&nbsp;to&nbsp;load&nbsp;CSS&nbsp;from&nbsp;&lt;a&nbsp;href="http://anothercdn.example.com/sty</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tempt&nbsp;to&nbsp;load&nbsp;CSS&nbsp;from&nbsp;&lt;a&nbsp;href="http://anothercdn.example.com/sty</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">lesheet.css"&gt;&lt;code&gt;http://anothercdn.example.com/stylesheet.css&lt;/</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">lesheet.css"&gt;&lt;code&gt;http://anothercdn.example.com/stylesheet.css&lt;/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">code&gt;&lt;/a&gt;,&nbsp;the&nbsp;browser&nbsp;would&nbsp;&lt;em&gt;not&lt;/em&gt;&nbsp;include&nbsp;the&nbsp;full&nbsp;path&nbsp;b</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">code&gt;&lt;/a&gt;,&nbsp;the&nbsp;browser&nbsp;would&nbsp;&lt;em&gt;not&lt;/em&gt;&nbsp;include&nbsp;the&nbsp;full&nbsp;path&nbsp;b</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ut&nbsp;only&nbsp;the&nbsp;origin&nbsp;(&lt;code&gt;http://anothercdn.example.com&lt;/code&gt;).&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ut&nbsp;only&nbsp;the&nbsp;origin&nbsp;(&lt;code&gt;http://anothercdn.example.com&lt;/code&gt;).&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">The&nbsp;CSP&nbsp;specification&nbsp;&lt;a&nbsp;href="http://www.w3.org/TR/CSP/#violatio</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">The&nbsp;CSP&nbsp;specification&nbsp;&lt;a&nbsp;href="http://www.w3.org/TR/CSP/#violatio</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n-reports"&gt;gives&nbsp;an&nbsp;explanation&lt;/a&gt;&nbsp;of&nbsp;this&nbsp;odd&nbsp;behaviour.&nbsp;In&nbsp;sum</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n-reports"&gt;gives&nbsp;an&nbsp;explanation&lt;/a&gt;&nbsp;of&nbsp;this&nbsp;odd&nbsp;behaviour.&nbsp;In&nbsp;sum</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mary,&nbsp;this&nbsp;is&nbsp;done&nbsp;to&nbsp;prevent&nbsp;leaking&nbsp;sensitive&nbsp;information&nbsp;about</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mary,&nbsp;this&nbsp;is&nbsp;done&nbsp;to&nbsp;prevent&nbsp;leaking&nbsp;sensitive&nbsp;information&nbsp;about</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;cross-origin&nbsp;resources.&nbsp;Note,&nbsp;that&nbsp;even&nbsp;the&nbsp;specification&nbsp;got&nbsp;th</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;cross-origin&nbsp;resources.&nbsp;Note,&nbsp;that&nbsp;even&nbsp;the&nbsp;specification&nbsp;got&nbsp;th</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">is&nbsp;part&nbsp;wrong&nbsp;in&nbsp;its&nbsp;&lt;a&nbsp;href="http://www.w3.org/TR/CSP/#sample-vi</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">is&nbsp;part&nbsp;wrong&nbsp;in&nbsp;its&nbsp;&lt;a&nbsp;href="http://www.w3.org/TR/CSP/#sample-vi</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">olation-report"&gt;example&nbsp;on&nbsp;violation&nbsp;reports&lt;/a&gt;&amp;nbsp;(&lt;code&gt;bloc</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">olation-report"&gt;example&nbsp;on&nbsp;violation&nbsp;reports&lt;/a&gt;&amp;nbsp;(&lt;code&gt;bloc</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ked-uri&lt;/code&gt;&nbsp;should&nbsp;be&nbsp;"&lt;code&gt;http://evil.example.com&lt;/code&gt;")<span class="diff_chg">&lt;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ked-uri&lt;/code&gt;&nbsp;should&nbsp;be&nbsp;"&lt;code&gt;http://evil.example.com&lt;/code&gt;")<span class="diff_chg">.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">span&nbsp;style="line-height:1.572"&gt;.&lt;/span&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_245">245</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_246">246</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;id="Browser_compatibility"&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_247">247</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Browser&nbsp;compatibility</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_248">248</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h2&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_249">249</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class="hidden"&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_250">250</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;compatibility&nbsp;table&nbsp;in&nbsp;this&nbsp;page&nbsp;is&nbsp;generated&nbsp;from&nbsp;stru</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ctured&nbsp;data.&nbsp;If&nbsp;you'd&nbsp;like&nbsp;to&nbsp;contribute&nbsp;to&nbsp;the&nbsp;data,&nbsp;please&nbsp;chec</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">k&nbsp;out&nbsp;&lt;a&nbsp;href="https://github.com/mdn/browser-compat-data"&gt;https:</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">//github.com/mdn/browser-compat-data&lt;/a&gt;&nbsp;and&nbsp;send&nbsp;us&nbsp;a&nbsp;pull&nbsp;reque</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">st.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_251">251</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from21_260">260</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_sub">/</span>p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to21_252">252</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_253">253</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{CompatMulti('[{"file":&nbsp;"http/headers/content-security-pol</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">icy",&nbsp;"features":&nbsp;"Content-Security-Policy"},&nbsp;{"file":&nbsp;"http/head</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ers/content-security-policy-report-only",&nbsp;"features":&nbsp;"Content-Se</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">curity-Report-Only"}]')}}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_254">254</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_255">255</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;id="See_also"&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_256">256</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See&nbsp;also</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_257">257</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h2&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_258">258</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_259">259</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;{{HTTPHeader("Content-Security-Policy")}}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_260">260</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_261">261</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;{{HTTPHeader("Content-Security-Policy-Report-Only")}}</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_262">262</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_263">263</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_264">264</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href="/en-US/docs/Mozilla/Add-ons/WebExtensions/Conten</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">t_Security_Policy"&gt;Content&nbsp;Security&nbsp;in&nbsp;WebExtensions&lt;/a&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_265">265</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_266">266</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_267">267</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_268">268</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href="/en-US/docs/Tools/GCLI/Display_security_and_pr</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ivacy_policies"&gt;Display&nbsp;security&nbsp;and&nbsp;privacy&nbsp;policies&nbsp;In&nbsp;Firefox&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">Developer&nbsp;Tools&lt;/a&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_269">269</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_270">270</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to21_271">271</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</span></td></tr>
+        </tbody>
+    </table></dd>
+        
+      </dl>
+    </section>
+  
+
+    <p><a href="CSP%24history.html" rel="nofollow, noindex">Back to History</a></p>
+
+  </article>
+
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+    
+    <input type="hidden" name="to" value="1147458">
+    
+  
+    
+    <input type="hidden" name="from" value="1147392">
+    
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/CSP$compare?to=1147458&from=1147392 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:55:36 GMT -->
+</html>

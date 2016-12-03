@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/CSP$revision/1147362 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:55:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1147362 | Content Security Policy (CSP) | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FCSP%24revision%2F1147362" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/CSP%24revision/1147362">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1147362 of <a href="../CSP.html">Content Security Policy (CSP)</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/CSP</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Content Security Policy (CSP)</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1147362</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-11-24T03:19:05-08:00">Nov 24, 2016, 3:19:05 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>fscholz</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Content Security Policy">Content Security Policy</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Security">Security</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p class="summary"><strong>Content Security Policy</strong> (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware.</p>
+
+<p>CSP is designed to be fully backward compatible; browsers that don't support it still work with servers that implement it, and vice-versa. Browsers that don't support CSP simply ignore it, functioning as usual, defaulting to the standard same-origin policy for web content. If the site doesn't offer the CSP header, browsers likewise use the standard <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy" title="En/Same origin policy for JavaScript">same-origin policy</a>.</p>
+
+<p>Enabling CSP is as easy as configuring your web server to return the <code>Content-Security-Policy</code> HTTP header. (Prior to Firefox 23, the <code>X-Content-Security-Policy</code> header was used). See <a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Using_Content_Security_Policy" title="en/Security/CSP/Using Content Security Policy">Using Content Security Policy</a> for details on how to configure and enable CSP.</p>
+
+<p>A {{ HTMLElement("meta") }} element can also be used to configure a policy. This behavior is supported since Firefox 45.</p>
+
+<h2 id="Mitigating_cross_site_scripting">Mitigating cross site scripting</h2>
+
+<p>A primary goal of CSP is to mitigate and report XSS attacks. XSS attacks exploit the browser's trust of the content received from the server. Malicious scripts are executed by the victim's browser because the browser trusts the source of the content, even when it's not coming from where it seems to be coming from.</p>
+
+<p>CSP makes it possible for server administrators to reduce or eliminate the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts. A CSP compatible browser will then only execute scripts loaded in source files received from those whitelisted domains, ignoring all other script (including inline scripts and event-handling HTML attributes).</p>
+
+<p>As an ultimate form of protection, sites that want to never allow scripts to be executed can opt to globally disallow script execution.</p>
+
+<h2 id="Mitigating_packet_sniffing_attacks">Mitigating packet sniffing attacks</h2>
+
+<p>In addition to restricting the domains from which content can be loaded, the server can specify which protocols are allowed to be used; for example (and ideally, from a security standpoint), a server can specify that all content be loaded using HTTPS.</p>
+
+<div class="note"><strong>Note:</strong> A complete data transmission security strategy includes not only enforcing HTTPS for data transfer, but also marking all cookies with the secure flag and providing automatic redirects from HTTP pages to their HTTPS counterparts.</div>
+
+<div class="note"><strong>Note:</strong> Sites may also use the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security" title="/en/Security/HTTP_Strict_Transport_Security">Strict-Transport-Security</a> HTTP header to ensure that browsers connect to them only over an encrypted channel.</div>
+
+<h2 id="Using_CSP">Using CSP</h2>
+
+<p>Configuring Content Security Policy involves adding the <code>Content-Security-Policy</code> HTTP header to a web page and giving it values to control resources the user agent is allowed to load for that page. For example, a page that uploads and displays images could allow images from anywhere, but restrict a form action to a specific endpoint. A properly designed Content Security Policy helps protect a page against a cross site scripting attack. This article explain how to construct such headers properly, and provides examples.</p>
+
+<p>Prior to Firefox 23, the <code>X-Content-Security-Policy</code> HTTP header was used. Firefox 23 and later use the now-standard <code>Content-Security-Policy</code> header. During the transition from the previous header to the new header, sites can send both the <code>X-Content-Security-Policy</code> and <code>Content-Security-Policy</code> headers. In this situation, the <code>X-Content-Security-Policy</code> will be ignored and the policy contained in the <code>Content-Security-Policy</code> header will be used.</p>
+
+<h2 id="Specifying_your_policy">Specifying your policy</h2>
+
+<p>You can use the <code>Content-Security-Policy</code> HTTP header to specify your policy, like this:</p>
+
+<pre>Content-Security-Policy: <em>policy</em>
+</pre>
+
+<p>The policy is a string containing the <a href="https://developer.mozilla.org/en/Security/CSP/CSP_policy_directives" title="en/Security/CSP/CSP policy directives">policy directives</a> describing your Content Security Policy.</p>
+
+<h2 id="Writing_a_policy">Writing a policy</h2>
+
+<p>A policy is described using a series of <a href="https://developer.mozilla.org/en/Security/CSP/CSP_policy_directives" title="en/Security/CSP/CSP policy directives">policy directives</a>, each of which describes the policy for a certain resource type or policy area. Your policy should include a <code>default-src</code> policy directive, which is a fallback for other resource types when they don't have policies of their own. (For a complete list, see the <a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/CSP_policy_directives#default-src">description of the default-src directive</a>.) A policy needs to include a default-src or script-src directive to prevent inline scripts from running, as well as blocking the use of <code>eval()</code>. A policy needs to include a <code>default-src</code> or <code>style-src</code> directive to restrict inline styles from being applied from a <code>&lt;style&gt;</code> element or a <code>.style attribute</code></p>
+
+<p>The syntax for a policy is a string of semicolon-separated directives, each following the syntax described in <a href="https://developer.mozilla.org/en/Security/CSP/CSP_policy_directives#Supported_policy_directives" title="en/Security/CSP/CSP policy directives#Supported policy directives">Supported policy directives</a>.</p>
+
+<h2 id="Examples_Common_use_cases">Examples: Common use cases</h2>
+
+<p>This section provides examples of some common security policy scenarios.</p>
+
+<h3 id="Example_1">Example 1</h3>
+
+<p>A web site administrator wants all content to come from the site's own origin (this excludes subdomains.)</p>
+
+<pre>Content-Security-Policy: default-src 'self'
+</pre>
+
+<h3 id="Example_2">Example 2</h3>
+
+<p>A web site administrator wants to allow content from a trusted domain and all its subdomains (it doesn't have to be the same domain that the CSP is set on.)</p>
+
+<pre>Content-Security-Policy: default-src 'self' *.trusted.com
+</pre>
+
+<h3 id="Example_3">Example 3</h3>
+
+<p>A web site administrator wants to allow users of a web application to include images from any origin in their own content, but to restrict audio or video media to trusted providers, and all scripts only to a specific server that hosts trusted code.</p>
+
+<pre>Content-Security-Policy: default-src 'self'; img-src *; media-src media1.com media2.com; script-src userscripts.example.com
+</pre>
+
+<p>Here, by default, content is only permitted from the document's origin, with the following exceptions:</p>
+
+<ul>
+ <li>Images may loaded from anywhere (note the "*" wildcard).</li>
+ <li>Media is only allowed from media1.com and media2.com (and not from subdomains of those sites).</li>
+ <li>Executable script is only allowed from userscripts.example.com.</li>
+</ul>
+
+<h3 id="Example_4">Example 4</h3>
+
+<p>A web site administrator for an online banking site wants to ensure that all its content is loaded using SSL, in order to prevent attackers from eavesdropping on requests.</p>
+
+<pre>Content-Security-Policy: default-src https://onlinebanking.jumbobank.com
+</pre>
+
+<p>The server only permits access to documents being loaded specifically over HTTPS through the single origin onlinebanking.jumbobank.com.</p>
+
+<h3 id="Example_5">Example 5</h3>
+
+<p>A web site administrator of a web mail site wants to allow HTML in email, as well as images loaded from anywhere, but not JavaScript or other potentially dangerous content.</p>
+
+<pre>Content-Security-Policy: default-src 'self' *.mailsite.com; img-src *
+</pre>
+
+<p>Note that this example doesn't specify a <a href="https://developer.mozilla.org/en/Security/CSP/CSP_policy_directives#script-src" title="en/Security/CSP/CSP policy directives#script-src"><code>script-src</code></a>; with the example CSP, this site uses the setting specified by the <a href="https://developer.mozilla.org/en/Security/CSP/CSP_policy_directives#allow" title="en/Security/CSP/CSP policy directives#allow"><code>default-src</code></a> directive, which means that scripts can be loaded only from the originating server.</p>
+
+<h2 id="Testing_your_policy">Testing your policy</h2>
+
+<p>To ease deployment, CSP can be deployed in <a class="link-https" href="http://www.w3.org/TR/CSP/#content-security-policy-report-only-header-field" title="https://dvcs.w3.org/hg/content-security-policy/raw-file/tip/csp-unofficial-draft-20110315.html#report-only-mode">"report-only" mode</a>. The policy is not enforced, but any violations are reported to a provided URI. Additionally, a report-only header can be used to test a future revision to a policy without actually deploying it.</p>
+
+<p>You can use the <code>Content-Security-Policy-Report-Only</code> HTTP header to specify your policy, like this:</p>
+
+<pre>Content-Security-Policy-Report-Only: <em>policy</em> 
+</pre>
+
+<p>If both a <code>Content-Security-Policy-Report-Only</code> header and a <code>Content-Security-Policy</code> header are present in the same response, both policies are honored. The policy specified in <code>Content-Security-Policy</code> headers is enforced while the <code>Content-Security-Policy-Report-Only</code> policy generates reports but is not enforced.</p>
+
+<p>Note that the <code>X-Content-Security-Policy-Report-Only</code> header was used before Firefox 23. If both the <code>X-Content-Security-Policy-Report-Only</code> and <code>Content-Security-Policy-Report-Only</code> are sent, the <code>Content-Security-Policy-Report-Only</code> will be used and the <code>X-Content-Security-Policy-Report-Only</code> will be ignored.</p>
+
+<p>The <a href="https://addons.mozilla.org/en-us/firefox/addon/newusercspdesign/">UserCSP Addon</a> also helps test and develop Content Security Policies for a site.</p>
+
+<p>One powerful feature of Content Security Policy for web site administrators is the support it offers for generating and delivering reports describing attempts to attack your site. These reports are delivered by HTTP POST requests to one or more servers you specify using the <a href="https://developer.mozilla.org/en/Security/CSP/CSP_policy_directives#report-uri" title="en/Security/CSP/CSP policy directives#report-uri"><code>report-uri</code></a> policy directive. The reports are in JSON format, using the default JSON UTF-8 encoding for non-ASCII characters. This article shows you how to configure your site to use the reporting feature, as well as the format of the reports.</p>
+
+<p>Browsers that support CSP always send a violation report for each attempt to violate the policy you have established if the policy contains a valid <a href="https://developer.mozilla.org/en/Security/CSP/CSP_policy_directives#report-uri" title="en/Security/CSP/CSP policy directives#report-uri"><code style="font-size: 14px;">report-uri</code></a> directive.</p>
+
+<h2 id="Enabling_reporting">Enabling reporting</h2>
+
+<p>By default, violation reports aren't sent. To enable violation reporting, you need to specify the <a href="https://developer.mozilla.org/en/Security/CSP/CSP_policy_directives#report-uri" title="en/Security/CSP/CSP policy directives#report-uri"><code>report-uri</code></a> policy directive, providing at least one URI to which to deliver the reports:</p>
+
+<pre>Content-Security-Policy: default-src 'self'; report-uri http://reportcollector.example.com/collector.cgi
+</pre>
+
+<p>Then you need to set up your server to receive the reports; it can store or process them in whatever manner you feel is appropriate.</p>
+
+<p>Note: prior to Firefox 23, the X-Content-Security-Policy header was used. This header will be deprecated in the future.</p>
+
+<h2 id="Violation_report_syntax">Violation report syntax</h2>
+
+<p>The report JSON object contains the following data:</p>
+
+<dl>
+ <dt><code>document-uri</code></dt>
+ <dd>The URI of the document in which the violation occurred.</dd>
+ <dt><code>referrer</code></dt>
+ <dd>The referrer of the document in which the violation occurred.</dd>
+ <dt><code>blocked-uri</code></dt>
+ <dd>The URI of the resource that was blocked from loading by the Content Security Policy. If the blocked URI is from a different origin than the document-uri, then the blocked URI is truncated to contain just the scheme, host, and port.</dd>
+ <dt><code>violated-directive</code></dt>
+ <dd>The name of the policy section that was violated.</dd>
+ <dt><code>original-policy</code></dt>
+ <dd>The original policy as specified by the <code>Content-Security-Policy</code> HTTP header.</dd>
+</dl>
+
+<h2 id="Sample_violation_report">Sample violation report</h2>
+
+<div>In the CSP specification, an <a href="http://www.w3.org/TR/CSP/#example-violation-report">example</a> regarding violation reports is given. Another sample will be presented and explained here.</div>
+
+<div>Let's consider a page located at <code><a class="external" href="http://example.com/signup.html" rel="freelink">http://example.com/signup.html</a></code>. It uses the following policy, disallowing everything but stylesheets from <code>cdn.example.com</code>.</div>
+
+<div>
+<pre>Content-Security-Policy: default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports</pre>
+</div>
+
+<div>The HTML of <code>signup.html</code> looks like this:</div>
+
+<pre class="brush: html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Sign Up&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    ... Content ...
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<div>Can you spot the mistake? Stylesheets are only allowed to be loaded from <code>cdn.example.com</code>, yet the website tries to load one from its own origin (<code>http://example.com</code>). A browser capable of enforcing CSP will send the following violation report as a POST request to <code><a href="http://example.com/_/csp-reports" rel="freelink">http://example.com/_/csp-reports</a></code>, when the document is visited<span style="line-height: 1.572;">:</span></div>
+
+<pre>{
+  "csp-report": {
+    "document-uri": "http://example.com/signup.html",
+    "referrer": "",
+    "blocked-uri": "http://example.com/css/style.css",
+    "violated-directive": "style-src cdn.example.com",
+    "original-policy": "default-src 'none'; style-src cdn.example.com; report-uri /_/csp-reports"
+  }
+}</pre>
+
+<p>As you can see, the report includes the full path to the violating resource in <code>blocked-uri</code>. This is not always the case. For example, when the <code>signup.html</code> would attempt to load CSS from <a href="../../../../../../anothercdn.example.com/stylesheet.css"><code>http://anothercdn.example.com/stylesheet.css</code></a>, the browser would <em>not</em> include the full path but only the origin (<code>http://anothercdn.example.com</code>). The CSP specification <a href="http://www.w3.org/TR/CSP/#violation-reports">gives an explanation</a> of this odd behaviour. In summary, this is done to prevent leaking sensitive information about cross-origin resources. Note, that even the specification got this part wrong in its <a href="http://www.w3.org/TR/CSP/#sample-violation-report">example on violation reports</a> (<code>blocked-uri</code> should be "<code>http://evil.example.com</code>")<span style="line-height: 1.572;">.</span></p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p class=&#34;summary&#34;&gt;&lt;strong&gt;Content Security Policy&lt;/strong&gt; (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware.&lt;/p&gt;
+
+&lt;p&gt;CSP&amp;nbsp;is designed to be fully backward compatible; browsers that don&#39;t support it still work with servers that implement it, and vice-versa. Browsers that don&#39;t support CSP simply ignore it, functioning as usual, defaulting to the standard same-origin policy for web content. If the site doesn&#39;t offer the CSP&amp;nbsp;header, browsers likewise use the standard &lt;a href=&#34;/en-US/docs/Web/Security/Same-origin_policy&#34; title=&#34;En/Same origin policy for JavaScript&#34;&gt;same-origin policy&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Enabling CSP&amp;nbsp;is as easy as configuring your web server to return the &lt;code&gt;Content-Security-Policy&lt;/code&gt; HTTP&amp;nbsp;header. (Prior to Firefox 23, the &lt;code&gt;X-Content-Security-Policy&lt;/code&gt; header was used). See &lt;a href=&#34;/en-US/docs/Web/Security/CSP/Using_Content_Security_Policy&#34; title=&#34;en/Security/CSP/Using Content Security Policy&#34;&gt;Using Content Security Policy&lt;/a&gt; for details on how to configure and enable CSP.&lt;/p&gt;
+
+&lt;p&gt;A {{ HTMLElement(&#34;meta&#34;) }} element can also be used to configure a policy. This behavior is supported since Firefox 45.&lt;/p&gt;
+
+&lt;h2 id=&#34;Mitigating_cross_site_scripting&#34;&gt;Mitigating cross site scripting&lt;/h2&gt;
+
+&lt;p&gt;A primary goal of CSP is to mitigate and report XSS&amp;nbsp;attacks. XSS attacks exploit the browser&#39;s trust of the content received from the server. Malicious scripts are executed by the victim&#39;s browser because the browser trusts the source of the content, even when it&#39;s not coming from where it seems to be coming from.&lt;/p&gt;
+
+&lt;p&gt;CSP&amp;nbsp;makes it possible for server administrators to reduce or eliminate the vectors by which XSS&amp;nbsp;can occur by specifying the domains that the browser should consider to be valid sources of executable scripts. A CSP compatible browser will then only execute scripts loaded in source files received from those whitelisted domains, ignoring all other script (including inline scripts and event-handling HTML&amp;nbsp;attributes).&lt;/p&gt;
+
+&lt;p&gt;As an ultimate form of protection, sites that want to never allow scripts to be executed can opt to globally disallow script execution.&lt;/p&gt;
+
+&lt;h2 id=&#34;Mitigating_packet_sniffing_attacks&#34;&gt;Mitigating packet sniffing attacks&lt;/h2&gt;
+
+&lt;p&gt;In addition to restricting the domains from which content can be loaded, the server can specify which protocols are allowed to be used; for example (and ideally, from a security standpoint), a server can specify that all content be loaded using HTTPS.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;&lt;strong&gt;Note:&lt;/strong&gt; A complete data transmission security strategy includes not only enforcing HTTPS for data transfer, but also marking all cookies with the secure flag and providing automatic redirects from HTTP&amp;nbsp;pages to their HTTPS&amp;nbsp;counterparts.&lt;/div&gt;
+
+&lt;div class=&#34;note&#34;&gt;&lt;strong&gt;Note:&lt;/strong&gt; Sites may also use the &lt;a href=&#34;/en-US/docs/Web/Security/HTTP_strict_transport_security&#34; title=&#34;/en/Security/HTTP_Strict_Transport_Security&#34;&gt;Strict-Transport-Security&lt;/a&gt; HTTP header to ensure that browsers connect to them only over an encrypted channel.&lt;/div&gt;
+
+&lt;h2 id=&#34;Using_CSP&#34;&gt;Using CSP&lt;/h2&gt;
+
+&lt;p&gt;Configuring Content Security Policy involves&amp;nbsp;adding the &lt;code&gt;Content-Security-Policy&lt;/code&gt; HTTP header to a web page and giving it values to control resources the user agent is allowed to load for that page. For example, a page that uploads and displays images could allow images from anywhere, but restrict a form action to a specific endpoint. A properly designed Content Security Policy helps protect a page against a cross site scripting attack. This article explain how to construct such headers properly, and provides examples.&lt;/p&gt;
+
+&lt;p&gt;Prior to Firefox 23, the &lt;code&gt;X-Content-Security-Policy&lt;/code&gt; HTTP header was used. Firefox 23 and later use the now-standard &lt;code&gt;Content-Security-Policy&lt;/code&gt; header. During the transition from the previous header to the new header, sites can send both the &lt;code&gt;X-Content-Security-Policy&lt;/code&gt; and &lt;code&gt;Content-Security-Policy&lt;/code&gt; headers. In this situation, the &lt;code&gt;X-Content-Security-Policy&lt;/code&gt; will be ignored and the policy contained in the &lt;code&gt;Content-Security-Policy&lt;/code&gt; header will be used.&lt;/p&gt;
+
+&lt;h2 id=&#34;Specifying_your_policy&#34;&gt;Specifying your policy&lt;/h2&gt;
+
+&lt;p&gt;You can use the &lt;code&gt;Content-Security-Policy&lt;/code&gt; HTTP&amp;nbsp;header to specify your policy, like this:&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy: &lt;em&gt;policy&lt;/em&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;The policy is a string containing the &lt;a href=&#34;/en/Security/CSP/CSP_policy_directives&#34; title=&#34;en/Security/CSP/CSP policy directives&#34;&gt;policy directives&lt;/a&gt; describing your Content Security Policy.&lt;/p&gt;
+
+&lt;h2 id=&#34;Writing_a_policy&#34;&gt;Writing a policy&lt;/h2&gt;
+
+&lt;p&gt;A policy is described using a series of &lt;a href=&#34;/en/Security/CSP/CSP_policy_directives&#34; title=&#34;en/Security/CSP/CSP policy directives&#34;&gt;policy directives&lt;/a&gt;, each of which describes the policy for a certain resource type or policy area. Your policy should include a&amp;nbsp;&lt;code&gt;default-src&lt;/code&gt;&amp;nbsp;policy directive, which is a fallback for other resource types when they don&#39;t have policies of their own. (For a complete list, see the &lt;a href=&#34;/en-US/docs/Web/Security/CSP/CSP_policy_directives#default-src&#34;&gt;description of the default-src directive&lt;/a&gt;.) A policy needs to include a default-src or script-src directive to prevent&amp;nbsp;inline scripts from running, as well as blocking the use of &lt;code&gt;eval()&lt;/code&gt;. A policy needs to include a &lt;code&gt;default-src&lt;/code&gt; or &lt;code&gt;style-src&lt;/code&gt; directive to restrict inline styles from being applied from a &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; element or a &lt;code&gt;.style attribute&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The syntax for a policy is a string of semicolon-separated directives, each following the syntax described in &lt;a href=&#34;/en/Security/CSP/CSP_policy_directives#Supported_policy_directives&#34; title=&#34;en/Security/CSP/CSP policy directives#Supported policy directives&#34;&gt;Supported policy directives&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;Examples_Common_use_cases&#34;&gt;Examples:&amp;nbsp;Common use cases&lt;/h2&gt;
+
+&lt;p&gt;This section provides examples of some common security policy scenarios.&lt;/p&gt;
+
+&lt;h3 id=&#34;Example_1&#34;&gt;Example 1&lt;/h3&gt;
+
+&lt;p&gt;A web site administrator wants all content to come from the site&#39;s own origin (this excludes subdomains.)&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy: default-src &#39;self&#39;
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;Example_2&#34;&gt;Example 2&lt;/h3&gt;
+
+&lt;p&gt;A&amp;nbsp;web site administrator wants to allow content from a trusted domain and all its subdomains (it doesn&#39;t have to be the same domain that the CSP is set on.)&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy: default-src &#39;self&#39; *.trusted.com
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;Example_3&#34;&gt;Example 3&lt;/h3&gt;
+
+&lt;p&gt;A web site administrator wants to allow users of a web application to include images from any origin in their own content, but to restrict audio or video media to&amp;nbsp;trusted providers, and all scripts only to a specific server that hosts trusted code.&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy: default-src &#39;self&#39;; img-src *; media-src media1.com media2.com; script-src userscripts.example.com
+&lt;/pre&gt;
+
+&lt;p&gt;Here, by default, content is only permitted from the document&#39;s origin, with the following exceptions:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Images may loaded from anywhere (note the &#34;*&#34; wildcard).&lt;/li&gt;
+ &lt;li&gt;Media is only allowed from media1.com and media2.com (and not from subdomains of those sites).&lt;/li&gt;
+ &lt;li&gt;Executable script is only allowed from userscripts.example.com.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;Example_4&#34;&gt;Example 4&lt;/h3&gt;
+
+&lt;p&gt;A web site administrator for an online banking site wants to ensure that all its content is loaded using&amp;nbsp;SSL, in order to prevent attackers from eavesdropping on requests.&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy: default-src https://onlinebanking.jumbobank.com
+&lt;/pre&gt;
+
+&lt;p&gt;The server only permits access to documents being loaded specifically over HTTPS through the single origin onlinebanking.jumbobank.com.&lt;/p&gt;
+
+&lt;h3 id=&#34;Example_5&#34;&gt;Example 5&lt;/h3&gt;
+
+&lt;p&gt;A web site administrator of a web mail site wants to allow HTML&amp;nbsp;in email, as well as images loaded from anywhere, but not JavaScript or other potentially dangerous content.&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy: default-src &#39;self&#39; *.mailsite.com; img-src *
+&lt;/pre&gt;
+
+&lt;p&gt;Note that this example doesn&#39;t specify a &lt;a href=&#34;/en/Security/CSP/CSP_policy_directives#script-src&#34; title=&#34;en/Security/CSP/CSP policy directives#script-src&#34;&gt;&lt;code&gt;script-src&lt;/code&gt;&lt;/a&gt;; with the example CSP, this site uses the setting specified by the &lt;a href=&#34;/en/Security/CSP/CSP_policy_directives#allow&#34; title=&#34;en/Security/CSP/CSP policy directives#allow&#34;&gt;&lt;code&gt;default-src&lt;/code&gt;&lt;/a&gt; directive, which means that scripts can be loaded only from the originating server.&lt;/p&gt;
+
+&lt;h2 id=&#34;Testing_your_policy&#34;&gt;Testing your policy&lt;/h2&gt;
+
+&lt;p&gt;To ease deployment, CSP can be deployed in &lt;a class=&#34;link-https&#34; href=&#34;http://www.w3.org/TR/CSP/#content-security-policy-report-only-header-field&#34; title=&#34;https://dvcs.w3.org/hg/content-security-policy/raw-file/tip/csp-unofficial-draft-20110315.html#report-only-mode&#34;&gt;&#34;report-only&#34; mode&lt;/a&gt;. The policy is not enforced, but any violations are reported to a provided URI. Additionally, a report-only header can be used to test a future revision to a policy without actually deploying it.&lt;/p&gt;
+
+&lt;p&gt;You can use the &lt;code&gt;Content-Security-Policy-Report-Only&lt;/code&gt; HTTP&amp;nbsp;header to specify your policy, like this:&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy-Report-Only: &lt;em&gt;policy&lt;/em&gt; 
+&lt;/pre&gt;
+
+&lt;p&gt;If both a &lt;code&gt;Content-Security-Policy-Report-Only&lt;/code&gt; header and a &lt;code&gt;Content-Security-Policy&lt;/code&gt; header are present in the same response, both policies are honored. The policy specified in &lt;code&gt;Content-Security-Policy&lt;/code&gt; headers is enforced while the &lt;code&gt;Content-Security-Policy-Report-Only&lt;/code&gt; policy generates reports but is not enforced.&lt;/p&gt;
+
+&lt;p&gt;Note that the &lt;code&gt;X-Content-Security-Policy-Report-Only&lt;/code&gt; header was used before Firefox 23. If both the &lt;code&gt;X-Content-Security-Policy-Report-Only&lt;/code&gt; and &lt;code&gt;Content-Security-Policy-Report-Only&lt;/code&gt; are sent, the &lt;code&gt;Content-Security-Policy-Report-Only&lt;/code&gt; will be used and the &lt;code&gt;X-Content-Security-Policy-Report-Only&lt;/code&gt; will be ignored.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://addons.mozilla.org/en-us/firefox/addon/newusercspdesign/&#34;&gt;UserCSP Addon&lt;/a&gt; also helps test and develop Content Security Policies for a site.&lt;/p&gt;
+
+&lt;p&gt;One powerful feature of Content Security Policy for web site administrators is the support it offers for generating and delivering reports describing attempts to attack your site. These reports are delivered by HTTP&amp;nbsp;POST requests to one or more servers you specify using the &lt;a href=&#34;/en/Security/CSP/CSP_policy_directives#report-uri&#34; title=&#34;en/Security/CSP/CSP policy directives#report-uri&#34;&gt;&lt;code&gt;report-uri&lt;/code&gt;&lt;/a&gt; policy directive. The reports are in JSON&amp;nbsp;format, using the default JSON UTF-8 encoding for non-ASCII characters. This article shows you how to configure your site to use the reporting feature, as well as the format of the reports.&lt;/p&gt;
+
+&lt;p&gt;Browsers that support CSP always send a violation report for each attempt to violate the policy you have established if the policy contains a valid&amp;nbsp;&lt;a href=&#34;/en/Security/CSP/CSP_policy_directives#report-uri&#34; title=&#34;en/Security/CSP/CSP policy directives#report-uri&#34;&gt;&lt;code style=&#34;font-size: 14px;&#34;&gt;report-uri&lt;/code&gt;&lt;/a&gt;&amp;nbsp;directive.&lt;/p&gt;
+
+&lt;h2 id=&#34;Enabling_reporting&#34;&gt;Enabling reporting&lt;/h2&gt;
+
+&lt;p&gt;By default, violation reports aren&#39;t sent. To enable violation reporting, you need to specify the &lt;a href=&#34;/en/Security/CSP/CSP_policy_directives#report-uri&#34; title=&#34;en/Security/CSP/CSP policy directives#report-uri&#34;&gt;&lt;code&gt;report-uri&lt;/code&gt;&lt;/a&gt; policy directive, providing at least one URI&amp;nbsp;to which to deliver the reports:&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy: default-src &#39;self&#39;; report-uri http://reportcollector.example.com/collector.cgi
+&lt;/pre&gt;
+
+&lt;p&gt;Then you need to set up your server to receive the reports; it can store or process them in whatever manner you feel is appropriate.&lt;/p&gt;
+
+&lt;p&gt;Note: prior to Firefox 23, the X-Content-Security-Policy header was used. This header will be deprecated in the future.&lt;/p&gt;
+
+&lt;h2 id=&#34;Violation_report_syntax&#34;&gt;Violation report syntax&lt;/h2&gt;
+
+&lt;p&gt;The report JSON&amp;nbsp;object contains the following data:&lt;/p&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;&lt;code&gt;document-uri&lt;/code&gt;&lt;/dt&gt;
+ &lt;dd&gt;The URI of the document in which the violation occurred.&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;referrer&lt;/code&gt;&lt;/dt&gt;
+ &lt;dd&gt;The referrer of the document in which the violation occurred.&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;blocked-uri&lt;/code&gt;&lt;/dt&gt;
+ &lt;dd&gt;The URI&amp;nbsp;of the resource that was blocked from loading by the Content Security Policy. If the blocked URI is from a different origin than the document-uri, then the blocked URI is truncated to contain just the scheme, host, and port.&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;violated-directive&lt;/code&gt;&lt;/dt&gt;
+ &lt;dd&gt;The name of the policy section that was violated.&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;original-policy&lt;/code&gt;&lt;/dt&gt;
+ &lt;dd&gt;The original policy as specified by the &lt;code&gt;Content-Security-Policy&lt;/code&gt; HTTP header.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Sample_violation_report&#34;&gt;Sample violation report&lt;/h2&gt;
+
+&lt;div&gt;In the CSP specification, an&amp;nbsp;&lt;a href=&#34;http://www.w3.org/TR/CSP/#example-violation-report&#34;&gt;example&lt;/a&gt;&amp;nbsp;regarding violation reports is given. Another sample will be presented and explained here.&lt;/div&gt;
+
+&lt;div&gt;Let&#39;s consider a page located at&amp;nbsp;&lt;code&gt;&lt;a class=&#34;external&#34; href=&#34;http://example.com/signup.html&#34; rel=&#34;freelink&#34;&gt;http://example.com/signup.html&lt;/a&gt;&lt;/code&gt;. It uses the following policy, disallowing everything but stylesheets from &lt;code&gt;cdn.example.com&lt;/code&gt;.&lt;/div&gt;
+
+&lt;div&gt;
+&lt;pre&gt;
+Content-Security-Policy: default-src &#39;none&#39;; style-src cdn.example.com; report-uri /_/csp-reports&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div&gt;The HTML of &lt;code&gt;signup.html&lt;/code&gt; looks like this:&lt;/div&gt;
+
+&lt;pre class=&#34;brush: html&#34;&gt;
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;title&amp;gt;Sign Up&amp;lt;/title&amp;gt;
+    &amp;lt;link rel=&#34;stylesheet&#34; href=&#34;css/style.css&#34;&amp;gt;
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    ... Content ...
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/pre&gt;
+
+&lt;div&gt;Can you spot the mistake? Stylesheets are only allowed to be loaded from &lt;code&gt;cdn.example.com&lt;/code&gt;, yet the website tries to load one from its own origin (&lt;code&gt;http://example.com&lt;/code&gt;). A browser capable of enforcing CSP will send the following violation report as a POST request to&amp;nbsp;&lt;code&gt;&lt;a href=&#34;http://example.com/_/csp-reports&#34; rel=&#34;freelink&#34;&gt;http://example.com/_/csp-reports&lt;/a&gt;&lt;/code&gt;, when&amp;nbsp;the document is visited&lt;span style=&#34;line-height:1.572&#34;&gt;:&lt;/span&gt;&lt;/div&gt;
+
+&lt;pre&gt;
+{
+  &#34;csp-report&#34;: {
+    &#34;document-uri&#34;: &#34;http://example.com/signup.html&#34;,
+    &#34;referrer&#34;: &#34;&#34;,
+    &#34;blocked-uri&#34;: &#34;http://example.com/css/style.css&#34;,
+    &#34;violated-directive&#34;: &#34;style-src cdn.example.com&#34;,
+    &#34;original-policy&#34;: &#34;default-src &#39;none&#39;; style-src cdn.example.com; report-uri /_/csp-reports&#34;
+  }
+}&lt;/pre&gt;
+
+&lt;p&gt;As you can see, the report includes the full path to the violating resource in &lt;code&gt;blocked-uri&lt;/code&gt;. This is not always the case. For example, when the &lt;code&gt;signup.html&lt;/code&gt; would attempt to load CSS from &lt;a href=&#34;http://anothercdn.example.com/stylesheet.css&#34;&gt;&lt;code&gt;http://anothercdn.example.com/stylesheet.css&lt;/code&gt;&lt;/a&gt;, the browser would &lt;em&gt;not&lt;/em&gt; include the full path but only the origin (&lt;code&gt;http://anothercdn.example.com&lt;/code&gt;). The CSP specification &lt;a href=&#34;http://www.w3.org/TR/CSP/#violation-reports&#34;&gt;gives an explanation&lt;/a&gt; of this odd behaviour. In summary, this is done to prevent leaking sensitive information about cross-origin resources. Note, that even the specification got this part wrong in its &lt;a href=&#34;http://www.w3.org/TR/CSP/#sample-violation-report&#34;&gt;example on violation reports&lt;/a&gt;&amp;nbsp;(&lt;code&gt;blocked-uri&lt;/code&gt; should be &#34;&lt;code&gt;http://evil.example.com&lt;/code&gt;&#34;)&lt;span style=&#34;line-height:1.572&#34;&gt;.&lt;/span&gt;&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/CSP%24revert/1147362" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/CSP$revision/1147362 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:55:37 GMT -->
+</html>

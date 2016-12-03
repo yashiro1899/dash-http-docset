@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src$revision/1141659 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:06:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1141659 | CSP: script-src | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FHeaders%2FContent-Security-Policy%2Fscript-src%24revision%2F1141659" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src%24revision/1141659">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1141659 of <a href="../script-src.html">CSP: script-src</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Headers/Content-Security-Policy/script-src</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Content-Security-Policy: script-src</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1141659</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-11-11T01:46:46-08:00">Nov 11, 2016, 1:46:46 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>fscholz</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/CSP">CSP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Directive">Directive</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Reference">Reference</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Security">Security</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p>The HTTP {{HTTPHeader("Content-Security-Policy")}} (CSP) <code><strong>script</strong></code><strong><code>-src</code></strong> directive specifies valid sources for sources for JavaScript. This includes not only URLs loaded directly into {{HTMLElement("script")}} elements, but also things like inline script event handlers (<code>onclick</code>) and <a href="https://developer.mozilla.org/en-US/docs/Web/XSLT">XSLT stylesheets</a> which can trigger script execution.</p>
+
+<table class="properties">
+ <tbody>
+  <tr>
+   <th scope="row">CSP version</th>
+   <td>1</td>
+  </tr>
+  <tr>
+   <th scope="row">Directive type</th>
+   <td>{{Glossary("Fetch directive")}}</td>
+  </tr>
+  <tr>
+   <th scope="row">{{CSP("default-src")}} fallback</th>
+   <td>Yes. If this directive is absent, the user agent will look for the <code>default-src</code> directive.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Syntax">Syntax</h2>
+
+<p>One or more sources can be allowed for the <code>script-src</code> policy:</p>
+
+<pre class="syntaxbox">Content-Security-Policy: script-src &lt;source&gt;;
+Content-Security-Policy: script-src &lt;source&gt; &lt;source&gt;;
+</pre>
+
+<h3 id="Sources">Sources</h3>
+
+<p>{{page("Web/HTTP/Headers/Content-Security-Policy/default-src", "Sources")}}</p>
+
+<h2 id="Examples">Examples</h2>
+
+<h3 id="Violation_case">Violation case</h3>
+
+<p>Given this CSP header:</p>
+
+<pre class="brush: bash">Content-Security-Policy: script-src https://example.com/</pre>
+
+<p>the following script is blocked and won't be loaded or executed:</p>
+
+<pre class="brush: html">&lt;script src="https//not-example.com/js/library.js"&gt;&lt;/script&gt;</pre>
+
+<p>Note that inline event handlers are blocked as well:</p>
+
+<pre class="brush: html">&lt;button id="btn" onclick="doSomething()"&gt;</pre>
+
+<p>You should replaced them with {{domxref("EventTarget.addEventListener", "addEventListener")}} calls:</p>
+
+<pre class="brush: js">document.getElementById("btn").addEventListener('click', doSomething);</pre>
+
+<h3 id="Unsafe_inline_script">Unsafe inline script</h3>
+
+<div class="note">
+<p><strong>Note:</strong> Disallowing inline styles and inline scripts is one of the biggest security wins CSP provides. However, if you absolutely have to use it, there are a few mechanisms that will allow them.</p>
+</div>
+
+<p>To allow inline scripts and inline event handlers, <code>'unsafe-inline'</code>, a nonce-source or a hash-source that matches the inline block can be specified.</p>
+
+<pre class="brush: bash">Content-Security-Policy: script-src 'unsafe-inline';
+</pre>
+
+<p>The above Content Security Policy will allow inline {{HTMLElement("script")}} elements</p>
+
+<pre class="brush: html">&lt;script type="text/javascript"&gt; 
+  var inline = 1; 
+&lt;/script&gt;</pre>
+
+<p>You can use a nonce-source to only allow specific inline script blocks:</p>
+
+<pre class="brush: bash">Content-Security-Policy: script-src 'nonce-2726c7f26c'</pre>
+
+<p>You will have to set the same nonce on the {{HTMLElement("script")}} element:</p>
+
+<pre class="brush: html">&lt;script type="text/javascript" nonce="2726c7f26c"&gt;
+  var inline = 1;
+&lt;/script&gt;</pre>
+
+<p>Alternatively, you can create hashes from your inline scripts. CSP supports sha256, sha384 and sha512.</p>
+
+<pre class="brush: bash">Content-Security-Policy: script-src 'sha256-076c8f1ca6979ef156b510a121b69b6265011597557ca2971db5ad5a2743545f'</pre>
+
+<p>When generating the hash, don't include the {{HTMLElement("script")}} tags and note that capitalization and whitespace matter, including leading or trailing whitespace.</p>
+
+<pre class="brush: html">&lt;script type="text/javascript"&gt;var inline = 1;&lt;/script&gt;</pre>
+
+<h3 id="Unsafe_eval_expressions">Unsafe eval expressions</h3>
+
+<p>The <code>'unsafe-eval'</code> source expression controls several script execution methods that create code from strings. If <code>'unsafe-eval'</code> isn't specified with the <code>script-src</code> directive, the following methods are blocked and won't have any effect:</p>
+
+<ul>
+ <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval">eval()</a></code></li>
+ <li><code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function()</a></code></li>
+ <li>When passing a string literal like to methods like: <code>window.setTimeout("alert(\"Hello World!\");", 500);</code>
+  <ul>
+   <li>{{domxref("window.setTimeout")}}</li>
+   <li>{{domxref("window.setInterval")}}</li>
+   <li>{{domxref("window.setImmediate")}}</li>
+  </ul>
+ </li>
+ <li>{{domxref("window.execScript")}} {{non-standard_inline}} (IE &lt; 11 only)</li>
+</ul>
+
+<h3 id="strict-dynamic"><code>strict-dynamic</code></h3>
+
+<p>The <code>'strict-dynamic</code>' source expression specifies that the trust explicitly given to a script present in the markup, by accompanying it with a nonce or a hash, shall be propagated to all the scripts loaded by that root script. At the same time, any whitelist or source expressions such as <code>'self'</code> or <code>'unsafe-inline'</code> will be ignored. For example, a policy such as <code>script-src 'strict-dynamic' 'nonce-R4nd0m' https://whitelisted.com/</code> would allow loading of a root script with <code>&lt;script nonce="R4nd0m" src="https://example.com/loader.js"&gt;</code>  and propogate that trust to any script loaded by <code>loader.js</code>, but disallow loading scripts from <code>https://whitelisted.com/</code>.</p>
+
+<pre class="brush: bash">script-src 'strict-dynamic' 'nonce-<em>someNonce</em>'</pre>
+
+<p><em>Or</em></p>
+
+<pre class="brush: bash">script-src 'strict-dynamic' 'sha256-<em>hash</em>'</pre>
+
+<p>It is possible to deploy <code>strict-dynamic</code> in a backwards compatible way, without requiring user-agent sniffing.<br>
+ The policy:</p>
+
+<pre class="brush: bash">script-src 'unsafe-inline' https: 'nonce-abcdefg' 'strict-dynamic'</pre>
+
+<p>will act like<code>'unsafe-inline' https:</code> in browsers that support CSP1, <code>https: 'nonce-abcdefg'</code> in browsers that support CSP2, and <code>'nonce-abcdefg' 'strict-dynamic'</code> in browsers that support CSP3.</p>
+
+<h2 id="Specifications">Specifications</h2>
+
+<table class="standard-table">
+ <tbody>
+  <tr>
+   <th scope="col">Specification</th>
+   <th scope="col">Status</th>
+   <th scope="col">Comment</th>
+  </tr>
+  <tr>
+   <td>{{specName("CSP 3.0", "#directive-script-src", "script-src")}}</td>
+   <td>{{Spec2('CSP 3.0')}}</td>
+   <td>No changes.</td>
+  </tr>
+  <tr>
+   <td>{{specName("CSP 1.1", "#directive-script-src", "script-src")}}</td>
+   <td>{{Spec2('CSP 1.1')}}</td>
+   <td>Initial definition.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+
+<p class="hidden">The compatibility table in this page is generated from structured data. If you'd like to contribute to the data, please check out <a href="https://github.com/mdn/browser-compat-data">https://github.com/mdn/browser-compat-data</a> and send us a pull request.</p>
+
+<p>{{Compat}}</p>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li>{{HTTPHeader("Content-Security-Policy")}}</li>
+ <li>{{HTMLElement("script")}}</li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p&gt;The HTTP {{HTTPHeader(&#34;Content-Security-Policy&#34;)}} (CSP) &lt;code&gt;&lt;strong&gt;script&lt;/strong&gt;&lt;/code&gt;&lt;strong&gt;&lt;code&gt;-src&lt;/code&gt;&lt;/strong&gt; directive specifies valid sources for sources for JavaScript. This includes not only URLs loaded directly into {{HTMLElement(&#34;script&#34;)}} elements, but also things like inline script event handlers (&lt;code&gt;onclick&lt;/code&gt;) and &lt;a href=&#34;/en-US/docs/Web/XSLT&#34;&gt;XSLT stylesheets&lt;/a&gt; which can trigger script execution.&lt;/p&gt;
+
+&lt;table class=&#34;properties&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;row&#34;&gt;CSP version&lt;/th&gt;
+   &lt;td&gt;1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;row&#34;&gt;Directive type&lt;/th&gt;
+   &lt;td&gt;{{Glossary(&#34;Fetch directive&#34;)}}&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;row&#34;&gt;{{CSP(&#34;default-src&#34;)}} fallback&lt;/th&gt;
+   &lt;td&gt;Yes. If this directive is absent, the user agent will look for the &lt;code&gt;default-src&lt;/code&gt; directive.&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;Syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;p&gt;One or more sources can be allowed for the &lt;code&gt;script-src&lt;/code&gt; policy:&lt;/p&gt;
+
+&lt;pre class=&#34;syntaxbox&#34;&gt;
+Content-Security-Policy: script-src &amp;lt;source&amp;gt;;
+Content-Security-Policy: script-src &amp;lt;source&amp;gt; &amp;lt;source&amp;gt;;
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;Sources&#34;&gt;Sources&lt;/h3&gt;
+
+&lt;p&gt;{{page(&#34;Web/HTTP/Headers/Content-Security-Policy/default-src&#34;, &#34;Sources&#34;)}}&lt;/p&gt;
+
+&lt;h2 id=&#34;Examples&#34;&gt;Examples&lt;/h2&gt;
+
+&lt;h3 id=&#34;Violation_case&#34;&gt;Violation case&lt;/h3&gt;
+
+&lt;p&gt;Given this CSP header:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: bash&#34;&gt;
+Content-Security-Policy: script-src https://example.com/&lt;/pre&gt;
+
+&lt;p&gt;the following script is blocked and won&#39;t be loaded or executed:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: html&#34;&gt;
+&amp;lt;script src=&#34;https//not-example.com/js/library.js&#34;&amp;gt;&amp;lt;/script&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that inline event handlers are blocked as well:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: html&#34;&gt;
+&amp;lt;button id=&#34;btn&#34; onclick=&#34;doSomething()&#34;&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;You should replaced them with {{domxref(&#34;EventTarget.addEventListener&#34;, &#34;addEventListener&#34;)}} calls:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: js&#34;&gt;
+document.getElementById(&#34;btn&#34;).addEventListener(&#39;click&#39;, doSomething);&lt;/pre&gt;
+
+&lt;h3 id=&#34;Unsafe_inline_script&#34;&gt;Unsafe inline script&lt;/h3&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Disallowing inline styles and inline scripts is one of the biggest security wins CSP provides. However, if you absolutely have to use it, there are a few mechanisms that will allow them.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To allow inline scripts and inline event handlers, &lt;code&gt;&#39;unsafe-inline&#39;&lt;/code&gt;, a nonce-source or a hash-source that matches the inline block can be specified.&lt;/p&gt;
+
+&lt;pre class=&#34;brush: bash&#34;&gt;
+Content-Security-Policy: script-src &#39;unsafe-inline&#39;;
+&lt;/pre&gt;
+
+&lt;p&gt;The above Content Security Policy will allow inline {{HTMLElement(&#34;script&#34;)}} elements&lt;/p&gt;
+
+&lt;pre class=&#34;brush: html&#34;&gt;
+&amp;lt;script type=&#34;text/javascript&#34;&amp;gt; 
+  var inline = 1; 
+&amp;lt;/script&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;You can use a nonce-source to only allow specific inline script blocks:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: bash&#34;&gt;
+Content-Security-Policy: script-src &#39;nonce-2726c7f26c&#39;&lt;/pre&gt;
+
+&lt;p&gt;You will have to set the same nonce on the {{HTMLElement(&#34;script&#34;)}} element:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: html&#34;&gt;
+&amp;lt;script type=&#34;text/javascript&#34; nonce=&#34;2726c7f26c&#34;&amp;gt;
+  var inline = 1;
+&amp;lt;/script&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;Alternatively, you can create hashes from your inline scripts. CSP supports sha256, sha384 and sha512.&lt;/p&gt;
+
+&lt;pre class=&#34;brush: bash&#34;&gt;
+Content-Security-Policy: script-src &#39;sha256-076c8f1ca6979ef156b510a121b69b6265011597557ca2971db5ad5a2743545f&#39;&lt;/pre&gt;
+
+&lt;p&gt;When generating the hash, don&#39;t include the {{HTMLElement(&#34;script&#34;)}} tags and note that capitalization and whitespace matter, including leading or trailing whitespace.&lt;/p&gt;
+
+&lt;pre class=&#34;brush: html&#34;&gt;
+&amp;lt;script type=&#34;text/javascript&#34;&amp;gt;var inline = 1;&amp;lt;/script&amp;gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;Unsafe_eval_expressions&#34;&gt;Unsafe eval expressions&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;&#39;unsafe-eval&#39;&lt;/code&gt; source expression controls several script execution methods that create code from strings. If &lt;code&gt;&#39;unsafe-eval&#39;&lt;/code&gt; isn&#39;t specified with the &lt;code&gt;script-src&lt;/code&gt; directive, the following methods are blocked and won&#39;t have any effect:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;code&gt;&lt;a href=&#34;/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval&#34;&gt;eval()&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;code&gt;&lt;a href=&#34;/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function&#34;&gt;Function()&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+ &lt;li&gt;When passing a string literal like to methods like: &lt;code&gt;window.setTimeout(&#34;alert(\&#34;Hello World!\&#34;);&#34;, 500);&lt;/code&gt;
+  &lt;ul&gt;
+   &lt;li&gt;{{domxref(&#34;window.setTimeout&#34;)}}&lt;/li&gt;
+   &lt;li&gt;{{domxref(&#34;window.setInterval&#34;)}}&lt;/li&gt;
+   &lt;li&gt;{{domxref(&#34;window.setImmediate&#34;)}}&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;li&gt;{{domxref(&#34;window.execScript&#34;)}} {{non-standard_inline}} (IE &amp;lt; 11 only)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;strict-dynamic&#34;&gt;&lt;code&gt;strict-dynamic&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;The &lt;code&gt;&#39;strict-dynamic&lt;/code&gt;&#39; source expression specifies that the trust explicitly given to a script present in the markup, by accompanying it with a nonce or a hash, shall&amp;nbsp;be propagated to all the scripts loaded by that&amp;nbsp;root script. At the same time, any whitelist&amp;nbsp;or source expressions such as &lt;code&gt;&#39;self&#39;&lt;/code&gt;&amp;nbsp;or&amp;nbsp;&lt;code&gt;&#39;unsafe-inline&#39;&lt;/code&gt;&amp;nbsp;will be ignored. For example, a policy such as &lt;code&gt;script-src &#39;strict-dynamic&#39; &#39;nonce-R4nd0m&#39; https://whitelisted.com/&lt;/code&gt;&amp;nbsp;would allow loading of a root script with &lt;code&gt;&amp;lt;script nonce=&#34;R4nd0m&#34; src=&#34;https://example.com/loader.js&#34;&amp;gt;&lt;/code&gt;&amp;nbsp; and propogate that trust to any script loaded by &lt;code&gt;loader.js&lt;/code&gt;,&amp;nbsp;but disallow loading scripts from &lt;code&gt;https://whitelisted.com/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre class=&#34;brush: bash&#34;&gt;
+script-src &#39;strict-dynamic&#39; &#39;nonce-&lt;em&gt;someNonce&lt;/em&gt;&#39;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;Or&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre class=&#34;brush: bash&#34;&gt;
+script-src &#39;strict-dynamic&#39; &#39;sha256-&lt;em&gt;hash&lt;/em&gt;&#39;&lt;/pre&gt;
+
+&lt;p&gt;It is possible to deploy&amp;nbsp;&lt;code&gt;strict-dynamic&lt;/code&gt;&amp;nbsp;in a backwards compatible way, without requiring user-agent sniffing.&lt;br /&gt;
+ The policy:&lt;/p&gt;
+
+&lt;pre class=&#34;brush: bash&#34;&gt;
+script-src &#39;unsafe-inline&#39; https: &#39;nonce-abcdefg&#39; &#39;strict-dynamic&#39;&lt;/pre&gt;
+
+&lt;p&gt;will act like&lt;code&gt;&#39;unsafe-inline&#39; https:&lt;/code&gt;&amp;nbsp;in browsers that support CSP1,&amp;nbsp;&lt;code&gt;https: &#39;nonce-abcdefg&#39;&lt;/code&gt;&amp;nbsp;in browsers that support CSP2, and&amp;nbsp;&lt;code&gt;&#39;nonce-abcdefg&#39; &#39;strict-dynamic&#39;&lt;/code&gt;&amp;nbsp;in browsers that support CSP3.&lt;/p&gt;
+
+&lt;h2 id=&#34;Specifications&#34;&gt;Specifications&lt;/h2&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Specification&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Status&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Comment&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{specName(&#34;CSP 3.0&#34;, &#34;#directive-script-src&#34;, &#34;script-src&#34;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;CSP 3.0&#39;)}}&lt;/td&gt;
+   &lt;td&gt;No changes.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{specName(&#34;CSP 1.1&#34;, &#34;#directive-script-src&#34;, &#34;script-src&#34;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;CSP 1.1&#39;)}}&lt;/td&gt;
+   &lt;td&gt;Initial definition.&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;Browser_compatibility&#34;&gt;Browser compatibility&lt;/h2&gt;
+
+&lt;p class=&#34;hidden&#34;&gt;The compatibility table in this page is generated from structured data. If you&#39;d like to contribute to the data, please check out &lt;a href=&#34;https://github.com/mdn/browser-compat-data&#34;&gt;https://github.com/mdn/browser-compat-data&lt;/a&gt; and send us a pull request.&lt;/p&gt;
+
+&lt;p&gt;{{Compat}}&lt;/p&gt;
+
+&lt;h2 id=&#34;See_also&#34;&gt;See also&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;{{HTTPHeader(&#34;Content-Security-Policy&#34;)}}&lt;/li&gt;
+ &lt;li&gt;{{HTMLElement(&#34;script&#34;)}}&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src%24revert/1141659" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src$revision/1141659 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:06:56 GMT -->
+</html>

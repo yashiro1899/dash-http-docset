@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Overview$compare?to=1104991&from=1103309 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:07:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Compare Revisions | An overview of HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FOverview%24compare%3Fto%3D1104991%26from%3D1103309" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%24compare%3Fto%3D1104991%26from%3D1103309">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article id="compare-revisions">
+
+    <h1>Compare Revisions</h1>
+    <h2><a href="Overview.html">An overview of HTTP</a></h2>
+
+    
+    <section class="revision-diff">
+      <a href="Overview%24history00fd.html?locale=en-US&amp;origin=translate">Change Revisions</a>
+      <header>
+        <div class="rev-from">
+            <h3>
+            
+              <a href="Overview%24revision/1103309.html" rel="nofollow, noindex">
+                Revision 1103309:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1103309 by <a href="https://developer.mozilla.org/en-US/profiles/teoli">teoli</a> on <time datetime="2016-08-09T23:41:01-07:00">August 9, 2016 at 11:41:01 PM PDT</time>
+          </p>
+        </div>
+        <div class="rev-to">
+          <h3>
+            
+              <a href="Overview%24revision/1104991.html" rel="nofollow, noindex">
+                Revision 1104991:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1104991 by <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a> on <time datetime="2016-08-14T06:46:59-07:00">August 14, 2016 at 6:46:59 AM PDT</time>
+          </p>
+        </div>
+      </header>
+
+      <dl>
+        <dt>Title:</dt>
+        <dd class="rev-from">An overview of HTTP</dd>
+        <dd class="rev-to">An overview of HTTP</dd>
+
+        <dt>Slug:</dt>
+        <dd class="rev-from">Web/HTTP/Overview</dd>
+        <dd class="rev-to">Web/HTTP/Overview</dd>
+
+        
+        <dt>Tags:</dt>
+        <dd class="rev-from"> &#34;HTML&#34; &#34;Overview&#34; &#34;WebMechanics&#34;</dd>
+        <dd class="rev-to"> &#34;HTML&#34; &#34;Overview&#34; &#34;WebMechanics&#34;</dd>
+        
+
+        
+        <dt>Comment:</dt>
+        <dd class="rev-from"> </dd>
+        <dd class="rev-to"> review part 1</dd>
+        
+
+        <dt>Content:</dt>
+        
+        <dd>
+    <table class="diff" id="difflib_chg_to33__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1103309</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1104991</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__0"><a href="#difflib_chg_to33__1">n</a></td><td class="diff_header" id="from33_7">7</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_chg">p</span>&gt;</td><td class="diff_next"><a href="#difflib_chg_to33__1">n</a></td><td class="diff_header" id="to33_7">7</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_chg">div</span>&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__1"><a href="#difflib_chg_to33__2">n</a></td><td class="diff_header" id="from33_9">9</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="diff_chg">p</span>&gt;</td><td class="diff_next"><a href="#difflib_chg_to33__2">n</a></td><td class="diff_header" id="to33_9">9</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="diff_chg">div</span>&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__2"><a href="#difflib_chg_to33__3">n</a></td><td class="diff_header" id="from33_11">11</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;HTTP&lt;/strong&gt;&nbsp;is&nbsp;a&nbsp;{{glossary("protocol")}}&nbsp;allowin</span></td><td class="diff_next"><a href="#difflib_chg_to33__3">n</a></td><td class="diff_header" id="to33_11">11</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;HTTP&lt;/strong&gt;&nbsp;is&nbsp;a&nbsp;{{glossary("protocol")}}&nbsp;allowin</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">g&nbsp;to&nbsp;fetch&nbsp;documents.&nbsp;Being&nbsp;the&nbsp;foundation&nbsp;of&nbsp;any&nbsp;data&nbsp;exchange&nbsp;o</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">g&nbsp;to&nbsp;fetch&nbsp;resources,&nbsp;such&nbsp;as&nbsp;HTML&nbsp;documents.&nbsp;It&nbsp;is&nbsp;the&nbsp;foundatio</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">n&nbsp;the&nbsp;Web,&nbsp;it&nbsp;is&nbsp;a&nbsp;client-server&nbsp;protocol,&nbsp;meaning&nbsp;that&nbsp;requests&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">n&nbsp;of&nbsp;any&nbsp;data&nbsp;exchange&nbsp;on&nbsp;the&nbsp;Web&nbsp;and&nbsp;a&nbsp;client-server&nbsp;protocol,&nbsp;m</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">are&nbsp;initiated&nbsp;by&nbsp;the&nbsp;recipient,&nbsp;usually&nbsp;a&nbsp;browser.&nbsp;The&nbsp;complete&nbsp;d</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">eaning&nbsp;that&nbsp;requests&nbsp;are&nbsp;initiated&nbsp;by&nbsp;the&nbsp;recipient,&nbsp;usually&nbsp;a&nbsp;br</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ocument&nbsp;is&nbsp;reconstructed&nbsp;from&nbsp;the&nbsp;different&nbsp;subdocuments&nbsp;fetched,</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">owser.&nbsp;A&nbsp;complete&nbsp;document&nbsp;is&nbsp;reconstructed&nbsp;from&nbsp;the&nbsp;different&nbsp;su</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;being&nbsp;text,&nbsp;layout&nbsp;description,images,&nbsp;videos,&nbsp;scripts,&nbsp;…</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">bdocuments&nbsp;fetched,&nbsp;being&nbsp;text,&nbsp;layout&nbsp;description,&nbsp;images,&nbsp;video</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">s,&nbsp;scripts,&nbsp;and&nbsp;more.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__3"><a href="#difflib_chg_to33__4">n</a></td><td class="diff_header" id="from33_17">17</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">The&nbsp;client&nbsp;and&nbsp;the</span>&nbsp;server<span class="diff_chg">&nbsp;communicates&nbsp;by</span>&nbsp;exchanging&nbsp;indivi</td><td class="diff_next"><a href="#difflib_chg_to33__4">n</a></td><td class="diff_header" id="to33_17">17</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">Clients&nbsp;and</span>&nbsp;server<span class="diff_chg">s&nbsp;communicate&nbsp;by</span>&nbsp;exchanging&nbsp;individual&nbsp;me</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">dual&nbsp;messages&nbsp;(<span class="diff_chg">by</span>&nbsp;oppos<span class="diff_chg">ition</span>&nbsp;of<span class="diff_sub">&nbsp;a&nbsp;stream&nbsp;of</span>&nbsp;data).&nbsp;The&nbsp;messages&nbsp;s</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ssages&nbsp;(<span class="diff_chg">as</span>&nbsp;oppos<span class="diff_chg">ed&nbsp;to&nbsp;a&nbsp;stream</span>&nbsp;of&nbsp;data).&nbsp;The&nbsp;messages&nbsp;sent&nbsp;by&nbsp;the</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ent&nbsp;by&nbsp;the&nbsp;client,&nbsp;usually&nbsp;<span class="diff_chg">the</span>&nbsp;browser,&nbsp;are&nbsp;called&nbsp;&lt;em&gt;requests&lt;/</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;client,&nbsp;usually&nbsp;<span class="diff_chg">a</span>&nbsp;browser,&nbsp;are&nbsp;called&nbsp;&lt;em&gt;requests&lt;/em&gt;&nbsp;and&nbsp;the&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">em&gt;&nbsp;and&nbsp;the&nbsp;messages&nbsp;sent&nbsp;by&nbsp;the&nbsp;server&nbsp;as&nbsp;an&nbsp;answer&nbsp;<span class="diff_chg">is&nbsp;called&nbsp;a</span>&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">messages&nbsp;sent&nbsp;by&nbsp;the&nbsp;server&nbsp;as&nbsp;an&nbsp;answer&nbsp;<span class="diff_chg">are&nbsp;called</span>&nbsp;&lt;em&gt;response<span class="diff_add">s</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&lt;em&gt;response&lt;/em&gt;.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add"></span>&lt;/em&gt;.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_18">18</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_19">19</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to33_18">18</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to33_19">19</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_20">20</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;alt="HTTP&nbsp;as&nbsp;an&nbsp;application&nbsp;layer&nbsp;protocol,&nbsp;on&nbsp;top&nbsp;of&nbsp;</td><td class="diff_next"></td><td class="diff_header" id="to33_20">20</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;alt="HTTP&nbsp;as&nbsp;an&nbsp;application&nbsp;layer&nbsp;protocol,&nbsp;on&nbsp;top&nbsp;of&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">TCP&nbsp;(transport&nbsp;layer)&nbsp;and&nbsp;IP&nbsp;(network&nbsp;layer)&nbsp;and&nbsp;below&nbsp;the&nbsp;presen</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">TCP&nbsp;(transport&nbsp;layer)&nbsp;and&nbsp;IP&nbsp;(network&nbsp;layer)&nbsp;and&nbsp;below&nbsp;the&nbsp;presen</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tation&nbsp;layer."&nbsp;src="https://mdn.mozillademos.org/files/13673/HTTP</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tation&nbsp;layer."&nbsp;src="https://mdn.mozillademos.org/files/13673/HTTP</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">%20&amp;amp;%20layers.png"&nbsp;style="float:left;&nbsp;height:299px;&nbsp;padding-b</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">%20&amp;amp;%20layers.png"&nbsp;style="float:left;&nbsp;height:299px;&nbsp;padding-b</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ottom:15px;&nbsp;padding-right:20px;&nbsp;width:418px"&gt;Designed&nbsp;in&nbsp;the&nbsp;earl</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ottom:15px;&nbsp;padding-right:20px;&nbsp;width:418px"&gt;Designed&nbsp;in&nbsp;the&nbsp;earl</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">y&nbsp;1990s,&nbsp;HTTP&nbsp;is&nbsp;an&nbsp;extensible&nbsp;protocol&nbsp;that&nbsp;has&nbsp;evolved&nbsp;over&nbsp;tim</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">y&nbsp;1990s,&nbsp;HTTP&nbsp;is&nbsp;an&nbsp;extensible&nbsp;protocol&nbsp;that&nbsp;has&nbsp;evolved&nbsp;over&nbsp;tim</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e.&nbsp;It&nbsp;is&nbsp;an&nbsp;application&nbsp;layer&nbsp;protocol&nbsp;that&nbsp;is&nbsp;sent&nbsp;over&nbsp;{{glossa</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e.&nbsp;It&nbsp;is&nbsp;an&nbsp;application&nbsp;layer&nbsp;protocol&nbsp;that&nbsp;is&nbsp;sent&nbsp;over&nbsp;{{glossa</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ry("TCP")}},&nbsp;or&nbsp;over&nbsp;a&nbsp;{{glossary("TLS")}}-encrypted&nbsp;TCP&nbsp;connecti</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ry("TCP")}},&nbsp;or&nbsp;over&nbsp;a&nbsp;{{glossary("TLS")}}-encrypted&nbsp;TCP&nbsp;connecti</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">on,&nbsp;though&nbsp;any&nbsp;reliable&nbsp;transport&nbsp;protocol&nbsp;could&nbsp;theoretically&nbsp;be</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">on,&nbsp;though&nbsp;any&nbsp;reliable&nbsp;transport&nbsp;protocol&nbsp;could&nbsp;theoretically&nbsp;be</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;used.&nbsp;<span class="diff_chg">Easily</span>&nbsp;extensib<span class="diff_chg">le</span>,&nbsp;it&nbsp;is&nbsp;nowadays&nbsp;used&nbsp;<span class="diff_chg">not&nbsp;only&nbsp;to</span>&nbsp;fetch&nbsp;h</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;used.&nbsp;<span class="diff_chg">Due&nbsp;to&nbsp;its</span>&nbsp;extensib<span class="diff_chg">ility</span>,&nbsp;it&nbsp;is&nbsp;nowadays&nbsp;used&nbsp;<span class="diff_chg">to&nbsp;not&nbsp;only</span>&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ypertext&nbsp;documents,&nbsp;but&nbsp;also&nbsp;<span class="diff_chg">image</span>s,&nbsp;<span class="diff_sub">videos&nbsp;or&nbsp;to&nbsp;post&nbsp;content&nbsp;to</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">fetch&nbsp;hypertext&nbsp;documents,&nbsp;but&nbsp;also&nbsp;<span class="diff_chg">for&nbsp;images&nbsp;and&nbsp;videos&nbsp;or&nbsp;to&nbsp;p</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;servers,&nbsp;</span>like&nbsp;form&nbsp;results.&nbsp;HTTP&nbsp;<span class="diff_chg">is&nbsp;also&nbsp;used&nbsp;to</span>&nbsp;fetch&nbsp;part&nbsp;of&nbsp;d</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">ost&nbsp;content&nbsp;to&nbsp;server</span>s,&nbsp;like&nbsp;<span class="diff_add">with&nbsp;HTML&nbsp;</span>form<span class="diff_add">ular</span>&nbsp;results.&nbsp;HTTP&nbsp;<span class="diff_chg">can</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ocuments&nbsp;to&nbsp;<span class="diff_chg">live&nbsp;update</span>&nbsp;Web&nbsp;pages.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">&nbsp;also&nbsp;be&nbsp;used&nbsp;to</span>&nbsp;fetch&nbsp;part<span class="diff_add">s</span>&nbsp;of&nbsp;documents&nbsp;to&nbsp;<span class="diff_chg">update</span>&nbsp;Web&nbsp;pages<span class="diff_add">&nbsp;on&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">demand</span>.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__4"><a href="#difflib_chg_to33__5">n</a></td><td class="diff_header" id="from33_26">26</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;is&nbsp;a&nbsp;client-server&nbsp;protocol:&nbsp;requests&nbsp;are&nbsp;sent&nbsp;by&nbsp;one&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to33__5">n</a></td><td class="diff_header" id="to33_26">26</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;is&nbsp;a&nbsp;client-server&nbsp;protocol:&nbsp;requests&nbsp;are&nbsp;sent&nbsp;by&nbsp;one&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">entity,&nbsp;the&nbsp;user-agent&nbsp;(or&nbsp;a&nbsp;proxy&nbsp;behaving&nbsp;in&nbsp;behalf&nbsp;of&nbsp;him).&nbsp;Mo</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">entity,&nbsp;the&nbsp;user-agent&nbsp;(or&nbsp;a&nbsp;proxy&nbsp;on&nbsp;behalf&nbsp;of&nbsp;it).&nbsp;Most&nbsp;of&nbsp;the&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">st&nbsp;of&nbsp;the&nbsp;time&nbsp;the&nbsp;user-agent&nbsp;is&nbsp;a&nbsp;browser,&nbsp;but&nbsp;it&nbsp;can&nbsp;be&nbsp;somethi</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">time&nbsp;the&nbsp;user-agent&nbsp;is&nbsp;a&nbsp;browser,&nbsp;but&nbsp;it&nbsp;can&nbsp;be&nbsp;anything,&nbsp;for&nbsp;exa</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ng&nbsp;different,&nbsp;like&nbsp;a&nbsp;robot,&nbsp;that&nbsp;is&nbsp;a&nbsp;tool&nbsp;performing&nbsp;automatical</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">mple&nbsp;a&nbsp;robot&nbsp;that&nbsp;crawls&nbsp;the&nbsp;Web&nbsp;to&nbsp;populate&nbsp;and&nbsp;maintain&nbsp;a&nbsp;searc</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ly&nbsp;a&nbsp;specific&nbsp;operation&nbsp;like&nbsp;crawling&nbsp;the&nbsp;Web&nbsp;to&nbsp;populate&nbsp;and&nbsp;mai</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">h&nbsp;engine&nbsp;index.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ntain&nbsp;a&nbsp;search&nbsp;engine&nbsp;index.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_27">27</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_28">28</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to33_27">27</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to33_28">28</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_29">29</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each&nbsp;individual&nbsp;request&nbsp;is&nbsp;sent&nbsp;to&nbsp;a&nbsp;server&nbsp;that&nbsp;will&nbsp;handl</td><td class="diff_next"></td><td class="diff_header" id="to33_29">29</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each&nbsp;individual&nbsp;request&nbsp;is&nbsp;sent&nbsp;to&nbsp;a&nbsp;server&nbsp;that&nbsp;will&nbsp;handl</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;it&nbsp;and&nbsp;provide&nbsp;an&nbsp;answer,&nbsp;called&nbsp;the&nbsp;<span class="diff_chg">response</span>.&nbsp;In&nbsp;between&nbsp;there</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;it&nbsp;and&nbsp;provide&nbsp;an&nbsp;answer,&nbsp;called&nbsp;the&nbsp;<span class="diff_chg">&lt;em&gt;response&lt;/em&gt;</span>.&nbsp;In&nbsp;betw</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;are&nbsp;numerous&nbsp;entities,&nbsp;collectively&nbsp;designed&nbsp;as&nbsp;{{glossary("prox</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">een&nbsp;there&nbsp;are&nbsp;numerous&nbsp;entities,&nbsp;collectively&nbsp;designed&nbsp;as&nbsp;{{gloss</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">y",&nbsp;"proxies")}},&nbsp;that&nbsp;perform&nbsp;different&nbsp;operations&nbsp;<span class="diff_chg">like</span>&nbsp;gateways</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ary("proxy",&nbsp;"proxies")}},&nbsp;that&nbsp;perform&nbsp;different&nbsp;operations&nbsp;<span class="diff_chg">and&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;or&nbsp;{{glossary("cache",&nbsp;"caches")}}.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">act&nbsp;as</span>&nbsp;gateways&nbsp;or&nbsp;{{glossary("cache",&nbsp;"caches")}}<span class="diff_add">,&nbsp;for&nbsp;example</span>.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__5"><a href="#difflib_chg_to33__6">n</a></td><td class="diff_header" id="from33_35">35</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;reality,&nbsp;there&nbsp;are&nbsp;more&nbsp;computers&nbsp;between&nbsp;a&nbsp;browser&nbsp;and&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to33__6">n</a></td><td class="diff_header" id="to33_35">35</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;reality,&nbsp;there&nbsp;are&nbsp;more&nbsp;computers&nbsp;between&nbsp;a&nbsp;browser&nbsp;and&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">the&nbsp;server&nbsp;handling&nbsp;the&nbsp;request:&nbsp;there&nbsp;are&nbsp;routers,&nbsp;modems,&nbsp;…&nbsp;Tha</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">the&nbsp;server&nbsp;handling&nbsp;the&nbsp;request:&nbsp;there&nbsp;are&nbsp;routers,&nbsp;modems,&nbsp;and&nbsp;m</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nks&nbsp;to&nbsp;the&nbsp;layered&nbsp;design&nbsp;of&nbsp;the&nbsp;Web,&nbsp;these&nbsp;are&nbsp;hidden&nbsp;in&nbsp;the&nbsp;net</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ore.&nbsp;Thanks&nbsp;to&nbsp;the&nbsp;layered&nbsp;design&nbsp;of&nbsp;the&nbsp;Web,&nbsp;these&nbsp;are&nbsp;hidden&nbsp;in</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">work&nbsp;and&nbsp;transport&nbsp;layers,&nbsp;while&nbsp;HTTP&nbsp;is&nbsp;at&nbsp;the&nbsp;application&nbsp;layer</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;the&nbsp;network&nbsp;and&nbsp;transport&nbsp;layers.&nbsp;HTTP&nbsp;is&nbsp;on&nbsp;top&nbsp;at&nbsp;the&nbsp;applicat</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">s.&nbsp;Though&nbsp;important&nbsp;to&nbsp;diagnose&nbsp;some&nbsp;problems,&nbsp;they&nbsp;are&nbsp;mostly&nbsp;ir</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ion&nbsp;layer.&nbsp;Though&nbsp;important&nbsp;to&nbsp;diagnose&nbsp;network&nbsp;problems,&nbsp;the&nbsp;und</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">relevant&nbsp;to&nbsp;a&nbsp;description&nbsp;of&nbsp;HTTP.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">erlying&nbsp;layers&nbsp;are&nbsp;mostly&nbsp;irrelevant&nbsp;to&nbsp;a&nbsp;description&nbsp;of&nbsp;HTTP.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__6"><a href="#difflib_chg_to33__7">n</a></td><td class="diff_header" id="from33_44">44</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;browser&nbsp;is&nbsp;the&nbsp;entity&nbsp;initiating&nbsp;the&nbsp;request<span class="diff_sub">,&nbsp;always</span>.&nbsp;I</td><td class="diff_next"><a href="#difflib_chg_to33__7">n</a></td><td class="diff_header" id="to33_44">44</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;browser&nbsp;is<span class="diff_add">&nbsp;&lt;strong&gt;always&lt;/strong&gt;</span>&nbsp;the&nbsp;entity&nbsp;initiatin</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">t&nbsp;never&nbsp;<span class="diff_sub">is&nbsp;</span>the&nbsp;server&nbsp;(though&nbsp;some&nbsp;mechanism&nbsp;have&nbsp;been&nbsp;added&nbsp;over</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">g&nbsp;the&nbsp;request.&nbsp;It<span class="diff_add">&nbsp;is</span>&nbsp;never&nbsp;the&nbsp;server&nbsp;(though&nbsp;some&nbsp;mechanism&nbsp;have</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;the&nbsp;years&nbsp;to&nbsp;simulate&nbsp;server-initiated&nbsp;messages).</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;been&nbsp;added&nbsp;over&nbsp;the&nbsp;years&nbsp;to&nbsp;simulate&nbsp;server-initiated&nbsp;messages)</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_45">45</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_46">46</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to33_45">45</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to33_46">46</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_47">47</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To&nbsp;present&nbsp;a&nbsp;Web&nbsp;pages,&nbsp;the&nbsp;browser&nbsp;sends&nbsp;an&nbsp;original&nbsp;reque</td><td class="diff_next"></td><td class="diff_header" id="to33_47">47</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To&nbsp;present&nbsp;a&nbsp;Web&nbsp;pages,&nbsp;the&nbsp;browser&nbsp;sends&nbsp;an&nbsp;original&nbsp;reque</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">st&nbsp;to&nbsp;fetch&nbsp;the&nbsp;HTML&nbsp;document&nbsp;of&nbsp;the&nbsp;page,&nbsp;then&nbsp;parses&nbsp;it&nbsp;and&nbsp;fet</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">st&nbsp;to&nbsp;fetch&nbsp;the&nbsp;HTML&nbsp;document&nbsp;of&nbsp;the&nbsp;page,&nbsp;then&nbsp;parses&nbsp;it&nbsp;and&nbsp;fet</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ch<span class="diff_chg">&nbsp;additional</span>&nbsp;requests&nbsp;corresponding&nbsp;to&nbsp;scripts&nbsp;to&nbsp;<span class="diff_chg">per</span>form<span class="diff_chg">,&nbsp;layou</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ch<span class="diff_chg">es&nbsp;additional</span>&nbsp;requests&nbsp;corresponding&nbsp;to&nbsp;scripts&nbsp;to&nbsp;<span class="diff_chg">execute,&nbsp;lay</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">t&nbsp;information</span>&nbsp;(CSS)&nbsp;to&nbsp;displa<span class="diff_sub">y&nbsp;the&nbsp;page&nbsp;correctl</span>y,&nbsp;as&nbsp;well&nbsp;as&nbsp;the</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">out&nbsp;in</span>form<span class="diff_chg">ation</span>&nbsp;(CSS)&nbsp;to&nbsp;display,&nbsp;as&nbsp;well&nbsp;as&nbsp;the&nbsp;sub-resources&nbsp;co</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;sub-resources&nbsp;contained&nbsp;in&nbsp;the&nbsp;page&nbsp;(usually&nbsp;images&nbsp;and&nbsp;videos).</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ntained&nbsp;in&nbsp;the&nbsp;page&nbsp;(usually&nbsp;images&nbsp;and&nbsp;videos).&nbsp;It&nbsp;then&nbsp;combines</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;It&nbsp;then&nbsp;combines&nbsp;these&nbsp;resources&nbsp;to<span class="diff_chg">gether&nbsp;to&nbsp;present&nbsp;a&nbsp;complete</span>&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;these&nbsp;resources&nbsp;to<span class="diff_chg">&nbsp;present&nbsp;a&nbsp;complete</span>&nbsp;document,&nbsp;the&nbsp;Web&nbsp;page.&nbsp;Sc</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">document,&nbsp;the&nbsp;Web&nbsp;page.&nbsp;Scripts&nbsp;<span class="diff_chg">pla</span>y<span class="diff_chg">ed&nbsp;by&nbsp;the</span>&nbsp;browser&nbsp;can&nbsp;fetch&nbsp;m</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ripts&nbsp;<span class="diff_chg">executed&nbsp;b</span>y<span class="diff_chg">&nbsp;the</span>&nbsp;browser&nbsp;can&nbsp;fetch&nbsp;more&nbsp;resources&nbsp;in&nbsp;later&nbsp;p</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ore&nbsp;resources&nbsp;in&nbsp;later&nbsp;phases&nbsp;and&nbsp;the&nbsp;browser&nbsp;updates&nbsp;the&nbsp;Web&nbsp;pag</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">hases&nbsp;and&nbsp;the&nbsp;browser&nbsp;updates&nbsp;the&nbsp;Web&nbsp;page&nbsp;accordingly.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;accordingly.</td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__7"><a href="#difflib_chg_to33__8">n</a></td><td class="diff_header" id="from33_56">56</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On&nbsp;the&nbsp;opposite&nbsp;side&nbsp;of&nbsp;the&nbsp;communication&nbsp;channel,&nbsp;there&nbsp;is</td><td class="diff_next"><a href="#difflib_chg_to33__8">n</a></td><td class="diff_header" id="to33_56">56</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;On&nbsp;the&nbsp;opposite&nbsp;side&nbsp;of&nbsp;the&nbsp;communication&nbsp;channel,&nbsp;there&nbsp;is</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;the&nbsp;server&nbsp;that&nbsp;<span class="diff_chg">*serves*&nbsp;the&nbsp;document</span>&nbsp;requested&nbsp;by&nbsp;the&nbsp;client.&nbsp;A</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;the&nbsp;server&nbsp;that&nbsp;<span class="diff_chg">&lt;em&gt;serves&lt;/em&gt;&nbsp;the&nbsp;document&nbsp;as</span>&nbsp;requested&nbsp;by&nbsp;the</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;server&nbsp;is&nbsp;only&nbsp;a&nbsp;single&nbsp;machine&nbsp;virtually:&nbsp;it&nbsp;may&nbsp;be&nbsp;a&nbsp;collectio</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;client.&nbsp;A&nbsp;server&nbsp;is&nbsp;only&nbsp;a&nbsp;single&nbsp;machine&nbsp;virtually:&nbsp;it&nbsp;may&nbsp;be&nbsp;a</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n&nbsp;of&nbsp;servers&nbsp;that&nbsp;share<span class="diff_chg">s&nbsp;the&nbsp;load</span>&nbsp;(load&nbsp;balancing)&nbsp;or&nbsp;a&nbsp;complex&nbsp;p</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;collection&nbsp;of&nbsp;servers&nbsp;that&nbsp;share<span class="diff_chg">&nbsp;the&nbsp;load</span>&nbsp;(load&nbsp;balancing)&nbsp;or&nbsp;a&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">iece&nbsp;of&nbsp;software&nbsp;interrogating&nbsp;other&nbsp;computers&nbsp;(like&nbsp;cache,&nbsp;a&nbsp;DB&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">complex&nbsp;piece&nbsp;of&nbsp;software&nbsp;interrogating&nbsp;other&nbsp;computers&nbsp;(like&nbsp;cac</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">server,&nbsp;e-commerce&nbsp;servers,&nbsp;…)&nbsp;and&nbsp;generating&nbsp;the&nbsp;document,&nbsp;total</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">he,&nbsp;a&nbsp;DB&nbsp;server,&nbsp;e-commerce&nbsp;servers,&nbsp;…)&nbsp;and&nbsp;generating&nbsp;the&nbsp;docume</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ly&nbsp;or&nbsp;partially,&nbsp;on&nbsp;the&nbsp;fly.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nt,&nbsp;totally&nbsp;or&nbsp;partially,&nbsp;on&nbsp;the&nbsp;fly.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_57">57</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_58">58</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to33_57">57</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_59">59</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As&nbsp;much&nbsp;as&nbsp;a&nbsp;server&nbsp;is&nbsp;not&nbsp;necessary&nbsp;a&nbsp;single&nbsp;machine,&nbsp;seve</span></td><td class="diff_next"></td><td class="diff_header" id="to33_58">58</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ral&nbsp;servers&nbsp;can&nbsp;be&nbsp;hosted&nbsp;on&nbsp;the&nbsp;same&nbsp;machine.&nbsp;Since&nbsp;HTTP/1.1&nbsp;and</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;the&nbsp;{{HTTPHeader("Host")}}&nbsp;header&nbsp;they&nbsp;can&nbsp;even&nbsp;share&nbsp;the&nbsp;same&nbsp;I</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">P&nbsp;address</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to33_59">59</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;server&nbsp;is&nbsp;not&nbsp;necessarily&nbsp;a&nbsp;single&nbsp;machine,&nbsp;but&nbsp;also&nbsp;seve</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ral&nbsp;servers&nbsp;can&nbsp;be&nbsp;hosted&nbsp;on&nbsp;the&nbsp;same&nbsp;machine.&nbsp;With&nbsp;HTTP/1.1&nbsp;and&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">the&nbsp;{{HTTPHeader("Host")}}&nbsp;header,&nbsp;they&nbsp;can&nbsp;even&nbsp;share&nbsp;the&nbsp;same&nbsp;I</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">P&nbsp;address.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__8"><a href="#difflib_chg_to33__9">n</a></td><td class="diff_header" id="from33_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Between&nbsp;a&nbsp;browser&nbsp;and&nbsp;the&nbsp;server,&nbsp;numerous&nbsp;computers&nbsp;and&nbsp;ma</td><td class="diff_next"><a href="#difflib_chg_to33__9">n</a></td><td class="diff_header" id="to33_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Between&nbsp;a&nbsp;browser&nbsp;and&nbsp;the&nbsp;server,&nbsp;numerous&nbsp;computers&nbsp;and&nbsp;ma</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">chines&nbsp;relay&nbsp;the&nbsp;HTTP&nbsp;messages.&nbsp;Thanks&nbsp;to&nbsp;the&nbsp;layered&nbsp;structure&nbsp;o</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">chines&nbsp;relay&nbsp;the&nbsp;HTTP&nbsp;messages.&nbsp;Thanks&nbsp;to&nbsp;the&nbsp;layered&nbsp;structure&nbsp;o</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">f&nbsp;the&nbsp;Web&nbsp;stack,&nbsp;most&nbsp;of&nbsp;them&nbsp;operate&nbsp;at&nbsp;the&nbsp;transport,&nbsp;network&nbsp;o</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">f&nbsp;the&nbsp;Web&nbsp;stack,&nbsp;most&nbsp;of&nbsp;them&nbsp;operate&nbsp;at&nbsp;the&nbsp;transport,&nbsp;network&nbsp;o</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;physical&nbsp;level&nbsp;and&nbsp;are&nbsp;transparent&nbsp;at&nbsp;the&nbsp;HTTP&nbsp;layer&nbsp;(though&nbsp;th</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;physical&nbsp;level&nbsp;and&nbsp;are&nbsp;transparent&nbsp;at&nbsp;the&nbsp;HTTP&nbsp;layer&nbsp;(though&nbsp;th</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ey&nbsp;may&nbsp;have&nbsp;a&nbsp;significant&nbsp;impact&nbsp;on&nbsp;performance).&nbsp;The&nbsp;ones&nbsp;operat</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ey&nbsp;may&nbsp;have&nbsp;a&nbsp;significant&nbsp;impact&nbsp;on&nbsp;performance).&nbsp;The&nbsp;ones&nbsp;operat</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ing&nbsp;at&nbsp;the&nbsp;application&nbsp;layers&nbsp;are&nbsp;gener<span class="diff_chg">ically</span>&nbsp;called&nbsp;<span class="diff_chg">*</span>proxies<span class="diff_chg">*</span>&nbsp;an</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ing&nbsp;at&nbsp;the&nbsp;application&nbsp;layers&nbsp;are&nbsp;gener<span class="diff_chg">ally</span>&nbsp;called&nbsp;<span class="diff_chg">&lt;strong&gt;</span>proxie</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">d&nbsp;can<span class="diff_sub">&nbsp;be&nbsp;transparent&nbsp;or&nbsp;not&nbsp;(that&nbsp;is&nbsp;that&nbsp;they&nbsp;change&nbsp;the&nbsp;request</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">s<span class="diff_chg">&lt;/strong&gt;.&nbsp;They&nbsp;can&nbsp;be&nbsp;transparent&nbsp;or&nbsp;not&nbsp;(they&nbsp;change&nbsp;the&nbsp;reque</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">s&nbsp;going&nbsp;through&nbsp;them)&nbsp;and&nbsp;can</span>&nbsp;perform&nbsp;numerous&nbsp;functions:</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">sts&nbsp;going&nbsp;through&nbsp;them&nbsp;or&nbsp;not)</span>&nbsp;and&nbsp;can&nbsp;perform&nbsp;numerous&nbsp;functions</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">:</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__9"><a href="#difflib_chg_to33__10">n</a></td><td class="diff_header" id="from33_86">86</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Even&nbsp;if&nbsp;the&nbsp;HTTP/2&nbsp;hid&nbsp;a&nbsp;bit&nbsp;this&nbsp;simplicity&nbsp;by&nbsp;encapsulati</span></td><td class="diff_next"><a href="#difflib_chg_to33__10">n</a></td><td class="diff_header" id="to33_86">86</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Even&nbsp;with&nbsp;some&nbsp;more&nbsp;complexity&nbsp;introduced&nbsp;in&nbsp;HTTP/2&nbsp;by&nbsp;enca</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ng&nbsp;HTTP&nbsp;messages&nbsp;into&nbsp;frames,&nbsp;HTTP&nbsp;has&nbsp;been&nbsp;designed&nbsp;to&nbsp;be&nbsp;human&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">psulating&nbsp;HTTP&nbsp;messages&nbsp;into&nbsp;frames,&nbsp;HTTP&nbsp;is&nbsp;generally&nbsp;designed&nbsp;t</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">readable;&nbsp;HTTP&nbsp;messages&nbsp;can&nbsp;be&nbsp;read&nbsp;and&nbsp;crafted&nbsp;by&nbsp;human&nbsp;allowing</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">o&nbsp;be&nbsp;human&nbsp;readable&nbsp;and&nbsp;simple.&nbsp;HTTP&nbsp;messages&nbsp;can&nbsp;be&nbsp;read&nbsp;and&nbsp;und</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;easy&nbsp;testing&nbsp;and&nbsp;lowering&nbsp;the&nbsp;bar&nbsp;for&nbsp;new-comers.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">erstood&nbsp;by&nbsp;a&nbsp;human,&nbsp;which&nbsp;allows&nbsp;easier&nbsp;testing&nbsp;and&nbsp;lowers&nbsp;the&nbsp;ba</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">r&nbsp;for&nbsp;new-comers.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__10"><a href="#difflib_chg_to33__11">n</a></td><td class="diff_header" id="from33_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Introduced&nbsp;in&nbsp;HTTP/1.0,&nbsp;<span class="diff_sub">the&nbsp;notion&nbsp;of&nbsp;</span>{{glossary("HTTP&nbsp;Head</td><td class="diff_next"><a href="#difflib_chg_to33__11">n</a></td><td class="diff_header" id="to33_92">92</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Introduced&nbsp;in&nbsp;HTTP/1.0,&nbsp;{{glossary("HTTP&nbsp;Header<span class="diff_add">",&nbsp;"HTTP&nbsp;hea</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">er")}}&nbsp;made&nbsp;the&nbsp;protocol&nbsp;extremely&nbsp;<span class="diff_chg">to</span>&nbsp;extend&nbsp;and&nbsp;to&nbsp;experiment&nbsp;wi</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ders</span>")}}&nbsp;made&nbsp;the&nbsp;protocol&nbsp;extremely&nbsp;<span class="diff_chg">easy&nbsp;to</span>&nbsp;extend&nbsp;and&nbsp;to&nbsp;experi</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">th.&nbsp;New&nbsp;functionality&nbsp;can&nbsp;be&nbsp;introduced&nbsp;simply&nbsp;by&nbsp;an&nbsp;agreement&nbsp;be</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ment&nbsp;with.&nbsp;New&nbsp;functionality&nbsp;can&nbsp;be&nbsp;introduced&nbsp;simply&nbsp;by&nbsp;an&nbsp;agree</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tween&nbsp;a&nbsp;client&nbsp;and&nbsp;a&nbsp;server&nbsp;about&nbsp;the&nbsp;semantic&nbsp;of&nbsp;new&nbsp;headers.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ment&nbsp;between&nbsp;a&nbsp;client&nbsp;and&nbsp;a&nbsp;server&nbsp;about&nbsp;the&nbsp;semantic&nbsp;of&nbsp;new&nbsp;head</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ers.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__11"><a href="#difflib_chg_to33__12">n</a></td><td class="diff_header" id="from33_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;is&nbsp;stateless:&nbsp;there&nbsp;is&nbsp;no&nbsp;link&nbsp;between&nbsp;two&nbsp;successive&nbsp;</td><td class="diff_next"><a href="#difflib_chg_to33__12">n</a></td><td class="diff_header" id="to33_98">98</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;is&nbsp;stateless:&nbsp;there&nbsp;is&nbsp;no&nbsp;link&nbsp;between&nbsp;two&nbsp;successive&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">requests<span class="diff_sub">,</span>&nbsp;being&nbsp;done&nbsp;on&nbsp;the&nbsp;same&nbsp;connection&nbsp;or&nbsp;not.&nbsp;This&nbsp;proved&nbsp;p</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">requests&nbsp;being&nbsp;done&nbsp;on&nbsp;the&nbsp;same&nbsp;connection&nbsp;or&nbsp;not.&nbsp;This&nbsp;proved&nbsp;pr</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">roblematic&nbsp;as&nbsp;soon&nbsp;as&nbsp;users&nbsp;wanted&nbsp;to&nbsp;interact&nbsp;with&nbsp;a&nbsp;page&nbsp;in&nbsp;a&nbsp;c</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">oblematic&nbsp;as&nbsp;soon&nbsp;as&nbsp;users&nbsp;wanted&nbsp;to&nbsp;interact&nbsp;with&nbsp;a&nbsp;page&nbsp;in&nbsp;a&nbsp;co</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">oherent&nbsp;way,&nbsp;like&nbsp;for&nbsp;an&nbsp;e-commerce&nbsp;basket.&nbsp;Using&nbsp;the&nbsp;header&nbsp;exte</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">herent&nbsp;way,&nbsp;like&nbsp;for&nbsp;an&nbsp;e-commerce&nbsp;<span class="diff_add">shopping&nbsp;</span>basket<span class="diff_add">,&nbsp;for&nbsp;example</span>.&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nsibility,&nbsp;the<span class="diff_sub">&nbsp;notion&nbsp;of</span>&nbsp;HTTP&nbsp;Cookies&nbsp;have&nbsp;been&nbsp;added&nbsp;allowing&nbsp;to</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">Using&nbsp;the&nbsp;header&nbsp;extensibility,&nbsp;the&nbsp;HTTP&nbsp;Cookies&nbsp;have&nbsp;been&nbsp;added&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;create&nbsp;sessions<span class="diff_chg">,&nbsp;with&nbsp;each</span>&nbsp;requests&nbsp;<span class="diff_chg">in&nbsp;them&nbsp;share&nbsp;the&nbsp;same</span>&nbsp;conte</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">allowing&nbsp;to&nbsp;create&nbsp;sessions<span class="diff_chg">&nbsp;with&nbsp;each</span>&nbsp;requests&nbsp;<span class="diff_chg">to&nbsp;share&nbsp;the&nbsp;same</span>&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">xt,&nbsp;the&nbsp;same&nbsp;state.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">context,&nbsp;the&nbsp;same&nbsp;state.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_99">99</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_100">100</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to33_99">99</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to33_100">100</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">So&nbsp;w</span>hile&nbsp;the&nbsp;core&nbsp;of&nbsp;HTTP&nbsp;itself&nbsp;is&nbsp;stateless,&nbsp;the&nbsp;use&nbsp;of&nbsp;c</td><td class="diff_next"></td><td class="diff_header" id="to33_101">101</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_chg">W</span>hile&nbsp;the&nbsp;core&nbsp;of&nbsp;HTTP&nbsp;itself&nbsp;is&nbsp;stateless,&nbsp;the&nbsp;use&nbsp;of&nbsp;cook</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ookies&nbsp;allows&nbsp;to&nbsp;create&nbsp;stateful&nbsp;sessions.<span class="diff_sub">&nbsp;That's&nbsp;a&nbsp;functionality</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ies&nbsp;allows&nbsp;to&nbsp;create&nbsp;stateful&nbsp;sessions.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;activated&nbsp;by&nbsp;the&nbsp;users&nbsp;of&nbsp;HTTP.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__12"><a href="#difflib_chg_to33__13">n</a></td><td class="diff_header" id="from33_107">107</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;connection&nbsp;is&nbsp;controlled&nbsp;at&nbsp;the&nbsp;transport&nbsp;layer&nbsp;and&nbsp;is&nbsp;fu</td><td class="diff_next"><a href="#difflib_chg_to33__13">n</a></td><td class="diff_header" id="to33_107">107</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;connection&nbsp;is&nbsp;controlled&nbsp;at&nbsp;the&nbsp;transport&nbsp;layer&nbsp;and&nbsp;is&nbsp;fu</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ndamentally&nbsp;out&nbsp;of&nbsp;scope&nbsp;for&nbsp;HTTP.&nbsp;Nevertheless,&nbsp;HTTP&nbsp;doesn't&nbsp;req</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ndamentally&nbsp;out&nbsp;of&nbsp;scope&nbsp;for&nbsp;HTTP.&nbsp;Nevertheless,&nbsp;HTTP&nbsp;doesn't&nbsp;req</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">uire&nbsp;the&nbsp;underlying&nbsp;transport&nbsp;protocol&nbsp;to&nbsp;be&nbsp;connection-based;&nbsp;it</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">uire&nbsp;the&nbsp;underlying&nbsp;transport&nbsp;protocol&nbsp;to&nbsp;be&nbsp;connection-based;&nbsp;it</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;only&nbsp;requires&nbsp;it&nbsp;to&nbsp;be&nbsp;&lt;em&gt;reliable&lt;/em&gt;,&nbsp;that&nbsp;is&nbsp;not&nbsp;to&nbsp;loose&nbsp;m</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;only&nbsp;requires&nbsp;it&nbsp;to&nbsp;be&nbsp;&lt;em&gt;reliable&lt;/em&gt;,&nbsp;that&nbsp;is&nbsp;not&nbsp;to&nbsp;loose&nbsp;m</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">essages&nbsp;(at&nbsp;least&nbsp;without&nbsp;an&nbsp;error).&nbsp;Among&nbsp;the&nbsp;two&nbsp;most&nbsp;common&nbsp;tr</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">essages&nbsp;(at&nbsp;least<span class="diff_add">&nbsp;not</span>&nbsp;without&nbsp;an&nbsp;error).&nbsp;Among&nbsp;the&nbsp;two&nbsp;most&nbsp;commo</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ansport&nbsp;protocols&nbsp;on&nbsp;the&nbsp;Internet,&nbsp;TCP&nbsp;is&nbsp;reliable&nbsp;and&nbsp;UDP&nbsp;isn't.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n&nbsp;transport&nbsp;protocols&nbsp;on&nbsp;the&nbsp;Internet,&nbsp;TCP&nbsp;is&nbsp;reliable&nbsp;and&nbsp;UDP&nbsp;is</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;HTTP&nbsp;relies&nbsp;therefore&nbsp;on&nbsp;TCP&nbsp;that&nbsp;happens&nbsp;to&nbsp;be&nbsp;also&nbsp;connection-</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n't.&nbsp;HTTP&nbsp;relies&nbsp;therefore&nbsp;on&nbsp;TCP&nbsp;that&nbsp;happens&nbsp;to&nbsp;be&nbsp;also&nbsp;connect</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">based,&nbsp;though&nbsp;this&nbsp;is&nbsp;not&nbsp;a&nbsp;requirement.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ion-based,&nbsp;though&nbsp;this&nbsp;is&nbsp;not&nbsp;a&nbsp;requirement.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_108">108</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_109">109</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to33_108">108</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to33_109">109</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from33_110">110</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP/1.0&nbsp;was&nbsp;opening&nbsp;a&nbsp;TCP&nbsp;connection&nbsp;for&nbsp;each&nbsp;request/resp</td><td class="diff_next"></td><td class="diff_header" id="to33_110">110</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP/1.0&nbsp;was&nbsp;opening&nbsp;a&nbsp;TCP&nbsp;connection&nbsp;for&nbsp;each&nbsp;request/resp</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">onse&nbsp;exchange,&nbsp;but&nbsp;TCP&nbsp;has&nbsp;two&nbsp;major&nbsp;flows:&nbsp;opening&nbsp;a&nbsp;connection&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">onse&nbsp;exchange,&nbsp;but&nbsp;TCP&nbsp;has&nbsp;two&nbsp;major&nbsp;flows:&nbsp;opening&nbsp;a&nbsp;connection&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">needs&nbsp;several&nbsp;round-trip<span class="diff_chg">&nbsp;of&nbsp;messages&nbsp;and&nbsp;is&nbsp;therefore</span>&nbsp;slow,&nbsp;but&nbsp;a</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">needs&nbsp;several&nbsp;round-trip<span class="diff_chg">s&nbsp;of&nbsp;messages&nbsp;and&nbsp;is&nbsp;therefore</span>&nbsp;slow,&nbsp;but&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">lso&nbsp;becomes&nbsp;more&nbsp;efficient&nbsp;when&nbsp;several&nbsp;messages&nbsp;has&nbsp;been&nbsp;sent,&nbsp;a</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">also&nbsp;becomes&nbsp;more&nbsp;efficient&nbsp;when&nbsp;several&nbsp;messages&nbsp;has&nbsp;been&nbsp;sent,&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nd&nbsp;are&nbsp;regularly&nbsp;sent:&nbsp;&lt;em&gt;warm&lt;/em&gt;&nbsp;connections&nbsp;are&nbsp;more&nbsp;efficie</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">and&nbsp;are&nbsp;regularly&nbsp;sent:&nbsp;&lt;em&gt;warm&lt;/em&gt;&nbsp;connections&nbsp;are&nbsp;more&nbsp;effici</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nt&nbsp;than&nbsp;&lt;em&gt;cold&lt;/em&gt;&nbsp;ones.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ent&nbsp;than&nbsp;&lt;em&gt;cold&lt;/em&gt;&nbsp;ones.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to33__13"><a href="#difflib_chg_to33__top">t</a></td><td class="diff_header" id="from33_116">116</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Experiments&nbsp;are&nbsp;in&nbsp;progress&nbsp;to&nbsp;design&nbsp;a&nbsp;better&nbsp;transport&nbsp;pr</td><td class="diff_next"><a href="#difflib_chg_to33__top">t</a></td><td class="diff_header" id="to33_116">116</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Experiments&nbsp;are&nbsp;in&nbsp;progress&nbsp;to&nbsp;design&nbsp;a&nbsp;better&nbsp;transport&nbsp;pr</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">otocol&nbsp;that&nbsp;would&nbsp;be&nbsp;better&nbsp;suited&nbsp;for&nbsp;HTTP.&nbsp;For&nbsp;example,&nbsp;Google&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">otocol&nbsp;that&nbsp;would&nbsp;be&nbsp;better&nbsp;suited&nbsp;for&nbsp;HTTP.&nbsp;For&nbsp;example,&nbsp;Google&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">is&nbsp;experimenting&nbsp;with&nbsp;&lt;a&nbsp;href="https://en.wikipedia.org/wiki/QUIC</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">is&nbsp;experimenting&nbsp;with&nbsp;&lt;a&nbsp;href="https://en.wikipedia.org/wiki/QUIC</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">"&gt;QUIC&lt;/a&gt;&nbsp;that&nbsp;build<span class="diff_chg">&nbsp;on</span>&nbsp;UDP&nbsp;to&nbsp;provide&nbsp;a&nbsp;<span class="diff_chg">reliable&nbsp;and</span>&nbsp;efficient&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">"&gt;QUIC&lt;/a&gt;&nbsp;that&nbsp;build<span class="diff_chg">s&nbsp;on&nbsp;top&nbsp;of</span>&nbsp;UDP&nbsp;to&nbsp;provide&nbsp;a&nbsp;<span class="diff_chg">more&nbsp;reliable&nbsp;a</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">transport&nbsp;protocol.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">nd</span>&nbsp;efficient&nbsp;transport&nbsp;protocol.</td></tr>
+        </tbody>
+    </table></dd>
+        
+      </dl>
+    </section>
+  
+
+    <p><a href="Overview%24history.html" rel="nofollow, noindex">Back to History</a></p>
+
+  </article>
+
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+    
+    <input type="hidden" name="to" value="1104991">
+    
+  
+    
+    <input type="hidden" name="from" value="1103309">
+    
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Overview$compare?to=1104991&from=1103309 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:07:17 GMT -->
+</html>

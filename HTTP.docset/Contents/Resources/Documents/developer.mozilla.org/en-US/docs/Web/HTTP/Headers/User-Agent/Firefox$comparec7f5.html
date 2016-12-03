@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox$compare?to=1018872&from=1018870 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:12:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Compare Revisions | Firefox user agent string reference | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FHeaders%2FUser-Agent%2FFirefox%24compare%3Fto%3D1018872%26from%3D1018870" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox%24compare%3Fto%3D1018872%26from%3D1018870">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article id="compare-revisions">
+
+    <h1>Compare Revisions</h1>
+    <h2><a href="Firefox.html">Firefox user agent string reference</a></h2>
+
+    
+    <section class="revision-diff">
+      <a href="Firefox%24history00fd.html?locale=en-US&amp;origin=translate">Change Revisions</a>
+      <header>
+        <div class="rev-from">
+            <h3>
+            
+              <a href="Firefox%24revision/1018870.html" rel="nofollow, noindex">
+                Revision 1018870:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1018870 by <a href="https://developer.mozilla.org/en-US/profiles/Sheppy">Sheppy</a> on <time datetime="2016-02-25T09:14:31-08:00">February 25, 2016 at 9:14:31 AM PST</time>
+          </p>
+        </div>
+        <div class="rev-to">
+          <h3>
+            
+              <a href="Firefox%24revision/1018872.html" rel="nofollow, noindex">
+                Revision 1018872:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1018872 by <a href="https://developer.mozilla.org/en-US/profiles/Sheppy">Sheppy</a> on <time datetime="2016-02-25T09:23:37-08:00">February 25, 2016 at 9:23:37 AM PST</time>
+          </p>
+        </div>
+      </header>
+
+      <dl>
+        <dt>Title:</dt>
+        <dd class="rev-from">Firefox user agent string reference</dd>
+        <dd class="rev-to">Firefox user agent string reference</dd>
+
+        <dt>Slug:</dt>
+        <dd class="rev-from">Web/HTTP/Gecko_user_agent_string_reference</dd>
+        <dd class="rev-to">Web/HTTP/Gecko_user_agent_string_reference</dd>
+
+        
+        <dt>Tags:</dt>
+        <dd class="rev-from"> &#34;Compatibility&#34; &#34;Firefox&#34; &#34;Firefox 4&#34; &#34;Gecko&#34; &#34;Gecko 2.0&#34; &#34;Guide&#34;</dd>
+        <dd class="rev-to"> &#34;Compatibility&#34; &#34;Firefox&#34; &#34;Firefox 4&#34; &#34;Gecko&#34; &#34;Gecko 2.0&#34; &#34;Guide&#34; &#34;Guide&#34;</dd>
+        
+
+        
+        <dt>Comment:</dt>
+        <dd class="rev-from"> Cleanup while going to fix bug 1015872 (which someone already did, as it turns out)</dd>
+        <dd class="rev-to"> Clean up to remove junk HTML and such to fare better on MDN test suite</dd>
+        
+
+        <dt>Content:</dt>
+        
+        <dd>
+    <table class="diff" id="difflib_chg_to20__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1018870</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1018872</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__0"><a href="#difflib_chg_to20__1">n</a></td><td class="diff_header" id="from20_8">8</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;document&nbsp;describes&nbsp;the&nbsp;user&nbsp;agent&nbsp;string&nbsp;used&nbsp;in&nbsp;Firef</td><td class="diff_next"><a href="#difflib_chg_to20__1">n</a></td><td class="diff_header" id="to20_8">8</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;document&nbsp;describes&nbsp;the&nbsp;user&nbsp;agent&nbsp;string&nbsp;used&nbsp;in&nbsp;Firef</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ox&nbsp;4&nbsp;and&nbsp;later&nbsp;and&nbsp;applications&nbsp;based&nbsp;on&nbsp;&lt;a&nbsp;href="/en-US/docs/Moz</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ox&nbsp;4&nbsp;and&nbsp;later&nbsp;and&nbsp;applications&nbsp;based&nbsp;on&nbsp;&lt;a&nbsp;href="/en-US/docs/Moz</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">illa/Gecko"&nbsp;title="/en-US/docs/Mozilla/Gecko"&gt;Gecko&lt;/a&gt;&nbsp;2.0&nbsp;and&nbsp;l</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">illa/Gecko"&nbsp;title="/en-US/docs/Mozilla/Gecko"&gt;Gecko&lt;/a&gt;&nbsp;2.0&nbsp;and&nbsp;l</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ater.&nbsp;For&nbsp;a&nbsp;breakdown&nbsp;of&nbsp;changes&nbsp;to&nbsp;the&nbsp;string&nbsp;in&nbsp;Gecko&nbsp;2.0,&nbsp;see&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ater.&nbsp;For&nbsp;a&nbsp;breakdown&nbsp;of&nbsp;changes&nbsp;to&nbsp;the&nbsp;string&nbsp;in&nbsp;Gecko&nbsp;2.0,&nbsp;see&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&lt;a&nbsp;class="external"&nbsp;href="http://hacks.mozilla.org/2010/09/final-</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&lt;a&nbsp;class="external"&nbsp;href="http<span class="diff_add">s</span>://hacks.mozilla.org/2010/09/final</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">user-agent-string-for-firefox-4/"&nbsp;title="Final&nbsp;User&nbsp;Agent&nbsp;string&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">-user-agent-string-for-firefox-4/"&nbsp;title="Final&nbsp;User&nbsp;Agent&nbsp;string</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">for&nbsp;Firefox&nbsp;4"&gt;Final&nbsp;User&nbsp;Agent&nbsp;string&nbsp;for&nbsp;Firefox&nbsp;4&lt;/a&gt;&nbsp;(blog&nbsp;po</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;for&nbsp;Firefox&nbsp;4"&gt;Final&nbsp;User&nbsp;Agent&nbsp;string&nbsp;for&nbsp;Firefox&nbsp;4&lt;/a&gt;&nbsp;(blog&nbsp;p</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">st).&nbsp;See&nbsp;also&nbsp;our&nbsp;document&nbsp;on&nbsp;&lt;a&nbsp;href="/en-US/docs/Browser_detect</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ost).&nbsp;See&nbsp;also&nbsp;our&nbsp;document&nbsp;on&nbsp;&lt;a&nbsp;href="/en-US/docs/Browser_detec</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ion_using_the_user_agent"&nbsp;title="/en-US/docs/Browser_detection_us</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tion_using_the_user_agent"&nbsp;title="/en-US/docs/Browser_detection_u</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ing_the_user_agent"&gt;user&nbsp;agent&nbsp;sniffing&lt;/a&gt;&amp;nbsp;and&nbsp;this&nbsp;&lt;a&nbsp;href</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">sing_the_user_agent"&gt;user&nbsp;agent&nbsp;sniffing&lt;/a&gt;&amp;nbsp;and&nbsp;this&nbsp;&lt;a&nbsp;hre</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">="https://hacks.mozilla.org/2013/09/user-agent-detection-history-</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">f="https://hacks.mozilla.org/2013/09/user-agent-detection-history</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">and-checklist/"&nbsp;title="https://hacks.mozilla.org/2013/09/user-age</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">-and-checklist/"&nbsp;title="https://hacks.mozilla.org/2013/09/user-ag</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nt-detection-history-and-checklist/"&gt;Hacks&nbsp;blog&nbsp;post&lt;/a&gt;.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ent-detection-history-and-checklist/"&gt;Hacks&nbsp;blog&nbsp;post&lt;/a&gt;.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__1"><a href="#difflib_chg_to20__2">n</a></td><td class="diff_header" id="from20_11">11</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&nbsp;id="proposal"&gt;General&nbsp;form&lt;/span&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to20__2">n</a></td><td class="diff_header" id="to20_11">11</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;General&nbsp;form</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__2"><a href="#difflib_chg_to20__3">n</a></td><td class="diff_header" id="from20_16">16</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;style="margin-left:&nbsp;40px;"&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to20__3">n</a></td><td class="diff_header" id="to20_16">16</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from20_17">17</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_sub">&lt;span&nbsp;style="font-size:medium"&gt;</span>&lt;strong&gt;Mozilla/5.0&nbsp;(&lt;em&gt;pla</td><td class="diff_next"></td><td class="diff_header" id="to20_17">17</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;Mozilla/5.0&nbsp;(&lt;em&gt;platform&lt;/em&gt;;&nbsp;rv:&lt;em&gt;geckoversion</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tform&lt;/em&gt;;&nbsp;rv:&lt;em&gt;geckoversion&lt;/em&gt;)&nbsp;Gecko/&lt;em<span class="diff_sub">&nbsp;style="font-style</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&lt;/em&gt;)&nbsp;Gecko/&lt;em&gt;geckotrail&lt;/em&gt;&nbsp;Firefox/&lt;em&gt;firefoxversion&lt;/em&gt;&lt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">:italic"</span>&gt;geckotrail&lt;/em&gt;&nbsp;Firefox/&lt;em&gt;firefoxversion&lt;/em&gt;&lt;/strong&gt;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">/strong&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&lt;/span&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__3"><a href="#difflib_chg_to20__4">n</a></td><td class="diff_header" id="from20_32">32</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;On&nbsp;Desktop,&nbsp;&lt;em<span class="diff_sub">&nbsp;style="font-style:italic"</span>&gt;&lt;strong<span class="diff_sub">&nbsp;style</span></td><td class="diff_next"><a href="#difflib_chg_to20__4">n</a></td><td class="diff_header" id="to20_32">32</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;On&nbsp;Desktop,&nbsp;&lt;em&gt;&lt;strong&gt;geckotrail&lt;/strong&gt;&lt;/em&gt;&nbsp;is&nbsp;the</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">="font-weight:bold"</span>&gt;geckotrail&lt;/strong&gt;&lt;/em&gt;&nbsp;is&nbsp;the&nbsp;fixed&nbsp;string&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;fixed&nbsp;string&nbsp;"20100101"</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">"20100101"</td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__4"><a href="#difflib_chg_to20__5">n</a></td><td class="diff_header" id="from20_37">37</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;{{&nbsp;gecko_minversion_inline("10.0")&nbsp;}}&nbsp;from&nbsp;Firefox&nbsp;10&nbsp;o</td><td class="diff_next"><a href="#difflib_chg_to20__5">n</a></td><td class="diff_header" id="to20_37">37</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;{{&nbsp;gecko_minversion_inline("10.0")&nbsp;}}&nbsp;from&nbsp;Firefox&nbsp;10&nbsp;o</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n&nbsp;mobile,&nbsp;&lt;em<span class="diff_sub">&nbsp;style="font-style:italic"</span>&gt;&lt;strong<span class="diff_sub">&nbsp;style="font-weigh</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n&nbsp;mobile,&nbsp;&lt;em&gt;&lt;strong&gt;geckotrail&lt;/strong&gt;&lt;/em&gt;&nbsp;is&nbsp;the&nbsp;same&nbsp;as&nbsp;&lt;st</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">t:bold"</span>&gt;geckotrail&lt;/strong&gt;&lt;/em&gt;&nbsp;is&nbsp;the&nbsp;same&nbsp;as&nbsp;&lt;strong&gt;&lt;em&gt;firef</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">rong&gt;&lt;em&gt;firefoxversion&lt;/em&gt;&lt;/strong&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">oxversion&lt;/em&gt;&lt;/strong&gt;</td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__5"><a href="#difflib_chg_to20__6">n</a></td><td class="diff_header" id="from20_46">46</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;style="margin-left:&nbsp;40px;"&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to20__6">n</a></td><td class="diff_header" id="to20_46">46</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from20_47">47</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="diff_sub">&lt;span&nbsp;style="font-size:medium"&gt;</span>&lt;strong&gt;Mozilla/5.0&nbsp;(&lt;em&gt;pla</td><td class="diff_next"></td><td class="diff_header" id="to20_47">47</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;Mozilla/5.0&nbsp;(&lt;em&gt;platform&lt;/em&gt;;&nbsp;rv:&lt;em&gt;geckoversion</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tform&lt;/em&gt;;&nbsp;rv:&lt;em&gt;geckoversion&lt;/em&gt;)&nbsp;Gecko/&lt;em&gt;geckotrail&lt;/em&gt;&lt;/</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&lt;/em&gt;)&nbsp;Gecko/&lt;em&gt;geckotrail&lt;/em&gt;&lt;/strong&gt;<span class="diff_chg">&nbsp;</span>&lt;strong&gt;&lt;em&gt;appname&lt;/em</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">strong&gt;<span class="diff_chg">&lt;/span&gt;&nbsp;&lt;span&nbsp;style="font-size:medium"&gt;</span>&lt;strong&gt;&lt;em&gt;appname</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&gt;/&lt;em&gt;appversion&lt;/em&gt;&lt;/strong&gt;&lt;br&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&lt;/em&gt;/&lt;em&gt;appversion&lt;/em&gt;&lt;/strong&gt;&lt;br&gt;</td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from20_48">48</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;M&lt;/strong&gt;&lt;/span&gt;&lt;span&nbsp;style="font-size:medium"&gt;&lt;st</span></td><td class="diff_next"></td><td class="diff_header" id="to20_48">48</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;M&lt;/strong&gt;&lt;strong&gt;ozilla/5.0&nbsp;(&lt;em&gt;platform&lt;/em&gt;;&nbsp;rv</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">rong&gt;ozilla/5.0&nbsp;(&lt;em&gt;platform&lt;/em&gt;;&nbsp;rv:&lt;em&gt;geckoversion&lt;/em&gt;)&nbsp;Gec</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">:&lt;em&gt;geckoversion&lt;/em&gt;)&nbsp;Gecko/&lt;em&gt;geckotrail&lt;/em&gt;&lt;/strong&gt;&nbsp;&lt;stron</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ko/&lt;em&gt;geckotrail&lt;/em&gt;&lt;/strong&gt;&lt;/span&gt;&nbsp;&lt;span&nbsp;style="font-size:med</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">g&gt;Firefox/&lt;em&gt;firefoxversion&lt;/em&gt;&lt;/strong&gt;&nbsp;&lt;strong&gt;&lt;em&gt;appname&lt;/e</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ium"&gt;&lt;strong&gt;Firefox/&lt;em&gt;firefoxversion&lt;/em&gt;&lt;/strong&gt;&lt;/span&gt;&nbsp;&lt;spa</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">m&gt;/&lt;em&gt;appversion&lt;/em&gt;&lt;/strong&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">n&nbsp;style="font-size:medium"&gt;&lt;strong&gt;&lt;em&gt;appname&lt;/em&gt;/&lt;em&gt;appversio</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">n&lt;/em&gt;&lt;/strong&gt;&lt;/span&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__6"><a href="#difflib_chg_to20__7">n</a></td><td class="diff_header" id="from20_74">74</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;preferred&nbsp;way&nbsp;to&nbsp;target&nbsp;content&nbsp;to&nbsp;a&nbsp;device&nbsp;form&nbsp;factor</td><td class="diff_next"><a href="#difflib_chg_to20__7">n</a></td><td class="diff_header" id="to20_74">74</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;preferred&nbsp;way&nbsp;to&nbsp;target&nbsp;content&nbsp;to&nbsp;a&nbsp;device&nbsp;form&nbsp;factor</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;is&nbsp;to&nbsp;use&nbsp;CSS&nbsp;Media&nbsp;Queries.&nbsp;However,&nbsp;if&nbsp;you&nbsp;use&nbsp;UA&nbsp;sniffing&nbsp;to&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;is&nbsp;to&nbsp;use&nbsp;CSS&nbsp;Media&nbsp;Queries.&nbsp;However,&nbsp;if&nbsp;you&nbsp;use&nbsp;UA&nbsp;sniffing&nbsp;to&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">target&nbsp;content&nbsp;to&nbsp;a&nbsp;device&nbsp;form&nbsp;factor,&nbsp;please&nbsp;look&nbsp;for&nbsp;&lt;strong&gt;M</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">target&nbsp;content&nbsp;to&nbsp;a&nbsp;device&nbsp;form&nbsp;factor,&nbsp;please&nbsp;look&nbsp;for&nbsp;&lt;strong&gt;M</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">obi&lt;/strong&gt;&nbsp;(to&nbsp;include&nbsp;Opera&nbsp;Mobile,&nbsp;which&nbsp;uses&nbsp;"Mobi")&nbsp;for&nbsp;the</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">obi&lt;/strong&gt;&nbsp;(to&nbsp;include&nbsp;Opera&nbsp;Mobile,&nbsp;which&nbsp;uses&nbsp;"Mobi")&nbsp;for&nbsp;the</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;phone&nbsp;form&nbsp;factor&nbsp;and&nbsp;do&nbsp;&lt;strong&gt;not&lt;/strong&gt;&nbsp;assume&nbsp;any&nbsp;correla</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;phone&nbsp;form&nbsp;factor&nbsp;and&nbsp;do&nbsp;&lt;strong&gt;not&lt;/strong&gt;&nbsp;assume&nbsp;any&nbsp;correla</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tion&nbsp;between&nbsp;"Android"&nbsp;and&nbsp;the&nbsp;device&nbsp;form&nbsp;factor.&nbsp;This&nbsp;way,&nbsp;your</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tion&nbsp;between&nbsp;"Android"&nbsp;and&nbsp;the&nbsp;device&nbsp;form&nbsp;factor.&nbsp;This&nbsp;way,&nbsp;your</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;code&nbsp;will&nbsp;work&nbsp;if/when&nbsp;Firefox&nbsp;ships&nbsp;on&nbsp;other&nbsp;phone/tablet&nbsp;opera</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;code&nbsp;will&nbsp;work&nbsp;if/when&nbsp;Firefox&nbsp;ships&nbsp;on&nbsp;other&nbsp;phone/tablet&nbsp;opera</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ting&nbsp;systems&nbsp;or&nbsp;Android&nbsp;is&nbsp;used&nbsp;for&nbsp;laptops.&nbsp;Also,&nbsp;please&nbsp;use&nbsp;tou</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ting&nbsp;systems&nbsp;or&nbsp;Android&nbsp;is&nbsp;used&nbsp;for&nbsp;laptops.&nbsp;Also,&nbsp;please&nbsp;use&nbsp;tou</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ch&nbsp;detection&nbsp;to&nbsp;find&nbsp;touch&nbsp;devices&nbsp;rather&nbsp;than&nbsp;looking&nbsp;for&nbsp;"Mobi"</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ch&nbsp;detection&nbsp;to&nbsp;find&nbsp;touch&nbsp;devices&nbsp;rather&nbsp;than&nbsp;looking&nbsp;for&nbsp;"Mobi"</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;or&nbsp;"Tablet"<span class="diff_chg">&nbsp;-&nbsp;there</span>&nbsp;may&nbsp;be&nbsp;touch&nbsp;devices&nbsp;which&nbsp;are&nbsp;not&nbsp;tablets.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;or&nbsp;"Tablet"<span class="diff_chg">,&nbsp;since&nbsp;there</span>&nbsp;may&nbsp;be&nbsp;touch&nbsp;devices&nbsp;which&nbsp;are&nbsp;not&nbsp;tabl</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ets.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__7"><a href="#difflib_chg_to20__8">n</a></td><td class="diff_header" id="from20_231">231</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mozilla/5.0&nbsp;(Android;&nbsp;Mobile;&nbsp;rv:40.0)&nbsp;Gecko/40.0&nbsp;&lt;sp</span></td><td class="diff_next"><a href="#difflib_chg_to20__8">n</a></td><td class="diff_header" id="to20_231">231</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mozilla/5.0&nbsp;(Android;&nbsp;Mobile;&nbsp;rv:40.0)&nbsp;Gecko/40.0&nbsp;Fir</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">an&nbsp;class="Object"&nbsp;id="OBJ_PREFIX_DWT935_com_zimbra_ymaps"&gt;&lt;span&nbsp;c</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">efox/40.0</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">lass="Object"&nbsp;id="OBJ_PREFIX_DWT936_com_zimbra_ymaps"&gt;Firefox/40.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">0&lt;/span&gt;&lt;/span&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__8"><a href="#difflib_chg_to20__9">n</a></td><td class="diff_header" id="from20_239">239</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mozilla/5.0&nbsp;(Android;&nbsp;Tablet;&nbsp;rv:40.0)&nbsp;Gecko/40.0&nbsp;&lt;sp</span></td><td class="diff_next"><a href="#difflib_chg_to20__9">n</a></td><td class="diff_header" id="to20_239">239</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mozilla/5.0&nbsp;(Android;&nbsp;Tablet;&nbsp;rv:40.0)&nbsp;Gecko/40.0&nbsp;Fir</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">an&nbsp;class="Object"&nbsp;id="OBJ_PREFIX_DWT935_com_zimbra_ymaps"&gt;&lt;span&nbsp;c</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">efox/40.0</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">lass="Object"&nbsp;id="OBJ_PREFIX_DWT936_com_zimbra_ymaps"&gt;Firefox/40.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">0&lt;/span&gt;&lt;/span&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__9"><a href="#difflib_chg_to20__10">n</a></td><td class="diff_header" id="from20_270">270</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mozilla/5.0&nbsp;(Android&nbsp;4.4;&nbsp;Mobile;&nbsp;rv:41.0)&nbsp;Gecko/41.0</span></td><td class="diff_next"><a href="#difflib_chg_to20__10">n</a></td><td class="diff_header" id="to20_270">270</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mozilla/5.0&nbsp;(Android&nbsp;4.4;&nbsp;Mobile;&nbsp;rv:41.0)&nbsp;Gecko/41.0</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&lt;span&nbsp;class="Object"&nbsp;id="OBJ_PREFIX_DWT935_com_zimbra_ymaps"&gt;&lt;sp</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;Firefox/41.0</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">an&nbsp;class="Object"&nbsp;id="OBJ_PREFIX_DWT936_com_zimbra_ymaps"&gt;Firefox</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">/41.0&lt;/span&gt;&lt;/span&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__10"><a href="#difflib_chg_to20__11">n</a></td><td class="diff_header" id="from20_278">278</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mozilla/5.0&nbsp;(Android&nbsp;4.4;&nbsp;Tablet;&nbsp;rv:41.0)&nbsp;Gecko/41.0</span></td><td class="diff_next"><a href="#difflib_chg_to20__11">n</a></td><td class="diff_header" id="to20_278">278</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mozilla/5.0&nbsp;(Android&nbsp;4.4;&nbsp;Tablet;&nbsp;rv:41.0)&nbsp;Gecko/41.0</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&lt;span&nbsp;class="Object"&nbsp;id="OBJ_PREFIX_DWT935_com_zimbra_ymaps"&gt;&lt;sp</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;Firefox/41.0</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">an&nbsp;class="Object"&nbsp;id="OBJ_PREFIX_DWT936_com_zimbra_ymaps"&gt;Firefox</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">/41.0&lt;/span&gt;&lt;/span&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__11"><a href="#difflib_chg_to20__12">n</a></td><td class="diff_header" id="from20_439">439</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It's&nbsp;easy&nbsp;to&nbsp;find&nbsp;the&nbsp;correspondences&nbsp;by&nbsp;looking&nbsp;at&nbsp;the&nbsp;&lt;</td><td class="diff_next"><a href="#difflib_chg_to20__12">n</a></td><td class="diff_header" id="to20_439">439</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It's&nbsp;easy&nbsp;to&nbsp;find&nbsp;the&nbsp;correspondences&nbsp;by&nbsp;looking&nbsp;at&nbsp;the&nbsp;&lt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a&nbsp;href="http://hg.mozilla.org/releases"&gt;Mercurial&nbsp;repository&nbsp;name</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a&nbsp;href="http<span class="diff_add">s</span>://hg.mozilla.org/releases"&gt;Mercurial&nbsp;repository&nbsp;nam</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">s&lt;/a&gt;:&nbsp;repositories&nbsp;starting&nbsp;by&nbsp;&lt;code&gt;mozilla-b2g&lt;/code&gt;&nbsp;are&nbsp;the&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">es&lt;/a&gt;:&nbsp;repositories&nbsp;starting&nbsp;by&nbsp;&lt;code&gt;mozilla-b2g&lt;/code&gt;&nbsp;are&nbsp;the</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">release&nbsp;repositories&nbsp;for&nbsp;Firefox&nbsp;OS,&nbsp;and&nbsp;have&nbsp;both&nbsp;Firefox&nbsp;OS&nbsp;and</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;release&nbsp;repositories&nbsp;for&nbsp;Firefox&nbsp;OS,&nbsp;and&nbsp;have&nbsp;both&nbsp;Firefox&nbsp;OS&nbsp;an</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;Gecko&nbsp;versions&nbsp;in&nbsp;their&nbsp;names.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">d&nbsp;Gecko&nbsp;versions&nbsp;in&nbsp;their&nbsp;names.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__12"><a href="#difflib_chg_to20__13">n</a></td><td class="diff_header" id="from20_495">495</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to20__13">n</a></td><td class="diff_header" id="to20_495">495</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;id="Other_Gecko-based_browsers"&gt;</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__13"><a href="#difflib_chg_to20__14">n</a></td><td class="diff_header" id="from20_556">556</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;&lt;span&nbsp;id="implementation"&gt;Implementation&nbsp;notes&nbsp;for&nbsp;ap</span></td><td class="diff_next"><a href="#difflib_chg_to20__14">n</a></td><td class="diff_header" id="to20_556">556</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Implementation&nbsp;notes&nbsp;for&nbsp;applications,&nbsp;vendors,&nbsp;and&nbsp;extensi</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">plications,&nbsp;vendors,&nbsp;and&nbsp;extensions&lt;/span&gt;&lt;/span&gt;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ons</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from20_557">557</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h2&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from20_558">558</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_chg">p</span>&gt;</td><td class="diff_next"></td><td class="diff_header" id="to20_557">557</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_chg">/h2</span>&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to20_558">558</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from20_559">559</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prior&nbsp;to&nbsp;Firefox&nbsp;4&nbsp;and&nbsp;Gecko&nbsp;2.0,&nbsp;it&nbsp;was&nbsp;possible&nbsp;for&nbsp;exten</td><td class="diff_next"></td><td class="diff_header" id="to20_559">559</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prior&nbsp;to&nbsp;Firefox&nbsp;4&nbsp;and&nbsp;Gecko&nbsp;2.0,&nbsp;it&nbsp;was&nbsp;possible&nbsp;for&nbsp;exten</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">sions&nbsp;to&nbsp;add&nbsp;user&nbsp;agent&nbsp;parts&nbsp;through&nbsp;the&nbsp;&lt;code&gt;general.useragent</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">sions&nbsp;to&nbsp;add&nbsp;user&nbsp;agent&nbsp;parts&nbsp;through&nbsp;the&nbsp;&lt;code&gt;general.useragent</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">.extra.&lt;em&gt;identifier&lt;/em&gt;&lt;/code&gt;&nbsp;preferences,&nbsp;(see&nbsp;the&nbsp;&lt;a&nbsp;href="</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">.extra.&lt;em&gt;identifier&lt;/em&gt;&lt;/code&gt;&nbsp;preferences,&nbsp;(see&nbsp;the&nbsp;&lt;a&nbsp;href="</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">/En/User_Agent_Strings_Reference"&nbsp;title="https://developer.mozill</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">/En/User_Agent_Strings_Reference"&nbsp;title="https://developer.mozill</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a.org/en/User_Agent_Strings_Reference"&gt;<span class="diff_sub">&lt;span&nbsp;class="moz-txt-link-</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a.org/en/User_Agent_Strings_Reference"&gt;obsolete&nbsp;User&nbsp;Agent&nbsp;String</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">freetext"&gt;</span>obsolete&nbsp;User&nbsp;Agent&nbsp;Strings&nbsp;Reference&lt;/<span class="diff_chg">span&gt;&lt;/a&gt;&lt;span&nbsp;c</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">s&nbsp;Reference&lt;/<span class="diff_chg">a</span>&gt;).&nbsp;But&nbsp;that&nbsp;has&nbsp;not&nbsp;been&nbsp;possible&nbsp;since&nbsp;{{&nbsp;Bug(581</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">lass="moz-txt-citetags"</span>&gt;).<span class="diff_sub">&lt;/span&gt;</span>&nbsp;But&nbsp;that&nbsp;has&nbsp;not&nbsp;been&nbsp;possible&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">008)&nbsp;}}.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">since&nbsp;{{&nbsp;Bug(581008)&nbsp;}}.</td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to20__14"><a href="#difflib_chg_to20__top">t</a></td><td class="diff_header" id="from20_569">569</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href="http://lawrencemandel.com/2012/07/27/decision-ma</td><td class="diff_next"><a href="#difflib_chg_to20__top">t</a></td><td class="diff_header" id="to20_569">569</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href="http://lawrencemandel.com/2012/07/27/decision-ma</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">de-firefox-os-user-agent-string/"<span class="diff_chg">&nbsp;title="http://lawrencemandel.co</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">de-firefox-os-user-agent-string/"<span class="diff_chg">&gt;F</span>irefox&nbsp;OS&nbsp;User&nbsp;Agent&nbsp;String&lt;/a</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">m/2012/07/27/decision-made-f</span>irefox<span class="diff_sub">-os-user-agent-string/"&gt;Firefox</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&gt;&nbsp;(blog&nbsp;post&nbsp;w/&lt;a&nbsp;href="https://bugzilla.mozilla.org/show_bug.cgi</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub"></span>&nbsp;OS&nbsp;User&nbsp;Agent&nbsp;String&lt;/a&gt;&nbsp;(blog&nbsp;post&nbsp;w/&lt;a&nbsp;href="https://bugzilla.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">?id=777710"&nbsp;title="https://bugzilla.mozilla.org/show_bug.cgi?id=7</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mozilla.org/show_bug.cgi?id=777710"&nbsp;title="https://bugzilla.mozil</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">77710"&gt;bug&nbsp;777710&lt;/a&gt;&nbsp;reference)</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">la.org/show_bug.cgi?id=777710"&gt;bug&nbsp;777710&lt;/a&gt;&nbsp;reference)</td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from20_570">570</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from20_571">571</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;</td><td class="diff_next"></td><td class="diff_header" id="to20_570">570</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>li&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to20_571">571</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from20_572">572</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http://hacks.mozilla.org/2010/0</td><td class="diff_next"></td><td class="diff_header" id="to20_572">572</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http<span class="diff_add">s</span>://hacks.mozilla.org/2010/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">9/final-user-agent-string-for-firefox-4/"&nbsp;title="Final&nbsp;User&nbsp;Agent</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">09/final-user-agent-string-for-firefox-4/"&nbsp;title="Final&nbsp;User&nbsp;Agen</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;string&nbsp;for&nbsp;Firefox&nbsp;4"&gt;Final&nbsp;User&nbsp;Agent&nbsp;string&nbsp;for&nbsp;Firefox&nbsp;4&lt;/a&gt;&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">t&nbsp;string&nbsp;for&nbsp;Firefox&nbsp;4"&gt;Final&nbsp;User&nbsp;Agent&nbsp;string&nbsp;for&nbsp;Firefox&nbsp;4&lt;/a&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">(blog&nbsp;post)</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;(blog&nbsp;post)</td></tr>
+        </tbody>
+    </table></dd>
+        
+      </dl>
+    </section>
+  
+
+    <p><a href="Firefox%24history.html" rel="nofollow, noindex">Back to History</a></p>
+
+  </article>
+
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+    
+    <input type="hidden" name="to" value="1018872">
+    
+  
+    
+    <input type="hidden" name="from" value="1018870">
+    
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox$compare?to=1018872&from=1018870 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:12:35 GMT -->
+</html>

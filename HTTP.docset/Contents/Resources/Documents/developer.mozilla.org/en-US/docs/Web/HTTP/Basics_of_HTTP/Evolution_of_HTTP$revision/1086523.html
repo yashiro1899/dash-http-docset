@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP$revision/1086523 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:10:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1086523 | Evolution of HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FBasics_of_HTTP%2FEvolution_of_HTTP%24revision%2F1086523" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP%24revision/1086523">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1086523 of <a href="../Evolution_of_HTTP.html">Evolution of HTTP</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/History_of_HTTP_versions</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>History of HTTP versions</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1086523</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-07-20T03:35:22-07:00">Jul 20, 2016, 3:35:22 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p><strong>HTTP</strong> is the protocol at the foundation of the Web. It has been invented by Tim Berners Lee in the years 1989-1991 and has seen numerous modifications since then, mostly keeping its original simplicity and building on its extensibility. HTTP has evolved from a protocol to exchange files in a trusted laboratory environment to the modern jungle of the Internet carrying images, videos in high resolution and in 3D.</p>
+
+<h2 id="Invention_of_the_WWW">Invention of the WWW</h2>
+
+<p>In 1989, Tim Berners Lee then working at CERN in Geneva, wrote a proposal to build an hypertext system over the Internet. Initially called the <em>Mesh</em>, it was renamed in <em>World Wide Web</em> during its implementation in 1990. Built over the existing TCP and IP protocols, it consisted of 4 building blocks:</p>
+
+<ul>
+ <li>A textual format to represent hypertext documents, <em>HTML</em>.</li>
+ <li>A simple protocol to exchange such document, <em>HTTP</em>.</li>
+ <li>A client to display (and accidentally edit) such document, the first Web browser called <em>WorldWideWeb</em>.</li>
+ <li>A server to give access to the document, an early version of <em>httpd</em>.</li>
+</ul>
+
+<p>These four building blocks were completed by the end of 1990, and the first servers were running outside the CERN in early 1991. On August 6<sup>th</sup> 1991, Tim Berners Lee's <a href="https://groups.google.com/forum/#!msg/alt.hypertext/eCTkkOoWTAY/urNMgHnS2gYJ">post</a> on the public <em>alt.hypertext</em> newsgroupis considered as the official start of the World Wide Web as a public project.</p>
+
+<p>The HTTP protocol used in these early phase was very simple and has been later called HTTP/0.9 and is dubbed the one-line protocol.</p>
+
+<h2 id="HTTP0.9_–_The_one-line_protocol">HTTP/0.9 – The one-line protocol</h2>
+
+<p>The initial version of HTTP has no version number. It has been called 0.9 to differentiate it from the later versions. It was extremely simple: request are one liners and starting with the only possible method {{HTTPMethod("GET")}} followed by the path to the ressource (not the URL as both the protocol, server, and port are unnecessary once connected to the server).</p>
+
+<pre>GET /mypage.html</pre>
+
+<p>The response was very simple too. It only consisted of the file itself:</p>
+
+<pre>&lt;HTML&gt;
+A very simple HTML page
+&lt;/HTML&gt;</pre>
+
+<p>Unlike subsequent evolution, there were no HTTP headers, meaning that only HTML files could be transmitted, no other type of documents. There were no status code or error code: in case of a problem, a specific HTML file was send back with the description of the problem contained in it, for human consumption.</p>
+
+<h2 id="HTTP1.0_–_Building_extensibility">HTTP/1.0 – Building extensibility</h2>
+
+<p>HTTP/0.9 was very limited and both browsers and servers extended it to be more versatile:</p>
+
+<ul>
+ <li>Versioning information is send with teach request (<code>HTTP/1.0</code> is appended to the <code>GET</code> line)</li>
+ <li>An status code line is send at the beginning of the response, allowing the browser to understand the success or failure of the request and to behave accordingly (like in managing correctly its local cache!)</li>
+ <li>The notion of HTTP Headers has been introduced, both for the request and the response, allowing meta-data to be transmitted and making the protocol incredibly flexible and extensible.</li>
+ <li>Using these HTTP Headers, the ability to transmit other documents thant plain HTML files has been added (thanks to the {{HTTPHeader("Content-Type")}} header).</li>
+</ul>
+
+<p>A typical request was then looking like:</p>
+
+<pre>GET /mypage.html HTTP/1.0
+User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
+
+200 OK
+Date: Tue, 15 Nov 1994 08:12:31 GMT
+Server: CERN/3.0 libwww/2.17
+Content-Type: text/html
+&lt;HTML&gt; 
+A page with an image
+  &lt;IMG SRC="/myimage.gif"&gt;
+&lt;/HTML&gt;</pre>
+
+<p>Followed by a second connection and request to fetch the image:</p>
+
+<pre>GET /myimage.html HTTP/1.0
+User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
+
+200 OK
+Date: Tue, 15 Nov 1994 08:12:32 GMT
+Server: CERN/3.0 libwww/2.17
+Content-Type: text/gif
+<em>(image content)</em></pre>
+
+<p>These novelties have not been introduced as concerted effort, but as a try-and-see approach over the 1991-1995 period: a server and a browser added one feature and it saw if it get traction. A lot of interoperability problems were common. In November 1996, in order to solve these annoyances, an informational document describing the common practices has been published, {{RFC(1945)}}. This is the definition of HTTP/1.0 and it is notable that, stricto sensu, it isn't an official standard.</p>
+
+<h2 id="HTTP1.1_–_The_standardized_protocol">HTTP/1.1 – The standardized protocol</h2>
+
+<p>In parallel to the somewhat chaotic use of HTTP/1.0, and since 1995, well before the publication of {{RFC(1945)}} the next year, proper standardization was in progress. The first standardized version of HTTP, HTTP/1.1 was published in early 1997, only a few months after the HTTP/1.0 documents.</p>
+
+<p>HTTP/1.1 clarified ambiguities and introduced numerous improvements:</p>
+
+<ul>
+ <li>A connection can be reused, saving the time to reopen it numerous times to display the resources embedded into the single original ducment retrieved.</li>
+ <li>Chunked responses are supported</li>
+ <li>Support of charset encoding, compression allowed for greater efficiency and flexibility.</li>
+ <li>Caching mechanisms have been introduced.</li>
+ <li>Content negotiation, include language, have been introduced allowing a client and a server to agree on the most adequate content to exchange.</li>
+</ul>
+
+<p>HTTP/1.1 was first published as {{rfc(2068)}} in January 1997.</p>
+
+<h2 id="Minor_extensions_for_more_than_10_years">More than 10 years of minor extensions</h2>
+
+<h2 id="HTTP2_–_A_modernized_protocol">HTTP/2 – A modernized protocol</h2>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p&gt;&lt;strong&gt;HTTP&lt;/strong&gt; is the protocol at the foundation of the Web. It has been invented by Tim Berners Lee in the years 1989-1991 and has seen numerous modifications since then, mostly keeping its original simplicity and building on its extensibility. HTTP has evolved from a protocol to exchange files in a trusted laboratory environment to the modern jungle of the Internet carrying images, videos in high resolution and in 3D.&lt;/p&gt;
+
+&lt;h2 id=&#34;Invention_of_the_WWW&#34;&gt;Invention of the WWW&lt;/h2&gt;
+
+&lt;p&gt;In 1989, Tim Berners Lee then working at CERN in Geneva, wrote a proposal to build an hypertext system over the Internet. Initially called the &lt;em&gt;Mesh&lt;/em&gt;, it was renamed in &lt;em&gt;World Wide Web&lt;/em&gt; during its implementation in 1990. Built over the existing TCP and IP protocols, it consisted of 4 building blocks:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;A textual format to represent hypertext documents, &lt;em&gt;HTML&lt;/em&gt;.&lt;/li&gt;
+ &lt;li&gt;A simple protocol to exchange such document, &lt;em&gt;HTTP&lt;/em&gt;.&lt;/li&gt;
+ &lt;li&gt;A client to display (and accidentally edit) such document, the first Web browser called &lt;em&gt;WorldWideWeb&lt;/em&gt;.&lt;/li&gt;
+ &lt;li&gt;A server to give access to the document, an early version of &lt;em&gt;httpd&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These four building blocks were completed by the end of 1990, and the first servers were running outside the CERN in early 1991. On August 6&lt;sup&gt;th&lt;/sup&gt; 1991, Tim Berners Lee&#39;s &lt;a href=&#34;https://groups.google.com/forum/#!msg/alt.hypertext/eCTkkOoWTAY/urNMgHnS2gYJ&#34;&gt;post&lt;/a&gt; on the public &lt;em&gt;alt.hypertext&lt;/em&gt; newsgroupis considered as the official start of the World Wide Web as a public project.&lt;/p&gt;
+
+&lt;p&gt;The HTTP protocol used in these early phase was very simple and has been later called HTTP/0.9 and is dubbed the one-line protocol.&lt;/p&gt;
+
+&lt;h2 id=&#34;HTTP0.9_–_The_one-line_protocol&#34;&gt;HTTP/0.9 – The one-line protocol&lt;/h2&gt;
+
+&lt;p&gt;The initial version of HTTP has no version number. It has been called 0.9 to differentiate it from the later versions. It was extremely simple: request are one liners and starting with the only possible method {{HTTPMethod(&#34;GET&#34;)}} followed by the path to the ressource (not the URL as both the protocol, server, and port are unnecessary once connected to the server).&lt;/p&gt;
+
+&lt;pre&gt;
+GET /mypage.html&lt;/pre&gt;
+
+&lt;p&gt;The response was very simple too. It only consisted of the file itself:&lt;/p&gt;
+
+&lt;pre&gt;
+&amp;lt;HTML&amp;gt;
+A very simple HTML page
+&amp;lt;/HTML&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;Unlike subsequent evolution, there were no HTTP headers, meaning that only HTML files could be transmitted, no other type of documents. There were no status code or error code: in case of a problem, a specific HTML file was send back with the description of the problem contained in it, for human consumption.&lt;/p&gt;
+
+&lt;h2 id=&#34;HTTP1.0_–_Building_extensibility&#34;&gt;HTTP/1.0 – Building extensibility&lt;/h2&gt;
+
+&lt;p&gt;HTTP/0.9 was very limited and both browsers and servers extended it to be more versatile:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Versioning information is send with teach request (&lt;code&gt;HTTP/1.0&lt;/code&gt; is appended to the &lt;code&gt;GET&lt;/code&gt; line)&lt;/li&gt;
+ &lt;li&gt;An status code line is send at the beginning of the response, allowing the browser to understand the success or failure of the request and to behave accordingly (like in managing correctly its local cache!)&lt;/li&gt;
+ &lt;li&gt;The notion of HTTP Headers has been introduced, both for the request and the response, allowing meta-data to be transmitted and making the protocol incredibly flexible and extensible.&lt;/li&gt;
+ &lt;li&gt;Using these HTTP Headers, the ability to transmit other documents thant plain HTML files has been added (thanks to the {{HTTPHeader(&#34;Content-Type&#34;)}} header).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A typical request was then looking like:&lt;/p&gt;
+
+&lt;pre&gt;
+GET /mypage.html HTTP/1.0
+User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
+
+200 OK
+Date: Tue, 15 Nov 1994 08:12:31 GMT
+Server: CERN/3.0 libwww/2.17
+Content-Type: text/html
+&amp;lt;HTML&amp;gt; 
+A page with an image
+  &amp;lt;IMG SRC=&#34;/myimage.gif&#34;&amp;gt;
+&amp;lt;/HTML&amp;gt;&lt;/pre&gt;
+
+&lt;p&gt;Followed by a second connection and request to fetch the image:&lt;/p&gt;
+
+&lt;pre&gt;
+GET /myimage.html HTTP/1.0
+User-Agent: NCSA_Mosaic/2.0 (Windows 3.1)
+
+200 OK
+Date: Tue, 15 Nov 1994 08:12:32 GMT
+Server: CERN/3.0 libwww/2.17
+Content-Type: text/gif
+&lt;em&gt;(image content)&lt;/em&gt;&lt;/pre&gt;
+
+&lt;p&gt;These novelties have not been introduced as concerted effort, but as a try-and-see approach over the 1991-1995 period: a server and a browser added one feature and it saw if it get traction. A lot of interoperability problems were common. In November 1996, in order to solve these annoyances, an informational document describing the common practices has been published, {{RFC(1945)}}. This is the definition of HTTP/1.0 and it is notable that, stricto sensu, it isn&#39;t an official standard.&lt;/p&gt;
+
+&lt;h2 id=&#34;HTTP1.1_–_The_standardized_protocol&#34;&gt;HTTP/1.1 – The standardized protocol&lt;/h2&gt;
+
+&lt;p&gt;In parallel to the somewhat chaotic use of HTTP/1.0, and since 1995, well before the publication of {{RFC(1945)}} the next year, proper standardization was in progress. The first standardized version of HTTP, HTTP/1.1 was published in early 1997, only a few months after the HTTP/1.0 documents.&lt;/p&gt;
+
+&lt;p&gt;HTTP/1.1 clarified ambiguities and introduced numerous improvements:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;A connection can be reused, saving the time to reopen it numerous times to display the resources embedded into the single original ducment retrieved.&lt;/li&gt;
+ &lt;li&gt;Chunked responses are supported&lt;/li&gt;
+ &lt;li&gt;Support of charset encoding, compression allowed for greater efficiency and flexibility.&lt;/li&gt;
+ &lt;li&gt;Caching mechanisms have been introduced.&lt;/li&gt;
+ &lt;li&gt;Content negotiation, include language, have been introduced allowing a client and a server to agree on the most adequate content to exchange.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HTTP/1.1 was first published as {{rfc(2068)}} in January 1997.&lt;/p&gt;
+
+&lt;h2 id=&#34;Minor_extensions_for_more_than_10_years&#34;&gt;More than 10 years of minor extensions&lt;/h2&gt;
+
+&lt;h2 id=&#34;HTTP2_–_A_modernized_protocol&#34;&gt;HTTP/2 – A modernized protocol&lt;/h2&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP%24revert/1086523" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP$revision/1086523 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:10:35 GMT -->
+</html>

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Cookies$compare?to=1111855&from=1110011 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:21:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Compare Revisions | HTTP cookies | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FCookies%24compare%3Fto%3D1111855%26from%3D1110011" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Cookies%24compare%3Fto%3D1111855%26from%3D1110011">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article id="compare-revisions">
+
+    <h1>Compare Revisions</h1>
+    <h2><a href="Cookies.html">HTTP cookies</a></h2>
+
+    
+    <section class="revision-diff">
+      <a href="Cookies%24history00fd.html?locale=en-US&amp;origin=translate">Change Revisions</a>
+      <header>
+        <div class="rev-from">
+            <h3>
+            
+              <a href="Cookies%24revision/1110011.html" rel="nofollow, noindex">
+                Revision 1110011:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1110011 by <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a> on <time datetime="2016-08-26T07:39:19-07:00">August 26, 2016 at 7:39:19 AM PDT</time>
+          </p>
+        </div>
+        <div class="rev-to">
+          <h3>
+            
+              <a href="Cookies%24revision/1111855.html" rel="nofollow, noindex">
+                Revision 1111855:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1111855 by <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a> on <time datetime="2016-08-31T06:20:05-07:00">August 31, 2016 at 6:20:05 AM PDT</time>
+          </p>
+        </div>
+      </header>
+
+      <dl>
+        <dt>Title:</dt>
+        <dd class="rev-from">HTTP cookies</dd>
+        <dd class="rev-to">HTTP cookies</dd>
+
+        <dt>Slug:</dt>
+        <dd class="rev-from">Web/HTTP/Cookies</dd>
+        <dd class="rev-to">Web/HTTP/Cookies</dd>
+
+        
+        <dt>Tags:</dt>
+        <dd class="rev-from"> &#34;Cookies&#34; &#34;HTTP&#34;</dd>
+        <dd class="rev-to"> &#34;Cookies&#34; &#34;HTTP&#34; &#34;Cookies&#34;</dd>
+        
+
+        
+
+        <dt>Content:</dt>
+        
+        <dd>
+    <table class="diff" id="difflib_chg_to52__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1110011</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1111855</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__0"><a href="#difflib_chg_to52__1">n</a></td><td class="diff_header" id="from52_10">10</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;id="History_motivating_use_cases"&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to52__1">n</a></td><td class="diff_header" id="to52_10">10</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class="summary"&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_11">11</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;History,&nbsp;motivating&nbsp;use&nbsp;cases</span></td><td class="diff_next"></td><td class="diff_header" id="to52_11">11</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;HTTP&nbsp;cookie&nbsp;(web&nbsp;cookie,&nbsp;browser&nbsp;cookie)&nbsp;is&nbsp;a&nbsp;small&nbsp;piec</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">e&nbsp;of&nbsp;data&nbsp;that&nbsp;a&nbsp;server&nbsp;sends&nbsp;to&nbsp;the&nbsp;user's&nbsp;web&nbsp;browser.&nbsp;It&nbsp;is&nbsp;us</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ed&nbsp;way&nbsp;to&nbsp;know&nbsp;if&nbsp;two&nbsp;requests&nbsp;came&nbsp;from&nbsp;the&nbsp;same&nbsp;web&nbsp;browser&nbsp;to&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">allow&nbsp;to&nbsp;keep&nbsp;a&nbsp;user&nbsp;logged-in,&nbsp;for&nbsp;example.&nbsp;It&nbsp;remembers&nbsp;statefu</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">l&nbsp;information&nbsp;for&nbsp;the&nbsp;stateless&nbsp;HTTP&nbsp;protocol.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_12">12</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h2&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_13">13</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_14">14</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;the&nbsp;early&nbsp;days&nbsp;of&nbsp;the&nbsp;web,&nbsp;a&nbsp;server&nbsp;had&nbsp;no&nbsp;way&nbsp;to&nbsp;know&nbsp;i</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">f&nbsp;two&nbsp;requests&nbsp;came&nbsp;from&nbsp;the&nbsp;same&nbsp;web&nbsp;browser.&nbsp;This&nbsp;was&nbsp;considere</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">d&nbsp;as&nbsp;a&nbsp;limitation&nbsp;since&nbsp;it&nbsp;did&nbsp;not&nbsp;allow&nbsp;for&nbsp;instance&nbsp;to&nbsp;keep&nbsp;a&nbsp;u</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ser&nbsp;logged-in.&nbsp;This&nbsp;apparent&nbsp;limitation&nbsp;led&nbsp;Netscape&nbsp;to&nbsp;ship&nbsp;a&nbsp;te</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">chnology&nbsp;called&nbsp;"cookies"&nbsp;in&nbsp;the&nbsp;first&nbsp;version&nbsp;of&nbsp;its&nbsp;Netscape&nbsp;Na</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">vigator.&nbsp;It&nbsp;has&nbsp;been&nbsp;quickly&nbsp;adopted&nbsp;by&nbsp;web&nbsp;developers&nbsp;and&nbsp;copied</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;by&nbsp;other&nbsp;web&nbsp;browsers.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_15">15</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_16">16</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_17">17</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With&nbsp;the&nbsp;introduction&nbsp;of&nbsp;{{&nbsp;domxref("document.cookie")&nbsp;}},&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">Web&nbsp;developers&nbsp;quickly&nbsp;started&nbsp;to&nbsp;use&nbsp;cookies&nbsp;as&nbsp;client-side&nbsp;stor</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">age.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__1"><a href="#difflib_chg_to52__2">n</a></td><td class="diff_header" id="from52_23">23</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How&nbsp;cookies&nbsp;work&nbsp;is&nbsp;defined&nbsp;by&nbsp;the&nbsp;&lt;a&nbsp;class="external"&nbsp;href</td><td class="diff_next"><a href="#difflib_chg_to52__2">n</a></td><td class="diff_header" id="to52_17">17</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How&nbsp;cookies&nbsp;work&nbsp;is&nbsp;defined&nbsp;by&nbsp;the&nbsp;&lt;a&nbsp;class="external"&nbsp;href</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">="http://tools.ietf.org/html/rfc6265"&gt;RFC&nbsp;6265&lt;/a&gt;.&nbsp;When&nbsp;receivin</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">="http<span class="diff_add">s</span>://tools.ietf.org/html/rfc6265"&gt;RFC&nbsp;6265&lt;/a&gt;.&nbsp;When&nbsp;receivi</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">g&nbsp;an&nbsp;HTTP&nbsp;request,&nbsp;a&nbsp;server&nbsp;can&nbsp;send&nbsp;a&nbsp;<span class="diff_chg">&lt;code&gt;</span>Set-Cookie<span class="diff_chg">&lt;/code&gt;&nbsp;he</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ng&nbsp;an&nbsp;HTTP&nbsp;request,&nbsp;a&nbsp;server&nbsp;can&nbsp;send&nbsp;a&nbsp;<span class="diff_chg">{{HTTPHeader("</span>Set-Cookie<span class="diff_chg">"</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">ader&nbsp;with&nbsp;the&nbsp;response.</span>&nbsp;Afterward,&nbsp;the&nbsp;cookie&nbsp;value&nbsp;is&nbsp;sent&nbsp;along</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">)}}&nbsp;header&nbsp;with&nbsp;the&nbsp;response.</span>&nbsp;Afterward,&nbsp;the&nbsp;cookie&nbsp;value&nbsp;is&nbsp;sent</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;with&nbsp;every&nbsp;request&nbsp;made&nbsp;to&nbsp;the&nbsp;same&nbsp;server&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;a&nbsp;<span class="diff_chg">&lt;cod</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;along&nbsp;with&nbsp;every&nbsp;request&nbsp;made&nbsp;to&nbsp;the&nbsp;same&nbsp;server&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">e&gt;</span>Cookie<span class="diff_chg">&lt;/code&gt;</span>&nbsp;HTTP&nbsp;header.&nbsp;Additionally,&nbsp;an&nbsp;expiration&nbsp;delay&nbsp;ca</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">a&nbsp;<span class="diff_chg">{{HTTPHeader("</span>Cookie<span class="diff_chg">")}}</span>&nbsp;HTTP&nbsp;header.&nbsp;Additionally,&nbsp;an&nbsp;expirati</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">n&nbsp;be&nbsp;specified.&nbsp;Restrictions&nbsp;to&nbsp;a&nbsp;specific&nbsp;domain&nbsp;and&nbsp;path&nbsp;can&nbsp;be</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">on&nbsp;delay&nbsp;can&nbsp;be&nbsp;specified.&nbsp;Restrictions&nbsp;to&nbsp;a&nbsp;specific&nbsp;domain&nbsp;and&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;specified&nbsp;as&nbsp;well.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">path&nbsp;can&nbsp;be&nbsp;specified&nbsp;as&nbsp;well.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__2"><a href="#difflib_chg_to52__3">n</a></td><td class="diff_header" id="from52_25">25</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;id="Critics_alternatives"&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to52__3">n</a></td><td class="diff_header" id="to52_19">19</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&nbsp;id="Cookies_used_as_client-side_storage"&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_26">26</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Critics,&nbsp;alternatives</span></td><td class="diff_next"></td><td class="diff_header" id="to52_20">20</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Client-side&nbsp;storage&nbsp;APIs</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__3"><a href="#difflib_chg_to52__4">n</a></td><td class="diff_header" id="from52_28">28</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;id="Incompatibility_with_the_REST_architectural_style"&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to52__4">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_29">29</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Incompatibility&nbsp;with&nbsp;the&nbsp;REST&nbsp;architectural&nbsp;style</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_30">30</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__4"><a href="#difflib_chg_to52__5">n</a></td><td class="diff_header" id="from52_32">32</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;the&nbsp;dissertation&nbsp;where&nbsp;he&nbsp;defines&nbsp;REST,&nbsp;&lt;a&nbsp;class="extern</span></td><td class="diff_next"><a href="#difflib_chg_to52__5">n</a></td><td class="diff_header" id="to52_23">23</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cookies&nbsp;have&nbsp;been&nbsp;used&nbsp;as&nbsp;client-side&nbsp;storage.&nbsp;While&nbsp;this&nbsp;u</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">al"&nbsp;href="http://www.ics.uci.edu/~fielding/pubs/dissertation/eval</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">se&nbsp;could&nbsp;have&nbsp;been&nbsp;considered&nbsp;legitimate&nbsp;at&nbsp;a&nbsp;time&nbsp;when&nbsp;there&nbsp;was</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">uation.htm"&gt;Roy&nbsp;Fielding&nbsp;says&nbsp;about&nbsp;cookies&lt;/a&gt;:</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;no&nbsp;other&nbsp;way&nbsp;to&nbsp;store&nbsp;data&nbsp;on&nbsp;the&nbsp;client&nbsp;side,&nbsp;it&nbsp;is&nbsp;no&nbsp;longer&nbsp;t</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">he&nbsp;case&nbsp;nowadays&nbsp;where&nbsp;web&nbsp;browsers&nbsp;are&nbsp;capable&nbsp;of&nbsp;using&nbsp;various&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">storage&nbsp;APIs.&nbsp;Since&nbsp;cookies&nbsp;are&nbsp;sent&nbsp;along&nbsp;with&nbsp;every&nbsp;request,&nbsp;it</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;can&nbsp;be&nbsp;an&nbsp;additional&nbsp;performance&nbsp;burden&nbsp;(especially&nbsp;for&nbsp;mobile&nbsp;w</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">eb).&nbsp;New&nbsp;APIs&nbsp;are:</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__5"><a href="#difflib_chg_to52__6">n</a></td><td class="diff_header" id="from52_34">34</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;blockquote&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to52__6">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_35">35</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;example&nbsp;of&nbsp;where&nbsp;an&nbsp;inappropriate&nbsp;extension&nbsp;has&nbsp;been&nbsp;mad</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">e&nbsp;to&nbsp;the&nbsp;protocol&nbsp;to&nbsp;support&nbsp;features&nbsp;that&nbsp;contradict&nbsp;the&nbsp;desired</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;properties&nbsp;of&nbsp;the&nbsp;generic&nbsp;interface&nbsp;is&nbsp;the&nbsp;introduction&nbsp;of&nbsp;site-</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">wide&nbsp;state&nbsp;information&nbsp;in&nbsp;the&nbsp;form&nbsp;of&nbsp;HTTP&nbsp;cookies.&nbsp;Cookie&nbsp;intera</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ction&nbsp;fails&nbsp;to&nbsp;match&nbsp;REST's&nbsp;model&nbsp;of&nbsp;application&nbsp;state,&nbsp;often&nbsp;res</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ulting&nbsp;in&nbsp;confusion&nbsp;for&nbsp;the&nbsp;typical&nbsp;browser&nbsp;application.&nbsp;(...)&nbsp;Th</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">e&nbsp;problem&nbsp;is&nbsp;that&nbsp;a&nbsp;cookie&nbsp;is&nbsp;defined&nbsp;as&nbsp;being&nbsp;attached&nbsp;to&nbsp;any&nbsp;fu</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ture&nbsp;requests&nbsp;for&nbsp;a&nbsp;given&nbsp;set&nbsp;of&nbsp;resource&nbsp;identifiers,&nbsp;usually&nbsp;en</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">compassing&nbsp;an&nbsp;entire&nbsp;site,&nbsp;rather&nbsp;than&nbsp;being&nbsp;associated&nbsp;with&nbsp;the&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">particular&nbsp;application&nbsp;state&nbsp;(the&nbsp;set&nbsp;of&nbsp;currently&nbsp;rendered&nbsp;repre</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">sentations)&nbsp;on&nbsp;the&nbsp;browser.&nbsp;When&nbsp;the&nbsp;browser's&nbsp;history&nbsp;functional</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ity&nbsp;(the&nbsp;"Back"&nbsp;button)&nbsp;is&nbsp;subsequently&nbsp;used&nbsp;to&nbsp;back-up&nbsp;to&nbsp;a&nbsp;view</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;prior&nbsp;to&nbsp;that&nbsp;reflected&nbsp;by&nbsp;the&nbsp;cookie,&nbsp;the&nbsp;browser's&nbsp;application</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;state&nbsp;no&nbsp;longer&nbsp;matches&nbsp;the&nbsp;stored&nbsp;state&nbsp;represented&nbsp;within&nbsp;the&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">cookie.&nbsp;Therefore,&nbsp;the&nbsp;next&nbsp;request&nbsp;sent&nbsp;to&nbsp;the&nbsp;same&nbsp;server&nbsp;will&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">contain&nbsp;a&nbsp;cookie&nbsp;that&nbsp;misrepresents&nbsp;the&nbsp;current&nbsp;application&nbsp;conte</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">xt,&nbsp;leading&nbsp;to&nbsp;confusion&nbsp;on&nbsp;both&nbsp;sides.&nbsp;(...)&nbsp;As&nbsp;a&nbsp;result,&nbsp;cookie</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">-based&nbsp;applications&nbsp;on&nbsp;the&nbsp;Web&nbsp;will&nbsp;never&nbsp;be&nbsp;reliable.&nbsp;The&nbsp;same&nbsp;f</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">unctionality&nbsp;should&nbsp;have&nbsp;been&nbsp;accomplished&nbsp;via&nbsp;anonymous&nbsp;authenti</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">cation&nbsp;and&nbsp;true&nbsp;client-side&nbsp;state.&nbsp;A&nbsp;state&nbsp;mechanism&nbsp;that&nbsp;involve</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">s&nbsp;preferences&nbsp;can&nbsp;be&nbsp;more&nbsp;efficiently&nbsp;implemented&nbsp;using&nbsp;judicious</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;use&nbsp;of&nbsp;context-setting&nbsp;URI&nbsp;rather&nbsp;than&nbsp;cookies,&nbsp;where&nbsp;judicious&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">means&nbsp;one&nbsp;URI&nbsp;per&nbsp;state&nbsp;rather&nbsp;than&nbsp;an&nbsp;unbounded&nbsp;number&nbsp;of&nbsp;URI&nbsp;du</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">e&nbsp;to&nbsp;the&nbsp;embedding&nbsp;of&nbsp;a&nbsp;user-id.&nbsp;Likewise,&nbsp;the&nbsp;use&nbsp;of&nbsp;cookies&nbsp;to&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">identify&nbsp;a&nbsp;user-specific&nbsp;"shopping&nbsp;basket"&nbsp;within&nbsp;a&nbsp;server-side&nbsp;d</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">atabase&nbsp;could&nbsp;be&nbsp;more&nbsp;efficiently&nbsp;implemented&nbsp;by&nbsp;defining&nbsp;the&nbsp;sem</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">antics&nbsp;of&nbsp;shopping&nbsp;items&nbsp;within&nbsp;the&nbsp;hypermedia&nbsp;data&nbsp;formats,&nbsp;allo</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">wing&nbsp;the&nbsp;user&nbsp;agent&nbsp;to&nbsp;select&nbsp;and&nbsp;store&nbsp;those&nbsp;items&nbsp;within&nbsp;their&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">own&nbsp;client-side&nbsp;shopping&nbsp;basket,&nbsp;complete&nbsp;with&nbsp;a&nbsp;URI&nbsp;to&nbsp;be&nbsp;used&nbsp;f</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">or&nbsp;check-out&nbsp;when&nbsp;the&nbsp;client&nbsp;is&nbsp;ready&nbsp;to&nbsp;purchase.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_36">36</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/blockquote&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_37">37</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;id="Cookies_used_as_client-side_storage"&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_38">38</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cookies&nbsp;used&nbsp;as&nbsp;client-side&nbsp;storage</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_39">39</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_40">40</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_chg">p</span>&gt;</td><td class="diff_next"></td><td class="diff_header" id="to52_25">25</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_chg">ul</span>&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_41">41</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cookies&nbsp;have&nbsp;been&nbsp;used&nbsp;as&nbsp;client-side&nbsp;storage.&nbsp;While&nbsp;this&nbsp;u</span></td><td class="diff_next"></td><td class="diff_header" id="to52_26">26</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">se&nbsp;could&nbsp;have&nbsp;been&nbsp;considered&nbsp;legitimate&nbsp;at&nbsp;a&nbsp;time&nbsp;when&nbsp;there&nbsp;was</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;no&nbsp;other&nbsp;way&nbsp;to&nbsp;store&nbsp;data&nbsp;on&nbsp;the&nbsp;client&nbsp;side,&nbsp;it&nbsp;is&nbsp;no&nbsp;longer&nbsp;t</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">he&nbsp;case&nbsp;in&nbsp;2012&nbsp;where&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http://caniuse.co</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">m/#feat=namevalue-storage"&gt;it&nbsp;is&nbsp;estimated&nbsp;that&nbsp;90%&nbsp;of&nbsp;users&nbsp;worl</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">dwide&lt;/a&gt;&nbsp;have&nbsp;a&nbsp;web&nbsp;browser&nbsp;which&nbsp;is&nbsp;capable&nbsp;of&nbsp;using&nbsp;the&nbsp;&lt;a&nbsp;hre</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">f="/en/DOM/Storage"&nbsp;title="DOM&nbsp;Storage"&gt;local&nbsp;storage&nbsp;API&lt;/a&gt;.&nbsp;Si</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nce&nbsp;cookies&nbsp;are&nbsp;sent&nbsp;along&nbsp;with&nbsp;every&nbsp;request,&nbsp;it&nbsp;can&nbsp;be&nbsp;an&nbsp;addit</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ional&nbsp;performance&nbsp;burden&nbsp;(especially&amp;nbsp;for&nbsp;mobile&nbsp;web).</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to52_27">27</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href="/en-US/docs/Web/API/Web_Storage_API"&nbsp;title="DOM&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">Storage"&gt;Web&nbsp;storage&nbsp;API&lt;/a&gt;&nbsp;(&lt;code&gt;localStorage&lt;/code&gt;&nbsp;and&nbsp;&lt;code</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&gt;sessionStorage&lt;/code&gt;)</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to52_28">28</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to52_29">29</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to52_30">30</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href="/en-US/docs/Web/API/IndexedDB_API"&gt;IndexedDB&lt;/a&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to52_31">31</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_42">42</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="diff_chg">p</span>&gt;</td><td class="diff_next"></td><td class="diff_header" id="to52_32">32</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="diff_chg">ul</span>&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_43">43</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h<span class="diff_chg">3</span>&nbsp;id="Security"&gt;</td><td class="diff_next"></td><td class="diff_header" id="to52_33">33</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h<span class="diff_chg">2</span>&nbsp;id="Security"&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__6"><a href="#difflib_chg_to52__7">n</a></td><td class="diff_header" id="from52_45">45</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h<span class="diff_chg">3</span>&gt;</td><td class="diff_next"><a href="#difflib_chg_to52__7">n</a></td><td class="diff_header" id="to52_35">35</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h<span class="diff_chg">2</span>&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__7"><a href="#difflib_chg_to52__8">n</a></td><td class="diff_header" id="from52_52">52</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;id="Web_keys"&gt;</span></td><td class="diff_next"><a href="#difflib_chg_to52__8">n</a></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_53">53</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web&nbsp;keys</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_54">54</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/h3&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_55">55</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_56">56</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;using&nbsp;cookies,&nbsp;a&nbsp;resource&nbsp;(the&nbsp;"R"&nbsp;in&nbsp;"URL")&nbsp;is&nbsp;define</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">d&nbsp;(and&nbsp;generated&nbsp;on&nbsp;the&nbsp;server-side)&nbsp;by&nbsp;the&nbsp;URL&nbsp;and&nbsp;the&nbsp;cookie.&nbsp;I</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">n&nbsp;this&nbsp;case,&nbsp;the&nbsp;cookie&nbsp;is&nbsp;used&nbsp;as&nbsp;a&nbsp;secret&nbsp;shared&nbsp;between&nbsp;the&nbsp;cl</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ient&nbsp;and&nbsp;the&nbsp;server&nbsp;(and&nbsp;hopefully&nbsp;no&nbsp;one&nbsp;else).&nbsp;&lt;a&nbsp;class="extern</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">al"&nbsp;href="http://waterken.sourceforge.net/web-key/"&gt;In&nbsp;a&nbsp;paper&lt;/a</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&gt;,&nbsp;Tyler&nbsp;Close&nbsp;suggests&nbsp;to&nbsp;put&nbsp;the&nbsp;secret&nbsp;directly&nbsp;in&nbsp;the&nbsp;URL&nbsp;(he</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nce&nbsp;called&nbsp;"web&nbsp;keys")&nbsp;and&nbsp;answers&nbsp;to&nbsp;common&nbsp;concerns&nbsp;that&nbsp;could&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">come&nbsp;along&nbsp;with&nbsp;this&nbsp;decision.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from52_57">57</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__8"><a href="#difflib_chg_to52__9">n</a></td><td class="diff_header" id="from52_63">63</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http://www.nczonline.net/blog/2</td><td class="diff_next"><a href="#difflib_chg_to52__9">n</a></td><td class="diff_header" id="to52_47">47</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http<span class="diff_add">s</span>://www.nczonline.net/blog/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">009/05/05/http-cookies-explained/"&gt;Nicholas&nbsp;Zakas&nbsp;article&nbsp;on&nbsp;cook</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">2009/05/05/http-cookies-explained/"&gt;Nicholas&nbsp;Zakas&nbsp;article&nbsp;on&nbsp;coo</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ies&lt;/a&gt;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">kies&lt;/a&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__9"><a href="#difflib_chg_to52__10">n</a></td><td class="diff_header" id="from52_66">66</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http://www.nczonline.net/blog/2</td><td class="diff_next"><a href="#difflib_chg_to52__10">n</a></td><td class="diff_header" id="to52_50">50</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http<span class="diff_add">s</span>://www.nczonline.net/blog/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">009/05/12/cookies-and-security/"&gt;Nicholas&nbsp;Zakas&nbsp;article&nbsp;on&nbsp;cookie</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">2009/05/12/cookies-and-security/"&gt;Nicholas&nbsp;Zakas&nbsp;article&nbsp;on&nbsp;cooki</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">s&nbsp;and&nbsp;security&lt;/a&gt;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">es&nbsp;and&nbsp;security&lt;/a&gt;</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to52__10"><a href="#difflib_chg_to52__top">t</a></td><td class="diff_header" id="from52_69">69</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http://tools.ietf.org/html/rfc6</td><td class="diff_next"><a href="#difflib_chg_to52__top">t</a></td><td class="diff_header" id="to52_53">53</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class="external"&nbsp;href="http<span class="diff_add">s</span>://tools.ietf.org/html/rfc</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">265"&gt;RFC&nbsp;6265&lt;/a&gt;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">6265"&gt;RFC&nbsp;6265&lt;/a&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to52_54">54</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to52_55">55</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;{{domxref("Document.cookie")}}</span></td></tr>
+        </tbody>
+    </table></dd>
+        
+      </dl>
+    </section>
+  
+
+    <p><a href="Cookies%24history.html" rel="nofollow, noindex">Back to History</a></p>
+
+  </article>
+
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+    
+    <input type="hidden" name="to" value="1111855">
+    
+  
+    
+    <input type="hidden" name="from" value="1110011">
+    
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Cookies$compare?to=1111855&from=1110011 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:21:55 GMT -->
+</html>

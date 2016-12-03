@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning$revision/972699 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:15:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 972699 | HTTP Public Key Pinning (HPKP) | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FPublic_Key_Pinning%24revision%2F972699" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning%24revision/972699">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 972699 of <a href="../Public_Key_Pinning.html">HTTP Public Key Pinning (HPKP)</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/Security/Public_Key_Pinning</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Public Key Pinning</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>972699</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2015-12-10T19:28:41-08:00">Dec 10, 2015, 7:28:41 PM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>Severus_</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>Technical review completed.</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HPKP">HPKP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Security">Security</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p class="summary"><span class="seoSummary">The <strong>Public Key Pinning Extension for HTTP</strong> (HPKP) is a security feature that tells a web client to associate a specific cryptographic public key with a certain web server to prevent <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">MITM</a> attacks with forged certificates.</span></p>
+
+<div class="note">
+<p><strong>Note:</strong> The Public Key Pinning described here is different from the limited <a href="http://monica-at-mozilla.blogspot.de/2014/08/firefox-32-supports-public-key-pinning.html">preload list based key pinning</a> introduced in Firefox 32.</p>
+</div>
+
+<p>To ensure the authenticity of a server's public key used in TLS sessions, this public key is wrapped into a X.509 certificate which is usually signed by a certificate authority (CA). Web clients such as browsers trust a lot of these CAs, which can all create certificates for arbitrary domain names. If an attacker is able to compromise a single CA, he can perform MITM attacks on various TLS connections. HPKP can circumvent this threat for the <a href="https://developer.mozilla.org/en-US/docs/Glossary/https">HTTPS</a> protocol by telling the client which public key belongs to a certain web server.</p>
+
+<p>HPKP is a <em>Trust on First Use</em> (TOFU) technique. The first time a web server tells a client via a special HTTP header which public keys belong to it, the client stores this information for a given period of time. When the client visits the server again, it expects a certificate containing a public key whose fingerprint is already known via HPKP. If the server delivers an unknown public key, the client should present a warning to the user.</p>
+
+<p class="note">Firefox (and Chrome)<strong> disable Pin Validation</strong> for Pinned Hosts whose validated certificate chain terminates at a <strong>user-defined trust anchor</strong> (rather than a built-in trust anchor).</p>
+
+<h2 id="Enabling_HPKP">Enabling HPKP</h2>
+
+<p>Enabling this feature for your site is as simple as returning the <code>Public-Key-Pins</code> HTTP header when your site is accessed over HTTPS:</p>
+
+<pre>Public-Key-Pins: pin-sha256="base64=="; max-age=<em>expireTime</em> [; includeSubdomains][; report-uri="<em>reportURI"</em>]
+</pre>
+
+<dl>
+ <dt><code>pin-sha256</code></dt>
+ <dd>The quoted string is the Base64 encoded <em>Subject Public Key Information</em> (SPKI) fingerprint. It is possible to specify multiple pins for different public keys. Some browsers might allow other hashing algorithms than SHA-256 in the future. See below on how to extract this information out of a certificate or key file.</dd>
+ <dt><code>max-age</code></dt>
+ <dd>The time, in seconds, that the browser should remember that this site is only to be accessed using one of the pinned keys.</dd>
+ <dt><code>includeSubdomains</code> {{ optional_inline() }}</dt>
+ <dd>If this optional parameter is specified, this rule applies to all of the site's subdomains as well.</dd>
+ <dt><code>report-uri</code> {{ optional_inline() }}</dt>
+ <dd>If this optional parameter is specified, pin validation failures are reported to the given URL.</dd>
+</dl>
+
+<div class="note">
+<p><strong>Note:</strong> The current specification requires including a second pin for a backup key which isn't yet used in production. This allows for changing the server's public key without breaking accessibility for clients that have already noted the pins. This is important for example when the former key gets compromised.</p>
+</div>
+
+<div class="note">
+<p><strong>Note:</strong>Firefox doesn't support HTTP Public Key Pinning violation reporting yet. Chrome support reporting from the version 46.</p>
+
+<ul>
+ <li>Firefox: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1091176">Bug 1091176 - Implement report-uri directive for HPKP </a> and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=787133">Bug 787133 - (hpkp) Implement Public Key Pinning Extension for HTTP (HPKP)</a></li>
+ <li>Chrome: <a href="https://developers.google.com/web/updates/2015/09/HPKP-reporting-with-chrome-46">https://developers.google.com/web/updates/2015/09/HPKP-reporting-with-chrome-46</a> , <a href="https://www.chromestatus.com/feature/4669935557017600">HTTP Public Key Pinning violating reporting</a> and <a href="https://code.google.com/p/chromium/issues/detail?id=445793"> Issue 445793: HPKP Reporting on invalid pins</a></li>
+</ul>
+</div>
+
+<p id="sect1"> </p>
+
+<h3 id="Extracting_the_Base64_encoded_public_key_information">Extracting the Base64 encoded public key information</h3>
+
+<div class="note">
+<p><strong>Note:</strong> While the example below shows how to set a pin on a server certificate, it is recommended to place the pin on the intermediate certificate of the CA that issued the server certificate, to ease certificates renewals and rotations.</p>
+</div>
+
+<p>First you need to extract the public key information from your certificate or key file and encode them using Base64.</p>
+
+<p>The following commands will help you extract the Base64 encoded information from a key file, a certificate signing request, or a certificate.</p>
+
+<pre><code>openssl rsa -in my-key-file.key -outform der -pubout | openssl dgst -sha256 -binary | </code>openssl enc -base64</pre>
+
+<pre><code>openssl req -in my-signing-request.csr -pubkey -noout | openssl rsa -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64</code></pre>
+
+<pre><code>openssl x509 -in my-certificate.crt -pubkey -noout | openssl rsa -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64</code></pre>
+
+<p>The following command will extract the Base64 encoded information for a website.</p>
+
+<pre><code>openssl s_client </code>-servername www.example.com <code>-connect www.example.com:443 | openssl x509 -pubkey -noout | openssl rsa -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64</code></pre>
+
+<h3 id="Example_HPKP_Header">Example HPKP Header</h3>
+
+<pre>Public-Key-Pins: pin-sha256="cUPcTAZWKaASuYWhhneDttWpY3oBAkE3h2+soZS7sWs="; pin-sha256="M8HztCzM3elUxkcjR2S5P4hhyBNf6lHkmjAHKhpGPWE="; max-age=5184000; includeSubdomains; report-uri="<em>https://www.example.net/hpkp-report"</em></pre>
+
+<p>In this example, <strong>pin-sha256="cUPcTAZWKaASuYWhhneDttWpY3oBAkE3h2+soZS7sWs="</strong> pins the server's public key used in production. The second pin declaration <strong>pin-sha256="M8HztCzM3elUxkcjR2S5P4hhyBNf6lHkmjAHKhpGPWE="</strong> also pins the backup key. <strong>max-age=5184000</strong> tells the client to store this information for two month, which is a reasonable time limit according to the IETF RFC. This key pinning is also valid for all subdomains, which is told by the <strong>includeSubdomains</strong> declaration. Finally, <strong>report-uri="https://www.example.net/hpkp-report"</strong> explains where to report pin validation failures.</p>
+
+<p> </p>
+
+<h3 id="Setting_up_your_webserver_to_include_the_HPKP_header">Setting up your webserver to include the HPKP header</h3>
+
+<p>The concrete steps necessary to deliver the HPKP header depend on the web server you use.</p>
+
+<div class="note">
+<p><strong>Note:</strong> These examples use a max-age of two months and include all subdomains. It is advised to verify that this setup will work for your server.</p>
+</div>
+
+<h4 id="Apache">Apache</h4>
+
+<p>Adding a line similar to the following to your webserver's config will enable HPKP on your Apache. This requires <code>mod_headers</code> enabled.</p>
+
+<pre>Header always set Public-Key-Pins "pin-sha256=\"base64+primary==\"; pin-sha256=\"base64+backup==\"; max-age=5184000; includeSubDomains"
+</pre>
+
+<h4 id="Nginx">Nginx</h4>
+
+<p>Adding the following line and inserting the appropriate <code>pin-sha256="..."</code> values will enable HPKP on your nginx. This requires the <code>ngx_http_headers_module.</code></p>
+
+<pre>add_header Public-Key-Pins 'pin-sha256="base64+primary=="; pin-sha256="base64+backup=="; max-age=5184000; includeSubDomains';</pre>
+
+<h4 id="Lighttpd">Lighttpd</h4>
+
+<p>The following line with your relevant key information (pin-sha256="..." fields) will enable HPKP on lighttpd.</p>
+
+<pre>setenv.add-response-header  = ( "Public-Key-Pins" =&gt; "pin-sha256=\"base64+primary==\"; pin-sha256=\"base64+backup==\"; max-age=5184000; includeSubDomains")</pre>
+
+<p><strong>Note:</strong> This requires the <code>mod_setenv</code> server.module loaded which can be included by the following if not already loaded.</p>
+
+<pre><code>server.modules += ( "mod_setenv" )</code></pre>
+
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+
+<p>{{ CompatibilityTable() }}</p>
+
+<div id="compat-desktop">
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>Feature</th>
+   <th>Chrome</th>
+   <th>Firefox (Gecko)</th>
+   <th>Internet Explorer</th>
+   <th>Opera</th>
+   <th>Safari</th>
+  </tr>
+  <tr>
+   <td>Basic support</td>
+   <td>{{ CompatChrome("46.0") }} [1]</td>
+   <td>{{ CompatGeckoDesktop("35") }}</td>
+   <td>{{ CompatNo()}}</td>
+   <td>{{ CompatUnknown() }}</td>
+   <td>{{ CompatUnknown() }}</td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+<div id="compat-mobile">
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>Feature</th>
+   <th>Chrome for Android</th>
+   <th>Firefox Mobile (Gecko)</th>
+   <th>IE Mobile</th>
+   <th>Opera Mobile</th>
+   <th>Safari Mobile</th>
+  </tr>
+  <tr>
+   <td>Basic support</td>
+   <td>{{ CompatUnknown() }}</td>
+   <td>{{ CompatGeckoMobile("35") }}</td>
+   <td>{{CompatUnknown()}}</td>
+   <td>{{ CompatUnknown() }}</td>
+   <td>{{ CompatUnknown() }}</td>
+  </tr>
+ </tbody>
+</table>
+</div>
+
+<p>[1] Behind a flag in Chrome 38.</p>
+
+<h2 id="Specification">Specification</h2>
+
+<ul>
+ <li><a href="https://tools.ietf.org/html/rfc7469">IETF RFC - Public Key Pinning Extension for HTTP</a></li>
+</ul>
+
+<h2 id="See_Also">See Also</h2>
+
+<ul>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Security/HTTP_Strict_Transport_Security">HTTP Strict Transport Security</a></li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p class=&#34;summary&#34;&gt;&lt;span class=&#34;seoSummary&#34;&gt;The &lt;strong&gt;Public Key Pinning Extension for HTTP&lt;/strong&gt; (HPKP) is a security feature that tells a web client to associate a specific cryptographic public key with a certain web server to prevent &lt;a href=&#34;https://en.wikipedia.org/wiki/Man-in-the-middle_attack&#34;&gt;MITM&lt;/a&gt; attacks with forged certificates.&lt;/span&gt;&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The Public Key Pinning described here is different from the limited &lt;a href=&#34;http://monica-at-mozilla.blogspot.de/2014/08/firefox-32-supports-public-key-pinning.html&#34;&gt;preload list based key pinning&lt;/a&gt; introduced in Firefox 32.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;To ensure the authenticity of a server&#39;s public key used in TLS sessions, this public key is wrapped into a X.509 certificate which is usually signed by a certificate authority (CA). Web clients such as browsers trust a lot of these CAs, which can all create certificates for arbitrary domain names. If an attacker is able to compromise a single CA, he can perform MITM attacks on various TLS connections. HPKP can circumvent this threat for the &lt;a href=&#34;/en-US/docs/Glossary/https&#34;&gt;HTTPS&lt;/a&gt; protocol by telling the client which public key belongs to a certain web server.&lt;/p&gt;
+
+&lt;p&gt;HPKP is a &lt;em&gt;Trust on First Use&lt;/em&gt; (TOFU) technique. The first time a web server tells a client via a special HTTP header which public keys belong to it, the client stores this information for a given period of time. When the client visits the server again, it expects a certificate containing a public key whose fingerprint is already known via HPKP. If the server delivers an unknown public key, the client should present a warning to the user.&lt;/p&gt;
+
+&lt;p class=&#34;note&#34;&gt;Firefox (and Chrome)&lt;strong&gt; disable Pin Validation&lt;/strong&gt; for Pinned Hosts whose validated certificate chain terminates at a &lt;strong&gt;user-defined trust anchor&lt;/strong&gt; (rather than a built-in trust anchor).&lt;/p&gt;
+
+&lt;h2 id=&#34;Enabling_HPKP&#34;&gt;Enabling HPKP&lt;/h2&gt;
+
+&lt;p&gt;Enabling this feature for your site is as simple as returning the &lt;code&gt;Public-Key-Pins&lt;/code&gt; HTTP header when your site is accessed over HTTPS:&lt;/p&gt;
+
+&lt;pre&gt;Public-Key-Pins: pin-sha256=&#34;base64==&#34;; max-age=&lt;em&gt;expireTime&lt;/em&gt; [; includeSubdomains][; report-uri=&#34;&lt;em&gt;reportURI&#34;&lt;/em&gt;]
+&lt;/pre&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;&lt;code&gt;pin-sha256&lt;/code&gt;&lt;/dt&gt;
+ &lt;dd&gt;The quoted string is the Base64 encoded &lt;em&gt;Subject Public Key Information&lt;/em&gt; (SPKI) fingerprint. It is possible to specify multiple pins for different public keys. Some browsers might allow other hashing algorithms than SHA-256 in the future. See below on how to extract this information out of a certificate or key file.&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;max-age&lt;/code&gt;&lt;/dt&gt;
+ &lt;dd&gt;The time, in seconds, that the browser should remember that this site is only to be accessed using one of the pinned keys.&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;includeSubdomains&lt;/code&gt; {{ optional_inline() }}&lt;/dt&gt;
+ &lt;dd&gt;If this optional parameter is specified, this rule applies to all of the site&#39;s subdomains as well.&lt;/dd&gt;
+ &lt;dt&gt;&lt;code&gt;report-uri&lt;/code&gt; {{ optional_inline() }}&lt;/dt&gt;
+ &lt;dd&gt;If this optional parameter is specified, pin validation failures are reported to the given URL.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The current specification requires including a second pin for a backup key which isn&#39;t yet used in production. This allows for changing the server&#39;s public key without breaking accessibility for clients that have already noted the pins. This is important for example when the former key gets compromised.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;Firefox doesn&#39;t support HTTP Public Key Pinning violation reporting yet. Chrome support reporting from the version 46.&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Firefox: &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=1091176&#34;&gt;Bug 1091176 - Implement report-uri directive for HPKP &lt;/a&gt; and &lt;a href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=787133&#34;&gt;Bug 787133 - (hpkp) Implement Public Key Pinning Extension for HTTP (HPKP)&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;Chrome: &lt;a href=&#34;https://developers.google.com/web/updates/2015/09/HPKP-reporting-with-chrome-46&#34;&gt;https://developers.google.com/web/updates/2015/09/HPKP-reporting-with-chrome-46&lt;/a&gt; , &lt;a href=&#34;https://www.chromestatus.com/feature/4669935557017600&#34;&gt;HTTP Public Key Pinning violating reporting&lt;/a&gt; and &lt;a href=&#34;https://code.google.com/p/chromium/issues/detail?id=445793&#34;&gt; Issue 445793: HPKP Reporting on invalid pins&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;p id=&#34;sect1&#34;&gt; &lt;/p&gt;
+
+&lt;h3 id=&#34;Extracting_the_Base64_encoded_public_key_information&#34;&gt;Extracting the Base64 encoded public key information&lt;/h3&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; While the example below shows how to set a pin on a server certificate, it is recommended to place the pin on the intermediate certificate of the CA that issued the server certificate, to ease certificates renewals and rotations.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;First you need to extract the public key information from your certificate or key file and encode them using Base64.&lt;/p&gt;
+
+&lt;p&gt;The following commands will help you extract the Base64 encoded information from a key file, a certificate signing request, or a certificate.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl rsa -in my-key-file.key -outform der -pubout | openssl dgst -sha256 -binary | &lt;/code&gt;openssl enc -base64&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl req -in my-signing-request.csr -pubkey -noout | openssl rsa -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl x509 -in my-certificate.crt -pubkey -noout | openssl rsa -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The following command will extract the Base64 encoded information for a website.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openssl s_client &lt;/code&gt;-servername www.example.com &lt;code&gt;-connect www.example.com:443 | openssl x509 -pubkey -noout | openssl rsa -pubin -outform der | openssl dgst -sha256 -binary | openssl enc -base64&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;Example_HPKP_Header&#34;&gt;Example HPKP Header&lt;/h3&gt;
+
+&lt;pre&gt;Public-Key-Pins: pin-sha256=&#34;cUPcTAZWKaASuYWhhneDttWpY3oBAkE3h2+soZS7sWs=&#34;; pin-sha256=&#34;M8HztCzM3elUxkcjR2S5P4hhyBNf6lHkmjAHKhpGPWE=&#34;; max-age=5184000; includeSubdomains; report-uri=&#34;&lt;em&gt;https://www.example.net/hpkp-report&#34;&lt;/em&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this example, &lt;strong&gt;pin-sha256=&#34;cUPcTAZWKaASuYWhhneDttWpY3oBAkE3h2+soZS7sWs=&#34;&lt;/strong&gt; pins the server&#39;s public key used in production. The second pin declaration &lt;strong&gt;pin-sha256=&#34;M8HztCzM3elUxkcjR2S5P4hhyBNf6lHkmjAHKhpGPWE=&#34;&lt;/strong&gt; also pins the backup key. &lt;strong&gt;max-age=5184000&lt;/strong&gt; tells the client to store this information for two month, which is a reasonable time limit according to the IETF RFC. This key pinning is also valid for all subdomains, which is told by the &lt;strong&gt;includeSubdomains&lt;/strong&gt; declaration. Finally, &lt;strong&gt;report-uri=&#34;https://www.example.net/hpkp-report&#34;&lt;/strong&gt; explains where to report pin validation failures.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h3 id=&#34;Setting_up_your_webserver_to_include_the_HPKP_header&#34;&gt;Setting up your webserver to include the HPKP header&lt;/h3&gt;
+
+&lt;p&gt;The concrete steps necessary to deliver the HPKP header depend on the web server you use.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; These examples use a max-age of two months and include all subdomains. It is advised to verify that this setup will work for your server.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&#34;Apache&#34;&gt;Apache&lt;/h4&gt;
+
+&lt;p&gt;Adding a line similar to the following to your webserver&#39;s config will enable HPKP on your Apache. This requires &lt;code&gt;mod_headers&lt;/code&gt; enabled.&lt;/p&gt;
+
+&lt;pre&gt;Header always set Public-Key-Pins &#34;pin-sha256=\&#34;base64+primary==\&#34;; pin-sha256=\&#34;base64+backup==\&#34;; max-age=5184000; includeSubDomains&#34;
+&lt;/pre&gt;
+
+&lt;h4 id=&#34;Nginx&#34;&gt;Nginx&lt;/h4&gt;
+
+&lt;p&gt;Adding the following line and inserting the appropriate &lt;code&gt;pin-sha256=&#34;...&#34;&lt;/code&gt; values will enable HPKP on your nginx. This requires the &lt;code&gt;ngx_http_headers_module.&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;add_header Public-Key-Pins &#39;pin-sha256=&#34;base64+primary==&#34;; pin-sha256=&#34;base64+backup==&#34;; max-age=5184000; includeSubDomains&#39;;&lt;/pre&gt;
+
+&lt;h4 id=&#34;Lighttpd&#34;&gt;Lighttpd&lt;/h4&gt;
+
+&lt;p&gt;The following line with your relevant key information (pin-sha256=&#34;...&#34; fields) will enable HPKP on lighttpd.&lt;/p&gt;
+
+&lt;pre&gt;setenv.add-response-header  = ( &#34;Public-Key-Pins&#34; =&amp;gt; &#34;pin-sha256=\&#34;base64+primary==\&#34;; pin-sha256=\&#34;base64+backup==\&#34;; max-age=5184000; includeSubDomains&#34;)&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; This requires the &lt;code&gt;mod_setenv&lt;/code&gt; server.module loaded which can be included by the following if not already loaded.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server.modules += ( &#34;mod_setenv&#34; )&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;Browser_compatibility&#34;&gt;Browser compatibility&lt;/h2&gt;
+
+&lt;p&gt;{{ CompatibilityTable() }}&lt;/p&gt;
+
+&lt;div id=&#34;compat-desktop&#34;&gt;
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;Feature&lt;/th&gt;
+   &lt;th&gt;Chrome&lt;/th&gt;
+   &lt;th&gt;Firefox (Gecko)&lt;/th&gt;
+   &lt;th&gt;Internet Explorer&lt;/th&gt;
+   &lt;th&gt;Opera&lt;/th&gt;
+   &lt;th&gt;Safari&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Basic support&lt;/td&gt;
+   &lt;td&gt;{{ CompatChrome(&#34;46.0&#34;) }} [1]&lt;/td&gt;
+   &lt;td&gt;{{ CompatGeckoDesktop(&#34;35&#34;) }}&lt;/td&gt;
+   &lt;td&gt;{{ CompatNo()}}&lt;/td&gt;
+   &lt;td&gt;{{ CompatUnknown() }}&lt;/td&gt;
+   &lt;td&gt;{{ CompatUnknown() }}&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;compat-mobile&#34;&gt;
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;Feature&lt;/th&gt;
+   &lt;th&gt;Chrome for Android&lt;/th&gt;
+   &lt;th&gt;Firefox Mobile (Gecko)&lt;/th&gt;
+   &lt;th&gt;IE Mobile&lt;/th&gt;
+   &lt;th&gt;Opera Mobile&lt;/th&gt;
+   &lt;th&gt;Safari Mobile&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Basic support&lt;/td&gt;
+   &lt;td&gt;{{ CompatUnknown() }}&lt;/td&gt;
+   &lt;td&gt;{{ CompatGeckoMobile(&#34;35&#34;) }}&lt;/td&gt;
+   &lt;td&gt;{{CompatUnknown()}}&lt;/td&gt;
+   &lt;td&gt;{{ CompatUnknown() }}&lt;/td&gt;
+   &lt;td&gt;{{ CompatUnknown() }}&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;[1] Behind a flag in Chrome 38.&lt;/p&gt;
+
+&lt;h2 id=&#34;Specification&#34;&gt;Specification&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&#34;https://tools.ietf.org/html/rfc7469&#34;&gt;IETF RFC - Public Key Pinning Extension for HTTP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;See_Also&#34;&gt;See Also&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&#34;/en-US/docs/Security/HTTP_Strict_Transport_Security&#34;&gt;HTTP Strict Transport Security&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Public_Key_Pinning%24revert/972699" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Public_Key_Pinning$revision/972699 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:15:59 GMT -->
+</html>

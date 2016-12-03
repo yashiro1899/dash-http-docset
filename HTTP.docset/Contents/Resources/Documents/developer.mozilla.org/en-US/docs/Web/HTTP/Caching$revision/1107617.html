@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Caching$revision/1107617 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:47:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1107617 | HTTP caching | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FCaching%24revision%2F1107617" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Caching%24revision/1107617">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1107617 of <a href="../Caching.html">HTTP caching</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Caching</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>HTTP caching</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1107617</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-08-20T06:22:13-07:00">Aug 20, 2016, 6:22:13 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Caching">Caching</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p class="summary">The performance of web sites and applications can be signifcantly improved by reusing previously fetched resources. Web caches reduce latency and network traffic and thus lessen the time needed to display a representation of a resource. By making use of HTTP caching, Web sites become more responsive.</p>
+
+<h2 id="Different_kinds_of_caches">Different kinds of caches</h2>
+
+<p>A cache is a tool that stores versions of a given document and serve it back when requested. When a cache have a requested resource, it intercepts the requests and achieve several goals: it eases the load of the server that doesn't need to serve all clients itself, and it improves performances by being closer to the client: it takes less time to transmit the resource back. For a Web site, it is a major component in achieving high performance. On the other side, it has to be configured properly as not all resources stay identical forever: it is important to cache a resource only until it changes, not longer.</p>
+
+<p>There several kinds of caches that can be grouped in two main categories: private or shared caches. A shared cache is a cache that stores responses to be reused by more than one user and a private cache is only dedicated to a single user. This page will mostly talk about browser and proxy caches, but there are also gateway caches, CDN, reverse proxy caches and load balancers that are deployed on web servers for better reliability, performance and scaling of web sites and web applications.</p>
+
+<p><img alt="What a cache provide, advantages/disadvantages of shared/private caches." src="../../../../../../mdn.mozillademos.org/files/13777/HTTPCachtType.png" style="height: 573px; width: 910px;"></p>
+
+<h3 id="Private_browser_caches">Private browser caches</h3>
+
+<p>A private cache is dedicated to a single user. You might have seen "caching" in your browser's settings already. A browser cache holds all documents downloaded via <a href="../../HTTP.html" title="en/HTTP">HTTP</a> by the user. This cache is used to make visited documents available for back/forward, saving, viewing-as-source, etc. without requiring an additional trip to the server. It likewise improves offline browsing of cached content.</p>
+
+<h3 id="Shared_proxy_caches">Shared proxy caches</h3>
+
+<p>A shared cache is a cache that stores responses to be reused by more than one user. For example, an ISP or your company might have set up a proxy to serve thousands of users and popular resources are reused a number of times to reduce network traffic and latency.</p>
+
+<h2 id="Targets_of_caching_operations">Targets of caching operations</h2>
+
+<p>HTTP caching is an optional operation, but reusing a cached response is desirable often. However, common HTTP caches are typically limited to caching responses to {{HTTPMethod("GET")}} and may decline other methods. The primary cache key consists of the request method and target URI (oftentimes only the URI is used as only GET requests are caching targets). Common forms of caching entries are:</p>
+
+<ul>
+ <li>Successful results of a retrieval request: a {{HTTPStatus(200)}} (OK) response to a {{HTTPMethod("GET")}} request containing a resource like HTML documents, images or files.</li>
+ <li>Permanent redirects: a {{HTTPStatus(301)}} (Moved Permanently) response.</li>
+ <li>Error responses: a {{HTTPStatus(404)}} (Not Found) result page.</li>
+ <li>Incomplete results: a {{HTTPStatus(206)}} (Partial Content) response.</li>
+ <li>Responses other than {{HTTPMethod("GET")}} if something suitable for use as a cache key is defined.</li>
+</ul>
+
+<p>A cache entry might also consist of multiple stored responses differentiated by a secondary key, if the request is target of content negotiation. For more details see the information about the {{HTTPHeader("Vary")}} header <a href="#Varying_responses">below</a>.</p>
+
+<h2 id="Controlling_caching">Controlling caching</h2>
+
+<h3 id="The_Cache-control_header">The <code>Cache-control</code> header</h3>
+
+<p>The {{HTTPHeader("Cache-Control")}} HTTP/1.1 general-header field is used to specify directives for caching mechanisms in both, requests and responses. Use this header to define your caching policies with the variety of directives it provides.</p>
+
+<h4 id="No_cache_storage_at_all">No cache storage at all</h4>
+
+<p>The cache should not store anything about the client request or server response. A request is sent to the server and a full response is downloaded each and every time.</p>
+
+<pre>Cache-Control: no-store
+Cache-Control: no-cache, no-store, must-revalidate
+</pre>
+
+<h4 id="No_caching">No caching</h4>
+
+<p>A cache will send the request to the origin server for validation before releasing a cached copy.</p>
+
+<pre>Cache-Control: no-cache</pre>
+
+<h4 id="Private_and_public_caches">Private and public caches</h4>
+
+<p>The "public" directive indicates that the response may be cached by any cache. This can be useful, if pages with HTTP authentication or response status codes that aren't normally cacheable, should now be cached. On the other hand, "private" indicates that the response is intended for a single user only and must not be stored by a shared cache. A private browser cache may store the response in this case.</p>
+
+<pre>Cache-Control: private
+Cache-Control: public
+</pre>
+
+<h4 id="Expiration">Expiration</h4>
+
+<p>The most important directive here is "<code>max-age=&lt;seconds&gt;</code>" which the maximum amount of time a resource will be considered fresh. Contrary to {{HTTPHeader("Expires")}}, this directive is relative to the time of the request. For the files in the application that will not change, you can usually add aggressive caching. This includes static files such as images, CSS files and JavaScript files, for example.</p>
+
+<p>For more details, see also the <a href="#Freshness">Freshness</a> section below.</p>
+
+<pre>Cache-Control: max-age=31536000</pre>
+
+<h4 id="Validation">Validation</h4>
+
+<p>When using the "<code>must-revalidate</code>" directive, the cache must verify the status of the stale resources before using it and expired ones should not be used. For more details, see the <a href="#Cache_validation">Validation</a> section below.</p>
+
+<pre>Cache-Control: must-revalidate</pre>
+
+<h3 id="The_Pragma_header">The <code>Pragma</code> header</h3>
+
+<p>{{HTTPHeader("Pragma")}} is a HTTP/1.0 header, is not specified for HTTP responses and is therefore not a reliable replacement for the general HTTP/1.1 <code>Cache-Control</code> header, although it does behave the same as <code>Cache-Control: no-cache</code>, if the <code>Cache-Control</code> header field is omitted in a request. Use <code>Pragma</code> only for backwards compatibility with HTTP/1.0 clients.</p>
+
+<h2 id="Freshness">Freshness</h2>
+
+<p>Once a resource is stored in a cache, it can theoretically be served by the cache forever. Caches have finite storage though periodically remove items they stored. This process is called <em>cache eviction</em>. On the other side, some resources may changes in the server, and the cache should be updated. As HTTP is a client-server protocol, servers can't contact caches and clients when a resource change; they have to communicate an expiration time for the resource. Before this expiration time, the resource is <em>fresh</em>, after its expiration time, the resource if <em>stale</em>. Eviction algorithm often privileges fresh resources over stale resources. Note that a stale resource is not evicted or ignored; when the cache receives a request for a stale resource, it forwards this requests with a {{HTTPHeader("If-None-Match")}} to check if it isn't in fact still fresh. If so, the server returns a {{HTTPStatus("304")}} (Not Modified) message and don't send the resource back, saving some bandwidth.</p>
+
+<p>Here is an example of this process with a shared cache proxy:</p>
+
+<p><img alt="Show how a proxy cache acts when a doc is not cache, in the cache and fresh, in the cache and stale." src="../../../../../../mdn.mozillademos.org/files/13771/HTTPStaleness.png" style="height: 910px; width: 822px;"></p>
+
+<p>The freshness lifetime is calculated based on several headers. If a "<code>Cache-control: max-age=N</code>" header is specified, then the freshness lifetime is equal to N. If this header is not present, which is very often the case, it is checked if an {{HTTPHeader("Expires")}} header is present. If an <code>Expires</code> header exists, then its value minus the value of the {{HTTPHeader("Date")}} header determines the freshness lifetime. Finally, if neither header is present, look for a {{HTTPHeader("Last-Modified")}} header. If this header is present, then the cache's freshness lifetime is equal to the value of the <code>Date</code> header minus the value of the <code>Last-modified</code> header divided by 10.<br>
+ The expiration time is computed as follows:</p>
+
+<pre>expirationTime = responseTime + freshnessLifetime - currentAge
+</pre>
+
+<p>where <code>responseTime</code> is the time at which the response was received according to the browser.</p>
+
+<h3 id="Revved_resources">Revved resources</h3>
+
+<p>The more we use cached resources, the better the responsiveness and the performance of a Web site will be. To optimize this, good practices recommend to set expiration times as far in the future as possible. This is possible on resources that are regularly updated, or often, but is problematic for resources that are rarely and infrequently updated. They are the resources that would benefit the most from caching resources, yet this make them very difficult to update. This is typical of the technical resources included and linked from each Web pages: JavaScript and CSS files change infrequently, but when they change you want them to be updated quickly.</p>
+
+<p>Web developers invented a technique that Steve Sounders called <em>revving</em><sup><a href="https://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/">[1]</a></sup>. Infrequently updated files are named in specific way: in their URL, usually in the filename, a revision number is added. That way each new revision of this resource is considered as a resource on its own that <em>never</em> changes and that can have an expiration time very far in the future, usually one year or even more. In order to have the new versions, all the links to them must be changed, that is the drawback of this method: additional complexity that is usually taken care by the tool chain used by Web developers. When the infrequently variable resources change they induce an additional change to often variable resources. When these are read, the new versions of the others are also read.</p>
+
+<p>This technique has an additional benefits: it allows to guarantee that two resources can be updated at the same time and that caches will not lead to the situation where the old version of one of this resource is used with the new version of this other ones. This is very important when Web sites have CSS stylesheets or JS scripts that have dependencies and must be read coherently.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13779/HTTPRevved.png"></p>
+
+<p>The revision version added to revved resources doesn't need to be a classical revision string like 1.1.3, or even a monotonously growing suite of number. It can be anything that prevent collisions, like a hash or a date.</p>
+
+<h2 id="Cache_validation">Cache validation</h2>
+
+<p>Revalidation is triggered when the user presses the reload button. It is also triggered under normal browsing if the cached response includes the "<code>Cache-control: must-revalidate</code>" header. Another factor is the cache validation preferences in the <code>Advanced-&gt;Cache</code> preferences panel. There is an option to force a validation each time a document is loaded.</p>
+
+<p>When a cached documents expiration time has been reached, it is either validated or fetched again. Validation can only occur if the server provided either a <em>strong validator</em> or a <em>weak validator</em>.</p>
+
+<h3 id="ETags">ETags</h3>
+
+<p>The {{HTTPHeader("ETag")}} response header is an <em>opaque-to-the-useragent</em> value that can be used as a strong validator. That means that the client, like the browser, has don't know what this string represents and can't predict it, even if it is not generated randomly on the server side. If the <code>ETag</code> header is present in a response, then the client can issue an {{HTTPHeader("If-None-Match")}} request header to validate the cached document.</p>
+
+<p>The {{HTTPHeader("Last-Modified")}} response header can be used as a weak validator. It is considered weak because it only has 1-second resolution. If the <code>Last-Modified</code> header is present in a response, then the client can issue an {{HTTPHeader("If-Modified-Since")}} request header to validate the cached document.</p>
+
+<p>When a validation request is made, the server can either ignore the validation request and response with a normal {{HTTPStatus(200)}} <code>OK</code>, or it can return {{HTTPStatus(304)}} <code>Not Modified</code> to instruct the browser to use its cached copy. The latter response can also include headers that update the expiration time of the cached document.</p>
+
+<h2 id="Varying_responses">Varying responses</h2>
+
+<p>The {{HTTPHeader("Vary")}} HTTP response header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server.</p>
+
+<p>When a cache receives a request that can be satisfied by a cached response that has a <code>Vary</code> header field, it must not use that cached response unless all header fields as nominated by the <code>Vary</code> header match in both the original (cached) request and the new request.</p>
+
+<p><img alt="The Vary header leads cache to use more HTTP headers as key for the cache." src="../../../../../../mdn.mozillademos.org/files/13769/HTTPVary.png" style="height: 817px; width: 752px;"></p>
+
+<p>This can be useful for serving content dynamically, for example. When using the <code>Vary: User-Agent</code> header, caching servers should consider the user agent when deciding whether to serve the page from cache. If you are serving different content to mobile users, it can help you to avoid that a cache may mistakenly serve a desktop version of your site to your mobile users. In addition, it can help Google and other search engines to discover the mobile version of a page, and might also tell them that no <a href="https://en.wikipedia.org/wiki/Cloaking">Cloaking</a> is intended.</p>
+
+<pre>Vary: User-Agent</pre>
+
+<p>Because the {{HTTPHeader("User-Agent")}} header value is different ("varies") for mobile and desktop clients, caches will not be used to serve mobile content mistakenly to desktop users or vice versa.</p>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li><a href="https://tools.ietf.org/html/rfc7234">RFC 7234: Hypertext Transfer Protocol (HTTP/1.1): Caching</a></li>
+ <li><a href="https://www.mnot.net/cache_docs">Caching Tutorial – Mark Nottingham</a></li>
+ <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching">HTTP caching – Ilya Grigorik</a></li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p class=&#34;summary&#34;&gt;The performance of web sites and applications can be signifcantly improved by reusing previously fetched resources. Web caches reduce latency and network traffic and thus lessen the time needed to display a representation of a resource. By making use of HTTP caching, Web sites become more responsive.&lt;/p&gt;
+
+&lt;h2 id=&#34;Different_kinds_of_caches&#34;&gt;Different kinds of caches&lt;/h2&gt;
+
+&lt;p&gt;A cache is a tool that stores versions of a given document and serve it back when requested. When a cache have a requested resource, it intercepts the requests and achieve several goals: it eases the load of the server that doesn&#39;t need to serve all clients itself, and it improves performances by being closer to the client: it takes less time to transmit the resource back. For a Web site, it is a major component in achieving high performance. On the other side, it has to be configured properly as not all resources stay identical forever: it is important to cache a resource only until it changes, not longer.&lt;/p&gt;
+
+&lt;p&gt;There several kinds of caches that can be grouped in two main categories: private or shared caches. A shared cache is a cache that stores responses to be reused by more than one user and a private cache is only dedicated to a single user. This page will mostly talk about browser and proxy caches, but there are also gateway caches, CDN, reverse proxy caches and load balancers that are deployed on web servers for better reliability, performance and scaling of web sites and web applications.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;What a cache provide, advantages/disadvantages of shared/private caches.&#34; src=&#34;https://mdn.mozillademos.org/files/13777/HTTPCachtType.png&#34; style=&#34;height:573px; width:910px&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;Private_browser_caches&#34;&gt;Private browser caches&lt;/h3&gt;
+
+&lt;p&gt;A private cache is dedicated to a single user. You might have seen &#34;caching&#34; in your browser&#39;s settings already. A browser cache holds all documents downloaded via &lt;a href=&#34;/en-US/docs/Web/HTTP&#34; title=&#34;en/HTTP&#34;&gt;HTTP&lt;/a&gt; by the user. This cache is used to make visited documents available for back/forward, saving, viewing-as-source, etc. without requiring an additional trip to the server. It likewise improves offline browsing of cached content.&lt;/p&gt;
+
+&lt;h3 id=&#34;Shared_proxy_caches&#34;&gt;Shared proxy caches&lt;/h3&gt;
+
+&lt;p&gt;A shared cache is a cache that stores responses to be reused by more than one user. For example, an ISP or your company might have set up a proxy to serve thousands of users and popular resources are reused a number of times to reduce network traffic and latency.&lt;/p&gt;
+
+&lt;h2 id=&#34;Targets_of_caching_operations&#34;&gt;Targets of caching operations&lt;/h2&gt;
+
+&lt;p&gt;HTTP caching is an optional operation, but reusing a cached response is desirable often. However, common HTTP caches are typically limited to caching responses to {{HTTPMethod(&#34;GET&#34;)}} and may decline other methods. The primary cache key consists of the request method and target URI (oftentimes only the URI is used as only GET requests are caching targets). Common forms of caching entries are:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Successful results of a retrieval request: a {{HTTPStatus(200)}} (OK) response to a {{HTTPMethod(&#34;GET&#34;)}} request containing a resource like HTML documents, images or files.&lt;/li&gt;
+ &lt;li&gt;Permanent redirects: a {{HTTPStatus(301)}} (Moved Permanently) response.&lt;/li&gt;
+ &lt;li&gt;Error responses: a {{HTTPStatus(404)}} (Not Found) result page.&lt;/li&gt;
+ &lt;li&gt;Incomplete results: a {{HTTPStatus(206)}} (Partial Content) response.&lt;/li&gt;
+ &lt;li&gt;Responses other than {{HTTPMethod(&#34;GET&#34;)}} if something suitable for use as a cache key is defined.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A cache entry might also consist of multiple stored responses differentiated by a secondary key, if the request is target of content negotiation. For more details see the information about the {{HTTPHeader(&#34;Vary&#34;)}} header &lt;a href=&#34;#Varying_responses&#34;&gt;below&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;Controlling_caching&#34;&gt;Controlling caching&lt;/h2&gt;
+
+&lt;h3 id=&#34;The_Cache-control_header&#34;&gt;The &lt;code&gt;Cache-control&lt;/code&gt; header&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Cache-Control&#34;)}} HTTP/1.1 general-header field is used to specify directives for caching mechanisms in both, requests and responses. Use this header to define your caching policies with the variety of directives it provides.&lt;/p&gt;
+
+&lt;h4 id=&#34;No_cache_storage_at_all&#34;&gt;No cache storage at all&lt;/h4&gt;
+
+&lt;p&gt;The cache should not store anything about the client request or server response. A request is sent to the server and a full response is downloaded each and every time.&lt;/p&gt;
+
+&lt;pre&gt;
+Cache-Control: no-store
+Cache-Control: no-cache, no-store, must-revalidate
+&lt;/pre&gt;
+
+&lt;h4 id=&#34;No_caching&#34;&gt;No caching&lt;/h4&gt;
+
+&lt;p&gt;A cache will send the request to the origin server for validation before releasing a cached copy.&lt;/p&gt;
+
+&lt;pre&gt;
+Cache-Control: no-cache&lt;/pre&gt;
+
+&lt;h4 id=&#34;Private_and_public_caches&#34;&gt;Private and public caches&lt;/h4&gt;
+
+&lt;p&gt;The &#34;public&#34; directive indicates that the response may be cached by any cache. This can be useful, if pages with HTTP authentication or response status codes that aren&#39;t normally cacheable, should now be cached. On the other hand, &#34;private&#34; indicates that the response is intended for a single user only and must not be stored by a shared cache. A private browser cache may store the response in this case.&lt;/p&gt;
+
+&lt;pre&gt;
+Cache-Control: private
+Cache-Control: public
+&lt;/pre&gt;
+
+&lt;h4 id=&#34;Expiration&#34;&gt;Expiration&lt;/h4&gt;
+
+&lt;p&gt;The most important directive here is &#34;&lt;code&gt;max-age=&amp;lt;seconds&amp;gt;&lt;/code&gt;&#34; which the maximum amount of time a resource will be considered fresh. Contrary to {{HTTPHeader(&#34;Expires&#34;)}}, this directive is relative to the time of the request. For the files in the application that will not change, you can usually add aggressive caching. This includes static files such as images, CSS files and JavaScript files, for example.&lt;/p&gt;
+
+&lt;p&gt;For more details, see also the &lt;a href=&#34;#Freshness&#34;&gt;Freshness&lt;/a&gt; section below.&lt;/p&gt;
+
+&lt;pre&gt;
+Cache-Control: max-age=31536000&lt;/pre&gt;
+
+&lt;h4 id=&#34;Validation&#34;&gt;Validation&lt;/h4&gt;
+
+&lt;p&gt;When using the &#34;&lt;code&gt;must-revalidate&lt;/code&gt;&#34; directive, the cache must verify the status of the stale resources before using it and expired ones should not be used. For more details, see the &lt;a href=&#34;#Cache_validation&#34;&gt;Validation&lt;/a&gt; section below.&lt;/p&gt;
+
+&lt;pre&gt;
+Cache-Control: must-revalidate&lt;/pre&gt;
+
+&lt;h3 id=&#34;The_Pragma_header&#34;&gt;The &lt;code&gt;Pragma&lt;/code&gt; header&lt;/h3&gt;
+
+&lt;p&gt;{{HTTPHeader(&#34;Pragma&#34;)}} is a HTTP/1.0 header, is not specified for HTTP responses and is therefore not a reliable replacement for the general HTTP/1.1 &lt;code&gt;Cache-Control&lt;/code&gt; header, although it does behave the same as &lt;code&gt;Cache-Control: no-cache&lt;/code&gt;, if the &lt;code&gt;Cache-Control&lt;/code&gt; header field is omitted in a request. Use &lt;code&gt;Pragma&lt;/code&gt; only for backwards compatibility with HTTP/1.0 clients.&lt;/p&gt;
+
+&lt;h2 id=&#34;Freshness&#34;&gt;Freshness&lt;/h2&gt;
+
+&lt;p&gt;Once a resource is stored in a cache, it can theoretically be served by the cache forever. Caches have finite storage though periodically remove items they stored. This process is called &lt;em&gt;cache eviction&lt;/em&gt;. On the other side, some resources may changes in the server, and the cache should be updated. As HTTP is a client-server protocol, servers can&#39;t contact caches and clients when a resource change; they have to communicate an expiration time for the resource. Before this expiration time, the resource is &lt;em&gt;fresh&lt;/em&gt;, after its expiration time, the resource if &lt;em&gt;stale&lt;/em&gt;. Eviction algorithm often privileges fresh resources over stale resources. Note that a stale resource is not evicted or ignored; when the cache receives a request for a stale resource, it forwards this requests with a {{HTTPHeader(&#34;If-None-Match&#34;)}} to check if it isn&#39;t in fact still fresh. If so, the server returns a {{HTTPStatus(&#34;304&#34;)}} (Not Modified) message and don&#39;t send the resource back, saving some bandwidth.&lt;/p&gt;
+
+&lt;p&gt;Here is an example of this process with a shared cache proxy:&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;Show how a proxy cache acts when a doc is not cache, in the cache and fresh, in the cache and stale.&#34; src=&#34;https://mdn.mozillademos.org/files/13771/HTTPStaleness.png&#34; style=&#34;height:910px; width:822px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The freshness lifetime is calculated based on several headers. If a &#34;&lt;code&gt;Cache-control: max-age=N&lt;/code&gt;&#34; header is specified, then the freshness lifetime is equal to N. If this header is not present, which is very often the case, it is checked if an {{HTTPHeader(&#34;Expires&#34;)}} header is present. If an &lt;code&gt;Expires&lt;/code&gt; header exists, then its value minus the value of the {{HTTPHeader(&#34;Date&#34;)}} header determines the freshness lifetime. Finally, if neither header is present, look for a {{HTTPHeader(&#34;Last-Modified&#34;)}} header. If this header is present, then the cache&#39;s freshness lifetime is equal to the value of the &lt;code&gt;Date&lt;/code&gt; header minus the value of the &lt;code&gt;Last-modified&lt;/code&gt; header divided by 10.&lt;br /&gt;
+ The expiration time is computed as follows:&lt;/p&gt;
+
+&lt;pre&gt;
+expirationTime = responseTime + freshnessLifetime - currentAge
+&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;responseTime&lt;/code&gt; is the time at which the response was received according to the browser.&lt;/p&gt;
+
+&lt;h3 id=&#34;Revved_resources&#34;&gt;Revved resources&lt;/h3&gt;
+
+&lt;p&gt;The more we use cached resources, the better the responsiveness and the performance of a Web site will be. To optimize this, good practices recommend to set expiration times as far in the future as possible. This is possible on resources that are regularly updated, or often, but is problematic for resources that are rarely and infrequently updated. They are the resources that would benefit the most from caching resources, yet this make them very difficult to update. This is typical of the technical resources included and linked from each Web pages: JavaScript and CSS files change infrequently, but when they change you want them to be updated quickly.&lt;/p&gt;
+
+&lt;p&gt;Web developers invented a technique that Steve Sounders called &lt;em&gt;revving&lt;/em&gt;&lt;sup&gt;&lt;a href=&#34;https://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/&#34;&gt;[1]&lt;/a&gt;&lt;/sup&gt;. Infrequently updated files are named in specific way: in their URL, usually in the filename, a revision number is added. That way each new revision of this resource is considered as a resource on its own that &lt;em&gt;never&lt;/em&gt; changes and that can have an expiration time very far in the future, usually one year or even more. In order to have the new versions, all the links to them must be changed, that is the drawback of this method: additional complexity that is usually taken care by the tool chain used by Web developers. When the infrequently variable resources change they induce an additional change to often variable resources. When these are read, the new versions of the others are also read.&lt;/p&gt;
+
+&lt;p&gt;This technique has an additional benefits: it allows to guarantee that two resources can be updated at the same time and that caches will not lead to the situation where the old version of one of this resource is used with the new version of this other ones. This is very important when Web sites have CSS stylesheets or JS scripts that have dependencies and must be read coherently.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13779/HTTPRevved.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The revision version added to revved resources doesn&#39;t need to be a classical revision string like 1.1.3, or even a monotonously growing suite of number. It can be anything that prevent collisions, like a hash or a date.&lt;/p&gt;
+
+&lt;h2 id=&#34;Cache_validation&#34;&gt;Cache validation&lt;/h2&gt;
+
+&lt;p&gt;Revalidation is triggered when the user presses the reload button. It is also triggered under normal browsing if the cached response includes the &#34;&lt;code&gt;Cache-control: must-revalidate&lt;/code&gt;&#34; header. Another factor is the cache validation preferences in the &lt;code&gt;Advanced-&amp;gt;Cache&lt;/code&gt; preferences panel. There is an option to force a validation each time a document is loaded.&lt;/p&gt;
+
+&lt;p&gt;When a cached documents expiration time has been reached, it is either validated or fetched again. Validation can only occur if the server provided either a &lt;em&gt;strong validator&lt;/em&gt; or a &lt;em&gt;weak validator&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;ETags&#34;&gt;ETags&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;ETag&#34;)}} response header is an &lt;em&gt;opaque-to-the-useragent&lt;/em&gt; value that can be used as a strong validator. That means that the client, like the browser, has don&#39;t know what this string represents and can&#39;t predict it, even if it is not generated randomly on the server side. If the &lt;code&gt;ETag&lt;/code&gt; header is present in a response, then the client can issue an {{HTTPHeader(&#34;If-None-Match&#34;)}} request header to validate the cached document.&lt;/p&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Last-Modified&#34;)}} response header can be used as a weak validator. It is considered weak because it only has 1-second resolution. If the &lt;code&gt;Last-Modified&lt;/code&gt; header is present in a response, then the client can issue an {{HTTPHeader(&#34;If-Modified-Since&#34;)}} request header to validate the cached document.&lt;/p&gt;
+
+&lt;p&gt;When a validation request is made, the server can either ignore the validation request and response with a normal {{HTTPStatus(200)}} &lt;code&gt;OK&lt;/code&gt;, or it can return {{HTTPStatus(304)}} &lt;code&gt;Not Modified&lt;/code&gt; to instruct the browser to use its cached copy. The latter response can also include headers that update the expiration time of the cached document.&lt;/p&gt;
+
+&lt;h2 id=&#34;Varying_responses&#34;&gt;Varying responses&lt;/h2&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Vary&#34;)}} HTTP response header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server.&lt;/p&gt;
+
+&lt;p&gt;When a cache receives a request that can be satisfied by a cached response that has a &lt;code&gt;Vary&lt;/code&gt; header field, it must not use that cached response unless all header fields as nominated by the &lt;code&gt;Vary&lt;/code&gt; header match in both the original (cached) request and the new request.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;The Vary header leads cache to use more HTTP headers as key for the cache.&#34; src=&#34;https://mdn.mozillademos.org/files/13769/HTTPVary.png&#34; style=&#34;height:817px; width:752px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This can be useful for serving content dynamically, for example. When using the &lt;code&gt;Vary: User-Agent&lt;/code&gt; header, caching servers should consider the user agent when deciding whether to serve the page from cache. If you are serving different content to mobile users, it can help you to avoid that a cache may mistakenly serve a desktop version of your site to your mobile users. In addition, it can help Google and other search engines to discover the mobile version of a page, and might also tell them that no &lt;a href=&#34;https://en.wikipedia.org/wiki/Cloaking&#34;&gt;Cloaking&lt;/a&gt; is intended.&lt;/p&gt;
+
+&lt;pre&gt;
+Vary: User-Agent&lt;/pre&gt;
+
+&lt;p&gt;Because the {{HTTPHeader(&#34;User-Agent&#34;)}} header value is different (&#34;varies&#34;) for mobile and desktop clients, caches will not be used to serve mobile content mistakenly to desktop users or vice versa.&lt;/p&gt;
+
+&lt;h2 id=&#34;See_also&#34;&gt;See also&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&#34;https://tools.ietf.org/html/rfc7234&#34;&gt;RFC 7234: Hypertext Transfer Protocol (HTTP/1.1): Caching&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;https://www.mnot.net/cache_docs&#34;&gt;Caching Tutorial – Mark Nottingham&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching&#34;&gt;HTTP caching – Ilya Grigorik&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Caching%24revert/1107617" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Caching$revision/1107617 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:47:11 GMT -->
+</html>

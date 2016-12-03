@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Redirections$revision/1107981 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:00:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1107981 | Redirections in HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FRedirections%24revision%2F1107981" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Redirections%24revision/1107981">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1107981 of <a href="../Redirections.html">Redirections in HTTP</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Redirections</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Redirections in HTTP</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1107981</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-08-22T03:22:39-07:00">Aug 22, 2016, 3:22:39 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>end of first path on use cases</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/redirects">redirects</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p>{{HTTPSidebar}}</p>
+
+<p class="summary">URL Redirection, or URL forwarding, is a technique to keep links alive while the actual resource, being a page, a form or a whole Web apps, is located at another URL. HTTP provides a special kind of responses, <em><strong>HTTP Redirects</strong></em>, to perform this operation used for numerous goals: temporary redirection while site maintenance is happening, permanent redirection to keep external links working after a change in the architecture, progress pages when uploading a file, …</p>
+
+<h2 id="Principle">Principle</h2>
+
+<p>In HTTP, a redirection is triggered by the server by sending special responses to a request: <em>redirects</em>. HTTP redirects are responses with a status code of <code>3xx</code>. A browser, when receiving a redirect response, use the new URL provided and immediately loads it: most of the time, the redirection is transparent for the user, beside a small performance hit.</p>
+
+<p>(image)</p>
+
+<p>They are several types of redirects and they fell in three categories: permanent, temporary and special redirections.</p>
+
+<h3 id="Permanent_redirections">Permanent redirections</h3>
+
+<p>These redirections are meant to last forever. They imply that the original URL is no more to be used and that the new one has to preferred. Browsers just don't follow such links, but search engine robots trigger an update of the URL associated to the resource in their index.</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Code</th>
+   <th scope="col">Text</th>
+   <th scope="col">Method handling</th>
+   <th scope="col">Typical use case</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>301</code></td>
+   <td><code>Moved Permanently</code></td>
+   <td>{{HTTPMethod("GET")}} methods unchanged.<br>
+    Others may or may not be changed to {{HTTPMethod("GET")}}.<sup><a href="#attr1">[1]</a></sup></td>
+   <td>Reorganization of a Web site.</td>
+  </tr>
+  <tr>
+   <td><code>308</code></td>
+   <td><code>Permanent Redirect</code></td>
+   <td>Method and body not changed.</td>
+   <td>Reorganization of a Web site, with non-GET links/operations.</td>
+  </tr>
+ </tbody>
+</table>
+
+<p><a id="attr1" name="attr1"></a>[1] The specification didn't intended to allow method changing this, but practically there are user agents out there doing this. <code>308</code> has been created to remove the ambiguity of the behavior when using non-<code>GET</code> methods.</p>
+
+<h3 id="Temporary_redirections">Temporary redirections</h3>
+
+<p>Sometimes the requested resource cannot be accessed from its canonical location, but it can be accessed from another place. In this case a temporary redirect can be used: browsers just follow such links, but search engine robots don't memorize the new link. Temporary redirections are also used when creating, updating and deleting resources to present temporary progress pages.</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Code</th>
+   <th scope="col">Text</th>
+   <th scope="col">Method handling</th>
+   <th scope="col">Typical use case</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>302</code></td>
+   <td><code>Found</code></td>
+   <td>{{HTTPMethod("GET")}} methods unchanged.<br>
+    Others may or may not be changed to {{HTTPMethod("GET")}}.<sup><a href="#attr2">[2]</a></sup></td>
+   <td>The Web page is temporary not available for reasons that have not been unforeseen. That way, search engines doesn't update their links.</td>
+  </tr>
+  <tr>
+   <td><code>303</code></td>
+   <td><code>See Other</code></td>
+   <td>{{HTTPMethod("GET")}} methods unchanged.<br>
+    Others <em>changed</em> to <code>GET</code> (body lost).</td>
+   <td>Used to redirect after a {{HTTPMethod("PUT")}} or a {{HTTPMethod("POST")}} to prevent a refresh of the page that would re-trigger the operation.</td>
+  </tr>
+  <tr>
+   <td><code>307</code></td>
+   <td><code>Temporary Redirect</code></td>
+   <td>Method and body not changed</td>
+   <td>The Web page is temporary not available for reasons that have not been unforeseen. That way, search engines doesn't update their links. Better than <code>302</code> when non-GET links/operations are on available on the site.</td>
+  </tr>
+ </tbody>
+</table>
+
+<p><a id="attr2" name="attr2"></a>[2] The specification didn't intended to allow method changing this, but practically there are user agents out there doing this. <code>307</code> has been created to remove the ambiguity of the behavior when using non-<code>GET</code> methods.</p>
+
+<h3 id="Special_redirections">Special redirections</h3>
+
+<p>In addition to these usual redirections, there are two specific redirections. The {{HTTPStatus("304")}} <code>Not Modified</code> redirects that in fact redirects a page to the locally cached copy (that was stale), and {{HTTPStatus("300")}} <code>Multiple Choice</code> that is a kind of manual redirection: the body, presented by the browser as a Web page, lists the possible redirections and the user click on one to select it.</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Code</th>
+   <th scope="col">Text</th>
+   <th scope="col">Typical use case</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>300</code></td>
+   <td><code>Multiple Choice</code></td>
+   <td>Not many: the choices are listed in an html page in the body. Could be serverd with a {{HTTPStatus("200")}} <code>OK</code> status.</td>
+  </tr>
+  <tr>
+   <td><code>304</code></td>
+   <td><code>Not Modified</code></td>
+   <td>Cache refresh: this indicates that the cache value is still fresh an can be used.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Alternative_way_of_specifying_redirections">Alternative way of specifying redirections</h2>
+
+<p>HTTP redirects aren't the only way to defining redirections. There are two other methods: HTML redirections using the {{HTMLElement("meta")}} element, and JavaScript redirections using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM</a>.</p>
+
+<h3 id="HTML_redirections">HTML redirections</h3>
+
+<p>HTTP redirects are the preferred way to create redirections, but sometimes the Web developer doesn't have the control over the server and cannot configure it. For these specific cases, the Web devs can craft an HTML page with a {{HTMLElement("meta")}} element with the {{htmlattrxref("http-equiv", "meta")}} attribute set to <code>refresh</code> in the {{HTMLElement("head")}} of the page. When displaying the page, the browser will find this element and will go to the indicating page.</p>
+
+<pre class="brush: html">&lt;head&gt; 
+  &lt;meta http-equiv="refresh" content="0;URL='http://www.example.com/'" /&gt;
+&lt;/head&gt;
+</pre>
+
+<p>The {{htmlattrxref("content")}} starts with a number indicating how many seconds the browser should wait before redirecting to the given URL. Always set it to <code>0</code>, to help for accessibility.</p>
+
+<p>Obviously, this method work only with HTML pages (or similar) and cannot be used for images or other type of content.</p>
+
+<p>Note that these redirections break the back button in browser: you can go back to a page with this header and it instantaneously moves forward again. Users dont' like such behavior.</p>
+
+<h3 id="JavaScript_redirections">JavaScript redirections</h3>
+
+<p>Redirections in JavaScript are pretty easy: just give a new value to {{domxref("window.location")}} and the new page is loaded.</p>
+
+<pre class="brush: js">window.location = "http://www.example.com/";</pre>
+
+<p>Like HTML redirections, this can't work on any resources, and obviously this will work only on clients that execute JavaScript. On this other side, there is more freedom as you can trigger the redirection only if some conditions are met.</p>
+
+<h3 id="Order_of_precedence">Order of precedence</h3>
+
+<p>With three ways of doing URL redirections comes the natural questions: when several methods are specifies, which one is applied? The order of precedence is the following:</p>
+
+<ol>
+ <li>HTTP Redirects are always executed first, there is not even a page transmitted, and of course not even read.</li>
+ <li>HTML Redirects ({{HTMLElement("meta")}}) are executed if there wasn't any HTTP redirects.</li>
+ <li>JavaScript Redirects are used as the last resort, and only if the JavaScript is enabled on the client side.</li>
+</ol>
+
+<p>When possible, always try to use HTTP redirects, and don't put a {{HTMLElement("meta")}} just in case in relevant pages, it will only confuses developers wanting to fix a problem the day the HTTP redirects and the HTML ones are no more identical.</p>
+
+<h2 id="Use_cases">Use cases</h2>
+
+<p>There are numerous usages for redirects, but as they come as a performance cost, there use should be minimized.</p>
+
+<h3 id="Domain_aliasing">Domain aliasing</h3>
+
+<p>Ideally there is one location, and therefore one URL, for one resource. But there are plenty of good reasons for wanted to have alternatives names for a resource (several domains, like with and without the www. prefix, shorter easy to remember URLs, …). In this cases, rather than duplicate the resource, it is useful to use a redirect to the one true URL.</p>
+
+<p>For example: Your site resides under the <code>www.example.com</code> domain. But you want people accessing your pages to <code>example.com</code> to be able to reach them too. You set redirections between each <code>example.com</code> page to <code>www.example.com.</code></p>
+
+<h3 id="Keeping_links_alive">Keeping links alive</h3>
+
+<p>When you restructure a Web sites, URL of resources change. Even if you can update the internal links of your Web site to match the new naming scheme, you have no control over the URLs used by external resources. You don't want to break this link as they bring you valuable users (and help your SEO), so you set up redirects from the old URLs to the new ones.</p>
+
+<div class="note">
+<p>Even if this technique also works for internal links, you should try to avoid having internal redirects. A redirect has a significant performance cost (as an extra HTTP request is done) and if you can avoid it by correcting internal links, you should just do it.</p>
+</div>
+
+<h3 id="Temporary_responses_to_unsafe_requests">Temporary responses to unsafe requests</h3>
+
+<p>Requests sent with a {{Glossary("safe", "unsafe")}} requests modify the state of the server and you don't want the user to replay them inadvertently. Typically, you don't want your users to resent {{HTTPMethod("PUT")}}, {{HTTPMethod("POST")}} or {{HTTPMethod("DELETE")}}. If you just serve the response as the result of this request, a simple press of the reload button will, eventually after a cryptic confirmation message, resend the request.</p>
+
+<p>In these case, the server can send back a {{HTTPStatus("303")}} <code>See Other</code> request that will contain the right information, but if the reload button is pressed, only this page is redisplayed, without replaying the unsafe requests.</p>
+
+<h3 id="Temporary_responses_for_long_requests">Temporary responses for long requests</h3>
+
+<p>Some requests may need time on the server side, like sometimes {{HTTPHeader("DELETE")}} requests that may be merely scheduled for later processing. In this kind of case, the response is a {{HTTPStatus("303")}} <code>See Other</code> redirect that link to a page indicating that the action has been scheduling, and eventually informing about the progress, or allowing to cancel it.</p>
+
+<h2 id="Configuring_redirects_in_common_servers">Configuring redirects in common servers</h2>
+
+<p> </p>
+
+<h2 id="Avoiding_redirection_loops">Avoiding redirection loops</h2>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p&gt;{{HTTPSidebar}}&lt;/p&gt;
+
+&lt;p class=&#34;summary&#34;&gt;URL Redirection, or URL forwarding, is a technique to keep links alive while the actual resource, being a page, a form or a whole Web apps, is located at another URL. HTTP provides a special kind of responses, &lt;em&gt;&lt;strong&gt;HTTP Redirects&lt;/strong&gt;&lt;/em&gt;, to perform this operation used for numerous goals: temporary redirection while site maintenance is happening, permanent redirection to keep external links working after a change in the architecture, progress pages when uploading a file, …&lt;/p&gt;
+
+&lt;h2 id=&#34;Principle&#34;&gt;Principle&lt;/h2&gt;
+
+&lt;p&gt;In HTTP, a redirection is triggered by the server by sending special responses to a request: &lt;em&gt;redirects&lt;/em&gt;. HTTP redirects are responses with a status code of &lt;code&gt;3xx&lt;/code&gt;. A browser, when receiving a redirect response, use the new URL provided and immediately loads it: most of the time, the redirection is transparent for the user, beside a small performance hit.&lt;/p&gt;
+
+&lt;p&gt;(image)&lt;/p&gt;
+
+&lt;p&gt;They are several types of redirects and they fell in three categories: permanent, temporary and special redirections.&lt;/p&gt;
+
+&lt;h3 id=&#34;Permanent_redirections&#34;&gt;Permanent redirections&lt;/h3&gt;
+
+&lt;p&gt;These redirections are meant to last forever. They imply that the original URL is no more to be used and that the new one has to preferred. Browsers just don&#39;t follow such links, but search engine robots trigger an update of the URL associated to the resource in their index.&lt;/p&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Code&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Text&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Method handling&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Typical use case&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;301&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Moved Permanently&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;{{HTTPMethod(&#34;GET&#34;)}} methods unchanged.&lt;br /&gt;
+    Others may or may not be changed to {{HTTPMethod(&#34;GET&#34;)}}.&lt;sup&gt;&lt;a href=&#34;#attr1&#34;&gt;[1]&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+   &lt;td&gt;Reorganization of a Web site.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;308&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Permanent Redirect&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Method and body not changed.&lt;/td&gt;
+   &lt;td&gt;Reorganization of a Web site, with non-GET links/operations.&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;a id=&#34;attr1&#34; name=&#34;attr1&#34;&gt;&lt;/a&gt;[1] The specification didn&#39;t intended to allow method changing this, but practically there are user agents out there doing this. &lt;code&gt;308&lt;/code&gt; has been created to remove the ambiguity of the behavior when using non-&lt;code&gt;GET&lt;/code&gt; methods.&lt;/p&gt;
+
+&lt;h3 id=&#34;Temporary_redirections&#34;&gt;Temporary redirections&lt;/h3&gt;
+
+&lt;p&gt;Sometimes the requested resource cannot be accessed from its canonical location, but it can be accessed from another place. In this case a temporary redirect can be used: browsers just follow such links, but search engine robots don&#39;t memorize the new link. Temporary redirections are also used when creating, updating and deleting resources to present temporary progress pages.&lt;/p&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Code&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Text&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Method handling&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Typical use case&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;302&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Found&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;{{HTTPMethod(&#34;GET&#34;)}} methods unchanged.&lt;br /&gt;
+    Others may or may not be changed to {{HTTPMethod(&#34;GET&#34;)}}.&lt;sup&gt;&lt;a href=&#34;#attr2&#34;&gt;[2]&lt;/a&gt;&lt;/sup&gt;&lt;/td&gt;
+   &lt;td&gt;The Web page is temporary not available for reasons that have not been unforeseen. That way, search engines doesn&#39;t update their links.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;303&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;See Other&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;{{HTTPMethod(&#34;GET&#34;)}} methods unchanged.&lt;br /&gt;
+    Others &lt;em&gt;changed&lt;/em&gt; to &lt;code&gt;GET&lt;/code&gt; (body lost).&lt;/td&gt;
+   &lt;td&gt;Used to redirect after a {{HTTPMethod(&#34;PUT&#34;)}} or a {{HTTPMethod(&#34;POST&#34;)}} to prevent a refresh of the page that would re-trigger the operation.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;307&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Temporary Redirect&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Method and body not changed&lt;/td&gt;
+   &lt;td&gt;The Web page is temporary not available for reasons that have not been unforeseen. That way, search engines doesn&#39;t update their links. Better than &lt;code&gt;302&lt;/code&gt; when non-GET links/operations are on available on the site.&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;a id=&#34;attr2&#34; name=&#34;attr2&#34;&gt;&lt;/a&gt;[2] The specification didn&#39;t intended to allow method changing this, but practically there are user agents out there doing this. &lt;code&gt;307&lt;/code&gt; has been created to remove the ambiguity of the behavior when using non-&lt;code&gt;GET&lt;/code&gt; methods.&lt;/p&gt;
+
+&lt;h3 id=&#34;Special_redirections&#34;&gt;Special redirections&lt;/h3&gt;
+
+&lt;p&gt;In addition to these usual redirections, there are two specific redirections. The {{HTTPStatus(&#34;304&#34;)}} &lt;code&gt;Not Modified&lt;/code&gt; redirects that in fact redirects a page to the locally cached copy (that was stale), and {{HTTPStatus(&#34;300&#34;)}} &lt;code&gt;Multiple Choice&lt;/code&gt; that is a kind of manual redirection: the body, presented by the browser as a Web page, lists the possible redirections and the user click on one to select it.&lt;/p&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Code&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Text&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Typical use case&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;300&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Multiple Choice&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Not many: the choices are listed in an html page in the body. Could be serverd with a {{HTTPStatus(&#34;200&#34;)}} &lt;code&gt;OK&lt;/code&gt; status.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;304&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Not Modified&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Cache refresh: this indicates that the cache value is still fresh an can be used.&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;Alternative_way_of_specifying_redirections&#34;&gt;Alternative way of specifying redirections&lt;/h2&gt;
+
+&lt;p&gt;HTTP redirects aren&#39;t the only way to defining redirections. There are two other methods: HTML redirections using the {{HTMLElement(&#34;meta&#34;)}} element, and JavaScript redirections using the &lt;a href=&#34;/en-US/docs/Web/API/Document_Object_Model&#34;&gt;DOM&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;HTML_redirections&#34;&gt;HTML redirections&lt;/h3&gt;
+
+&lt;p&gt;HTTP redirects are the preferred way to create redirections, but sometimes the Web developer doesn&#39;t have the control over the server and cannot configure it. For these specific cases, the Web devs can craft an HTML page with a {{HTMLElement(&#34;meta&#34;)}} element with the {{htmlattrxref(&#34;http-equiv&#34;, &#34;meta&#34;)}} attribute set to &lt;code&gt;refresh&lt;/code&gt; in the {{HTMLElement(&#34;head&#34;)}} of the page. When displaying the page, the browser will find this element and will go to the indicating page.&lt;/p&gt;
+
+&lt;pre class=&#34;brush: html&#34;&gt;
+&amp;lt;head&amp;gt; 
+  &amp;lt;meta http-equiv=&#34;refresh&#34; content=&#34;0;URL=&#39;http://www.example.com/&#39;&#34; /&amp;gt;
+&amp;lt;/head&amp;gt;
+&lt;/pre&gt;
+
+&lt;p&gt;The {{htmlattrxref(&#34;content&#34;)}} starts with a number indicating how many seconds the browser should wait before redirecting to the given URL. Always set it to &lt;code&gt;0&lt;/code&gt;, to help for accessibility.&lt;/p&gt;
+
+&lt;p&gt;Obviously, this method work only with HTML pages (or similar) and cannot be used for images or other type of content.&lt;/p&gt;
+
+&lt;p&gt;Note that these redirections break the back button in browser: you can go back to a page with this header and it instantaneously moves forward again. Users dont&#39; like such behavior.&lt;/p&gt;
+
+&lt;h3 id=&#34;JavaScript_redirections&#34;&gt;JavaScript redirections&lt;/h3&gt;
+
+&lt;p&gt;Redirections in JavaScript are pretty easy: just give a new value to {{domxref(&#34;window.location&#34;)}} and the new page is loaded.&lt;/p&gt;
+
+&lt;pre class=&#34;brush: js&#34;&gt;
+window.location = &#34;http://www.example.com/&#34;;&lt;/pre&gt;
+
+&lt;p&gt;Like HTML redirections, this can&#39;t work on any resources, and obviously this will work only on clients that execute JavaScript. On this other side, there is more freedom as you can trigger the redirection only if some conditions are met.&lt;/p&gt;
+
+&lt;h3 id=&#34;Order_of_precedence&#34;&gt;Order of precedence&lt;/h3&gt;
+
+&lt;p&gt;With three ways of doing URL redirections comes the natural questions: when several methods are specifies, which one is applied? The order of precedence is the following:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;HTTP Redirects are always executed first, there is not even a page transmitted, and of course not even read.&lt;/li&gt;
+ &lt;li&gt;HTML Redirects ({{HTMLElement(&#34;meta&#34;)}}) are executed if there wasn&#39;t any HTTP redirects.&lt;/li&gt;
+ &lt;li&gt;JavaScript Redirects are used as the last resort, and only if the JavaScript is enabled on the client side.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;When possible, always try to use HTTP redirects, and don&#39;t put a {{HTMLElement(&#34;meta&#34;)}} just in case in relevant pages, it will only confuses developers wanting to fix a problem the day the HTTP redirects and the HTML ones are no more identical.&lt;/p&gt;
+
+&lt;h2 id=&#34;Use_cases&#34;&gt;Use cases&lt;/h2&gt;
+
+&lt;p&gt;There are numerous usages for redirects, but as they come as a performance cost, there use should be minimized.&lt;/p&gt;
+
+&lt;h3 id=&#34;Domain_aliasing&#34;&gt;Domain aliasing&lt;/h3&gt;
+
+&lt;p&gt;Ideally there is one location, and therefore one URL, for one resource. But there are plenty of good reasons for wanted to have alternatives names for a resource (several domains, like with and without the www. prefix, shorter easy to remember URLs, …). In this cases, rather than duplicate the resource, it is useful to use a redirect to the one true URL.&lt;/p&gt;
+
+&lt;p&gt;For example: Your site resides under the &lt;code&gt;www.example.com&lt;/code&gt; domain. But you want people accessing your pages to &lt;code&gt;example.com&lt;/code&gt; to be able to reach them too. You set redirections between each &lt;code&gt;example.com&lt;/code&gt; page to &lt;code&gt;www.example.com.&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;Keeping_links_alive&#34;&gt;Keeping links alive&lt;/h3&gt;
+
+&lt;p&gt;When you restructure a Web sites, URL of resources change. Even if you can update the internal links of your Web site to match the new naming scheme, you have no control over the URLs used by external resources. You don&#39;t want to break this link as they bring you valuable users (and help your SEO), so you set up redirects from the old URLs to the new ones.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;Even if this technique also works for internal links, you should try to avoid having internal redirects. A redirect has a significant performance cost (as an extra HTTP request is done) and if you can avoid it by correcting internal links, you should just do it.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;Temporary_responses_to_unsafe_requests&#34;&gt;Temporary responses to unsafe requests&lt;/h3&gt;
+
+&lt;p&gt;Requests sent with a {{Glossary(&#34;safe&#34;, &#34;unsafe&#34;)}} requests modify the state of the server and you don&#39;t want the user to replay them inadvertently. Typically, you don&#39;t want your users to resent {{HTTPMethod(&#34;PUT&#34;)}}, {{HTTPMethod(&#34;POST&#34;)}} or {{HTTPMethod(&#34;DELETE&#34;)}}. If you just serve the response as the result of this request, a simple press of the reload button will, eventually after a cryptic confirmation message, resend the request.&lt;/p&gt;
+
+&lt;p&gt;In these case, the server can send back a {{HTTPStatus(&#34;303&#34;)}} &lt;code&gt;See Other&lt;/code&gt; request that will contain the right information, but if the reload button is pressed, only this page is redisplayed, without replaying the unsafe requests.&lt;/p&gt;
+
+&lt;h3 id=&#34;Temporary_responses_for_long_requests&#34;&gt;Temporary responses for long requests&lt;/h3&gt;
+
+&lt;p&gt;Some requests may need time on the server side, like sometimes {{HTTPHeader(&#34;DELETE&#34;)}} requests that may be merely scheduled for later processing. In this kind of case, the response is a {{HTTPStatus(&#34;303&#34;)}} &lt;code&gt;See Other&lt;/code&gt; redirect that link to a page indicating that the action has been scheduling, and eventually informing about the progress, or allowing to cancel it.&lt;/p&gt;
+
+&lt;h2 id=&#34;Configuring_redirects_in_common_servers&#34;&gt;Configuring redirects in common servers&lt;/h2&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;h2 id=&#34;Avoiding_redirection_loops&#34;&gt;Avoiding redirection loops&lt;/h2&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Redirections%24revert/1107981" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Redirections$revision/1107981 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:00:45 GMT -->
+</html>

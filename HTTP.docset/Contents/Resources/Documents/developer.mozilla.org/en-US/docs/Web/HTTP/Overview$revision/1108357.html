@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Overview$revision/1108357 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:07:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1108357 | An overview of HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FOverview%24revision%2F1108357" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Overview%24revision/1108357">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1108357 of <a href="../Overview.html">An overview of HTTP</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Overview</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>An overview of HTTP</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1108357</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-08-23T00:58:41-07:00">Aug 23, 2016, 12:58:41 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>chrisdavidmills</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>slightly updating last link; the &#39;r&#39; was outside the link.</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTML">HTML</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/l10n:priority">l10n:priority</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Overview">Overview</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/WebMechanics">WebMechanics</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p class="summary"><strong>HTTP</strong> is a {{glossary("protocol")}} allowing to fetch resources, such as HTML documents. It is the foundation of any data exchange on the Web and a client-server protocol, meaning that requests are initiated by the recipient, usually a browser. A complete document is reconstructed from the different sub-documents fetched, being text, layout description, images, videos, scripts, and more.</p>
+
+<p><img alt="A Web document is the composition of different resources" src="../../../../../../mdn.mozillademos.org/files/13677/Fetching_a_page.png" style="height: 319px; width: 545px;"></p>
+
+<p>Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). The messages sent by the client, usually a browser, are called <em>requests</em> and the messages sent by the server as an answer are called <em>responses</em>.</p>
+
+<p><img alt="HTTP as an application layer protocol, on top of TCP (transport layer) and IP (network layer) and below the presentation layer." src="../../../../../../mdn.mozillademos.org/files/13673/HTTP%20%26%20layers.png" style="float: left; height: 299px; padding-bottom: 15px; padding-right: 20px; width: 418px;">Designed in the early 1990s, HTTP is an extensible protocol that has evolved over time. It is an application layer protocol that is sent over {{glossary("TCP")}}, or over a {{glossary("TLS")}}-encrypted TCP connection, though any reliable transport protocol could theoretically be used. Due to its extensibility, it is nowadays used to not only fetch hypertext documents, but also for images and videos or to post content to servers, like with HTML form results. HTTP can also be used to fetch parts of documents to update Web pages on demand.</p>
+
+<h2 id="Components_of_HTTP-based_systems" style="">Components of HTTP-based systems</h2>
+
+<p>HTTP is a client-server protocol: requests are sent by one entity, the user-agent (or a proxy on behalf of it). Most of the time the user-agent is a browser, but it can be anything, for example a robot that crawls the Web to populate and maintain a search engine index.</p>
+
+<p>Each individual request is sent to a server that will handle it and provide an answer, called the <em>response</em>. In between there are numerous entities, collectively designed as {{glossary("Proxy", "proxies")}}, that perform different operations and act as gateways or {{glossary("Cache", "caches")}}, for example.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13679/Client-server-chain.png" style="height: 121px; width: 819px;"></p>
+
+<p>In reality, there are more computers between a browser and the server handling the request: there are routers, modems, and more. Thanks to the layered design of the Web, these are hidden in the network and transport layers. HTTP is on top at the application layer. Though important to diagnose network problems, the underlying layers are mostly irrelevant to a description of HTTP.</p>
+
+<h3 id="Client_the_user-agent">Client: the user-agent</h3>
+
+<p>Literally, the user-agent is any tool that acts on the behalf of the user. Practically, this role is performed by the browser; the few exceptions being programs used by engineers, and Web developers to debug their applications.</p>
+
+<p>The browser is <strong>always</strong> the entity initiating the request. It is never the server (though some mechanism have been added over the years to simulate server-initiated messages).</p>
+
+<p>To present a Web pages, the browser sends an original request to fetch the HTML document of the page, then parses it and fetches additional requests corresponding to scripts to execute, layout information (CSS) to display, as well as the sub-resources contained in the page (usually images and videos). It then combines these resources to present a complete document, the Web page. Scripts executed by the browser can fetch more resources in later phases and the browser updates the Web page accordingly.</p>
+
+<p>A Web page is an hypertext document, meaning that some part of the displayed text are links that can be activated (usually by a click of the mouse) to fetch a new Web page, allowing the user to control its user-agent and to navigate the Web. The browser translates these orders in HTTP requests and interprets the HTTP responses to present the user with an intelligible response.</p>
+
+<h3 id="The_Web_server">The Web server</h3>
+
+<p>On the opposite side of the communication channel, there is the server that <em>serves</em> the document as requested by the client. A server is only a single machine virtually: it may be a collection of servers that share the load (load balancing) or a complex piece of software interrogating other computers (like cache, a DB server, e-commerce servers, …) and generating the document, totally or partially, on the fly.</p>
+
+<p>A server is not necessarily a single machine, but also several servers can be hosted on the same machine. With HTTP/1.1 and the {{HTTPHeader("Host")}} header, they can even share the same IP address.</p>
+
+<h3 id="Proxies">Proxies</h3>
+
+<p>Between a browser and the server, numerous computers and machines relay the HTTP messages. Thanks to the layered structure of the Web stack, most of them operate at the transport, network or physical level and are transparent at the HTTP layer (though they may have a significant impact on performance). The ones operating at the application layers are generally called <strong>proxies</strong>. They can be transparent or not (they change the requests going through them or not) and can perform numerous functions:</p>
+
+<ul>
+ <li>caching (the cache can be public or private, like the browser cache)</li>
+ <li>filtering (like an antivirus scan, parental controls, …)</li>
+ <li>load balancing to allow multiple servers to serve the different requests</li>
+ <li>authentication to control access to different resources</li>
+ <li>logging, allowing to store historical information.</li>
+</ul>
+
+<h2 id="Basic_aspects_of_HTTP">Basic aspects of HTTP</h2>
+
+<h3 id="HTTP_is_simple">HTTP is simple</h3>
+
+<p>Even with some more complexity introduced in HTTP/2 by encapsulating HTTP messages into frames, HTTP is generally designed to be human readable and simple. HTTP messages can be read and understood by a human, which allows easier testing and lowers the bar for new-comers.</p>
+
+<h3 id="HTTP_is_extensible">HTTP is extensible</h3>
+
+<p>Introduced in HTTP/1.0, <a href="../Headers.html">HTTP headers</a> made the protocol extremely easy to extend and to experiment with. New functionality can be introduced simply by an agreement between a client and a server about the semantic of new headers.</p>
+
+<h3 id="HTTP_is_stateless_but_not_sessionless">HTTP is stateless, but not sessionless</h3>
+
+<p>HTTP is stateless: there is no link between two successive requests being done on the same connection or not. This proved problematic as soon as users wanted to interact with a page in a coherent way, like for an e-commerce shopping basket, for example. Using the header extensibility, the HTTP Cookies have been added allowing to create sessions with each requests to share the same context, the same state.</p>
+
+<p>While the core of HTTP itself is stateless, the use of cookies allows to create stateful sessions.</p>
+
+<h3 id="HTTP_and_connections">HTTP and connections</h3>
+
+<p>A connection is controlled at the transport layer and is fundamentally out of scope for HTTP. Nevertheless, HTTP doesn't require the underlying transport protocol to be connection-based; it only requires it to be <em>reliable</em>, that is not to loose messages (at least not without an error). Among the two most common transport protocols on the Internet, TCP is reliable and UDP isn't. HTTP relies therefore on TCP that happens to be also connection-based, though this is not a requirement.</p>
+
+<p>HTTP/1.0 was opening a TCP connection for each request/response exchange, but TCP has two major flows: opening a connection needs several round-trips of messages and is therefore slow, but also becomes more efficient when several messages has been sent, and are regularly sent: <em>warm</em> connections are more efficient than <em>cold</em> ones.</p>
+
+<p>In order to mitigate these flows, HTTP/1.1 introduced the notion of pipelining (that proved difficult to implement) and the notion of persistent connection: the underlying TCP connection can be partially controlled using the {{HTTPHeader("Connection")}} header. HTTP/2 went a step further by multiplexing messages over a single connection, helping to keep it warm.</p>
+
+<p>Experiments are in progress to design a better transport protocol that would be better suited for HTTP. For example, Google is experimenting with <a href="https://en.wikipedia.org/wiki/QUIC">QUIC</a> that builds on top of UDP to provide a more reliable and efficient transport protocol.</p>
+
+<h2 id="What_can_be_controlled_by_HTTP">What can be controlled by HTTP</h2>
+
+<p>The extensible nature of HTTP has allowed to control more and more functionality of the Web over the years. Cache or authentication methods are functions controlled early by HTTP, on the other had, the ability to relax the origin constraint has been added only in the 2010s.</p>
+
+<p>This is a list of common features controllable using HTTP.</p>
+
+<ul>
+ <li><em>Cache</em><br>
+  How documents are cached can be controlled by HTTP. The server can instruct proxies and clients what to cache and for how long, while the client can instruct intermediate cache proxies to ignore the stored document.</li>
+ <li><em>Relaxing the origin constraint</em><br>
+  To prevent snooping or other privacy invasions, browsers enforce a strict separation between Web sites. Only pages from the <strong>same origin</strong> can access to the whole information of a Web page. Such constraint is a burden, and servers, via HTTP headers, can relax it, so that the document may be a patchwork of information coming from different domains (there are security-related reasons to do so in some cases).</li>
+ <li><em>Authentication</em><br>
+  Some pages can be protected so that only specific users can access it. Basic authentication can be provided directly by HTTP, either using the {{HTTPHeader("Authenticate")}} and similar headers, or by setting a specific session using HTTP cookies.</li>
+ <li><em>Proxy and tunneling</em><br>
+  Often servers or clients, or both, are located on intranets and hide their true address to others. HTTP requests go then through proxies to cross the network barrier. Not all proxies are HTTP proxies, some, like those using the SOCKS protocol, operate at a lower level (and other protocols, like ftp can be handled by them too).</li>
+ <li><em>Sessions</em><br>
+  The use of cookies allows to link requests with a state on the server. This creates sessions, although basic HTTP is a state-less protocol. This is useful not only for e-commerce shopping baskets, but also for any site allowing configuration of the output.</li>
+</ul>
+
+<h2 id="HTTP_flow">HTTP flow</h2>
+
+<p>When the client wants to communicate with a server, either being the final server or an intermediate proxy, it performs the following steps:</p>
+
+<ol>
+ <li>Open a TCP connection (or reuse of a previous one): The TCP connection will be used to send one or several requests, as well as getting the answer. The client may reuse an existing connection, or open several TCP connections to the servers.</li>
+ <li>Send an HTTP message: HTTP messages (before HTTP/2) are human-readable. With HTTP/2, these simple messages are encapsulated in frames, making them impossible to read directly, but the principle remains the same.
+  <pre class="line-numbers  language-html"><code class="language-html">GET / HTTP/1.1
+Host: developer.mozilla.org
+Accept-Language: fr</code></pre>
+ </li>
+ <li>Read the response sent by the server:
+  <pre class="line-numbers  language-html"><code class="language-html">HTTP/1.1 200 OK
+Date: Sat, 09 Oct 2010 14:28:02 GMT
+Server: Apache
+Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
+ETag: "51142bc1-7449-479b075b2891b"
+Accept-Ranges: bytes
+Content-Length: 29769
+Content-Type: text/html
+
+&lt;!DOCTYPE html... (here comes the 29769 bytes of the requested web page)</code></pre>
+ </li>
+ <li>Close or reuse the connection for further requests.</li>
+</ol>
+
+<p>When HTTP pipelining is activated, several requests can be sent successfully, without waiting for the first response to be fully received. HTTP pipelining has been proven difficult to implement in existing networks, where old pieces of software coexist with modern versions, and has been replaced by the more robust mechanism of multiplexing requests in a frame in HTTP/2.</p>
+
+<h2 id="HTTP_Messages">HTTP Messages</h2>
+
+<p>HTTP/1.1 and earlier HTTP messages are human-readable. In HTTP/2, these messages are embedded into a new binary structure, a frame, allowing optimizations like compression of headers and multiplexing. Even if only part of the original HTTP message is sent in this version of HTTP, the semantics of each message is unchanged and the client reconstitutes (virtually) the original HTTP/1.1 request; it is therefore still useful to consider HTTP/2 messages in the HTTP/1.1 format.</p>
+
+<p>There are two types of HTTP messages, requests and responses, each with its specific format.</p>
+
+<h3 id="Requests">Requests</h3>
+
+<p>An example HTTP request:</p>
+
+<p><img alt="A basic HTTP request" src="../../../../../../mdn.mozillademos.org/files/13687/HTTP_Request.png" style="height: 336px; width: 693px;"></p>
+
+<p>Requests consists of the following elements:</p>
+
+<ul>
+ <li>An HTTP <a href="../Methods.html">method</a>, usually a verb like {{HTTPMethod("GET")}}, {{HTTPMethod("POST")}} or a noun like {{HTTPMethod("OPTIONS")}} or {{HTTPMethod("HEAD")}} that defines the operation the client wants to perform. Typically, a client wants to fetch a resource (using <code>GET</code>) or post the value of an <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">HTML form</a> (using <code>POST</code>), though other operations may be needed in other cases.</li>
+ <li>The path of the resource to fetch, it is basically the URL of the resource stripped from elements that are obvious from the context, that is without the {{glossary("protocol")}} (<code>http://</code>), the {{glossary("domain")}} (here <code>developer.mozilla.org</code>), or the TCP {{glossary("port")}} (here <code>80</code>).</li>
+ <li>The version of the HTTP protocol.</li>
+ <li>Optional <a href="../Headers.html">headers</a> that convey extra-information for the servers.</li>
+ <li>For some methods like <code>POST</code>, a body, similar to the one in responses, that contains the resource sent.</li>
+</ul>
+
+<h3 id="Responses">Responses</h3>
+
+<p>An example responses:</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13691/HTTP_Response.png" style="height: 494px; width: 758px;"></p>
+
+<p>Responses consists of the following elements:</p>
+
+<ul>
+ <li>The version of the HTTP protocol they follow.</li>
+ <li>A <a href="../Status.html">status code</a>, indicating if the request has been successful or not, and why.</li>
+ <li>A status message, that is a non-authoritative short description of the status code.</li>
+ <li>HTTP <a href="../Headers.html">headers</a>, like for requests.</li>
+ <li>Optionally, but much more common than in requests, a body containing the fetched resource.</li>
+</ul>
+
+<h2 id="Conclusion">Conclusion</h2>
+
+<p>HTTP is an extensible protocol that is easy to use. The client-server structure combined with the ability to easily add headers allows HTTP to grow with the extended capabilities of the Web.</p>
+
+<p>Even if HTTP/2 is adding some complexity by embedding HTTP messages in frames to improve performance, from the point of view of the application, the basic structure of messages has been the same since the release of HTTP/1.0. The flow of a session remains simple, allowing it to be investigated and to debugged with a simple <a href="https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor">HTTP message monitor</a>.</p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p class=&#34;summary&#34;&gt;&lt;strong&gt;HTTP&lt;/strong&gt; is a {{glossary(&#34;protocol&#34;)}} allowing to fetch resources, such as HTML documents. It is the foundation of any data exchange on the Web and a client-server protocol, meaning that requests are initiated by the recipient, usually a browser. A complete document is reconstructed from the different sub-documents fetched, being text, layout description, images, videos, scripts, and more.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;A Web document is the composition of different resources&#34; src=&#34;https://mdn.mozillademos.org/files/13677/Fetching_a_page.png&#34; style=&#34;height:319px; width:545px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Clients and servers communicate by exchanging individual messages (as opposed to a stream of data). The messages sent by the client, usually a browser, are called &lt;em&gt;requests&lt;/em&gt; and the messages sent by the server as an answer are called &lt;em&gt;responses&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;HTTP as an application layer protocol, on top of TCP (transport layer) and IP (network layer) and below the presentation layer.&#34; src=&#34;https://mdn.mozillademos.org/files/13673/HTTP%20&amp;amp;%20layers.png&#34; style=&#34;float:left; height:299px; padding-bottom:15px; padding-right:20px; width:418px&#34; /&gt;Designed in the early 1990s, HTTP is an extensible protocol that has evolved over time. It is an application layer protocol that is sent over {{glossary(&#34;TCP&#34;)}}, or over a {{glossary(&#34;TLS&#34;)}}-encrypted TCP connection, though any reliable transport protocol could theoretically be used. Due to its extensibility, it is nowadays used to not only fetch hypertext documents, but also for images and videos or to post content to servers, like with HTML form results. HTTP can also be used to fetch parts of documents to update Web pages on demand.&lt;/p&gt;
+
+&lt;h2 id=&#34;Components_of_HTTP-based_systems&#34; style=&#34;clear:both&#34;&gt;Components of HTTP-based systems&lt;/h2&gt;
+
+&lt;p&gt;HTTP is a client-server protocol: requests are sent by one entity, the user-agent (or a proxy on behalf of it). Most of the time the user-agent is a browser, but it can be anything, for example a robot that crawls the Web to populate and maintain a search engine index.&lt;/p&gt;
+
+&lt;p&gt;Each individual request is sent to a server that will handle it and provide an answer, called the &lt;em&gt;response&lt;/em&gt;. In between there are numerous entities, collectively designed as {{glossary(&#34;Proxy&#34;, &#34;proxies&#34;)}}, that perform different operations and act as gateways or {{glossary(&#34;Cache&#34;, &#34;caches&#34;)}}, for example.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13679/Client-server-chain.png&#34; style=&#34;height:121px; width:819px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In reality, there are more computers between a browser and the server handling the request: there are routers, modems, and more. Thanks to the layered design of the Web, these are hidden in the network and transport layers. HTTP is on top at the application layer. Though important to diagnose network problems, the underlying layers are mostly irrelevant to a description of HTTP.&lt;/p&gt;
+
+&lt;h3 id=&#34;Client_the_user-agent&#34;&gt;Client: the user-agent&lt;/h3&gt;
+
+&lt;p&gt;Literally, the user-agent is any tool that acts on the behalf of the user. Practically, this role is performed by the browser; the few exceptions being programs used by engineers, and Web developers to debug their applications.&lt;/p&gt;
+
+&lt;p&gt;The browser is &lt;strong&gt;always&lt;/strong&gt; the entity initiating the request. It is never the server (though some mechanism have been added over the years to simulate server-initiated messages).&lt;/p&gt;
+
+&lt;p&gt;To present a Web pages, the browser sends an original request to fetch the HTML document of the page, then parses it and fetches additional requests corresponding to scripts to execute, layout information (CSS) to display, as well as the sub-resources contained in the page (usually images and videos). It then combines these resources to present a complete document, the Web page. Scripts executed by the browser can fetch more resources in later phases and the browser updates the Web page accordingly.&lt;/p&gt;
+
+&lt;p&gt;A Web page is an hypertext document, meaning that some part of the displayed text are links that can be activated (usually by a click of the mouse) to fetch a new Web page, allowing the user to control its user-agent and to navigate the Web. The browser translates these orders in HTTP requests and interprets the HTTP responses to present the user with an intelligible response.&lt;/p&gt;
+
+&lt;h3 id=&#34;The_Web_server&#34;&gt;The Web server&lt;/h3&gt;
+
+&lt;p&gt;On the opposite side of the communication channel, there is the server that &lt;em&gt;serves&lt;/em&gt; the document as requested by the client. A server is only a single machine virtually: it may be a collection of servers that share the load (load balancing) or a complex piece of software interrogating other computers (like cache, a DB server, e-commerce servers, …) and generating the document, totally or partially, on the fly.&lt;/p&gt;
+
+&lt;p&gt;A server is not necessarily a single machine, but also several servers can be hosted on the same machine. With HTTP/1.1 and the {{HTTPHeader(&#34;Host&#34;)}} header, they can even share the same IP address.&lt;/p&gt;
+
+&lt;h3 id=&#34;Proxies&#34;&gt;Proxies&lt;/h3&gt;
+
+&lt;p&gt;Between a browser and the server, numerous computers and machines relay the HTTP messages. Thanks to the layered structure of the Web stack, most of them operate at the transport, network or physical level and are transparent at the HTTP layer (though they may have a significant impact on performance). The ones operating at the application layers are generally called &lt;strong&gt;proxies&lt;/strong&gt;. They can be transparent or not (they change the requests going through them or not) and can perform numerous functions:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;caching (the cache can be public or private, like the browser cache)&lt;/li&gt;
+ &lt;li&gt;filtering (like an antivirus scan, parental controls, …)&lt;/li&gt;
+ &lt;li&gt;load balancing to allow multiple servers to serve the different requests&lt;/li&gt;
+ &lt;li&gt;authentication to control access to different resources&lt;/li&gt;
+ &lt;li&gt;logging, allowing to store historical information.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;Basic_aspects_of_HTTP&#34;&gt;Basic aspects of HTTP&lt;/h2&gt;
+
+&lt;h3 id=&#34;HTTP_is_simple&#34;&gt;HTTP is simple&lt;/h3&gt;
+
+&lt;p&gt;Even with some more complexity introduced in HTTP/2 by encapsulating HTTP messages into frames, HTTP is generally designed to be human readable and simple. HTTP messages can be read and understood by a human, which allows easier testing and lowers the bar for new-comers.&lt;/p&gt;
+
+&lt;h3 id=&#34;HTTP_is_extensible&#34;&gt;HTTP is extensible&lt;/h3&gt;
+
+&lt;p&gt;Introduced in HTTP/1.0, &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers&#34;&gt;HTTP headers&lt;/a&gt; made the protocol extremely easy to extend and to experiment with. New functionality can be introduced simply by an agreement between a client and a server about the semantic of new headers.&lt;/p&gt;
+
+&lt;h3 id=&#34;HTTP_is_stateless_but_not_sessionless&#34;&gt;HTTP is stateless, but not sessionless&lt;/h3&gt;
+
+&lt;p&gt;HTTP is stateless: there is no link between two successive requests being done on the same connection or not. This proved problematic as soon as users wanted to interact with a page in a coherent way, like for an e-commerce shopping basket, for example. Using the header extensibility, the HTTP Cookies have been added allowing to create sessions with each requests to share the same context, the same state.&lt;/p&gt;
+
+&lt;p&gt;While the core of HTTP itself is stateless, the use of cookies allows to create stateful sessions.&lt;/p&gt;
+
+&lt;h3 id=&#34;HTTP_and_connections&#34;&gt;HTTP and connections&lt;/h3&gt;
+
+&lt;p&gt;A connection is controlled at the transport layer and is fundamentally out of scope for HTTP. Nevertheless, HTTP doesn&#39;t require the underlying transport protocol to be connection-based; it only requires it to be &lt;em&gt;reliable&lt;/em&gt;, that is not to loose messages (at least not without an error). Among the two most common transport protocols on the Internet, TCP is reliable and UDP isn&#39;t. HTTP relies therefore on TCP that happens to be also connection-based, though this is not a requirement.&lt;/p&gt;
+
+&lt;p&gt;HTTP/1.0 was opening a TCP connection for each request/response exchange, but TCP has two major flows: opening a connection needs several round-trips of messages and is therefore slow, but also becomes more efficient when several messages has been sent, and are regularly sent: &lt;em&gt;warm&lt;/em&gt; connections are more efficient than &lt;em&gt;cold&lt;/em&gt; ones.&lt;/p&gt;
+
+&lt;p&gt;In order to mitigate these flows, HTTP/1.1 introduced the notion of pipelining (that proved difficult to implement) and the notion of persistent connection: the underlying TCP connection can be partially controlled using the {{HTTPHeader(&#34;Connection&#34;)}} header. HTTP/2 went a step further by multiplexing messages over a single connection, helping to keep it warm.&lt;/p&gt;
+
+&lt;p&gt;Experiments are in progress to design a better transport protocol that would be better suited for HTTP. For example, Google is experimenting with &lt;a href=&#34;https://en.wikipedia.org/wiki/QUIC&#34;&gt;QUIC&lt;/a&gt; that builds on top of UDP to provide a more reliable and efficient transport protocol.&lt;/p&gt;
+
+&lt;h2 id=&#34;What_can_be_controlled_by_HTTP&#34;&gt;What can be controlled by HTTP&lt;/h2&gt;
+
+&lt;p&gt;The extensible nature of HTTP has allowed to control more and more functionality of the Web over the years. Cache or authentication methods are functions controlled early by HTTP, on the other had, the ability to relax the origin constraint has been added only in the 2010s.&lt;/p&gt;
+
+&lt;p&gt;This is a list of common features controllable using HTTP.&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;em&gt;Cache&lt;/em&gt;&lt;br /&gt;
+  How documents are cached can be controlled by HTTP. The server can instruct proxies and clients what to cache and for how long, while the client can instruct intermediate cache proxies to ignore the stored document.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Relaxing the origin constraint&lt;/em&gt;&lt;br /&gt;
+  To prevent snooping or other privacy invasions, browsers enforce a strict separation between Web sites. Only pages from the &lt;strong&gt;same origin&lt;/strong&gt; can access to the whole information of a Web page. Such constraint is a burden, and servers, via HTTP headers, can relax it, so that the document may be a patchwork of information coming from different domains (there are security-related reasons to do so in some cases).&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Authentication&lt;/em&gt;&lt;br /&gt;
+  Some pages can be protected so that only specific users can access it. Basic authentication can be provided directly by HTTP, either using the {{HTTPHeader(&#34;Authenticate&#34;)}} and similar headers, or by setting a specific session using HTTP cookies.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Proxy and tunneling&lt;/em&gt;&lt;br /&gt;
+  Often servers or clients, or both, are located on intranets and hide their true address to others. HTTP requests go then through proxies to cross the network barrier. Not all proxies are HTTP proxies, some, like those using the SOCKS protocol, operate at a lower level (and other protocols, like ftp can be handled by them too).&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Sessions&lt;/em&gt;&lt;br /&gt;
+  The use of cookies allows to link requests with a state on the server. This creates sessions, although basic HTTP is a state-less protocol. This is useful not only for e-commerce shopping baskets, but also for any site allowing configuration of the output.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;HTTP_flow&#34;&gt;HTTP flow&lt;/h2&gt;
+
+&lt;p&gt;When the client wants to communicate with a server, either being the final server or an intermediate proxy, it performs the following steps:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;Open a TCP connection (or reuse of a previous one): The TCP connection will be used to send one or several requests, as well as getting the answer. The client may reuse an existing connection, or open several TCP connections to the servers.&lt;/li&gt;
+ &lt;li&gt;Send an HTTP message: HTTP messages (before HTTP/2) are human-readable. With HTTP/2, these simple messages are encapsulated in frames, making them impossible to read directly, but the principle remains the same.
+  &lt;pre class=&#34;line-numbers  language-html&#34;&gt;
+&lt;code class=&#34;language-html&#34;&gt;GET / HTTP/1.1
+Host: developer.mozilla.org
+Accept-Language: fr&lt;/code&gt;&lt;/pre&gt;
+ &lt;/li&gt;
+ &lt;li&gt;Read the response sent by the server:
+  &lt;pre class=&#34;line-numbers  language-html&#34;&gt;
+&lt;code class=&#34;language-html&#34;&gt;HTTP/1.1 200 OK
+Date: Sat, 09 Oct 2010 14:28:02 GMT
+Server: Apache
+Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
+ETag: &#34;51142bc1-7449-479b075b2891b&#34;
+Accept-Ranges: bytes
+Content-Length: 29769
+Content-Type: text/html
+
+&amp;lt;!DOCTYPE html... (here comes the 29769 bytes of the requested web page)&lt;/code&gt;&lt;/pre&gt;
+ &lt;/li&gt;
+ &lt;li&gt;Close or reuse the connection for further requests.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;When HTTP pipelining is activated, several requests can be sent successfully, without waiting for the first response to be fully received. HTTP pipelining has been proven difficult to implement in existing networks, where old pieces of software coexist with modern versions, and has been replaced by the more robust mechanism of multiplexing requests in a frame in HTTP/2.&lt;/p&gt;
+
+&lt;h2 id=&#34;HTTP_Messages&#34;&gt;HTTP Messages&lt;/h2&gt;
+
+&lt;p&gt;HTTP/1.1 and earlier HTTP messages are human-readable. In HTTP/2, these messages are embedded into a new binary structure, a frame, allowing optimizations like compression of headers and multiplexing. Even if only part of the original HTTP message is sent in this version of HTTP, the semantics of each message is unchanged and the client reconstitutes (virtually) the original HTTP/1.1 request; it is therefore still useful to consider HTTP/2 messages in the HTTP/1.1 format.&lt;/p&gt;
+
+&lt;p&gt;There are two types of HTTP messages, requests and responses, each with its specific format.&lt;/p&gt;
+
+&lt;h3 id=&#34;Requests&#34;&gt;Requests&lt;/h3&gt;
+
+&lt;p&gt;An example HTTP request:&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;A basic HTTP request&#34; src=&#34;https://mdn.mozillademos.org/files/13687/HTTP_Request.png&#34; style=&#34;height:336px; width:693px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Requests consists of the following elements:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;An HTTP &lt;a href=&#34;/en-US/docs/Web/HTTP/Methods&#34;&gt;method&lt;/a&gt;, usually a verb like {{HTTPMethod(&#34;GET&#34;)}}, {{HTTPMethod(&#34;POST&#34;)}} or a noun like {{HTTPMethod(&#34;OPTIONS&#34;)}} or {{HTTPMethod(&#34;HEAD&#34;)}} that defines the operation the client wants to perform. Typically, a client wants to fetch a resource (using &lt;code&gt;GET&lt;/code&gt;) or post the value of an &lt;a href=&#34;/en-US/docs/Web/Guide/HTML/Forms&#34;&gt;HTML form&lt;/a&gt; (using &lt;code&gt;POST&lt;/code&gt;), though other operations may be needed in other cases.&lt;/li&gt;
+ &lt;li&gt;The path of the resource to fetch, it is basically the URL of the resource stripped from elements that are obvious from the context, that is without the {{glossary(&#34;protocol&#34;)}} (&lt;code&gt;http://&lt;/code&gt;), the {{glossary(&#34;domain&#34;)}} (here &lt;code&gt;developer.mozilla.org&lt;/code&gt;), or the TCP {{glossary(&#34;port&#34;)}} (here &lt;code&gt;80&lt;/code&gt;).&lt;/li&gt;
+ &lt;li&gt;The version of the HTTP protocol.&lt;/li&gt;
+ &lt;li&gt;Optional &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers&#34;&gt;headers&lt;/a&gt; that convey extra-information for the servers.&lt;/li&gt;
+ &lt;li&gt;For some methods like &lt;code&gt;POST&lt;/code&gt;, a body, similar to the one in responses, that contains the resource sent.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;Responses&#34;&gt;Responses&lt;/h3&gt;
+
+&lt;p&gt;An example responses:&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13691/HTTP_Response.png&#34; style=&#34;height:494px; width:758px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Responses consists of the following elements:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;The version of the HTTP protocol they follow.&lt;/li&gt;
+ &lt;li&gt;A &lt;a href=&#34;/en-US/docs/Web/HTTP/Status&#34;&gt;status code&lt;/a&gt;, indicating if the request has been successful or not, and why.&lt;/li&gt;
+ &lt;li&gt;A status message, that is a non-authoritative short description of the status code.&lt;/li&gt;
+ &lt;li&gt;HTTP &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers&#34;&gt;headers&lt;/a&gt;, like for requests.&lt;/li&gt;
+ &lt;li&gt;Optionally, but much more common than in requests, a body containing the fetched resource.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;Conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;HTTP is an extensible protocol that is easy to use. The client-server structure combined with the ability to easily add headers allows HTTP to grow with the extended capabilities of the Web.&lt;/p&gt;
+
+&lt;p&gt;Even if HTTP/2 is adding some complexity by embedding HTTP messages in frames to improve performance, from the point of view of the application, the basic structure of messages has been the same since the release of HTTP/1.0. The flow of a session remains simple, allowing it to be investigated and to debugged with a simple &lt;a href=&#34;/en-US/docs/Tools/Network_Monitor&#34;&gt;HTTP message monitor&lt;/a&gt;.&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Overview%24revert/1108357" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Overview$revision/1108357 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:07:17 GMT -->
+</html>

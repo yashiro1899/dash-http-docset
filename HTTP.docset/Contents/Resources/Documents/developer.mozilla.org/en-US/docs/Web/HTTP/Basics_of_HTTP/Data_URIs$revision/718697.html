@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs$revision/718697 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:14:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 718697 | Data URIs | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FBasics_of_HTTP%2FData_URIs%24revision%2F718697" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs%24revision/718697">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 718697 of <a href="../Data_URIs.html">Data URIs</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/data_URIs</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>data URIs</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>718697</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2015-01-06T12:57:00-08:00">Jan 6, 2015, 12:57:00 PM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>Null</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>These resources are no longer accessible.</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Base64">Base64</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Intermediate">Intermediate</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/URI">URI</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/URL">URL</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/url">url</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p><code>data</code> URIs, defined by <a class="external" href="http://tools.ietf.org/html/rfc2397" title="http://tools.ietf.org/html/rfc2397">RFC 2397</a>, allow content creators to embed small files inline in documents.</p>
+<h2 id="Syntax" name="Syntax">Syntax</h2>
+<p>The <code>data</code> URIs have the following syntax:</p>
+<pre class="eval">data:[&lt;mediatype&gt;][;base64],&lt;data&gt;
+</pre>
+<p>The <code>mediatype</code> is a MIME type string, such as "<code>image/jpeg</code>" for a JPEG image file. If omitted, defaults to <code>text/plain;charset=US-ASCII</code></p>
+<p>If the data is textual, you can simply embed the text (using the appropriate entities or escapes based on the enclosing document's type). Otherwise, you can specify <code>base64</code> to embed base64-encoded binary data.</p>
+<p>A few examples:</p>
+<dl>
+ <dt>
+  data:,Hello%2C%20World!</dt>
+ <dd>
+  Simple text/plain data</dd>
+ <dt>
+  data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D</dt>
+ <dd>
+  base64-encoded version of the above</dd>
+ <dt>
+  data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E</dt>
+ <dd>
+  An HTML document with <code>&lt;h1&gt;Hello, World&lt;/h1&gt;</code></dd>
+</dl>
+<h2 id="Encoding_data_into_base64_format" name="Encoding_data_into_base64_format">Encoding data into base64 format</h2>
+<p>This can be done easily using the command-line <code>uuencode</code> utility on Linux and Mac OS X systems:</p>
+<pre class="eval">uuencode -m <code>infile</code> <code>remotename</code>
+</pre>
+<p>The <code>infile</code> parameter is the name of the file you wish to encode into base64 format, and <code>remotename</code> is the remote name for the file, which isn't actually used in <code>data</code> URLs.</p>
+<p>The output will look something like this:</p>
+<pre class="eval">begin-base64 664 test
+YSBzbGlnaHRseSBsb25nZXIgdGVzdCBmb3IgdGV2ZXIK
+====
+</pre>
+<p>The <code>data</code> URI will use the encoded data after the initial header line.</p>
+<h3 id="In_JavaScript">In JavaScript</h3>
+<p>Please, read the article about <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Base64_encoding_and_decoding" title="/en-US/docs/Web/JavaScript/Base64_encoding_and_decoding">Base64 encoding and decoding</a>.</p>
+<h2 id="Converting_an_nsIFile_to_a_data_URI" name="Converting_an_nsIFile_to_a_data_URI">Converting an nsIFile to a data URI</h2>
+<p>This function returns a base 64-encoded data URI from the passed <a href="https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIFile" title="en/nsIFile">nsIFile</a>.</p>
+<pre>function generateDataURI(file) {
+  var contentType = Components.classes["@mozilla.org/mime;1"]
+                              .getService(Components.interfaces.nsIMIMEService)
+                              .getTypeFromFile(file);
+  var inputStream = Components.classes["@mozilla.org/network/file-input-stream;1"]
+                              .createInstance(Components.interfaces.nsIFileInputStream);
+  inputStream.init(file, 0x01, 0600, 0);
+  var stream = Components.classes["@mozilla.org/binaryinputstream;1"]
+                         .createInstance(Components.interfaces.nsIBinaryInputStream);
+  stream.setInputStream(inputStream);
+  var encoded = btoa(stream.readBytes(stream.available()));
+  return "data:" + contentType + ";base64," + encoded;
+}
+</pre>
+<h2 id="Security">Security</h2>
+<div class="note">
+ <p><strong>Note:</strong> Prior to {{Gecko("6.0")}}, <code>data</code> URIs inherited the security context of the page currently in the browser window if the user enters a <code>data</code> URI into the location bar. Now <code>data</code> URIs get a new, empty, security context.</p>
+</div>
+<h2 id="Common_problems" name="Common_problems">Common problems</h2>
+<p>This section describes problems that commonly occur when creating and using <code>data</code> URIs.</p>
+<dl>
+ <dt>
+  Syntax</dt>
+ <dd>
+  The format for <code>data</code> URIs is very simple, but it's easy to forget to put a comma before the "data" segment, or to incorrectly encode the data into base64 format.</dd>
+ <dt>
+  Formatting in HTML</dt>
+ <dd>
+  A <code>data</code> URI provides a file within a file, which can potentially be very wide relative to the width of the enclosing document. As a URL, the <code>data</code> should be formatable with whitespace (linefeed, tab, or spaces), but there are practical issues that arise <a class="external" href="http://bugzilla.mozilla.org/show_bug.cgi?id=73026#c12">when using base64 encoding</a>.</dd>
+ <dt>
+  Length limitations</dt>
+ <dd>
+  Although Mozilla supports <code>data</code> URIs of essentially unlimited length, browsers are not required to support any particular maximum length of data. For example, the Opera 11 browser limits <code>data</code> URIs to around 65000 characters. </dd>
+ <dt>
+  Lack of error handling</dt>
+ <dd>
+  Invalid parameters in media, or typos when specifying "base64", are ignored, but no error is provided.</dd>
+ <dt>
+  No support for query strings, etc.</dt>
+ <dd>
+  <p>The data portion of a data URI is opaque, so an attempt to use a query string (page-specific parameters, with the syntax <code><span style="font-style: italic;">&lt;url&gt;</span>?parameter-data</code>) with a data URI will just include the query string in the data the URI represents. For example:</p>
+  <pre class="eval">data:text/html,lots of text...&lt;p&gt;&lt;a name%3D"bottom"&gt;bottom&lt;/a&gt;?arg=val
+</pre>
+  <p>This represents an HTML resource whose contents are:</p>
+  <pre class="eval">lots of text...&lt;p&gt;&lt;a name="bottom"&gt;bottom&lt;/a&gt;?arg=val
+</pre>
+  <p>Note: as of Firefox 6, fragments (anchors) are processed consistent with other URI schemes, thus a bare "#" in the content needs to be escaped as '%23'.</p>
+ </dd>
+</dl>
+<h2 id="Support_in_other_browsers" name="Support_in_other_browsers">Support in other browsers</h2>
+<p>The <code>data</code> scheme is supported by Opera 7.20 and above, as well as Safari and Konqueror. Internet Explorer 7 and below, however, do not currently support it. Internet Explorer 8 and above only supports <code>data</code> URIs for images in CSS, &lt;link&gt;, and &lt;img&gt;.</p>
+<h2 id="See_also">See also</h2>
+<ul>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Base64_encoding_and_decoding" title="/en-US/docs/Web/JavaScript/Base64_encoding_and_decoding">Base64 encoding and decoding</a></li>
+ <li>{{domxref("window.atob","atob()")}}</li>
+ <li>{{domxref("window.btoa","btoa()")}}</li>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/uri" title="/en-US/docs/Web/CSS/uri">CSS <code>url()</code></a></li>
+ <li><a href="https://developer.mozilla.org/en-US/docs/URI" title="/en-US/docs/URI">URI</a></li>
+</ul>
+<h2 id="Resources" name="Resources">Resources</h2>
+<ul>
+ <li><a class="external" href="http://tools.ietf.org/html/rfc2397" title="http://tools.ietf.org/html/rfc2397">RFC 2397</a> -- The "data" URL scheme"</li>
+</ul>
+<p>{{ languages( {"zh-cn": "zh-cn/data_URIs" } ) }}</p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p&gt;&lt;code&gt;data&lt;/code&gt; URIs, defined by &lt;a class=&#34;external&#34; href=&#34;http://tools.ietf.org/html/rfc2397&#34; title=&#34;http://tools.ietf.org/html/rfc2397&#34;&gt;RFC 2397&lt;/a&gt;, allow content creators to embed small files inline in documents.&lt;/p&gt;
+&lt;h2 id=&#34;Syntax&#34; name=&#34;Syntax&#34;&gt;Syntax&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;data&lt;/code&gt; URIs have the following syntax:&lt;/p&gt;
+&lt;pre class=&#34;eval&#34;&gt;
+data:[&amp;lt;mediatype&amp;gt;][;base64],&amp;lt;data&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;mediatype&lt;/code&gt; is a MIME type string, such as &#34;&lt;code&gt;image/jpeg&lt;/code&gt;&#34; for a JPEG image file. If omitted, defaults to &lt;code&gt;text/plain;charset=US-ASCII&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;If the data is textual, you can simply embed the text (using the appropriate entities or escapes based on the enclosing document&#39;s type). Otherwise, you can specify &lt;code&gt;base64&lt;/code&gt; to embed base64-encoded binary data.&lt;/p&gt;
+&lt;p&gt;A few examples:&lt;/p&gt;
+&lt;dl&gt;
+ &lt;dt&gt;
+  data:,Hello%2C%20World!&lt;/dt&gt;
+ &lt;dd&gt;
+  Simple text/plain data&lt;/dd&gt;
+ &lt;dt&gt;
+  data:text/plain;base64,SGVsbG8sIFdvcmxkIQ%3D%3D&lt;/dt&gt;
+ &lt;dd&gt;
+  base64-encoded version of the above&lt;/dd&gt;
+ &lt;dt&gt;
+  data:text/html,%3Ch1%3EHello%2C%20World!%3C%2Fh1%3E&lt;/dt&gt;
+ &lt;dd&gt;
+  An HTML document with &lt;code&gt;&amp;lt;h1&amp;gt;Hello, World&amp;lt;/h1&amp;gt;&lt;/code&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2 id=&#34;Encoding_data_into_base64_format&#34; name=&#34;Encoding_data_into_base64_format&#34;&gt;Encoding data into base64 format&lt;/h2&gt;
+&lt;p&gt;This can be done easily using the command-line &lt;code&gt;uuencode&lt;/code&gt; utility on Linux and Mac OS X systems:&lt;/p&gt;
+&lt;pre class=&#34;eval&#34;&gt;
+uuencode -m &lt;code&gt;infile&lt;/code&gt; &lt;code&gt;remotename&lt;/code&gt;
+&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;infile&lt;/code&gt; parameter is the name of the file you wish to encode into base64 format, and &lt;code&gt;remotename&lt;/code&gt; is the remote name for the file, which isn&#39;t actually used in &lt;code&gt;data&lt;/code&gt; URLs.&lt;/p&gt;
+&lt;p&gt;The output will look something like this:&lt;/p&gt;
+&lt;pre class=&#34;eval&#34;&gt;
+begin-base64 664 test
+YSBzbGlnaHRseSBsb25nZXIgdGVzdCBmb3IgdGV2ZXIK
+====
+&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;data&lt;/code&gt; URI will use the encoded data after the initial header line.&lt;/p&gt;
+&lt;h3 id=&#34;In_JavaScript&#34;&gt;In JavaScript&lt;/h3&gt;
+&lt;p&gt;Please, read the article about &lt;a href=&#34;/en-US/docs/Web/JavaScript/Base64_encoding_and_decoding&#34; title=&#34;/en-US/docs/Web/JavaScript/Base64_encoding_and_decoding&#34;&gt;Base64 encoding and decoding&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;Converting_an_nsIFile_to_a_data_URI&#34; name=&#34;Converting_an_nsIFile_to_a_data_URI&#34;&gt;Converting an nsIFile to a data URI&lt;/h2&gt;
+&lt;p&gt;This function returns a base 64-encoded data URI from the passed &lt;a href=&#34;/en/XPCOM_Interface_Reference/nsIFile&#34; title=&#34;en/nsIFile&#34;&gt;nsIFile&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;
+function generateDataURI(file) {
+  var contentType = Components.classes[&#34;@mozilla.org/mime;1&#34;]
+                              .getService(Components.interfaces.nsIMIMEService)
+                              .getTypeFromFile(file);
+  var inputStream = Components.classes[&#34;@mozilla.org/network/file-input-stream;1&#34;]
+                              .createInstance(Components.interfaces.nsIFileInputStream);
+  inputStream.init(file, 0x01, 0600, 0);
+  var stream = Components.classes[&#34;@mozilla.org/binaryinputstream;1&#34;]
+                         .createInstance(Components.interfaces.nsIBinaryInputStream);
+  stream.setInputStream(inputStream);
+  var encoded = btoa(stream.readBytes(stream.available()));
+  return &#34;data:&#34; + contentType + &#34;;base64,&#34; + encoded;
+}
+&lt;/pre&gt;
+&lt;h2 id=&#34;Security&#34;&gt;Security&lt;/h2&gt;
+&lt;div class=&#34;note&#34;&gt;
+ &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Prior to {{Gecko(&#34;6.0&#34;)}}, &lt;code&gt;data&lt;/code&gt; URIs inherited the security context of the page currently in the browser window if the user enters a &lt;code&gt;data&lt;/code&gt; URI&amp;nbsp;into the location bar. Now &lt;code&gt;data&lt;/code&gt; URIs get a new, empty, security context.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;Common_problems&#34; name=&#34;Common_problems&#34;&gt;Common problems&lt;/h2&gt;
+&lt;p&gt;This section describes problems that commonly occur when creating and using &lt;code&gt;data&lt;/code&gt; URIs.&lt;/p&gt;
+&lt;dl&gt;
+ &lt;dt&gt;
+  Syntax&lt;/dt&gt;
+ &lt;dd&gt;
+  The format for &lt;code&gt;data&lt;/code&gt; URIs is very simple, but it&#39;s easy to forget to put a comma before the &#34;data&#34; segment, or to incorrectly encode the data into base64 format.&lt;/dd&gt;
+ &lt;dt&gt;
+  Formatting in HTML&lt;/dt&gt;
+ &lt;dd&gt;
+  A &lt;code&gt;data&lt;/code&gt; URI provides a file within a file, which can potentially be very wide relative to the width of the enclosing document. As a URL, the &lt;code&gt;data&lt;/code&gt; should be formatable with whitespace (linefeed, tab, or spaces), but there are practical issues that arise &lt;a class=&#34;external&#34; href=&#34;http://bugzilla.mozilla.org/show_bug.cgi?id=73026#c12&#34;&gt;when using base64 encoding&lt;/a&gt;.&lt;/dd&gt;
+ &lt;dt&gt;
+  Length limitations&lt;/dt&gt;
+ &lt;dd&gt;
+  Although Mozilla supports &lt;code&gt;data&lt;/code&gt; URIs of essentially unlimited length, browsers are not required to support any particular maximum length of data. For example, the Opera 11 browser limits &lt;code&gt;data&lt;/code&gt; URIs to around 65000 characters.&amp;nbsp;&lt;/dd&gt;
+ &lt;dt&gt;
+  Lack of error handling&lt;/dt&gt;
+ &lt;dd&gt;
+  Invalid parameters in media, or typos when specifying &#34;base64&#34;, are ignored, but no error is provided.&lt;/dd&gt;
+ &lt;dt&gt;
+  No support for query strings, etc.&lt;/dt&gt;
+ &lt;dd&gt;
+  &lt;p&gt;The data portion of a data URI is opaque, so an attempt to use a query string (page-specific parameters, with the syntax &lt;code&gt;&lt;span style=&#34;font-style: italic;&#34;&gt;&amp;lt;url&amp;gt;&lt;/span&gt;?parameter-data&lt;/code&gt;) with a data URI will just include the query string in the data the URI represents. For example:&lt;/p&gt;
+  &lt;pre class=&#34;eval&#34;&gt;
+data:text/html,lots of text...&amp;lt;p&amp;gt;&amp;lt;a name%3D&#34;bottom&#34;&amp;gt;bottom&amp;lt;/a&amp;gt;?arg=val
+&lt;/pre&gt;
+  &lt;p&gt;This represents an HTML resource whose contents are:&lt;/p&gt;
+  &lt;pre class=&#34;eval&#34;&gt;
+lots of text...&amp;lt;p&amp;gt;&amp;lt;a name=&#34;bottom&#34;&amp;gt;bottom&amp;lt;/a&amp;gt;?arg=val
+&lt;/pre&gt;
+  &lt;p&gt;Note: as of Firefox 6, fragments (anchors) are processed consistent with other URI schemes, thus a bare &#34;#&#34; in the content needs to be escaped as &#39;%23&#39;.&lt;/p&gt;
+ &lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2 id=&#34;Support_in_other_browsers&#34; name=&#34;Support_in_other_browsers&#34;&gt;Support in other browsers&lt;/h2&gt;
+&lt;p&gt;The &lt;code&gt;data&lt;/code&gt; scheme is supported by Opera 7.20 and above, as well as Safari and Konqueror. Internet Explorer 7 and below, however, do not currently support it. Internet Explorer 8 and above only supports &lt;code&gt;data&lt;/code&gt; URIs for images in CSS, &amp;lt;link&amp;gt;, and &amp;lt;img&amp;gt;.&lt;/p&gt;
+&lt;h2 id=&#34;See_also&#34;&gt;See also&lt;/h2&gt;
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&#34;/en-US/docs/Web/JavaScript/Base64_encoding_and_decoding&#34; title=&#34;/en-US/docs/Web/JavaScript/Base64_encoding_and_decoding&#34;&gt;Base64 encoding and decoding&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;{{domxref(&#34;window.atob&#34;,&#34;atob()&#34;)}}&lt;/li&gt;
+ &lt;li&gt;{{domxref(&#34;window.btoa&#34;,&#34;btoa()&#34;)}}&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;/en-US/docs/Web/CSS/uri&#34; title=&#34;/en-US/docs/Web/CSS/uri&#34;&gt;CSS &lt;code&gt;url()&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;/en-US/docs/URI&#34; title=&#34;/en-US/docs/URI&#34;&gt;URI&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;Resources&#34; name=&#34;Resources&#34;&gt;Resources&lt;/h2&gt;
+&lt;ul&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;http://tools.ietf.org/html/rfc2397&#34; title=&#34;http://tools.ietf.org/html/rfc2397&#34;&gt;RFC 2397&lt;/a&gt; -- The &#34;data&#34; URL scheme&#34;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;{{ languages( {&#34;zh-cn&#34;: &#34;zh-cn/data_URIs&#34; } ) }}&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs%24revert/718697" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs$revision/718697 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:14:43 GMT -->
+</html>

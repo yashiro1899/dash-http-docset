@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation$revision/1108591 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:59:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1108591 | Content negotiation | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FContent_negotiation%24revision%2F1108591" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation%24revision/1108591">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1108591 of <a href="../Content_negotiation.html">Content negotiation</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Content_negotiation</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Content negotiation</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1108591</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-08-23T12:26:40-07:00">Aug 23, 2016, 12:26:40 PM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Content Negotiation">Content Negotiation</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Reference">Reference</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p>{{HTTPSidebar}}</p>
+
+<p class="summary">In <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTTP">HTTP</a>, <em><strong>content negotiation</strong></em> is the mechanism that is used, when facing the ability to serve several equivalent representations for a given resource, to provide the best suited one to the final user.</p>
+
+<h2 id="Principles_of_content_negotiation">Principles of content negotiation</h2>
+
+<p>A specific document is called a <em>resource</em>. When a client wants to obtain it, it requests it using its URL. The server use this URL to choose one of the variant it can provide – each variant being called a <em>representation</em> – and returns this specific representation to the client. The overall resource, as well as each of the representations, has a specific URL. How a specific representation is chosen when the resource is called is determined by <em>content negotiation</em> and there are several ways of doing it.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13789/HTTPNego.png" style="height: 311px; width: 767px;"></p>
+
+<p>The determination of the best suited representation is made through one of two mechanisms:</p>
+
+<ul>
+ <li>Specific <a href="../Headers.html" title="en/HTTP/Headers">HTTP headers</a> by the client (<em>server-driven negotiation</em> or <em>proactive negotation</em>), which is the standard way of negotiating a specific kind of resource.</li>
+ <li>The {{HTTPStatus("300")}} <code>Multiple Choices</code> or {{HTTPStatus("406")}} <code>Not Acceptable</code> <a href="../Status.html" title="https://developer.mozilla.org/en/HTTP/HTTP_response_codes">HTTP response codes</a> by the server (<em>agent-driven negotiation</em> or <em>reactive negotiation</em>), that is used as the fallback mechanism, but is very rare.</li>
+</ul>
+
+<p>Over the years, other content negotiation proposales, like <em>transparent content negotiation</em> and the <code>Alternates</code> header, have been proposed. They failed to get traction and got abandoned.</p>
+
+<h2 id="Server-driven_content_negotiation">Server-driven content negotiation</h2>
+
+<p>In <em>server-driven content negotiation</em>, or proactive content negotiation, the browser (or any other kind of useragent) sends several HTTP headers along with the URL. These headers describe the preferred choice of the user. The server uses them as hints and an internal algorithm let it choose the best content to serve to the client. The algorithm is server-specific and not defined in the standard. See, for example, the <a class="external" href="http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm" title="http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm">Apache 2.2 negotiation algorithm</a>.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13791/HTTPNegoServer.png" style="height: 380px; width: 767px;"></p>
+
+<p>The HTTP/1.1 standard defines list of the standard headers that start server-driven negotiation ({{ httpheader("Accept") }}, {{ httpheader("Accept-Charset") }}, {{ httpheader("Accept-Encoding") }}, {{ httpheader("Accept-Language") }}). Though stricly speaking {{ httpheader("User-Agent") }} is not in this list, it is sometimes also used to send a specific representation of the requested resource, though this is not considered as a good practice. The server uses the {{HTTPHeader("Vary")}} header to indicate which headers it actually used for content negotiation (or more precisely the associated response headers), so that <a href="../Caching.html">caches</a> can work optimally.</p>
+
+<p>In addition to these, there is an experimental proposal to add more headers to the list of available headers, called <em>client hints</em>. Client hints advertises what kind of device the user agent run on (For example, is it a desktop computer or a mobile device?)</p>
+
+<p>Even if server-driven content negotiation is the most common way to agree on a specific representation of a resource, it has several drawbacks:</p>
+
+<ul>
+ <li>The server doesn't have total knowledge of the browser. Even with the Client Hints extension, it has not a complete knowledge of the capabilitities of the browser. Unlike reactive content negotiation where the client makes the choice, the server choice is alway somewhat arbitrary.</li>
+ <li>The information by the client is quite verbose (HTTP/2 header compression mitigates this problem) and a privacy risk (HTTP fingerprinting)</li>
+ <li>As several representations of a given resource are sent, shared cache are less efficient and server implementation are slightly more complex.</li>
+</ul>
+
+<h3 id="The_Accept_header">The <code>Accept</code> header</h3>
+
+<p>The {{HTTPHeader("Accept")}} header lists the MIME Types of the media that the agent is willing to process. It is comma-separated lists of MIME type, each combined with a quality factor, as parameters giving the relative degree of preference between the different MIME Types lists.</p>
+
+<p>The {{HTTPHeader("Accept")}} header is defined by the browser, or any other user-agent, and can vary according to the context, like fetching an HTML page or an image, a video, or a script: It is different when fetching a document entered in the address bar or an element linked via an {{ HTMLElement("img") }}, {{ HTMLElement("video") }} or {{ HTMLElement("audio") }} elements. Browsers are free to use the value of the header that they think is the most adequate; an exhaustive list of <a href="../Content_negotiation/List_of_default_Accept_values.html">default values for common browsers</a> is available.</p>
+
+<h3 id="The_Accept-CH_header_experimental_inline">The <code>Accept-CH</code> header {{experimental_inline}}</h3>
+
+<div class="note">
+<p>This is part of an <strong>experimental</strong> technology called <em>Client Hints</em> and currently implemented only in Chrome 46 and later</p>
+</div>
+
+<p>The experimental {{HTTPHeader("Accept-CH")}} lists configuration data that can be used by the server to select an appropriate response. Valid values are:</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Value</th>
+   <th scope="col">Meaning</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><code>DPR</code></td>
+   <td>Indicates the client's device pixel ratio.</td>
+  </tr>
+  <tr>
+   <td><code>Viewport-Width</code></td>
+   <td>Indicates the layout viewport width in CSS pixels. </td>
+  </tr>
+  <tr>
+   <td><code>Width</code></td>
+   <td>Indicates the resource width in physical pixels (in other words the intrinsic size of an image).</td>
+  </tr>
+ </tbody>
+</table>
+
+<h3 id="The_Accept-Charset_header">The <code>Accept-Charset</code> header</h3>
+
+<p>The {{HTTPHeader("Accept-Charset")}} header indicates to the server what kinds of encoding characters are understood by the user-agent. Traditionally, it was set to a different value for each locale for the browser, like <code>ISO-8859-1,utf-8;q=0.7,*;q=0.7</code> for a Western European locale.</p>
+
+<p>As UTF-8 is now well-supported and the preferred way of encoding characters, that sending one allow for more entropy (see <a class="link-https" href="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy" title="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy">configuration-based </a><a class="link-https" href="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy" title="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy">entropy</a>) most browsers omit this header: Internet Explorer 8, Safari 5, Opera 11 and Firefox 10 all abandoned the sending of this header.</p>
+
+<h3 id="The_Accept-Encoding_header">The <code>Accept-Encoding</code> header</h3>
+
+<p>The {{HTTPHeader("Accept-Encoding")}} header defines the acceptable content-encoding, mainly supported compression. The value is a q-factor list, like <code>br, gzip;q=0.8</code>, that indicates the priority of the encoding values. The default value <code>identity</code>, unless otherwise declared, is at the lowest priority.</p>
+
+<p>Compressing HTTP messages is one of the most important way to improve the performance of a Web site, it shrinks the size of the data transmitted and makes better use of the available bandwidth; browsers always send this header and the server should be configured to abide to it and use compression.</p>
+
+<h3 id="The_Accept-Language_header">The <code>Accept-Language</code> header</h3>
+
+<p>The {{HTTPHeader("Accept-Language")}} header is used to indicate the language preference of the user, as a list of value with a quality factors, like <code>de, en;q=0.7</code>. A different value is set according the language of the graphical interface but most browsers allow setting different language preferences.</p>
+
+<p>Due to the <a class="link-https" href="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy" title="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy">configuration-based entropy</a> increase, a modified value can  be used to fingerprinting of the user, it is not recommended to change it and a Web site cannot trust this value to reflect the actual wish of the user. Site-designers must not be over-zealous by using language detection via this header as it can lead to a poor user experience:</p>
+
+<ul>
+ <li>They should always provide a way to overcome the server-chosen language, e.g., by providing small links near the top of the page. Most user-agents provide a default value for the <code>Accept-Language:</code> header, adapted to the user interface language and end users often do not modify it, either by not knowing how, or by not being able to do it, as in an Internet café for instance.</li>
+ <li>Once a user has overridden the server-chosen language, a site should no longer use language detection and should stick with the explicitly-chosen language.. In other words, only entry pages of a site should select the proper language using this header.</li>
+</ul>
+
+<h3 id="The_User-Agent_header">The <code>User-Agent</code> header</h3>
+
+<div class="note">
+<p>Though there are legitimate uses of this header for selecting content, <a href="https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Limit_the_use_of_User_Agent_String_based_Detection" title="https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Limit_the_use_of_User_Agent_String_based_Detection">it is considered bad practice</a> to rely on it to define what features are supported by the user agent. Instead try to use in priority<a href="https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Use_feature_oriented_object_detection" title="https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Use_feature_oriented_object_detection"> feature-oriented object detection</a>.</p>
+</div>
+
+<p>The {{HTTPHeader("User-Agent")}} header identifies the browser sending the request. This string may contain a space-separated list of <em>product tokens</em> and <em>comments</em>.</p>
+
+<p>A <em>product token</em> is a name followed by a '<code>/</code>' and a version number, like <code>Firefox/4.0.1</code>. There may be as many of them as the user-agent wants. A <em>comment</em> is a free string delimited by parentheses. Obviously parentheses cannot be used in that string. The inner format of a comment is not defined by the standard, though several browser put several tokens in it, separated by '<code>;</code>'.</p>
+
+<h3 id="The_Vary_response_header">The <code>Vary</code> response header</h3>
+
+<p>In opposition with the previous <code>Accept-*</code> headers which are sent by the client, the {{HTTPHeader("Vary")}} HTTP header is sent by the web server in its response. It indicates the list of headers used by the server during the server-driven content negotiation phase. The header is needed in order to inform the cache of the decision criteria so that can reproduce it, allowing the cache to be functional while preventing serving erroneous content to the user.</p>
+
+<p>The special value of '<code>*</code>' means that the server-driven content negotiation also uses information not conveyed in a header to choose the appropriate content.</p>
+
+<p>The <code>Vary</code> header was added in the version 1.1 of HTTP and is necessary in order to allow caches to work appropriately. A cache, in order to work with agent-driven content negotiation, needs to know which criteria was used by the server to select the transmitted content. That way, the cache can replay the algorithm and will be able to serve acceptable content directly, without more request to the server. Obviously, the wildcard '<code>*</code>' prevents caching from occurring, as the cache cannot know what element is behind it.</p>
+
+<h2 id="Agent-driven_negotiation">Agent-driven negotiation</h2>
+
+<p>Server-driven negotiation suffers from a few downsides: It doesn't scale well. There is one header per feature used in the negotiation. If one wants to use screen size, resolution or other dimensions, a new HTTP header must be created. Sending of the headers must be done on every request. This is not too problematic with few headers, but with the eventual multiplications of them, the message size would lead to a decrease in performance. The more precise headers are sent, the more entropy is sent, allowing for better HTTP fingerprinting and corresponding privacy concern.</p>
+
+<p>HTTP allowed from the start another negotiation type, <em>agent-driven negotiation</em> or <em>reactive negotiation</em>. In this negotiation, when facing an ambiguous request, the server sends back a page containing links to the available alternative resources. The user is presented the resources and choose the one to use.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13795/HTTPNego3.png"></p>
+
+<p>Unfortunately, the HTTP standard does not specify the format of the page allowing to choose between the available resource, preventing to easily automatize the process. Beside fallback of the <em>server-driven negotiation</em>, this method is almost always used in conjunction with scripting, especially with JavaScript redirection: after having checked for the negotiation criteria, the script performs the redirection.</p>
+
+<p>A second problem is that one more request is needed in order to fetch the real resource, slowing the availability of the resource to the user.</p>
+
+<p>Also note that the caching of the resource is trivial, as each resource has a different URI.</p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p&gt;{{HTTPSidebar}}&lt;/p&gt;
+
+&lt;p class=&#34;summary&#34;&gt;In &lt;a href=&#34;/en-US/docs/Glossary/HTTP&#34;&gt;HTTP&lt;/a&gt;, &lt;em&gt;&lt;strong&gt;content negotiation&lt;/strong&gt;&lt;/em&gt; is the mechanism that is used, when facing the ability to serve several equivalent representations for a given resource, to provide the best suited one to the final user.&lt;/p&gt;
+
+&lt;h2 id=&#34;Principles_of_content_negotiation&#34;&gt;Principles of content negotiation&lt;/h2&gt;
+
+&lt;p&gt;A specific document is called a &lt;em&gt;resource&lt;/em&gt;. When a client wants to obtain it, it requests it using its URL. The server use this URL to choose one of the variant it can provide – each variant being called a &lt;em&gt;representation&lt;/em&gt; – and returns this specific representation to the client. The overall resource, as well as each of the representations, has a specific URL. How a specific representation is chosen when the resource is called is determined by &lt;em&gt;content negotiation&lt;/em&gt; and there are several ways of doing it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13789/HTTPNego.png&#34; style=&#34;height:311px; width:767px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The determination of the best suited representation is made through one of two mechanisms:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Specific &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers&#34; title=&#34;en/HTTP/Headers&#34;&gt;HTTP headers&lt;/a&gt; by the client (&lt;em&gt;server-driven negotiation&lt;/em&gt; or &lt;em&gt;proactive negotation&lt;/em&gt;), which is the standard way of negotiating a specific kind of resource.&lt;/li&gt;
+ &lt;li&gt;The {{HTTPStatus(&#34;300&#34;)}} &lt;code&gt;Multiple Choices&lt;/code&gt; or {{HTTPStatus(&#34;406&#34;)}} &lt;code&gt;Not Acceptable&lt;/code&gt; &lt;a href=&#34;/en-US/docs/Web/HTTP/Status&#34; title=&#34;https://developer.mozilla.org/en/HTTP/HTTP_response_codes&#34;&gt;HTTP response codes&lt;/a&gt; by the server (&lt;em&gt;agent-driven negotiation&lt;/em&gt; or &lt;em&gt;reactive negotiation&lt;/em&gt;), that is used as the fallback mechanism, but is very rare.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Over the years, other content negotiation proposales, like &lt;em&gt;transparent content negotiation&lt;/em&gt; and the &lt;code&gt;Alternates&lt;/code&gt; header, have been proposed. They failed to get traction and got abandoned.&lt;/p&gt;
+
+&lt;h2 id=&#34;Server-driven_content_negotiation&#34;&gt;Server-driven content negotiation&lt;/h2&gt;
+
+&lt;p&gt;In &lt;em&gt;server-driven content negotiation&lt;/em&gt;, or proactive content negotiation, the browser (or any other kind of useragent) sends several HTTP headers along with the URL. These headers describe the preferred choice of the user. The server uses them as hints and an internal algorithm let it choose the best content to serve to the client. The algorithm is server-specific and not defined in the standard. See, for example, the &lt;a class=&#34;external&#34; href=&#34;http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm&#34; title=&#34;http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm&#34;&gt;Apache 2.2 negotiation algorithm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13791/HTTPNegoServer.png&#34; style=&#34;height:380px; width:767px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The HTTP/1.1 standard defines list of the standard headers that start server-driven negotiation ({{ httpheader(&#34;Accept&#34;) }}, {{ httpheader(&#34;Accept-Charset&#34;) }}, {{ httpheader(&#34;Accept-Encoding&#34;) }}, {{ httpheader(&#34;Accept-Language&#34;) }}). Though stricly speaking {{ httpheader(&#34;User-Agent&#34;) }} is not in this list, it is sometimes also used to send a specific representation of the requested resource, though this is not considered as a good practice. The server uses the {{HTTPHeader(&#34;Vary&#34;)}} header to indicate which headers it actually used for content negotiation (or more precisely the associated response headers), so that &lt;a href=&#34;/en-US/docs/Web/HTTP/Caching&#34;&gt;caches&lt;/a&gt; can work optimally.&lt;/p&gt;
+
+&lt;p&gt;In addition to these, there is an experimental proposal to add more headers to the list of available headers, called &lt;em&gt;client hints&lt;/em&gt;. Client hints advertises what kind of device the user agent run on (For example, is it a desktop computer or a mobile device?)&lt;/p&gt;
+
+&lt;p&gt;Even if server-driven content negotiation is the most common way to agree on a specific representation of a resource, it has several drawbacks:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;The server doesn&#39;t have total knowledge of the browser. Even with the Client Hints extension, it has not a complete knowledge of the capabilitities of the browser. Unlike reactive content negotiation where the client makes the choice, the server choice is alway somewhat arbitrary.&lt;/li&gt;
+ &lt;li&gt;The information by the client is quite verbose (HTTP/2 header compression mitigates this problem) and a privacy risk (HTTP fingerprinting)&lt;/li&gt;
+ &lt;li&gt;As several representations of a given resource are sent, shared cache are less efficient and server implementation are slightly more complex.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;The_Accept_header&#34;&gt;The &lt;code&gt;Accept&lt;/code&gt; header&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Accept&#34;)}} header lists the MIME Types of the media that the agent is willing to process. It is comma-separated lists of MIME type, each combined with a quality factor, as parameters giving the relative degree of preference between the different MIME&amp;nbsp;Types lists.&lt;/p&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Accept&#34;)}} header is defined by the browser, or any other user-agent, and can vary according to the context, like fetching an HTML page or an image, a video, or a script: It is different when fetching a document entered in the address bar or an element linked via an {{ HTMLElement(&#34;img&#34;) }}, {{ HTMLElement(&#34;video&#34;) }} or {{ HTMLElement(&#34;audio&#34;) }} elements. Browsers are free to use the value of the header that they think is the most adequate; an exhaustive list of &lt;a href=&#34;/en-US/docs/Web/HTTP/Content_negotiation/List_of_default_Accept_values&#34;&gt;default values for common browsers&lt;/a&gt; is available.&lt;/p&gt;
+
+&lt;h3 id=&#34;The_Accept-CH_header_experimental_inline&#34;&gt;The &lt;code&gt;Accept-CH&lt;/code&gt; header&amp;nbsp;{{experimental_inline}}&lt;/h3&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;This is part of an &lt;strong&gt;experimental&lt;/strong&gt; technology called &lt;em&gt;Client Hints&lt;/em&gt; and currently implemented only in Chrome 46 and later&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The experimental {{HTTPHeader(&#34;Accept-CH&#34;)}} lists&amp;nbsp;configuration data that can be used by the server to select an appropriate response. Valid values are:&lt;/p&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Value&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Meaning&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;DPR&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Indicates the client&#39;s device pixel ratio.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;Viewport-Width&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Indicates the layout viewport width in CSS pixels.&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;Width&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Indicates the resource width in physical pixels (in other words the intrinsic size of an image).&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;The_Accept-Charset_header&#34;&gt;The &lt;code&gt;Accept-Charset&lt;/code&gt; header&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Accept-Charset&#34;)}} header indicates to the server what kinds of encoding characters are understood by the user-agent. Traditionally, it was set to a different value for each locale for the browser, like &lt;code&gt;ISO-8859-1,utf-8;q=0.7,*;q=0.7&lt;/code&gt; for a Western European locale.&lt;/p&gt;
+
+&lt;p&gt;As UTF-8 is now well-supported and the preferred way of encoding characters, that sending one allow for more entropy (see &lt;a class=&#34;link-https&#34; href=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34; title=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34;&gt;configuration-based &lt;/a&gt;&lt;a class=&#34;link-https&#34; href=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34; title=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34;&gt;entropy&lt;/a&gt;) most browsers omit this header: Internet Explorer 8, Safari 5, Opera 11 and Firefox 10 all abandoned the sending of this header.&lt;/p&gt;
+
+&lt;h3 id=&#34;The_Accept-Encoding_header&#34;&gt;The &lt;code&gt;Accept-Encoding&lt;/code&gt; header&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Accept-Encoding&#34;)}} header defines the acceptable content-encoding, mainly supported compression. The value is a q-factor list, like &lt;code&gt;br, gzip;q=0.8&lt;/code&gt;, that indicates the priority of the encoding values. The default value &lt;code&gt;identity&lt;/code&gt;, unless otherwise declared, is at the lowest priority.&lt;/p&gt;
+
+&lt;p&gt;Compressing HTTP messages is one of the most important way to improve the performance of a Web site, it shrinks the size of the data transmitted and makes better use of the available bandwidth; browsers always send this header and the server should be configured to abide to it and use compression.&lt;/p&gt;
+
+&lt;h3 id=&#34;The_Accept-Language_header&#34;&gt;The &lt;code&gt;Accept-Language&lt;/code&gt; header&lt;/h3&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;Accept-Language&#34;)}} header is used to indicate the language preference of the user, as a list of value with a quality factors, like &lt;code&gt;de, en;q=0.7&lt;/code&gt;. A different value is set according the language of the graphical interface but most browsers allow setting different language preferences.&lt;/p&gt;
+
+&lt;p&gt;Due to the &lt;a class=&#34;link-https&#34; href=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34; title=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34;&gt;configuration-based entropy&lt;/a&gt; increase, a modified value can&amp;nbsp; be used to fingerprinting of the user, it is not recommended to change it and a Web site cannot trust this value to reflect the actual wish of the user. Site-designers must not be over-zealous by using language detection via this header as it can lead to a poor user experience:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;They should always provide a way to overcome the server-chosen language, e.g., by providing small links near the top of the page. Most user-agents provide a default value for the &lt;code&gt;Accept-Language:&lt;/code&gt; header, adapted to the user interface language and end users often do not modify it, either by not knowing how, or by not being able to do it, as in an Internet café for instance.&lt;/li&gt;
+ &lt;li&gt;Once a user has overridden the server-chosen language, a site should no longer use language detection and should stick with the explicitly-chosen language.. In other words, only entry pages of a site should select the proper language using this header.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;The_User-Agent_header&#34;&gt;The &lt;code&gt;User-Agent&lt;/code&gt; header&lt;/h3&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;Though there are legitimate uses of this header for selecting content, &lt;a href=&#34;/en/Browser_Detection_and_Cross_Browser_Support#Limit_the_use_of_User_Agent_String_based_Detection&#34; title=&#34;https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Limit_the_use_of_User_Agent_String_based_Detection&#34;&gt;it is considered bad practice&lt;/a&gt; to rely on it to define what features are supported by the user agent. Instead try to use in priority&lt;a href=&#34;/en/Browser_Detection_and_Cross_Browser_Support#Use_feature_oriented_object_detection&#34; title=&#34;https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Use_feature_oriented_object_detection&#34;&gt; feature-oriented object detection&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The {{HTTPHeader(&#34;User-Agent&#34;)}} header identifies the browser sending the request. This string may contain a space-separated list of &lt;em&gt;product tokens&lt;/em&gt; and &lt;em style=&#34;font-style:italic&#34;&gt;comments&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A &lt;em&gt;product token&lt;/em&gt; is a name followed by a &#39;&lt;code&gt;/&lt;/code&gt;&#39; and a version number, like &lt;code&gt;Firefox/4.0.1&lt;/code&gt;. There may be as many of them as the user-agent wants. A &lt;em&gt;comment&lt;/em&gt; is a free string delimited by parentheses. Obviously parentheses cannot be used in that string. The inner format of a comment is not defined by the standard, though several browser put several tokens in it, separated by &#39;&lt;code&gt;;&lt;/code&gt;&#39;.&lt;/p&gt;
+
+&lt;h3 id=&#34;The_Vary_response_header&#34;&gt;The &lt;code&gt;Vary&lt;/code&gt; response header&lt;/h3&gt;
+
+&lt;p&gt;In opposition with the previous &lt;code&gt;Accept-*&lt;/code&gt; headers which are sent by the client, the {{HTTPHeader(&#34;Vary&#34;)}} HTTP header is sent by the web server in its response. It indicates the list of headers used by the server during the server-driven content negotiation phase. The header is needed in order to inform the cache of the decision criteria so that can reproduce it, allowing the cache to be functional while preventing serving erroneous content to the user.&lt;/p&gt;
+
+&lt;p&gt;The special value of &#39;&lt;code&gt;*&lt;/code&gt;&#39; means that the server-driven content negotiation also uses information not conveyed in a header to choose the appropriate content.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;Vary&lt;/code&gt; header was added in the version 1.1 of HTTP and is necessary in order to allow caches to work appropriately. A cache, in order to work with agent-driven content negotiation, needs to know which criteria was used by the server to select the transmitted content. That way, the cache can replay the algorithm and will be able to serve acceptable content directly, without more request to the server. Obviously, the wildcard &#39;&lt;code&gt;*&lt;/code&gt;&#39; prevents caching from occurring, as the cache cannot know what element is behind it.&lt;/p&gt;
+
+&lt;h2 id=&#34;Agent-driven_negotiation&#34;&gt;Agent-driven negotiation&lt;/h2&gt;
+
+&lt;p&gt;Server-driven negotiation suffers from a few downsides: It doesn&#39;t scale well. There is one header per feature used in the negotiation. If one wants to use screen size, resolution or other dimensions, a new HTTP header must be created. Sending of the headers must be done on every request. This is not too problematic with few headers, but with the eventual multiplications of them, the message size would lead to a decrease in performance. The more precise headers are sent, the more entropy is sent, allowing for better HTTP&amp;nbsp;fingerprinting and corresponding privacy concern.&lt;/p&gt;
+
+&lt;p&gt;HTTP allowed from the start another negotiation type, &lt;em&gt;agent-driven negotiation&lt;/em&gt; or &lt;em&gt;reactive negotiation&lt;/em&gt;. In this negotiation, when facing an ambiguous request, the server sends back a page containing links to the available alternative resources. The user is presented the resources and choose the one to use.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13795/HTTPNego3.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, the HTTP standard does not specify the format of the page allowing to choose between the available resource, preventing to easily automatize the process. Beside fallback of the &lt;em&gt;server-driven negotiation&lt;/em&gt;, this method is almost always used in conjunction with scripting, especially with JavaScript redirection: after having checked for the negotiation criteria, the script performs the redirection.&lt;/p&gt;
+
+&lt;p&gt;A second problem is that one more request is needed in order to fetch the real resource, slowing the availability of the resource to the user.&lt;/p&gt;
+
+&lt;p&gt;Also note that the caching of the resource is trivial, as each resource has a different URI.&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Content_negotiation%24revert/1108591" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation$revision/1108591 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:59:10 GMT -->
+</html>

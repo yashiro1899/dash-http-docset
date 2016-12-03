@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers$revision/1128893 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:11:20 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1128893 | HTTP headers | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FHeaders%24revision%2F1128893" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Headers%24revision/1128893">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1128893 of <a href="../Headers.html">HTTP headers</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Headers</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>HTTP headers</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1128893</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-10-10T04:21:20-07:00">Oct 10, 2016, 4:21:20 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>fscholz</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/headers">headers</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Headers">Headers</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Networking">Networking</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Reference">Reference</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p>HTTP headers allow the client and the server to pass additional information with the request or the response. A request header consists of its case-insensitive name followed by a colon '<code>:</code>', then by its value (without line breaks). Leading white space before the value is ignored.</p>
+
+<p>Custom proprietary headers can be added using the 'X-' prefix, but this convention was deprecated in June 2012, because of the inconveniences it caused when non-standard fields became standard in <a href="https://tools.ietf.org/html/rfc6648">RFC 6648</a>; others are listed in an <a class="external" href="http://www.iana.org/assignments/message-headers/perm-headers.html">IANA registry</a>, whose original content was defined in <a class="external" href="http://tools.ietf.org/html/rfc4229">RFC 4229</a>. IANA also maintains a <a class="external" href="http://www.iana.org/assignments/message-headers/prov-headers.html">registry of proposed new HTTP message headers</a>.</p>
+
+<p>Headers can be grouped according to their contexts:</p>
+
+<ul>
+ <li>{{Glossary("General header")}}: Headers applying to both requests and responses but with no relation to the data eventually transmitted in the body.</li>
+ <li>{{Glossary("Request header")}}: Headers containing more information about the resource to be fetched or about the client itself.</li>
+ <li>{{Glossary("Response header")}}: Headers with additional information about the response, like its location or about the server itself (name and version etc.).</li>
+ <li>{{Glossary("Entity header")}}: Headers containing more information about the body of the entity, like its content length or its MIME-type.</li>
+</ul>
+
+<p>Headers can also be grouped according to how proxies handle them:</p>
+
+<dl>
+ <dt><a id="e2e" name="e2e"></a>End-to-end headers</dt>
+ <dd>These headers must be transmitted to the final recipient of the message; that is, the server for a request or the client for a response. Intermediate proxies must retransmit end-to-end headers unmodified and caches must store them.</dd>
+ <dt><a id="hbh" name="hbh"></a>Hop-by-hop headers</dt>
+ <dd>These headers are meaningful only for a single transport-level connection and must not be retransmitted by proxies or cached. Such headers are: {{ httpheader("Connection") }}, {{ httpheader("Keep-Alive") }}, {{ httpheader("Proxy-Authenticate") }}, {{ httpheader("Proxy-Authorization") }}, {{ httpheader("TE") }}, {{ httpheader("Trailer") }}, {{ httpheader("Transfer-Encoding") }} and {{ httpheader("Upgrade") }}. Note that only hop-by-hop headers may be set using the {{ httpheader("Connection") }} general header.</dd>
+</dl>
+
+<p>The following list summaries HTTP headers by their usage category. For an alphabetical list, see the navigation on the left side.</p>
+
+<h2 id="Authentication">Authentication</h2>
+
+<dl>
+ <dt>{{HTTPHeader("WWW-Authenticate")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Authorization")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Proxy-Authenticate")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Proxy-Authorization")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Caching">Caching</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Age")}}</dt>
+ <dd>The time in seconds the object has been in a proxy cache.</dd>
+ <dt>{{HTTPHeader("Cache-Control")}}</dt>
+ <dd>Specifies directives for caching mechanisms in both, requests and responses.</dd>
+ <dt>{{HTTPHeader("Expires")}}</dt>
+ <dd>The date/time after which the response is considered stale.</dd>
+ <dt>{{HTTPHeader("Pragma")}}</dt>
+ <dd>Implementation-specific header that may have various effects anywhere along the request-response chain. Used for backwards compatibility with HTTP/1.0 caches where the <code>Cache-Control</code> header is not yet present.</dd>
+ <dt>{{HTTPHeader("Warning")}}</dt>
+ <dd>A general warning field containing information about possible problems.</dd>
+</dl>
+
+<h2 id="Client_hints">Client hints</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Accept-CH")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Content-DPR")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("DPR")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Downlink")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Save-Data")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Viewport-Width")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Width")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<dl>
+ <dt>
+ <h2 id="Conditionals">Conditionals</h2>
+ </dt>
+ <dt>{{HTTPHeader("Last-Modified")}}</dt>
+ <dd>It is a validator, the last modification date of the resource, used to compare several versions of the same resource. It is less accurate than {{HTTPHeader("ETag")}}, but easier to calculate in some environments. Conditional requests using {{HTTPHeader("If-Modified-Since")}} and {{HTTPHeader("If-Unmodified-Since")}} use this value to change the behavior of the request.</dd>
+ <dt>{{HTTPHeader("ETag")}}</dt>
+ <dd>It is a validator, a unique string identifying the version of the resource. Conditional requests using {{HTTPHeader("If-Match")}} and {{HTTPHeader("If-None-Match")}} use this value to change the behavior of the request.</dd>
+ <dt>{{HTTPHeader("If-Match")}}</dt>
+ <dd>Makes the request conditional and applies the method only if the stored resource matches one of the given ETags.</dd>
+ <dt>{{HTTPHeader("If-None-Match")}}</dt>
+ <dd>Makes the request conditional and applies the method only if the stored resource doesn't match any of the given ETags. This is used to update caches (for safe requests), or to prevent to upload a new resource when one is already existing.</dd>
+ <dt>{{HTTPHeader("If-Modified-Since")}}</dt>
+ <dd>Makes the request conditional and expects the entity to be transmitted only if it has been modified after the given date. This is used to transmit data only when the cache is out of date.</dd>
+ <dt>{{HTTPHeader("If-Unmodified-Since")}}</dt>
+ <dd>Makes the request conditional and expects the entity to be transmitted only if it has not been modified after the given date. This is used to ensure the coherence of a new fragment of a specific range with previous ones, or to implement an optimistic concurrency control system when modifying existing documents.</dd>
+</dl>
+
+<h2 id="Connection_management">Connection management</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Connection")}}</dt>
+ <dd>Controls whether or not the network connection stays open after the current transaction finishes.</dd>
+ <dt>{{HTTPHeader("Keep-Alive")}}</dt>
+ <dd>Controls how long a persistent connection should stay open.</dd>
+</dl>
+
+<h2 id="Content_negotiation">Content negotiation</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Accept")}}</dt>
+ <dd>Informs the server about the types of data that can be sent back. It is MIME-type.</dd>
+ <dt>{{HTTPHeader("Accept-Charset")}}</dt>
+ <dd>Informs the server about which character set the client is able to understand.</dd>
+ <dt>{{HTTPHeader("Accept-Encoding")}}</dt>
+ <dd>Informs the server about the encoding algorithm, usually a compression algorithm, that can be used on the resource sent back.</dd>
+ <dt>{{HTTPHeader("Accept-Language")}}</dt>
+ <dd>Informs the server about the language the server is expected to send back. This is a hint and is not necessarily under the full control of the user: the server should always pay attention not to override an explicit user choice (like selecting a language in a drop down list).</dd>
+</dl>
+
+<h2 id="Content_security_policy_(CSP)">Content security policy (CSP)</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Content-Security-Policy")}}</dt>
+ <dd>Controls resources the user agent is allowed to load for a given page.</dd>
+ <dt>{{HTTPHeader("Content-Security-Policy-Report-Only")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Controls">Controls</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Expect")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Max-Forwards")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Cookies">Cookies</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Cookie")}}</dt>
+ <dd>Contains stored <a href="../Cookies.html">HTTP cookies</a> previously sent by the server with the {{HTTPHeader("Set-Cookie")}} header.</dd>
+ <dt>{{HTTPHeader("Set-Cookie")}}</dt>
+ <dd>Send cookies from the server to the user agent.</dd>
+ <dt>{{HTTPHeader("Cookie2")}} {{obsolete_inline}}</dt>
+ <dd>Used to contain an HTTP cookie, previously sent by the server with the {{HTTPHeader("Set-Cookie2")}} header, but has been obsoleted by the specification. Use {{HTTPHeader("Cookie")}} instead.</dd>
+ <dt>{{HTTPHeader("Set-Cookie2")}} {{obsolete_inline}}</dt>
+ <dd>Used to send cookies from the server to the user agent, but has been obsoleted by the specification. Use {{HTTPHeader("Set-Cookie")}} instead.</dd>
+ <dt>
+ <h2 id="CORS">CORS</h2>
+ </dt>
+ <dt>{{HTTPHeader("Access-Control-Allow-Origin")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Access-Control-Allow-Credentials")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Access-Control-Expose-Headers")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Access-Control-Max-Age")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Access-Control-Allow-Methods")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Access-Control-Allow-Headers")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Origin")}}</dt>
+ <dd>Indicates where a fetch originates from.</dd>
+ <dt>{{HTTPHeader("Access-Control-Request-Method")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Access-Control-Request-Headers")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Do_Not_Track">Do Not Track</h2>
+
+<dl>
+ <dt>{{HTTPHeader("DNT")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Downloads">Downloads</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Content-Disposition")}}</dt>
+ <dd>Is a response header if the ressource transmitted should be displayed inline (default behavior when the header is not present), or it should be handled like a download and the browser should present a 'Save As' window.</dd>
+</dl>
+
+<h2 id="HSTS">HSTS</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Strict-Transport-Security")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Message_body_information">Message body information</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Content-Length")}}</dt>
+ <dd>indicates the size of the entity-body, in decimal number of octets, sent to the recipient.</dd>
+ <dt>{{HTTPHeader("Content-Type")}}</dt>
+ <dd>Indicates the media type of the resource.</dd>
+ <dt>{{HTTPHeader("Content-Encoding")}}</dt>
+ <dd>Used to specify the compression algorithm.</dd>
+ <dt>{{HTTPHeader("Content-Language")}}</dt>
+ <dd>Describes the language(s) intended for the audience, so that it allows a user to differentiate according to the users' own preferred language.</dd>
+ <dt>{{HTTPHeader("Content-Location")}}</dt>
+ <dd>Indicates an alternate location for the returned data.</dd>
+</dl>
+
+<h2 id="Message_routing">Message routing</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Via")}}</dt>
+ <dd>Added by proxies, both forward and reverse proxies, and can appear in the request headers and the response headers.</dd>
+</dl>
+
+<h2 id="Redirects">Redirects</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Location")}}</dt>
+ <dd>Indicates the URL to redirect a page to.</dd>
+</dl>
+
+<h2 id="Request_context">Request context</h2>
+
+<dl>
+ <dt>{{HTTPHeader("From")}}</dt>
+ <dd>Contains an Internet email address for a human user who controls the requesting user agent.</dd>
+ <dt>{{HTTPHeader("Host")}}</dt>
+ <dd>Specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening.</dd>
+ <dt>{{HTTPHeader("Referer")}}</dt>
+ <dd>The address of the previous web page from which a link to the currently requested page was followed.</dd>
+ <dt>{{HTTPHeader("Referrer-Policy")}}</dt>
+ <dd>Governs which referrer information sent in the {{HTTPHeader("Referer")}} header should be included with requests made.</dd>
+ <dt>{{HTTPHeader("User-Agent")}}</dt>
+ <dd>Contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent. See also the <a href="../Headers/User-Agent/Firefox.html">Firefox user agent string reference</a>.</dd>
+</dl>
+
+<h2 id="Response_context">Response context</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Allow")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Server")}}</dt>
+ <dd>Contains information about the software used by the origin server to handle the request.</dd>
+</dl>
+
+<h2 id="Range_requests">Range requests</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Accept-Ranges")}}</dt>
+ <dd>Indicates if the server supports range requests and, if so, in which unit the range can be expressed.</dd>
+ <dt>{{HTTPHeader("Range")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("If-Range")}}</dt>
+ <dd>Create a conditional range request that is only fulfilled if the etag or date given in parameter match the remote resource. Used to prevent downloading two ranges from incompatible version of the resource.</dd>
+ <dt>{{HTTPHeader("Content-Range")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Server-sent_events">Server-sent events</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Ping-From")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Ping-To")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Last-Event-ID")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Transfer_coding">Transfer coding</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Transfer-Encoding")}}</dt>
+ <dd>Specifies the the form of encoding used to safely transfer the entity to the user.</dd>
+ <dt>{{HTTPHeader("TE")}}</dt>
+ <dd>Specifies the transfer encodings the user agent is willing to accept.</dd>
+ <dt>{{HTTPHeader("Trailer")}}</dt>
+ <dd>Allows the sender to include additional fields at the end of chunked message.</dd>
+</dl>
+
+<h2 id="WebSockets">WebSockets</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Sec-WebSocket-Key")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Sec-WebSocket-Extensions")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Sec-WebSocket-Accept")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Sec-WebSocket-Protocol")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Sec-WebSocket-Version")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Other">Other</h2>
+
+<dl>
+ <dt>{{HTTPHeader("Date")}}</dt>
+ <dd>Contains the date and time at which the message was originated.</dd>
+ <dt>{{HTTPHeader("Link")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("Retry-After")}}</dt>
+ <dd>Indicates how long the user agent should wait before making a follow-up request.</dd>
+ <dt>{{HTTPHeader("Upgrade")}}</dt>
+ <dd>This is a Proposed Internet Standard. To view a comprehensive list of all Official and Proposed Internet Standards with detailed information about each, <a href="https://www.rfc-editor.org/standards">visit this Internet Standards reference</a>, which is updated daily.  The relevant RFC document for the <a href="https://tools.ietf.org/html/rfc7230#section-6.7">Upgrade header field standard is RFC 7230, section 6.7</a>.  The standard establishes rules for upgrading or changing to a different protocol on the current client, server, transport protocol connection.  For example, this header standard allows a client to change from HTTP 1.1 to HTTP 2.0, assuming the server decides to acknowledge and implement the Upgrade header field.  Niether party is required to accept the terms specified in the Upgrade header field.  It can be used in both client and server headers.  If the Upgrade header field is specified, then the sender MUST also send the Connection header field with the upgrade option specified.  For details on the Connection header field <a href="https://tools.ietf.org/html/rfc7230#section-6.1">please see section 6.1 of the aforementioned RFC</a>.</dd>
+ <dt>{{HTTPHeader("Vary")}}</dt>
+ <dd>Determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server.</dd>
+ <dt>{{HTTPHeader("X-Frame-Options")}}</dt>
+ <dd>Indicates whether or not a browser should be allowed to render a page in a {{HTMLElement("frame")}}, {{HTMLElement("iframe")}} or {{HTMLElement("object")}}.</dd>
+ <dt>{{HTTPHeader("X-Content-Type-Options")}}</dt>
+ <dd>Disables MIME sniffing and forces browser to use the type given in {{HTTPHeader("Content-Type")}}.</dd>
+ <dt>{{HTTPHeader("X-UA-Compatible")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("X-DNS-Prefetch-Control")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("X-Content-Duration")}}</dt>
+ <dd>...</dd>
+ <dt>{{HTTPHeader("X-Requested-With")}}</dt>
+ <dd>...</dd>
+</dl>
+
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+
+<p class="hidden">To contribute to this compatibility data, please write a pull request against this file: <a href="https://github.com/mdn/browser-compat-data/blob/master/http/headers.json">https://github.com/mdn/browser-compat-data/blob/master/http/headers.json</a>.</p>
+
+<p>{{Compat}}</p>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li><a href="https://en.wikipedia.org/wiki/List_of_HTTP_header_fields">Wikipedia page on List of HTTP headers</a></li>
+ <li><a href="https://www.iana.org/assignments/message-headers/perm-headers.html">IANA registry</a></li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p&gt;HTTP headers allow the client and the server to pass additional information with the request or the response. A request header consists of its case-insensitive name followed by a colon &#39;&lt;code&gt;:&lt;/code&gt;&#39;, then by its value (without line breaks). Leading white space before the value is ignored.&lt;/p&gt;
+
+&lt;p&gt;Custom proprietary headers can be added using the &#39;X-&#39; prefix, but this convention was deprecated in June 2012, because of the inconveniences it caused when non-standard fields became standard in &lt;a href=&#34;https://tools.ietf.org/html/rfc6648&#34;&gt;RFC 6648&lt;/a&gt;; others are listed in an &lt;a class=&#34;external&#34; href=&#34;http://www.iana.org/assignments/message-headers/perm-headers.html&#34;&gt;IANA registry&lt;/a&gt;, whose original content was defined in &lt;a class=&#34;external&#34; href=&#34;http://tools.ietf.org/html/rfc4229&#34;&gt;RFC 4229&lt;/a&gt;. IANA also maintains a &lt;a class=&#34;external&#34; href=&#34;http://www.iana.org/assignments/message-headers/prov-headers.html&#34;&gt;registry of proposed new HTTP&amp;nbsp;message headers&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Headers can be grouped according to their contexts:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;{{Glossary(&#34;General header&#34;)}}: Headers applying to both requests and responses but with no relation to the data eventually transmitted in the body.&lt;/li&gt;
+ &lt;li&gt;{{Glossary(&#34;Request header&#34;)}}: Headers containing more information about the resource to be fetched or about the client itself.&lt;/li&gt;
+ &lt;li&gt;{{Glossary(&#34;Response header&#34;)}}: Headers with additional information about the response, like its location or about the server itself (name and version etc.).&lt;/li&gt;
+ &lt;li&gt;{{Glossary(&#34;Entity header&#34;)}}: Headers containing more information about the body of the entity, like its content length or its MIME-type.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Headers can also be grouped according to how proxies handle them:&lt;/p&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;&lt;a id=&#34;e2e&#34; name=&#34;e2e&#34;&gt;&lt;/a&gt;End-to-end headers&lt;/dt&gt;
+ &lt;dd&gt;These headers must be transmitted to the final recipient of the message; that is, the server for a request or the client for a response. Intermediate proxies must retransmit end-to-end headers unmodified and caches must store them.&lt;/dd&gt;
+ &lt;dt&gt;&lt;a id=&#34;hbh&#34; name=&#34;hbh&#34;&gt;&lt;/a&gt;Hop-by-hop headers&lt;/dt&gt;
+ &lt;dd&gt;These headers are meaningful only for a single transport-level connection and must not be retransmitted by proxies or cached. Such headers are: {{ httpheader(&#34;Connection&#34;) }}, {{ httpheader(&#34;Keep-Alive&#34;) }}, {{ httpheader(&#34;Proxy-Authenticate&#34;) }}, {{ httpheader(&#34;Proxy-Authorization&#34;) }}, {{ httpheader(&#34;TE&#34;) }}, {{ httpheader(&#34;Trailer&#34;) }}, {{ httpheader(&#34;Transfer-Encoding&#34;) }} and {{ httpheader(&#34;Upgrade&#34;) }}. Note that only hop-by-hop headers may be set using the {{ httpheader(&#34;Connection&#34;) }} general header.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;The following list summaries HTTP headers by their usage category. For an alphabetical list, see the navigation on the left side.&lt;/p&gt;
+
+&lt;h2 id=&#34;Authentication&#34;&gt;Authentication&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;WWW-Authenticate&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Authorization&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Proxy-Authenticate&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Proxy-Authorization&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Caching&#34;&gt;Caching&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Age&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;The time in seconds the object has been in a proxy cache.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Cache-Control&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies directives for caching mechanisms in both, requests and responses.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Expires&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;The date/time after which the response is considered stale.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Pragma&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Implementation-specific header that may have various effects anywhere along the request-response chain. Used for backwards compatibility with HTTP/1.0 caches where the &lt;code&gt;Cache-Control&lt;/code&gt; header is not yet present.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Warning&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;A general warning field containing information about possible problems.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Client_hints&#34;&gt;Client hints&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Accept-CH&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-DPR&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;DPR&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Downlink&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Save-Data&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Viewport-Width&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Width&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;
+ &lt;h2 id=&#34;Conditionals&#34;&gt;Conditionals&lt;/h2&gt;
+ &lt;/dt&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Last-Modified&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;It is a validator, the last modification date of the resource, used to compare several versions of the same resource. It is less accurate than {{HTTPHeader(&#34;ETag&#34;)}}, but easier to calculate in some environments. Conditional requests using {{HTTPHeader(&#34;If-Modified-Since&#34;)}} and {{HTTPHeader(&#34;If-Unmodified-Since&#34;)}} use this value to change the behavior of the request.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;ETag&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;It is a validator, a unique string identifying the version of the resource. Conditional requests using {{HTTPHeader(&#34;If-Match&#34;)}} and {{HTTPHeader(&#34;If-None-Match&#34;)}} use this value to change the behavior of the request.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;If-Match&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Makes the request conditional and applies the method only if the stored resource matches one of the given ETags.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;If-None-Match&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Makes the request conditional and applies the method only if the stored resource doesn&#39;t match any of the given ETags. This is used to update caches (for safe requests), or to prevent to upload a new resource when one is already existing.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;If-Modified-Since&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Makes the request conditional and expects the entity to be transmitted only if it has been modified after the given date. This is used to transmit data only when the cache is out of date.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;If-Unmodified-Since&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Makes the request conditional and expects the entity to be transmitted only if it has not been modified after the given date. This is used to ensure the coherence of a new fragment of a specific range with previous ones, or to implement an optimistic concurrency control system when modifying existing documents.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Connection_management&#34;&gt;Connection management&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Connection&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Controls whether or not the network connection stays open after the current transaction finishes.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Keep-Alive&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Controls how long a persistent connection should stay open.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Content_negotiation&#34;&gt;Content negotiation&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Accept&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Informs the server about the types of data that can be sent&amp;nbsp;back. It is MIME-type.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Accept-Charset&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Informs the server about which character set the client is able to understand.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Accept-Encoding&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Informs the server about the encoding algorithm, usually a compression algorithm, that can be used on the resource sent back.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Accept-Language&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Informs the server about the language the server is expected to send back. This is a hint and is not necessarily under the full control of the user: the server should always pay attention not to override an explicit user choice (like selecting a language in a drop down list).&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Content_security_policy_(CSP)&#34;&gt;Content security policy (CSP)&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-Security-Policy&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Controls resources the user agent is allowed to load for a given page.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-Security-Policy-Report-Only&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Controls&#34;&gt;Controls&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Expect&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Max-Forwards&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Cookies&#34;&gt;Cookies&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Cookie&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Contains stored &lt;a href=&#34;/en-US/docs/Web/HTTP/Cookies&#34;&gt;HTTP cookies&lt;/a&gt; previously sent by the server with the {{HTTPHeader(&#34;Set-Cookie&#34;)}} header.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Set-Cookie&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Send cookies from the server to the user agent.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Cookie2&#34;)}} {{obsolete_inline}}&lt;/dt&gt;
+ &lt;dd&gt;Used to contain an HTTP cookie, previously sent by the server with the {{HTTPHeader(&#34;Set-Cookie2&#34;)}} header, but has been obsoleted by the specification. Use {{HTTPHeader(&#34;Cookie&#34;)}} instead.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Set-Cookie2&#34;)}} {{obsolete_inline}}&lt;/dt&gt;
+ &lt;dd&gt;Used to send cookies from the server to the user agent, but has been obsoleted by the specification. Use {{HTTPHeader(&#34;Set-Cookie&#34;)}} instead.&lt;/dd&gt;
+ &lt;dt&gt;
+ &lt;h2 id=&#34;CORS&#34;&gt;CORS&lt;/h2&gt;
+ &lt;/dt&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Access-Control-Allow-Origin&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Access-Control-Allow-Credentials&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Access-Control-Expose-Headers&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Access-Control-Max-Age&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Access-Control-Allow-Methods&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Access-Control-Allow-Headers&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Origin&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Indicates where a fetch originates from.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Access-Control-Request-Method&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Access-Control-Request-Headers&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Do_Not_Track&#34;&gt;Do Not Track&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;DNT&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Downloads&#34;&gt;Downloads&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-Disposition&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Is a response header if the ressource transmitted should be displayed inline (default behavior when the header is not present), or it should be handled like a download and the browser should present a &#39;Save As&#39; window.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;HSTS&#34;&gt;HSTS&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Strict-Transport-Security&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Message_body_information&#34;&gt;Message body information&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-Length&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;indicates the size of the entity-body, in decimal number of octets, sent to the recipient.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-Type&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Indicates the media type of the resource.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-Encoding&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Used to specify the compression algorithm.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-Language&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Describes the language(s) intended for the audience, so that it allows a user to differentiate according to the users&#39; own preferred language.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-Location&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Indicates an alternate location for the returned data.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Message_routing&#34;&gt;Message routing&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Via&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Added by proxies, both forward and reverse proxies, and can appear in the request headers and the response headers.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Redirects&#34;&gt;Redirects&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Location&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Indicates the URL to redirect a page to.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Request_context&#34;&gt;Request context&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;From&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Contains an Internet email address for a human user who controls the requesting user agent.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Host&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Referer&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;The address of the previous web page from which a link to the currently requested page was followed.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Referrer-Policy&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Governs which referrer information sent in the {{HTTPHeader(&#34;Referer&#34;)}} header should be included with requests made.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;User-Agent&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent. See also the &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers/User-Agent/Firefox&#34;&gt;Firefox user agent string reference&lt;/a&gt;.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Response_context&#34;&gt;Response context&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Allow&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Server&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Contains information about the software used by the origin server to handle the request.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Range_requests&#34;&gt;Range requests&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Accept-Ranges&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Indicates if the server supports range requests and, if so, in which unit the range can be expressed.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Range&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;If-Range&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Create a conditional range request that is only fulfilled if the etag or date given in parameter match the remote resource. Used to prevent downloading two ranges from incompatible version of the resource.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Content-Range&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Server-sent_events&#34;&gt;Server-sent events&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Ping-From&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Ping-To&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Last-Event-ID&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Transfer_coding&#34;&gt;Transfer coding&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Transfer-Encoding&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies the the form of encoding used to safely transfer the entity to the user.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;TE&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies the transfer encodings the user agent is willing to accept.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Trailer&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Allows the sender to include additional fields at the end of chunked message.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;WebSockets&#34;&gt;WebSockets&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Sec-WebSocket-Key&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Sec-WebSocket-Extensions&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Sec-WebSocket-Accept&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Sec-WebSocket-Protocol&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Sec-WebSocket-Version&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Other&#34;&gt;Other&lt;/h2&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Date&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Contains the date and time at which the message was originated.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Link&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Retry-After&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Indicates how long the user agent should wait before making a follow-up request.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Upgrade&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;This is a Proposed Internet Standard. To view a comprehensive list of all Official and Proposed Internet Standards with detailed information about each, &lt;a href=&#34;https://www.rfc-editor.org/standards&#34;&gt;visit this Internet Standards reference&lt;/a&gt;, which is updated daily.&amp;nbsp; The relevant RFC document for the &lt;a href=&#34;https://tools.ietf.org/html/rfc7230#section-6.7&#34;&gt;Upgrade header field standard is RFC 7230, section 6.7&lt;/a&gt;.&amp;nbsp; The standard establishes rules for upgrading or changing to a different protocol on the current client, server, transport protocol connection.&amp;nbsp; For example, this header standard allows a client to change from HTTP 1.1 to HTTP 2.0, assuming the server decides to acknowledge and implement the Upgrade header field.&amp;nbsp; Niether party is required to accept the terms specified in the Upgrade header field.&amp;nbsp; It can be used in both client and server headers.&amp;nbsp;&amp;nbsp;If the Upgrade header field is specified, then the sender MUST also send the Connection header field with the upgrade option specified.&amp;nbsp; For details on the Connection header field &lt;a href=&#34;https://tools.ietf.org/html/rfc7230#section-6.1&#34;&gt;please see section 6.1 of the aforementioned RFC&lt;/a&gt;.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;Vary&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;X-Frame-Options&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Indicates whether or not a browser should be allowed to render a page in a {{HTMLElement(&#34;frame&#34;)}}, {{HTMLElement(&#34;iframe&#34;)}} or {{HTMLElement(&#34;object&#34;)}}.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;X-Content-Type-Options&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Disables MIME sniffing and forces browser to use the type given in {{HTTPHeader(&#34;Content-Type&#34;)}}.&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;X-UA-Compatible&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;X-DNS-Prefetch-Control&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;X-Content-Duration&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+ &lt;dt&gt;{{HTTPHeader(&#34;X-Requested-With&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;Browser_compatibility&#34;&gt;Browser compatibility&lt;/h2&gt;
+
+&lt;p class=&#34;hidden&#34;&gt;To contribute to this compatibility data, please write a pull request against this file: &lt;a href=&#34;https://github.com/mdn/browser-compat-data/blob/master/http/headers.json&#34;&gt;https://github.com/mdn/browser-compat-data/blob/master/http/headers.json&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;{{Compat}}&lt;/p&gt;
+
+&lt;h2 id=&#34;See_also&#34;&gt;See also&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/List_of_HTTP_header_fields&#34;&gt;Wikipedia page on List of HTTP headers&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;https://www.iana.org/assignments/message-headers/perm-headers.html&#34;&gt;IANA registry&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Headers%24revert/1128893" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers$revision/1128893 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:11:20 GMT -->
+</html>

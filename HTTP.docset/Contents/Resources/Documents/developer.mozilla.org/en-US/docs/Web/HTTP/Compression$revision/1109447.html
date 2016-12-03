@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Compression$revision/1109447 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:58:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1109447 | Compression in HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FCompression%24revision%2F1109447" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Compression%24revision/1109447">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1109447 of <a href="../Compression.html">Compression in HTTP</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Compression</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Compression in HTTP</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1109447</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-08-25T00:54:16-07:00">Aug 25, 2016, 12:54:16 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Content Negotiation">Content Negotiation</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p>{{HTTPSidebar}}</p>
+
+<p class="summary"><strong>Compression</strong> is an important way to increase the performance of a Web site. For some documents, size reduction can reach 70%, lowering the bandwidth needs. Over the years, algorithms got more efficient, and new ones are supported by clients and servers.</p>
+
+<p>Web developers doesn't need to implement compression, both browsers and servers have it implemented. They have to be sure that the server is adequately configured though. Compression happen at three different levels: first some file format are compressed with specific optimized methods, then general encryption can happen at the HTTP level (the resource is transmitted compressed from end to end, and finally compression can be defined at the connection level, between two nodes of an HTTP connection.</p>
+
+<h2 id="File_format_compression">File format compression</h2>
+
+<p>Each type of data has some redundancy, that is <em>wasted space</em>, in it. If text can typically have as much as 60% redundancy, this rate can be much higher for some other media like audio and video. Unlike text, these other media are taking a lot of space to store and the need to regain this wasted space appeared very early. Engineers designed optimized compression algorithm used by file formats designed for specific purpose. Compression algorithms used for files can be grouped in two wide categories:</p>
+
+<ul>
+ <li><em>Loss-less compression</em>, where the compression-uncompression cycle doesn't alter the data that is recovered matches exactly, byte to byte, the original.<br>
+  For images, <code>gif</code> or <code>png</code> are loss-less compression.</li>
+ <li><em>Lossy compression</em>, where the cycle alter the original data, in an imperceptible way for the user.<br>
+  Videos format on the Web are lossy; for images, <code>jpeg</code> is.</li>
+</ul>
+
+<p>Some formats can be used for both loss-less or lossy compression, like <code>webp</code>, but usually lossy algorithm can be configured to compress more or less, and of course to lose less or more quality. It is important on a Web site to compress as much as possible, while keeping an acceptable level of quality in the usage. For images, an image generated by a tool could be not optimized enough for the Web; it is recommended to use tools that will compress as much as possible with the required quality. There are <a href="http://www.creativebloq.com/design/image-compression-tools-1132865">numerous tools</a> that specialized for this, and they can be added to your toolchain.</p>
+
+<p>Lossy compression algorithms are usually more efficient that loss-less ones.</p>
+
+<div class="note">
+<p>As compression works better on a specific kind of files, it usually provides nothing to compress them a second time. In fact, this is often counter productive as the cost of the overhead (algorithms usually need a dictionary that add to the initial size) can be higher than the extra gain in compression resulting in a larger file. Do not use one of the two following techniques for files in a compressed format.</p>
+</div>
+
+<h2 id="End-to-end_compression">End-to-end compression</h2>
+
+<p>For compression, end-to-end compression is where the largest improvement of performance of a Web site resides. If the choice of a compressed format is usually pretty automatic and only optimization of the algorithm used by them can be performed, end-to-end compression are often not configured properly.</p>
+
+<p>End-to-end compression refers to a compression of the body of a message that is done by the server and will last unchanged until it reached the client. Whatever the intermediate nodes are, they leave the body untouched.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13801/HTTPEnco1.png" style="height: 307px; width: 955px;"></p>
+
+<p>All modern browsers and servers do support it and the only thing to negotiate is the compression algorithm to use. These algorithm are optimized for text. In the 1990s, compression technology was advancing at a rapid pace and numerous successive algorithms have been added to the set of possible choices. Nowadays, only two are relevant: <code>gzip</code>, the most common one, and <code>br</code> the new challenger.</p>
+
+<p>To select the algorithm to use, browser and server use <a href="../Content_negotiation.html">proactive content negotiation</a>. The browser send an {{HTTPHeader("Accept-Encoding")}} header with the algorithm it supports and its order of precedence, the server pick one, use it to compress the body of the response and use the {{HTTPHeader("Content-Encoding")}} header to tell the browser the algorithm it chose. As content negotiation has been used to chose a representation based on its encoding, a {{HTTPHeader("Vary")}} header containing at least {{HTTPHeader("Content-Encoding")}} must be sent alongside this header in the response; that way, cache will be able to cache the different representations of the resource.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13805/HTTPEnco2.png"></p>
+
+<p>As compression brings significant performance improvements, it is recommended to activate it for all files, but already compressed ones like images, audio files and videos.</p>
+
+<h2 id="Hop-by-hop_compression">Hop-by-hop compression</h2>
+
+<p>Hop-by-hop compression, though similar to end-to-end compression, differs by one fundamental element: the compression doesn't happen on the resource in the server, creating a specific representation that is then transmitted, but on the body of the message between any two nodes on the path between the client and the server. Connections between successive intermediate nodes may apply a <em>different</em> compression.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13807/HTTPTE1.png"></p>
+
+<p>To do this, HTTP uses a mechanism similar to the content negotiation for end-to-end compression: the node transmitting the request advertize its will using the {{HTTPHeader("TE")}} and the other node chooses the adequate method, applies it, and indicates its choice with the {{HTTPHeader("Transfer-Encoding")}} request.</p>
+
+<p>(image)</p>
+
+<p>In practice, hop-by-hop compression is transparent for the server and the client, and is rarely used. {{HTTPHeader("TE")}} and {{HTTPHeader("Transfer-Encoding")}} are mostly used to send a response by chunks, allowing to start transmitting a resource without knowing its length.</p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p&gt;{{HTTPSidebar}}&lt;/p&gt;
+
+&lt;p class=&#34;summary&#34;&gt;&lt;strong&gt;Compression&lt;/strong&gt; is an important way to increase the performance of a Web site. For some documents, size reduction can reach 70%, lowering the bandwidth needs. Over the years, algorithms got more efficient, and new ones are supported by clients and servers.&lt;/p&gt;
+
+&lt;p&gt;Web developers doesn&#39;t need to implement compression, both browsers and servers have it implemented. They have to be sure that the server is adequately configured though. Compression happen at three different levels: first some file format are compressed with specific optimized methods, then general encryption can happen at the HTTP level (the resource is transmitted compressed from end to end, and finally compression can be defined at the connection level, between two nodes of an HTTP connection.&lt;/p&gt;
+
+&lt;h2 id=&#34;File_format_compression&#34;&gt;File format compression&lt;/h2&gt;
+
+&lt;p&gt;Each type of data has some redundancy, that is &lt;em&gt;wasted space&lt;/em&gt;, in it. If text can typically have as much as 60% redundancy, this rate can be much higher for some other media like audio and video. Unlike text, these other media are taking a lot of space to store and the need to regain this wasted space appeared very early. Engineers designed optimized compression algorithm used by file formats designed for specific purpose. Compression algorithms used for files can be grouped in two wide categories:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;em&gt;Loss-less compression&lt;/em&gt;, where the compression-uncompression cycle doesn&#39;t alter the data that is recovered matches exactly, byte to byte, the original.&lt;br /&gt;
+  For images, &lt;code&gt;gif&lt;/code&gt; or &lt;code&gt;png&lt;/code&gt; are loss-less compression.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Lossy compression&lt;/em&gt;, where the cycle alter the original data, in an imperceptible way for the user.&lt;br /&gt;
+  Videos format on the Web are lossy; for images, &lt;code&gt;jpeg&lt;/code&gt; is.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some formats can be used for both loss-less or lossy compression, like &lt;code&gt;webp&lt;/code&gt;, but usually lossy algorithm can be configured to compress more or less, and of course to lose less or more quality. It is important on a Web site to compress as much as possible, while keeping an acceptable level of quality in the usage. For images, an image generated by a tool could be not optimized enough for the Web; it is recommended to use tools that will compress as much as possible with the required quality. There are &lt;a href=&#34;http://www.creativebloq.com/design/image-compression-tools-1132865&#34;&gt;numerous tools&lt;/a&gt; that specialized for this, and they can be added to your toolchain.&lt;/p&gt;
+
+&lt;p&gt;Lossy compression algorithms are usually more efficient that loss-less ones.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;As compression works better on a specific kind of files, it usually provides nothing to compress them a second time. In fact, this is often counter productive as the cost of the overhead (algorithms usually need a dictionary that add to the initial size) can be higher than the extra gain in compression resulting in a larger file. Do not use one of the two following techniques for files in a compressed format.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;End-to-end_compression&#34;&gt;End-to-end compression&lt;/h2&gt;
+
+&lt;p&gt;For compression, end-to-end compression is where the largest improvement of performance of a Web site resides. If the choice of a compressed format is usually pretty automatic and only optimization of the algorithm used by them can be performed, end-to-end compression are often not configured properly.&lt;/p&gt;
+
+&lt;p&gt;End-to-end compression refers to a compression of the body of a message that is done by the server and will last unchanged until it reached the client. Whatever the intermediate nodes are, they leave the body untouched.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13801/HTTPEnco1.png&#34; style=&#34;height:307px; width:955px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;All modern browsers and servers do support it and the only thing to negotiate is the compression algorithm to use. These algorithm are optimized for text. In the 1990s, compression technology was advancing at a rapid pace and numerous successive algorithms have been added to the set of possible choices. Nowadays, only two are relevant: &lt;code&gt;gzip&lt;/code&gt;, the most common one, and &lt;code&gt;br&lt;/code&gt; the new challenger.&lt;/p&gt;
+
+&lt;p&gt;To select the algorithm to use, browser and server use &lt;a href=&#34;/en-US/docs/Web/HTTP/Content_negotiation&#34;&gt;proactive content negotiation&lt;/a&gt;. The browser send an {{HTTPHeader(&#34;Accept-Encoding&#34;)}} header with the algorithm it supports and its order of precedence, the server pick one, use it to compress the body of the response and use the {{HTTPHeader(&#34;Content-Encoding&#34;)}} header to tell the browser the algorithm it chose. As content negotiation has been used to chose a representation based on its encoding, a {{HTTPHeader(&#34;Vary&#34;)}} header containing at least {{HTTPHeader(&#34;Content-Encoding&#34;)}} must be sent alongside this header in the response; that way, cache will be able to cache the different representations of the resource.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13805/HTTPEnco2.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As compression brings significant performance improvements, it is recommended to activate it for all files, but already compressed ones like images, audio files and videos.&lt;/p&gt;
+
+&lt;h2 id=&#34;Hop-by-hop_compression&#34;&gt;Hop-by-hop compression&lt;/h2&gt;
+
+&lt;p&gt;Hop-by-hop compression, though similar to end-to-end compression, differs by one fundamental element: the compression doesn&#39;t happen on the resource in the server, creating a specific representation that is then transmitted, but on the body of the message between any two nodes on the path between the client and the server. Connections between successive intermediate nodes may apply a &lt;em&gt;different&lt;/em&gt; compression.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13807/HTTPTE1.png&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To do this, HTTP uses a mechanism similar to the content negotiation for end-to-end compression: the node transmitting the request advertize its will using the {{HTTPHeader(&#34;TE&#34;)}} and the other node chooses the adequate method, applies it, and indicates its choice with the {{HTTPHeader(&#34;Transfer-Encoding&#34;)}} request.&lt;/p&gt;
+
+&lt;p&gt;(image)&lt;/p&gt;
+
+&lt;p&gt;In practice, hop-by-hop compression is transparent for the server and the client, and is rarely used. {{HTTPHeader(&#34;TE&#34;)}} and {{HTTPHeader(&#34;Transfer-Encoding&#34;)}} are mostly used to send a response by chunks, allowing to start transmitting a resource without knowing its length.&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Compression%24revert/1109447" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Compression$revision/1109447 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:58:43 GMT -->
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent$revision/17919 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:27:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 17919 | Browser detection using the user agent | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FBrowser_detection_using_the_user_agent%24revision%2F17919" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent%24revision/17919">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 17919 of <a href="../Browser_detection_using_the_user_agent.html">Browser detection using the user agent</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Browser_detection_using_the_user_agent</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Browser detection using the user agent</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>17919</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2012-04-05T14:24:58-07:00">Apr 5, 2012, 2:24:58 PM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>516 words added</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Compatibility">Compatibility</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Web Development">Web Development</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p>Serving different Web pages or services to different browsers is usually a bad idea. The Web is meant to be accessible to everyone, regardless of which browser or device they're using. There are ways to develop your web site to progressively enhance itself based on the availability of features rather than by targeting specific browsers.</p>
+<p>But browsers and standards are not perfect, and there are still some edge cases where detecting the browser is needed. Using the user agent to detect the browser looks simple, but doing it well is in fact a very hard problem. This document will guide you in doing this as correctly as possible.</p>
+<div class="warning"><strong>Important:</strong> It's worth re-iterating: it's very rarely a good idea to use user agent sniffing. You can almost always find a better, more broadly compatible way to solve your problem!</div>
+<h2>Considerations before using browser detection</h2>
+<p>When considering using the user agent string to detect which browser is being used, your first step is to try to avoid it if possible. Start by trying to identify <strong>why</strong> you want to do it.</p>
+<dl> <dt>Are you trying to work around a specific bug in some version of a browser?</dt> <dd>Look, or ask, in specialized forums: you're unlikely to be the first to hit this problem. Also experts, or simply people with another point of view, can give you ideas for working around the bug. You can start by checking if this bug has been reported to the browser vendor; don't hesitate to asks on forum or to report it on their bug tracking system (<a class=" link-https" href="https://bugzilla.mozilla.org/" title="https://bugzilla.mozilla.org">Mozilla</a>; <a class=" external" href="http://bugs.webkit.org/" title="http://bugs.webkit.org">WebKit</a>; <a class=" link-https" href="https://bugs.opera.com/" title="https://bugs.opera.com/">Opera</a>) This step may seem unhelpful, but it is not! First, contrary to popular belief, browser makers pay attention to bug reports (though some may occasionally pass unnoticed through their triaging teams); second, analysis may hint about other work-arounds for the bug; third, without a bug report, the odds that the bug will be corrected in the future is lower.</dd> <dt>Are you trying to check for the existence of a specific feature?</dt> <dd>Your site needs to use a specific Web feature that some browsers don't yet support, and you want to send those users to an older Web site with fewer features but that you know will work. This is the worst reason to use user agent detection, because odds are eventually all the other browsers will catch up. You should do your best to avoid using user agent sniffing in this scenario.</dd> <dt>Do you want to provide different HTML depending on which browser is being used?</dt> <dd>This is usually a bad practice, but there are some cases in which this is necessary. In these cases, you should first analyze your situation to be sure it's really necessary. Can you prevent it by adding some non-semantic {{ HTMLElement("div") }} or {{ HTMLElement("span") }} elements? The difficulty of successfully using user agent detection is worth a few disruptions to the purity of your HTML. Also, rethink your design: can you use progressive enhancement or fluid layouts to help remove the need to do this?</dd>
+</dl>
+<h2>Avoiding user agent detection</h2>
+<p>If you want to try to avoid using user agent detection, there are options in some cases!</p>
+<dl> <dt>Feature detection</dt> <dd>Feature detection is where you don't try to figure out which browser is rendering your page, but instead you check to see if the specific feature you need is available. If it's not, you use a fallback. You should, of course, never use feature detection to try to determine which browser you're using, since other browsers may implement the feature in the future, but differently. Bugs caused by this can be insidiously hard to find and fix.</dd> <dt>Progressive enhancement</dt> <dd>This design technique involves developing your Web site in layers, using a bottom-up approach, starting with a simpler layer and improving the capabilities of the site in successive layers, each using more features.</dd> <dt>Graceful degradation</dt> <dd>This is a top-down approach in which you build the best possible site using all the features you want, then tweaking it to make it work on older browsers. This can be harder to do, and less effective, than progressive enhancement, but may be useful in some cases.</dd>
+</dl>
+<h2>Which part of the user agent contains the information you are looking for</h2>
+<p>As there is no uniformity of the different part of the user agent string, this is the tricky part.</p>
+<h3>Browser Name</h3>
+<p>Most browser set the name and version in the format <em>BrowserName/VersionNumber</em> format, with the notable exception of Internet Explorer. But as the name is not the only information in a user agent string that is in that format, you can not discover the name of the browser, you can only check if the name you are looking for. But pay attention that some browsers are lying: Chrome for example reports both as Chrome and Safari. So to detect Safari you have to check for the Safari string and the absence of the Chrome string, Chromium often reports himself as Chrome too or Seamonkey sometimes reports himself as Firefox.</p>
+<p>Also pay attention not to use a simple regular expression on the BrowserName, user agents also contains strings outside the Keyword/Value syntax. Safari &amp; Chrome contains a string 'like Gecko', for instance.</p>
+<table style="width: 100%;"> <thead> <tr> <th scope="col"> </th> <th scope="col">Must contains</th> <th scope="col">Must not contains</th> <th scope="col"> </th> </tr> </thead> <tbody> <tr> <td>Firefox</td> <td>Firefox/xyz</td> <td>Seamonkey/xyz</td> <td> </td> </tr> <tr> <td>Seamonkey</td> <td>Seamonkey/xyz</td> <td> </td> <td> </td> </tr> <tr> <td>Chrome</td> <td>Chrome/xyz</td> <td>Chromium/xyz</td> <td> </td> </tr> <tr> <td>Chromium</td> <td>Chromium/xyz</td> <td> </td> <td> </td> </tr> <tr> <td>Safari</td> <td>Safari/xyz</td> <td>Chrome/xyz or Chromium/xyz</td> <td>Safari gives two version number, one technical in the Safari/xyz token, one user-friendly in a Version/xyz token</td> </tr> <tr> <td>Opera</td> <td>Opera/xyz</td> <td> </td> <td>Pay attention to the position of the version number at Opera: since version 10 a new Version/xyz token has been added to contains it.</td> </tr> <tr> <td>Internet Explorer</td> <td>;MSIE xyz;</td> <td> </td> <td>Internet Explorer doesn't put its name in the <em>BrowserName/VersionNumber</em> format</td> </tr> </tbody>
+</table>
+<p>Of course, there is absolutely no guarantee that another browser will not hijack some of these things (like Chrome hijacked the Safari string in the past). That's why browser detection using the user agent string is unreliable and should be done only with the check of version number (hijacking of past versions is less likely).</p>
+<h3>Browser version</h3>
+<p>The browser version is often, but not always, put in the value part of the <em>BrowserName/VersionNumber</em> token in the User Agent String. This is of course not the case for Internet Explorer (who put the version number right after the MSIE token, and for Opera after version 10, which has added a Version/<em>VersionNumber</em> token.</p>
+<p>Here again, be sure to take the right token for the browser you are looking for, as there is no guarantee that other will contain a valid number.</p>
+<h3>Rendering engine</h3>
+<p>As seen earlier, in most cases, looking for the rendering engine is a better way to go. It allows not to exclude less known browsers build on the same engine that famous ones. Browsers sharing a common rendering engine will display a page in the same way: it is often a fair assumption that what will work in one will work in the other.</p>
+<p>There are five major rendering engines: Trident, Gecko, Presto, and WebKit. As sniffing the rendering engines names is common, a lot of user agents added other rendering names to trigger detection. It is therefore important to pay attention not to trigger false-positive when detecting the rendering engine.</p>
+<table style="width: 100%;"> <thead> <tr> <th scope="col"> </th> <th scope="col">Must contains</th> <th scope="col"> </th> </tr> </thead> <tbody> <tr> <td>Gecko</td> <td>Gecko/xyz</td> <td>Pay attention, Gecko version is not necessarily stored in that token</td> </tr> <tr> <td>WebKit</td> <td>AppleWebKit/xyz</td> <td>Pay attention, WebKit browsers add a 'like Gecko' string that may trigger false positive for Gecko if the detection is not careful.</td> </tr> <tr> <td>Presto</td> <td>Opera/xyz</td> <td> </td> </tr> <tr> <td>Trident</td> <td>Trident/xyz</td> <td>Internet Explorer put this token in the <em>comment</em> part of the User Agent String</td> </tr> </tbody>
+</table>
+<h2>Rendering engine version</h2>
+<p>Most rendering engine put the version number in the <em>RenderingEngine/VersionNumber</em> token, with the notable exception of Gecko. Gecko, up to version 14 (?), put the version number in the comment part of the User Agent after the <code>rv:</code> string. From Gecko 14, for mobile version, it also put this value in the <code>Gecko/version</code> token (previous version put there the build date, then a fixed date called the GeckoTrail). Desktop version still don't store it there, though it may change in the future.</p>
+<h2>OS</h2>
+<p>The Operating System is given in most Useragent, it is an entry, that is a fixed string between two semi-colons, in the comment part of the User Agent. These strings are specific for each browsers. They indicates the OS, but also often its version and information on the relying hardware (32 or 64 bits, or Intel/PPC for Mac).</p>
+<p>Like in all cases, these strings may change in the future, one should use them only in conjunction for the detection of already released browsers. A technological survey must be in place to adapt the script when new browser versions are coming out.</p>
+<h3>Mobile, Tablet or Desktop</h3>
+<p>The most common case of user agent sniffing is to determine which can of device the browser runs on. The goal is to serve a different HTML to different computer types. Rather than testing the browser name or the rendering engine, this method is more effective in preventing exclusion of new browsers or of old browsers used on new types of devices</p>
+<p>Never assumes that a browser or a rendering engine must run only on one kind of device. Especially don't make different defaults for different browsers or rendering engines.</p>
+<p>Also never use the OS token to define if a browser is on mobile, tablet or desktop. The OS may be used on different set of devices in the future (like Android which is not necessarily on Mobile, but also on Tablet and even on Desktop).</p>
+<p>The major browsers vendors have converged in their way to indicate on which type of computer the browser runs:</p>
+<ul> <li>Mozilla (Gecko, Firefox) adds a ;Mobile; (resp. ;Tablet;) token in the comment part of the User Agent. (The absence of such token indicates Desktop)</li> <li>WebKit-based use the token Mobile outside the comment part (they use a "Mobile Safari" token).</li> <li>Microsoft uses the token IEMobile/xyz in the comment part of the user agent string</li> <li>Opera uses the Opera Mobi/xyz token in the comment part of the user agent string.</li>
+</ul>
+<p>Today, looking for these strings are the only way to know that the device runs on a mobile device (resp. a tablet) before serving the HTML.</p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p&gt;Serving different Web pages or services to different browsers is usually a bad idea. The Web is meant to be accessible to everyone, regardless of which browser or device they&#39;re using. There are ways to develop your web site to progressively enhance itself based on the availability of features rather than by targeting specific browsers.&lt;/p&gt;
+&lt;p&gt;But browsers and standards are not perfect, and there are still some edge cases where detecting the browser is needed. Using the user agent to detect the browser looks simple, but doing it well is in fact a very hard problem. This document will guide you in doing this as correctly as possible.&lt;/p&gt;
+&lt;div class=&#34;warning&#34;&gt;&lt;strong&gt;Important:&lt;/strong&gt; It&#39;s worth re-iterating: it&#39;s very rarely a good idea to use user agent sniffing. You can almost always find a better, more broadly compatible way to solve your problem!&lt;/div&gt;
+&lt;h2&gt;Considerations before using browser detection&lt;/h2&gt;
+&lt;p&gt;When considering using the user agent string to detect which browser is being used, your first step is to try to avoid it if possible. Start by trying to identify &lt;strong&gt;why&lt;/strong&gt; you want to do it.&lt;/p&gt;
+&lt;dl&gt; &lt;dt&gt;Are you trying to work around a specific bug in some version of a browser?&lt;/dt&gt; &lt;dd&gt;Look, or ask, in specialized forums: you&#39;re unlikely to be the first to hit this problem. Also experts, or simply people with another point of view, can give you ideas for working around the bug. You can start by checking if this bug has been reported to the browser vendor; don&#39;t hesitate to asks on forum or to report it on their bug tracking system (&lt;a class=&#34; link-https&#34; href=&#34;https://bugzilla.mozilla.org&#34; title=&#34;https://bugzilla.mozilla.org&#34;&gt;Mozilla&lt;/a&gt;; &lt;a class=&#34; external&#34; href=&#34;http://bugs.webkit.org&#34; title=&#34;http://bugs.webkit.org&#34;&gt;WebKit&lt;/a&gt;; &lt;a class=&#34; link-https&#34; href=&#34;https://bugs.opera.com/&#34; title=&#34;https://bugs.opera.com/&#34;&gt;Opera&lt;/a&gt;) This step may seem unhelpful, but it is not! First, contrary to popular belief, browser makers pay attention to bug reports (though some may occasionally pass unnoticed through their triaging teams); second, analysis may hint about other work-arounds for the bug; third, without a bug report, the odds that the bug will be corrected in the future is lower.&lt;/dd&gt; &lt;dt&gt;Are you trying to check for the existence of a specific feature?&lt;/dt&gt; &lt;dd&gt;Your site needs to use a specific Web feature that some browsers don&#39;t yet support, and you want to send those users to an older Web site with fewer features but that you know will work. This is the worst reason to use user agent detection, because odds are eventually all the other browsers will catch up. You should do your best to avoid using user agent sniffing in this scenario.&lt;/dd&gt; &lt;dt&gt;Do you want to provide different HTML depending on which browser is being used?&lt;/dt&gt; &lt;dd&gt;This is usually a bad practice, but there are some cases in which this is necessary. In these cases, you should first analyze your situation to be sure it&#39;s really necessary. Can you prevent it by adding some non-semantic {{ HTMLElement(&#34;div&#34;) }} or {{ HTMLElement(&#34;span&#34;) }} elements? The difficulty of successfully using user agent detection is worth a few disruptions to the purity of your HTML. Also, rethink your design: can you use progressive enhancement or fluid layouts to help remove the need to do this?&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2&gt;Avoiding user agent detection&lt;/h2&gt;
+&lt;p&gt;If you want to try to avoid using user agent detection, there are options in some cases!&lt;/p&gt;
+&lt;dl&gt; &lt;dt&gt;Feature detection&lt;/dt&gt; &lt;dd&gt;Feature detection is where you don&#39;t try to figure out which browser is rendering your page, but instead you check to see if the specific feature you need is available. If it&#39;s not, you use a fallback. You should, of course, never use feature detection to try to determine which browser you&#39;re using, since other browsers may implement the feature in the future, but differently. Bugs caused by this can be insidiously hard to find and fix.&lt;/dd&gt; &lt;dt&gt;Progressive enhancement&lt;/dt&gt; &lt;dd&gt;This design technique involves developing your Web site in layers, using a bottom-up approach, starting with a simpler layer and improving the capabilities of the site in successive layers, each using more features.&lt;/dd&gt; &lt;dt&gt;Graceful degradation&lt;/dt&gt; &lt;dd&gt;This is a top-down approach in which you build the best possible site using all the features you want, then tweaking it to make it work on older browsers. This can be harder to do, and less effective, than progressive enhancement, but may be useful in some cases.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2&gt;Which part of the user agent contains the information you are looking for&lt;/h2&gt;
+&lt;p&gt;As there is no uniformity of the different part of the user agent string, this is the tricky part.&lt;/p&gt;
+&lt;h3&gt;Browser Name&lt;/h3&gt;
+&lt;p&gt;Most browser set the name and version in the format &lt;em&gt;BrowserName/VersionNumber&lt;/em&gt; format, with the notable exception of Internet Explorer. But as the name is not the only information in a user agent string that is in that format, you can not discover the name of the browser, you can only check if the name you are looking for. But pay attention that some browsers are lying: Chrome for example reports both as Chrome and Safari. So to detect Safari you have to check for the Safari string and the absence of the Chrome string, Chromium often reports himself as Chrome too or Seamonkey sometimes reports himself as Firefox.&lt;/p&gt;
+&lt;p&gt;Also pay attention not to use a simple regular expression on the BrowserName, user agents also contains strings outside the Keyword/Value syntax. Safari &amp;amp; Chrome contains a string &#39;like Gecko&#39;, for instance.&lt;/p&gt;
+&lt;table border=&#34;1&#34; cellpadding=&#34;1&#34; cellspacing=&#34;1&#34; style=&#34;table-layout: fixed; width: 100%;&#34;&gt; &lt;thead&gt; &lt;tr&gt; &lt;th scope=&#34;col&#34;&gt; &lt;/th&gt; &lt;th scope=&#34;col&#34;&gt;Must contains&lt;/th&gt; &lt;th scope=&#34;col&#34;&gt;Must not contains&lt;/th&gt; &lt;th scope=&#34;col&#34;&gt; &lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;Firefox&lt;/td&gt; &lt;td&gt;Firefox/xyz&lt;/td&gt; &lt;td&gt;Seamonkey/xyz&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Seamonkey&lt;/td&gt; &lt;td&gt;Seamonkey/xyz&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Chrome&lt;/td&gt; &lt;td&gt;Chrome/xyz&lt;/td&gt; &lt;td&gt;Chromium/xyz&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Chromium&lt;/td&gt; &lt;td&gt;Chromium/xyz&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Safari&lt;/td&gt; &lt;td&gt;Safari/xyz&lt;/td&gt; &lt;td&gt;Chrome/xyz or Chromium/xyz&lt;/td&gt; &lt;td&gt;Safari gives two version number, one technical in the Safari/xyz token, one user-friendly in a Version/xyz token&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Opera&lt;/td&gt; &lt;td&gt;Opera/xyz&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;Pay attention to the position of the version number at Opera: since version 10 a new Version/xyz token has been added to contains it.&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Internet Explorer&lt;/td&gt; &lt;td&gt;;MSIE xyz;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;Internet Explorer doesn&#39;t put its name in the &lt;em&gt;BrowserName/VersionNumber&lt;/em&gt; format&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Of course, there is absolutely no guarantee that another browser will not hijack some of these things (like Chrome hijacked the Safari string in the past). That&#39;s why browser detection using the user agent string is unreliable and should be done only with the check of version number (hijacking of past versions is less likely).&lt;/p&gt;
+&lt;h3&gt;Browser version&lt;/h3&gt;
+&lt;p&gt;The browser version is often, but not always, put in the value part of the &lt;em&gt;BrowserName/VersionNumber&lt;/em&gt; token in the User Agent String. This is of course not the case for Internet Explorer (who put the version number right after the MSIE token, and for Opera after version 10, which has added a Version/&lt;em&gt;VersionNumber&lt;/em&gt; token.&lt;/p&gt;
+&lt;p&gt;Here again, be sure to take the right token for the browser you are looking for, as there is no guarantee that other will contain a valid number.&lt;/p&gt;
+&lt;h3&gt;Rendering engine&lt;/h3&gt;
+&lt;p&gt;As seen earlier, in most cases, looking for the rendering engine is a better way to go. It allows not to exclude less known browsers build on the same engine that famous ones. Browsers sharing a common rendering engine will display a page in the same way: it is often a fair assumption that what will work in one will work in the other.&lt;/p&gt;
+&lt;p&gt;There are five major rendering engines: Trident, Gecko, Presto, and WebKit. As sniffing the rendering engines names is common, a lot of user agents added other rendering names to trigger detection. It is therefore important to pay attention not to trigger false-positive when detecting the rendering engine.&lt;/p&gt;
+&lt;table border=&#34;1&#34; cellpadding=&#34;1&#34; cellspacing=&#34;1&#34; style=&#34;table-layout: fixed; width: 100%;&#34;&gt; &lt;thead&gt; &lt;tr&gt; &lt;th scope=&#34;col&#34;&gt; &lt;/th&gt; &lt;th scope=&#34;col&#34;&gt;Must contains&lt;/th&gt; &lt;th scope=&#34;col&#34;&gt; &lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody&gt; &lt;tr&gt; &lt;td&gt;Gecko&lt;/td&gt; &lt;td&gt;Gecko/xyz&lt;/td&gt; &lt;td&gt;Pay attention, Gecko version is not necessarily stored in that token&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;WebKit&lt;/td&gt; &lt;td&gt;AppleWebKit/xyz&lt;/td&gt; &lt;td&gt;Pay attention, WebKit browsers add a &#39;like Gecko&#39; string that may trigger false positive for Gecko if the detection is not careful.&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Presto&lt;/td&gt; &lt;td&gt;Opera/xyz&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Trident&lt;/td&gt; &lt;td&gt;Trident/xyz&lt;/td&gt; &lt;td&gt;Internet Explorer put this token in the &lt;em&gt;comment&lt;/em&gt; part of the User Agent String&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Rendering engine version&lt;/h2&gt;
+&lt;p&gt;Most rendering engine put the version number in the &lt;em&gt;RenderingEngine/VersionNumber&lt;/em&gt; token, with the notable exception of Gecko. Gecko, up to version 14 (?), put the version number in the comment part of the User Agent after the &lt;code&gt;rv:&lt;/code&gt; string. From Gecko 14, for mobile version, it also put this value in the &lt;code&gt;Gecko/version&lt;/code&gt; token (previous version put there the build date, then a fixed date called the GeckoTrail). Desktop version still don&#39;t store it there, though it may change in the future.&lt;/p&gt;
+&lt;h2&gt;OS&lt;/h2&gt;
+&lt;p&gt;The Operating System is given in most Useragent, it is an entry, that is a fixed string between two semi-colons, in the comment part of the User Agent. These strings are specific for each browsers. They indicates the OS, but also often its version and information on the relying hardware (32 or 64 bits, or Intel/PPC for Mac).&lt;/p&gt;
+&lt;p&gt;Like in all cases, these strings may change in the future, one should use them only in conjunction for the detection of already released browsers. A technological survey must be in place to adapt the script when new browser versions are coming out.&lt;/p&gt;
+&lt;h3&gt;Mobile, Tablet or Desktop&lt;/h3&gt;
+&lt;p&gt;The most common case of user agent sniffing is to determine which can of device the browser runs on. The goal is to serve a different HTML to different computer types. Rather than testing the browser name or the rendering engine, this method is more effective in preventing exclusion of new browsers or of old browsers used on new types of devices&lt;/p&gt;
+&lt;p&gt;Never assumes that a browser or a rendering engine must run only on one kind of device. Especially don&#39;t make different defaults for different browsers or rendering engines.&lt;/p&gt;
+&lt;p&gt;Also never use the OS token to define if a browser is on mobile, tablet or desktop. The OS may be used on different set of devices in the future (like Android which is not necessarily on Mobile, but also on Tablet and even on Desktop).&lt;/p&gt;
+&lt;p&gt;The major browsers vendors have converged in their way to indicate on which type of computer the browser runs:&lt;/p&gt;
+&lt;ul&gt; &lt;li&gt;Mozilla (Gecko, Firefox) adds a ;Mobile; (resp. ;Tablet;) token in the comment part of the User Agent. (The absence of such token indicates Desktop)&lt;/li&gt; &lt;li&gt;WebKit-based use the token Mobile outside the comment part (they use a &#34;Mobile Safari&#34; token).&lt;/li&gt; &lt;li&gt;Microsoft uses the token IEMobile/xyz in the comment part of the user agent string&lt;/li&gt; &lt;li&gt;Opera uses the Opera Mobi/xyz token in the comment part of the user agent string.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Today, looking for these strings are the only way to know that the device runs on a mobile device (resp. a tablet) before serving the HTML.&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent%24revert/17919" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent$revision/17919 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:27:01 GMT -->
+</html>

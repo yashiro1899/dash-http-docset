@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation$revision/1108091 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:17:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1108091 | Content negotiation | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FContent_negotiation%24revision%2F1108091" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation%24revision/1108091">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1108091 of <a href="../Content_negotiation.html">Content negotiation</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Content_negotiation</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Content negotiation</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1108091</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-08-22T08:02:20-07:00">Aug 22, 2016, 8:02:20 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Content Negotiation">Content Negotiation</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Reference">Reference</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p>{{HTTPSidebar}}</p>
+
+<p>In the <a href="../../HTTP.html" title="en/HTTP">Hypertext Transfer Protocol</a> (HTTP), content negotiation is the mechanism that is used, when facing the ability to serve several equivalent contents for a given URI, to provide the best suited one to the final user. The determination of the best suited content is made through one of three mechanisms:</p>
+
+<ul>
+ <li>specific <a href="../Headers.html" title="en/HTTP/Headers">HTTP headers</a> by the client (<em>server-driven negotiation</em>)</li>
+ <li>the {{HTTPStatus("300")}} <code>Multiple Choices</code> or {{HTTPStatus("406")}} <code>Not Acceptable</code> <a href="../Status.html" title="https://developer.mozilla.org/en/HTTP/HTTP_response_codes">HTTP response codes</a> by the server (<em>agent-driven negotiation</em>)</li>
+</ul>
+
+<h2 id="Server-driven_content_negotiation">Server-driven content negotiation</h2>
+
+<p>In <em>server-driven content negotiation</em>, or proactive content negotiation, the browser (or any other kind of useragent) sends several HTTP headers along with the URL. These headers describe the preferred choice of the user. The server uses them as hints and an internal algorithm let it choose the best content to serve to the client. The algorithm is server-specific and not defined in the standard. See, for example, the <a class="external" href="http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm" title="http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm">Apache 2.2 negotiation algorithm</a>.</p>
+
+<p>The HTTP/1.1 standard gives an exhaustive list of the standard headers that <em>may</em> be used in a server-driven negotiation algorithm ({{ httpheader("Accept") }}, {{ httpheader("Accept-Charset") }}, {{ httpheader("Accept-Encoding") }}, {{ httpheader("Accept-Language:") }} and {{ httpheader("User-Agent") }}). Nevertheless it allows the server to use other aspects in its algorithm, either aspects outside the request itself or extension header fields, i.e., headers not defined in the HTTP standard.</p>
+
+<p>In addition to these, there is an experimental proposal to add more headers to the list of available headers, called <em>client hints</em>. Client hints advertises what kind of device the user agent run on (For example, is it a desktop computer or a mobile device?)</p>
+
+<h3 id="The_Accept_header">The Accept: header</h3>
+
+<p>Defined in the <a class="external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1">HTTP/1.1 Standard, section 14.1</a>, the <code>Accept</code>: header lists the MIME Types of the media that the agent is willing to process. It is comma-separated lists of MIME type, each combined with a quality factor, as parameters giving the relative degree of preference between the different MIME Types lists.</p>
+
+<p>The Accept: header is defined by the browser, or any other user-agent, and can vary according to the context. It is therefore different when fetching a document entered in the address bar or an element linked via an {{ HTMLElement("img") }}, {{ HTMLElement("video") }} or {{ HTMLElement("audio") }} elements. Neither the HTTP standard, nor the HTML one, define specific MIME Type to use in specific contexts. An exhaustive list of <a href="../Content_negotiation/List_of_default_Accept_values.html">default values for common browsers</a> is available.</p>
+
+<h4 id="Default_values">Default values</h4>
+
+<p>This is the value sent when the context doesn't gives better information. Note that all browsers add the <code>*/*</code> MIME Type to cover all cases. This is typically used for requests initiated via the address bar of a browser, or via an HTML {{ HTMLElement("a") }} element.</p>
+
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>User Agent</th>
+   <th>Value</th>
+   <th>Comment</th>
+  </tr>
+  <tr>
+   <td>Firefox</td>
+   <td><code>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</code></td>
+   <td>This value can be modified using the <a class="external" href="http://kb.mozillazine.org/Network.http.accept.default" title="http://kb.mozillazine.org/Network.http.accept.default"><code>network.http.accept.default</code></a> parameter.</td>
+  </tr>
+  <tr>
+   <td>Safari, Chrome</td>
+   <td>
+    <p><code>application/xml,application/xhtml+xml,text/html;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5</code></p>
+   </td>
+   <td><a class="external" href="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers" title="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers"><span style="font-size: x-small;">source</span></a></td>
+  </tr>
+  <tr>
+   <td>Safari 5</td>
+   <td>
+    <p><code>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</code></p>
+   </td>
+   <td>This is an improvement over earlier <code>Accept</code> headers as it no longer ranks <code>image/png</code> above <code>text/html</code></td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 8</td>
+   <td><code>image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/x-shockwave-flash, application/msword, */*</code></td>
+   <td>See <a class="external" href="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx" title="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx">IE and the Accept Header (IEInternals' MSDN blog)</a>.</td>
+  </tr>
+  <tr>
+   <td>Opera</td>
+   <td><code>text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/webp, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1</code></td>
+   <td> </td>
+  </tr>
+ </tbody>
+</table>
+
+<h4 id="Values_for_an_image">Values for an image</h4>
+
+<p>When requesting an image, like through an HTML{{ HTMLElement("img") }} element, user-agent often sets a specific list of media types to be welcomed.</p>
+
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>User Agent</th>
+   <th>Value</th>
+   <th>Comment</th>
+  </tr>
+  <tr>
+   <td>Firefox</td>
+   <td><code>image/png,image/*;q=0.8,*/*;q=0.5</code></td>
+   <td>This value can be modified using the <code>image.http.accept</code> parameter.</td>
+  </tr>
+  <tr>
+   <td>Safari, Chrome</td>
+   <td><code>*/*</code></td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 8 or earlier</td>
+   <td><code>*/*</code></td>
+   <td>See <a class="external" href="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx" title="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx">IE and the Accept Header (IEInternals' MSDN blog)</a></td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 9</td>
+   <td><code>image/png,image/svg+xml,image/*;q=0.8, */*;q=0.5</code></td>
+   <td>See <a class="external" href="http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx" title="http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx">Fiddler is better with Internet Explorer 9 (IEInternals' MSDN blog)</a></td>
+  </tr>
+ </tbody>
+</table>
+
+<h4 id="Values_for_a_video">Values for a video</h4>
+
+<p>When a video is requested, via the <code>{{ HTMLElement("video") }}</code> HTML element, most browsers use specific values.</p>
+
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>User Agent</th>
+   <th>Value</th>
+   <th>Comment</th>
+  </tr>
+  <tr>
+   <td>Firefox earlier than 3.6</td>
+   <td><em>no support for {{ HTMLElement("video") }}</em></td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Firefox 3.6 and later</td>
+   <td><code>audio/webm, audio/ogg, audio/wav, audio/*;q=0.9, application/ogg;q=0.7, video/*;q=0.6; */*;q=0.5</code></td>
+   <td>See <a class="link-https" href="https://bugzilla.mozilla.org/show_bug.cgi?id=489071" title="https://bugzilla.mozilla.org/show_bug.cgi?id=489071">bug 489071</a></td>
+  </tr>
+  <tr>
+   <td>Safari, Chrome</td>
+   <td>?</td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 8 or earlier</td>
+   <td><em>no support for {{ HTMLElement("video") }}</em></td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 9</td>
+   <td>?</td>
+   <td> </td>
+  </tr>
+ </tbody>
+</table>
+
+<h4 id="Values_for_some_audio">Values for some audio</h4>
+
+<p>When an audio file is requested, like via the <code>{{ HTMLElement("audio") }}</code> HTML element, most browsers use specific values.</p>
+
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>User Agent</th>
+   <th>Value</th>
+   <th>Comment</th>
+  </tr>
+  <tr>
+   <td>Firefox 3.6 and later</td>
+   <td><code>video/webm, video/ogg, video/*;q=0.9, application/ogg=0.7, audio/*;q=0.6; */*;q=0.5</code></td>
+   <td>See <a class="link-https" href="https://bugzilla.mozilla.org/show_bug.cgi?id=489071" title="https://bugzilla.mozilla.org/show_bug.cgi?id=489071">bug 489071</a></td>
+  </tr>
+  <tr>
+   <td>Safari, Chrome</td>
+   <td>?</td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 8 or earlier</td>
+   <td><em>no support for {{ HTMLElement("audio") }}</em></td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 9</td>
+   <td> </td>
+   <td> </td>
+  </tr>
+ </tbody>
+</table>
+
+<h4 id="Values_for_scripts">Values for  scripts</h4>
+
+<p>When a JS script is requested, like via the <code>{{ HTMLElement("script") }}</code> HTML element, most browsers use specific values.</p>
+
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>User Agent</th>
+   <th>Value</th>
+   <th>Comment</th>
+  </tr>
+  <tr>
+   <td>Firefox</td>
+   <td><code>*/*</code></td>
+   <td>See <a class="link-https" href="https://bugzilla.mozilla.org/show_bug.cgi?id=170789" title="https://bugzilla.mozilla.org/show_bug.cgi?id=170789">bug 170789</a></td>
+  </tr>
+  <tr>
+   <td>Safari, Chrome</td>
+   <td>?</td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 8 or earlier</td>
+   <td><code>*/*</code></td>
+   <td>See <a class="external" href="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx" title="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx">IE and the Accept Header (IEInternals' MSDN blog)</a></td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 9</td>
+   <td><code>application/javascript, */*;q=0.8</code></td>
+   <td>See <a class="external" href="http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx" title="http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx">Fiddler is better with Internet Explorer 9 (IEInternals' MSDN blog)</a></td>
+  </tr>
+ </tbody>
+</table>
+
+<h4 id="Values_for_a_stylesheet">Values for a stylesheet</h4>
+
+<p>When a CSS stylesheet is requested, via the <code>&lt;link rel="stylesheet"&gt;</code> HTML element, most browsers use specific values.</p>
+
+<table class="compat-table">
+ <tbody>
+  <tr>
+   <th>User Agent</th>
+   <th>Value</th>
+   <th>Comment</th>
+  </tr>
+  <tr>
+   <td>Firefox 4</td>
+   <td><code>text/css,*/*;q=0.1</code></td>
+   <td>See <a class="link-https" href="https://bugzilla.mozilla.org/show_bug.cgi?id=170789" title="https://bugzilla.mozilla.org/show_bug.cgi?id=170789">bug 170789</a></td>
+  </tr>
+  <tr>
+   <td>Safari 5</td>
+   <td><code>text/css,*/*;q=0.1</code></td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 8 or earlier</td>
+   <td><code>*/*</code></td>
+   <td>See <a class="external" href="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx" title="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx">IE and the Accept Header (IEInternals' MSDN blog)</a></td>
+  </tr>
+  <tr>
+   <td>Internet Explorer 9</td>
+   <td><code>text/css</code></td>
+   <td>See <a class="external" href="http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx" title="http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx">Fiddler is better with Internet Explorer 9 (IEInternals' MSDN blog)</a></td>
+  </tr>
+  <tr>
+   <td>Chrome 12</td>
+   <td><code>text/css,*/*;q=0.1</code></td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Opera 11.10</td>
+   <td><code>text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/webp, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1 </code></td>
+   <td> </td>
+  </tr>
+  <tr>
+   <td>Konqueror 4.6</td>
+   <td><code>text/css,*/*;q=0.1</code></td>
+   <td> </td>
+  </tr>
+ </tbody>
+</table>
+
+<h3 id="The_Accept-CH_header_non-standard_inline">The Accept-CH: header {{non-standard_inline}}</h3>
+
+<p>Lists configuration data that can be used by the server to select an appropriate response. This header is supported in Chrome 46 and later. Valid values are:</p>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Value</th>
+   <th scope="col">Meaning</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>DPR</td>
+   <td>Indicates the client's device pixel ratio.</td>
+  </tr>
+  <tr>
+   <td>Viewport-Width</td>
+   <td>Indicates the layout viewport width in CSS pixels. </td>
+  </tr>
+  <tr>
+   <td>Width</td>
+   <td>Indicates the resource width in physical pixels (in other words the intrinsic size of an image).</td>
+  </tr>
+ </tbody>
+</table>
+
+<h3 id="The_Accept-Charset_header">The Accept-Charset: header</h3>
+
+<p>Defined in the <a class="external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2">HTTP/1.1 standard, section 14.2</a>, this header indicates to the server what character encodings are understood by the user-agent. Traditionally, it was set to a different value for each locale for the browser, e. g. <code>ISO-8859-1,utf-8;q=0.7,*;q=0.7</code> for a Western European locale.</p>
+
+<div class="note">Considering that :
+<ul>
+ <li>UTF-8 is now well-supported by all relevant user-agents,</li>
+ <li>the presence of the header increases the <a class="link-https" href="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy" title="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy"> configuration-based entropy</a> exposed,</li>
+ <li>the presence of the header increases the data transmitted for each request</li>
+ <li>almost no sites are using the value of this header for choosing content during the negotiation,</li>
+</ul>
+browsers started to stop sending this header in each request, starting with Internet Explorer 8, Safari 5, Opera 11 and Firefox 10. In the absence of <code>Accept-Charset:</code>, servers can simply assume that UTF-8 and the most common characters sets are understood by the client.</div>
+
+<h3 id="The_Accept-Encoding_header">The Accept-Encoding: header</h3>
+
+<p>Defined in the <a class="external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3">HTTP/1.1 standard, section 14.3</a>, this header defines the acceptable content-encoding, mainly supported encryption. The following values are possible :</p>
+
+<table class="standard-table">
+ <tbody>
+  <tr>
+   <th>Value</th>
+   <th>Meaning</th>
+   <th>Standard</th>
+  </tr>
+  <tr>
+   <td><code>gzip</code></td>
+   <td>
+    <p>A format using the <a class="external" href="http://en.wikipedia.org/wiki/LZ77_and_LZ78#LZ77" title="http://en.wikipedia.org/wiki/LZ77_and_LZ78#LZ77">Lempel-Ziv coding</a> (LZ77), with a 32-bit CRC. This is originally the format of the UNIX <em>gzip</em> program. The HTTP/1.1 standard also recommends that the servers supporting this content-encoding should recognize <code>x-gzip</code> as an alias, for compatibility purposes.</p>
+   </td>
+   <td><a class="external" href="http://tools.ietf.org/html/rfc1952" title="http://tools.ietf.org/html/rfc1952">RFC 1952</a></td>
+  </tr>
+  <tr>
+   <td><code>compress</code></td>
+   <td>A format using the <a class="external" href="http://en.wikipedia.org/wiki/LZW" title="http://en.wikipedia.org/wiki/LZW">Lempel-Ziv-Welch</a> (LZW) algorithm. The value name was taken from the UNIX <em>compress</em> program, which implemented this algorithm.<br>
+    Like the compress program, which has disappeared from most UNIX distributions, this content-encoding is used by almost no browsers today, partly because of a patent issue (which expired in 2003).</td>
+   <td>HTTP/1.1</td>
+  </tr>
+  <tr>
+   <td><code>deflate</code></td>
+   <td>Using the <a class="external" href="http://en.wikipedia.org/wiki/Zlib" title="http://en.wikipedia.org/wiki/Zlib">zlib</a> structure (defined in <a class="external" href="http://tools.ietf.org/html/rfc1950" title="http://tools.ietf.org/html/rfc1950">RFC 1950</a>), with the <a class="external" href="http://en.wikipedia.org/wiki/DEFLATE" title="http://en.wikipedia.org/wiki/DEFLATE"><em>deflate</em></a> compression algorithm (defined in <a class="external" href="http://tools.ietf.org/html/rfc1952" title="http://tools.ietf.org/html/rfc1952">RFC 1951</a>).</td>
+   <td><a class="external" href="http://tools.ietf.org/html/rfc1950" title="http://tools.ietf.org/html/rfc1950">RFC 1950</a> and <a class="external" href="http://tools.ietf.org/html/rfc1951" title="http://tools.ietf.org/html/rfc1951">RFC 1951</a></td>
+  </tr>
+  <tr>
+   <td><code>identity</code></td>
+   <td>Indicates the identity function (i.e. no compression, nor modification). This token, except if explicitly specified, is always deemed acceptable.</td>
+   <td>HTTP/1.1</td>
+  </tr>
+  <tr>
+   <td><code>br</code></td>
+   <td>A format using the <a href="https://en.wikipedia.org/wiki/Brotli">Brotli</a> algorithm</td>
+   <td><em>Experimental</em></td>
+  </tr>
+  <tr>
+   <td>*</td>
+   <td>This wildcard represents any content-encoding not explicitly specified in the header</td>
+   <td>HTTP/1.1</td>
+  </tr>
+ </tbody>
+</table>
+
+<div class="note">
+<p><strong>Notes</strong><strong> :</strong></p>
+
+<ul>
+ <li>An IANA registry maintains <a class="external" href="http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-parameters-1" title="http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-parameters-1">a complete list of official content encodings</a>. Non-standard ones can be used, but must be prefixed with the <code>x-</code> prefix.</li>
+ <li>Two others content encoding, <code>bzip</code> and <code>bzip2</code>, are sometimes used, though not standard. They implement the algorithm used by these two UNIX programs. Note that the first one was discontinued due to patent licensing problems.</li>
+ <li>As long as the <code>identity</code> value is not explicitly forbidden, by an <code>identity;q=0</code> or a <code>*;q=0</code> without another explicitly set value for identity, the server must never send back a <code>406 Not Acceptable</code> error.</li>
+ <li>Even if both the client and the server supports the same compression algorithms, the server may choose not to compress the body of a response, if the identity value is also acceptable. Two common cases lead to this:
+  <ul>
+   <li>The data to be sent is already compressed and a second compression won't lead to smaller data to be transmitted. This may the case with some image formats;</li>
+   <li>The server is overloaded and cannot afford the computational overhead induced by the compression requirement. Typically, Microsoft recommends not to compress if a server use more than 80 % of its computational power.</li>
+  </ul>
+ </li>
+</ul>
+</div>
+
+<h3 id="The_Accept-Language_header">The Accept-Language: header</h3>
+
+<p>Defined in the <a class="external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4">HTTP/1.1 standard, section 14.4</a>, this header is used to indicate the language preference of the user. A different value is set according the language of the graphical interface but most browsers allow <a class="external" href="http://www.w3.org/International/questions/qa-lang-priorities" title="http://www.w3.org/International/questions/qa-lang-priorities">setting different language preferences</a>.</p>
+
+<p>In this header there is a language quality factor. From w3.org:</p>
+
+<blockquote>
+<p>Each language-range MAY be given an associated quality value which represents an estimate of the user's preference for the languages specified by that range. The quality value defaults to "q=1". For example,</p>
+
+<pre>       Accept-Language: da, en-gb;q=0.8, en;q=0.7
+</pre>
+</blockquote>
+
+<p> </p>
+
+<p> </p>
+
+<div class="note"><strong>Usage notes:</strong>
+
+<ul>
+ <li>This header, especially when user-modified, greatly increases the <a class="link-https" href="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy" title="https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy">configuration-based entropy</a> and may be used in HTTP fingerprinting of the user.</li>
+ <li>Site-designers must not be over-zealous by using language detection via this header as it can lead to a poor user experience:
+  <ul>
+   <li>They should always provide a way to overcome the server-chosen language, e.g., by providing small links near the top of the page. Most user-agents provide a default value for the <code>Accept-Language:</code> header, adapted to the user interface language and end users often do not modify it, either by not knowing how, or by not being able to do it, as in an Internet café for instance.</li>
+   <li>Once a user has overridden the server-chosen language, a site should no longer use language detection and should stick with the explicitly-chosen language.. In other words, only entry pages of a site should select the proper language using this header.</li>
+  </ul>
+ </li>
+</ul>
+</div>
+
+<h3 id="The_User-Agent_header">The User-Agent: header</h3>
+
+<p>Defined in the <a class="external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43">HTTP/1.1 standard, section 14.43</a>, this header identifies the browser sending the request. This string may contain a space-separated list of <em>product tokens</em> and <em>comments</em>.</p>
+
+<p>A <em>product token</em> is a name followed by a '<code>/</code>' and a version number, like <code>Firefox/4.0.1</code>. There may be as many of them as the user-agent wants. A <em>comment</em> is a free string delimited by parentheses. Obviously parentheses cannot be used in that string. The inner format of a comment is not defined by the standard, though several browser put several tokens in it, separated by '<code>;</code>'.</p>
+
+<div class="note"><strong>Usage Notes :</strong>
+
+<ul>
+ <li>Though there are legitimate uses of this header for selecting content, <a href="https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Limit_the_use_of_User_Agent_String_based_Detection" title="https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Limit_the_use_of_User_Agent_String_based_Detection">it is considered bad practice</a> to rely on it to define what features are supported by the user agent. Instead try to use in priority<a href="https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Use_feature_oriented_object_detection" title="https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Use_feature_oriented_object_detection"> feature-oriented object detection</a>.</li>
+ <li>Consider the <code>User-Agent:</code> header as a <em>hint</em> only. It may be altered by third-party tools or by the user. If serving tailored content according this header, always provide a way to manually switch to the alternative content.</li>
+ <li>Do not expect the product tokens to be served in a specific order or the format or the comments to be fixed; always parse it first by comment and product token, then product tokens by product name and version number. Always take in account that the format of a comment may vary in the future by providing an adequate fallback case.</li>
+ <li>A website should not send a <code>406 Not Acceptable</code> error codes based on the user agent string. It is better to send less suited content than no content at all (See <a class="external" href="http://www.w3.org/QA/2006/02/content_negotiation.html#seldom-used" title="http://www.w3.org/QA/2006/02/content_negotiation.html#seldom-used">W3C Blog</a>).</li>
+ <li>This <a href="https://developer.mozilla.org/en/Gecko_user_agent_string_reference" title="en/Gecko user agent string reference">article</a> describes the current Gecko user-agent strings.</li>
+</ul>
+</div>
+
+<h3 id="The_Vary_response_header">The Vary: response header</h3>
+
+<p>In opposition with the previous <code>Accept-*:</code> headers which are sent by the client, the <code>Vary:</code> HTTP header is sent by the web server in its response. It indicates the list of headers used by the server during the server-driven content negotiation phase. The header is needed in order to inform the cache of the decision criteria so that can reproduce it, allowing the cache to be functional while preventing serving erroneous content to the user.</p>
+
+<p>The special value of '<code>*</code>' means that the server-driven content negotiation also uses information not conveyed in a header to choose the appropriate content.</p>
+
+<p>The <code>Vary:</code> header was added in the version 1.1 of HTTP and is necessary in order to allow caches to work appropriately. A cache, in order to work with agent-driven content negotiation, needs to know which criteria was used by the server to select the transmitted content. That way, the cache can replay the algorithm and will be able to serve acceptable content directly, without more request to the server. Obviously, the wildcard '<code>*</code>' prevents caching from occurring, as the cache cannot know what element is behind it.</p>
+
+<h2 id="Agent-driven_negotiation">Agent-driven negotiation</h2>
+
+<p>Server-driven negotiation suffers from a few downsides:</p>
+
+<ul>
+ <li>It doesn't scale well. There is one header per feature used in the negotiation. If one wants to use screen size, resolution or other dimensions, a new HTTP header must be created.</li>
+ <li>Sending of the headers must be done on every request. This is not too problematic with few headers, but with the eventual multiplications of them, the message size would lead to a decrease in performance.</li>
+ <li>The more headers are sent, the more entropy is sent, allowing for better HTTP fingerprinting and corresponding privacy concern.</li>
+</ul>
+
+<p>HTTP allowed from the start another negotiation type, <em>agent-driven negotiation</em>. In this negotiation, when facing an ambiguous request, the server sends back a page containing links to the available alternative resources. The user is presented the resources and choose the one to use.</p>
+
+<p>Unfortunately, the HTTP standard does not specify the format of the page allowing to choose between the available resource, preventing to easily automatize the process. Beside fallback of the <em>server-driven negotiation</em>, this method is almost always used in conjunction with scripting, especially with JavaScript redirection: after having checked for the negotiation criteria, the script performs the redirection.</p>
+
+<p>A second problem is that one more request is needed in order to fetch the real resource, slowing the availability of the resource to the user.</p>
+
+<p>Also note that the caching of the resource is trivial, as each resource has a different URI.</p>
+
+<h2 id="References">References</h2>
+
+<ul>
+ <li><a class="external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html">RFC 2616, section 12</a>, <em>Content Negociation</em> in <em>Hypertext Transfer Protocol — HTTP/1.1</em>, 1999, The Internet Society.</li>
+ <li><a class="external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1">RFC 2616, section 14.1</a>, <em>Accept</em> in <em>Hypertext Transfer Protocol — HTTP/1.1</em>, 1999, The Internet Society.</li>
+ <li><em><a class="external" href="http://httpd.apache.org/docs/2.2/content-negotiation.html" title="http://httpd.apache.org/docs/2.2/content-negotiation.html">Content Negociation</a> </em>in <em>Apache HTTP Server version 2.2</em>, retrieved on May 8th, 2011.</li>
+ <li><a class="external" href="http://en.wikipedia.org/wiki/Content_negotiation" title="http://en.wikipedia.org/wiki/Content_negotiation"><em>Content Negociation</em></a> in <em>Wikipedia</em>, retrieved on June 10th, 2010.</li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p&gt;{{HTTPSidebar}}&lt;/p&gt;
+
+&lt;p&gt;In the &lt;a href=&#34;/en-US/docs/Web/HTTP&#34; title=&#34;en/HTTP&#34;&gt;Hypertext Transfer Protocol&lt;/a&gt; (HTTP), content negotiation is the mechanism that is used, when facing the ability to serve several equivalent contents for a given URI, to provide the best suited one to the final user. The determination of the best suited content is made through one of three mechanisms:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;specific &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers&#34; title=&#34;en/HTTP/Headers&#34;&gt;HTTP headers&lt;/a&gt; by the client (&lt;em&gt;server-driven negotiation&lt;/em&gt;)&lt;/li&gt;
+ &lt;li&gt;the {{HTTPStatus(&#34;300&#34;)}} &lt;code&gt;Multiple Choices&lt;/code&gt; or {{HTTPStatus(&#34;406&#34;)}} &lt;code&gt;Not Acceptable&lt;/code&gt; &lt;a href=&#34;/en-US/docs/Web/HTTP/Status&#34; title=&#34;https://developer.mozilla.org/en/HTTP/HTTP_response_codes&#34;&gt;HTTP response codes&lt;/a&gt; by the server (&lt;em&gt;agent-driven negotiation&lt;/em&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;Server-driven_content_negotiation&#34;&gt;Server-driven content negotiation&lt;/h2&gt;
+
+&lt;p&gt;In &lt;em&gt;server-driven content negotiation&lt;/em&gt;, or proactive content negotiation, the browser (or any other kind of useragent) sends several HTTP headers along with the URL. These headers describe the preferred choice of the user. The server uses them as hints and an internal algorithm let it choose the best content to serve to the client. The algorithm is server-specific and not defined in the standard. See, for example, the &lt;a class=&#34;external&#34; href=&#34;http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm&#34; title=&#34;http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm&#34;&gt;Apache 2.2 negotiation algorithm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The HTTP/1.1 standard gives an exhaustive list of the standard headers that &lt;em&gt;may&lt;/em&gt; be used in a server-driven negotiation algorithm ({{ httpheader(&#34;Accept&#34;) }}, {{ httpheader(&#34;Accept-Charset&#34;) }}, {{ httpheader(&#34;Accept-Encoding&#34;) }}, {{ httpheader(&#34;Accept-Language:&#34;) }} and {{ httpheader(&#34;User-Agent&#34;) }}). Nevertheless it allows the server to use other aspects in its algorithm, either aspects outside the request itself or extension header fields, i.e., headers not defined in the HTTP standard.&lt;/p&gt;
+
+&lt;p&gt;In addition to these, there is an experimental proposal to add more headers to the list of available headers, called &lt;em&gt;client hints&lt;/em&gt;. Client hints advertises what kind of device the user agent run on (For example, is it a desktop computer or a mobile device?)&lt;/p&gt;
+
+&lt;h3 id=&#34;The_Accept_header&#34;&gt;The Accept: header&lt;/h3&gt;
+
+&lt;p&gt;Defined in the &lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1&#34; title=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1&#34;&gt;HTTP/1.1 Standard, section 14.1&lt;/a&gt;, the &lt;code&gt;Accept&lt;/code&gt;: header lists the MIME Types of the media that the agent is willing to process. It is comma-separated lists of MIME type, each combined with a quality factor, as parameters giving the relative degree of preference between the different MIME&amp;nbsp;Types lists.&lt;/p&gt;
+
+&lt;p&gt;The Accept: header is defined by the browser, or any other user-agent, and can vary according to the context. It is therefore different when fetching a document entered in the address bar or an element linked via an {{ HTMLElement(&#34;img&#34;) }}, {{ HTMLElement(&#34;video&#34;) }} or {{ HTMLElement(&#34;audio&#34;) }} elements. Neither the HTTP standard, nor the HTML&amp;nbsp;one, define specific MIME Type to use in specific contexts. An exhaustive list of &lt;a href=&#34;/en-US/docs/Web/HTTP/Content_negotiation/List_of_default_Accept_values&#34;&gt;default values for common browsers&lt;/a&gt; is available.&lt;/p&gt;
+
+&lt;h4 id=&#34;Default_values&#34;&gt;Default values&lt;/h4&gt;
+
+&lt;p&gt;This is the value sent when the context doesn&#39;t gives better information. Note that all browsers add the &lt;code&gt;*/*&lt;/code&gt; MIME&amp;nbsp;Type to cover all cases. This is typically used for requests initiated via the address bar of a browser, or via an HTML {{ HTMLElement(&#34;a&#34;) }} element.&lt;/p&gt;
+
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;User Agent&lt;/th&gt;
+   &lt;th&gt;Value&lt;/th&gt;
+   &lt;th&gt;Comment&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Firefox&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;This value can be modified using the &lt;a class=&#34;external&#34; href=&#34;http://kb.mozillazine.org/Network.http.accept.default&#34; title=&#34;http://kb.mozillazine.org/Network.http.accept.default&#34;&gt;&lt;code&gt;network.http.accept.default&lt;/code&gt;&lt;/a&gt; parameter.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Safari, Chrome&lt;/td&gt;
+   &lt;td&gt;
+    &lt;p&gt;&lt;code&gt;application/xml,application/xhtml+xml,text/html;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5&lt;/code&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;a class=&#34;external&#34; href=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34; title=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34;&gt;&lt;span style=&#34;font-size:x-small&#34;&gt;source&lt;/span&gt;&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Safari 5&lt;/td&gt;
+   &lt;td&gt;
+    &lt;p&gt;&lt;code&gt;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&lt;/code&gt;&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td&gt;This is an improvement over earlier &lt;code&gt;Accept&lt;/code&gt; headers as it no longer ranks &lt;code&gt;image/png&lt;/code&gt; above &lt;code&gt;text/html&lt;/code&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 8&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/x-shockwave-flash, application/msword, */*&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;external&#34; href=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34; title=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34;&gt;IE and the Accept Header (IEInternals&#39; MSDN blog)&lt;/a&gt;.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Opera&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/webp, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;Values_for_an_image&#34;&gt;Values for an image&lt;/h4&gt;
+
+&lt;p&gt;When requesting an image, like through an HTML{{ HTMLElement(&#34;img&#34;) }} element, user-agent often sets a specific list of media types to be welcomed.&lt;/p&gt;
+
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;User Agent&lt;/th&gt;
+   &lt;th&gt;Value&lt;/th&gt;
+   &lt;th&gt;Comment&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Firefox&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;image/png,image/*;q=0.8,*/*;q=0.5&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;This value can be modified using the &lt;code&gt;image.http.accept&lt;/code&gt; parameter.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Safari, Chrome&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;*/*&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 8 or earlier&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;*/*&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;external&#34; href=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34; title=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34;&gt;IE and the Accept Header (IEInternals&#39; MSDN blog)&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 9&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;image/png,image/svg+xml,image/*;q=0.8, */*;q=0.5&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;external&#34; href=&#34;http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx&#34; title=&#34;http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx&#34;&gt;Fiddler is better with Internet Explorer 9 (IEInternals&#39; MSDN blog)&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;Values_for_a_video&#34;&gt;Values for a video&lt;/h4&gt;
+
+&lt;p&gt;When a video is requested, via the &lt;code&gt;{{ HTMLElement(&#34;video&#34;) }}&lt;/code&gt; HTML element, most browsers use specific values.&lt;/p&gt;
+
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;User Agent&lt;/th&gt;
+   &lt;th&gt;Value&lt;/th&gt;
+   &lt;th&gt;Comment&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Firefox earlier than 3.6&lt;/td&gt;
+   &lt;td&gt;&lt;em&gt;no support for {{ HTMLElement(&#34;video&#34;) }}&lt;/em&gt;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Firefox 3.6 and later&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;audio/webm, audio/ogg, audio/wav, audio/*;q=0.9, application/ogg;q=0.7, video/*;q=0.6; */*;q=0.5&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;link-https&#34; href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=489071&#34; title=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=489071&#34;&gt;bug 489071&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Safari, Chrome&lt;/td&gt;
+   &lt;td&gt;?&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 8 or earlier&lt;/td&gt;
+   &lt;td&gt;&lt;em&gt;no support for {{ HTMLElement(&#34;video&#34;) }}&lt;/em&gt;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 9&lt;/td&gt;
+   &lt;td&gt;?&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;Values_for_some_audio&#34;&gt;Values for some audio&lt;/h4&gt;
+
+&lt;p&gt;When an audio file is requested, like via the &lt;code&gt;{{ HTMLElement(&#34;audio&#34;) }}&lt;/code&gt; HTML element, most browsers use specific values.&lt;/p&gt;
+
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;User Agent&lt;/th&gt;
+   &lt;th&gt;Value&lt;/th&gt;
+   &lt;th&gt;Comment&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Firefox 3.6 and later&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;video/webm, video/ogg, video/*;q=0.9, application/ogg=0.7, audio/*;q=0.6; */*;q=0.5&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;link-https&#34; href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=489071&#34; title=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=489071&#34;&gt;bug 489071&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Safari, Chrome&lt;/td&gt;
+   &lt;td&gt;?&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 8 or earlier&lt;/td&gt;
+   &lt;td&gt;&lt;em&gt;no support for {{ HTMLElement(&#34;audio&#34;) }}&lt;/em&gt;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 9&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;Values_for_scripts&#34;&gt;Values for&amp;nbsp; scripts&lt;/h4&gt;
+
+&lt;p&gt;When a JS script is requested, like via the &lt;code&gt;{{ HTMLElement(&#34;script&#34;) }}&lt;/code&gt; HTML element, most browsers use specific values.&lt;/p&gt;
+
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;User Agent&lt;/th&gt;
+   &lt;th&gt;Value&lt;/th&gt;
+   &lt;th&gt;Comment&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Firefox&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;*/*&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;link-https&#34; href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=170789&#34; title=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=170789&#34;&gt;bug 170789&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Safari, Chrome&lt;/td&gt;
+   &lt;td&gt;?&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 8 or earlier&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;*/*&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;external&#34; href=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34; title=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34;&gt;IE and the Accept Header (IEInternals&#39; MSDN blog)&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 9&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;application/javascript, */*;q=0.8&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;external&#34; href=&#34;http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx&#34; title=&#34;http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx&#34;&gt;Fiddler is better with Internet Explorer 9 (IEInternals&#39; MSDN blog)&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&#34;Values_for_a_stylesheet&#34;&gt;Values for a stylesheet&lt;/h4&gt;
+
+&lt;p&gt;When a CSS stylesheet is requested, via the &lt;code&gt;&amp;lt;link rel=&#34;stylesheet&#34;&amp;gt;&lt;/code&gt; HTML element, most browsers use specific values.&lt;/p&gt;
+
+&lt;table class=&#34;compat-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;User Agent&lt;/th&gt;
+   &lt;th&gt;Value&lt;/th&gt;
+   &lt;th&gt;Comment&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Firefox 4&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;text/css,*/*;q=0.1&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;link-https&#34; href=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=170789&#34; title=&#34;https://bugzilla.mozilla.org/show_bug.cgi?id=170789&#34;&gt;bug 170789&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Safari 5&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;text/css,*/*;q=0.1&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 8 or earlier&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;*/*&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;external&#34; href=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34; title=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34;&gt;IE and the Accept Header (IEInternals&#39; MSDN blog)&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Internet Explorer 9&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;text/css&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;See &lt;a class=&#34;external&#34; href=&#34;http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx&#34; title=&#34;http://blogs.msdn.com/b/fiddler/archive/2011/02/10/fiddler-is-better-with-internet-explorer-9.aspx&#34;&gt;Fiddler is better with Internet Explorer 9 (IEInternals&#39; MSDN blog)&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Chrome 12&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;text/css,*/*;q=0.1&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Opera 11.10&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;text/html, application/xml;q=0.9, application/xhtml+xml, image/png, image/webp, image/jpeg, image/gif, image/x-xbitmap, */*;q=0.1 &lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Konqueror 4.6&lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;text/css,*/*;q=0.1&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;The_Accept-CH_header_non-standard_inline&#34;&gt;The Accept-CH: header&amp;nbsp;{{non-standard_inline}}&lt;/h3&gt;
+
+&lt;p&gt;Lists&amp;nbsp;configuration data that can be used by the server to select an appropriate response. This header is supported in Chrome 46 and later. Valid values are:&lt;/p&gt;
+
+&lt;table align=&#34;left&#34; class=&#34;standard-table&#34;&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Value&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Meaning&lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;DPR&lt;/td&gt;
+   &lt;td&gt;Indicates the client&#39;s device pixel ratio.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Viewport-Width&lt;/td&gt;
+   &lt;td&gt;Indicates the layout viewport width in CSS pixels.&amp;nbsp;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Width&lt;/td&gt;
+   &lt;td&gt;Indicates the resource width in physical pixels (in other words the intrinsic size of an image).&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;The_Accept-Charset_header&#34;&gt;The Accept-Charset: header&lt;/h3&gt;
+
+&lt;p&gt;Defined in the &lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2&#34; title=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2&#34;&gt;HTTP/1.1 standard, section 14.2&lt;/a&gt;, this header indicates to the server what character encodings are understood by the user-agent. Traditionally, it was set to a different value for each locale for the browser, e. g. &lt;code&gt;ISO-8859-1,utf-8;q=0.7,*;q=0.7&lt;/code&gt; for a Western European locale.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;Considering that :
+&lt;ul&gt;
+ &lt;li&gt;UTF-8 is now well-supported by all relevant user-agents,&lt;/li&gt;
+ &lt;li&gt;the presence of the header increases the&amp;nbsp;&lt;a class=&#34;link-https&#34; href=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34; title=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34;&gt; configuration-based entropy&lt;/a&gt; exposed,&lt;/li&gt;
+ &lt;li&gt;the presence of the header increases the data transmitted for each request&lt;/li&gt;
+ &lt;li&gt;almost no sites are using the value of this header for choosing content during the negotiation,&lt;/li&gt;
+&lt;/ul&gt;
+browsers started to stop sending this header in each request, starting with Internet Explorer 8, Safari 5, Opera 11 and Firefox 10. In the absence of &lt;code&gt;Accept-Charset:&lt;/code&gt;, servers can simply assume that UTF-8 and the most common characters sets are understood by the client.&lt;/div&gt;
+
+&lt;h3 id=&#34;The_Accept-Encoding_header&#34;&gt;The Accept-Encoding: header&lt;/h3&gt;
+
+&lt;p&gt;Defined in the &lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3&#34; title=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3&#34;&gt;HTTP/1.1 standard, section 14.3&lt;/a&gt;, this header defines the acceptable content-encoding, mainly supported encryption. The following values are possible :&lt;/p&gt;
+
+&lt;table align=&#34;left&#34; class=&#34;standard-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th&gt;Value&lt;/th&gt;
+   &lt;th&gt;Meaning&lt;/th&gt;
+   &lt;th&gt;Standard&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;gzip&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;
+    &lt;p&gt;A format using the &lt;a class=&#34;external&#34; href=&#34;http://en.wikipedia.org/wiki/LZ77_and_LZ78#LZ77&#34; title=&#34;http://en.wikipedia.org/wiki/LZ77_and_LZ78#LZ77&#34;&gt;Lempel-Ziv coding&lt;/a&gt; (LZ77), with a 32-bit CRC. This is originally the format of the UNIX &lt;em&gt;gzip&lt;/em&gt; program. The HTTP/1.1 standard also recommends that the servers supporting this content-encoding should recognize &lt;code&gt;x-gzip&lt;/code&gt; as an alias, for compatibility purposes.&lt;/p&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;a class=&#34;external&#34; href=&#34;http://tools.ietf.org/html/rfc1952&#34; title=&#34;http://tools.ietf.org/html/rfc1952&#34;&gt;RFC 1952&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;compress&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;A format using the &lt;a class=&#34;external&#34; href=&#34;http://en.wikipedia.org/wiki/LZW&#34; title=&#34;http://en.wikipedia.org/wiki/LZW&#34;&gt;Lempel-Ziv-Welch&lt;/a&gt; (LZW) algorithm. The value name was taken from the UNIX &lt;em&gt;compress&lt;/em&gt; program, which implemented this algorithm.&lt;br /&gt;
+    Like the compress program, which has disappeared from most UNIX distributions, this content-encoding is used by almost no browsers today, partly because of a patent issue (which expired in 2003).&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;deflate&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Using the &lt;a class=&#34;external&#34; href=&#34;http://en.wikipedia.org/wiki/Zlib&#34; title=&#34;http://en.wikipedia.org/wiki/Zlib&#34;&gt;zlib&lt;/a&gt; structure (defined in &lt;a class=&#34;external&#34; href=&#34;http://tools.ietf.org/html/rfc1950&#34; title=&#34;http://tools.ietf.org/html/rfc1950&#34;&gt;RFC 1950&lt;/a&gt;), with the &lt;a class=&#34;external&#34; href=&#34;http://en.wikipedia.org/wiki/DEFLATE&#34; title=&#34;http://en.wikipedia.org/wiki/DEFLATE&#34;&gt;&lt;em&gt;deflate&lt;/em&gt;&lt;/a&gt; compression algorithm (defined in &lt;a class=&#34;external&#34; href=&#34;http://tools.ietf.org/html/rfc1952&#34; title=&#34;http://tools.ietf.org/html/rfc1952&#34;&gt;RFC 1951&lt;/a&gt;).&lt;/td&gt;
+   &lt;td&gt;&lt;a class=&#34;external&#34; href=&#34;http://tools.ietf.org/html/rfc1950&#34; title=&#34;http://tools.ietf.org/html/rfc1950&#34;&gt;RFC 1950&lt;/a&gt; and &lt;a class=&#34;external&#34; href=&#34;http://tools.ietf.org/html/rfc1951&#34; title=&#34;http://tools.ietf.org/html/rfc1951&#34;&gt;RFC 1951&lt;/a&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;identity&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;Indicates the identity function (i.e. no compression, nor modification). This token, except if explicitly specified, is always deemed acceptable.&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;code&gt;br&lt;/code&gt;&lt;/td&gt;
+   &lt;td&gt;A format using the &lt;a href=&#34;https://en.wikipedia.org/wiki/Brotli&#34;&gt;Brotli&lt;/a&gt; algorithm&lt;/td&gt;
+   &lt;td&gt;&lt;em&gt;Experimental&lt;/em&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;*&lt;/td&gt;
+   &lt;td&gt;This wildcard represents any content-encoding not explicitly specified in the header&lt;/td&gt;
+   &lt;td&gt;HTTP/1.1&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Notes&lt;/strong&gt;&lt;strong&gt; :&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;An IANA registry maintains &lt;a class=&#34;external&#34; href=&#34;http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-parameters-1&#34; title=&#34;http://www.iana.org/assignments/http-parameters/http-parameters.xml#http-parameters-1&#34;&gt;a complete list of official content encodings&lt;/a&gt;. Non-standard ones can be used, but must be prefixed with the &lt;code&gt;x-&lt;/code&gt; prefix.&lt;/li&gt;
+ &lt;li&gt;Two others content encoding, &lt;code&gt;bzip&lt;/code&gt; and &lt;code&gt;bzip2&lt;/code&gt;, are sometimes used, though not standard. They implement the algorithm used by these two UNIX programs. Note that the first one was discontinued due to patent licensing problems.&lt;/li&gt;
+ &lt;li&gt;As long as the &lt;code&gt;identity&lt;/code&gt; value is not explicitly forbidden, by an &lt;code&gt;identity;q=0&lt;/code&gt; or a &lt;code&gt;*;q=0&lt;/code&gt; without another explicitly set value for identity, the server must never send back a &lt;code&gt;406 Not Acceptable&lt;/code&gt; error.&lt;/li&gt;
+ &lt;li&gt;Even if both the client and the server supports the same compression algorithms, the server may choose not to compress the body of a response, if the identity value is also acceptable. Two common cases lead to this:
+  &lt;ul&gt;
+   &lt;li&gt;The data to be sent is already compressed and a second compression won&#39;t lead to smaller data to be transmitted. This may the case with some image formats;&lt;/li&gt;
+   &lt;li&gt;The server is overloaded and cannot afford the computational overhead induced by the compression requirement. Typically, Microsoft recommends not to compress if a server use more than 80 % of its computational power.&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;The_Accept-Language_header&#34;&gt;The Accept-Language: header&lt;/h3&gt;
+
+&lt;p&gt;Defined in the &lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4&#34; title=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4&#34;&gt;HTTP/1.1 standard, section 14.4&lt;/a&gt;, this header is used to indicate the language preference of the user. A different value is set according the language of the graphical interface but most browsers allow &lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/International/questions/qa-lang-priorities&#34; title=&#34;http://www.w3.org/International/questions/qa-lang-priorities&#34;&gt;setting different language preferences&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this header there is a language quality factor. From w3.org:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Each language-range MAY be given an associated quality value which represents an estimate of the user&#39;s preference for the languages specified by that range. The quality value defaults to &#34;q=1&#34;. For example,&lt;/p&gt;
+
+&lt;pre&gt;
+       Accept-Language: da, en-gb;q=0.8, en;q=0.7
+&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;&lt;strong&gt;Usage notes:&lt;/strong&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;This header, especially when user-modified, greatly increases the &lt;a class=&#34;link-https&#34; href=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34; title=&#34;https://www.eff.org/deeplinks/2010/01/primer-information-theory-and-privacy&#34;&gt;configuration-based entropy&lt;/a&gt; and may be used in HTTP&amp;nbsp;fingerprinting of the user.&lt;/li&gt;
+ &lt;li&gt;Site-designers must not be over-zealous by using language detection via this header as it can lead to a poor user experience:
+  &lt;ul&gt;
+   &lt;li&gt;They should always provide a way to overcome the server-chosen language, e.g., by providing small links near the top of the page. Most user-agents provide a default value for the &lt;code&gt;Accept-Language:&lt;/code&gt; header, adapted to the user interface language and end users often do not modify it, either by not knowing how, or by not being able to do it, as in an Internet café for instance.&lt;/li&gt;
+   &lt;li&gt;Once a user has overridden the server-chosen language, a site should no longer use language detection and should stick with the explicitly-chosen language.. In other words, only entry pages of a site should select the proper language using this header.&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;The_User-Agent_header&#34;&gt;The User-Agent: header&lt;/h3&gt;
+
+&lt;p&gt;Defined in the &lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43&#34; title=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43&#34;&gt;HTTP/1.1 standard, section 14.43&lt;/a&gt;, this header identifies the browser sending the request. This string may contain a space-separated list of &lt;em&gt;product tokens&lt;/em&gt; and &lt;em style=&#34;font-style:italic&#34;&gt;comments&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A &lt;em&gt;product token&lt;/em&gt; is a name followed by a &#39;&lt;code&gt;/&lt;/code&gt;&#39; and a version number, like &lt;code&gt;Firefox/4.0.1&lt;/code&gt;. There may be as many of them as the user-agent wants. A &lt;em&gt;comment&lt;/em&gt; is a free string delimited by parentheses. Obviously parentheses cannot be used in that string. The inner format of a comment is not defined by the standard, though several browser put several tokens in it, separated by &#39;&lt;code&gt;;&lt;/code&gt;&#39;.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;&lt;strong&gt;Usage Notes :&lt;/strong&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Though there are legitimate uses of this header for selecting content, &lt;a href=&#34;/en/Browser_Detection_and_Cross_Browser_Support#Limit_the_use_of_User_Agent_String_based_Detection&#34; title=&#34;https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Limit_the_use_of_User_Agent_String_based_Detection&#34;&gt;it is considered bad practice&lt;/a&gt; to rely on it to define what features are supported by the user agent. Instead try to use in priority&lt;a href=&#34;/en/Browser_Detection_and_Cross_Browser_Support#Use_feature_oriented_object_detection&#34; title=&#34;https://developer.mozilla.org/en/Browser_Detection_and_Cross_Browser_Support#Use_feature_oriented_object_detection&#34;&gt; feature-oriented object detection&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Consider the &lt;code&gt;User-Agent:&lt;/code&gt; header as a &lt;em&gt;hint&lt;/em&gt; only. It may be altered by third-party tools or by the user. If serving tailored content according this header, always provide a way to manually switch to the alternative content.&lt;/li&gt;
+ &lt;li&gt;Do not expect the product tokens to be served in a specific order or the format or the comments to be fixed; always parse it first by comment and product token, then product tokens by product name and version number. Always take in account that the format of a comment may vary in the future by providing an adequate fallback case.&lt;/li&gt;
+ &lt;li&gt;A website should not send a &lt;code&gt;406 Not Acceptable&lt;/code&gt; error codes based on the user agent string. It is better to send less suited content than no content at all (See &lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/QA/2006/02/content_negotiation.html#seldom-used&#34; title=&#34;http://www.w3.org/QA/2006/02/content_negotiation.html#seldom-used&#34;&gt;W3C Blog&lt;/a&gt;).&lt;/li&gt;
+ &lt;li&gt;This &lt;a href=&#34;/en/Gecko_user_agent_string_reference&#34; title=&#34;en/Gecko user agent string reference&#34;&gt;article&lt;/a&gt; describes the current Gecko user-agent strings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;The_Vary_response_header&#34;&gt;The Vary: response header&lt;/h3&gt;
+
+&lt;p&gt;In opposition with the previous &lt;code&gt;Accept-*:&lt;/code&gt; headers which are sent by the client, the &lt;code&gt;Vary:&lt;/code&gt; HTTP header is sent by the web server in its response. It indicates the list of headers used by the server during the server-driven content negotiation phase. The header is needed in order to inform the cache of the decision criteria so that can reproduce it, allowing the cache to be functional while preventing serving erroneous content to the user.&lt;/p&gt;
+
+&lt;p&gt;The special value of &#39;&lt;code&gt;*&lt;/code&gt;&#39; means that the server-driven content negotiation also uses information not conveyed in a header to choose the appropriate content.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;Vary:&lt;/code&gt; header was added in the version 1.1 of HTTP and is necessary in order to allow caches to work appropriately. A cache, in order to work with agent-driven content negotiation, needs to know which criteria was used by the server to select the transmitted content. That way, the cache can replay the algorithm and will be able to serve acceptable content directly, without more request to the server. Obviously, the wildcard &#39;&lt;code&gt;*&lt;/code&gt;&#39; prevents caching from occurring, as the cache cannot know what element is behind it.&lt;/p&gt;
+
+&lt;h2 id=&#34;Agent-driven_negotiation&#34;&gt;Agent-driven negotiation&lt;/h2&gt;
+
+&lt;p&gt;Server-driven negotiation suffers from a few downsides:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;It doesn&#39;t scale well. There is one header per feature used in the negotiation. If one wants to use screen size, resolution or other dimensions, a new HTTP header must be created.&lt;/li&gt;
+ &lt;li&gt;Sending of the headers must be done on every request. This is not too problematic with few headers, but with the eventual multiplications of them, the message size would lead to a decrease in performance.&lt;/li&gt;
+ &lt;li&gt;The more headers are sent, the more entropy is sent, allowing for better HTTP&amp;nbsp;fingerprinting and corresponding privacy concern.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HTTP allowed from the start another negotiation type, &lt;em&gt;agent-driven negotiation&lt;/em&gt;. In this negotiation, when facing an ambiguous request, the server sends back a page containing links to the available alternative resources. The user is presented the resources and choose the one to use.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, the HTTP standard does not specify the format of the page allowing to choose between the available resource, preventing to easily automatize the process. Beside fallback of the &lt;em&gt;server-driven negotiation&lt;/em&gt;, this method is almost always used in conjunction with scripting, especially with JavaScript redirection: after having checked for the negotiation criteria, the script performs the redirection.&lt;/p&gt;
+
+&lt;p&gt;A second problem is that one more request is needed in order to fetch the real resource, slowing the availability of the resource to the user.&lt;/p&gt;
+
+&lt;p&gt;Also note that the caching of the resource is trivial, as each resource has a different URI.&lt;/p&gt;
+
+&lt;h2 id=&#34;References&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html&#34; title=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html&#34;&gt;RFC 2616, section 12&lt;/a&gt;, &lt;em&gt;Content Negociation&lt;/em&gt; in &lt;em&gt;Hypertext Transfer Protocol — HTTP/1.1&lt;/em&gt;, 1999, The Internet Society.&lt;/li&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1&#34; title=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1&#34;&gt;RFC 2616, section 14.1&lt;/a&gt;, &lt;em&gt;Accept&lt;/em&gt; in &lt;em&gt;Hypertext Transfer Protocol — HTTP/1.1&lt;/em&gt;, 1999, The Internet Society.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;&lt;a class=&#34;external&#34; href=&#34;http://httpd.apache.org/docs/2.2/content-negotiation.html&#34; title=&#34;http://httpd.apache.org/docs/2.2/content-negotiation.html&#34;&gt;Content Negociation&lt;/a&gt; &lt;/em&gt;in &lt;em&gt;Apache HTTP&amp;nbsp;Server version 2.2&lt;/em&gt;, retrieved on May 8th, 2011.&lt;/li&gt;
+ &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;http://en.wikipedia.org/wiki/Content_negotiation&#34; title=&#34;http://en.wikipedia.org/wiki/Content_negotiation&#34;&gt;&lt;em&gt;Content Negociation&lt;/em&gt;&lt;/a&gt; in &lt;em&gt;Wikipedia&lt;/em&gt;, retrieved on June 10th, 2010.&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Content_negotiation%24revert/1108091" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation$revision/1108091 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:17:41 GMT -->
+</html>

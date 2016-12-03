@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Caching$compare?to=1108035&from=1107781 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:47:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Compare Revisions | HTTP caching | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FCaching%24compare%3Fto%3D1108035%26from%3D1107781" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Caching%24compare%3Fto%3D1108035%26from%3D1107781">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article id="compare-revisions">
+
+    <h1>Compare Revisions</h1>
+    <h2><a href="Caching.html">HTTP caching</a></h2>
+
+    
+    <section class="revision-diff">
+      <a href="Caching%24history00fd.html?locale=en-US&amp;origin=translate">Change Revisions</a>
+      <header>
+        <div class="rev-from">
+            <h3>
+            
+              <a href="Caching%24revision/1107781.html" rel="nofollow, noindex">
+                Revision 1107781:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1107781 by <a href="https://developer.mozilla.org/en-US/profiles/teoli">teoli</a> on <time datetime="2016-08-21T02:06:54-07:00">August 21, 2016 at 2:06:54 AM PDT</time>
+          </p>
+        </div>
+        <div class="rev-to">
+          <h3>
+            
+              <a href="Caching%24revision/1108035.html" rel="nofollow, noindex">
+                Revision 1108035:
+              </a>
+            
+          </h3>
+          <p>
+          Revision 1108035 by <a href="https://developer.mozilla.org/en-US/profiles/anthony-geoghegan">anthony-geoghegan</a> on <time datetime="2016-08-22T06:33:32-07:00">August 22, 2016 at 6:33:32 AM PDT</time>
+          </p>
+        </div>
+      </header>
+
+      <dl>
+        <dt>Title:</dt>
+        <dd class="rev-from">HTTP caching</dd>
+        <dd class="rev-to">HTTP caching</dd>
+
+        <dt>Slug:</dt>
+        <dd class="rev-from">Web/HTTP/Caching</dd>
+        <dd class="rev-to">Web/HTTP/Caching</dd>
+
+        
+        <dt>Tags:</dt>
+        <dd class="rev-from"> &#34;Caching&#34; &#34;Guide&#34; &#34;HTTP&#34;</dd>
+        <dd class="rev-to"> &#34;Caching&#34; &#34;Guide&#34; &#34;HTTP&#34;</dd>
+        
+
+        
+        <dt>Comment:</dt>
+        <dd class="rev-from"> </dd>
+        <dd class="rev-to"> clarify content and grammar to make it clearer and more readable</dd>
+        
+
+        <dt>Content:</dt>
+        
+        <dd>
+    <table class="diff" id="difflib_chg_to16__top"
+           cellspacing="0" cellpadding="0" rules="groups" >
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <colgroup></colgroup> <colgroup></colgroup> <colgroup></colgroup>
+        <thead><tr><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1107781</th><th class="diff_next"><br /></th><th colspan="2" class="diff_header">Revision 1108035</th></tr></thead>
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__0"><a href="#difflib_chg_to16__1">n</a></td><td class="diff_header" id="from16_11">11</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;performance&nbsp;of&nbsp;web&nbsp;sites&nbsp;and&nbsp;applications&nbsp;can&nbsp;be&nbsp;signif</td><td class="diff_next"><a href="#difflib_chg_to16__1">n</a></td><td class="diff_header" id="to16_11">11</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;performance&nbsp;of&nbsp;web&nbsp;sites&nbsp;and&nbsp;applications&nbsp;can&nbsp;be&nbsp;signif</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">cantly</span>&nbsp;improved&nbsp;by&nbsp;reusing&nbsp;previously&nbsp;fetched&nbsp;resources.&nbsp;Web&nbsp;cach</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">icantly</span>&nbsp;improved&nbsp;by&nbsp;reusing&nbsp;previously&nbsp;fetched&nbsp;resources.&nbsp;Web&nbsp;cac</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">es&nbsp;reduce&nbsp;latency&nbsp;and&nbsp;network&nbsp;traffic&nbsp;and&nbsp;thus&nbsp;lessen&nbsp;the&nbsp;time&nbsp;ne</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">hes&nbsp;reduce&nbsp;latency&nbsp;and&nbsp;network&nbsp;traffic&nbsp;and&nbsp;thus&nbsp;lessen&nbsp;the&nbsp;time&nbsp;n</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">eded&nbsp;to&nbsp;display&nbsp;a&nbsp;representation&nbsp;of&nbsp;a&nbsp;resource.&nbsp;By&nbsp;making&nbsp;use&nbsp;of&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">eeded&nbsp;to&nbsp;display&nbsp;a&nbsp;representation&nbsp;of&nbsp;a&nbsp;resource.&nbsp;By&nbsp;making&nbsp;use&nbsp;of</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">HTTP&nbsp;caching,&nbsp;Web&nbsp;sites&nbsp;become&nbsp;more&nbsp;responsive.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;HTTP&nbsp;caching,&nbsp;Web&nbsp;sites&nbsp;become&nbsp;more&nbsp;responsive.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__1"><a href="#difflib_chg_to16__2">n</a></td><td class="diff_header" id="from16_17">17</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;cache&nbsp;is&nbsp;a&nbsp;tool&nbsp;that&nbsp;stores&nbsp;versions&nbsp;of&nbsp;a&nbsp;given&nbsp;document&nbsp;</span></td><td class="diff_next"><a href="#difflib_chg_to16__2">n</a></td><td class="diff_header" id="to16_17">17</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caching&nbsp;is&nbsp;a&nbsp;technique&nbsp;that&nbsp;stores&nbsp;a&nbsp;copy&nbsp;of&nbsp;a&nbsp;given&nbsp;resour</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">and&nbsp;serve&nbsp;it&nbsp;back&nbsp;when&nbsp;requested.&nbsp;When&nbsp;a&nbsp;cache&nbsp;have&nbsp;a&nbsp;requested&nbsp;r</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ce&nbsp;and&nbsp;serves&nbsp;it&nbsp;back&nbsp;when&nbsp;requested.&nbsp;When&nbsp;a&nbsp;web&nbsp;cache&nbsp;has&nbsp;a&nbsp;requ</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">esource,&nbsp;it&nbsp;intercepts&nbsp;the&nbsp;requests&nbsp;and&nbsp;achieve&nbsp;several&nbsp;goals:&nbsp;it</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ested&nbsp;resource&nbsp;in&nbsp;its&nbsp;store,&nbsp;it&nbsp;intercepts&nbsp;the&nbsp;request&nbsp;and&nbsp;return</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;eases&nbsp;the&nbsp;load&nbsp;of&nbsp;the&nbsp;server&nbsp;that&nbsp;doesn't&nbsp;need&nbsp;to&nbsp;serve&nbsp;all&nbsp;clie</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">s&nbsp;its&nbsp;copy&nbsp;instead&nbsp;of&nbsp;re-downloading&nbsp;from&nbsp;the&nbsp;originating&nbsp;server.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nts&nbsp;itself,&nbsp;and&nbsp;it&nbsp;improves&nbsp;performances&nbsp;by&nbsp;being&nbsp;closer&nbsp;to&nbsp;the&nbsp;c</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;This&nbsp;achieves&nbsp;several&nbsp;goals:&nbsp;it&nbsp;eases&nbsp;the&nbsp;load&nbsp;of&nbsp;the&nbsp;server&nbsp;tha</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">lient:&nbsp;it&nbsp;takes&nbsp;less&nbsp;time&nbsp;to&nbsp;transmit&nbsp;the&nbsp;resource&nbsp;back.&nbsp;For&nbsp;a&nbsp;We</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">t&nbsp;doesn’t&nbsp;need&nbsp;to&nbsp;serve&nbsp;all&nbsp;clients&nbsp;itself,&nbsp;and&nbsp;it&nbsp;improves&nbsp;perfo</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">b&nbsp;site,&nbsp;it&nbsp;is&nbsp;a&nbsp;major&nbsp;component&nbsp;in&nbsp;achieving&nbsp;high&nbsp;performance.&nbsp;On</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">rmance&nbsp;by&nbsp;being&nbsp;closer&nbsp;to&nbsp;the&nbsp;client,&nbsp;i.e.,&nbsp;it&nbsp;takes&nbsp;less&nbsp;time&nbsp;to</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;the&nbsp;other&nbsp;side,&nbsp;it&nbsp;has&nbsp;to&nbsp;be&nbsp;configured&nbsp;properly&nbsp;as&nbsp;not&nbsp;all&nbsp;reso</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;transmit&nbsp;the&nbsp;resource&nbsp;back.&nbsp;For&nbsp;a&nbsp;web&nbsp;site,&nbsp;it&nbsp;is&nbsp;a&nbsp;major&nbsp;compon</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">urces&nbsp;stay&nbsp;identical&nbsp;forever:&nbsp;it&nbsp;is&nbsp;important&nbsp;to&nbsp;cache&nbsp;a&nbsp;resource</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ent&nbsp;in&nbsp;achieving&nbsp;high&nbsp;performance.&nbsp;On&nbsp;the&nbsp;other&nbsp;side,&nbsp;it&nbsp;has&nbsp;to&nbsp;b</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;only&nbsp;until&nbsp;it&nbsp;changes,&nbsp;not&nbsp;longer.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">e&nbsp;configured&nbsp;properly&nbsp;as&nbsp;not&nbsp;all&nbsp;resources&nbsp;stay&nbsp;identical&nbsp;forever</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">:&nbsp;it&nbsp;is&nbsp;important&nbsp;to&nbsp;cache&nbsp;a&nbsp;resource&nbsp;only&nbsp;until&nbsp;it&nbsp;changes,&nbsp;not&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">longer.</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from16_18">18</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from16_19">19</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to16_18">18</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to16_19">19</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from16_20">20</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There&nbsp;several&nbsp;kinds&nbsp;of&nbsp;caches<span class="diff_chg">&nbsp;that&nbsp;can&nbsp;be</span>&nbsp;grouped&nbsp;in<span class="diff_chg">&nbsp;two&nbsp;ma</span></td><td class="diff_next"></td><td class="diff_header" id="to16_20">20</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There&nbsp;several&nbsp;kinds&nbsp;of&nbsp;caches<span class="diff_chg">:&nbsp;these&nbsp;can&nbsp;be</span>&nbsp;grouped&nbsp;in<span class="diff_chg">to&nbsp;tw</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">in</span>&nbsp;categories:&nbsp;private&nbsp;or&nbsp;shared&nbsp;caches.&nbsp;A&nbsp;<span class="diff_chg">shared&nbsp;cache&nbsp;is&nbsp;a&nbsp;cach</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">o&nbsp;main</span>&nbsp;categories:&nbsp;private&nbsp;or&nbsp;shared&nbsp;caches.&nbsp;A&nbsp;<span class="diff_chg">&lt;em&gt;shared&nbsp;cache&lt;/</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">e&nbsp;that&nbsp;stores&nbsp;responses&nbsp;to&nbsp;be</span>&nbsp;reuse<span class="diff_chg">d&nbsp;by&nbsp;more&nbsp;than&nbsp;one</span>&nbsp;user<span class="diff_chg">&nbsp;and&nbsp;a&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">em&gt;&nbsp;is&nbsp;a&nbsp;cache&nbsp;that&nbsp;stores&nbsp;responses&nbsp;for</span>&nbsp;reuse<span class="diff_chg">&nbsp;by&nbsp;more&nbsp;than&nbsp;one</span>&nbsp;u</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg"></span>private&nbsp;cache<span class="diff_chg">&nbsp;is&nbsp;only&nbsp;dedicated&nbsp;to&nbsp;a</span>&nbsp;single&nbsp;user.&nbsp;This&nbsp;page&nbsp;will&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ser<span class="diff_chg">.&nbsp;A&nbsp;&lt;em&gt;</span>private&nbsp;cache<span class="diff_chg">&lt;/em&gt;&nbsp;is&nbsp;dedicated&nbsp;to&nbsp;a</span>&nbsp;single&nbsp;user.&nbsp;This</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">mostly&nbsp;talk&nbsp;about&nbsp;browser&nbsp;and&nbsp;proxy&nbsp;caches,&nbsp;but&nbsp;there&nbsp;are&nbsp;also&nbsp;ga</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;page&nbsp;will&nbsp;mostly&nbsp;talk&nbsp;about&nbsp;browser&nbsp;and&nbsp;proxy&nbsp;caches,&nbsp;but&nbsp;there&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">teway&nbsp;caches,&nbsp;CDN,&nbsp;reverse&nbsp;proxy&nbsp;caches&nbsp;and&nbsp;load&nbsp;balancers&nbsp;that&nbsp;a</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">are&nbsp;also&nbsp;gateway&nbsp;caches,&nbsp;CDN,&nbsp;reverse&nbsp;proxy&nbsp;caches&nbsp;and&nbsp;load&nbsp;balan</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">re&nbsp;deployed&nbsp;on&nbsp;web&nbsp;servers&nbsp;for&nbsp;better&nbsp;reliability,&nbsp;performance&nbsp;an</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">cers&nbsp;that&nbsp;are&nbsp;deployed&nbsp;on&nbsp;web&nbsp;servers&nbsp;for&nbsp;better&nbsp;reliability,&nbsp;per</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">d&nbsp;scaling&nbsp;of&nbsp;web&nbsp;sites&nbsp;and&nbsp;web&nbsp;applications.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">formance&nbsp;and&nbsp;scaling&nbsp;of&nbsp;web&nbsp;sites&nbsp;and&nbsp;web&nbsp;applications.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__2"><a href="#difflib_chg_to16__3">n</a></td><td class="diff_header" id="from16_29">29</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;private&nbsp;cache&nbsp;is&nbsp;dedicated&nbsp;to&nbsp;a&nbsp;single&nbsp;user.&nbsp;You&nbsp;might&nbsp;ha</td><td class="diff_next"><a href="#difflib_chg_to16__3">n</a></td><td class="diff_header" id="to16_29">29</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;private&nbsp;cache&nbsp;is&nbsp;dedicated&nbsp;to&nbsp;a&nbsp;single&nbsp;user.&nbsp;You&nbsp;might&nbsp;ha</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ve&nbsp;seen&nbsp;"caching"&nbsp;in&nbsp;your&nbsp;browser's&nbsp;settings&nbsp;already.&nbsp;A&nbsp;browser&nbsp;c</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ve&nbsp;seen&nbsp;"caching"&nbsp;in&nbsp;your&nbsp;browser's&nbsp;settings&nbsp;already.&nbsp;A&nbsp;browser&nbsp;c</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ache&nbsp;holds&nbsp;all&nbsp;documents&nbsp;downloaded&nbsp;via&nbsp;&lt;a&nbsp;href="/en-US/docs/Web/</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ache&nbsp;holds&nbsp;all&nbsp;documents&nbsp;downloaded&nbsp;via&nbsp;&lt;a&nbsp;href="/en-US/docs/Web/</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">HTTP"&nbsp;title="en/HTTP"&gt;HTTP&lt;/a&gt;&nbsp;by&nbsp;the&nbsp;user.&nbsp;This&nbsp;cache&nbsp;is&nbsp;used&nbsp;to</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">HTTP"&nbsp;title="en/HTTP"&gt;HTTP&lt;/a&gt;&nbsp;by&nbsp;the&nbsp;user.&nbsp;This&nbsp;cache&nbsp;is&nbsp;used&nbsp;to</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;make&nbsp;visited&nbsp;documents&nbsp;available&nbsp;for&nbsp;back/forward,&nbsp;saving,&nbsp;viewi</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;make&nbsp;visited&nbsp;documents&nbsp;available&nbsp;for&nbsp;back/forward<span class="diff_add">&nbsp;navigation</span>,&nbsp;sa</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ng-as-source,&nbsp;etc.&nbsp;without&nbsp;requiring&nbsp;an&nbsp;additional&nbsp;trip&nbsp;to&nbsp;the&nbsp;se</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ving,&nbsp;viewing-as-source,&nbsp;etc.&nbsp;without&nbsp;requiring&nbsp;an&nbsp;additional&nbsp;tri</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">rver.&nbsp;It&nbsp;likewise&nbsp;improves&nbsp;offline&nbsp;browsing&nbsp;of&nbsp;cached&nbsp;content.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">p&nbsp;to&nbsp;the&nbsp;server.&nbsp;It&nbsp;likewise&nbsp;improves&nbsp;offline&nbsp;browsing&nbsp;of&nbsp;cached&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">content.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__3"><a href="#difflib_chg_to16__4">n</a></td><td class="diff_header" id="from16_35">35</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;shared&nbsp;cache&nbsp;is&nbsp;a&nbsp;cache&nbsp;that&nbsp;stores&nbsp;responses&nbsp;to&nbsp;be&nbsp;reuse</span></td><td class="diff_next"><a href="#difflib_chg_to16__4">n</a></td><td class="diff_header" id="to16_35">35</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;shared&nbsp;cache&nbsp;is&nbsp;a&nbsp;cache&nbsp;that&nbsp;stores&nbsp;responses&nbsp;to&nbsp;be&nbsp;reuse</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">d&nbsp;by&nbsp;more&nbsp;than&nbsp;one&nbsp;user.&nbsp;For&nbsp;example,&nbsp;an&nbsp;ISP&nbsp;or&nbsp;your&nbsp;company&nbsp;migh</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">d&nbsp;by&nbsp;more&nbsp;than&nbsp;one&nbsp;user.&nbsp;For&nbsp;example,&nbsp;an&nbsp;ISP&nbsp;or&nbsp;your&nbsp;company&nbsp;migh</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">t&nbsp;have&nbsp;set&nbsp;up&nbsp;a&nbsp;proxy&nbsp;to&nbsp;serve&nbsp;thousands&nbsp;of&nbsp;users&nbsp;and&nbsp;popular&nbsp;res</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">t&nbsp;have&nbsp;set&nbsp;up&nbsp;a&nbsp;web&nbsp;proxy&nbsp;as&nbsp;part&nbsp;of&nbsp;its&nbsp;local&nbsp;network&nbsp;infrastruc</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ources&nbsp;are&nbsp;reused&nbsp;a&nbsp;number&nbsp;of&nbsp;times&nbsp;to&nbsp;reduce&nbsp;network&nbsp;traffic&nbsp;and</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ture&nbsp;to&nbsp;serve&nbsp;many&nbsp;users&nbsp;so&nbsp;that&nbsp;popular&nbsp;resources&nbsp;are&nbsp;reused&nbsp;a&nbsp;n</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;latency.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">umber&nbsp;of&nbsp;times,&nbsp;reducing&nbsp;network&nbsp;traffic&nbsp;and&nbsp;latency.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__4"><a href="#difflib_chg_to16__5">n</a></td><td class="diff_header" id="from16_41">41</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;caching&nbsp;is&nbsp;an&nbsp;optional&nbsp;operation,&nbsp;but&nbsp;reusing&nbsp;a&nbsp;cached</span></td><td class="diff_next"><a href="#difflib_chg_to16__5">n</a></td><td class="diff_header" id="to16_41">41</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTTP&nbsp;caching&nbsp;is&nbsp;optional,&nbsp;but&nbsp;reusing&nbsp;a&nbsp;cached&nbsp;resource&nbsp;is&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;response&nbsp;is&nbsp;desirable&nbsp;often.&nbsp;However,&nbsp;common&nbsp;HTTP&nbsp;caches&nbsp;are&nbsp;typ</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">usually&nbsp;desirable.&nbsp;However,&nbsp;common&nbsp;HTTP&nbsp;caches&nbsp;are&nbsp;typically&nbsp;limi</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ically&nbsp;limited&nbsp;to&nbsp;caching&nbsp;responses&nbsp;to&nbsp;{{HTTPMethod("GET")}}&nbsp;and&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ted&nbsp;to&nbsp;caching&nbsp;responses&nbsp;to&nbsp;{{HTTPMethod("GET")}}&nbsp;and&nbsp;may&nbsp;decline</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">may&nbsp;decline&nbsp;other&nbsp;methods.&nbsp;The&nbsp;primary&nbsp;cache&nbsp;key&nbsp;consists&nbsp;of&nbsp;the&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;other&nbsp;methods.&nbsp;The&nbsp;primary&nbsp;cache&nbsp;key&nbsp;consists&nbsp;of&nbsp;the&nbsp;request&nbsp;met</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">request&nbsp;method&nbsp;and&nbsp;target&nbsp;URI&nbsp;(oftentimes&nbsp;only&nbsp;the&nbsp;URI&nbsp;is&nbsp;used&nbsp;as</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">hod&nbsp;and&nbsp;target&nbsp;URI&nbsp;(oftentimes&nbsp;only&nbsp;the&nbsp;URI&nbsp;is&nbsp;used&nbsp;as&nbsp;only&nbsp;GET&nbsp;r</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&nbsp;only&nbsp;GET&nbsp;requests&nbsp;are&nbsp;caching&nbsp;targets).&nbsp;Common&nbsp;forms&nbsp;of&nbsp;caching&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">equests&nbsp;are&nbsp;caching&nbsp;targets).&nbsp;Common&nbsp;forms&nbsp;of&nbsp;caching&nbsp;entries&nbsp;are</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">entries&nbsp;are:</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">:</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__5"><a href="#difflib_chg_to16__6">n</a></td><td class="diff_header" id="from16_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;{{HTTPHeader("Cache-Control")}}&nbsp;HTTP/1.1&nbsp;general-header</td><td class="diff_next"><a href="#difflib_chg_to16__6">n</a></td><td class="diff_header" id="to16_65">65</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;{{HTTPHeader("Cache-Control")}}&nbsp;HTTP/1.1&nbsp;general-header</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;field&nbsp;is&nbsp;used&nbsp;to&nbsp;specify&nbsp;directives&nbsp;for&nbsp;caching&nbsp;mechanisms&nbsp;in&nbsp;bo</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;field&nbsp;is&nbsp;used&nbsp;to&nbsp;specify&nbsp;directives&nbsp;for&nbsp;caching&nbsp;mechanisms&nbsp;in&nbsp;bo</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">th<span class="diff_sub">,</span>&nbsp;requests&nbsp;and&nbsp;responses.&nbsp;Use&nbsp;this&nbsp;header&nbsp;to&nbsp;define&nbsp;your&nbsp;cachin</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">th&nbsp;requests&nbsp;and&nbsp;responses.&nbsp;Use&nbsp;this&nbsp;header&nbsp;to&nbsp;define&nbsp;your&nbsp;caching</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">g&nbsp;policies&nbsp;with&nbsp;the&nbsp;variety&nbsp;of&nbsp;directives&nbsp;it&nbsp;provides.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;policies&nbsp;with&nbsp;the&nbsp;variety&nbsp;of&nbsp;directives&nbsp;it&nbsp;provides.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__6"><a href="#difflib_chg_to16__7">n</a></td><td class="diff_header" id="from16_127">127</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once&nbsp;a&nbsp;resource&nbsp;is&nbsp;stored&nbsp;in&nbsp;a&nbsp;cache,&nbsp;it&nbsp;c<span class="diff_chg">an</span>&nbsp;theoretically&nbsp;</td><td class="diff_next"><a href="#difflib_chg_to16__7">n</a></td><td class="diff_header" id="to16_127">127</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once&nbsp;a&nbsp;resource&nbsp;is&nbsp;stored&nbsp;in&nbsp;a&nbsp;cache,&nbsp;it&nbsp;c<span class="diff_chg">ould</span>&nbsp;theoreticall</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">be&nbsp;served&nbsp;by&nbsp;the&nbsp;cache&nbsp;forever.&nbsp;Caches&nbsp;have&nbsp;finite&nbsp;storage&nbsp;<span class="diff_chg">thou</span>g<span class="diff_chg">h</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">y&nbsp;be&nbsp;served&nbsp;by&nbsp;the&nbsp;cache&nbsp;forever.&nbsp;Caches&nbsp;have&nbsp;finite&nbsp;storage&nbsp;<span class="diff_chg">so&nbsp;i</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg"></span>&nbsp;p<span class="diff_chg">eriodically&nbsp;remove&nbsp;items&nbsp;they&nbsp;stored.&nbsp;This&nbsp;process&nbsp;is&nbsp;called</span>&nbsp;&lt;e</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">tems&nbsp;are&nbsp;periodically&nbsp;removed&nbsp;from&nbsp;stora</span>g<span class="diff_chg">e.&nbsp;This</span>&nbsp;p<span class="diff_chg">rocess&nbsp;is&nbsp;calle</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">m&gt;cache&nbsp;eviction&lt;/em&gt;.&nbsp;On&nbsp;the&nbsp;other&nbsp;side,&nbsp;some&nbsp;resources&nbsp;may&nbsp;chan</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">d</span>&nbsp;&lt;em&gt;cache&nbsp;eviction&lt;/em&gt;.&nbsp;On&nbsp;the&nbsp;other&nbsp;side,&nbsp;some&nbsp;resources&nbsp;may&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ge<span class="diff_chg">s&nbsp;in&nbsp;the&nbsp;server,&nbsp;and&nbsp;the&nbsp;cache&nbsp;should</span>&nbsp;be&nbsp;updated.&nbsp;As&nbsp;HTTP&nbsp;is&nbsp;a&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">change<span class="diff_chg">&nbsp;on&nbsp;the&nbsp;server&nbsp;so&nbsp;the&nbsp;cache&nbsp;should</span>&nbsp;be&nbsp;updated.&nbsp;As&nbsp;HTTP&nbsp;is&nbsp;a</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">client-server&nbsp;protocol,&nbsp;servers&nbsp;can't&nbsp;contact&nbsp;caches&nbsp;and&nbsp;clients&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;client-server&nbsp;protocol,&nbsp;servers&nbsp;can't&nbsp;contact&nbsp;caches&nbsp;and&nbsp;clients</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">when&nbsp;a&nbsp;resource&nbsp;change;&nbsp;they&nbsp;have&nbsp;to&nbsp;communicate&nbsp;an&nbsp;expiration&nbsp;ti</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;when&nbsp;a&nbsp;resource&nbsp;change;&nbsp;they&nbsp;have&nbsp;to&nbsp;communicate&nbsp;an&nbsp;expiration&nbsp;t</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">me&nbsp;for&nbsp;the&nbsp;resource.&nbsp;Before&nbsp;this&nbsp;expiration&nbsp;time,&nbsp;the&nbsp;resource&nbsp;is</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ime&nbsp;for&nbsp;the&nbsp;resource.&nbsp;Before&nbsp;this&nbsp;expiration&nbsp;time,&nbsp;the&nbsp;resource&nbsp;i</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;&lt;em&gt;fresh&lt;/em&gt;<span class="diff_chg">,&nbsp;after&nbsp;its</span>&nbsp;expiration&nbsp;time,&nbsp;the&nbsp;resource&nbsp;if&nbsp;&lt;em&gt;s</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">s&nbsp;&lt;em&gt;fresh&lt;/em&gt;<span class="diff_chg">;&nbsp;after&nbsp;its</span>&nbsp;expiration&nbsp;time,&nbsp;the&nbsp;resource&nbsp;if&nbsp;&lt;em&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">tale&lt;/em&gt;.&nbsp;Eviction&nbsp;algorithm<span class="diff_chg">&nbsp;often</span>&nbsp;privileges&nbsp;fresh&nbsp;resources&nbsp;ov</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">stale&lt;/em&gt;.&nbsp;Eviction&nbsp;algorithm<span class="diff_chg">s&nbsp;often</span>&nbsp;privileges&nbsp;fresh&nbsp;resources&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">er&nbsp;stale&nbsp;resources.&nbsp;Note&nbsp;that&nbsp;a&nbsp;stale&nbsp;resource&nbsp;is&nbsp;not&nbsp;evicted&nbsp;or&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">over&nbsp;stale&nbsp;resources.&nbsp;Note&nbsp;that&nbsp;a&nbsp;stale&nbsp;resource&nbsp;is&nbsp;not&nbsp;evicted&nbsp;o</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ignored;&nbsp;when&nbsp;the&nbsp;cache&nbsp;receives&nbsp;a&nbsp;request&nbsp;for&nbsp;a&nbsp;stale&nbsp;resource,&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">r&nbsp;ignored;&nbsp;when&nbsp;the&nbsp;cache&nbsp;receives&nbsp;a&nbsp;request&nbsp;for&nbsp;a&nbsp;stale&nbsp;resource</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">it&nbsp;forwards&nbsp;this&nbsp;requests&nbsp;with&nbsp;a&nbsp;{{HTTPHeader("If-None-Match")}}&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">,&nbsp;it&nbsp;forwards&nbsp;this&nbsp;requests&nbsp;with&nbsp;a&nbsp;{{HTTPHeader("If-None-Match")}</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">to&nbsp;check&nbsp;if&nbsp;it&nbsp;isn't&nbsp;in&nbsp;fact&nbsp;still&nbsp;fresh.&nbsp;If&nbsp;so,&nbsp;the&nbsp;server&nbsp;retur</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">}&nbsp;to&nbsp;check&nbsp;if&nbsp;it&nbsp;isn't&nbsp;in&nbsp;fact&nbsp;still&nbsp;fresh.&nbsp;If&nbsp;so,&nbsp;the&nbsp;server&nbsp;ret</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ns&nbsp;a&nbsp;{{HTTPStatus("304")}}&nbsp;(Not&nbsp;Modified)&nbsp;<span class="diff_chg">messa</span>g<span class="diff_chg">e&nbsp;and&nbsp;don't&nbsp;send&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">urns&nbsp;a&nbsp;{{HTTPStatus("304")}}&nbsp;(Not&nbsp;Modified)&nbsp;<span class="diff_chg">header&nbsp;without&nbsp;sendin</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg">the&nbsp;resource</span>&nbsp;b<span class="diff_chg">ack</span>,&nbsp;saving&nbsp;some&nbsp;bandwidth.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_chg"></span>g<span class="diff_chg">&nbsp;the</span>&nbsp;b<span class="diff_chg">ody&nbsp;of&nbsp;the&nbsp;requested&nbsp;resource</span>,&nbsp;saving&nbsp;some&nbsp;bandwidth.</td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__7"><a href="#difflib_chg_to16__8">n</a></td><td class="diff_header" id="from16_152">152</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web&nbsp;developers&nbsp;invented&nbsp;a&nbsp;technique&nbsp;that&nbsp;Steve&nbsp;Sounders&nbsp;cal</td><td class="diff_next"><a href="#difflib_chg_to16__8">n</a></td><td class="diff_header" id="to16_152">152</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web&nbsp;developers&nbsp;invented&nbsp;a&nbsp;technique&nbsp;that&nbsp;Steve&nbsp;Sounders&nbsp;cal</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">led&nbsp;&lt;em&gt;revving&lt;/em&gt;&lt;sup&gt;&lt;a&nbsp;href="https://www.stevesouders.com/bl</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">led&nbsp;&lt;em&gt;revving&lt;/em&gt;&lt;sup&gt;&lt;a&nbsp;href="https://www.stevesouders.com/bl</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">og/2008/08/23/revving-filenames-dont-use-querystring/"&gt;[1]&lt;/a&gt;&lt;/s</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">og/2008/08/23/revving-filenames-dont-use-querystring/"&gt;[1]&lt;/a&gt;&lt;/s</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">up&gt;.&nbsp;Infrequently&nbsp;updated&nbsp;files&nbsp;are&nbsp;named&nbsp;in&nbsp;specific&nbsp;way:&nbsp;in&nbsp;the</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">up&gt;.&nbsp;Infrequently&nbsp;updated&nbsp;files&nbsp;are&nbsp;named&nbsp;in&nbsp;specific&nbsp;way:&nbsp;in&nbsp;the</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ir&nbsp;URL,&nbsp;usually&nbsp;in&nbsp;the&nbsp;filename,&nbsp;a&nbsp;revision&nbsp;number&nbsp;is&nbsp;added.&nbsp;That</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ir&nbsp;URL,&nbsp;usually&nbsp;in&nbsp;the&nbsp;filename,&nbsp;a&nbsp;revision<span class="diff_add">&nbsp;(or&nbsp;version)</span>&nbsp;number&nbsp;i</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;way&nbsp;each&nbsp;new&nbsp;revision&nbsp;of&nbsp;this&nbsp;resource&nbsp;is&nbsp;considered&nbsp;as&nbsp;a&nbsp;resour</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">s&nbsp;added.&nbsp;That&nbsp;way&nbsp;each&nbsp;new&nbsp;revision&nbsp;of&nbsp;this&nbsp;resource&nbsp;is&nbsp;considere</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ce&nbsp;on&nbsp;its&nbsp;own&nbsp;that&nbsp;&lt;em&gt;never&lt;/em&gt;&nbsp;changes&nbsp;and&nbsp;that&nbsp;can&nbsp;have&nbsp;an&nbsp;ex</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">d&nbsp;as&nbsp;a&nbsp;resource&nbsp;on&nbsp;its&nbsp;own&nbsp;that&nbsp;&lt;em&gt;never&lt;/em&gt;&nbsp;changes&nbsp;and&nbsp;that&nbsp;c</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">piration&nbsp;time&nbsp;very&nbsp;far&nbsp;in&nbsp;the&nbsp;future,&nbsp;usually&nbsp;one&nbsp;year&nbsp;or&nbsp;even&nbsp;mo</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">an&nbsp;have&nbsp;an&nbsp;expiration&nbsp;time&nbsp;very&nbsp;far&nbsp;in&nbsp;the&nbsp;future,&nbsp;usually&nbsp;one&nbsp;ye</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">re.&nbsp;In&nbsp;order&nbsp;to&nbsp;have&nbsp;the&nbsp;new&nbsp;versions,&nbsp;all&nbsp;the&nbsp;links&nbsp;to&nbsp;them&nbsp;must</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ar&nbsp;or&nbsp;even&nbsp;more.&nbsp;In&nbsp;order&nbsp;to&nbsp;have&nbsp;the&nbsp;new&nbsp;versions,&nbsp;all&nbsp;the&nbsp;links</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;be&nbsp;changed,&nbsp;that&nbsp;is&nbsp;the&nbsp;drawback&nbsp;of&nbsp;this&nbsp;method:&nbsp;additional&nbsp;comp</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;to&nbsp;them&nbsp;must&nbsp;be&nbsp;changed,&nbsp;that&nbsp;is&nbsp;the&nbsp;drawback&nbsp;of&nbsp;this&nbsp;method:&nbsp;ad</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">lexity&nbsp;that&nbsp;is&nbsp;usually&nbsp;taken&nbsp;care&nbsp;by&nbsp;the&nbsp;tool&nbsp;chain&nbsp;used&nbsp;by&nbsp;Web&nbsp;d</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">ditional&nbsp;complexity&nbsp;that&nbsp;is&nbsp;usually&nbsp;taken&nbsp;care&nbsp;by&nbsp;the&nbsp;tool&nbsp;chain&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">evelopers.&nbsp;When&nbsp;the&nbsp;infrequently&nbsp;variable&nbsp;resources&nbsp;change&nbsp;they&nbsp;i</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">used&nbsp;by&nbsp;Web&nbsp;developers.&nbsp;When&nbsp;the&nbsp;infrequently&nbsp;variable&nbsp;resources&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nduce&nbsp;an&nbsp;additional&nbsp;change&nbsp;to&nbsp;often&nbsp;variable&nbsp;resources.&nbsp;When&nbsp;thes</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">change&nbsp;they&nbsp;induce&nbsp;an&nbsp;additional&nbsp;change&nbsp;to&nbsp;often&nbsp;variable&nbsp;resourc</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">e&nbsp;are&nbsp;read,&nbsp;the&nbsp;new&nbsp;versions&nbsp;of&nbsp;the&nbsp;others&nbsp;are&nbsp;also&nbsp;read.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">es.&nbsp;When&nbsp;these&nbsp;are&nbsp;read,&nbsp;the&nbsp;new&nbsp;versions&nbsp;of&nbsp;the&nbsp;others&nbsp;are&nbsp;also&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">read.</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from16_153">153</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from16_154">154</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</td><td class="diff_next"></td><td class="diff_header" id="to16_153">153</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="diff_add">/</span>p&gt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header" id="from16_155">155</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;technique&nbsp;has&nbsp;an&nbsp;additional&nbsp;benefits:&nbsp;it&nbsp;allows&nbsp;to&nbsp;gua</span></td><td class="diff_next"></td><td class="diff_header" id="to16_154">154</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">rantee&nbsp;that&nbsp;two&nbsp;resources&nbsp;can&nbsp;be&nbsp;updated&nbsp;at&nbsp;the&nbsp;same&nbsp;time&nbsp;and&nbsp;tha</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">t&nbsp;caches&nbsp;will&nbsp;not&nbsp;lead&nbsp;to&nbsp;the&nbsp;situation&nbsp;where&nbsp;the&nbsp;old&nbsp;version&nbsp;of&nbsp;</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">one&nbsp;of&nbsp;this&nbsp;resource&nbsp;is&nbsp;used&nbsp;with&nbsp;the&nbsp;new&nbsp;version&nbsp;of&nbsp;this&nbsp;other&nbsp;o</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">nes.&nbsp;This&nbsp;is&nbsp;very&nbsp;important&nbsp;when&nbsp;Web&nbsp;sites&nbsp;have&nbsp;CSS&nbsp;stylesheets&nbsp;o</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">r&nbsp;JS&nbsp;scripts&nbsp;that&nbsp;have&nbsp;dependencies&nbsp;and&nbsp;must&nbsp;be&nbsp;read&nbsp;coherently.</span></td><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap"></td><td class="diff_next"></td><td class="diff_header" id="to16_155">155</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;technique&nbsp;has&nbsp;an&nbsp;additional&nbsp;benefit:&nbsp;updating&nbsp;two&nbsp;cach</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">ed&nbsp;resources&nbsp;at&nbsp;the&nbsp;same&nbsp;time&nbsp;will&nbsp;not&nbsp;lead&nbsp;to&nbsp;the&nbsp;situation&nbsp;wher</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">e&nbsp;the&nbsp;out-dated&nbsp;version&nbsp;of&nbsp;one&nbsp;resource&nbsp;is&nbsp;used&nbsp;in&nbsp;combination&nbsp;wi</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">th&nbsp;the&nbsp;new&nbsp;version&nbsp;of&nbsp;the&nbsp;other&nbsp;one.&nbsp;This&nbsp;is&nbsp;very&nbsp;important&nbsp;when&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">web&nbsp;sites&nbsp;have&nbsp;CSS&nbsp;stylesheets&nbsp;or&nbsp;JS&nbsp;scripts&nbsp;that&nbsp;have&nbsp;mutual&nbsp;dep</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">endencies,&nbsp;i.e.,&nbsp;they&nbsp;depend&nbsp;on&nbsp;each&nbsp;other&nbsp;because&nbsp;they&nbsp;refer&nbsp;to&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header"></td><td nowrap="nowrap">&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">the&nbsp;same&nbsp;HTML&nbsp;elements.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__8"><a href="#difflib_chg_to16__9">n</a></td><td class="diff_header" id="from16_176">176</td><td nowrap="nowrap"><span class="diff_sub">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;{{HTTPHeader("ETag")}}&nbsp;response&nbsp;header&nbsp;is&nbsp;an&nbsp;&lt;em&gt;opaque</span></td><td class="diff_next"><a href="#difflib_chg_to16__9">n</a></td><td class="diff_header" id="to16_176">176</td><td nowrap="nowrap"><span class="diff_add">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;{{HTTPHeader("ETag")}}&nbsp;response&nbsp;header&nbsp;is&nbsp;an&nbsp;&lt;em&gt;opaque</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">-to-the-useragent&lt;/em&gt;&nbsp;value&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;as&nbsp;a&nbsp;strong&nbsp;validat</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">-to-the-useragent&lt;/em&gt;&nbsp;value&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;as&nbsp;a&nbsp;strong&nbsp;validat</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">or.&nbsp;That&nbsp;means&nbsp;that&nbsp;the&nbsp;client,&nbsp;like&nbsp;the&nbsp;browser,&nbsp;has&nbsp;don't&nbsp;know&nbsp;</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">or.&nbsp;That&nbsp;means&nbsp;that&nbsp;a&nbsp;HTTP&nbsp;user-agent,&nbsp;such&nbsp;as&nbsp;the&nbsp;browser,&nbsp;does&nbsp;</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">what&nbsp;this&nbsp;string&nbsp;represents&nbsp;and&nbsp;can't&nbsp;predict&nbsp;it,&nbsp;even&nbsp;if&nbsp;it&nbsp;is&nbsp;n</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">not&nbsp;know&nbsp;what&nbsp;this&nbsp;string&nbsp;represents&nbsp;and&nbsp;can't&nbsp;predict&nbsp;what&nbsp;its&nbsp;v</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">ot&nbsp;generated&nbsp;randomly&nbsp;on&nbsp;the&nbsp;server&nbsp;side.&nbsp;If&nbsp;the&nbsp;&lt;code&gt;ETag&lt;/code</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">alue&nbsp;would&nbsp;be.&nbsp;If&nbsp;the&nbsp;&lt;code&gt;ETag&lt;/code&gt;&nbsp;header&nbsp;was&nbsp;part&nbsp;of&nbsp;respon</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">&gt;&nbsp;header&nbsp;is&nbsp;present&nbsp;in&nbsp;a&nbsp;response,&nbsp;then&nbsp;the&nbsp;client&nbsp;can&nbsp;issue&nbsp;an&nbsp;{</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">se&nbsp;for&nbsp;a&nbsp;resource,&nbsp;the&nbsp;client&nbsp;can&nbsp;issue&nbsp;an&nbsp;{{HTTPHeader("If-None-</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">{HTTPHeader("If-None-Match")}}&nbsp;request&nbsp;header&nbsp;to&nbsp;validate&nbsp;the&nbsp;cac</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">Match")}}&nbsp;in&nbsp;the&nbsp;header&nbsp;of&nbsp;future&nbsp;requests&nbsp;–&nbsp;in&nbsp;order&nbsp;to&nbsp;validate</span></td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_sub">hed&nbsp;document.</span></td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap"><span class="diff_add">&nbsp;the&nbsp;cached&nbsp;resource.</span></td></tr>
+        </tbody>        
+        <tbody>
+            <tr><td class="diff_next" id="difflib_chg_to16__9"><a href="#difflib_chg_to16__top">t</a></td><td class="diff_header" id="from16_182">182</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;a&nbsp;validation&nbsp;request&nbsp;is&nbsp;made,&nbsp;the&nbsp;server&nbsp;can&nbsp;either&nbsp;ig</td><td class="diff_next"><a href="#difflib_chg_to16__top">t</a></td><td class="diff_header" id="to16_182">182</td><td nowrap="nowrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;a&nbsp;validation&nbsp;request&nbsp;is&nbsp;made,&nbsp;the&nbsp;server&nbsp;can&nbsp;either&nbsp;ig</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nore&nbsp;the&nbsp;validation&nbsp;request&nbsp;and&nbsp;response&nbsp;with&nbsp;a&nbsp;normal&nbsp;{{HTTPStat</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">nore&nbsp;the&nbsp;validation&nbsp;request&nbsp;and&nbsp;response&nbsp;with&nbsp;a&nbsp;normal&nbsp;{{HTTPStat</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">us(200)}}&nbsp;&lt;code&gt;OK&lt;/code&gt;,&nbsp;or&nbsp;it&nbsp;can&nbsp;return&nbsp;{{HTTPStatus(304)}}&nbsp;&lt;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">us(200)}}&nbsp;&lt;code&gt;OK&lt;/code&gt;,&nbsp;or&nbsp;it&nbsp;can&nbsp;return&nbsp;{{HTTPStatus(304)}}&nbsp;&lt;</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">code&gt;Not&nbsp;Modified&lt;/code&gt;&nbsp;<span class="diff_chg">to&nbsp;instruct&nbsp;the</span>&nbsp;browser&nbsp;to&nbsp;use&nbsp;its&nbsp;cache</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">code&gt;Not&nbsp;Modified&lt;/code&gt;&nbsp;<span class="diff_chg">(with&nbsp;an&nbsp;empty</span>&nbsp;b<span class="diff_add">ody)&nbsp;to&nbsp;instruct&nbsp;the&nbsp;b</span>ro</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">d&nbsp;copy.&nbsp;The&nbsp;latter&nbsp;response&nbsp;can&nbsp;also&nbsp;include&nbsp;headers&nbsp;that&nbsp;update&nbsp;</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">wser&nbsp;to&nbsp;use&nbsp;its&nbsp;cached&nbsp;copy.&nbsp;The&nbsp;latter&nbsp;response&nbsp;can&nbsp;also&nbsp;include</td></tr>
+            <tr><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">the&nbsp;expiration&nbsp;time&nbsp;of&nbsp;the&nbsp;cached&nbsp;document.</td><td class="diff_next"></td><td class="diff_header">></td><td nowrap="nowrap">&nbsp;headers&nbsp;that&nbsp;update&nbsp;the&nbsp;expiration&nbsp;time&nbsp;of&nbsp;the&nbsp;cached&nbsp;document.</td></tr>
+        </tbody>
+    </table></dd>
+        
+      </dl>
+    </section>
+  
+
+    <p><a href="Caching%24history.html" rel="nofollow, noindex">Back to History</a></p>
+
+  </article>
+
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+    
+    <input type="hidden" name="to" value="1108035">
+    
+  
+    
+    <input type="hidden" name="from" value="1107781">
+    
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Caching$compare?to=1108035&from=1107781 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:47:10 GMT -->
+</html>

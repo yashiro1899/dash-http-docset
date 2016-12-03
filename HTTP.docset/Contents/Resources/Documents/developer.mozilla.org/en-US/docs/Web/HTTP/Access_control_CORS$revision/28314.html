@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS$revision/28314 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:22:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 28314 | HTTP access control (CORS) | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FAccess_control_CORS%24revision%2F28314" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS%24revision/28314">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 28314 of <a href="../Access_control_CORS.html">HTTP access control (CORS)</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>HTTP_access_control</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>HTTP access control (CORS)</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>28314</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2008-12-01T14:23:36-08:00">Dec 1, 2008, 2:23:36 PM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>aruner</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>93 words added, 2 words removed</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/AJAX">AJAX</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Same-origin policy">Same-origin policy</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Security">Security</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/XMLHttpRequest">XMLHttpRequest</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          
+<p>{{ fx_minversion_header("3") }}</p>
+<p>{{ draft() }}</p>
+<p><em>Cross-site HTTP requests</em> are HTTP requests for resources invoked on a <em>different domain</em> from the domain of the resource making the request.  For instance, a resource loaded from Domain A (domaina.example) such as a web page, makes a request for a resource on Domain B (domainb.foo), such as an image, using the <code>img</code> element (<code>&lt;img src=domainb.foo/image.jpg /&gt;</code>).  This occurs very commonly on the web today -- pages load a number of resources in a cross-site manner, including CSS stylesheets, images and scripts, and other resources.</p>
+<p>Cross-site HTTP requests initiated from within script have been subjected to well-known restrictions, for well-understood security reasons.  For example, prior to Firefox 3.1, HTTP Requests made using the <a class="internal" href="https://developer.mozilla.org/en/XMLHttpRequest" title="en/XMLHttpRequest"><code>XMLHttpRequest</code></a> object were subject to the <a class="internal" href="https://developer.mozilla.org/en/Same_origin_policy_for_JavaScript" title="En/Same origin policy for JavaScript">same-origin policy</a>.  In particular, this meant that a web application using <a class="internal" href="https://developer.mozilla.org/en/XMLHttpRequest" title="En/XMLHttpRequest"><code>XMLHttpRequest</code></a> <em>could only</em> make HTTP requests to the domain it was loaded from, and not to other domains.  Developers expressed the desire to safely evolve capabilities such as <a class="internal" href="https://developer.mozilla.org/en/XMLHttpRequest" title="En/XMLHttpRequest"><code>XMLHttpReques</code>t</a> to make cross-site requests, for better, safer mashups within web applications.</p>
+<p>The <a class="external" href="http://www.w3.org/2008/webapps/" title="http://www.w3.org/2008/webapps/">Web Applications Working Group</a> within the <a class="external" href="http://www.w3.org/" title="http://www.w3.org/">W3C</a> has proposed the new <a class="external" href="http://dev.w3.org/2006/waf/access-control/" title="http://dev.w3.org/2006/waf/access-control/">Access Control for Cross-Site Requests</a> recommendation, which provides a way for web servers to support cross-site access controls, which enable secure cross-site data transfers.  Of particular note is that this specification is used within an <em>API container</em> such as <code><a class="internal" href="https://developer.mozilla.org/en/XMLHttpRequest" title="En/XMLHttpRequest">XMLHttpRequest</a></code> as a mitigation mechanism, allowing the crossing of the same-domain restriction in Firefox 3.1 and beyond.  The information in this article is primarily of interest to web administrators and server developers; on the client, Firefox handles the components of access control, including headers and policy enforcement. </p>
+<p>This new standard is supported by Firefox 3.1 and later, and is used to enable cross-site HTTP requests for:</p>
+<ul> <li>Invocations of the <a class="internal" href="https://developer.mozilla.org/en/XMLHttpRequest" title="En/XMLHttpRequest"><code>XMLHttpRequest</code></a> API in a cross-site manner, as discussed above.  This is implemented in Firefox 3.1</li> <li>Web Fonts (for cross-domain font usage in <code>@font-face</code> within CSS), <a class="external" href="http://www.webfonts.info/wiki/index.php?title=%40font-face_support_in_Firefox" title="http://www.webfonts.info/wiki/index.php?title=@font-face_support_in_Firefox">so that servers can deploy TrueType fonts that can only be cross-site loaded and used by web sites that are permitted to do so.</a>  This is implemented in Firefox 3.1</li> <li>Potential further evolutions of the <a class="internal" href="https://developer.mozilla.org/%3Cvideo%3E" title="<video>"><code>&lt;video&gt;</code></a> API and capability, <a class="external" href="http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-November/017224.html" title="http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-November/017224.html">as discussed on the WHATWG listserv</a>, to allow safe invocations of features on cross-site loaded videos. This is currently not implemented yet.</li>
+</ul>
+<p>This article is a general discussion of Access Control, and includes a discussion of the HTTP headers as implemented in Firefox 3.1. </p>
+<h2>Overview</h2>
+<p>The Access Control standard works by adding new HTTP headers that allow servers to describe the set of origins that are permitted to read that information using a web browser.  Firefox supports these headers and enforces the restrictions they establish.  Additionally, for HTTP request methods that can cause side-effects on user data (in particular, for HTTP methods other than <code>GET</code>, or for <code>POST</code> usage with certain MIME types), the specification mandates that browsers "preflight" the request, soliciting supported methods from the server with an HTTP <code>OPTIONS</code> request header, and then, upon "approval" from the server, sending the actual request with the actual HTTP request method.  Additionally, servers can notify clients whether "credentials" (including Cookies and HTTP Authentication data) should be sent with requests.</p>
+<p>Subsequent sections discuss scenarios, as well as a breakdown of the HTTP headers used. </p>
+<h2>Examples of Access C0ntrol Scenarios</h2>
+<p>Here, we present three scenarios that are illustrative of how Access Control works.  All of these examples use the <a class="internal" href="https://developer.mozilla.org/en/XMLHttpRequest" title="En/XMLHttpRequest">XMLHttpRequest</a> object, which can be used to make cross-site invocations in Firefox 3.1 and beyond.</p>
+<h3>Simple Requests</h3>
+<p>A simple cross-site request is one that:</p>
+<ul> <li>Only uses GET or POST.  If POST is used to send data to the server, the Content-Type of the data sent to the server with the HTTP POST request is one of <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, or <code>text/plain.</code></li> <li>Does not set custom headers with the HTTP Request (such as <code>X-Modified</code>, etc.)</li>
+</ul>
+<p>For example, suppose web content on domain <a class=" external" href="http://foo.example/" rel="freelink">http://foo.example</a> wishes to invoke content on domain <a class=" external" href="http://bar.other/" rel="freelink">http://bar.other</a>.  Code of this sort might be used within JavaScript deployed on foo.example:</p>
+<pre id="line1">var invocation = new XMLHttpRequest();
+var url = 'http://bar.other/resources/public-data/';
+   
+     function callOtherDomain(){
+        if(invocation)
+        {    
+            invocation.open('GET', url, true);
+            invocation.onreadystatechange = handler;
+            invocation.send(); 
+        }
+</pre>
+<h3>Preflight Requests</h3>
+<p>[Give Example of Some Header and Data Exchanges Here]</p>
+<p>[Discussion]</p>
+<h3>Requests with Credentials</h3>
+<p>[Give Example of Some Header, Data, and Credential Exchanges here]</p>
+<p>[Discussion]</p>
+<h2>The HTTP response headers</h2>
+<p>This section lists the HTTP response headers defined by the access control specification.</p>
+<h3>Access-Control-Allow-Origin</h3>
+<p>A returned resource may have one <code>Access-Control-Allow-Origin</code> header, with the following syntax:</p>
+<pre>Access-Control-Allow-Origin: &lt;origin&gt; | *
+</pre>
+<p>The <code>origin</code> parameter specifies a URI that may access the resource.  The browser must enforce this.  For uncredentialed requests, the server may specify "*" as a wildcard, thereby allowing any origin to access the resource.</p>
+<p>For example, to allow <a class=" external" href="http://mozilla.com/" rel="freelink">http://mozilla.com</a> to access the resource, you can specify:</p>
+<pre>Access-Control-Allow-Origin: http://mozilla.com</pre>
+<h3>Access-Control-Max-Age</h3>
+<p>This header indicates how long the results of a preflight request can be cached.</p>
+<pre>Access-Control-Max-Age: &lt;delta-seconds&gt;
+</pre>
+<p>The <code>delta-seconds</code> parameter indicates the number of seconds the results can be cached.</p>
+<h3>Access-Control-Allow-Credentials</h3>
+<p>Indicates whether or not the response to the request can be exposed when the <code>credentials</code> flag is true.  When used as part of a response to a preflight request, this indicates whether or not the actual request (rather than the preflight request) can be made using credentials.</p>
+<pre>Access-Control-Allow-Credentials: true | false
+</pre>
+<h3>Access-Control-Allow-Methods</h3>
+<p>Specifies the method or methods allowed when accessing the resource.  This is used in response to a preflight request.</p>
+<pre>Access-Control-Allow-Methods: &lt;method&gt;[, &lt;method&gt;]*
+</pre>
+<h3>Access-Control-Allow-Headers</h3>
+<p>Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request.</p>
+<pre>Access-Control-Allow-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*
+</pre>
+<h2>The HTTP request headers</h2>
+<p>This section lists headers that clients may use when issuing HTTP requests in order to make use of the access control feature.</p>
+<h3>Origin</h3>
+<p>Indicates the origin of the cross-site access request or preflight request.</p>
+<pre>Origin: &lt;origin&gt;
+</pre>
+<p>The origin is a URI indicating the server from which the request initiated.  It does not include any path information, but only the server name.</p>
+<div class="note"><strong>Note:</strong> The <code>origin</code> can be the empty string; this is useful, for example, if the source is a <code>data</code> URL.</div>
+<h3>Access-Control-Request-Method</h3>
+<p>Used when issuing a preflight request to let the server know what HTTP method will be used when the actual request is made.</p>
+<pre>Access-Control-Request-Method: &lt;method&gt;
+</pre>
+<h3>Access-Control-Request-Headers</h3>
+<p>Used when issuing a preflight request to let the server know what HTTP headers will be used when the actual request is made.</p>
+<pre>Access-Control-Request-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*
+</pre>
+<h2>See also</h2>
+<ul> <li><a class="external" href="http://dev.w3.org/2006/waf/access-control/" title="http://dev.w3.org/2006/waf/access-control/">Access Control for Cross-Site Requests specification</a></li> <li><a class="internal" href="https://developer.mozilla.org/en/XMLHttpRequest" title="En/XMLHttpRequest"><code>XMLHttpRequest</code></a></li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">
+&lt;p&gt;{{ fx_minversion_header(&#34;3&#34;) }}&lt;/p&gt;
+&lt;p&gt;{{ draft() }}&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Cross-site HTTP requests&lt;/em&gt; are HTTP requests for resources invoked on a &lt;em&gt;different domain&lt;/em&gt; from the domain of the resource making the request.  For instance, a resource loaded from Domain A (domaina.example) such as a web page, makes a request for a resource on Domain B (domainb.foo), such as an image, using the &lt;code&gt;img&lt;/code&gt; element (&lt;code&gt;&amp;lt;img src=domainb.foo/image.jpg /&amp;gt;&lt;/code&gt;).  This occurs very commonly on the web today -- pages load a number of resources in a cross-site manner, including CSS stylesheets, images and scripts, and other resources.&lt;/p&gt;
+&lt;p&gt;Cross-site HTTP requests initiated from within script have been subjected to well-known restrictions, for well-understood security reasons.  For example, prior to Firefox 3.1, HTTP Requests made using the &lt;a class=&#34;internal&#34; href=&#34;/en/XMLHttpRequest&#34; title=&#34;en/XMLHttpRequest&#34;&gt;&lt;code&gt;XMLHttpRequest&lt;/code&gt;&lt;/a&gt; object were subject to the &lt;a class=&#34;internal&#34; href=&#34;/en/Same_origin_policy_for_JavaScript&#34; title=&#34;En/Same origin policy for JavaScript&#34;&gt;same-origin policy&lt;/a&gt;.  In particular, this meant that a web application using &lt;a class=&#34;internal&#34; href=&#34;/en/XMLHttpRequest&#34; title=&#34;En/XMLHttpRequest&#34;&gt;&lt;code&gt;XMLHttpRequest&lt;/code&gt;&lt;/a&gt; &lt;em&gt;could only&lt;/em&gt; make HTTP requests to the domain it was loaded from, and not to other domains.  Developers expressed the desire to safely evolve capabilities such as &lt;a class=&#34;internal&#34; href=&#34;/en/XMLHttpRequest&#34; title=&#34;En/XMLHttpRequest&#34;&gt;&lt;code&gt;XMLHttpReques&lt;/code&gt;t&lt;/a&gt; to make cross-site requests, for better, safer mashups within web applications.&lt;/p&gt;
+&lt;p&gt;The &lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/2008/webapps/&#34; title=&#34;http://www.w3.org/2008/webapps/&#34;&gt;Web Applications Working Group&lt;/a&gt; within the &lt;a class=&#34;external&#34; href=&#34;http://www.w3.org/&#34; title=&#34;http://www.w3.org/&#34;&gt;W3C&lt;/a&gt; has proposed the new &lt;a class=&#34;external&#34; href=&#34;http://dev.w3.org/2006/waf/access-control/&#34; title=&#34;http://dev.w3.org/2006/waf/access-control/&#34;&gt;Access Control for Cross-Site Requests&lt;/a&gt; recommendation, which provides a way for web servers to support cross-site access controls, which enable secure cross-site data transfers.  Of particular note is that this specification is used within an &lt;em&gt;API container&lt;/em&gt; such as &lt;code&gt;&lt;a class=&#34;internal&#34; href=&#34;/en/XMLHttpRequest&#34; title=&#34;En/XMLHttpRequest&#34;&gt;XMLHttpRequest&lt;/a&gt;&lt;/code&gt; as a mitigation mechanism, allowing the crossing of the same-domain restriction in Firefox 3.1 and beyond.  The information in this article is primarily of interest to web administrators and server developers; on the client, Firefox handles the components of access control, including headers and policy enforcement. &lt;/p&gt;
+&lt;p&gt;This new standard is supported by Firefox 3.1 and later, and is used to enable cross-site HTTP requests for:&lt;/p&gt;
+&lt;ul&gt; &lt;li&gt;Invocations of the &lt;a class=&#34;internal&#34; href=&#34;/en/XMLHttpRequest&#34; title=&#34;En/XMLHttpRequest&#34;&gt;&lt;code&gt;XMLHttpRequest&lt;/code&gt;&lt;/a&gt; API in a cross-site manner, as discussed above.  This is implemented in Firefox 3.1&lt;/li&gt; &lt;li&gt;Web Fonts (for cross-domain font usage in &lt;code&gt;@font-face&lt;/code&gt; within CSS), &lt;a class=&#34;external&#34; href=&#34;http://www.webfonts.info/wiki/index.php?title=%40font-face_support_in_Firefox&#34; title=&#34;http://www.webfonts.info/wiki/index.php?title=@font-face_support_in_Firefox&#34;&gt;so that servers can deploy TrueType fonts that can only be cross-site loaded and used by web sites that are permitted to do so.&lt;/a&gt;  This is implemented in Firefox 3.1&lt;/li&gt; &lt;li&gt;Potential further evolutions of the &lt;a class=&#34;internal&#34; href=&#34;/%3Cvideo%3E&#34; title=&#34;&amp;lt;video&gt;&#34;&gt;&lt;code&gt;&amp;lt;video&amp;gt;&lt;/code&gt;&lt;/a&gt; API and capability, &lt;a class=&#34;external&#34; href=&#34;http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-November/017224.html&#34; title=&#34;http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2008-November/017224.html&#34;&gt;as discussed on the WHATWG listserv&lt;/a&gt;, to allow safe invocations of features on cross-site loaded videos. This is currently not implemented yet.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This article is a general discussion of Access Control, and includes a discussion of the HTTP headers as implemented in Firefox 3.1. &lt;/p&gt;
+&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;The Access Control standard works by adding new HTTP headers that allow servers to describe the set of origins that are permitted to read that information using a web browser.  Firefox supports these headers and enforces the restrictions they establish.  Additionally, for HTTP request methods that can cause side-effects on user data (in particular, for HTTP methods other than &lt;code&gt;GET&lt;/code&gt;, or for &lt;code&gt;POST&lt;/code&gt; usage with certain MIME types), the specification mandates that browsers &#34;preflight&#34; the request, soliciting supported methods from the server with an HTTP &lt;code&gt;OPTIONS&lt;/code&gt; request header, and then, upon &#34;approval&#34; from the server, sending the actual request with the actual HTTP request method.  Additionally, servers can notify clients whether &#34;credentials&#34; (including Cookies and HTTP Authentication data) should be sent with requests.&lt;/p&gt;
+&lt;p&gt;Subsequent sections discuss scenarios, as well as a breakdown of the HTTP headers used. &lt;/p&gt;
+&lt;h2&gt;Examples of Access C0ntrol Scenarios&lt;/h2&gt;
+&lt;p&gt;Here, we present three scenarios that are illustrative of how Access Control works.  All of these examples use the &lt;a class=&#34;internal&#34; href=&#34;/en/XMLHttpRequest&#34; title=&#34;En/XMLHttpRequest&#34;&gt;XMLHttpRequest&lt;/a&gt; object, which can be used to make cross-site invocations in Firefox 3.1 and beyond.&lt;/p&gt;
+&lt;h3&gt;Simple Requests&lt;/h3&gt;
+&lt;p&gt;A simple cross-site request is one that:&lt;/p&gt;
+&lt;ul&gt; &lt;li&gt;Only uses GET or POST.  If POST is used to send data to the server, the Content-Type of the data sent to the server with the HTTP POST request is one of &lt;code&gt;application/x-www-form-urlencoded&lt;/code&gt;, &lt;code&gt;multipart/form-data&lt;/code&gt;, or &lt;code&gt;text/plain.&lt;/code&gt;&lt;/li&gt; &lt;li&gt;Does not set custom headers with the HTTP Request (such as &lt;code&gt;X-Modified&lt;/code&gt;, etc.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For example, suppose web content on domain &lt;a class=&#34; external&#34; href=&#34;http://foo.example&#34; rel=&#34;freelink&#34;&gt;http://foo.example&lt;/a&gt; wishes to invoke content on domain &lt;a class=&#34; external&#34; href=&#34;http://bar.other&#34; rel=&#34;freelink&#34;&gt;http://bar.other&lt;/a&gt;.  Code of this sort might be used within JavaScript deployed on foo.example:&lt;/p&gt;
+&lt;pre id=&#34;line1&#34;&gt;var invocation = new XMLHttpRequest();
+var url = &#39;http://bar.other/resources/public-data/&#39;;
+   
+     function callOtherDomain(){
+        if(invocation)
+        {    
+            invocation.open(&#39;GET&#39;, url, true);
+            invocation.onreadystatechange = handler;
+            invocation.send(); 
+        }
+&lt;/pre&gt;
+&lt;h3&gt;Preflight Requests&lt;/h3&gt;
+&lt;p&gt;[Give Example of Some Header and Data Exchanges Here]&lt;/p&gt;
+&lt;p&gt;[Discussion]&lt;/p&gt;
+&lt;h3&gt;Requests with Credentials&lt;/h3&gt;
+&lt;p&gt;[Give Example of Some Header, Data, and Credential Exchanges here]&lt;/p&gt;
+&lt;p&gt;[Discussion]&lt;/p&gt;
+&lt;h2&gt;The HTTP response headers&lt;/h2&gt;
+&lt;p&gt;This section lists the HTTP response headers defined by the access control specification.&lt;/p&gt;
+&lt;h3&gt;Access-Control-Allow-Origin&lt;/h3&gt;
+&lt;p&gt;A returned resource may have one &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; header, with the following syntax:&lt;/p&gt;
+&lt;pre&gt;Access-Control-Allow-Origin: &amp;lt;origin&amp;gt; | *
+&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;origin&lt;/code&gt; parameter specifies a URI that may access the resource.  The browser must enforce this.  For uncredentialed requests, the server may specify &#34;*&#34; as a wildcard, thereby allowing any origin to access the resource.&lt;/p&gt;
+&lt;p&gt;For example, to allow &lt;a class=&#34; external&#34; href=&#34;http://mozilla.com&#34; rel=&#34;freelink&#34;&gt;http://mozilla.com&lt;/a&gt; to access the resource, you can specify:&lt;/p&gt;
+&lt;pre&gt;Access-Control-Allow-Origin: http://mozilla.com&lt;/pre&gt;
+&lt;h3&gt;Access-Control-Max-Age&lt;/h3&gt;
+&lt;p&gt;This header indicates how long the results of a preflight request can be cached.&lt;/p&gt;
+&lt;pre&gt;Access-Control-Max-Age: &amp;lt;delta-seconds&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;delta-seconds&lt;/code&gt; parameter indicates the number of seconds the results can be cached.&lt;/p&gt;
+&lt;h3&gt;Access-Control-Allow-Credentials&lt;/h3&gt;
+&lt;p&gt;Indicates whether or not the response to the request can be exposed when the &lt;code&gt;credentials&lt;/code&gt; flag is true.  When used as part of a response to a preflight request, this indicates whether or not the actual request (rather than the preflight request) can be made using credentials.&lt;/p&gt;
+&lt;pre&gt;Access-Control-Allow-Credentials: true | false
+&lt;/pre&gt;
+&lt;h3&gt;Access-Control-Allow-Methods&lt;/h3&gt;
+&lt;p&gt;Specifies the method or methods allowed when accessing the resource.  This is used in response to a preflight request.&lt;/p&gt;
+&lt;pre&gt;Access-Control-Allow-Methods: &amp;lt;method&amp;gt;[, &amp;lt;method&amp;gt;]*
+&lt;/pre&gt;
+&lt;h3&gt;Access-Control-Allow-Headers&lt;/h3&gt;
+&lt;p&gt;Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request.&lt;/p&gt;
+&lt;pre&gt;Access-Control-Allow-Headers: &amp;lt;field-name&amp;gt;[, &amp;lt;field-name&amp;gt;]*
+&lt;/pre&gt;
+&lt;h2&gt;The HTTP request headers&lt;/h2&gt;
+&lt;p&gt;This section lists headers that clients may use when issuing HTTP requests in order to make use of the access control feature.&lt;/p&gt;
+&lt;h3&gt;Origin&lt;/h3&gt;
+&lt;p&gt;Indicates the origin of the cross-site access request or preflight request.&lt;/p&gt;
+&lt;pre&gt;Origin: &amp;lt;origin&amp;gt;
+&lt;/pre&gt;
+&lt;p&gt;The origin is a URI indicating the server from which the request initiated.  It does not include any path information, but only the server name.&lt;/p&gt;
+&lt;div class=&#34;note&#34;&gt;&lt;strong&gt;Note:&lt;/strong&gt; The &lt;code&gt;origin&lt;/code&gt; can be the empty string; this is useful, for example, if the source is a &lt;code&gt;data&lt;/code&gt; URL.&lt;/div&gt;
+&lt;h3&gt;Access-Control-Request-Method&lt;/h3&gt;
+&lt;p&gt;Used when issuing a preflight request to let the server know what HTTP method will be used when the actual request is made.&lt;/p&gt;
+&lt;pre&gt;Access-Control-Request-Method: &amp;lt;method&amp;gt;
+&lt;/pre&gt;
+&lt;h3&gt;Access-Control-Request-Headers&lt;/h3&gt;
+&lt;p&gt;Used when issuing a preflight request to let the server know what HTTP headers will be used when the actual request is made.&lt;/p&gt;
+&lt;pre&gt;Access-Control-Request-Headers: &amp;lt;field-name&amp;gt;[, &amp;lt;field-name&amp;gt;]*
+&lt;/pre&gt;
+&lt;h2&gt;See also&lt;/h2&gt;
+&lt;ul&gt; &lt;li&gt;&lt;a class=&#34;external&#34; href=&#34;http://dev.w3.org/2006/waf/access-control/&#34; title=&#34;http://dev.w3.org/2006/waf/access-control/&#34;&gt;Access Control for Cross-Site Requests specification&lt;/a&gt;&lt;/li&gt; &lt;li&gt;&lt;a class=&#34;internal&#34; href=&#34;/en/XMLHttpRequest&#34; title=&#34;En/XMLHttpRequest&#34;&gt;&lt;code&gt;XMLHttpRequest&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Access_control_CORS%24revert/28314" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS$revision/28314 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:22:52 GMT -->
+</html>

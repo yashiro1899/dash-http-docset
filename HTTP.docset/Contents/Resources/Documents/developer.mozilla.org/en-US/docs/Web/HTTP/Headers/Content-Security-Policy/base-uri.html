@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:34:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>CSP: base-uri - HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+  <link rel="alternate" type="application/json" href="base-uri%24json.json">
+  <link rel="canonical" href="base-uri.html" >
+
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="CSP: base-uri">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri">
+  <meta name="twitter:title" content="CSP: base-uri">
+  
+  <meta property="og:description" content="The HTTP Content-Security-Policy base-uri directive restricts the URLs which can be used in a document&#39;s base element. If this value is absent, then any URI is allowed. If this directive is absent, the user agent will use the value in the base element.">
+  <meta name="description" content="The HTTP Content-Security-Policy base-uri directive restricts the URLs which can be used in a document&#39;s base element. If this value is absent, then any URI is allowed. If this directive is absent, the user agent will use the value in the base element.">
+  <meta name="twitter:description" content="The HTTP Content-Security-Policy base-uri directive restricts the URLs which can be used in a document&#39;s base element. If this value is absent, then any URI is allowed. If this directive is absent, the user agent will use the value in the base element.">
+  
+
+  
+  <script type="text/javascript">
+    
+      var document_saved = 0;
+    
+  </script>
+
+
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+        // dimension12 == 'Page Revision"
+        ga('set', 'dimension12', '1143127');
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body data-slug="Web/HTTP/Headers/Content-Security-Policy/base-uri" contextmenu="edit-history-menu" data-search-url="" class="document  ">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#document-main" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FHeaders%2FContent-Security-Policy%2Fbase-uri" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+   <!-- end is_zone -->
+
+
+    <div class="wiki-main-content" id="document-main"><div class="center">
+      
+      <div class="article-meta">
+        <!-- action buttons -->
+        
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  <ul class="page-buttons" data-sticky="false">
+      
+      <li><button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false"><span>Languages</span><i aria-hidden="true" class="icon-language"></i></button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+              
+                <li class="smaller">No translations exist for this article.</li>
+              
+
+              
+                <li><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri%24locales" rel="nofollow, noindex" id="translations-add">Add a translation</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      
+      <li class="page-buttons-edit"><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri%24edit" class="button" data-optimizely-hook="button-edit-doc" id="edit-button">Edit<i aria-hidden="true" class="icon-pencil"></i></a></li>
+      
+
+        
+
+        <li><button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false"><span>Advanced</span><i aria-hidden="true" class="icon-cog"></i></button>
+        <div class="submenu js-submenu" id="advanced-menu-submenu">
+          <!-- this page -->
+          <div class="submenu-column">
+            <div class="title">Advanced</div>
+            <ul>
+                <li><a href="base-uri%24history.html" rel="nofollow, noindex">History</a></li>
+                
+                
+                
+
+
+                
+
+                
+                
+                
+                <li class="page-print"><a href="#" onclick="return window.print();">Print this article</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+
+        <!-- crumbs -->
+        
+  <nav class="crumbs" role="navigation"><ol xmlns:v="http://rdf.data-vocabulary.org/#" aria-label="breadcrumbs">
+    <li typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US" rel="v:url" property="v:title">MDN</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US/docs/Web" rel="v:url" property="v:title">Web technology for developers</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="../../../HTTP.html" rel="v:url" property="v:title">HTTP</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="../../Headers.html" rel="v:url" property="v:title">HTTP headers</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="../Content-Security-Policy.html" rel="v:url" property="v:title">Content-Security-Policy</a></li>
+    
+    <li class="crumb" typeof="v:Breadcrumb" property="v:title">CSP: base-uri</li>
+  </ol></nav>
+      </div>
+
+      <!-- heading -->
+      <div id="wiki-document-head" class="document-head">
+          <span class="from-search-previous-box">
+            <a class="button from-search-previous only-icon disabled" title="Previous Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-left"></i></a>
+          </span>
+          <span class="from-search-navigate-wrap">
+            <a href="#" class="from-search-navigate"><span class="from-search-navigate-up"><i aria-hidden="true" class="icon-double-angle-up"></i></span><span class="from-search-navigate-down"><i aria-hidden="true" class="icon-double-angle-down"></i></span></a>
+          </span>
+          <div class="from-search-toc submenu">
+            <span class="title">Your Search Results</span>
+            <ol></ol>
+          </div>
+          <span class="from-search-next-box">
+            <a class="button from-search-next only-icon disabled" title="Next Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-right"></i></a>
+          </span>
+
+        
+        <div class="contributor-avatars" data-all-text="see all contributors" data-alternate-message="hide contributors" >
+            <ul>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/fscholz" title="View profile: fscholz">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="fscholz" data-src="../../../../../../../secure.gravatar.com/avatar/e24391c9174352988d819a9b9ea77c9e6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">fscholz</noscript></a>
+                </li>
+            
+            </ul>
+        </div>
+        
+
+        <h1>CSP: base-uri</h1>
+
+      </div>
+      
+
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-right-present wiki-left-present">
+
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+            
+              <!-- TOC, approvals, etc -->
+              <div class="column-strip wiki-column" id="wiki-right">
+              
+              <!-- table of contents -->
+              <div id="toc" class="toc toggleable">
+                <a href="#toc" class="title toggler" data-open-icon="icon-plus" data-closed-icon="icon-minus">In This Article<i></i></a>
+                <ol class="toggle-container">
+                  <li><a href="#Syntax" rel="internal">Syntax</a><ol><li><a href="#Sources" rel="internal">Sources</a></ol></li><li><a href="#Examples" rel="internal">Examples</a><ol><li><a href="#Meta_tag_configuration" rel="internal">Meta tag configuration</a><li><a href="#Apache_configuration" rel="internal">Apache configuration</a><li><a href="#Nginx_configuration" rel="internal">Nginx configuration</a><li><a href="#Violation_case" rel="internal">Violation case</a></ol></li><li><a href="#Specifications" rel="internal">Specifications</a><li><a href="#Browser_compatibility" rel="internal">Browser compatibility</a><li><a href="#See_also" rel="internal">See also</a>
+                </ol>
+              </div>
+              
+              </div>
+            
+
+            
+            
+              
+            
+
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-half wiki-column text-content">
+
+              
+
+              
+
+              
+                
+                
+                
+              
+              
+
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                
+                  
+                    <div><section class="Quick_links" id="Quick_Links"><!-- --></section></div>
+
+<p>The HTTP <a title="The HTTP Content-Security-Policy response header allows web site administrators to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks (XSS)." href="../Content-Security-Policy.html"><code>Content-Security-Policy</code></a> <strong><code>base-uri</code></strong> directive restricts the URLs which can be used in a document's <a title="The HTML &lt;base> element specifies the base URL to use for all relative URLs contained within a document. There can be only one &lt;base> element in a document." href="/en-US/docs/Web/HTML/Element/base"><code>&lt;base&gt;</code></a> element. If this value is absent, then any URI is allowed. If this directive is absent, the user agent will use the value in the <a title="The HTML &lt;base> element specifies the base URL to use for all relative URLs contained within a document. There can be only one &lt;base> element in a document." href="/en-US/docs/Web/HTML/Element/base"><code>&lt;base&gt;</code></a> element.</p>
+
+<table class="properties">
+ <tbody>
+  <tr>
+   <th scope="row">CSP version</th>
+   <td>2</td>
+  </tr>
+  <tr>
+   <th scope="row">Directive type</th>
+   <td><a title="Document directive: CSP document directives are used in a Content-Security-Policy header and govern the properties of a document or worker environment to which a policy applies." href="https://developer.mozilla.org/en-US/docs/Glossary/Document_directive" class="glossaryLink">Document directive</a></td>
+  </tr>
+  <tr>
+   <th scope="row"><a title="The HTTP Content-Security-Policy default-src directive serves as a fallback for the other CSP fetch directives. If the following directives are absent, the user agent will look for the default-src directive:" href="default-src.html"><code>default-src</code></a> fallback</th>
+   <td>No. Not setting this allows anything.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Syntax">Syntax</h2>
+
+<p>One or more sources can be allowed for the base-uri policy:</p>
+
+<pre class="syntaxbox">Content-Security-Policy: base-uri &lt;source&gt;;
+Content-Security-Policy: base-uri &lt;source&gt; &lt;source&gt;;
+</pre>
+
+<h3 id="Sources">Sources</h3>
+
+<p></p><p>&lt;source&gt; can be one of the following:</p>
+
+<dl><dt>&lt;host-source&gt;</dt>
+ <dd>Internet hosts by name or IP address, as well as an optional <a href="https://developer.mozilla.org/en-US/docs/URIs_and_URLs">URL scheme</a> and/or port number. The site's address may include an optional leading wildcard (the asterisk character, <code>'*'</code>), and you may use a wildcard (again, <code>'*'</code>) as the port number, indicating that all legal ports are valid for the source.<br>
+ Examples:
+ <ul><li><code>http://*.example.com</code>: Matches all attempts to load from any subdomain of example.com using the <code>http:</code> URL scheme.</li>
+  <li><code>mail.example.com:443</code>: Matches all attempts to access port 443 on mail.example.com.</li>
+  <li><code>https://store.example.com</code>: Matches all attempts to access store.example.com using <code>https:</code>.</li>
+ </ul></dd>
+ <dt>&lt;scheme-source&gt;</dt>
+ <dd>A schema such as 'http:' or 'https:'. The colon is required. You can also specify data schemas (not recommended).
+ <ul><li>'<code>data:</code>' Allows <a href="../../Basics_of_HTTP/Data_URIs.html"><code>data:</code> URIs</a> to be used as a content source.<em> This is insecure; an attacker can also inject arbitrary data: URIs. Use this sparingly and definitely not for scripts.</em></li>
+  <li><code>'mediastream:'</code> Allows <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_API"><code>mediastream:</code> URIs</a> to be used as a content source.</li>
+  <li><code>'blob:'</code> Allows <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob"><code>blob:</code> URIs</a> to be used as a content source.</li>
+  <li><code>'filesystem:'</code> Allows <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileSystem"><code>filesystem:</code> URIs</a> to be used as a content source.</li>
+ </ul></dd>
+ <dt><code>'self'</code></dt>
+ <dd>Refers to the origin from which the protected document is being served, including the same URL scheme and port number. You must include the single quotes. Some browsers specifically exclude <code>blob</code> and <code>filesystem</code> from source directives. Sites needing to allow these content types can specify them using the Data attribute.</dd>
+ <dt><code>'unsafe-inline'</code></dt>
+ <dd>Allows the use of inline resources, such as inline <a title="The &lt;script> element (or HTML Script Element ) is used to embed or reference an executable script within an HTML or XHTML document." href="/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a> elements, <code>javascript:</code> URLs, inline event handlers, and inline <a title="The HTML &lt;style> element contains style information for a document, or part of a document. By default, the style instructions written inside that element are expected to be CSS." href="/en-US/docs/Web/HTML/Element/style"><code>&lt;style&gt;</code></a> elements. You must include the single quotes.</dd>
+ <dt><code>'unsafe-eval'</code></dt>
+ <dd>Allows the use of <code>eval()</code> and similar methods for creating code from strings. You must include the single quotes.</dd>
+ <dt><code>'none'</code></dt>
+ <dd>Refers to the empty set; that is, no URLs match. The single quotes are required.</dd>
+ <dt>'nonce-&lt;base64-value&gt;'</dt>
+ <dd>A whitelist for specific inline scripts using a cryptographic nonce (number used once). The server must generate a unique nonce value each time it transmits a policy. It is critical to provide an unguessable nonce, as bypassing a resource’s policy is otherwise trivial. See <a href="script-src.html#Unsafe_inline_script">unsafe inline script</a> for an example.</dd>
+ <dt>&lt;hash-source&gt;</dt>
+ <dd>A sha256, sha384 or sha512 of inline scripts or styles. When generating the hash, don't include the &lt;script&gt; or &lt;style&gt; tags and note that capitalization and whitespace matter, including leading or trailing whitespace. See <a href="script-src.html#Unsafe_inline_script">unsafe inline script</a> for an example.</dd>
+ <dt>'strict-dynamic'</dt>
+ <dd>The <code>strict-dynamic</code> source expression specifies that the trust explicitly given to a script present in the markup, by accompanying it with a nonce or a hash, shall be propagated to all the scripts loaded by that root script. At the same time, any whitelist or source expressions such as <code>'self'</code> or <code>'unsafe-inline'</code> will be ignored. See <a href="script-src.html#strict-dynamic">script-src</a> for an example.</dd>
+</dl><p></p>
+
+<h2 id="Examples">Examples</h2>
+
+<h3 id="Meta_tag_configuration">Meta tag configuration</h3>
+
+<pre class="brush: html">&lt;meta http-equiv="Content-Security-Policy" content="base-uri 'self'"&gt;</pre>
+
+<h3 id="Apache_configuration">Apache configuration</h3>
+
+<pre class="brush: bash">&lt;IfModule mod_headers.c&gt; 
+Header set Content-Security-Policy "base-uri 'self';
+&lt;/IfModule&gt;</pre>
+
+<h3 id="Nginx_configuration">Nginx configuration</h3>
+
+<pre class="brush: bash">add_header Content-Security-Policy "base-uri 'self';"</pre>
+
+<h3 id="Violation_case">Violation case</h3>
+
+<p>Given your domain isn't example.com, using a <a title="The HTML &lt;base> element specifies the base URL to use for all relative URLs contained within a document. There can be only one &lt;base> element in a document." href="/en-US/docs/Web/HTML/Element/base"><code>&lt;base&gt;</code></a> element with an href set to example.com will result in a CSP violation.</p>
+
+<pre class="brush: html; example-bad">&lt;meta http-equiv="Content-Security-Policy" content="base-uri 'self'"&gt;
+&lt;base href="http://example.com/"&gt;
+
+// Error: Refused to set the document's base URI to 'http://example.com/' 
+// because it violates the following Content Security Policy 
+// directive: "base-uri 'self'"</pre>
+
+<h2 id="Specifications">Specifications</h2>
+
+<table class="standard-table">
+ <tbody>
+  <tr>
+   <th scope="col">Specification</th>
+   <th scope="col">Status</th>
+   <th scope="col">Comment</th>
+  </tr>
+  <tr>
+   <td><a lang="en" hreflang="en" href="https://w3c.github.io/webappsec-csp/#directive-base-uri" class="external">Content Security Policy Level 3<br><small lang="en-US">The definition of 'base-uri' in that specification.</small></a></td>
+   <td><span class="spec-ED">Editor's Draft</span></td>
+   <td>No changes.</td>
+  </tr>
+  <tr>
+   <td><a lang="en" hreflang="en" href="https://w3c.github.io/webappsec-csp/2/#directive-base-uri" class="external">Content Security Policy Level 2<br><small lang="en-US">The definition of 'base-uri' in that specification.</small></a></td>
+   <td><span class="spec-CR">Candidate Recommendation</span></td>
+   <td>Initial definition.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+
+<p class="hidden">The compatibility table in this page is generated from structured data. If you'd like to contribute to the data, please check out <a href="https://github.com/mdn/browser-compat-data" class="external">https://github.com/mdn/browser-compat-data</a> and send us a pull request.</p>
+
+<p></p><div class="htab"><a name="AutoCompatibilityTable" id="AutoCompatibilityTable"></a><ul><li class="selected"><a>Desktop</a></li><li><a>Mobile</a></li></ul></div><div id="compat-desktop"><table class="compat-table">  <thead>    <tr>      <th>Feature</th>      <th>Chrome</th>
+      <th>Edge</th>
+      <th>Firefox</th>
+      <th>Internet Explorer</th>
+      <th>Opera</th>
+      <th>Safari</th>
+      <th>Servo</th>
+    </tr>  </thead><tbody><tr><td>Basic Support</td><td>40</td><td><span style="color: #f00;">No support</span></td><td>35.0</td><td><span style="color: #f00;">No support</span></td><td>27</td><td>10</td><td><span title="Compatibility unknown; please update this." style="color: rgb(255, 153, 0);">?</span></td></tr></tbody></table></div><div id="compat-mobile"><table class="compat-table">  <thead>    <tr>      <th>Feature</th>      <th>Android</th>
+      <th>Chrome for Android</th>
+      <th>Edge Mobile</th>
+      <th>Firefox for Android</th>
+      <th>IE Mobile</th>
+      <th>Opera Mobile</th>
+      <th>Safari Mobile</th>
+    </tr>  </thead><tbody><tr><td>Basic Support</td><td><span title="Compatibility unknown; please update this." style="color: rgb(255, 153, 0);">?</span></td><td><span style="color: #888;">(Yes)</span></td><td><span style="color: #f00;">No support</span></td><td>35.0</td><td><span style="color: #f00;">No support</span></td><td><span title="Compatibility unknown; please update this." style="color: rgb(255, 153, 0);">?</span></td><td>9.3</td></tr></tbody></table></div><p></p>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li><a title="The HTTP Content-Security-Policy response header allows web site administrators to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks (XSS)." href="../Content-Security-Policy.html"><code>Content-Security-Policy</code></a></li>
+ <li><a title="The HTML &lt;base> element specifies the base URL to use for all relative URLs contained within a document. There can be only one &lt;base> element in a document." href="/en-US/docs/Web/HTML/Element/base"><code>&lt;base&gt;</code></a></li>
+ <li><a title="The Node.baseURI read-only property returns the absolute base URL of a node." href="https://developer.mozilla.org/en-US/docs/Web/API/Node/baseURI"><code>Node.baseURI</code></a></li>
+</ul>
+                  
+                
+              </article>
+
+              
+
+                <!-- contributors -->
+                <div class="wiki-block contributors">
+                  <h2 class="offscreen">Document Tags and Contributors</h2>
+                  
+                  
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/CSP">CSP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Directive">Directive</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Document directive">Document directive</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Security">Security</a></li>
+      
+    </ul>
+  </div>
+
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-group icon-fw"></i>&nbsp;<strong>Contributors to this page:</strong> 
+        <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>
+    
+                    </div>
+                  
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-clock-o icon-fw"></i>&nbsp;<strong>Last updated by:</strong>
+                      <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>,
+                      <time datetime="2016-11-15T10:11:07-08:00">Nov 15, 2016, 10:11:07 AM</time>
+                    </div>
+                  
+                </div>
+              
+
+              
+                  <div class="newsletter-box">
+                    <div class="newsletter">
+    <form id="newsletterForm" name="newsletter-form" class="nodisable" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+        <h2 class="newsletter-teaser">Learn the best of web development</h2>
+        <p class="newsletter-description">Sign up for our newsletter:</p>
+        <input type="hidden" id="fmt" name="fmt" value="H">
+        <input type="hidden" id="newsletterNewslettersInput" name="newsletters" value="app-dev" />
+
+        <div id="newsletterErrors" class="newsletter-errors"></div>
+
+        <div id="newsletterEmail" class="form-group">
+            <label for="newsletterEmailInput" class="form-label offscreen">E-mail</label>
+            <input type="email" id="newsletterEmailInput" name="email" class="form-input newsletter-input-email" required placeholder="you@example.com" size="30">
+        </div>
+
+        <div id="newsletterPrivacy" class="form-group form-group-agree hidden">
+            <input type="checkbox" id="newsletterPrivacyInput" name="privacy" required>
+            <label for="newsletterPrivacyInput">
+            I'm okay with Mozilla handling my info as explained in this <a href="https://www.mozilla.org/privacy/">Privacy Policy</a>.
+            </label>
+        </div>
+        <div id="newsletterSubmit">
+            <button id="newsletter-submit" type="submit" class="button positive">Sign up now</button>
+        </div>
+        
+    </form>
+    <div id="newsletterThanks" class="newsletter-thanks hidden">
+        <h2>Thanks! Please check your inbox to confirm your subscription.</h2>
+        <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.
+        </p>
+    </div>
+    <button id="newsletterHide" type="button" class="only-icon newsletter-hide hidden"><span>Hide Newsletter Sign-up</span><i aria-hidden="true" class="icon-times"></i></button>
+</div>
+                  </div>
+              
+            </div>
+
+            
+              <!-- quick links and zone subnav strip -->
+              <div id="wiki-left" class="column-strip wiki-column">
+
+              
+
+                
+
+                
+                  <!-- quick links -->
+                  
+  <div class="quick-links" id="quick-links">
+    <div class="title see-also">See also</div>
+     
+  <ol> 
+    <li><a href="../../../HTTP.html"><strong><em>HTTP</em></strong></a></li> 
+    <li><strong>Guides:</strong></li> 
+    <li><a href="../../Basics_of_HTTP/Resources_and_URIs.html">Resources and URIs</a> 
+    <ol> 
+        <li><a href="../../Basics_of_HTTP/Identifying_resources_on_the_Web.html">Identifying resources on the Web</a> 
+        </li><li><a href="../../Basics_of_HTTP/Data_URIs.html">Data URIs</a> 
+        </li><li><a href="../../Basics_of_HTTP/MIME_Types.html">Introduction to MIME Types</a> 
+        </li><li><a href="../../Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types.html">Complete list of MIME Types</a> 
+        </li><li><a href="../../Basics_of_HTTP/Choosing_between_www_and_non-www_URLs.html">Choosing between www and non-www URLs</a> 
+    </li></ol></li> 
+    <li><a href="../../Basics_of_HTTP.html">Basics of HTTP</a> 
+    <ol> 
+        <li><a href="../../Overview.html">Overview of HTTP</a> 
+        </li><li><a href="../../Basics_of_HTTP/Evolution_of_HTTP.html">Evolution of HTTP</a> 
+        </li><li><a href="../../Messages.html">HTTP Messages</a> 
+        </li><li><a href="../../Session.html">A typical HTTP session</a></li> 
+        <li><a href="../../Connection_management_in_HTTP_1.html">Connection management in HTTP/1.x</a></li> 
+ 
+    </ol> 
+    </li> 
+    <li><a href="../../Access_control_CORS.html">HTTP access control (CORS)</a></li> 
+    <li><a href="../../Caching.html">HTTP caching</a></li> 
+    <li><a href="../../Compression.html">HTTP compression</a></li> 
+    <li><a href="../../Conditional_requests.html">HTTP conditional requests</a></li> 
+    <li><a href="../../Content_negotiation.html">HTTP content negotiation</a></li>   
+    <li><a href="../../Cookies.html">HTTP cookies</a></li> 
+    <li><a href="../../Redirections.html">HTTP redirects</a></li> 
+    <li><a href="../../Resources_and_specifications.html">HTTP specifications</a></li> 
+    <li><strong>References:</strong></li> 
+    <li data-default-state="closed"><a href="../../Headers.html">HTTP headers</a> 
+      <ol><li><a title="The Accept request HTTP header advertises which content types, expressed as MIME types, the client is able to understand. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice with the Content-Type response header. Browsers set adequate values for this header depending of the context where the request is done: when fetching a CSS stylesheet a different value is set for the request than when fetching an image, video or a script." href="../Accept.html"><code>Accept</code></a></li><li><a title="The Accept-Charset request HTTP header advertises which character set the client is able to understand. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice within the Content-Type response header. Browsers usually don't set this header as the default value for each content type is usually correct and transmitting it would allow easier fingerprinting." href="../Accept-Charset.html"><code>Accept-Charset</code></a></li><li><a title="The Accept-Encoding request HTTP header advertises which content encoding, usually a compression algorithm, the client is able to understand. Using content negotiation, the server selects one of the proposals, uses it and informs the client of its choice with the Content-Encoding response header." href="../Accept-Encoding.html"><code>Accept-Encoding</code></a></li><li><a title="The Accept-Language request HTTP header advertises which languages the client is able to understand, and which locale variant is preferred. Using content negotiation, the server then selects one of the proposals, uses it and informs the client of its choice with the Content-Language response header. Browsers set adequate values for this header according their user interface language and even if a user can change it, this happens rarely (and is frown upon as it leads to fingerprinting)." href="../Accept-Language.html"><code>Accept-Language</code></a></li><li><a title="The Accept-Ranges response HTTP header is a marker used by the server to advertise its support of partial request. The value of this field indicates the unit that can be used to define the range." href="../Accept-Ranges.html"><code>Accept-Ranges</code></a></li><li><a title="The Access-Control-Allow-Credentials response header indicates whether or not the response to the request can be exposed to the page. It can be exposed when the true value is returned; it can't in other cases." href="../Access-Control-Allow-Credentials.html"><code>Access-Control-Allow-Credentials</code></a></li><li><a title="The Access-Control-Allow-Headers response header is used in response to a preflight request to indicate which HTTP headers will be available via Access-Control-Expose-Headers when making the actual request." href="../Access-Control-Allow-Headers.html"><code>Access-Control-Allow-Headers</code></a></li><li><a title="The Access-Control-Allow-Methods response header specifies the method or methods allowed when accessing the resource in response to a preflight request." href="../Access-Control-Allow-Methods.html"><code>Access-Control-Allow-Methods</code></a></li><li><a title="The Access-Control-Allow-Origin response header indicates whether the response can be shared with resources with the given origin." href="../Access-Control-Allow-Origin.html"><code>Access-Control-Allow-Origin</code></a></li><li><a title="The Access-Control-Expose-Headers response header indicates which headers can be exposed as part of the response by listing their names." href="../Access-Control-Expose-Headers.html"><code>Access-Control-Expose-Headers</code></a></li><li><a title="The Access-Control-Max-Age response header indicates how long the results of a preflight request (that is the information contained in the Access-Control-Allow-Methods and Access-Control-Allow-Headers headers) can be cached." href="../Access-Control-Max-Age.html"><code>Access-Control-Max-Age</code></a></li><li><a title="The Access-Control-Request-Headers request header is used when issuing a preflight request to let the server know which HTTP headers will be used when the actual request is made." href="../Access-Control-Request-Headers.html"><code>Access-Control-Request-Headers</code></a></li><li><a title="The Access-Control-Request-Method request header is used when issuing a preflight request to let the server know which HTTP method will be used when the actual request is made. This header is necessary as the preflight request is always an OPTIONS and doesn't use the same method as the actual request." href="../Access-Control-Request-Method.html"><code>Access-Control-Request-Method</code></a></li><li><a title="The Age header contains the time in seconds the object has been in a proxy cache." href="../Age.html"><code>Age</code></a></li><li><a title="The Cache-Control general-header field is used to specify directives for caching mechanisms in both, requests and responses. Caching directives are unidirectional, meaning that a given directive in a request is not implying that the same directive is to be given in the response." href="../Cache-Control.html"><code>Cache-Control</code></a></li><li><a title="The Connection general header controls whether or not the network connection stays open after the current transaction finishes. If the value sent is keep-alive, the connection is persistent and not closed, allowing for subsequent requests to the same server to be done." href="../Connection.html"><code>Connection</code></a></li><li><a title="In a multipart/form-data body, the HTTP Content-Disposition general header is a header that can be used on the subpart of a multipart body to give information about the field it applies to. The subpart is delimited by the boundary defined in the Content-Type header. Used on the body itself, Content-Disposition has no effect." href="../Content-Disposition.html"><code>Content-Disposition</code></a></li><li><a title="The Content-Encoding entity header is used to compress the media-type. When present, its value indicates what additional content encoding has been applied to the entity-body. It lets the client know, how to decode in order to obtain the media-type referenced by the Content-Type header." href="../Content-Encoding.html"><code>Content-Encoding</code></a></li><li><a title="The Content-Language entity header is used to describe the language(s) intended for the audience, so that it allows a user to differentiate according to the users' own preferred language." href="../Content-Language.html"><code>Content-Language</code></a></li><li><a title="The Content-Length entity header is indicating the size of the entity-body, in decimal number of octets, sent to the recipient." href="../Content-Length.html"><code>Content-Length</code></a></li><li><a title="The Content-Location header indicates an alternate location for the returned data. The principal use case is to indicate the URL of the resource transmitted as the result of content negotiation." href="../Content-Location.html"><code>Content-Location</code></a></li><li><a title="The HTTP Content-Security-Policy response header allows web site administrators to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks (XSS)." href="../Content-Security-Policy.html"><code>Content-Security-Policy</code></a></li><li><a title="The HTTP Content-Security-Policy-Report-Only response header allows web developers to experiment with policies by monitoring (but not enforcing) their effects. These violation reports consist of JSON documents sent via an HTTP POST request to the specified URI." href="../Content-Security-Policy-Report-Only.html"><code>Content-Security-Policy-Report-Only</code></a></li><li><a title="The Content-Type entity header is used to indicate the media type of the resource." href="../Content-Type.html"><code>Content-Type</code></a></li><li><a title="The Cookie HTTP request header contains stored HTTP cookies previously sent by the server with the Set-Cookie header." href="../Cookie.html"><code>Cookie</code></a></li><li><span class="sidebar-icon"><span title="This is an obsolete API and is no longer guaranteed to work."><i class="icon-trash"> </i></span></span><a title='The obsolete Cookie2 HTTP request header used to advise the server that the user agent understands "new-style" cookies, but nowadays user agents will use the Cookie header instead, not this one.' href="../Cookie2.html"><code>Cookie2</code></a></li><li><a title="The DNT (Do Not Track) request header indicates the user's tracking preference. It lets users indicate whether would prefer privacy rather than personalized content." href="../DNT.html"><code>DNT</code></a></li><li><a title="The Date general HTTP header contains the date and time at which the message was originated." href="../Date.html"><code>Date</code></a></li><li><a title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, if the content has changed, etags are useful to help prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").' href="../ETag.html"><code>ETag</code></a></li><li><a title="The Expires header contains the date/time after which the response is considered stale." href="../Expires.html"><code>Expires</code></a></li><li><a title="The From request header contains an Internet email address for a human user who controls the requesting user agent." href="../From.html"><code>From</code></a></li><li><a title="The Host request header specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening." href="../Host.html"><code>Host</code></a></li><li><a title="The If-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the resource in this case." href="../If-Match.html"><code>If-Match</code></a></li><li><a title="The If-Modified-Since request HTTP header makes the request conditional: the server will send back the requested resource, with a 200 status, only if it has been last modified after the given date. If the request has not been modified since, the response will be a 304 without any body; the Last-Modified header will contain the date of last modification. Unlike If-Unmodified-Since, If-Modified-Since can only be used with a GET or HEAD." href="../If-Modified-Since.html"><code>If-Modified-Since</code></a></li><li><a title="The If-None-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource, with a 200 status, only if doesn't have a ETag matching the given one. For other methods, the request will be processed only if the eventually existing resource's ETag doesn't match any of the values listed." href="../If-None-Match.html"><code>If-None-Match</code></a></li><li><a title="The If-Range request HTTP header makes the range request conditional: if the condition is fulfilled, the range request will be and the server send back a 206 Partial Content answer with the appropriate body. If the condition is not fulfilled, the full resource is sent back, with a 200 OK status." href="../If-Range.html"><code>If-Range</code></a></li><li><a title="The If-Unmodified-Since request HTTP header makes the request conditional: the server will send back the requested resource, or accept it in the case of a POST or another non-safe method, only if it has not been last modified after the given date. If the request has been modified after the given date, the response will be a 412 (Precondition Failed) error." href="../If-Unmodified-Since.html"><code>If-Unmodified-Since</code></a></li><li><a title="The Keep-Alive general header allows the sender to hint about how the connection and may be used to set a timeout and a maximum amount of requests." href="../Keep-Alive.html"><code>Keep-Alive</code></a></li><li><a title="The Last-Modified response HTTP header contains the date and time at which the origin server believes the resource was last modified. It is used as a validator to determine if a resource received or stored is the same. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field." href="../Last-Modified.html"><code>Last-Modified</code></a></li><li><a title="The Location response header indicates the URL to redirect a page to. It only provides a meaning when served with a 3xx status response." href="../Location.html"><code>Location</code></a></li><li><a title="The Origin request header indicates where a fetch originates from. It doesn't include any path information, but only the server name. It is sent with CORS requests, as well as with POST requests. It is similar to the Referer header, but, unlike this header, it doesn't disclose the whole path." href="../Origin.html"><code>Origin</code></a></li><li><span class="sidebar-icon"><span title="This deprecated API should no longer be used, but will probably still work."><i class="icon-thumbs-down-alt"> </i></span></span><a title="The Pragma HTTP/1.0 general header is an implementation-specific header that may have various effects along the request-response chain. It is used for backwards compatibility with HTTP/1.0 caches where the Cache-Control HTTP/1.1 header is not yet present." href="../Pragma.html"><code>Pragma</code></a></li><li><a title="The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example." href="../Referer.html"><code>Referer</code></a></li><li><a title="The Referrer-Policy HTTP header governs which referrer information, sent in the Referer header, should be included with requests made." href="../Referrer-Policy.html"><code>Referrer-Policy</code></a></li><li><a title="The Retry-After response HTTP header indicates how long the user agent should wait before making a follow-up request. There are two main cases this header is used:" href="../Retry-After.html"><code>Retry-After</code></a></li><li><a title="The Server header contains information about the software used by the origin server to handle the request." href="../Server.html"><code>Server</code></a></li><li><a title="The Set-Cookie HTTP response header is used to send cookies from the server to the user agent." href="../Set-Cookie.html"><code>Set-Cookie</code></a></li><li><span class="sidebar-icon"><span title="This is an obsolete API and is no longer guaranteed to work."><i class="icon-trash"> </i></span></span><a title="The obsolete Set-Cookie2 HTTP response header used to send cookies from the server to the user agent, but has been deprecated by the specification. Use Set-Cookie instead." href="../Set-Cookie2.html"><code>Set-Cookie2</code></a></li><li><a title="The HTTP Strict-Transport-Security response header (often abbreviated as HSTS) is a security feature that lets a web site tell browsers that it should only be communicated with using HTTPS, instead of using HTTP." href="../Strict-Transport-Security.html"><code>Strict-Transport-Security</code></a></li><li><a title="The TE request header specifies the transfer encodings the user agent is willing to accept. (you could informally call it Accept-Transfer-Encoding, which would be more intuitive)." href="../TE.html"><code>TE</code></a></li><li><a title="The Tk response header indicates the tracking status that applied to the corresponding request." href="../Tk.html"><code>Tk</code></a></li><li><a title="The Trailer request header allows the sender to include additional fields at the end of chunked messages in order to supply metadata that might be dynamically generated while the message body is sent, such as a message integrity check, digital signature, or post-processing status." href="../Trailer.html"><code>Trailer</code></a></li><li><a title="The Transfer-Encoding header specifies the form of encoding used to safely transfer the entity to the user." href="../Transfer-Encoding.html"><code>Transfer-Encoding</code></a></li><li><a title="The HTTP Upgrade-Insecure-Requests request header sends a signal to the server expressing the client’s preference for an encrypted and authenticated response, and that it can successfully handle the upgrade-insecure-requests CSP directive." href="../Upgrade-Insecure-Requests.html"><code>Upgrade-Insecure-Requests</code></a></li><li><a title="The User-Agent request header contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent." href="../User-Agent.html"><code>User-Agent</code></a></li><li><a title="The Vary HTTP response header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server. It is used by the server to indicate which headers it used when selecting a representation of a resource in a content negotiation algorithm." href="../Vary.html"><code>Vary</code></a></li><li><a title="The Via general header is added by proxies, both forward and reverse proxies, and can appear in the request headers and the response headers. It is used for tracking message forwards, avoiding request loops, and identifying the protocol capabilities of senders along the request/response chain." href="../Via.html"><code>Via</code></a></li><li><a title="The Warning general HTTP header contains information about possible problems with the status of the message. More than one Warning header may appear in a response." href="../Warning.html"><code>Warning</code></a></li><li><a title="The X-Content-Type-Options response HTTP header is a marker used by the server to indicate that the MIME types advertised in the Content-Type headers should not be changed and be followed. This allows to opt-out of MIME type sniffing, or, in other words, it is a way to say that the webmasters knew what they were doing." href="../X-Content-Type-Options.html"><code>X-Content-Type-Options</code></a></li><li><a title="The X-DNS-Prefetch-Control HTTP response header controls DNS prefetching, a feature by which browsers proactively perform domain name resolution on both links that the user may choose to follow as well as URLs for items referenced by the document, including images, CSS, JavaScript, and so forth." href="../X-DNS-Prefetch-Control.html"><code>X-DNS-Prefetch-Control</code></a></li><li><a title="The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a &lt;frame>, &lt;iframe> or &lt;object> . Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites." href="/en-US/docs/Web/HTTP/Headers/X-Frame-Options"><code>X-Frame-Options</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="../../Methods.html">HTTP request methods</a> 
+      <ol><li><a title="The HTTP GET method requests a representation of the specified resource. Requests using GET should only retrieve data." href="../../Methods/GET.html"><code>GET</code></a></li><li><a title="The HTTP HEAD method requests the headers that are returned if the specified resource would be requested with an HTTP GET method. Such a request can be done before deciding to download a large resource to save bandwidth, for example." href="../../Methods/HEAD.html"><code>HEAD</code></a></li><li><a title="The HTTP OPTIONS method is used to describe the communication options for the target resource. The client can specify a specific URL for the OPTIONS method, or an asterisk (*) to refer to the entire server." href="../../Methods/OPTIONS.html"><code>OPTIONS</code></a></li><li><a title="The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header." href="../../Methods/POST.html"><code>POST</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="../../Status.html">HTTP response status codes</a> 
+      <ol><li><a title="The HTTP 100 Continue informational status response code indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished." href="../../Status/100.html"><code>100 Continue</code></a></li><li><a title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default." href="../../Status/200.html"><code>200 OK</code></a></li><li><a title="The HTTP 201 Created success status response code indicates that the request has succeeded and has led to the creation of a resource. The new resource is effectively created before this response is sent back. and the new resource is returned in the body of the message, its location being either the URL of the request, or the content of the Location header." href="../../Status/201.html"><code>201 Created</code></a></li><li><a title="The HTTP 204 No Content success status response code indicates that the request has succeed, but that the client doesn't need to go away from its current page. A 204 response is cacheable by default. An ETag header is included in such a response." href="../../Status/204.html"><code>204 No Content</code></a></li><li><a title="The HTTP 206 Partial Content success status response code indicates that the request has succeeded and has the body contains the requested ranges of data, as described in the Range header of the request." href="../../Status/206.html"><code>206 Partial Content</code></a></li><li><a title="The HTTP 301 Moved Permanently redirect status response code indicates that the resource requested has been definitively moved to the URL given by the Location headers. A browser redirects to this page, and search engines update their links to the resource (In SEO-speak, it is said that the link-juice is sent to the new URL)." href="../../Status/301.html"><code>301 Moved Permanently</code></a></li><li><a title="The HTTP 302 Found redirect status response code indicates that the resource requested has been temporarily moved to the URL given by the Location headers. A browser redirects to this page, but search engines don't update their links to the resource (In SEO-speak, it is said that the link-juice is not sent to the new URL)." href="../../Status/302.html"><code>302 Found</code></a></li><li><a title="The HTTP 303 See Other redirect status response code, usually sent back as a result of a PUT or POST operation, indicates that the redirects don't link to the newly uploaded resources but to another page, like a confirmation page or an upload progress page. The method used to display this redirected page is always GET." href="../../Status/303.html"><code>303 See Other</code></a></li><li><a title="The HTTP 304 Not Modified client redirection response code indicates that there is no need to retransmit the requested resources. It is an implicit redirection to a cached resource. This happens when the request method is safe, like a GET or a HEAD request, or when the request is conditional and uses a If-None-Match or a If-Modified-Since header." href="../../Status/304.html"><code>304 Not Modified</code></a></li><li><a title='The method and the body of the original request are reused to perform the redirected request. In the cases where you want the method used to be changed to GET, use 303 See Also instead. This is useful when you want to give an answer to a PUT method that is not the uploaded resources, but a confirmation message (like "You successfully uploaded XYZ").' href="../../Status/307.html"><code>307 Temporary Redirect</code></a></li><li><a title="The request method and the body will not be altered, whereas 301 may incorrectly sometimes be changed to a GET method." href="../../Status/308.html"><code>308 Permanent Redirect</code></a></li><li><a title="The HTTP 404 Not Found client error response code indicates that a server can not find the requested resource. This response code probably is most famous one due to its frequency to occur in the web. These are often called broken or dead links and lead to link rot." href="../../Status/404.html"><code>404 Not Found</code></a></li><li><a title="The HTTP 406 Not Acceptable client error response code indicates that a response matching the list of acceptable values defined in Accept-Charset and Accept-Language cannot be served." href="../../Status/406.html"><code>406 Not Acceptable</code></a></li><li><a title="The HTTP 410 Gone client error response code indicates that access to the target resource is no longer available at the origin server and that this condition is likely to be permanent." href="../../Status/410.html"><code>410 Gone</code></a></li><li><a title="The HTTP 412 Precondition Failed client error response code indicates that access to the target resource has been denied. This happens with conditional requests on methods other than GET or HEAD when the condition defined by the If-Unmodified-Since or If-None-Match headers is not fulfilled. In that case, the request, usually an upload or a modification of a resource, cannot be made and this error response is sent back." href="../../Status/412.html"><code>412 Precondition Failed</code></a></li><li><a title="The HTTP 451 Unavailable For Legal Reasons client error response code indicates that the user requested a resource which is not available due to legal reasons, such as a web page for which a legal action has been issued." href="../../Status/451.html"><code>451 Unavailable For Legal Reasons</code></a></li><li><a title="The HTTP 500 Internal Server Error server error response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request." href="../../Status/500.html"><code>500 Internal Server Error</code></a></li><li><a title="The HTTP 501 Not Implemented server error response code indicates that the request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD." href="../../Status/501.html"><code>501 Not Implemented</code></a></li><li><a title="The HTTP 502 Bad Gateway server error response code indicates that the server, while acting as a gateway or proxy, received an invalid response from the upstream server." href="../../Status/502.html"><code>502 Bad Gateway</code></a></li><li><a title="The HTTP 503 Service Unavailable server error response code indicates that the server is not ready to handle the request." href="../../Status/503.html"><code>503 Service Unavailable</code></a></li><li><a title="The HTTP 504 Gateway Timeout server error response code indicates that the server, while acting as a gateway or proxy, cannot get a response in time." href="../../Status/504.html"><code>504 Gateway Timeout</code></a></li></ol> 
+    </li> 
+    <li data-default-state="open"><a href="../Content-Security-Policy.html">CSP directives</a> 
+      <ol><li><a title="The HTTP Content-Security-Policy base-uri directive restricts the URLs which can be used in a document's &lt;base> element. If this value is absent, then any URI is allowed. If this directive is absent, the user agent will use the value in the &lt;base> element." href="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri"><code>CSP: base-uri</code></a></li><li><a title="The HTTP Content-Security-Policy block-all-mixed-content directive prevents loading any assets using HTTP when the page is loaded using HTTPS." href="block-all-mixed-content.html"><code>CSP: block-all-mixed-content</code></a></li><li><a title="The HTTP Content-Security-Policy child-src directive defines the valid sources for web workers and nested browsing contexts loaded using elements such as &lt;frame> and &lt;iframe>. For workers, non-compliant requests are treated as fatal network errors by the user agent." href="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/child-src"><code>CSP: child-src</code></a></li><li><a title="The HTTP Content-Security-Policy connect-src directive restricts the URLs which can be loaded using script interfaces. The APIs that are restricted are:" href="connect-src.html"><code>CSP: connect-src</code></a></li><li><a title="The HTTP Content-Security-Policy default-src directive serves as a fallback for the other CSP fetch directives. If the following directives are absent, the user agent will look for the default-src directive:" href="default-src.html"><code>CSP: default-src</code></a></li><li><a title="The HTTP Content-Security-Policy font-src directive specifies valid sources for fonts loaded using @font-face." href="font-src.html"><code>CSP: font-src</code></a></li><li><a title="The HTTP Content-Security-Policy form-action directive restricts the URLs which can be used as the target of a form submissions from a given context." href="form-action.html"><code>CSP: form-action</code></a></li><li><a title="The HTTP Content-Security-Policy frame-ancestors directive specifies valid parents that may embed a page using &lt;frame>, &lt;iframe>, &lt;object>, &lt;embed>, or &lt;applet>." href="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors"><code>CSP: frame-ancestors</code></a></li><li><a title="The HTTP Content-Security-Policy frame-src directive specifies valid sources for nested browsing contexts loading using elements such as &lt;frame> and &lt;iframe>." href="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-src"><code>CSP: frame-src</code></a></li><li><a title="The HTTP Content-Security-Policy img-src directive specifies valid sources of images and favicons." href="img-src.html"><code>CSP: img-src</code></a></li><li><a title="The HTTP Content-Security-Policy manifest-src directive specifies which manifest can be applied to the resource." href="manifest-src.html"><code>CSP: manifest-src</code></a></li><li><a title="The HTTP Content-Security-Policy media-src directive specifies valid sources for loading media using the &lt;audio> and &lt;video> elements." href="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/media-src"><code>CSP: media-src</code></a></li><li><a title="The HTTP Content-Security-Policy object-src directive specifies valid sources for the &lt;object>, &lt;embed>, and &lt;applet> elements." href="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/object-src"><code>CSP: object-src</code></a></li><li><a title="The HTTP Content-Security-Policy plugin-types directive restricts the set of plugins that can be embedded into a document by limiting the types of resources which can be loaded." href="plugin-types.html"><code>CSP: plugin-types</code></a></li><li><a title="The HTTP Content-Security-Policy referrer directive used to specify information in the referer (sic) header for links away from a page. This API is deprecated and removed from browsers. Use the Referrer-Policy header instead." href="referrer.html"><code>CSP: referrer</code></a></li><li><a title="The HTTP Content-Security-Policy report-uri directive instructs the user agent to report attempts to violate the Content Security Policy. These violation reports consist of JSON documents sent via an HTTP POST request to the specified URI." href="report-uri.html"><code>CSP: report-uri</code></a></li><li><a title="The HTTP Content-Security-Policy require-sri-for directive instructis the client to require the use of Subresource Integrity for scripts or styles on the page." href="require-sri-for.html"><code>CSP: require-sri-for</code></a></li><li><a title="The HTTP Content-Security-Policy sandbox directive enables a sandbox for the requested resource similar to the &lt;iframe> sandbox attribute. It applies restrictions to a page's actions including preventing popups, preventing the execution of plugins and scripts, and enforcing a same-origin policy." href="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox"><code>CSP: sandbox</code></a></li><li><a title="The HTTP Content-Security-Policy (CSP) script-src directive specifies valid sources for sources for JavaScript. This includes not only URLs loaded directly into &lt;script> elements, but also things like inline script event handlers (onclick) and XSLT stylesheets which can trigger script execution." href="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src"><code>CSP: script-src</code></a></li><li><a title="The HTTP Content-Security-Policy (CSP) style-src directive specifies valid sources for sources for stylesheets." href="style-src.html"><code>CSP: style-src</code></a></li><li><a title="The HTTP Content-Security-Policy upgrade-insecure-requests directive instructs user agents to treat all of a site's insecure URLs (those served over HTTP) as though they have been replaced with secure URLs (those served over HTTPS). This directive is intended for web sites with large numbers of insecure legacy URLs that need to be rewritten." href="upgrade-insecure-requests.html"><code>CSP: upgrade-insecure-requests</code></a></li><li><a title="The HTTP Content-Security-Policy worker-src directive specifies valid sources for Worker, SharedWorker, or ServiceWorker scripts." href="worker-src.html"><code>CSP: worker-src</code></a></li></ol> 
+    </li> 
+  </ol> 
+
+  </div>
+                
+
+                <!-- approvals -->
+                
+
+              
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri$edit" label="Edit page"></menuitem>
+    <menuitem data-action="/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri$history" label="View page history"></menuitem>
+  </menu>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+  
+
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+
+  
+
+  
+
+  
+    <script async type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/newsletter.7cd3274169f2.js" charset="utf-8"></script>
+  
+
+
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:34:25 GMT -->
+</html>

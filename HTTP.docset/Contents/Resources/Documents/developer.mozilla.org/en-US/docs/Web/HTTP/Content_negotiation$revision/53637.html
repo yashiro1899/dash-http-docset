@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation$revision/53637 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:26:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 53637 | Content negotiation | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FContent_negotiation%24revision%2F53637" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation%24revision/53637">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 53637 of <a href="../Content_negotiation.html">Content negotiation</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>HTTP/Content_negotiation</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Content negotiation</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>53637</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2011-05-08T09:12:43-07:00">May 8, 2011, 9:12:43 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>111 words added, 12 words removed</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Content Negotiation">Content Negotiation</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Reference">Reference</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          
+<p>In the <a href="https://developer.mozilla.org/en/HTTP" title="en/HTTP">Hypertext Transfer Protocol</a> (HTTP), content negotiation is the mechanism used, when facing the ability to serve several equivalent content for a given URI, to provide the best suited one to the final user. The determination of the best suited content is either made through the use of specific HTTP headers by the client (<em>server-driven negotiation</em>), through the usage of the <code><a href="https://developer.mozilla.org/en/HTTP/HTTP_response_codes#300" title="https://developer.mozilla.org/en/HTTP/HTTP_response_codes#300">300 Multiple Choices</a></code> or <code><a href="https://developer.mozilla.org/en/HTTP/HTTP_response_codes#406" title="https://developer.mozilla.org/en/HTTP/HTTP_response_codes#406">406 Not Acceptable</a></code> <a href="https://developer.mozilla.org/en/HTTP/HTTP_response_codes" title="https://developer.mozilla.org/en/HTTP/HTTP_response_codes">HTTP response codes</a> by the server (<em>agent-driven negotiation</em>) or through the use of a cache (<em>transparent negotiation</em>).</p>
+<p>For testing purposes, this page is made for collecting all the Accept* headers sent by the browsers. The <a class=" external" href="http://pgl.yoyo.org/http/browser-headers.php" title="http://pgl.yoyo.org/http/browser-headers.php">HTTP Header Viewer</a> allows to find the request headers sent by your browser.</p>
+<h2>Server-driven negotiation</h2>
+<p>In this kind of negotiation, the browser (or any other kind of agent) send alongside with the URI several HTTP headers. These headers describe the preferred choice of the user. The server use them as hints and an internal algorithm let him choose the best content to serve to the client. The algorithm is server-specific and not defined in the standard. See, for example, the <a class=" external" href="http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm" title="http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm">Apache 2.2 negotiation algorithm</a>.</p>
+<p>The HTTP/1.1 gives an exhaustive list of the standard header that <em>may</em> be used in a server-driven negotiation algorithm ({{ httpheader("Accept") }}, {{ httpheader("Accept-Charset") }}, {{ httpheader("Accept-Encoding") }}, {{ httpheader("Accept-Language:") }} and {{ httpheader("User-Agent") }}). Nevertheless it allows the server to use other aspects in its algorithm, either aspects outside the request itself, or extension header fields, i.e. headers not defined in the HTTP/1.1 standard.</p>
+<h3>Accept:</h3>
+<p>Defined in the <a class=" external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1">HTTP/1.1 Standard, section 14.1</a>, the <code>Accept</code>: header lists the MIME Types of the media that the agent is willing to process. It is comma-separated lists of MIME type, each combined with a quality factor, as parameter giving the relative degree of preference between the different MIME Types lists.</p>
+<p>The Accept: header is defined by the browser, or any other user-agent, and can vary according of the context. It is therefore different when fetching an document entered in the address bar or an element linked via an {{ HTMLElement("img") }}, {{ HTMLElement("video") }} or {{ HTMLElement("audio") }} elements. Neither the HTTP standard, nor the HTML one, define specific MIME Type to use in specific contexts.</p>
+<h4>Default</h4>
+<p>This is the value sent when the context doesn't gives better information. Note that all browsers add the */* MIME Type to cover all cases. This is typically used for requests initiated via the address bar of a browser, or via an HTML {{ HTMLElement("a") }} element.</p>
+<table class="compat-table"> <tbody> <tr> <th>User Agent</th> <th>Value</th> <th>Comment</th> </tr> <tr> <td>Firefox</td> <td><code>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</code></td> <td>This value can be modified using the <a class=" external" href="http://kb.mozillazine.org/Network.http.accept.default" title="http://kb.mozillazine.org/Network.http.accept.default"><code>network.http.accept.default</code></a> parameter.</td> </tr> <tr> <td>Safari, Chrome</td> <td><code>application/xml,application/xhtml+xml,text/html;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5</code></td> <td><a class=" external" href="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers" title="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers"><span style="font-size: x-small;">source</span></a></td> </tr> <tr> <td>Internet Explorer 8</td> <td><code>image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/x-shockwave-flash, application/msword, */*</code></td> <td><a class=" external" href="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers" title="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers"><span style="font-size: x-small;">source</span></a></td> </tr> </tbody>
+</table>
+<h4>Image</h4>
+<p>When requesting an image, like through an HTML {{ HTMLElement("img") }} element, user-agent often set a specific list of media types to be welcomed.</p>
+<table class="compat-table"> <tbody> <tr> <th>User Agent</th> <th>Value</th> <th>Comment</th> </tr> <tr> <td>Firefox</td> <td><code>?</code></td> <td> </td> </tr> <tr> <td>Safari, Chrome</td> <td>?</td> <td><a class=" external" href="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers" title="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers"></a></td> </tr> <tr> <td>Internet Explorer 8 or earlier</td> <td><em>Internet Explorer prior to version 9 doesn't send a specific MIME-Type lists when requesting images. They use the default value, even if modified.</em></td> <td><a class=" external" href="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers" title="http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers">See </a><a class=" external" href="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx" title="http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx">MSDN IEInternals article</a>.</td> </tr> <tr> <td>Internet Explorer 9</td> <td>?</td> <td> </td> </tr> </tbody>
+</table>
+<h4>I</h4><h3>Accept-Language:</h3>
+<p>For information on how to set this header, see <a class=" external" href="http://www.w3.org/International/questions/qa-lang-priorities" title="http://www.w3.org/International/questions/qa-lang-priorities">Setting language preferences in a browser</a>. The followings are the defaults.</p>
+<h4>Firefox</h4>
+<p>You can find the Accept-Language headers used by Firefox by looking in to <a class=" external" href="http://mxr.mozilla.org/l10n-central/find?text=&amp;kind=text&amp;string=intl.properties" title="http://mxr.mozilla.org/l10n-central/find?text=&amp;kind=text&amp;string=intl.properties">the repository for locales of Firefox</a>. </p>
+<ul> <li>(en-GB) en-gb, en</li> <li>(en-US) en-us, en</li> <li>(fr) fr, fr-fr, en-us, en</li> <li>(ja) ja,en-us;q=0.7,en;q=0.3 (as of Firefox 3.6)</li> <li>(zh-CN) zh-cn, zh</li> <li>(zh-TW) zh-tw,en-us;q=0.7,en;q=0.3 (s of Firefox 3.6)</li>
+</ul>
+<h4>Safari</h4>
+<ul> <li>(ja) ja-jp <span style="font-size: x-small;">(found with the <a class=" external" href="http://pgl.yoyo.org/http/browser-headers.php" title="http://pgl.yoyo.org/http/browser-headers.php">HTTP Header Viewer</a>)</span></li>
+</ul>
+<h2>Agent-driven negotiation</h2>
+<p> </p>
+<h2>Transparent negotiation</h2>
+<p> </p>
+<h2>References</h2>
+<ul> <li><a class=" external" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html" title="http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html">RFC 2616, section 12</a>, <em>Content Negociation</em> in <em>Hypertext Transfer Protocol — HTTP/1.1</em>, 1999, The Internet Society.</li> <li><em><a class=" external" href="http://httpd.apache.org/docs/2.2/content-negotiation.html" title="http://httpd.apache.org/docs/2.2/content-negotiation.html">Content Negociation</a> </em>in <em>Apache HTTP Server version 2.2</em>, retrieved on May 8th, 2011.</li> <li><a class=" external" href="http://en.wikipedia.org/wiki/Content_negotiation" title="http://en.wikipedia.org/wiki/Content_negotiation"><em>Content Negociation</em></a> in <em>Wikipedia</em>, retrieved on June 10th, 2010.</li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">
+&lt;p&gt;In the &lt;a href=&#34;/en/HTTP&#34; title=&#34;en/HTTP&#34;&gt;Hypertext Transfer Protocol&lt;/a&gt; (HTTP), content negotiation is the mechanism used, when facing the ability to serve several equivalent content for a given URI, to provide the best suited one to the final user. The determination of the best suited content is either made through the use of specific HTTP headers by the client (&lt;em&gt;server-driven negotiation&lt;/em&gt;), through the usage of the &lt;code&gt;&lt;a href=&#34;/en/HTTP/HTTP_response_codes#300&#34; title=&#34;https://developer.mozilla.org/en/HTTP/HTTP_response_codes#300&#34;&gt;300 Multiple Choices&lt;/a&gt;&lt;/code&gt; or &lt;code&gt;&lt;a href=&#34;/en/HTTP/HTTP_response_codes#406&#34; title=&#34;https://developer.mozilla.org/en/HTTP/HTTP_response_codes#406&#34;&gt;406 Not Acceptable&lt;/a&gt;&lt;/code&gt; &lt;a href=&#34;/en/HTTP/HTTP_response_codes&#34; title=&#34;https://developer.mozilla.org/en/HTTP/HTTP_response_codes&#34;&gt;HTTP response codes&lt;/a&gt; by the server (&lt;em&gt;agent-driven negotiation&lt;/em&gt;) or through the use of a cache (&lt;em&gt;transparent negotiation&lt;/em&gt;).&lt;/p&gt;
+&lt;p&gt;For testing purposes, this page is made for collecting all the Accept* headers sent by the browsers. The &lt;a class=&#34; external&#34; href=&#34;http://pgl.yoyo.org/http/browser-headers.php&#34; title=&#34;http://pgl.yoyo.org/http/browser-headers.php&#34;&gt;HTTP Header Viewer&lt;/a&gt; allows to find the request headers sent by your browser.&lt;/p&gt;
+&lt;h2&gt;Server-driven negotiation&lt;/h2&gt;
+&lt;p&gt;In this kind of negotiation, the browser (or any other kind of agent) send alongside with the URI several HTTP headers. These headers describe the preferred choice of the user. The server use them as hints and an internal algorithm let him choose the best content to serve to the client. The algorithm is server-specific and not defined in the standard. See, for example, the &lt;a class=&#34; external&#34; href=&#34;http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm&#34; title=&#34;http://httpd.apache.org/docs/2.2/en/content-negotiation.html#algorithm&#34;&gt;Apache 2.2 negotiation algorithm&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The HTTP/1.1 gives an exhaustive list of the standard header that &lt;em&gt;may&lt;/em&gt; be used in a server-driven negotiation algorithm ({{ httpheader(&#34;Accept&#34;) }}, {{ httpheader(&#34;Accept-Charset&#34;) }}, {{ httpheader(&#34;Accept-Encoding&#34;) }}, {{ httpheader(&#34;Accept-Language:&#34;) }} and {{ httpheader(&#34;User-Agent&#34;) }}). Nevertheless it allows the server to use other aspects in its algorithm, either aspects outside the request itself, or extension header fields, i.e. headers not defined in the HTTP/1.1 standard.&lt;/p&gt;
+&lt;h3&gt;Accept:&lt;/h3&gt;
+&lt;p&gt;Defined in the &lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1&#34; title=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.1&#34;&gt;HTTP/1.1 Standard, section 14.1&lt;/a&gt;, the &lt;code&gt;Accept&lt;/code&gt;: header lists the MIME Types of the media that the agent is willing to process. It is comma-separated lists of MIME type, each combined with a quality factor, as parameter giving the relative degree of preference between the different MIME Types lists.&lt;/p&gt;
+&lt;p&gt;The Accept: header is defined by the browser, or any other user-agent, and can vary according of the context. It is therefore different when fetching an document entered in the address bar or an element linked via an {{ HTMLElement(&#34;img&#34;) }}, {{ HTMLElement(&#34;video&#34;) }} or {{ HTMLElement(&#34;audio&#34;) }} elements. Neither the HTTP standard, nor the HTML one, define specific MIME Type to use in specific contexts.&lt;/p&gt;
+&lt;h4&gt;Default&lt;/h4&gt;
+&lt;p&gt;This is the value sent when the context doesn&#39;t gives better information. Note that all browsers add the */* MIME Type to cover all cases. This is typically used for requests initiated via the address bar of a browser, or via an HTML {{ HTMLElement(&#34;a&#34;) }} element.&lt;/p&gt;
+&lt;table class=&#34;compat-table&#34;&gt; &lt;tbody&gt; &lt;tr&gt; &lt;th&gt;User Agent&lt;/th&gt; &lt;th&gt;Value&lt;/th&gt; &lt;th&gt;Comment&lt;/th&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Firefox&lt;/td&gt; &lt;td&gt;&lt;code&gt;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&lt;/code&gt;&lt;/td&gt; &lt;td&gt;This value can be modified using the &lt;a class=&#34; external&#34; href=&#34;http://kb.mozillazine.org/Network.http.accept.default&#34; title=&#34;http://kb.mozillazine.org/Network.http.accept.default&#34;&gt;&lt;code&gt;network.http.accept.default&lt;/code&gt;&lt;/a&gt; parameter.&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Safari, Chrome&lt;/td&gt; &lt;td&gt;&lt;code&gt;application/xml,application/xhtml+xml,text/html;q=0.9, text/plain;q=0.8,image/png,*/*;q=0.5&lt;/code&gt;&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34; title=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34;&gt;&lt;span style=&#34;font-size: x-small;&#34;&gt;source&lt;/span&gt;&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Internet Explorer 8&lt;/td&gt; &lt;td&gt;&lt;code&gt;image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/x-shockwave-flash, application/msword, */*&lt;/code&gt;&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34; title=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34;&gt;&lt;span style=&#34;font-size: x-small;&#34;&gt;source&lt;/span&gt;&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;Image&lt;/h4&gt;
+&lt;p&gt;When requesting an image, like through an HTML {{ HTMLElement(&#34;img&#34;) }} element, user-agent often set a specific list of media types to be welcomed.&lt;/p&gt;
+&lt;table class=&#34;compat-table&#34;&gt; &lt;tbody&gt; &lt;tr&gt; &lt;th&gt;User Agent&lt;/th&gt; &lt;th&gt;Value&lt;/th&gt; &lt;th&gt;Comment&lt;/th&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Firefox&lt;/td&gt; &lt;td&gt;&lt;code&gt;?&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Safari, Chrome&lt;/td&gt; &lt;td&gt;?&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34; title=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34;&gt;&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Internet Explorer 8 or earlier&lt;/td&gt; &lt;td&gt;&lt;em&gt;Internet Explorer prior to version 9 doesn&#39;t send a specific MIME-Type lists when requesting images. They use the default value, even if modified.&lt;/em&gt;&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34; title=&#34;http://www.newmediacampaigns.com/page/browser-rest-http-accept-headers&#34;&gt;See &lt;/a&gt;&lt;a class=&#34; external&#34; href=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34; title=&#34;http://blogs.msdn.com/b/ieinternals/archive/2009/07/01/ie-and-the-accept-header.aspx&#34;&gt;MSDN IEInternals article&lt;/a&gt;.&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Internet Explorer 9&lt;/td&gt; &lt;td&gt;?&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;I&lt;/h4&gt;&lt;h3&gt;Accept-Language:&lt;/h3&gt;
+&lt;p&gt;For information on how to set this header, see &lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/International/questions/qa-lang-priorities&#34; title=&#34;http://www.w3.org/International/questions/qa-lang-priorities&#34;&gt;Setting language preferences in a browser&lt;/a&gt;. The followings are the defaults.&lt;/p&gt;
+&lt;h4&gt;Firefox&lt;/h4&gt;
+&lt;p&gt;You can find the Accept-Language headers used by Firefox by looking in to &lt;a class=&#34; external&#34; href=&#34;http://mxr.mozilla.org/l10n-central/find?text=&amp;amp;kind=text&amp;amp;string=intl.properties&#34; title=&#34;http://mxr.mozilla.org/l10n-central/find?text=&amp;amp;kind=text&amp;amp;string=intl.properties&#34;&gt;the repository for locales of Firefox&lt;/a&gt;. &lt;/p&gt;
+&lt;ul&gt; &lt;li&gt;(en-GB) en-gb, en&lt;/li&gt; &lt;li&gt;(en-US) en-us, en&lt;/li&gt; &lt;li&gt;(fr) fr, fr-fr, en-us, en&lt;/li&gt; &lt;li&gt;(ja) ja,en-us;q=0.7,en;q=0.3 (as of Firefox 3.6)&lt;/li&gt; &lt;li&gt;(zh-CN) zh-cn, zh&lt;/li&gt; &lt;li&gt;(zh-TW) zh-tw,en-us;q=0.7,en;q=0.3 (s of Firefox 3.6)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Safari&lt;/h4&gt;
+&lt;ul&gt; &lt;li&gt;(ja) ja-jp &lt;span style=&#34;font-size: x-small; &#34;&gt;(found with the &lt;a class=&#34; external&#34; href=&#34;http://pgl.yoyo.org/http/browser-headers.php&#34; title=&#34;http://pgl.yoyo.org/http/browser-headers.php&#34;&gt;HTTP Header Viewer&lt;/a&gt;)&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Agent-driven negotiation&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2&gt;Transparent negotiation&lt;/h2&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt; &lt;li&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html&#34; title=&#34;http://www.w3.org/Protocols/rfc2616/rfc2616-sec12.html&#34;&gt;RFC 2616, section 12&lt;/a&gt;, &lt;em&gt;Content Negociation&lt;/em&gt; in &lt;em&gt;Hypertext Transfer Protocol — HTTP/1.1&lt;/em&gt;, 1999, The Internet Society.&lt;/li&gt; &lt;li&gt;&lt;em&gt;&lt;a class=&#34; external&#34; href=&#34;http://httpd.apache.org/docs/2.2/content-negotiation.html&#34; title=&#34;http://httpd.apache.org/docs/2.2/content-negotiation.html&#34;&gt;Content Negociation&lt;/a&gt; &lt;/em&gt;in &lt;em&gt;Apache HTTP Server version 2.2&lt;/em&gt;, retrieved on May 8th, 2011.&lt;/li&gt; &lt;li&gt;&lt;a class=&#34; external&#34; href=&#34;http://en.wikipedia.org/wiki/Content_negotiation&#34; title=&#34;http://en.wikipedia.org/wiki/Content_negotiation&#34;&gt;&lt;em&gt;Content Negociation&lt;/em&gt;&lt;/a&gt; in &lt;em&gt;Wikipedia&lt;/em&gt;, retrieved on June 10th, 2010.&lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Content_negotiation%24revert/53637" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation$revision/53637 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:26:45 GMT -->
+</html>

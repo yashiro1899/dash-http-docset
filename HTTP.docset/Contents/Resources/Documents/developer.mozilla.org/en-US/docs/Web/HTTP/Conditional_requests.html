@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:32:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>HTTP conditional requests - HTTP | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+  <link rel="alternate" type="application/json" href="Conditional_requests%24json.json">
+  <link rel="canonical" href="Conditional_requests.html" >
+
+  
+    
+      <link rel="alternate" hreflang="ja" href="https://developer.mozilla.org/ja/docs/Web/HTTP/Conditional_requests" title="HTTP 条件付きリクエスト">
+    
+      <link rel="alternate" hreflang="ko" href="https://developer.mozilla.org/ko/docs/Web/HTTP/Conditional_requests" title="HTTP 조건부 요청">
+    
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="HTTP conditional requests">
+  <meta property="og:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests">
+  <meta name="twitter:url" content="https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests">
+  <meta name="twitter:title" content="HTTP conditional requests">
+  
+  <meta property="og:description" content="HTTP has a concept of conditional requests, where the result, and even the success, of a request can be changed by comparing the affected resources with the value of a validator. Such requests can be useful to validate the content of a cache, and sparing a useless control, to verify the integrity of a document, like when resuming a download, or when preventing to lose updates when uploading or modifying a document on the server.">
+  <meta name="description" content="HTTP has a concept of conditional requests, where the result, and even the success, of a request can be changed by comparing the affected resources with the value of a validator. Such requests can be useful to validate the content of a cache, and sparing a useless control, to verify the integrity of a document, like when resuming a download, or when preventing to lose updates when uploading or modifying a document on the server.">
+  <meta name="twitter:description" content="HTTP has a concept of conditional requests, where the result, and even the success, of a request can be changed by comparing the affected resources with the value of a validator. Such requests can be useful to validate the content of a cache, and sparing a useless control, to verify the integrity of a document, like when resuming a download, or when preventing to lose updates when uploading or modifying a document on the server.">
+  
+
+  
+  <script type="text/javascript">
+    
+      var document_saved = 0;
+    
+  </script>
+
+
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+        // dimension12 == 'Page Revision"
+        ga('set', 'dimension12', '1106911');
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body data-slug="Web/HTTP/Conditional_requests" contextmenu="edit-history-menu" data-search-url="" class="document  ">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#document-main" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FConditional_requests" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+   <!-- end is_zone -->
+
+
+    <div class="wiki-main-content" id="document-main"><div class="center">
+      
+      <div class="article-meta">
+        <!-- action buttons -->
+        
+
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  <ul class="page-buttons" data-sticky="false">
+      
+      <li><button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false"><span>Languages</span><i aria-hidden="true" class="icon-language"></i></button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+              
+                
+                
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/ja/docs/Web/HTTP/Conditional_requests" title="Japanese">日本語 (ja)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="https://developer.mozilla.org/ko/docs/Web/HTTP/Conditional_requests" title="Korean">한국어 (ko)</a></bdi></li>
+                
+              
+
+              
+                <li><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Conditional_requests%24locales" rel="nofollow, noindex" id="translations-add">Add a translation</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      
+      <li class="page-buttons-edit"><a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Conditional_requests%24edit" class="button" data-optimizely-hook="button-edit-doc" id="edit-button">Edit<i aria-hidden="true" class="icon-pencil"></i></a></li>
+      
+
+        
+
+        <li><button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false"><span>Advanced</span><i aria-hidden="true" class="icon-cog"></i></button>
+        <div class="submenu js-submenu" id="advanced-menu-submenu">
+          <!-- this page -->
+          <div class="submenu-column">
+            <div class="title">Advanced</div>
+            <ul>
+                <li><a href="Conditional_requests%24history.html" rel="nofollow, noindex">History</a></li>
+                
+                
+                
+
+
+                
+
+                
+                
+                
+                <li class="page-print"><a href="#" onclick="return window.print();">Print this article</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+
+        <!-- crumbs -->
+        
+  <nav class="crumbs" role="navigation"><ol xmlns:v="http://rdf.data-vocabulary.org/#" aria-label="breadcrumbs">
+    <li typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US" rel="v:url" property="v:title">MDN</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="https://developer.mozilla.org/en-US/docs/Web" rel="v:url" property="v:title">Web technology for developers</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="../HTTP.html" rel="v:url" property="v:title">HTTP</a></li>
+    
+    <li class="crumb" typeof="v:Breadcrumb" property="v:title">HTTP conditional requests</li>
+  </ol></nav>
+      </div>
+
+      <!-- heading -->
+      <div id="wiki-document-head" class="document-head">
+          <span class="from-search-previous-box">
+            <a class="button from-search-previous only-icon disabled" title="Previous Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-left"></i></a>
+          </span>
+          <span class="from-search-navigate-wrap">
+            <a href="#" class="from-search-navigate"><span class="from-search-navigate-up"><i aria-hidden="true" class="icon-double-angle-up"></i></span><span class="from-search-navigate-down"><i aria-hidden="true" class="icon-double-angle-down"></i></span></a>
+          </span>
+          <div class="from-search-toc submenu">
+            <span class="title">Your Search Results</span>
+            <ol></ol>
+          </div>
+          <span class="from-search-next-box">
+            <a class="button from-search-next only-icon disabled" title="Next Search Result" data-empty-title="No Previous Search Result"><i aria-hidden="true" class="icon-chevron-right"></i></a>
+          </span>
+
+        
+        <div class="contributor-avatars" data-all-text="see all contributors" data-alternate-message="hide contributors" >
+            <ul>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/fscholz" title="View profile: fscholz">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="fscholz" data-src="../../../../../secure.gravatar.com/avatar/e24391c9174352988d819a9b9ea77c9e6c02.jpeg?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">fscholz</noscript></a>
+                </li>
+            
+                <li class="shown">
+                <a href="https://developer.mozilla.org/en-US/profiles/teoli" title="View profile: teoli">
+                <noscript data-width="34" data-height="34" data-class="avatar" data-alt="teoli" data-src="../../../../../secure.gravatar.com/avatar/d0d90148e08e3b64ccf75c46f31442c56c02.png?s=34&amp;r=pg&amp;d=https%3A%2F%2Fdeveloper.cdn.mozilla.net%2Fmedia%2Fimg%2Favatar.png">teoli</noscript></a>
+                </li>
+            
+            </ul>
+        </div>
+        
+
+        <h1>HTTP conditional requests</h1>
+
+      </div>
+      
+
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-right-present wiki-left-present">
+
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+            
+              <!-- TOC, approvals, etc -->
+              <div class="column-strip wiki-column" id="wiki-right">
+              
+              <!-- table of contents -->
+              <div id="toc" class="toc toggleable">
+                <a href="#toc" class="title toggler" data-open-icon="icon-plus" data-closed-icon="icon-minus">In This Article<i></i></a>
+                <ol class="toggle-container">
+                  <li><a href="#Principles" rel="internal">Principles</a><li><a href="#Validators" rel="internal">Validators</a><ol><li><a href="#Strong_validation" rel="internal">Strong validation</a><li><a href="#Weak_validation" rel="internal">Weak validation</a></ol></li><li><a href="#Conditional_headers" rel="internal">Conditional headers</a><li><a href="#Use_cases" rel="internal">Use cases</a><ol><li><a href="#Cache_update" rel="internal">Cache update</a><li><a href="#Integrity_of_a_partial_download" rel="internal">Integrity of a partial download</a><li><a href="#Avoiding_the_lost_update_problem_with_optimistic_locking" rel="internal">Avoiding the lost update problem with optimistic locking</a><li><a href="#Dealing_with_the_first_upload_of_a_resource" rel="internal">Dealing with the first upload of a resource</a></ol></li><li><a href="#Conclusion" rel="internal">Conclusion</a>
+                </ol>
+              </div>
+              
+              </div>
+            
+
+            
+            
+              
+            
+
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-half wiki-column text-content">
+
+              
+
+              
+
+              
+                
+                
+                
+              
+              
+
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                
+                  
+                    <p></p><section id="Quick_Links" class="Quick_links"><!-- --></section><p></p>
+
+<p class="summary">HTTP has a concept of <em>conditional requests</em>, where the result, and even the success, of a request can be changed by comparing the affected resources with the value of a <em>validator</em>. Such requests can be useful to validate the content of a cache, and sparing a useless control, to verify the integrity of a document, like when resuming a download, or when preventing to lose updates when uploading or modifying a document on the server.</p>
+
+<h2 id="Principles">Principles</h2>
+
+<p>HTTP conditional requests are requests that are executed differently depending on the value of specific headers. These headers define a precondition and the result of the request will be different if the precondition is matched or not.</p>
+
+<p>The different behaviors are defined by the method of the request used and by the set of headers used for a precondition:</p>
+
+<ul>
+ <li>for <a href="https://developer.mozilla.org/en-US/docs/Glossary/safe" class="glossaryLink" title="safe: An HTTP method is safe if it doesn't alter the state of the server. In other words, a method is safe if it leads to a read-only operation. Several common HTTP methods are safe: GET, HEAD, or OPTIONS. All safe methods are also idempotent as well as some, but not all, unsafe methods like PUT, or DELETE.">safe</a> methods, like <a href="Methods/GET.html" title="The GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a>, which usually tries to fetch a document, the conditional request can be used to send back the document if relevant only and therefore spares bandwidth.</li>
+ <li>for <a href="https://developer.mozilla.org/en-US/docs/Glossary/safe" class="glossaryLink" title="unsafe: An HTTP method is safe if it doesn't alter the state of the server. In other words, a method is safe if it leads to a read-only operation. Several common HTTP methods are safe: GET, HEAD, or OPTIONS. All safe methods are also idempotent as well as some, but not all, unsafe methods like PUT, or DELETE.">unsafe</a> methods, like <a href="Methods/PUT.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>PUT</code></a>, which usually uploads a document, the conditional request can be used to upload the document only if the original it is based on is the same that is stored on the server.</li>
+</ul>
+
+<h2 id="Validators">Validators</h2>
+
+<p>All conditional headers try to check if the resource stored on the server matches a specific version. To achieve this, the conditional requests need to indicate the version of the resource. As comparing the whole resource byte to byte is impracticable (and not even always what is wanted!), the request transmits a value describing the version: such values are called <em>validators</em> and are of two kinds:</p>
+
+<ul>
+ <li>the date of last modification of the document, the <em>last-modified</em> date.</li>
+ <li>an opaque string, uniquely identifying each version, called the <em>entity tag</em> or the <em>etag</em>.</li>
+</ul>
+
+<p>Comparing versions of the same resource is a bit tricky: depending of the context, there are two kind of equality checks. <em>Strong validation</em> is used when byte to byte identity is expected, for example when resuming a download. <em>Weak validation</em> is used when the user-agent only needs to determine if the two resources have the same content, even if they are minor difference (like different ads, or a footer with a different date).</p>
+
+<p>The kind of validation is independent of the validator used; both <a href="Headers/Last-Modified.html" title="The Last-Modified response HTTP header contains the date and time at which the origin server believes the resource was last modified. It is used as a validator to determine if a resource received or stored is the same. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field."><code>Last-Modified</code></a> and <a href="Headers/ETag.html" title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, If the content has changed, Etags can be useful to prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").'><code>ETag</code></a> allow both types of validation though the complexity to implement it on the server side may vary. HTTP uses strong validation by default, and it specifies when weak validation can be used.</p>
+
+<h3 id="Strong_validation">Strong validation</h3>
+
+<p id="sect1">Strong validation consists in guaranteeing that the resource is byte to byte identical to the one it is compared too. This is mandatory for some conditional headers, and the default for the others. Strong validation is very strict and may be difficult to guarantee at the server level, but it does guarantes no data loss at any time, sometimes at the expense of performance.</p>
+
+<p>It is quite difficult to have a unique identifier for strong validation with <a href="Headers/Last-Modified.html" title="The Last-Modified response HTTP header contains the date and time at which the origin server believes the resource was last modified. It is used as a validator to determine if a resource received or stored is the same. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field."><code>Last-Modified</code></a>. Often this is done using an <a href="Headers/ETag.html" title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, If the content has changed, Etags can be useful to prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").'><code>ETag</code></a> with the MD5 hash of the resource (or a derivative).</p>
+
+<h3 id="Weak_validation">Weak validation</h3>
+
+<p>Weak validation differs from strong validation as it considers two versions of the document as identical if the content is equivalent. For example, a page that would differ from another only by a different date in its footer, or by different advertisement, would be considered as identical to the other with weak validation, but will be considered as different with strong validation. Building a system of etags that creates weak validation may be complex as it involves knowing the importance of the different elements of a page, but is very useful to optimize caching performance.</p>
+
+<h2 id="Conditional_headers">Conditional headers</h2>
+
+<p>Several HTTP headers, called conditional headers, lead to conditional requests. These are:</p>
+
+<dl>
+ <dt><a href="Headers/If-Match.html" title="The If-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the resource in this case."><code>If-Match</code></a></dt>
+ <dd>Succeeds if the <a href="Headers/ETag.html" title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, If the content has changed, Etags can be useful to prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").'><code>ETag</code></a> of the distant resource is equal to one listed in this header. By default, unless the etag is prefixed with <code>'W/'</code>, it performs a strong validation.</dd>
+ <dt><a href="Headers/If-None-Match.html" title="The If-None-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource, with a 200 status, only if doesn't have a ETag matching the given one. For other methods, the request will be processed only if the eventually existing resource's ETag doesn't match any of the values listed."><code>If-None-Match</code></a></dt>
+ <dd>Succeeds if the <a href="Headers/ETag.html" title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, If the content has changed, Etags can be useful to prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").'><code>ETag</code></a> of the distant resource is different to each listed in this header. By default, unless the etag is prefixed with <code>'W/'</code>, it performs a strong validation.</dd>
+ <dt><a href="Headers/If-Modified-Since.html" title="The If-Modified-Since request HTTP header makes the request conditional: the server will send back the requested resource, with a 200 status, only if it has been last modified after the given date. If the request has not been modified since, the response will be a 304 without any body; the Last-Modified header will contain the date of last modification. Unlike If-Unmodified-Since, If-Modified-Since can only be used with a GET or HEAD."><code>If-Modified-Since</code></a></dt>
+ <dd>Succeeds if the <a href="Headers/Last-Modified.html" title="The Last-Modified response HTTP header contains the date and time at which the origin server believes the resource was last modified. It is used as a validator to determine if a resource received or stored is the same. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field."><code>Last-Modified</code></a> date of the distant resource is more recent than the one given in this header.</dd>
+ <dt><a href="Headers/If-Unmodified-Since.html" title="The If-Unmodified-Since request HTTP header makes the request conditional: the server will send back the requested resource, or accept it in the case of a POST or another non-safe method, only if it has not been last modified after the given date. If the request has been modified after the given date, the response will be a 412 (Precondition Failed) error."><code>If-Unmodified-Since</code></a></dt>
+ <dd>Succeeds if the <a href="Headers/Last-Modified.html" title="The Last-Modified response HTTP header contains the date and time at which the origin server believes the resource was last modified. It is used as a validator to determine if a resource received or stored is the same. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field."><code>Last-Modified</code></a> date of the distant resource is older or the same than the one given in this header.</dd>
+ <dt><a href="Headers/If-Range.html" title="The If-Range request HTTP header makes the range request conditional: if the condition is fulfilled, the range request will be and the server send back a 206 Partial Content answer with the appropriate body. If the condition is not fulfilled, the full resource is sent back, with a 200 OK status."><code>If-Range</code></a></dt>
+ <dd>Similar to <a href="Headers/If-Match.html" title="The If-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the resource in this case."><code>If-Match</code></a>, or <a href="Headers/If-Unmodified-Since.html" title="The If-Unmodified-Since request HTTP header makes the request conditional: the server will send back the requested resource, or accept it in the case of a POST or another non-safe method, only if it has not been last modified after the given date. If the request has been modified after the given date, the response will be a 412 (Precondition Failed) error."><code>If-Unmodified-Since</code></a>, but can have only one single etag, or one date. If it fails, a the range request fails and, instead of a <a href="Status/206.html" title="The HTTP 206 Partial Content success status response code indicates that the request has succeeded and has the body contains the requested ranges of data, as described in the Range header of the request."><code>206</code></a> <code>Partial Content</code> response, a <a href="Status/200.html" title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default."><code>200</code></a> <code>OK</code> is sent with the complete resource.</dd>
+</dl>
+
+<h2 id="Use_cases">Use cases</h2>
+
+<h3 id="Cache_update">Cache update</h3>
+
+<p>The most common use case for conditional requests is updating a cache. With an empty cache, or without a cache, the requested resources is sent back with a status of <a href="Status/200.html" title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default."><code>200</code></a> <code>OK</code>.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13729/Cache1.png" style="height: 265px; width: 741px;" alt="The request issued when the cache is empty triggers the resource to be downloaded, with both validator value sent as headers. The cache is then filled."></p>
+
+<p>Together with the resource, the validators are sent in the headers. In this example, both <a href="Headers/Last-Modified.html" title="The Last-Modified response HTTP header contains the date and time at which the origin server believes the resource was last modified. It is used as a validator to determine if a resource received or stored is the same. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field."><code>Last-Modified</code></a> and <a href="Headers/ETag.html" title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, If the content has changed, Etags can be useful to prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").'><code>ETag</code></a> are sent, but it could have been only one of them as well. These validators are cached with the resource (like all headers) and will be used to craft conditional requests once the cache becomes stale.</p>
+
+<p>As long as the cache is not stale, no requests are issued at all. But once, it has become stale, this is mostly controlled by the <a href="Headers/Cache-Control.html" title="The Cache-Control general-header field is used to specify directives for caching mechanisms in both, requests and responses. Caching directives are unidirectional, meaning that a given directive in a request is not implying that the same directive is to be given in the response."><code>Cache-Control</code></a> header, the client doesn't use the cached value directly but issues a <em>conditional request</em>, with the value of the validator used as parameter of the <a href="Headers/If-Modified-Since.html" title="The If-Modified-Since request HTTP header makes the request conditional: the server will send back the requested resource, with a 200 status, only if it has been last modified after the given date. If the request has not been modified since, the response will be a 304 without any body; the Last-Modified header will contain the date of last modification. Unlike If-Unmodified-Since, If-Modified-Since can only be used with a GET or HEAD."><code>If-Modified-Since</code></a> and <a href="Headers/If-Match.html" title="The If-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the resource in this case."><code>If-Match</code></a> headers.</p>
+
+<p>If the resource has not been changed, the server sends back a <a href="Status/304.html" title="The HTTP 304 Not Modified client redirection response code indicates that there is no need to retransmit the requested resources. It is an implicit redirection to a cached resource. This happens when the request method is safe, like a GET or a HEAD request, or when the request is conditional and uses a If-None-Match or a If-Modified-Since header."><code>304</code></a> <code>Not Modified</code> response, which makes the cache fresh again and the client use the cached resource. Although there is a response/request round-trip that consumes some resources, this is more efficient than to transmit the whole resource over the wire again.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13731/HTTPCache2.png" style="height: 265px; width: 741px;" alt="With a stale cache, the conditional request is sent. The server can determine if the resource changed, and, as in this case, decide not to send it again as it is the same."></p>
+
+<p>If the resource has changed, the server just sends back a <a href="Status/200.html" title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default."><code>200</code></a><code> OK</code> response, with the new version of the resource, like if the request wasn't conditional and the client use this new resource (and caches it).</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13733/HTTPCache3.png" alt="In the case where the resource was changed, it is sent back as if the request wasn't conditional."></p>
+
+<p>Besides setting the validators on the server side, this mechanism is transparent: all browsers manage a cache and send such conditional requests without any special work to be done by Web developers.</p>
+
+<h3 id="Integrity_of_a_partial_download">Integrity of a partial download</h3>
+
+<p>Partial downloading of files is a functionality of HTTP that allows to resume previous operations, saving bandwidth and time by keeping the already obtained information.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13735/HTTPResume1.png" style="height: 397px; width: 764px;" alt="A download has been stopped and only partial content has been retrieved."></p>
+
+<p>A server supporting partial downloads advertised it by sending the <a href="Headers/Accept-Ranges.html" title="The Accept-Ranges response HTTP header is a marker used by the server to advertise its support of partial request. The value of this field indicates the unit that can be used to define the range."><code>Accept-Ranges</code></a> header. When this happens, the client can resume a download by sending a <a href="Headers/Ranges.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>Ranges</code></a> header with the missing ranges.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13737/HTTPResume2.png" alt="The client resumes the requests by indicating the range he needs and preconditions checking the validators of the partially obtained request."></p>
+
+<p>The principle is simple, but there is one potential problem: if the downloaded resource has been modified in-between the two downloads, the obtained ranges will correspond to two different versions of the resource and the final document will be corrupted.</p>
+
+<p>To prevent this, conditional requests are used. For ranges, they are two ways of doing this. The more flexible one makes use of <a href="Headers/If-Modified-Since.html" title="The If-Modified-Since request HTTP header makes the request conditional: the server will send back the requested resource, with a 200 status, only if it has been last modified after the given date. If the request has not been modified since, the response will be a 304 without any body; the Last-Modified header will contain the date of last modification. Unlike If-Unmodified-Since, If-Modified-Since can only be used with a GET or HEAD."><code>If-Modified-Since</code></a> and <a href="Headers/If-Match.html" title="The If-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the resource in this case."><code>If-Match</code></a> and the server returns an error if the precondition fails; the client then restarts the download from the beginning.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13739/HTTPResume3.png" alt="When the partially downloaded resource has been modified, the preconditions will fail and the resource will have to be downloaded again completely."></p>
+
+<p>Even if this method works, it adds an extra response/request exchange when the document has been changed. This impairs the performance and HTTP has an extra specific header to avoid this: <a href="Headers/If-Range.html" title="The If-Range request HTTP header makes the range request conditional: if the condition is fulfilled, the range request will be and the server send back a 206 Partial Content answer with the appropriate body. If the condition is not fulfilled, the full resource is sent back, with a 200 OK status."><code>If-Range</code></a>.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13741/HTTPResume4.png" style="height: 263px; width: 770px;" alt="The If-Range headers allows the server to directly send back the complete resource if it has been modified, no need to send a 412 error and wait for the client to re-initiate the download."></p>
+
+<p>This solution is more efficient, but slightly less flexible (only one etag can be used in the condition), though this added flexibility is rarely needed.</p>
+
+<h3 id="Avoiding_the_lost_update_problem_with_optimistic_locking">Avoiding the lost update problem with optimistic locking</h3>
+
+<p>A common operation in Web applications is to <em>update</em> a remote document. This is very common in any file system or source control applications, but any application that allows to store remote resources needs such a mechanism. Similarly, common Web sites like wikis and other CMS have such a need.</p>
+
+<p>With the <a href="Methods/PUT.html" class="new" title="The documentation about this has not yet been written; please consider contributing!"><code>PUT</code></a> method you are able to implement this. The client first reads the original files, modifies them and finally pushes them to the server.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13743/HTTPLock1.png" alt="Updating a file with a PUT is very simple when concurrency is not involved."></p>
+
+<p>Unfortunately, things get a little bit awry as soon as we take into account concurrency. While a client is modifying locally its new copy of the resource, a second client can fetch the same resource and do the same on its side. What happens then is very unfortunate: when they commit back, the modifications of the first client to push are discarded by the next push, as the second client is unaware of the new changes. The decision about who wins is not communicated to the other party, but which client's changes will be kept will vary with the speed they commit, which depends on the performance of the clients, of the server, and even of the human editing the document at the client: the winner will change from one time to another. This is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/race_condition" class="new glossaryLink" title="The definition of that term (race condition) has not been written yet; please consider contributing it!">race condition</a> and leads to problematic behaviors difficult to detect and to debug.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13749/HTTPLock2.png" style="height: 504px; width: 904px;" alt="When several clients update the same resource in parallel, we are facing a race condition: the slowest win, and the others don't even know they lost. Problematic!"></p>
+
+<p>There is no way in dealing with this problem without annoying one of the two clients. But lost updates and race conditions are to be avoided: we want a predictable results and that the clients are notified when their changes are rejected.</p>
+
+<p>Conditional requests allow to implement the <em>optimistic locking algorithm</em> (used by most wikis or source control systems). The idea is to allow all clients to get copies of the resource, to let them modify it locally and to control concurrency by allowing the first client submitting an update to do it successfully, all subsequent updates based on the now obsolete version of the resource are rejected.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13751/HTTPLock3.png" style="height: 471px; width: 904px;" alt="Conditional requests allow to implement optimistic locking: now the quickest wins, and the others get an error."></p>
+
+<p>This is implemented using the <a href="Headers/If-Match.html" title="The If-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the resource in this case."><code>If-Match</code></a> or <a href="Headers/If-Unmodified-Since.html" title="The If-Unmodified-Since request HTTP header makes the request conditional: the server will send back the requested resource, or accept it in the case of a POST or another non-safe method, only if it has not been last modified after the given date. If the request has been modified after the given date, the response will be a 412 (Precondition Failed) error."><code>If-Unmodified-Since</code></a> headers. If the etag doesn't match the original file, or if the file has been modified since it has been obtained, the change is simply rejected with a <a href="Status/412.html" title="The HTTP 412 Precondition Failed client error response code indicates that access to the target resource has been denied. This happens with conditional requests on methods other than GET or HEAD when the condition defined by the If-Unmodified-Since or If-None-Match headers is not fulfilled. In that case, the request, usually an upload or a modification of a resource, cannot be made and this error response is sent back."><code>412</code></a> <code>Precondition Failed</code> error. It is up to the client to then deal with the error, either by notifying the human behind to start again, this time on the newest version, or by helping the person by showing them a "diff" and letting the human choose the changes to keep.</p>
+
+<h3 id="Dealing_with_the_first_upload_of_a_resource">Dealing with the first upload of a resource</h3>
+
+<p>The first upload of a resource is an edge case of the previous: like for any update of a resource, it is subject to a race condition if two clients try to perform it at the same time (or almost). To prevent this, conditional requests can be used: by adding <a href="Headers/If-None-Match.html" title="The If-None-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource, with a 200 status, only if doesn't have a ETag matching the given one. For other methods, the request will be processed only if the eventually existing resource's ETag doesn't match any of the values listed."><code>If-None-Match</code></a> with the special value of <code>'*'</code>, representing any etag, the request will succeed only if the resource didn't exist before.</p>
+
+<p><img src="../../../../../mdn.mozillademos.org/files/13753/HTTPFirst.png" style="height: 311px; width: 895px;" alt="Like for a regular upload, the first upload of a resource is subject to a race condition: If-None-Match can prevent it."></p>
+
+<p><code>If-None-Match</code> will work only with HTTP/1.1-compliant server (and later). If you don't know if the server will be compliant, you need first to issue a <a href="Methods/HEAD.html" title="The HTTP HEAD method requests the headers that are returned if the specified resource would be requested with an HTTP GET method. Such a request can be done before deciding to download a large resource to save bandwidth, for example."><code>HEAD</code></a> request to the resource to check it.</p>
+
+<h2 id="Conclusion">Conclusion</h2>
+
+<p>Conditional requests are a key feature of HTTP and allow to build efficient and complex applications. For caching, or resuming downloads, the only work requested to webmasters is to configure the server correctly (setting up correct etags in some environment can be tricky), and Web developers have nothing to do as the browser will serve the right conditional requests.</p>
+
+<p>For locking mechanisms, it is the opposite, Web developers need to issue request with the proper headers, while webmasters can rely on the application most of the time to make the check for them.</p>
+
+<p>In both cases, conditional requests are a fundamental feature of the Web.</p>
+                  
+                
+              </article>
+
+              
+
+                <!-- contributors -->
+                <div class="wiki-block contributors">
+                  <h2 class="offscreen">Document Tags and Contributors</h2>
+                  
+                  
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Conditional Requests">Conditional Requests</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+    </ul>
+  </div>
+
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-group icon-fw"></i>&nbsp;<strong>Contributors to this page:</strong> 
+        <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>, 
+    
+        <a href="https://developer.mozilla.org/en-US/profiles/teoli">teoli</a>
+    
+                    </div>
+                  
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-clock-o icon-fw"></i>&nbsp;<strong>Last updated by:</strong>
+                      <a href="https://developer.mozilla.org/en-US/profiles/fscholz">fscholz</a>,
+                      <time datetime="2016-08-18T06:29:30-07:00">Aug 18, 2016, 6:29:30 AM</time>
+                    </div>
+                  
+                </div>
+              
+
+              
+                  <div class="newsletter-box">
+                    <div class="newsletter">
+    <form id="newsletterForm" name="newsletter-form" class="nodisable" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+        <h2 class="newsletter-teaser">Learn the best of web development</h2>
+        <p class="newsletter-description">Sign up for our newsletter:</p>
+        <input type="hidden" id="fmt" name="fmt" value="H">
+        <input type="hidden" id="newsletterNewslettersInput" name="newsletters" value="app-dev" />
+
+        <div id="newsletterErrors" class="newsletter-errors"></div>
+
+        <div id="newsletterEmail" class="form-group">
+            <label for="newsletterEmailInput" class="form-label offscreen">E-mail</label>
+            <input type="email" id="newsletterEmailInput" name="email" class="form-input newsletter-input-email" required placeholder="you@example.com" size="30">
+        </div>
+
+        <div id="newsletterPrivacy" class="form-group form-group-agree hidden">
+            <input type="checkbox" id="newsletterPrivacyInput" name="privacy" required>
+            <label for="newsletterPrivacyInput">
+            I'm okay with Mozilla handling my info as explained in this <a href="https://www.mozilla.org/privacy/">Privacy Policy</a>.
+            </label>
+        </div>
+        <div id="newsletterSubmit">
+            <button id="newsletter-submit" type="submit" class="button positive">Sign up now</button>
+        </div>
+        
+    </form>
+    <div id="newsletterThanks" class="newsletter-thanks hidden">
+        <h2>Thanks! Please check your inbox to confirm your subscription.</h2>
+        <p>If you haven’t previously confirmed a subscription to a Mozilla-related newsletter you may have to do so. Please check your inbox or your spam filter for an email from us.
+        </p>
+    </div>
+    <button id="newsletterHide" type="button" class="only-icon newsletter-hide hidden"><span>Hide Newsletter Sign-up</span><i aria-hidden="true" class="icon-times"></i></button>
+</div>
+                  </div>
+              
+            </div>
+
+            
+              <!-- quick links and zone subnav strip -->
+              <div id="wiki-left" class="column-strip wiki-column">
+
+              
+
+                
+
+                
+                  <!-- quick links -->
+                  
+  <div class="quick-links" id="quick-links">
+    <div class="title see-also">See also</div>
+     
+  <ol> 
+    <li><a href="../HTTP.html"><strong><em>HTTP</em></strong></a></li> 
+    <li><strong>Guides:</strong></li> 
+    <li><a href="Basics_of_HTTP/Resources_and_URIs.html">Resources and URIs</a> 
+    <ol> 
+        <li><a href="Basics_of_HTTP/Identifying_resources_on_the_Web.html">Identifying resources on the Web</a> 
+        </li><li><a href="Basics_of_HTTP/Data_URIs.html">Data URIs</a> 
+        </li><li><a href="Basics_of_HTTP/MIME_Types.html">Introduction to MIME Types</a> 
+        </li><li><a href="Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types.html">Complete list of MIME Types</a> 
+        </li><li><a href="Basics_of_HTTP/Choosing_between_www_and_non-www_URLs.html">Choosing between www and non-www URLs</a> 
+    </li></ol></li> 
+    <li><a href="Basics_of_HTTP.html">Basics of HTTP</a> 
+    <ol> 
+        <li><a href="Overview.html">Overview of HTTP</a> 
+        </li><li><a href="Basics_of_HTTP/Evolution_of_HTTP.html">Evolution of HTTP</a> 
+        </li><li><a href="Messages.html">HTTP Messages</a> 
+        </li><li><a href="Session.html">A typical HTTP session</a></li> 
+        <li><a href="Connection_management_in_HTTP_1.html">Connection management in HTTP/1.x</a></li> 
+ 
+    </ol> 
+    </li> 
+    <li><a href="Access_control_CORS.html">HTTP access control (CORS)</a></li> 
+    <li><a href="Caching.html">HTTP caching</a></li> 
+    <li><a href="Conditional_requests.html">HTTP conditional requests</a></li> 
+    <li><a href="Content_negotiation.html">HTTP content negotiation</a></li>   
+    <li><a href="Cookies.html">HTTP cookies</a></li> 
+    <li><a href="Redirections.html">HTTP redirects</a></li> 
+    <li><a href="Resources_and_specifications.html">Resources and specifications</a></li> 
+    <li><strong>References:</strong></li> 
+    <li data-default-state="closed"><a href="Headers.html">HTTP headers</a> 
+      <ol><li><a href="Headers/Accept.html" title="The Accept request HTTP header advertizes which content types, expressed as MIME types, the client is able to understand. Using content negotiation, the server then selects one of the proposal, use it and inform the client of its choice with the Content-Type response header. Browsers set adequate values for this header depending of the context where the request is done: when fetching a CSS stylesheet they set a different value for this request than when they fetch an image, a video or a script."><code>Accept</code></a></li><li><a href="Headers/Accept-Charset.html" title="The Accept-Charset request HTTP header advertises which character set the client is able to understand Using content negotiation, the server then selects one of the proposal, use it and inform the client of its choice within the Content-Type response header. Browser usually don't set this header as the default value defined for each content type is usually correct and transmitting it would allow for easier fingerprinting."><code>Accept-Charset</code></a></li><li><a href="Headers/Accept-Encoding.html" title="The Accept-Encoding request HTTP header advertizes which content encoding, usually a compression algorithm, the client is able to understand. Using content negotiation, the server then selects one of the proposal, use it and inform the client of its choice with the Content-Encoding response header."><code>Accept-Encoding</code></a></li><li><a href="Headers/Accept-Language.html" title="The Accept-Language request HTTP header advertises which languages the client is able to understand, and which locale variant is preferred. Using content negotiation, the server then selects one of the proposal, use it and inform the client of its choice with the Content-Language response header. Browsers set adequate values for this header according their user interface language and even if a user can change it, this happens rarely (and is frown upon as it leads to fingerprinting)."><code>Accept-Language</code></a></li><li><a href="Headers/Accept-Ranges.html" title="The Accept-Ranges response HTTP header is a marker used by the server to advertise its support of partial request. The value of this field indicates the unit that can be used to define the range."><code>Accept-Ranges</code></a></li><li><a href="Headers/Age.html" title="The Age header contains the time in seconds the object has been in a proxy cache."><code>Age</code></a></li><li><a href="Headers/Cache-Control.html" title="The Cache-Control general-header field is used to specify directives for caching mechanisms in both, requests and responses. Caching directives are unidirectional, meaning that a given directive in a request is not implying that the same directive is to be given in the response."><code>Cache-Control</code></a></li><li><a href="Headers/Connection.html" title="The Connection general header controls whether or not the network connection stays open after the current transaction finishes. If the value sent is keep-alive, the connection is persistent and not closed, allowing for subsequent requests to the same server to be done."><code>Connection</code></a></li><li><a href="Headers/Content-Disposition.html" title="In a multipart/form-data body, the HTTP Content-Disposition general header is a header that can be used on the subpart of a multipart body to give information about the field it applies to. The subpart is delimited by the boundary defined in the Content-Type header. Used on the body itself, Content-Disposition has no effect."><code>Content-Disposition</code></a></li><li><a href="Headers/Content-Encoding.html" title="The Content-Encoding entity header is used compress the media-type. When present, its value indicates what additional content encoding has been applied to the entity-body. It lets the client know, how to decode in order to obtain the media-type referenced by the Content-Type header."><code>Content-Encoding</code></a></li><li><a href="Headers/Content-Language.html" title="The Content-Language entity header is used to describe the language(s) intended for the audience, so that it allows a user to differentiate according to the users' own preferred language."><code>Content-Language</code></a></li><li><a href="Headers/Content-Length.html" title="The Content-Length entity header is indicating the size of the entity-body, in decimal number of octets, sent to the recipient."><code>Content-Length</code></a></li><li><a href="Headers/Content-Location.html" title="The Content-Location header indicates an alternate location for the returned data. The principal use case is to indicate the URL of the resource transmitted as the result of content negotiation."><code>Content-Location</code></a></li><li><a href="Headers/Content-Security-Policy.html" title="The Content-Security-Policy header fields allows web site administrators to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifiying server origins and script endpoints. This helps guard against cross-site scripting attacks."><code>Content-Security-Policy</code></a></li><li><a href="Headers/Content-Type.html" title="The Content-Type entity header is used to indicate the media type of the resource."><code>Content-Type</code></a></li><li><a href="Headers/Date.html" title="The Date general HTTP header contains the date and time at which the message was originated."><code>Date</code></a></li><li><a href="Headers/ETag.html" title='The ETag HTTP response header is an identifier for a specific version of a resource. It allows caches to be more efficient, and saves bandwidth, as a web server does not need to send a full response if the content has not changed. On the other side, If the content has changed, Etags can be useful to prevent simultaneous updates of a resource from overwriting each other ("mid-air collisions").'><code>ETag</code></a></li><li><a href="Headers/Expires.html" title="The Expires header contains the date/time after which the response is considered stale."><code>Expires</code></a></li><li><a href="Headers/From.html" title="The From request header contains an Internet email address for a human user who controls the requesting user agent."><code>From</code></a></li><li><a href="Headers/Host.html" title="The Host request header specifies the domain name of the server (for virtual hosting), and (optionally) the TCP port number on which the server is listening."><code>Host</code></a></li><li><a href="Headers/If-Match.html" title="The If-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource only if it matches one of the listed ETags. For PUT and other non-safe methods, it will only upload the resource in this case."><code>If-Match</code></a></li><li><a href="Headers/If-Modified-Since.html" title="The If-Modified-Since request HTTP header makes the request conditional: the server will send back the requested resource, with a 200 status, only if it has been last modified after the given date. If the request has not been modified since, the response will be a 304 without any body; the Last-Modified header will contain the date of last modification. Unlike If-Unmodified-Since, If-Modified-Since can only be used with a GET or HEAD."><code>If-Modified-Since</code></a></li><li><a href="Headers/If-None-Match.html" title="The If-None-Match HTTP request header makes the request conditional. For GET and HEAD methods, the server will send back the requested resource, with a 200 status, only if doesn't have a ETag matching the given one. For other methods, the request will be processed only if the eventually existing resource's ETag doesn't match any of the values listed."><code>If-None-Match</code></a></li><li><a href="Headers/If-Range.html" title="The If-Range request HTTP header makes the range request conditional: if the condition is fulfilled, the range request will be and the server send back a 206 Partial Content answer with the appropriate body. If the condition is not fulfilled, the full resource is sent back, with a 200 OK status."><code>If-Range</code></a></li><li><a href="Headers/If-Unmodified-Since.html" title="The If-Unmodified-Since request HTTP header makes the request conditional: the server will send back the requested resource, or accept it in the case of a POST or another non-safe method, only if it has not been last modified after the given date. If the request has been modified after the given date, the response will be a 412 (Precondition Failed) error."><code>If-Unmodified-Since</code></a></li><li><a href="Headers/Keep-Alive.html" title="The Keep-Alive general header allows the sender to hint about how the connection and may be used to set a timeout and a maximum amount of requests."><code>Keep-Alive</code></a></li><li><a href="Headers/Last-Modified.html" title="The Last-Modified response HTTP header contains the date and time at which the origin server believes the resource was last modified. It is used as a validator to determine if a resource received or stored is the same. Less accurate than an ETag header, it is a fallback mechanism. Conditional requests containing If-Modified-Since or If-Unmodified-Since headers make use of this field."><code>Last-Modified</code></a></li><li><a href="Headers/Location.html" title="The Location response header indicates the URL to redirect a page to. It only provides a meaning when served with a 3xx status response."><code>Location</code></a></li><li><span class="sidebar-icon"><span title="This deprecated API should no longer be used, but will probably still work."><i class="icon-thumbs-down-alt"> </i></span></span><a href="Headers/Pragma.html" title="The Pragma HTTP/1.0 general header is an implementation-specific header that may have various effects along the request-response chain. It is used for backwards compatibility with HTTP/1.0 caches where the Cache-Control HTTP/1.1 header is not yet present."><code>Pragma</code></a></li><li><a href="Headers/Referer.html" title="The Referer request header contains the address of the previous web page from which a link to the currently requested page was followed. The Referer header allows servers to identify where people are visiting them from and may use that data for analytics, logging, or optimized caching, for example."><code>Referer</code></a></li><li><a href="Headers/Retry-After.html" title="The Retry-After response HTTP header indicates how long the user agent should wait before making a follow-up request. There are two main cases this header is used:"><code>Retry-After</code></a></li><li><a href="Headers/Server.html" title="The Server header contains information about the software used by the origin server to handle the request."><code>Server</code></a></li><li><a href="Headers/TE.html" title="The TE request header specifies the transfer encodings the user agent is willing to accept. (you could informally call it Accept-Transfer-Encoding, which would be more intuitive)."><code>TE</code></a></li><li><a href="Headers/Trailer.html" title="The Trailer request header allows the sender to include additional fields at the end of chunked messages in order to supply metadata that might be dynamically generated while the message body is sent, such as a message integrity check, digital signature, or post-processing status."><code>Trailer</code></a></li><li><a href="Headers/Transfer-Encoding.html" title="The Transfer-Encoding header specifies the form of encoding used to safely transfer the entity to the user."><code>Transfer-Encoding</code></a></li><li><a href="Headers/User-Agent.html" title="The User-Agent request header contains a characteristic string that allows the network protocol peers to identify the application type, operating system, software vendor or software version of the requesting software user agent."><code>User-Agent</code></a></li><li><a href="Headers/Vary.html" title="The Vary HTTP response header determines how to match future request headers to decide whether a cached response can be used rather than requesting a fresh one from the origin server."><code>Vary</code></a></li><li><a href="Headers/Via.html" title="The Via general header is added by proxies, both forward and reverse proxies, and can appear in the request headers and the response headers. It is used for tracking message forwards, avoiding request loops, and identifying the protocol capabilities of senders along the request/response chain."><code>Via</code></a></li><li><a href="Headers/Warning.html" title="The Warning general HTTP header contains information about possible problems with the status of the message. More than one Warning header may appear in a response."><code>Warning</code></a></li><li><a href="Headers/X-Content-Type-Options.html" title="The X-Content-Type-Options response HTTP header is a marker used by the server to indicate that the MIME types advertized in the Content-Type headers should not be changed and be followed. This allows to opt out of MIME sniffing, or, in other words, it is a way to say that the webmasters knew what they were doing."><code>X-Content-Type-Options</code></a></li><li><a href="Headers/X-Frame-Options.html" title="The X-Frame-Options HTTP response header can be used to indicate whether or not a browser should be allowed to render a page in a &lt;frame>, &lt;iframe> or &lt;object> . Sites can use this to avoid clickjacking attacks, by ensuring that their content is not embedded into other sites."><code>X-Frame-Options</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="Methods.html">HTTP request methods</a> 
+      <ol><li><a href="Methods/GET.html" title="The GET method requests a representation of the specified resource. Requests using GET should only retrieve data."><code>GET</code></a></li><li><a href="Methods/HEAD.html" title="The HTTP HEAD method requests the headers that are returned if the specified resource would be requested with an HTTP GET method. Such a request can be done before deciding to download a large resource to save bandwidth, for example."><code>HEAD</code></a></li><li><a href="Methods/POST.html" title="The HTTP POST method sends data to the server. The type of the body of the request is indicated by the Content-Type header. A POST request is typically send via an HTML form and results in a change on the server. In this case, the content type is selected by putting the adequate string in the enctype attribute of the &lt;form> element or the formenctype attribute of the &lt;input> or &lt;button> elements:"><code>POST</code></a></li></ol> 
+    </li> 
+    <li data-default-state="closed"><a href="Status.html">HTTP response status codes</a> 
+      <ol><li><a href="Status/100.html" title="The HTTP 100 Continue informational status response code indicates that everything so far is OK and that the client should continue with the request or ignore it if it is already finished."><code>100 Continue</code></a></li><li><a href="Status/200.html" title="The HTTP 200 OK success status response code indicates that the request has succeeded. A 200 response is cacheable by default."><code>200 OK</code></a></li><li><a href="Status/201.html" title="The HTTP 201 Created success status response code indicates that the request has succeeded and has led to the creation of a resource. The new resource is effectively created before this response is sent back. and the new resource is returned in the body of the message, its location being either the URL of the request, or the content of the Location header."><code>201 Created</code></a></li><li><a href="Status/204.html" title="The HTTP 204 No Content success status response code indicates that the request has succeded, but that the client doesn't need to go away from its current page . A 204 response is cacheable by default. An ETag header is included in such a response."><code>204 No Content</code></a></li><li><a href="Status/206.html" title="The HTTP 206 Partial Content success status response code indicates that the request has succeeded and has the body contains the requested ranges of data, as described in the Range header of the request."><code>206 Partial Content</code></a></li><li><a href="Status/301.html" title="The HTTP 301 Moved Permanently redirect status response code indicates that the resource requested has been definitively moved to the URL given by the Location headers. A browser redirects to this page, and search engines update their links to the resource (In SEO-speak, it is said that the link-juice is sent to the new URL)."><code>301 Moved Permanently</code></a></li><li><a href="Status/302.html" title="The HTTP 302 Found redirect status response code indicates that the resource requested has been temporarily moved to the URL given by the Location headers. A browser redirects to this page, but search engines don't update their links to the resource (In SEO-speak, it is said that the link-juice is not sent to the new URL)."><code>302 Found</code></a></li><li><a href="Status/303.html" title="The HTTP 303 See Other redirect status response code, usually sent back as a result of a PUT or POST operation, indicates that the redirects don't link to the newly uploaded resources but to another page, like a confirmation page or an upload progress page. The method used to display this redirected page is always GET."><code>303 See Other</code></a></li><li><a href="Status/304.html" title="The HTTP 304 Not Modified client redirection response code indicates that there is no need to retransmit the requested resources. It is an implicit redirection to a cached resource. This happens when the request method is safe, like a GET or a HEAD request, or when the request is conditional and uses a If-None-Match or a If-Modified-Since header."><code>304 Not Modified</code></a></li><li><a href="Status/307.html" title='The method and the body of the original request are reused to perform the redirected request. In the cases where you want the method used to be changed to GET, use 303 See Also instead. This is useful when you want to give an answer to a PUT method that is not the uploaded resources, but a confirmation message (like "You successfully uploaded XYZ").'><code>307 Temporary Redirect</code></a></li><li><a href="Status/308.html" title="The request method and the body will not be altered, whereas 301 may incorrectly sometimes be changed to a GET method."><code>308 Permanent Redirect</code></a></li><li><a href="Status/404.html" title="The HTTP 404 Not Found client error response code indicates that a server can not find the requested resource. This response code probably is most famous one due to its frequency to occur in the web. These are often called broken or dead links and lead to link rot."><code>404 Not Found</code></a></li><li><a href="Status/406.html" title="The HTTP 406 Not Acceptable client error response code indicates that it cannot server a response matching the list of acceptable values defined in Accept-Charset and Accept-Language."><code>406 Not Acceptable</code></a></li><li><a href="Status/410.html" title="The HTTP 410 Gone client error response code indicates that access to the target resource is no longer available at the origin server and that this condition is likely to be permanent."><code>410 Gone</code></a></li><li><a href="Status/412.html" title="The HTTP 412 Precondition Failed client error response code indicates that access to the target resource has been denied. This happens with conditional requests on methods other than GET or HEAD when the condition defined by the If-Unmodified-Since or If-None-Match headers is not fulfilled. In that case, the request, usually an upload or a modification of a resource, cannot be made and this error response is sent back."><code>412 Precondition Failed</code></a></li><li><a href="Status/451.html" title="The HTTP 451 Unavailable For Legal Reasons client error response code indicates that the user requests an illegal resource, such as a web page for which a legal action has been issued."><code>451 Unavailable For Legal Reasons</code></a></li><li><a href="Status/500.html" title="The HTTP 500 Internal Server Error server error response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request."><code>500 Internal Server Error</code></a></li><li><a href="Status/501.html" title="The HTTP 501 Not Implemented server error response code indicates that the request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD."><code>501 Not Implemented</code></a></li><li><a href="Status/502.html" title="The HTTP 502 Bad Gateway server error response code indicates that the server, while acting as a gateway or proxy, received an invalid response from the upstream server."><code>502 Bad Gateway</code></a></li><li><a href="Status/503.html" title="The HTTP 503 Service Unavailable server error response code indicates that the server is not ready to handle the request."><code>503 Service Unavailable</code></a></li><li><a href="Status/504.html" title="The HTTP 504 Gateway Timeout server error response code indicates that the server, while acting as a gateway or proxy, cannot get a response in time."><code>504 Gateway Timeout</code></a></li></ol> 
+    </li> 
+  </ol> 
+
+  </div>
+                
+
+                <!-- approvals -->
+                
+
+              
+
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/en-US/docs/Web/HTTP/Conditional_requests$edit" label="Edit page"></menuitem>
+    <menuitem data-action="/en-US/docs/Web/HTTP/Conditional_requests$history" label="View page history"></menuitem>
+  </menu>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+  
+    <form class="languages go" method="get" action="https://developer.mozilla.org/en-US/docs/Web">
+      <label for="language">Other languages:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option title="English (US)" value="/en-US/docs/Web/HTTP/Conditional_requests" selected>
+          English (US) (en-US)
+        </option>
+        
+          <option title="Japanese" value="/ja/docs/Web/HTTP/Conditional_requests">
+            日本語 (ja)
+          </option>
+          <option title="Korean" value="/ko/docs/Web/HTTP/Conditional_requests">
+            한국어 (ko)
+          </option>
+      </select>
+      <noscript><button type="submit">Go</button></noscript>
+    </form>
+  
+
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+
+  
+
+  
+
+  
+    <script async type="text/javascript" src="../../../../../developer.cdn.mozilla.net/static/build/js/newsletter.7cd3274169f2.js" charset="utf-8"></script>
+  
+
+
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:32:52 GMT -->
+</html>

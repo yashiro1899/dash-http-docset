@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy$revision/1141515 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:52:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1141515 | Content-Security-Policy | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FHeaders%2FContent-Security-Policy%24revision%2F1141515" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy%24revision/1141515">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1141515 of <a href="../Content-Security-Policy.html">Content-Security-Policy</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Headers/Content-Security-Policy</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Content-Security-Policy</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1141515</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-11-10T13:43:23-08:00">Nov 10, 2016, 1:43:23 PM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>fscholz</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/CSP">CSP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/header">header</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Reference">Reference</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Security">Security</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p>The HTTP <strong><code>Content-Security-Policy</code></strong> response header fields allows web site administrators to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks ({{Glossary("XSS")}}).</p>
+
+<table class="properties">
+ <tbody>
+  <tr>
+   <th scope="row">Header type</th>
+   <td>{{Glossary("Response header")}}</td>
+  </tr>
+  <tr>
+   <th scope="row">{{Glossary("Forbidden header name")}}</th>
+   <td>no</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Syntax">Syntax</h2>
+
+<pre class="syntaxbox">Content-Security-Policy: &lt;policy-directive&gt;; &lt;policy-directive&gt;
+</pre>
+
+<h2 id="Directives">Directives</h2>
+
+<h3 id="Fetch_directives">Fetch directives</h3>
+
+<p>Fetch directives control locations from which certain resource types may be loaded.</p>
+
+<dl>
+ <dt>{{CSP("child-src")}}</dt>
+ <dd>Defines the valid sources for <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">web workers</a> and nested browsing contexts loaded using elements such as {{HTMLElement("frame")}} and {{HTMLElement("iframe")}}.</dd>
+ <dt>{{CSP("connect-src")}}</dt>
+ <dd>Restricts the URLs which can be loaded using script interfaces</dd>
+ <dt>{{CSP("default-src")}}</dt>
+ <dd>Serves as a fallback for the other {{Glossary("Fetch directive", "fetch directives")}}.</dd>
+ <dt>{{CSP("font-src")}}</dt>
+ <dd>Specifies valid sources for fonts loaded using {{cssxref("@font-face")}}.</dd>
+ <dt>{{CSP("frame-src")}}</dt>
+ <dd>Specifies valid sources for nested browsing contexts loading using elements such as {{HTMLElement("frame")}} and {{HTMLElement("iframe")}}.</dd>
+ <dt>{{CSP("img-src")}}</dt>
+ <dd>Specifies valid sources of images and favicons.</dd>
+ <dt>{{CSP("manifest-src")}}</dt>
+ <dd>Specifies valid sources of application manifest files.</dd>
+ <dt>{{CSP("media-src")}}</dt>
+ <dd>Specifies valid sources for loading media using the {{HTMLElement("audio")}} and {{HTMLElement("video")}} elements.</dd>
+ <dt>{{CSP("object-src")}}</dt>
+ <dd>Specifies valid sources for the {{HTMLElement("object")}}, {{HTMLElement("embed")}}, and {{HTMLElement("applet")}} elements.</dd>
+ <dt>{{CSP("script-src")}}</dt>
+ <dd>Specifies valid sources for JavaScript.</dd>
+ <dt>{{CSP("style-src")}}</dt>
+ <dd>Specifies valid sources for stylesheets.</dd>
+ <dt>{{CSP("worker-src")}}</dt>
+ <dd>Specifies valid sources for {{domxref("Worker")}}, {{domxref("SharedWorker")}}, or {{domxref("ServiceWorker")}} scripts.</dd>
+</dl>
+
+<h3 id="Document_directives">Document directives</h3>
+
+<p>Document directives govern the properties of a document or <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">worker</a> environment to which a policy applies.</p>
+
+<dl>
+ <dt>{{CSP("base-uri")}}</dt>
+ <dd>Restricts the URLs which can be used in a document's {{HTMLElement("base")}} element.</dd>
+ <dt>{{CSP("plugin-types")}}</dt>
+ <dd>Restricts the set of plugins that can be embedded into a document by limiting the types of resources which can be loaded.</dd>
+ <dt>{{CSP("sandbox")}}</dt>
+ <dd>Enables a sandbox for the requested resource similar to the {{HTMLElement("iframe")}} {{htmlattrxref("sandbox", "iframe")}} attribute.</dd>
+ <dt>{{CSP("disown-opener")}}</dt>
+ <dd>Ensures a resource will disown its opener when navigated to.</dd>
+</dl>
+
+<h3 id="Navigation_directives">Navigation directives</h3>
+
+<p>Navigation directives govern to which location a user can navigate to or submit a form to, for example.</p>
+
+<dl>
+ <dt>{{CSP("form-action")}}</dt>
+ <dd>Restricts the URLs which can be used as the target of a form submissions from a given context.</dd>
+ <dt>{{CSP("frame-ancestors")}}</dt>
+ <dd>Specifies valid parents that may embed a page using {{HTMLElement("frame")}}, {{HTMLElement("iframe")}}, {{HTMLElement("object")}}, {{HTMLElement("embed")}}, or {{HTMLElement("applet")}}.</dd>
+ <dt>{{CSP("navigation-to")}}</dt>
+ <dd>Restricts the URLs to which a document can navigate by any means (a, form, window.location, window.open, etc.)</dd>
+</dl>
+
+<h3 id="Reporting_directives">Reporting directives</h3>
+
+<p>Reporting directives control the reporting process of CSP violations. See also the {{HTTPHeader("Content-Security-Policy-Report-Only")}} header.</p>
+
+<dl>
+ <dt>{{CSP("report-uri")}} {{deprecated_inline}}</dt>
+ <dd>Instructs the user agent to report attempts to violate the Content Security Policy. These violation reports consist of {{Glossary("JSON")}} documents sent via an HTTP <code>POST</code> request to the specified URI.</dd>
+ <dt>{{CSP("report-to")}}</dt>
+ <dd>Fires a <code>SecurityPolicyViolationEvent</code>.</dd>
+</dl>
+
+<h3 id="Other_directives">Other directives</h3>
+
+<dl>
+ <dt>{{CSP("block-all-mixed-content")}}</dt>
+ <dd>tbd</dd>
+ <dt>{{CSP("referrer")}} {{obsolete_inline}}</dt>
+ <dd>Used to specify information in the referer (sic) header for links away from a page. Use the {{HTTPHeader("Referrer-Policy")}} header instead.</dd>
+ <dt>{{CSP("require-sri-for")}}</dt>
+ <dd>tbd</dd>
+ <dt>{{CSP("upgrade-insecure-requests")}}</dt>
+ <dd>tbd</dd>
+</dl>
+
+<h2 id="CSP_in_workers">CSP in workers</h2>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker">Workers</a> are in general not governed by the content security policy of the document (or parent worker) that created them. To specify a content security policy for the worker, set a Content-Security-Policy response header for the request which delivered the worker script itself.</p>
+
+<p>The exception to this is if the worker script's origin is a globally unique identifier (for example, if its URL has a scheme of data or blob). In this case, the worker does inherit the content security policy of the document or worker than created it.</p>
+
+<h2>Multiple content security policies</h2>
+
+<p>CSP allows multiple policies being specified for a resource, including via the <code>Content-Security-Policy</code> header, the {{HTTPHeader("Content-Security-Policy-Report-Only")}} header and a {{HTMLElement("meta")}} element.</p>
+
+<p>You can use the <code>Content-Security-Policy</code> header more than once like in the example below. Pay special attention to the {{CSP("connect-src")}} directive here. Even though the second policy would allow the connection, the first policy contains <code>connect-src 'none'</code>. Adding additional policies can only further restrict the capabilities of the protected resource, which means that there will be no connection allowed and <code>connect-src 'none'</code> is enforced as the strictest policy.</p>
+
+<pre>Content-Security-Policy: default-src 'self' http://example.com http://example.net;
+                         connect-src 'none';
+Content-Security-Policy: connect-src http://example.com/;
+                         script-src http://example.com/</pre>
+
+<h2 id="Examples">Examples</h2>
+
+<p>Example: Disable unsafe inline/eval, only allow loading of resources (images, fonts, scripts, etc.) over https:</p>
+
+<pre>// header
+Content-Security-Policy: default-src https:
+
+// meta tag
+&lt;meta http-equiv="Content-Security-Policy" content="default-src https:"&gt;
+</pre>
+
+<p>Example: Pre-existing site that uses too much inline code to fix but wants to ensure resources are loaded only over https and disable plugins:</p>
+
+<pre>Content-Security-Policy: default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'</pre>
+
+<p>Example: Don't implement the above policy yet; instead just report violations that would have occured</p>
+
+<pre>Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/</pre>
+
+<p>See <a href="https://wiki.mozilla.org/Security/Guidelines/Web_Security#Examples_5">Mozilla Web Security Guidelines</a> for more examples.</p>
+
+<h2 id="Specifications">Specifications</h2>
+
+<table class="standard-table">
+ <tbody>
+  <tr>
+   <th scope="col">Specification</th>
+   <th scope="col">Status</th>
+   <th scope="col">Comment</th>
+  </tr>
+  <tr>
+   <td>{{specName("CSP 3.0")}}</td>
+   <td>{{Spec2('CSP 3.0')}}</td>
+   <td>Adds <code>disown-opener</code>, <code>manifest-src</code>, <code>navigation-to</code>, <code>report-uri</code>, <code>strict-dynamic</code>, <code>worker-src</code>. Undeprecates <code>frame-src</code>. Deprecates report-uri in favor if <code>report-to</code>.</td>
+  </tr>
+  <tr>
+   <td>{{specName("Mixed Content")}}</td>
+   <td>{{Spec2('Mixed Content')}}</td>
+   <td>Adds <code>block-all-mixed-content</code>.</td>
+  </tr>
+  <tr>
+   <td>{{specName("Subresource Integrity")}}</td>
+   <td>{{Spec2('Subresource Integrity')}}</td>
+   <td>Adds <code>require-sri-for</code>.</td>
+  </tr>
+  <tr>
+   <td>{{specName("Upgrade Insecure Requests")}}</td>
+   <td>{{Spec2('Upgrade Insecure Requests')}}</td>
+   <td>Adds <code>upgrade-insecure-requests</code>.</td>
+  </tr>
+  <tr>
+   <td>{{specName("CSP 1.1")}}</td>
+   <td>{{Spec2('CSP 1.1')}}</td>
+   <td>Adds <code>base-uri</code>, <code>child-src</code>, <code>form-action</code>, <code>frame-ancestors</code>, <code>plugin-types</code>, <code>referrer</code>, <code>reflected-xss</code>, and <code>report-uri</code>. Deprecates <code>frame-src</code>.</td>
+  </tr>
+  <tr>
+   <td>{{specName("CSP 1.0")}}</td>
+   <td>{{Spec2('CSP 1.0')}}</td>
+   <td>Defines <code>connect-src</code>, <code>default-src</code>, <code>font-src</code>, <code>frame-src</code>, <code>img-src</code>, <code>media-src</code>, <code>object-src</code>, report-uri, <code>sandbox</code>, <code>script-src,</code> and <code>style-src</code>.</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Browser_compatibility">Browser compatibility</h2>
+
+<p class="hidden">The compatibility table in this page is generated from structured data. If you'd like to contribute to the data, please check out <a href="https://github.com/mdn/browser-compat-data">https://github.com/mdn/browser-compat-data</a> and send us a pull request.</p>
+
+<p>{{Compat}}</p>
+
+<h2 id="See_also">See also</h2>
+
+<ul>
+ <li>{{HTTPHeader("Content-Security-Policy-Report-Only")}}</li>
+ <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy">Content Security in WebExtensions</a></li>
+ <li>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Tools/GCLI/Display_security_and_privacy_policies">Display security and privacy policies In Firefox Developer Tools</a></p>
+ </li>
+</ul>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p&gt;The HTTP &lt;strong&gt;&lt;code&gt;Content-Security-Policy&lt;/code&gt;&lt;/strong&gt; response header fields allows web site administrators to control resources the user agent is allowed to load for a given page. With a few exceptions, policies mostly involve specifying server origins and script endpoints. This helps guard against cross-site scripting attacks ({{Glossary(&#34;XSS&#34;)}}).&lt;/p&gt;
+
+&lt;table class=&#34;properties&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;row&#34;&gt;Header type&lt;/th&gt;
+   &lt;td&gt;{{Glossary(&#34;Response header&#34;)}}&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;row&#34;&gt;{{Glossary(&#34;Forbidden header name&#34;)}}&lt;/th&gt;
+   &lt;td&gt;no&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;Syntax&#34;&gt;Syntax&lt;/h2&gt;
+
+&lt;pre class=&#34;syntaxbox&#34;&gt;
+Content-Security-Policy: &amp;lt;policy-directive&amp;gt;; &amp;lt;policy-directive&amp;gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&#34;Directives&#34;&gt;Directives&lt;/h2&gt;
+
+&lt;h3 id=&#34;Fetch_directives&#34;&gt;Fetch directives&lt;/h3&gt;
+
+&lt;p&gt;Fetch directives control locations from which certain resource types may be loaded.&lt;/p&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{CSP(&#34;child-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Defines the valid sources for &lt;a href=&#34;/en-US/docs/Web/API/Web_Workers_API&#34;&gt;web workers&lt;/a&gt; and nested browsing contexts loaded using elements such as {{HTMLElement(&#34;frame&#34;)}} and {{HTMLElement(&#34;iframe&#34;)}}.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;connect-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Restricts the&amp;nbsp;URLs which can be loaded using script interfaces&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;default-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Serves as a fallback for the other {{Glossary(&#34;Fetch directive&#34;, &#34;fetch directives&#34;)}}.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;font-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid sources for fonts loaded using {{cssxref(&#34;@font-face&#34;)}}.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;frame-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid sources for nested browsing contexts loading using elements such as {{HTMLElement(&#34;frame&#34;)}} and {{HTMLElement(&#34;iframe&#34;)}}.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;img-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid sources of images and favicons.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;manifest-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid sources of application manifest files.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;media-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid sources for loading media using the {{HTMLElement(&#34;audio&#34;)}} and {{HTMLElement(&#34;video&#34;)}} elements.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;object-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid sources for the {{HTMLElement(&#34;object&#34;)}}, {{HTMLElement(&#34;embed&#34;)}}, and {{HTMLElement(&#34;applet&#34;)}} elements.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;script-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid sources for JavaScript.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;style-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid sources for stylesheets.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;worker-src&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid sources for {{domxref(&#34;Worker&#34;)}}, {{domxref(&#34;SharedWorker&#34;)}}, or {{domxref(&#34;ServiceWorker&#34;)}} scripts.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&#34;Document_directives&#34;&gt;Document directives&lt;/h3&gt;
+
+&lt;p&gt;Document directives govern the properties of a document or &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API&#34;&gt;worker&lt;/a&gt; environment to which a policy applies.&lt;/p&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{CSP(&#34;base-uri&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Restricts the URLs which can be used in a document&#39;s {{HTMLElement(&#34;base&#34;)}} element.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;plugin-types&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Restricts the set of plugins that can be embedded into a document by limiting the types of resources which can be loaded.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;sandbox&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Enables a sandbox for the requested resource similar to the {{HTMLElement(&#34;iframe&#34;)}} {{htmlattrxref(&#34;sandbox&#34;, &#34;iframe&#34;)}} attribute.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;disown-opener&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Ensures a resource will&amp;nbsp;disown its opener&amp;nbsp;when navigated to.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&#34;Navigation_directives&#34;&gt;Navigation directives&lt;/h3&gt;
+
+&lt;p&gt;Navigation directives govern to which location a user can navigate to or submit a form to, for example.&lt;/p&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{CSP(&#34;form-action&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Restricts the URLs which can be used as the target of a form submissions from a given context.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;frame-ancestors&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Specifies valid parents that may embed a page using {{HTMLElement(&#34;frame&#34;)}},&amp;nbsp;{{HTMLElement(&#34;iframe&#34;)}},&amp;nbsp;{{HTMLElement(&#34;object&#34;)}},&amp;nbsp;{{HTMLElement(&#34;embed&#34;)}}, or {{HTMLElement(&#34;applet&#34;)}}.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;navigation-to&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Restricts the URLs to which a document can navigate by any means (a, form, window.location, window.open, etc.)&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&#34;Reporting_directives&#34;&gt;Reporting directives&lt;/h3&gt;
+
+&lt;p&gt;Reporting directives control the reporting process of CSP violations. See also the {{HTTPHeader(&#34;Content-Security-Policy-Report-Only&#34;)}} header.&lt;/p&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{CSP(&#34;report-uri&#34;)}} {{deprecated_inline}}&lt;/dt&gt;
+ &lt;dd&gt;Instructs the user agent to report attempts to violate the Content Security Policy. These violation reports consist of {{Glossary(&#34;JSON&#34;)}} documents sent via an HTTP &lt;code&gt;POST&lt;/code&gt; request to the specified URI.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;report-to&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;Fires a &lt;code&gt;SecurityPolicyViolationEvent&lt;/code&gt;.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h3 id=&#34;Other_directives&#34;&gt;Other directives&lt;/h3&gt;
+
+&lt;dl&gt;
+ &lt;dt&gt;{{CSP(&#34;block-all-mixed-content&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;tbd&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;referrer&#34;)}} {{obsolete_inline}}&lt;/dt&gt;
+ &lt;dd&gt;Used to specify information in the referer (sic) header for links away from a page. Use the {{HTTPHeader(&#34;Referrer-Policy&#34;)}} header instead.&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;require-sri-for&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;tbd&lt;/dd&gt;
+ &lt;dt&gt;{{CSP(&#34;upgrade-insecure-requests&#34;)}}&lt;/dt&gt;
+ &lt;dd&gt;tbd&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;h2 id=&#34;CSP_in_workers&#34;&gt;CSP in workers&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;/en-US/docs/Web/API/Worker&#34;&gt;Workers&lt;/a&gt; are in general not governed by the content security policy of the document (or parent worker) that created them. To specify a content security policy for the worker, set a Content-Security-Policy response header for the request which delivered the worker script itself.&lt;/p&gt;
+
+&lt;p&gt;The exception to this is if the worker script&#39;s origin is a globally unique identifier (for example, if its URL has a scheme of data or blob). In this case, the worker does inherit the content security policy of the document or worker than created it.&lt;/p&gt;
+
+&lt;h2&gt;Multiple content security policies&lt;/h2&gt;
+
+&lt;p&gt;CSP allows multiple policies being specified for a resource, including via the &lt;code&gt;Content-Security-Policy&lt;/code&gt; header, the {{HTTPHeader(&#34;Content-Security-Policy-Report-Only&#34;)}} header and a {{HTMLElement(&#34;meta&#34;)}} element.&lt;/p&gt;
+
+&lt;p&gt;You can use the &lt;code&gt;Content-Security-Policy&lt;/code&gt; header more than once like in the example below. Pay special attention to the {{CSP(&#34;connect-src&#34;)}} directive here. Even though the second policy would allow the connection, the first policy contains &lt;code&gt;connect-src &#39;none&#39;&lt;/code&gt;. Adding additional policies can only further restrict the capabilities of the protected resource, which means that there will be no connection allowed and &lt;code&gt;connect-src &#39;none&#39;&lt;/code&gt; is enforced as the strictest policy.&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy: default-src &#39;self&#39; http://example.com http://example.net;
+                         connect-src &#39;none&#39;;
+Content-Security-Policy: connect-src http://example.com/;
+                         script-src http://example.com/&lt;/pre&gt;
+
+&lt;h2 id=&#34;Examples&#34;&gt;Examples&lt;/h2&gt;
+
+&lt;p&gt;Example: Disable unsafe inline/eval, only allow loading of resources (images, fonts, scripts, etc.) over https:&lt;/p&gt;
+
+&lt;pre&gt;
+// header
+Content-Security-Policy: default-src https:
+
+// meta tag
+&amp;lt;meta http-equiv=&#34;Content-Security-Policy&#34; content=&#34;default-src https:&#34;&amp;gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Example: Pre-existing site that uses too much inline code to fix but wants to ensure resources are loaded only over https and disable plugins:&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy: default-src https: &#39;unsafe-eval&#39; &#39;unsafe-inline&#39;; object-src &#39;none&#39;&lt;/pre&gt;
+
+&lt;p&gt;Example: Don&#39;t implement the above policy yet; instead just report violations that would have occured&lt;/p&gt;
+
+&lt;pre&gt;
+Content-Security-Policy-Report-Only: default-src https:; report-uri /csp-violation-report-endpoint/&lt;/pre&gt;
+
+&lt;p&gt;See &lt;a href=&#34;https://wiki.mozilla.org/Security/Guidelines/Web_Security#Examples_5&#34;&gt;Mozilla Web Security Guidelines&lt;/a&gt; for more examples.&lt;/p&gt;
+
+&lt;h2 id=&#34;Specifications&#34;&gt;Specifications&lt;/h2&gt;
+
+&lt;table class=&#34;standard-table&#34;&gt;
+ &lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;th scope=&#34;col&#34;&gt;Specification&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Status&lt;/th&gt;
+   &lt;th scope=&#34;col&#34;&gt;Comment&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{specName(&#34;CSP 3.0&#34;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;CSP 3.0&#39;)}}&lt;/td&gt;
+   &lt;td&gt;Adds &lt;code&gt;disown-opener&lt;/code&gt;, &lt;code&gt;manifest-src&lt;/code&gt;, &lt;code&gt;navigation-to&lt;/code&gt;, &lt;code&gt;report-uri&lt;/code&gt;, &lt;code&gt;strict-dynamic&lt;/code&gt;, &lt;code&gt;worker-src&lt;/code&gt;.&amp;nbsp;Undeprecates &lt;code&gt;frame-src&lt;/code&gt;. Deprecates report-uri in favor if &lt;code&gt;report-to&lt;/code&gt;.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{specName(&#34;Mixed Content&#34;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;Mixed Content&#39;)}}&lt;/td&gt;
+   &lt;td&gt;Adds &lt;code&gt;block-all-mixed-content&lt;/code&gt;.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{specName(&#34;Subresource Integrity&#34;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;Subresource Integrity&#39;)}}&lt;/td&gt;
+   &lt;td&gt;Adds &lt;code&gt;require-sri-for&lt;/code&gt;.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{specName(&#34;Upgrade Insecure Requests&#34;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;Upgrade Insecure Requests&#39;)}}&lt;/td&gt;
+   &lt;td&gt;Adds &lt;code&gt;upgrade-insecure-requests&lt;/code&gt;.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{specName(&#34;CSP 1.1&#34;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;CSP 1.1&#39;)}}&lt;/td&gt;
+   &lt;td&gt;Adds &lt;code&gt;base-uri&lt;/code&gt;, &lt;code&gt;child-src&lt;/code&gt;, &lt;code&gt;form-action&lt;/code&gt;, &lt;code&gt;frame-ancestors&lt;/code&gt;, &lt;code&gt;plugin-types&lt;/code&gt;, &lt;code&gt;referrer&lt;/code&gt;, &lt;code&gt;reflected-xss&lt;/code&gt;, and &lt;code&gt;report-uri&lt;/code&gt;. Deprecates &lt;code&gt;frame-src&lt;/code&gt;.&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;{{specName(&#34;CSP 1.0&#34;)}}&lt;/td&gt;
+   &lt;td&gt;{{Spec2(&#39;CSP 1.0&#39;)}}&lt;/td&gt;
+   &lt;td&gt;Defines &lt;code&gt;connect-src&lt;/code&gt;, &lt;code&gt;default-src&lt;/code&gt;, &lt;code&gt;font-src&lt;/code&gt;, &lt;code&gt;frame-src&lt;/code&gt;, &lt;code&gt;img-src&lt;/code&gt;, &lt;code&gt;media-src&lt;/code&gt;, &lt;code&gt;object-src&lt;/code&gt;, report-uri,&amp;nbsp;&lt;code&gt;sandbox&lt;/code&gt;, &lt;code&gt;script-src,&lt;/code&gt; and &lt;code&gt;style-src&lt;/code&gt;.&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;Browser_compatibility&#34;&gt;Browser compatibility&lt;/h2&gt;
+
+&lt;p class=&#34;hidden&#34;&gt;The compatibility table in this page is generated from structured data. If you&#39;d like to contribute to the data, please check out &lt;a href=&#34;https://github.com/mdn/browser-compat-data&#34;&gt;https://github.com/mdn/browser-compat-data&lt;/a&gt; and send us a pull request.&lt;/p&gt;
+
+&lt;p&gt;{{Compat}}&lt;/p&gt;
+
+&lt;h2 id=&#34;See_also&#34;&gt;See also&lt;/h2&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;{{HTTPHeader(&#34;Content-Security-Policy-Report-Only&#34;)}}&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy&#34;&gt;Content Security in WebExtensions&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;a href=&#34;/en-US/docs/Tools/GCLI/Display_security_and_privacy_policies&#34;&gt;Display security and privacy policies In Firefox Developer Tools&lt;/a&gt;&lt;/p&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Headers/Content-Security-Policy%24revert/1141515" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy$revision/1141515 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:52:49 GMT -->
+</html>

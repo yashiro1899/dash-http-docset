@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Messages$revision/1104039 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:10:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1104039 | HTTP Messages | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FMessages%24revision%2F1104039" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Messages%24revision/1104039">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1104039 of <a href="../Messages.html">HTTP Messages</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Messages</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>HTTP Messages</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1104039</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-08-11T02:23:49-07:00">Aug 11, 2016, 2:23:49 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span></span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/WebMechanics">WebMechanics</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <p>{{HTTPSidebar}}</p>
+
+<p class="summary">HTTP messages are the fundamental block of the data exchanged between an HTTP server and a client. There are two types of messages: <em>requests</em> sent by the client to trigger an action on the HTTP server, and <em>responses</em> that are the server answer.</p>
+
+<p>HTTP messages are composed of textual information encoded in ASCII, and spanning over multiple lines. In HTTP/1.1 and earlier versions of the protocol, these messages were sent directly over the connection. In HTTP/2, the human-readable message is mangled into HTTP frames allowing more optimizations and better performance.</p>
+
+<p>Web developers, or webmasters, rarely craft the textual HTTP messages themselves: the piece of software, being a browser, a proxy, or a Web server, is doing it for them; they control it through config files (for proxies or servers),  through APIs (for browsers), or through other interfaces.</p>
+
+<p><img alt="From a user-, script-, or server- generated event, an HTTP/1.x msg is generated, and if HTTP/2 is in use, it is binary framed into an HTTP/2 stream, then sent." src="../../../../../../mdn.mozillademos.org/files/13715/HTTPMsg.png" style="height: 350px; width: 764px;"></p>
+
+<p>The HTTP/2 binary framing mechanism has been designed so that it didn't need any adaptation of the APIs or config files used: it is mostly transparent for the user controlling the equipment</p>
+
+<p>Both HTTP requests and responses share a similar structure and are composed of:</p>
+
+<ol>
+ <li>A <em>start-line</em> that describes the requests to be performed, or its status being a success or failing. This start-line is always a single line.</li>
+ <li>An optional set of <em>HTTP headers</em> specifying the request, or describing the body included in the message</li>
+ <li>A blank line indicating that all meta-information for the request has been sent.</li>
+ <li>An optional <em>body</em> that contains data associated with the request (like the content of an HTML form), or the document associated to a response. The presence of the body and its size is defined by the start-line and the HTTP headers.</li>
+</ol>
+
+<p>The start-line and the HTTP headers are called the <em>head</em> of the requests, in opposition to the payload, the <em>body</em>.</p>
+
+<p><img alt="Requests and responses share a common structure in HTTP" src="../../../../../../mdn.mozillademos.org/files/13697/HTTPMsgStructure.png"></p>
+
+<h2 id="HTTP_Requests">HTTP Requests</h2>
+
+<h3 id="Start_line">Start line</h3>
+
+<p>HTTP requests are messages sent by the client to initiate an action on the server. Their <em>start-line</em> contains three elements:</p>
+
+<ol>
+ <li>An <em><a href="../Methods.html">HTTP method</a></em>, a verb (like {{HTTPMethod("GET")}}, {{HTTPMethod("PUT")}}, or {{HTTPMethod("POST")}}) or a noun (like {{HTTPMethod("HEAD")}}, or {{HTTPMethod("OPTIONS")}}), that describse the action to be performed. For example <code>GET</code> indicates that a resource has to be fetched or <code>POST</code> means that data is pushed to the server (that may create or modify a resource, or generate a temporary document to send back).</li>
+ <li>The <em>request target</em>, usually an {{glossary("URL")}}, or only the absolute path part of it as the protocol, port, and domain are most of the time defined by the context. The format of this request target vary between different HTTP methods. It can be
+  <ul>
+   <li>An absolute path, eventually following by a <code>'?'</code> and a query string. Called an <em>origin form</em>, this is the most common form and is used with <code>GET</code>, <code>POST</code>, <code>HEAD</code>, and <code>OPTIONS</code> methods.<br>
+    <code>POST / HTTP 1.1<br>
+    GET /background.png HTTP/1.0<br>
+    HEAD /test.html?query=alibaba HTTP/1.1<br>
+    OPTIONS /anypage.html HTTP/1.0</code></li>
+   <li>A complete URL, the <em>absolute form</em>, mostly used with <code>GET</code> when connected to a proxy.<br>
+    <code>GET http://developer.mozilla.org/en-US/docs/Web/HTTP/Messages HTTP/1.1</code></li>
+   <li>The authority component of an URL, that is the domain name and optionally the port (prefixed by a <code>':'</code>), called the <em>authority form</em>. It is only used with <code>CONNECT</code> when setting up an HTTP tunnel.<br>
+    <code>CONNECT developer.mozilla.org:80 HTTP/1.1</code></li>
+   <li>The <em>asterisk form</em>, a simple asterisk (<code>'*'</code>) used with <code>OPTIONS</code> and representing the server as a whole.<br>
+    <code>OPTIONS * HTTP/1.1</code></li>
+  </ul>
+ </li>
+ <li>The <em>HTTP version</em>, that defines the structure of the rest of the message, and acts as a indicator of the version to use for the response.</li>
+</ol>
+
+<h3 id="Headers">Headers</h3>
+
+<p><a href="../Headers.html">HTTP headers</a> in a request follow the basic structure of any HTTP headers: a case-insensitive string followed by a colon (<code>':'</code>) and a value whose structure depends upon the header. The whole header, including the value, consists of one single line, that can be pretty long.</p>
+
+<p>Headers available for requests are numerous; they can be divided in several groups:</p>
+
+<ul>
+ <li><em>General headers</em>, like {{HTTPHeader("Via")}},  that apply to the message as a whole.</li>
+ <li><em>Request headers</em>, like {{HTTPHeader("User-Agent")}}, {{HTTPHeader("Accept-Type")}}, that modify the request by specifying it (like {{HTTPHeader("Accept-Language")}}), by giving context (like {{HTTPHeader("Referer")}}), by conditionally restricting it (like {{HTTPHeader("If-None")}}).</li>
+ <li><em>Entity headers</em>, like {{HTTPHeader("Content-Length")}} that applies to the body of the request. Obviously there are no such header transmitted when there are no body in the request.</li>
+</ul>
+
+<p><img alt="Example of headers in an HTTP request" src="../../../../../../mdn.mozillademos.org/files/13721/HTTPRequestsHEader.png" style="height: 280px; width: 872px;"></p>
+
+<h3 id="Body">Body</h3>
+
+<p>The last part of a request is its body. Not all requests have one: requests fetching resources, like <code>GET</code> or <code>HEAD</code> usually don't need any, <code>DELETE</code> or <code>OPTIONS</code> neither. Some requests send data to the server in order to update it: this is often the case of <code>POST</code> requests (that can have HTML form data).</p>
+
+<p>Bodies can be broadly divided in two categories:</p>
+
+<ul>
+ <li>Single-resource bodies consisting of one single file, defined by the two headers: {{HTTPHeader("Content-Type")}} and {{HTTPHeader("Content-Length")}}.</li>
+ <li><a href="../Basics_of_HTTP/MIME_types-2.html#multipartform-data">Multiple-resource bodies</a> consisting of a multipart body, each containing a different bit of information. This is typically used in association with <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms">HTML Forms</a>.</li>
+</ul>
+
+<h2 id="HTTP_Responses">HTTP Responses</h2>
+
+<h3 id="Status_line">Status line</h3>
+
+<p>The start line of an HTTP response, called the <em>status line</em>, contains the following information:</p>
+
+<ol>
+ <li>The <em>protocol version</em>, usually <code>HTTP/1.1</code>.</li>
+ <li>A <em>status code</em> indicating the success or not of the request. Common status code are {{HTTPStatus("200")}}, {{HTTPStatus("404")}}, or {{HTTPStatus("302")}}</li>
+ <li>A <em>status text</em>, purely informational, that is a textual short description of the status code, helping humans directly reading HTTP messages.</li>
+</ol>
+
+<p>A typical status line looks like: <code>HTTP/1.1 404 Not Found.</code></p>
+
+<h3 id="Headers_2">Headers</h3>
+
+<p><a href="../Headers.html">HTTP headers</a> for request follow the basic structure of any header: a case-insensitive string followed by a colon (<code>':'</code>) and a value whose structure depends upon the type of the header. The whole header, including the value, stands in one single line.</p>
+
+<p>Useful headers available for requests are numerous; they can be divided in several groups:</p>
+
+<ul>
+ <li><em>General headers</em>, like {{HTTPHeader("Via")}},  that apply to the message as a whole.</li>
+ <li><em>Response headers</em>, like {{HTTPHeader("Vary")}} and {{HTTPHeader("Accept-Ranges")}}, that give additional information about the server, that cannot be put in the status line.</li>
+ <li><em>Entity headers</em>, like {{HTTPHeader("Content-Length")}} that apply to the body of the request. Obviously there are no such headers transmitted when there is no body in the request.</li>
+</ul>
+
+<p><img alt="Example of headers in an HTTP response" src="../../../../../../mdn.mozillademos.org/files/13723/HTTP_Response_headers.png" style="height: 344px; width: 805px;"></p>
+
+<h3 id="Body_2">Body</h3>
+
+<p>The last part of a response is the body. Not all responses have one: responses with status code like {{HTTPStatus("201")}} or {{HTTPStatus("204")}} usually don't have any.</p>
+
+<p>Bodies can be broadly divided in three categories:</p>
+
+<ul>
+ <li>Single-resource body consisting of one single file of know length, defined by the two headers: {{HTTPHeader("Content-Type")}} and {{HTTPHeader("Content-Length")}}.</li>
+ <li>Single-resource body consisting of one single file of unknow length, encoded by chunk and having {{HTTPHeader("Transfer-Encoding")}}<code>: chunked</code> in the headers.</li>
+ <li>Multiple-resource body consisting of a multipart body, each containing a different bit of information. These are pretty rare.</li>
+</ul>
+
+<h2 id="HTTP2_Frames">HTTP/2 Frames</h2>
+
+<p>HTTP/1.x messages have a few drawback for performances:</p>
+
+<ul>
+ <li>Headers, unlike bodies, are uncompressed.</li>
+ <li>Headers are often very similar from one message to the next one, but they are still repeated on the wire.</li>
+ <li>No multiplexing can be done: several connections are opened to the same server: warm TCP connections are more performant than cold ones.</li>
+</ul>
+
+<p>HTTP/2 introduces a extra step: it divide HTTP/1.x messages in frames that are embedded in a stream. Data and header frames are separated, allowing for header compression. Several streams can be combined together, a process called multiplexing, allowing the underlying TCP connection to be more efficient.</p>
+
+<p><img alt="HTTP/2 modify the HTTP message to divide them in frames (part of a single stream), allowing for more optimization." src="../../../../../../mdn.mozillademos.org/files/13713/Binary_framing.png" style="height: 667px; width: 736px;"></p>
+
+<p>HTTP Frames are invisible for Web developers. As they are an extra step between HTTP/1.1 messages and the underlying transport protocol, they don't need any change in the APIs used by Web developers: as soon as they are available both in the browser and in the server, HTTP/2 is switched on and used transparently.</p>
+
+<h2 id="Conclusion">Conclusion</h2>
+
+<p>HTTP messages are the key in understanding HTTP, their structure is pretty simple and they are very extensible thanks to the HTTP structure. The HTTP/2 framing add a new intermediate layers between the HTTP/1.x protocol and the underlying transport protocol but doesn't fundamentally modify the protocol.</p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;p&gt;{{HTTPSidebar}}&lt;/p&gt;
+
+&lt;p class=&#34;summary&#34;&gt;HTTP messages are the fundamental block of the data exchanged between an HTTP server and a client. There are two types of messages: &lt;em&gt;requests&lt;/em&gt; sent by the client to trigger an action on the HTTP server, and &lt;em&gt;responses&lt;/em&gt; that are the server answer.&lt;/p&gt;
+
+&lt;p&gt;HTTP messages are composed of textual information encoded in ASCII, and spanning over multiple lines. In HTTP/1.1 and earlier versions of the protocol, these messages were sent directly over the connection. In HTTP/2, the human-readable message is mangled into HTTP frames allowing more optimizations and better performance.&lt;/p&gt;
+
+&lt;p&gt;Web developers, or webmasters, rarely craft the textual HTTP messages themselves: the piece of software, being a browser, a proxy, or a Web server, is doing it for them; they control it through config files (for proxies or servers),&amp;nbsp; through APIs (for browsers), or through other interfaces.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;From a user-, script-, or server- generated event, an HTTP/1.x msg is generated, and if HTTP/2 is in use, it is binary framed into an HTTP/2 stream, then sent.&#34; src=&#34;https://mdn.mozillademos.org/files/13715/HTTPMsg.png&#34; style=&#34;height:350px; width:764px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The HTTP/2 binary framing mechanism has been designed so that it didn&#39;t need any adaptation of the APIs or config files used: it is mostly transparent for the user controlling the equipment&lt;/p&gt;
+
+&lt;p&gt;Both HTTP requests and responses share a similar structure and are composed of:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;A &lt;em&gt;start-line&lt;/em&gt; that describes the requests to be performed, or its status being a success or failing. This start-line is always a single line.&lt;/li&gt;
+ &lt;li&gt;An optional set of &lt;em&gt;HTTP headers&lt;/em&gt; specifying the request, or describing the body included in the message&lt;/li&gt;
+ &lt;li&gt;A blank line indicating that all meta-information for the request has been sent.&lt;/li&gt;
+ &lt;li&gt;An optional &lt;em&gt;body&lt;/em&gt; that contains data associated with the request (like the content of an HTML form), or the document associated to a response. The presence of the body and its size is defined by the start-line and the HTTP headers.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The start-line and the HTTP headers are called the &lt;em&gt;head&lt;/em&gt; of the requests, in opposition to the payload, the &lt;em&gt;body&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;Requests and responses share a common structure in HTTP&#34; src=&#34;https://mdn.mozillademos.org/files/13697/HTTPMsgStructure.png&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;HTTP_Requests&#34;&gt;HTTP Requests&lt;/h2&gt;
+
+&lt;h3 id=&#34;Start_line&#34;&gt;Start line&lt;/h3&gt;
+
+&lt;p&gt;HTTP requests are messages sent by the client to initiate an action on the server. Their &lt;em&gt;start-line&lt;/em&gt; contains three elements:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;An &lt;em&gt;&lt;a href=&#34;/en-US/docs/Web/HTTP/Methods&#34;&gt;HTTP method&lt;/a&gt;&lt;/em&gt;, a verb (like {{HTTPMethod(&#34;GET&#34;)}}, {{HTTPMethod(&#34;PUT&#34;)}}, or {{HTTPMethod(&#34;POST&#34;)}}) or a noun (like {{HTTPMethod(&#34;HEAD&#34;)}}, or {{HTTPMethod(&#34;OPTIONS&#34;)}}), that describse the action to be performed. For example &lt;code&gt;GET&lt;/code&gt; indicates that a resource has to be fetched or &lt;code&gt;POST&lt;/code&gt; means that data is pushed to the server (that may create or modify a resource, or generate a temporary document to send back).&lt;/li&gt;
+ &lt;li&gt;The &lt;em&gt;request target&lt;/em&gt;, usually an {{glossary(&#34;URL&#34;)}}, or only the absolute path part of it as the protocol, port, and domain are most of the time defined by the context. The format of this request target vary between different HTTP methods. It can be
+  &lt;ul&gt;
+   &lt;li&gt;An absolute path, eventually following by a &lt;code&gt;&#39;?&#39;&lt;/code&gt; and a query string. Called an &lt;em&gt;origin form&lt;/em&gt;, this is the most common form and is used with &lt;code&gt;GET&lt;/code&gt;, &lt;code&gt;POST&lt;/code&gt;, &lt;code&gt;HEAD&lt;/code&gt;, and &lt;code&gt;OPTIONS&lt;/code&gt; methods.&lt;br /&gt;
+    &lt;code&gt;POST / HTTP 1.1&lt;br /&gt;
+    GET /background.png HTTP/1.0&lt;br /&gt;
+    HEAD /test.html?query=alibaba HTTP/1.1&lt;br /&gt;
+    OPTIONS /anypage.html HTTP/1.0&lt;/code&gt;&lt;/li&gt;
+   &lt;li&gt;A complete URL, the &lt;em&gt;absolute form&lt;/em&gt;, mostly used with &lt;code&gt;GET&lt;/code&gt; when connected to a proxy.&lt;br /&gt;
+    &lt;code&gt;GET http://developer.mozilla.org/en-US/docs/Web/HTTP/Messages HTTP/1.1&lt;/code&gt;&lt;/li&gt;
+   &lt;li&gt;The authority component of an URL, that is the domain name and optionally the port (prefixed by a &lt;code&gt;&#39;:&#39;&lt;/code&gt;), called the &lt;em&gt;authority form&lt;/em&gt;. It is only used with &lt;code&gt;CONNECT&lt;/code&gt; when setting up an HTTP tunnel.&lt;br /&gt;
+    &lt;code&gt;CONNECT developer.mozilla.org:80 HTTP/1.1&lt;/code&gt;&lt;/li&gt;
+   &lt;li&gt;The &lt;em&gt;asterisk form&lt;/em&gt;, a simple asterisk (&lt;code&gt;&#39;*&#39;&lt;/code&gt;) used with &lt;code&gt;OPTIONS&lt;/code&gt; and representing the server as a whole.&lt;br /&gt;
+    &lt;code&gt;OPTIONS * HTTP/1.1&lt;/code&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/li&gt;
+ &lt;li&gt;The &lt;em&gt;HTTP version&lt;/em&gt;, that defines the structure of the rest of the message, and acts as a indicator of the version to use for the response.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;Headers&#34;&gt;Headers&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;/en-US/docs/Web/HTTP/Headers&#34;&gt;HTTP headers&lt;/a&gt; in a request follow the basic structure of any HTTP headers: a case-insensitive string followed by a colon (&lt;code&gt;&#39;:&#39;&lt;/code&gt;) and a value whose structure depends upon the header. The whole header, including the value, consists of one single line, that can be pretty long.&lt;/p&gt;
+
+&lt;p&gt;Headers available for requests are numerous; they can be divided in several groups:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;em&gt;General headers&lt;/em&gt;, like {{HTTPHeader(&#34;Via&#34;)}},&amp;nbsp; that apply to the message as a whole.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Request headers&lt;/em&gt;, like {{HTTPHeader(&#34;User-Agent&#34;)}}, {{HTTPHeader(&#34;Accept-Type&#34;)}}, that modify the request by specifying it (like {{HTTPHeader(&#34;Accept-Language&#34;)}}), by giving context (like {{HTTPHeader(&#34;Referer&#34;)}}), by conditionally restricting it (like {{HTTPHeader(&#34;If-None&#34;)}}).&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Entity headers&lt;/em&gt;, like {{HTTPHeader(&#34;Content-Length&#34;)}} that applies to the body of the request. Obviously there are no such header transmitted when there are no body in the request.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img alt=&#34;Example of headers in an HTTP request&#34; src=&#34;https://mdn.mozillademos.org/files/13721/HTTPRequestsHEader.png&#34; style=&#34;height:280px; width:872px&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;Body&#34;&gt;Body&lt;/h3&gt;
+
+&lt;p&gt;The last part of a request is its body. Not all requests have one: requests fetching resources, like &lt;code&gt;GET&lt;/code&gt; or &lt;code&gt;HEAD&lt;/code&gt; usually don&#39;t need any, &lt;code&gt;DELETE&lt;/code&gt; or &lt;code&gt;OPTIONS&lt;/code&gt; neither. Some requests send data to the server in order to update it: this is often the case of &lt;code&gt;POST&lt;/code&gt; requests (that can have HTML form data).&lt;/p&gt;
+
+&lt;p&gt;Bodies can be broadly divided in two categories:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Single-resource bodies consisting of one single file, defined by the two headers: {{HTTPHeader(&#34;Content-Type&#34;)}} and {{HTTPHeader(&#34;Content-Length&#34;)}}.&lt;/li&gt;
+ &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#multipartform-data&#34;&gt;Multiple-resource bodies&lt;/a&gt; consisting of a multipart body, each containing a different bit of information. This is typically used in association with &lt;a href=&#34;/en-US/docs/Web/Guide/HTML/Forms&#34;&gt;HTML Forms&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;HTTP_Responses&#34;&gt;HTTP Responses&lt;/h2&gt;
+
+&lt;h3 id=&#34;Status_line&#34;&gt;Status line&lt;/h3&gt;
+
+&lt;p&gt;The start line of an HTTP response, called the &lt;em&gt;status line&lt;/em&gt;, contains the following information:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;The &lt;em&gt;protocol version&lt;/em&gt;, usually &lt;code&gt;HTTP/1.1&lt;/code&gt;.&lt;/li&gt;
+ &lt;li&gt;A &lt;em&gt;status code&lt;/em&gt; indicating the success or not of the request. Common status code are {{HTTPStatus(&#34;200&#34;)}}, {{HTTPStatus(&#34;404&#34;)}}, or {{HTTPStatus(&#34;302&#34;)}}&lt;/li&gt;
+ &lt;li&gt;A &lt;em&gt;status text&lt;/em&gt;, purely informational, that is a textual short description of the status code, helping humans directly reading HTTP messages.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A typical status line looks like: &lt;code&gt;HTTP/1.1 404 Not Found.&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;Headers_2&#34;&gt;Headers&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;/en-US/docs/Web/HTTP/Headers&#34;&gt;HTTP headers&lt;/a&gt; for request follow the basic structure of any header: a case-insensitive string followed by a colon (&lt;code&gt;&#39;:&#39;&lt;/code&gt;) and a value whose structure depends upon the type of the header. The whole header, including the value, stands in one single line.&lt;/p&gt;
+
+&lt;p&gt;Useful headers available for requests are numerous; they can be divided in several groups:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;em&gt;General headers&lt;/em&gt;, like {{HTTPHeader(&#34;Via&#34;)}},&amp;nbsp; that apply to the message as a whole.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Response headers&lt;/em&gt;, like {{HTTPHeader(&#34;Vary&#34;)}} and {{HTTPHeader(&#34;Accept-Ranges&#34;)}}, that give additional information about the server, that cannot be put in the status line.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Entity headers&lt;/em&gt;, like {{HTTPHeader(&#34;Content-Length&#34;)}} that apply to the body of the request. Obviously there are no such headers transmitted when there is no body in the request.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img alt=&#34;Example of headers in an HTTP response&#34; src=&#34;https://mdn.mozillademos.org/files/13723/HTTP_Response_headers.png&#34; style=&#34;height:344px; width:805px&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;Body_2&#34;&gt;Body&lt;/h3&gt;
+
+&lt;p&gt;The last part of a response is the body. Not all responses have one: responses with status code like {{HTTPStatus(&#34;201&#34;)}} or {{HTTPStatus(&#34;204&#34;)}} usually don&#39;t have any.&lt;/p&gt;
+
+&lt;p&gt;Bodies can be broadly divided in three categories:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Single-resource body consisting of one single file of know length, defined by the two headers: {{HTTPHeader(&#34;Content-Type&#34;)}} and {{HTTPHeader(&#34;Content-Length&#34;)}}.&lt;/li&gt;
+ &lt;li&gt;Single-resource body consisting of one single file of unknow length, encoded by chunk and having {{HTTPHeader(&#34;Transfer-Encoding&#34;)}}&lt;code&gt;: chunked&lt;/code&gt; in the headers.&lt;/li&gt;
+ &lt;li&gt;Multiple-resource body consisting of a multipart body, each containing a different bit of information. These are pretty rare.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;HTTP2_Frames&#34;&gt;HTTP/2 Frames&lt;/h2&gt;
+
+&lt;p&gt;HTTP/1.x messages have a few drawback for performances:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Headers, unlike bodies, are uncompressed.&lt;/li&gt;
+ &lt;li&gt;Headers are often very similar from one message to the next one, but they are still repeated on the wire.&lt;/li&gt;
+ &lt;li&gt;No multiplexing can be done: several connections are opened to the same server: warm TCP connections are more performant than cold ones.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;HTTP/2 introduces a extra step: it divide HTTP/1.x messages in frames that are embedded in a stream. Data and header frames are separated, allowing for header compression. Several streams can be combined together, a process called multiplexing, allowing the underlying TCP connection to be more efficient.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;HTTP/2 modify the HTTP message to divide them in frames (part of a single stream), allowing for more optimization.&#34; src=&#34;https://mdn.mozillademos.org/files/13713/Binary_framing.png&#34; style=&#34;height:667px; width:736px&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;HTTP Frames are invisible for Web developers. As they are an extra step between HTTP/1.1 messages and the underlying transport protocol, they don&#39;t need any change in the APIs used by Web developers: as soon as they are available both in the browser and in the server, HTTP/2 is switched on and used transparently.&lt;/p&gt;
+
+&lt;h2 id=&#34;Conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;HTTP messages are the key in understanding HTTP, their structure is pretty simple and they are very extensible thanks to the HTTP structure. The HTTP/2 framing add a new intermediate layers between the HTTP/1.x protocol and the underlying transport protocol but doesn&#39;t fundamentally modify the protocol.&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Messages%24revert/1104039" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Messages$revision/1104039 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:10:41 GMT -->
+</html>

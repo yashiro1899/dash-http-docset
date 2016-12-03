@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x$revision/1121965 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:50:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 1121965 | Connection management in HTTP/1.x | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FConnection_management_in_HTTP_1.x%24revision%2F1121965" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x%24revision/1121965">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 1121965 of <a href="../Connection_management_in_HTTP_1.html">Connection management in HTTP/1.x</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>Web/HTTP/Connection_management_in_HTTP_1.x</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Connection management in HTTP/1.x</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>1121965</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2016-09-21T04:04:19-07:00">Sep 21, 2016, 4:04:19 AM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>bunnybooboo</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>editorial review pipelining</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Guide">Guide</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Performance">Performance</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/performance">performance</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/WebMechanics">WebMechanics</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          <div>{{HTTPSidebar}}</div>
+
+<p class="summary">Connection management is a key topic in HTTP: opening and maintaining connections largely impacts the performance of Web sites and Web applications. In HTTP/1.x, there are several models: <em>short-lived connections</em>, <em>persistent connections</em>, and <em>HTTP pipelining. </em></p>
+
+<p>HTTP mostly relies on TCP for its transport protocol, providing a connection between the client and the server. In its infancy, HTTP used a single model to handle such connections. These connections were short-lived: a new one created each time a request needed sending, and closed once the answer had been received.</p>
+
+<p>This simple model held an innate limitation on performance: opening each TCP connection is a resource-consuming operation. Several messages must be exchanged between the client and the server. Network latency and bandwidth affect performance when a request needs sending. Modern Web pages require many requests (a dozen or more) to serve the amount of information needed, proving this earlier model inefficient.</p>
+
+<p>Two newer models were created in HTTP/1.1. The persistent-connection model keeps connections opened between successive requests, reducing the time needed to open new connections. The HTTP pipelining model goes one step further, by sending several successive requests without even waiting for an answer, reducing much of the latency in the network.</p>
+
+<p><img alt="Compares the performance of the three HTTP/1.x connection models: short-lived connections, persistent connections, and HTTP pipelining." src="../../../../../../mdn.mozillademos.org/files/13727/HTTP1_x_Connections.png" style="height: 538px; width: 813px;"></p>
+
+<div class="note">
+<p>HTTP/2 adds additional models for connection management.</p>
+</div>
+
+<p>It's important point to note that connection management in HTTP applies to the connection between two consecutive nodes, which is <a href="../Headers.html#hbh">hop-by-hop</a> and not <a href="../Headers.html#e2e">end-to-end</a>. The model used in connections between a client and its first proxy may differ from the model between a proxy and the destination server (or any intermediate proxies). The HTTP headers involved in defining the connection model, like {{HTTPHeader("Connection")}} and {{HTTPHeader("Keep-Alive")}}, are <a href="../Headers.html#hbh">hop-by-hop</a> headers with their values able to be changed by intermediary nodes.</p>
+
+<h2 id="Short-lived_connections">Short-lived connections</h2>
+
+<p>The original model of HTTP, and the default one in HTTP/1.0, is <em>short-lived connections</em>. Each HTTP request is completed on its own connection; this means a TCP handshake happens before each HTTP request, and these are serialized.</p>
+
+<p>The TCP handshake itself is time-consuming, but a TCP connection adapts to its load, becoming more efficient with more sustained (or warm) connections. Short-lived connections do not make use of this efficiency feature of TCP, and performance degrades from optimum by persisting to transmit over a new, cold connection.</p>
+
+<p>This model is the default model used in HTTP/1.0 (if there is no {{HTTPHeader("Connection")}} header, or if its value is set to <code>close</code>). In HTTP/1.1, this model is only used when the {{HTTPHeader("Connection")}} header is sent with a value of <code>close</code>.</p>
+
+<div class="note">
+<p>Unless dealing with a very old system, which doesn't support a persistent connection, there is no compelling reason to use this model.</p>
+</div>
+
+<h2 id="Persistent_connections">Persistent connections</h2>
+
+<p>Short-lived connections have two major hitches: the time taken to establish a new connection is significant, and performance of the underlying TCP connection gets better only when this connection has been in use for some time (warm connection). To ease these problems, the concept of a <em>persistent connection</em> has been designed, even prior to HTTP/1.1. Alternatively this may be called a <em>keep-alive connection</em>.</p>
+
+<p>A persistent connection is a one which remains open for a period, and can be reused for several requests, saving the the need for a new TCP handshake, and utilizing TCP's performance enhancing capabilities. This connection will not stay open forever: idle connections are closed after some time (a server may use the {{HTTPHeader("Keep-Alive")}} header to specify a minimum time the connection should be kept open).</p>
+
+<p>Persistent connections also have drawbacks; even when idling they consume server resources, and under heavy load, {{glossary("DoS attack", "DoS attacks")}} can be conducted. In such cases, using non-persistent connections, which are closed as soon as they are idle, can provide better performance.</p>
+
+<p>HTTP/1.0 connections are not persistent by default. Setting {{HTTPHeader("Connection")}} to anything other than <code>close</code>, usually <code>retry-after</code>, will make them persistent.</p>
+
+<p>In HTTP/1.1, peristence is the default, and the header is no longer needed (but it is often added as a defensive measure against cases requiring a fallback to HTTP/1.0).</p>
+
+<h2 id="HTTP_pipelining">HTTP pipelining</h2>
+
+<div class="note">
+<p>HTTP pipelining is not activated by default in modern browsers:</p>
+
+<ul>
+ <li>Buggy <a href="https://en.wikipedia.org/wiki/Proxy_server">proxies</a> are still common and these lead to strange and erratic behaviors that Web developers cannot foresee and diagnose easily.</li>
+ <li>Pipelining is complex to implement correctly: the size of the resource being transferred, the effective <a href="https://en.wikipedia.org/wiki/Round-trip_delay_time">RTT</a> that will be used, as well as the effective bandwidth, have a direct incidence on the improvement provided by the pipeline. Without knowing these, important messages may be delayed behind unimportant ones. The notion of important even evolves during page layout! HTTP pipelining therefore brings a marginal improvement in most cases only.</li>
+ <li>Pipelining is subject to the <a href="https://en.wikipedia.org/wiki/Head-of-line_blocking">HOL</a> problem.</li>
+</ul>
+
+<p>For these reasons, pipelining got been superseded by a better algorithm, <em>multiplexing</em>, that is used by HTTP/2.</p>
+</div>
+
+<p>By default, <a href="https://developer.mozilla.org/en/HTTP" title="en/HTTP">HTTP</a> requests are issued sequentially. The next request is only issued once the response to the current request has been received. As they are affected by network latencies and bandwidth limitations, this can result in significant delay before the next request is <em>seen</em> by the server.</p>
+
+<p>Pipelining is the process to send successive requests, over the same persistent connection, without waiting for the answer. This avoids latency of the connection. Theoretically, performance could also be improved if two HTTP requests were to be packed into the same TCP message. The typical <a href="https://en.wikipedia.org/wiki/Maximum_segment_size">MSS</a> (Maximum Segment Size), is big enough to contain several simple requests, although the demand in size of HTTP requests continues to grow.</p>
+
+<p>Not all types of HTTP requests can be pipelined: only {{glossary("idempotent")}} methods, that is {{HTTPMethod("GET")}}, {{HTTPMethod("HEAD")}}, {{HTTPMethod("PUT")}} and {{HTTPMethod("DELETE")}}, can be replayed safely: should a failure happen, the pipeline content can simply be repeated.</p>
+
+<p>Today, every HTTP/1.1-compliant proxy and server should support pipelining, though many have limitations in practice: a significant reason no modern browser activates this feature by default.</p>
+
+<h2 id="Domain_sharding">Domain sharding</h2>
+
+<div class="note">
+<p>Unless you have a very specific immediate need, don't use this deprecated technique; switch to HTTP/2 instead. In HTTP/2, domain sharding is no more useful: the HTTP/2 connection is able to handle parallel unprioritized requests very well. Domain sharding is even detrimental to performance. Most HTTP/2 implementation use a technique called <a href="I%20wonder%20if%20it%27s%20related%20to%20the%20nobash/nobreak/nopick%20secret%20exit%20s%20of%20Elrond%27s%20chambers.html">connection coalescing</a> to revert eventual domain sharding.</p>
+</div>
+
+<p>As an HTTP/1.x connection is serializing requests, even if there is no real ordering between them, it can't be optimal, when the available bandwidth is large enough. To work around this, browsers open several connection to each domain and send request in parallel. Originally, they were opening 2 or 3 connections, but this increased and the most common amount of parallel connections is now 6. They can't really open more of these without triggering <a href="https://developer.mozilla.org/en-US/docs/Glossary/DOS_attack">DoS</a> protection on the server side.</p>
+
+<p>If  the server wants that the Web site or application react faster, he can trick the browsers to open more connections. Instead of having all resources on the same domain, say <code>www.example.com</code> it splits over several, like <code>www1.example.com</code>, <code>www2.example.com</code>, <code>www3.example.com</code>. Each of these domains resolve to the <em>same</em> server, and the browsers will open 6 connections to each of them (18 in our example). This technique is called <em>domain sharding</em>.</p>
+
+<p><img alt="" src="../../../../../../mdn.mozillademos.org/files/13783/HTTPSharding.png" style="height: 727px; width: 463px;"></p>
+
+<h2 id="Conclusion">Conclusion</h2>
+
+<p>Better connection management allows to considerably improve performance of HTTP. With HTTP/1.1 or HTTP/1.0, using a persistent connection – at least until it gets idle – leads to the best performance. But, over the years and the failure of pipelining, better connection management models have been designed and incorporated into HTTP/2.</p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">&lt;div&gt;{{HTTPSidebar}}&lt;/div&gt;
+
+&lt;p class=&#34;summary&#34;&gt;Connection management is a&amp;nbsp;key topic in HTTP: opening and maintaining connections largely impacts the performance of Web sites and Web applications. In HTTP/1.x, there are several models: &lt;em&gt;short-lived connections&lt;/em&gt;, &lt;em&gt;persistent connections&lt;/em&gt;, and &lt;em&gt;HTTP pipelining. &lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;HTTP mostly relies on TCP for its transport protocol, providing a connection between the client and the server. In its infancy, HTTP used a single model to handle such connections. These connections were short-lived: a new one created each time a request needed sending, and closed once the answer had been received.&lt;/p&gt;
+
+&lt;p&gt;This simple model held an innate limitation on performance: opening each TCP connection is a resource-consuming operation. Several messages must be exchanged between the client and the server. Network latency and bandwidth affect performance when a request needs sending. Modern Web pages require many requests (a dozen or more) to serve the amount of information needed, proving this earlier model inefficient.&lt;/p&gt;
+
+&lt;p&gt;Two newer models were created in HTTP/1.1. The persistent-connection model keeps connections opened between successive requests, reducing the time needed to open new connections. The HTTP pipelining model goes one step further, by sending several successive requests without even waiting for an answer, reducing much of the latency in the network.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;Compares the performance of the three HTTP/1.x connection models: short-lived connections, persistent connections, and HTTP pipelining.&#34; src=&#34;https://mdn.mozillademos.org/files/13727/HTTP1_x_Connections.png&#34; style=&#34;height:538px; width:813px&#34; /&gt;&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;HTTP/2 adds additional models for connection management.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It&#39;s important point to note that connection management in HTTP applies to the connection between two consecutive nodes, which is &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers#hbh&#34;&gt;hop-by-hop&lt;/a&gt; and not &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers#e2e&#34;&gt;end-to-end&lt;/a&gt;. The model used in connections between a client and its first proxy may differ from the model between a proxy and the destination server (or any intermediate proxies). The HTTP headers involved in defining the connection model, like {{HTTPHeader(&#34;Connection&#34;)}} and {{HTTPHeader(&#34;Keep-Alive&#34;)}}, are &lt;a href=&#34;/en-US/docs/Web/HTTP/Headers#hbh&#34;&gt;hop-by-hop&lt;/a&gt; headers with their values able to be changed by intermediary nodes.&lt;/p&gt;
+
+&lt;h2 id=&#34;Short-lived_connections&#34;&gt;Short-lived connections&lt;/h2&gt;
+
+&lt;p&gt;The original model of HTTP, and the default one in HTTP/1.0, is &lt;em&gt;short-lived connections&lt;/em&gt;. Each HTTP request is completed on its own connection; this means a TCP handshake happens before each HTTP request, and these are serialized.&lt;/p&gt;
+
+&lt;p&gt;The TCP handshake itself is time-consuming, but a TCP connection adapts to its load, becoming more efficient with more sustained (or warm) connections. Short-lived connections do not make use of this efficiency feature of TCP, and performance degrades from optimum by persisting to transmit over a new, cold connection.&lt;/p&gt;
+
+&lt;p&gt;This model is the default model used in HTTP/1.0 (if there is no {{HTTPHeader(&#34;Connection&#34;)}} header, or if its value is set to &lt;code&gt;close&lt;/code&gt;). In HTTP/1.1, this model is only used when the {{HTTPHeader(&#34;Connection&#34;)}} header is sent with a value of &lt;code&gt;close&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;Unless dealing with a very old system, which doesn&#39;t support a persistent connection, there is no compelling reason to use this model.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;Persistent_connections&#34;&gt;Persistent connections&lt;/h2&gt;
+
+&lt;p&gt;Short-lived connections have two major hitches: the time taken to establish a new connection is significant, and performance of the underlying TCP connection gets better only when this connection has been in use for some time (warm connection). To ease these problems, the concept of a &lt;em&gt;persistent connection&lt;/em&gt; has been designed, even prior to HTTP/1.1. Alternatively this may be called a &lt;em&gt;keep-alive connection&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;A persistent connection is a one which remains open for a period, and can be reused for several requests, saving the the need for a new TCP handshake, and utilizing TCP&#39;s performance enhancing capabilities. This connection will not stay open forever: idle connections are closed after some time (a server may use the {{HTTPHeader(&#34;Keep-Alive&#34;)}} header to specify a minimum time the connection should be kept open).&lt;/p&gt;
+
+&lt;p&gt;Persistent connections also have drawbacks; even when idling they consume server resources, and under heavy load, {{glossary(&#34;DoS attack&#34;, &#34;DoS attacks&#34;)}} can be conducted. In such cases, using non-persistent connections, which are closed as soon as they are idle, can provide better performance.&lt;/p&gt;
+
+&lt;p&gt;HTTP/1.0 connections are not persistent by default. Setting {{HTTPHeader(&#34;Connection&#34;)}} to anything other than &lt;code&gt;close&lt;/code&gt;, usually &lt;code&gt;retry-after&lt;/code&gt;, will make them persistent.&lt;/p&gt;
+
+&lt;p&gt;In HTTP/1.1, peristence is the default, and the header is no longer needed (but it is often added as a defensive measure against cases requiring a fallback to HTTP/1.0).&lt;/p&gt;
+
+&lt;h2 id=&#34;HTTP_pipelining&#34;&gt;HTTP pipelining&lt;/h2&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;HTTP pipelining is not activated by default in modern browsers:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Buggy &lt;a href=&#34;https://en.wikipedia.org/wiki/Proxy_server&#34;&gt;proxies&lt;/a&gt; are still common and these lead to strange and erratic behaviors that Web developers cannot foresee and diagnose easily.&lt;/li&gt;
+ &lt;li&gt;Pipelining is complex to implement correctly: the size of the resource being transferred, the effective &lt;a href=&#34;https://en.wikipedia.org/wiki/Round-trip_delay_time&#34;&gt;RTT&lt;/a&gt; that will be used, as well as the effective bandwidth, have a direct incidence on the improvement provided by the pipeline. Without knowing these, important messages may be delayed behind unimportant ones. The notion of important even evolves during page layout! HTTP pipelining therefore brings a marginal improvement in most cases only.&lt;/li&gt;
+ &lt;li&gt;Pipelining is subject to the &lt;a href=&#34;https://en.wikipedia.org/wiki/Head-of-line_blocking&#34;&gt;HOL&lt;/a&gt; problem.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For these reasons, pipelining got been superseded by a better algorithm, &lt;em&gt;multiplexing&lt;/em&gt;, that is used by HTTP/2.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;By default, &lt;a href=&#34;/en/HTTP&#34; title=&#34;en/HTTP&#34;&gt;HTTP&lt;/a&gt; requests are issued sequentially. The next request is only issued once the response to the current request has been received. As they are affected by network latencies and bandwidth limitations, this can result in significant delay before the next request is &lt;em&gt;seen&lt;/em&gt; by the server.&lt;/p&gt;
+
+&lt;p&gt;Pipelining is the process to send successive requests, over the same persistent connection, without waiting for the answer. This avoids latency of the connection. Theoretically, performance could also be improved if two HTTP requests were to be packed into the same TCP message. The typical &lt;a href=&#34;https://en.wikipedia.org/wiki/Maximum_segment_size&#34;&gt;MSS&lt;/a&gt; (Maximum Segment Size), is big enough to contain several simple requests, although the demand in size of HTTP requests continues to grow.&lt;/p&gt;
+
+&lt;p&gt;Not all types of HTTP requests can be pipelined: only {{glossary(&#34;idempotent&#34;)}} methods, that is {{HTTPMethod(&#34;GET&#34;)}}, {{HTTPMethod(&#34;HEAD&#34;)}}, {{HTTPMethod(&#34;PUT&#34;)}} and {{HTTPMethod(&#34;DELETE&#34;)}}, can be replayed safely: should a failure happen, the pipeline content can simply be repeated.&lt;/p&gt;
+
+&lt;p&gt;Today, every HTTP/1.1-compliant proxy and server should support pipelining, though many have limitations in practice: a significant reason no modern browser activates this feature by default.&lt;/p&gt;
+
+&lt;h2 id=&#34;Domain_sharding&#34;&gt;Domain sharding&lt;/h2&gt;
+
+&lt;div class=&#34;note&#34;&gt;
+&lt;p&gt;Unless you have a very specific immediate need, don&#39;t use this deprecated technique; switch to HTTP/2 instead. In HTTP/2, domain sharding is no more useful: the HTTP/2 connection is able to handle parallel unprioritized requests very well. Domain sharding is even detrimental to performance. Most HTTP/2 implementation use a technique called &lt;a href=&#34;I wonder if it&#39;s related to the nobash/nobreak/nopick secret exit s of Elrond&#39;s chambers.&#34;&gt;connection coalescing&lt;/a&gt; to revert eventual domain sharding.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As an HTTP/1.x connection is serializing requests, even if there is no real ordering between them, it can&#39;t be optimal, when the available bandwidth is large enough. To work around this, browsers open several connection to each domain and send request in parallel. Originally, they were opening 2 or 3 connections, but this increased and the most common amount of parallel connections is now 6. They can&#39;t really open more of these without triggering &lt;a href=&#34;/en-US/docs/Glossary/DOS_attack&#34;&gt;DoS&lt;/a&gt; protection on the server side.&lt;/p&gt;
+
+&lt;p&gt;If&amp;nbsp; the server wants that the Web site or application react faster, he can trick the browsers to open more connections. Instead of having all resources on the same domain, say &lt;code&gt;www.example.com&lt;/code&gt; it splits over several, like &lt;code&gt;www1.example.com&lt;/code&gt;, &lt;code&gt;www2.example.com&lt;/code&gt;, &lt;code&gt;www3.example.com&lt;/code&gt;. Each of these domains resolve to the &lt;em&gt;same&lt;/em&gt; server, and the browsers will open 6 connections to each of them (18 in our example). This technique is called &lt;em&gt;domain sharding&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;https://mdn.mozillademos.org/files/13783/HTTPSharding.png&#34; style=&#34;height:727px; width:463px&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;Conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Better connection management allows to considerably improve performance of HTTP. With HTTP/1.1 or HTTP/1.0, using a persistent connection – at least until it gets idle – leads to the best performance. But, over the years and the failure of pipelining, better connection management models have been designed and incorporated into HTTP/2.&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x%24revert/1121965" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Connection_management_in_HTTP_1.x$revision/1121965 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 16:50:31 GMT -->
+</html>

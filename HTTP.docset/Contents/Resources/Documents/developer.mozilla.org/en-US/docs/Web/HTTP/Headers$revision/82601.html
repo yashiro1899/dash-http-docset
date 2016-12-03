@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers$revision/82601 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:23:53 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>Revision 82601 | HTTP headers | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="https://developer.mozilla.org/en-US/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/mdn.102019a5db43.css" rel="stylesheet" type="text/css" />
+
+    
+  
+    <link href="../../../../../../developer.cdn.mozilla.net/static/build/styles/wiki.d9818563511b.css" rel="stylesheet" type="text/css" />
+
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.dc4e08e2f6af.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/en-US/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon144.a6e4162070f4.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon114.0e9fabd44f85.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon72.8ff9d87c82a0.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon57.a2490b9a2d76.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="../../../../../../developer.cdn.mozilla.net/static/img/favicon32.e02854fdcf73.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../../../../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body  class="">
+
+  <script type="text/javascript">
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'iperceptions': false,'kumaediting': false,'page_move': false,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = 'https://developer.mozilla.org/static/js/libs/ckeditor/build/ckeditor/';
+
+        // This represents the site configuration
+        win.mdn = {
+            // Properties and settings for CKEditor will go here
+            ckeditor: {},
+            // Feature test results and methods will be placed here
+            features: {},
+            // The path to static assets (images, CSS, JS) in MDN
+            staticPath: 'https://developer.cdn.mozilla.net/static/',
+            // Optimizely API
+            optimizely: win['optimizely'] || [],
+            // Site notifications
+            
+            notifications: [],
+            
+            // Wiki-specific settings will be placed here
+            wiki: {
+                autosuggestTitleUrl: '/en-US/docs/get-documents'
+            },
+            // Assets that need to be dynamically injected
+            assets: {
+                css: {
+                    'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.e79881a73508.css',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/styles/wiki-compat-tables.a042fac0d66c.css',]
+                },
+                js: {
+                    'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.7a66ddfa68bf.js',],
+                    'wiki-compat-tables': ['https://developer.cdn.mozilla.net/static/build/js/wiki-compat-tables.14ce5dcb2c3d.js',]
+                }
+            }
+        };
+    })(this);
+</script>
+
+  
+
+  <ul id="nav-access">
+    <li><a href="#content" id="skip-main">Skip to main content</a></li>
+    <li><a id="skip-language" href="#language">Select language</a></li>
+    <li><a href="#q" id="skip-search">Skip to search</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+
+    <div id="tabzilla">
+        <a href="http://www.mozilla.org/" class="no-track">mozilla</a>
+    </div>
+
+    <div class="clear header-clear"></div>
+
+
+    <a href="https://developer.mozilla.org/en-US/" class="logo">Mozilla Developer Network</a>
+
+
+    <div id="nav-sec">
+        
+                  <ul>
+                  <li><div class="login">
+    
+      
+       <a href="https://developer.mozilla.org/users/github/login/?next=%2Fen-US%2Fdocs%2FWeb%2FHTTP%2FHeaders%24revision%2F82601" class="login-link js-login-link" data-service="GitHub">
+        Sign in
+        <i class="icon-github" aria-hidden="true"></i>
+      </a>
+    
+</div></li>
+                </ul>
+        
+    </div>
+
+    <nav id="main-nav" role="navigation"><ul><li><a href="https://developer.mozilla.org/en-US/docs/Web">Web Technologies<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu submenu-cols-2 js-submenu" id="nav-platform-submenu">
+          <div class="submenu-column">
+            <div class="title">Technologies</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">JavaScript</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Graphics">Graphics</a></li>
+              <li><a href="../../HTTP.html">HTTP</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/API">APIs / DOM</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/MathML">MathML</a></li>
+            </ul>
+          </div><div class="submenu-column last">
+            <div class="title">References & Guides</div>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Learn">Learning web development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Tutorials">Tutorials</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Reference">References</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide">Developer Guides</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">Accessibility</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Games">Game development</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Web">...more docs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Zones">Mozilla Docs<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-zones-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons">Add-ons</a></li>
+              <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Firefox">Firefox</a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li><a href="https://developer.mozilla.org/en-US/docs/Tools">Developer Tools</a></li><li><a href="https://developer.mozilla.org/en-US/docs/MDN/Feedback">Feedback<i aria-hidden="true" class="icon-caret-down"></i></a>
+
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+                <li><a href="https://support.mozilla.org/">Get Firefox help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+                <li><a href="http://stackoverflow.com/">Get web development help<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="https://developer.mozilla.org/en-US/docs/MDN/Community">Join the MDN community</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/en-US/docs/Web/HTTP/Headers%24revision/82601">Report a content problem<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Report a bug<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+      </li><li class="nav-search-link"><a href="https://developer.mozilla.org/en-US/search" title="Search"><i aria-hidden="true" class="icon-search"></i></a></li><li class="main-nav-search"><form action="https://developer.mozilla.org/en-US/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Search</label>
+          <input type="search" id="main-q" name="q" placeholder="Search" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>&nbsp;
+          <button type="submit" class="offscreen">Search</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  <article>
+    <h1>Revision 82601 of <a href="../Headers.html">HTTP headers</a></h1>
+
+    <details class="h2" open="open">
+      <summary class="hidden">Revision Information</summary>
+      <div class="revision-info">
+        <ul>
+          <li>
+            <mark>Revision slug:</mark>
+            <span>HTTP/Headers</span>
+          </li>
+          <li>
+            <mark>Revision title:</mark>
+            <span>Headers</span>
+          </li>
+          <li class="revision-id">
+            <mark>Revision id:</mark>
+            <span>82601</span>
+          </li>
+          <li class="revision-created">
+            <mark>Created:</mark>
+            <span><time datetime="2011-05-18T13:42:50-07:00">May 18, 2011, 1:42:50 PM</time></span>
+          </li>
+          <li>
+            <mark>Creator:</mark>
+            <span>teoli</span>
+            
+          </li>
+          <li>
+            <mark>Is current revision?</mark>
+            <span>No</span>
+          </li>
+          <li>
+            <mark>Comment</mark>
+            <span>10 words added</span>
+          </li>
+          
+        </ul>
+      </div>
+    </details>
+
+    <div class="wiki-block contributors">
+      
+      
+  <div class="tag-attach-list contributors-sub">
+    <i aria-hidden="true" class="icon-tags icon-fw"></i>
+    <strong>Tags:</strong>&nbsp;
+    <ul class="tags tags-small">
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/headers">headers</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Headers">Headers</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/HTTP">HTTP</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Networking">Networking</a></li>
+      
+        <li><a href="https://developer.mozilla.org/en-US/docs/tag/Reference">Reference</a></li>
+      
+    </ul>
+  </div>
+
+    </div>
+
+    
+      <details open="open">
+        <summary><h2>Revision Content</h2></summary>
+        <article id="wikiArticle" class="text-content">
+          
+<p>HTTP message headers are used to precisely describe the resource being fetched or the behavior of the server or the client. Custom proprietary headers can be added using the 'X-' prefix; others are listed in an <a class=" external" href="http://www.iana.org/assignments/message-headers/perm-headers.html" title="http://www.iana.org/assignments/message-headers/perm-headers.html">IANA registry</a>, whose original content was defined in <a class=" external" href="http://tools.ietf.org/html/rfc4229" title="http://tools.ietf.org/html/rfc4229">RFC 4229</a>. IANA also maintain a <a class=" external" href="http://www.iana.org/assignments/message-headers/prov-headers.html" title="http://www.iana.org/assignments/message-headers/prov-headers.html">registry of proposed new HTTP message headers</a>.</p>
+<p>The following list summaries the headers and their usage:</p>
+<table class="standard-table" style="width: 100%;"> <tbody> <tr> <th>Header</th> <th>Description</th> <th>More information</th> <th>Standard</th> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept.3a_header" title="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept.3a_header">Accept</a></code></td> <td>lists the MIME types expected by the user agent</td> <td><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation" title="en/HTTP/Content negotiation">HTTP Content Negotiation</a></td> <td>HTTP/1.1</td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept-Charset.3a_header" title="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept-Charset.3a_header">Accept-Charset</a></code></td> <td>lists the character sets supported by the user agent</td> <td><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation" title="en/HTTP/Content negotiation">HTTP Content Negotiation</a></td> <td>HTTP/1.1</td> </tr> <tr> <td><code>Accept-Features</code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation" title="en/HTTP/Content negotiation">HTTP Content Negotiation</a></td> <td>RFC 2295, §8.2</td> </tr>
+<tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept-Encoding.3a_header" title="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept-Encoding.3a_header">Accept-Encoding</a></code></td> <td>lists the compression methods supported by the user agent</td> <td><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation" title="en/HTTP/Content negotiation">HTTP Content Negotiation</a></td> <td>HTTP/1.1</td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept-Language.3a_header" title="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept-Language.3a_header">Accept-Language</a></code></td> <td>lists the languages the user agent expect the page in</td> <td><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation" title="https://developer.mozilla.org/en/Content_negotiation">HTTP Content Negotiation</a></td> <td>HTTP/1.1</td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Accept-Ranges" title="en/Accept-Ranges">Accept-Ranges</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Credentials" title="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Credentials">Access-Control-Allow-Credentials</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> and <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" title="En/Server-Side Access Control">Server Side Access Control</a>{{ gecko_minversion_inline("1.9.1") }}</td> <td><a class=" external" href="http://www.w3.org/TR/cors/" title="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Origin" title="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Origin">Access-Control-Allow-Origin</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> and <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" title="En/Server-Side Access Control">Server Side Access Control</a>{{ gecko_minversion_inline("1.9.1") }}</td> <td><a class=" external" href="http://www.w3.org/TR/cors/" title="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Methods" title="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Methods">Access-Control-Allow-Methods</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> and <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" title="En/Server-Side Access Control">Server Side Access Control</a>{{ gecko_minversion_inline("1.9.1") }}</td> <td><a class=" external" href="http://www.w3.org/TR/cors/" title="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Headers" title="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Headers">Access-Control-Allow-Headers</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> and <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" title="En/Server-Side Access Control">Server Side Access Control</a>{{ gecko_minversion_inline("1.9.1") }}</td> <td><a class=" external" href="http://www.w3.org/TR/cors/" title="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Max-Age" title="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Max-Age">Access-Control-Max-Age</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> and <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" title="En/Server-Side Access Control">Server Side Access Control</a>{{ gecko_minversion_inline("1.9.1") }}</td> <td><a class=" external" href="http://www.w3.org/TR/cors/" title="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Expose-Header" title="en/HTTP access control#Access-Control-Expose-Header">Access-Control-Expose-Headers</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> and <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" title="En/Server-Side Access Control">Server Side Access Control</a>{{ gecko_minversion_inline("2") }}</td> <td><a class=" external" href="http://www.w3.org/TR/cors/" title="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Request-Method" title="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Request-Method">Access-Control-Request-Method</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> and <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" title="En/Server-Side Access Control">Server Side Access Control</a>{{ gecko_minversion_inline("1.9.1") }}</td> <td><a class=" external" href="http://www.w3.org/TR/cors/" title="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Request-Headers" title="https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Request-Headers">Access-Control-Request-Headers</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> and <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" title="En/Server-Side Access Control">Server Side Access Control</a>{{ gecko_minversion_inline("1.9.1") }}</td> <td><a class=" external" href="http://www.w3.org/TR/cors/" title="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Age" title="en/Age">Age</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Allow" title="en/Allow">Allow</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Authorization" title="en/Authorization">Authorization</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Cache-Control" title="en/Cache-Control">Cache-Control</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/HTTP_Caching_FAQ" title="en/HTTP Caching FAQ">HTTP Caching FAQ</a></td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Connection" title="en/Connection">Connection</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Content-Encoding" title="en/Content-Encoding">Content-Encoding</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Content-Language" title="en/Content-Language">Content-Language</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Content-Length" title="en/Content-Length">Content-Length</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Content-Location" title="en/Content-Location">Content-Location</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Content-MD5" title="en/Content-MD5">Content-MD5</a></code></td> <td> </td> <td>{{ unimplemented_inline("232030") }}</td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Content-Range" title="en/Content-Range">Content-Range</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Content-Type" title="en/Content-Type">Content-Type</a></code></td> <td>defines the <a href="https://developer.mozilla.org/en/Properly_Configuring_Server_MIME_Types" title="en/Properly Configuring Server MIME Types">MIME Type </a>of the served document</td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Cookie" title="en/Cookie">Cookie</a></code></td> <td> </td> <td> </td> <td><a class=" external" href="http://www.ietf.org/rfc/rfc2109.txt" title="http://www.ietf.org/rfc/rfc2109.txt">RFC 2109</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Date" title="en/Date">Date</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/ETag" title="en/ETag">ETag</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/HTTP_Caching_FAQ" title="en/HTTP Caching FAQ">HTTP Caching FAQ</a></td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Expect" title="en/Expect">Expect</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Expires" title="en/Expires">Expires</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/HTTP_Caching_FAQ" title="en/HTTP Caching FAQ">HTTP Caching FAQ</a></td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/From" title="en/From">From</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Host" title="en/Host">Host</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/If-Match" title="en/If-Match">If-Match</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/If-Modified-Since" title="en/If-Modified-Since">If-Modified-Since</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/HTTP_Caching_FAQ" title="en/HTTP Caching FAQ">HTTP Caching FAQ</a></td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/If-None-Match" title="en/If-None-Match">If-None-Match</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/HTTP_Caching_FAQ" title="en/HTTP Caching FAQ">HTTP Caching FAQ</a></td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/If-Range" title="en/If-Range">If-Range</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/If-Unmodified-Since" title="en/If-Unmodified-Since">If-Unmodified-Since</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Last-Modified" title="en/Last-Modified">Last-Modified</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/HTTP_Caching_FAQ" title="en/HTTP Caching FAQ">HTTP Caching FAQ</a></td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Link" title="en/HTTP/Headers/Link">Link</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/Link_prefetching_FAQ" title="en/Link prefetching FAQ">Link Prefetching FAQ</a></td> <td><a class=" external" href="http://tools.ietf.org/html/rfc2068#section-19.6.2.4" title="http://tools.ietf.org/html/rfc2068#section-19.6.2.4">HTTP 1.1's RFC 2068, section 19.6.2.4</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Location" title="en/Location">Location</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Max-Forwards" title="en/Max-Forwards">Max-Forwards</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/En/HTTP_access_control#Origin" title="https://developer.mozilla.org/En/HTTP_access_control#Origin">Origin</a></code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/HTTP_access_control" title="En/HTTP access control">HTTP Access Control</a> and <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" title="En/Server-Side Access Control">Server Side Access Control</a>{{ gecko_minversion_inline("1.9.1") }}</td> <td><a class=" external" href="http://www.w3.org/TR/cors/" title="http://www.w3.org/TR/cors/">W3C Cross-Origin Resource Sharing</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Pragma" title="en/Pragma">Pragma</a></code></td> <td> </td> <td>for the pragma: nocache value see <a href="https://developer.mozilla.org/en/HTTP_Caching_FAQ" title="en/HTTP Caching FAQ">HTTP Caching FAQ</a></td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Proxy-Authenticate" title="en/Proxy-Authenticate">Proxy-Authenticate</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Proxy-Authorization" title="en/Proxy-Authorization">Proxy-Authorization</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Range" title="en/Range">Range</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Referer" title="en/Referer">Referer</a></code></td> <td>(note that the orthographical error introduced in HTTP/0.9 spec had to be conserved in subsequent version of the protocol)</td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Retry-After" title="en/Retry-After">Retry-After</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Server" title="en/Server">Server</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Set-Cookie" title="en/Set-Cookie">Set-Cookie</a></code></td> <td> </td> <td> </td> <td><a class=" external" href="http://www.ietf.org/rfc/rfc2109.txt" title="http://www.ietf.org/rfc/rfc2109.txt">RFC 2109</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Set-Cookie2" title="en/Set-Cookie2">Set-Cookie2</a></code></td> <td> </td> <td> </td> <td><a class=" external" href="http://www.ietf.org/rfc/rfc2965.txt" title="http://www.ietf.org/rfc/rfc2965.txt">RFC 2965</a></td> </tr> <tr> <td><code>Strict-Transport-Security</code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/Security/HTTP_Strict_Transport_Security" title="en/Security/HTTP Strict Transport Security">HTTP Strict Transport Security</a></td> <td><a class=" external" href="http://tools.ietf.org/html/draft-hodges-strict-transport-sec-02" title="http://tools.ietf.org/html/draft-hodges-strict-transport-sec-02">IETF reference</a></td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/TE" title="en/TE">TE</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Trailer" title="en/Trailer">Trailer</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Transfer-Encoding" title="en/Transfer-Encoding">Transfer-Encoding</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Upgrade" title="en/Upgrade">Upgrade</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_User-Agent.3a_header" title="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_User-Agent.3a_header">User-Agent</a></code></td> <td> </td> <td>for Gecko's user agents see the <a href="https://developer.mozilla.org/En/User_Agent_Strings_Reference" title="En/User Agent Strings Reference">User Agents Reference</a></td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Vary.3a_response_header" title="https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Vary.3a_response_header">Vary</a></code></td> <td>lists the headers used as criteria for choosing a specific content by the web server. This server is important for efficient and correct caching of the resource sent.</td> <td><a href="https://developer.mozilla.org/en/HTTP/Content_negotiation" title="https://developer.mozilla.org/en/Content_negotiation">HTTP Content Negotiation</a> &amp; <a href="https://developer.mozilla.org/en/HTTP_Caching_FAQ" title="en/HTTP Caching FAQ">HTTP Caching FAQ</a></td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Via" title="en/Via">Via</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/Warning" title="en/Warning">Warning</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code><a href="https://developer.mozilla.org/en/HTTP/Headers/WWW-Authenticate" title="en/WWW-Authenticate">WWW-Authenticate</a></code></td> <td> </td> <td> </td> <td> </td> </tr> <tr> <td><code>X-Content-Duration</code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/Configuring_servers_for_Ogg_media" title="https://developer.mozilla.org/en/Configuring_servers_for_Ogg_media">Configuring servers for Ogg media</a></td> <td> </td> </tr> <tr> <td><code>X-Content-Security-Policy</code></td> <td> </td> <td>Using Content Security Policy<a href="https://developer.mozilla.org/en/Security/CSP/Using_Content_Security_Policy" title="en/Security/CSP/Using Content Security Policy">en/Security/CSP/Using_Content_Security_Policy</a></td> <td> </td> </tr> <tr> <td><code>X-DNSPrefetch-Control</code></td> <td> </td> <td><a href="https://developer.mozilla.org/En/Controlling_DNS_prefetching" title="En/Controlling DNS prefetching">Controlling DNS prefetching</a></td> <td> </td> </tr> <tr> <td><code>X-Frame-Options</code></td> <td> </td> <td><a href="https://developer.mozilla.org/en/The_X-FRAME-OPTIONS_response_header" title="en/The X-FRAME-OPTIONS response header">The XFrame-Option Response Header</a></td> <td> </td> </tr> <tr> <td><code>X-Requested-With</code></td> <td>Often used with the value "XMLHttpRequest" when it is the case</td> <td> </td> <td>Not standard</td> </tr> </tbody>
+</table>
+<h2>Notes</h2>
+<div class="geckoVersionNote">
+<p>{{ gecko_callout_heading("5.0") }}</p>
+<p>The Keep-Alive request header is not sent by Gecko 5.0 {{ geckoRelease("5.0") }}; previous versions did send it but it was not formatted correctly, so the decision was made to remove it for the time being. The {{ httpheader("Connection") }} or {{ httpheader("Proxy-Connection") }} header is still sent, however, with the value "keep-alive".</p>
+</div>
+<h2>See also</h2>
+<p><a class=" external" href="http://en.wikipedia.org/wiki/List_of_HTTP_header_fields">Wikipedia page on List of HTTP headers</a></p>
+        </article>
+      </details>
+    
+
+    <details >
+      <summary><h2>Revision Source</h2></summary>
+      <div id="doc-source">
+        <pre class="brush:js">
+&lt;p&gt;HTTP message headers are used to precisely describe the resource being fetched or the behavior of the server or the client. Custom proprietary headers can be added using the &#39;X-&#39; prefix; others are listed in an &lt;a class=&#34; external&#34; href=&#34;http://www.iana.org/assignments/message-headers/perm-headers.html&#34; title=&#34;http://www.iana.org/assignments/message-headers/perm-headers.html&#34;&gt;IANA registry&lt;/a&gt;, whose original content was defined in &lt;a class=&#34; external&#34; href=&#34;http://tools.ietf.org/html/rfc4229&#34; title=&#34;http://tools.ietf.org/html/rfc4229&#34;&gt;RFC 4229&lt;/a&gt;. IANA also maintain a &lt;a class=&#34; external&#34; href=&#34;http://www.iana.org/assignments/message-headers/prov-headers.html&#34; title=&#34;http://www.iana.org/assignments/message-headers/prov-headers.html&#34;&gt;registry of proposed new HTTP message headers&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The following list summaries the headers and their usage:&lt;/p&gt;
+&lt;table class=&#34;standard-table&#34; style=&#34;width: 100%;&#34;&gt; &lt;tbody&gt; &lt;tr&gt; &lt;th&gt;Header&lt;/th&gt; &lt;th&gt;Description&lt;/th&gt; &lt;th&gt;More information&lt;/th&gt; &lt;th&gt;Standard&lt;/th&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation#The_Accept.3a_header&#34; title=&#34;https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept.3a_header&#34;&gt;Accept&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt;lists the MIME types expected by the user agent&lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation&#34; title=&#34;en/HTTP/Content negotiation&#34;&gt;HTTP Content Negotiation&lt;/a&gt;&lt;/td&gt; &lt;td&gt;HTTP/1.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation#The_Accept-Charset.3a_header&#34; title=&#34;https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept-Charset.3a_header&#34;&gt;Accept-Charset&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt;lists the character sets supported by the user agent&lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation&#34; title=&#34;en/HTTP/Content negotiation&#34;&gt;HTTP Content Negotiation&lt;/a&gt;&lt;/td&gt; &lt;td&gt;HTTP/1.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;Accept-Features&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation&#34; title=&#34;en/HTTP/Content negotiation&#34;&gt;HTTP Content Negotiation&lt;/a&gt;&lt;/td&gt; &lt;td&gt;RFC 2295, §8.2&lt;/td&gt; &lt;/tr&gt;
+&lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation#The_Accept-Encoding.3a_header&#34; title=&#34;https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept-Encoding.3a_header&#34;&gt;Accept-Encoding&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt;lists the compression methods supported by the user agent&lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation&#34; title=&#34;en/HTTP/Content negotiation&#34;&gt;HTTP Content Negotiation&lt;/a&gt;&lt;/td&gt; &lt;td&gt;HTTP/1.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation#The_Accept-Language.3a_header&#34; title=&#34;https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Accept-Language.3a_header&#34;&gt;Accept-Language&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt;lists the languages the user agent expect the page in&lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation&#34; title=&#34;https://developer.mozilla.org/en/Content_negotiation&#34;&gt;HTTP Content Negotiation&lt;/a&gt;&lt;/td&gt; &lt;td&gt;HTTP/1.1&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Accept-Ranges&#34; title=&#34;en/Accept-Ranges&#34;&gt;Accept-Ranges&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/En/HTTP_access_control#Access-Control-Allow-Credentials&#34; title=&#34;https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Credentials&#34;&gt;Access-Control-Allow-Credentials&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; and &lt;a href=&#34;/En/Server-Side_Access_Control&#34; title=&#34;En/Server-Side Access Control&#34;&gt;Server Side Access Control&lt;/a&gt;{{ gecko_minversion_inline(&#34;1.9.1&#34;) }}&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/TR/cors/&#34; title=&#34;http://www.w3.org/TR/cors/&#34;&gt;W3C Cross-Origin Resource Sharing&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/En/HTTP_access_control#Access-Control-Allow-Origin&#34; title=&#34;https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Origin&#34;&gt;Access-Control-Allow-Origin&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; and &lt;a href=&#34;/En/Server-Side_Access_Control&#34; title=&#34;En/Server-Side Access Control&#34;&gt;Server Side Access Control&lt;/a&gt;{{ gecko_minversion_inline(&#34;1.9.1&#34;) }}&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/TR/cors/&#34; title=&#34;http://www.w3.org/TR/cors/&#34;&gt;W3C Cross-Origin Resource Sharing&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/En/HTTP_access_control#Access-Control-Allow-Methods&#34; title=&#34;https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Methods&#34;&gt;Access-Control-Allow-Methods&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; and &lt;a href=&#34;/En/Server-Side_Access_Control&#34; title=&#34;En/Server-Side Access Control&#34;&gt;Server Side Access Control&lt;/a&gt;{{ gecko_minversion_inline(&#34;1.9.1&#34;) }}&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/TR/cors/&#34; title=&#34;http://www.w3.org/TR/cors/&#34;&gt;W3C Cross-Origin Resource Sharing&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/En/HTTP_access_control#Access-Control-Allow-Headers&#34; title=&#34;https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Allow-Headers&#34;&gt;Access-Control-Allow-Headers&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; and &lt;a href=&#34;/En/Server-Side_Access_Control&#34; title=&#34;En/Server-Side Access Control&#34;&gt;Server Side Access Control&lt;/a&gt;{{ gecko_minversion_inline(&#34;1.9.1&#34;) }}&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/TR/cors/&#34; title=&#34;http://www.w3.org/TR/cors/&#34;&gt;W3C Cross-Origin Resource Sharing&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/En/HTTP_access_control#Access-Control-Max-Age&#34; title=&#34;https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Max-Age&#34;&gt;Access-Control-Max-Age&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; and &lt;a href=&#34;/En/Server-Side_Access_Control&#34; title=&#34;En/Server-Side Access Control&#34;&gt;Server Side Access Control&lt;/a&gt;{{ gecko_minversion_inline(&#34;1.9.1&#34;) }}&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/TR/cors/&#34; title=&#34;http://www.w3.org/TR/cors/&#34;&gt;W3C Cross-Origin Resource Sharing&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/En/HTTP_access_control#Access-Control-Expose-Header&#34; title=&#34;en/HTTP access control#Access-Control-Expose-Header&#34;&gt;Access-Control-Expose-Headers&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; and &lt;a href=&#34;/En/Server-Side_Access_Control&#34; title=&#34;En/Server-Side Access Control&#34;&gt;Server Side Access Control&lt;/a&gt;{{ gecko_minversion_inline(&#34;2&#34;) }}&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/TR/cors/&#34; title=&#34;http://www.w3.org/TR/cors/&#34;&gt;W3C Cross-Origin Resource Sharing&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/En/HTTP_access_control#Access-Control-Request-Method&#34; title=&#34;https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Request-Method&#34;&gt;Access-Control-Request-Method&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; and &lt;a href=&#34;/En/Server-Side_Access_Control&#34; title=&#34;En/Server-Side Access Control&#34;&gt;Server Side Access Control&lt;/a&gt;{{ gecko_minversion_inline(&#34;1.9.1&#34;) }}&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/TR/cors/&#34; title=&#34;http://www.w3.org/TR/cors/&#34;&gt;W3C Cross-Origin Resource Sharing&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/En/HTTP_access_control#Access-Control-Request-Headers&#34; title=&#34;https://developer.mozilla.org/En/HTTP_access_control#Access-Control-Request-Headers&#34;&gt;Access-Control-Request-Headers&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; and &lt;a href=&#34;/En/Server-Side_Access_Control&#34; title=&#34;En/Server-Side Access Control&#34;&gt;Server Side Access Control&lt;/a&gt;{{ gecko_minversion_inline(&#34;1.9.1&#34;) }}&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/TR/cors/&#34; title=&#34;http://www.w3.org/TR/cors/&#34;&gt;W3C Cross-Origin Resource Sharing&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Age&#34; title=&#34;en/Age&#34;&gt;Age&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Allow&#34; title=&#34;en/Allow&#34;&gt;Allow&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Authorization&#34; title=&#34;en/Authorization&#34;&gt;Authorization&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Cache-Control&#34; title=&#34;en/Cache-Control&#34;&gt;Cache-Control&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP_Caching_FAQ&#34; title=&#34;en/HTTP Caching FAQ&#34;&gt;HTTP Caching FAQ&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Connection&#34; title=&#34;en/Connection&#34;&gt;Connection&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Content-Encoding&#34; title=&#34;en/Content-Encoding&#34;&gt;Content-Encoding&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Content-Language&#34; title=&#34;en/Content-Language&#34;&gt;Content-Language&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Content-Length&#34; title=&#34;en/Content-Length&#34;&gt;Content-Length&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Content-Location&#34; title=&#34;en/Content-Location&#34;&gt;Content-Location&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Content-MD5&#34; title=&#34;en/Content-MD5&#34;&gt;Content-MD5&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;{{ unimplemented_inline(&#34;232030&#34;) }}&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Content-Range&#34; title=&#34;en/Content-Range&#34;&gt;Content-Range&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Content-Type&#34; title=&#34;en/Content-Type&#34;&gt;Content-Type&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt;defines the &lt;a href=&#34;/en/Properly_Configuring_Server_MIME_Types&#34; title=&#34;en/Properly Configuring Server MIME Types&#34;&gt;MIME Type &lt;/a&gt;of the served document&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Cookie&#34; title=&#34;en/Cookie&#34;&gt;Cookie&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.ietf.org/rfc/rfc2109.txt&#34; title=&#34;http://www.ietf.org/rfc/rfc2109.txt&#34;&gt;RFC 2109&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Date&#34; title=&#34;en/Date&#34;&gt;Date&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/ETag&#34; title=&#34;en/ETag&#34;&gt;ETag&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP_Caching_FAQ&#34; title=&#34;en/HTTP Caching FAQ&#34;&gt;HTTP Caching FAQ&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Expect&#34; title=&#34;en/Expect&#34;&gt;Expect&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Expires&#34; title=&#34;en/Expires&#34;&gt;Expires&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP_Caching_FAQ&#34; title=&#34;en/HTTP Caching FAQ&#34;&gt;HTTP Caching FAQ&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/From&#34; title=&#34;en/From&#34;&gt;From&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Host&#34; title=&#34;en/Host&#34;&gt;Host&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/If-Match&#34; title=&#34;en/If-Match&#34;&gt;If-Match&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/If-Modified-Since&#34; title=&#34;en/If-Modified-Since&#34;&gt;If-Modified-Since&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP_Caching_FAQ&#34; title=&#34;en/HTTP Caching FAQ&#34;&gt;HTTP Caching FAQ&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/If-None-Match&#34; title=&#34;en/If-None-Match&#34;&gt;If-None-Match&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP_Caching_FAQ&#34; title=&#34;en/HTTP Caching FAQ&#34;&gt;HTTP Caching FAQ&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/If-Range&#34; title=&#34;en/If-Range&#34;&gt;If-Range&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/If-Unmodified-Since&#34; title=&#34;en/If-Unmodified-Since&#34;&gt;If-Unmodified-Since&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Last-Modified&#34; title=&#34;en/Last-Modified&#34;&gt;Last-Modified&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP_Caching_FAQ&#34; title=&#34;en/HTTP Caching FAQ&#34;&gt;HTTP Caching FAQ&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Link&#34; title=&#34;en/HTTP/Headers/Link&#34;&gt;Link&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/Link_prefetching_FAQ&#34; title=&#34;en/Link prefetching FAQ&#34;&gt;Link Prefetching FAQ&lt;/a&gt;&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://tools.ietf.org/html/rfc2068#section-19.6.2.4&#34; title=&#34;http://tools.ietf.org/html/rfc2068#section-19.6.2.4&#34;&gt;HTTP 1.1&#39;s RFC 2068, section 19.6.2.4&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Location&#34; title=&#34;en/Location&#34;&gt;Location&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Max-Forwards&#34; title=&#34;en/Max-Forwards&#34;&gt;Max-Forwards&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/En/HTTP_access_control#Origin&#34; title=&#34;https://developer.mozilla.org/En/HTTP_access_control#Origin&#34;&gt;Origin&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/HTTP_access_control&#34; title=&#34;En/HTTP access control&#34;&gt;HTTP Access Control&lt;/a&gt; and &lt;a href=&#34;/En/Server-Side_Access_Control&#34; title=&#34;En/Server-Side Access Control&#34;&gt;Server Side Access Control&lt;/a&gt;{{ gecko_minversion_inline(&#34;1.9.1&#34;) }}&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.w3.org/TR/cors/&#34; title=&#34;http://www.w3.org/TR/cors/&#34;&gt;W3C Cross-Origin Resource Sharing&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Pragma&#34; title=&#34;en/Pragma&#34;&gt;Pragma&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;for the pragma: nocache value see &lt;a href=&#34;/en/HTTP_Caching_FAQ&#34; title=&#34;en/HTTP Caching FAQ&#34;&gt;HTTP Caching FAQ&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Proxy-Authenticate&#34; title=&#34;en/Proxy-Authenticate&#34;&gt;Proxy-Authenticate&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Proxy-Authorization&#34; title=&#34;en/Proxy-Authorization&#34;&gt;Proxy-Authorization&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Range&#34; title=&#34;en/Range&#34;&gt;Range&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Referer&#34; title=&#34;en/Referer&#34;&gt;Referer&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt;(note that the orthographical error introduced in HTTP/0.9 spec had to be conserved in subsequent version of the protocol)&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Retry-After&#34; title=&#34;en/Retry-After&#34;&gt;Retry-After&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Server&#34; title=&#34;en/Server&#34;&gt;Server&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Set-Cookie&#34; title=&#34;en/Set-Cookie&#34;&gt;Set-Cookie&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.ietf.org/rfc/rfc2109.txt&#34; title=&#34;http://www.ietf.org/rfc/rfc2109.txt&#34;&gt;RFC 2109&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Set-Cookie2&#34; title=&#34;en/Set-Cookie2&#34;&gt;Set-Cookie2&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://www.ietf.org/rfc/rfc2965.txt&#34; title=&#34;http://www.ietf.org/rfc/rfc2965.txt&#34;&gt;RFC 2965&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;Strict-Transport-Security&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/Security/HTTP_Strict_Transport_Security&#34; title=&#34;en/Security/HTTP Strict Transport Security&#34;&gt;HTTP Strict Transport Security&lt;/a&gt;&lt;/td&gt; &lt;td&gt;&lt;a class=&#34; external&#34; href=&#34;http://tools.ietf.org/html/draft-hodges-strict-transport-sec-02&#34; title=&#34;http://tools.ietf.org/html/draft-hodges-strict-transport-sec-02&#34;&gt;IETF reference&lt;/a&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/TE&#34; title=&#34;en/TE&#34;&gt;TE&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Trailer&#34; title=&#34;en/Trailer&#34;&gt;Trailer&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Transfer-Encoding&#34; title=&#34;en/Transfer-Encoding&#34;&gt;Transfer-Encoding&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Upgrade&#34; title=&#34;en/Upgrade&#34;&gt;Upgrade&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation#The_User-Agent.3a_header&#34; title=&#34;https://developer.mozilla.org/en/HTTP/Content_negotiation#The_User-Agent.3a_header&#34;&gt;User-Agent&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;for Gecko&#39;s user agents see the &lt;a href=&#34;/En/User_Agent_Strings_Reference&#34; title=&#34;En/User Agent Strings Reference&#34;&gt;User Agents Reference&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation#The_Vary.3a_response_header&#34; title=&#34;https://developer.mozilla.org/en/HTTP/Content_negotiation#The_Vary.3a_response_header&#34;&gt;Vary&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt;lists the headers used as criteria for choosing a specific content by the web server. This server is important for efficient and correct caching of the resource sent.&lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/HTTP/Content_negotiation&#34; title=&#34;https://developer.mozilla.org/en/Content_negotiation&#34;&gt;HTTP Content Negotiation&lt;/a&gt; &amp;amp; &lt;a href=&#34;/en/HTTP_Caching_FAQ&#34; title=&#34;en/HTTP Caching FAQ&#34;&gt;HTTP Caching FAQ&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Via&#34; title=&#34;en/Via&#34;&gt;Via&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/Warning&#34; title=&#34;en/Warning&#34;&gt;Warning&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;&lt;a href=&#34;/en/HTTP/Headers/WWW-Authenticate&#34; title=&#34;en/WWW-Authenticate&#34;&gt;WWW-Authenticate&lt;/a&gt;&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;X-Content-Duration&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/Configuring_servers_for_Ogg_media&#34; title=&#34;https://developer.mozilla.org/en/Configuring_servers_for_Ogg_media&#34;&gt;Configuring servers for Ogg media&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;X-Content-Security-Policy&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;Using Content Security Policy&lt;a href=&#34;/en/Security/CSP/Using_Content_Security_Policy&#34; title=&#34;en/Security/CSP/Using Content Security Policy&#34;&gt;en/Security/CSP/Using_Content_Security_Policy&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;X-DNSPrefetch-Control&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/En/Controlling_DNS_prefetching&#34; title=&#34;En/Controlling DNS prefetching&#34;&gt;Controlling DNS prefetching&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;X-Frame-Options&lt;/code&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;&lt;a href=&#34;/en/The_X-FRAME-OPTIONS_response_header&#34; title=&#34;en/The X-FRAME-OPTIONS response header&#34;&gt;The XFrame-Option Response Header&lt;/a&gt;&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&lt;code&gt;X-Requested-With&lt;/code&gt;&lt;/td&gt; &lt;td&gt;Often used with the value &#34;XMLHttpRequest&#34; when it is the case&lt;/td&gt; &lt;td&gt; &lt;/td&gt; &lt;td&gt;Not standard&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Notes&lt;/h2&gt;
+&lt;div class=&#34;geckoVersionNote&#34;&gt;
+&lt;p&gt;{{ gecko_callout_heading(&#34;5.0&#34;) }}&lt;/p&gt;
+&lt;p&gt;The Keep-Alive request header is not sent by Gecko 5.0 {{ geckoRelease(&#34;5.0&#34;) }}; previous versions did send it but it was not formatted correctly, so the decision was made to remove it for the time being. The {{ httpheader(&#34;Connection&#34;) }} or {{ httpheader(&#34;Proxy-Connection&#34;) }} header is still sent, however, with the value &#34;keep-alive&#34;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2&gt;See also&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34; external&#34; href=&#34;http://en.wikipedia.org/wiki/List_of_HTTP_header_fields&#34;&gt;Wikipedia page on List of HTTP headers&lt;/a&gt;&lt;/p&gt;</pre>
+      </div>
+    </details>
+
+    
+    <a href="https://developer.mozilla.org/en-US/users/signin?next=/en-US/docs/Web/HTTP/Headers%24revert/82601" class="button" rel="nofollow, noindex">Revert to this revision</a>
+    
+  </article>
+
+  </div></main>
+
+  <!-- Footer -->
+  <footer id="main-footer"><div class="center">
+    <div class="column-container">
+      <div class="column-main">
+        
+        <div class="contentinfo">
+          <p>&copy; 2005-2016 Mozilla Developer Network and individual contributors.</p> <p>Content is available under <a href="https://developer.mozilla.org/en-US/docs/MDN/About#Copyrights_and_licenses">these licenses</a>.</p>
+          <ul>
+            <li><a href="https://developer.mozilla.org/docs/MDN/About">About MDN</a></li>
+            <li><a href="http://www.mozilla.org/about/legal/terms/mozilla">Terms</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/">Privacy</a></li>
+            <li><a href="http://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            <li><a href="http://github.com/mozilla/kuma">Contribute to the code</a></li>
+          </ul>
+        </div>
+        
+      </div>
+      <div class="column-strip">
+        
+          
+              
+
+<form class="languages go" method="get" action="#">
+  <label for="language">Other languages:</label>
+  
+  <select id="language" class="autosubmit" name="lang">
+    <option title="English (US)" value="en-US">
+      English (US) (en-US)
+    </option>
+    
+        <option title="Afrikaans" value="af">
+          Afrikaans (af)
+        </option>
+      
+        <option title="Arabic" value="ar">
+          عربي (ar)
+        </option>
+      
+        <option title="Azerbaijani" value="az">
+          Azərbaycanca (az)
+        </option>
+      
+        <option title="Bambara" value="bm">
+          Bamanankan (bm)
+        </option>
+      
+        <option title="Bengali (Bangladesh)" value="bn-BD">
+          বাংলা (বাংলাদেশ) (bn-BD)
+        </option>
+      
+        <option title="Bengali (India)" value="bn-IN">
+          বাংলা (ভারত) (bn-IN)
+        </option>
+      
+        <option title="Catalan" value="ca">
+          Català (ca)
+        </option>
+      
+        <option title="Czech" value="cs">
+          Čeština (cs)
+        </option>
+      
+        <option title="German" value="de">
+          Deutsch (de)
+        </option>
+      
+        <option title="Ewe" value="ee">
+          Eʋe (ee)
+        </option>
+      
+        <option title="Greek" value="el">
+          Ελληνικά (el)
+        </option>
+      
+        <option title="Spanish" value="es">
+          Español (es)
+        </option>
+      
+        <option title="Persian" value="fa">
+          فارسی (fa)
+        </option>
+      
+        <option title="Fulah" value="ff">
+          Pulaar-Fulfulde (ff)
+        </option>
+      
+        <option title="Finnish" value="fi">
+          suomi (fi)
+        </option>
+      
+        <option title="French" value="fr">
+          Français (fr)
+        </option>
+      
+        <option title="Frisian" value="fy-NL">
+          Frysk (fy-NL)
+        </option>
+      
+        <option title="Irish" value="ga-IE">
+          Gaeilge (ga-IE)
+        </option>
+      
+        <option title="Hausa" value="ha">
+          Hausa (ha)
+        </option>
+      
+        <option title="Hebrew" value="he">
+          עברית (he)
+        </option>
+      
+        <option title="Hindi (India)" value="hi-IN">
+          हिन्दी (भारत) (hi-IN)
+        </option>
+      
+        <option title="Croatian" value="hr">
+          Hrvatski (hr)
+        </option>
+      
+        <option title="Hungarian" value="hu">
+          magyar (hu)
+        </option>
+      
+        <option title="Indonesian" value="id">
+          Bahasa Indonesia (id)
+        </option>
+      
+        <option title="Igbo" value="ig">
+          Igbo (ig)
+        </option>
+      
+        <option title="Italian" value="it">
+          Italiano (it)
+        </option>
+      
+        <option title="Japanese" value="ja">
+          日本語 (ja)
+        </option>
+      
+        <option title="Georgian" value="ka">
+          ქართული (ka)
+        </option>
+      
+        <option title="Kabyle" value="kab">
+          Taqbaylit (kab)
+        </option>
+      
+        <option title="Korean" value="ko">
+          한국어 (ko)
+        </option>
+      
+        <option title="Lingala" value="ln">
+          Lingála (ln)
+        </option>
+      
+        <option title="Malagasy" value="mg">
+          Malagasy (mg)
+        </option>
+      
+        <option title="Malayalam" value="ml">
+          മലയാളം (ml)
+        </option>
+      
+        <option title="Malay" value="ms">
+          Melayu (ms)
+        </option>
+      
+        <option title="Burmese" value="my">
+          မြန်မာဘာသာ (my)
+        </option>
+      
+        <option title="Dutch" value="nl">
+          Nederlands (nl)
+        </option>
+      
+        <option title="Polish" value="pl">
+          Polski (pl)
+        </option>
+      
+        <option title="Portuguese (Brazilian)" value="pt-BR">
+          Português (do Brasil) (pt-BR)
+        </option>
+      
+        <option title="Portuguese (Portugal)" value="pt-PT">
+          Português (Europeu) (pt-PT)
+        </option>
+      
+        <option title="Romanian" value="ro">
+          Română (ro)
+        </option>
+      
+        <option title="Russian" value="ru">
+          Русский (ru)
+        </option>
+      
+        <option title="Songhai" value="son">
+          Soŋay (son)
+        </option>
+      
+        <option title="Albanian" value="sq">
+          Shqip (sq)
+        </option>
+      
+        <option title="Serbian" value="sr">
+          Српски (sr)
+        </option>
+      
+        <option title="Serbian" value="sr-Latn">
+          Srpski (sr-Latn)
+        </option>
+      
+        <option title="Swedish" value="sv-SE">
+          Svenska (sv-SE)
+        </option>
+      
+        <option title="Swahili" value="sw">
+          Kiswahili (sw)
+        </option>
+      
+        <option title="Tamil" value="ta">
+          தமிழ் (ta)
+        </option>
+      
+        <option title="Thai" value="th">
+          ไทย (th)
+        </option>
+      
+        <option title="Tagalog" value="tl">
+          Tagalog (tl)
+        </option>
+      
+        <option title="Tswana" value="tn">
+          Setswana (tn)
+        </option>
+      
+        <option title="Turkish" value="tr">
+          Türkçe (tr)
+        </option>
+      
+        <option title="Ukrainian" value="uk">
+          Українська (uk)
+        </option>
+      
+        <option title="Vietnamese" value="vi">
+          Tiếng Việt (vi)
+        </option>
+      
+        <option title="Wolof" value="wo">
+          Wolof (wo)
+        </option>
+      
+        <option title="Xhosa" value="xh">
+          isiXhosa (xh)
+        </option>
+      
+        <option title="Yoruba" value="yo">
+          Yorùbá (yo)
+        </option>
+      
+        <option title="Chinese (Simplified)" value="zh-CN">
+          中文 (简体) (zh-CN)
+        </option>
+      
+        <option title="Chinese (Traditional)" value="zh-TW">
+          正體中文 (繁體) (zh-TW)
+        </option>
+      
+        <option title="Zulu" value="zu">
+          isiZulu (zu)
+        </option>
+      
+  </select>
+  <noscript><button type="submit">Go</button></noscript>
+</form>
+          
+        
+      </div>
+    </div>
+  </div></footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/main.69644b44d458.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+    <script type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/jsi18n/en-us/javascript.b28203373cc1.js"></script>
+  
+    <script async type="text/javascript" src="../../../../../../developer.cdn.mozilla.net/static/build/js/wiki.d85ddd33511e.js" charset="utf-8"></script>
+
+
+  
+</body>
+
+<!-- Mirrored from developer.mozilla.org/en-US/docs/Web/HTTP/Headers$revision/82601 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Dec 2016 17:23:53 GMT -->
+</html>
