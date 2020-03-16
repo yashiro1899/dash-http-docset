@@ -23,6 +23,7 @@
     "cheerio": "^1.0.0-rc.3",
     "lodash": "^4.17.14",
     "sequelize": ">=5.15.1",
-    "sqlite3": "^4.0.6"
+    "sqlite3": "^4.0.6",
+    "minimist": ">=1.2.2"
   }
 }
