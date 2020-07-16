@@ -21,7 +21,7 @@
   "homepage": "https://github.com/yashiro1899/dash-http-docset#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "sequelize": ">=5.15.1",
     "sqlite3": "^4.0.6",
     "minimist": ">=1.2.2"
