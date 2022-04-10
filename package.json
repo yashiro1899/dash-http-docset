@@ -24,6 +24,6 @@
     "lodash": "^4.17.14",
     "sequelize": ">=5.15.1",
     "sqlite3": "^4.0.6",
-    "minimist": ">=1.2.2"
+    "minimist": ">=1.2.6"
   }
 }
